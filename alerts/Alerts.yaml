@@ -1,0 +1,46 @@
+outside_temp_sensor_lost:
+  name: Outside Temp Sensor Lost
+  entity_id: binary_sensor.Outside_Temp_Sensor_Lost
+  repeat:
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
+upstairs_temp_sensor_lost:
+  name: Outside Temp Sensor Lost
+  entity_id: binary_sensor.upstairs_Temp_Sensor_Lost
+  repeat:
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
+cctv_front_lost:
+  name: CCTV Front Lost
+  entity_id: binary_sensor.cctv_front
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
+cctv_garage_lost:
+  name: CCTV Garage Lost
+  entity_id: binary_sensor.cctv_garage
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+

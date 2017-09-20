@@ -9,6 +9,7 @@ Server:
     - sensor.home_to_verint
     - sensor.lolo_to_home
     - sensor.sunset_time
+    - group.alerts
     - group.server_disk_usage
     - group.server_disk_temp
     - group.serversensors
@@ -17,3 +18,4 @@ Server:
     - group.serverhygro
     - group.all_lights
     - group.all_switches
+    - group.alerts

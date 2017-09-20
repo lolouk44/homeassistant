@@ -1,0 +1,7 @@
+Alerts:
+  name: Alerts
+  entities:
+    - alert.outside_temp_sensor_lost
+    - alert.upstairs_temp_sensor_lost
+    - alert.cctv_front_lost
+    - alert.cctv_garage_lost

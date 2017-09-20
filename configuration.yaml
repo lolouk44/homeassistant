@@ -63,6 +63,7 @@ sun:
 
 
 
+alert: !include_dir_merge_named alerts
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensors
 camera: !include cameras.yaml

@@ -9,7 +9,7 @@ default_view:
     - sensor.home_to_verint
     - sensor.lolo_to_home
     - sensor.sunset_time
-    #- device_tracker.zevsmpjl_iPad
+    - group.alerts
     - group.scenes
     - group.Weather
     - group.Vacuum

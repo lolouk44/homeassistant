@@ -30,6 +30,8 @@ group.Light:
   order: 11
 group.Staircase_LED_Strip: 
   order: 12
+group.all_alerts:
+  hidden: false
 group.all_automations:
   hidden: false
 group.all_lights:
