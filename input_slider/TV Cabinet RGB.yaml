@@ -1,0 +1,24 @@
+tv_cabinet_r:
+  name: Red
+  icon: mdi:format-color-fill
+  initial: 0
+  min: 0
+  max: 255
+  step: 1
+
+tv_cabinet_g:
+  name: Green
+  icon: mdi:format-color-fill
+  initial: 255
+  min: 0
+  max: 255
+  step: 1
+
+tv_cabinet_b:
+  name: Blue
+  icon: mdi:format-color-fill
+  initial: 0
+  min: 0
+  max: 255
+  step: 1
+

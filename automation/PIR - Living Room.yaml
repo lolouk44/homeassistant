@@ -1,0 +1,197 @@
+- alias: Living Room Main Light On PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_back
+      to: 'on'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.living_room_main_light_on_pir.attributes.last_triggered) | int > 10 )}}'
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: media_player.panasonic_viera_tv
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.normal
+          state: 'on'
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: binary_sensor.pir_living_room_front
+            state: 'on'
+          - condition: state
+            entity_id: binary_sensor.pir_living_room_back
+            state: 'on'
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: binary_sensor.photoresistor
+            state: 'off'
+          - condition: state
+            entity_id: sun.sun
+            state: 'below_horizon'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room_main
+      brightness: 255
+
+
+- alias: Living Room Main Light Dimmed Off PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_back
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_front
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_back
+      state: 'off'
+    - condition: state
+      entity_id: light.living_room_main
+      state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room_main
+      brightness: 11
+
+
+
+- alias: Living Room Main Light Off PIR
+  trigger:
+    platform: time
+    minutes: '/1'
+    seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.living_room_main_light_dimmed_off_pir.attributes.last_triggered) | int > 120 )}}'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_front
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_back
+      state: 'off'
+    - condition: state
+      entity_id: light.living_room_main
+      state: 'on'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_main
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_main
+
+
+
+- alias: Living Room Main Light Dimmed
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+    - platform: state
+      entity_id: media_player.panasonic_viera_tv
+      to: 'on'
+    - platform: state
+      entity_id: media_player.onkyo_txnr656
+      to: 'on'
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.living_room_main_light_dimmed.attributes.last_triggered) | int > 10 )}}'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'on'
+    - condition: state
+      entity_id: media_player.onkyo_txnr656
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room_main
+      brightness: 11
+
+
+
+
+- alias: Living Room Main Light UnDimmed
+  trigger:
+    - platform: state
+      entity_id: media_player.panasonic_viera_tv
+      to: 'off'
+    - platform: state
+      entity_id: media_player.onkyo_txnr656
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: media_player.onkyo_txnr656
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room_main
+      brightness: 255
+

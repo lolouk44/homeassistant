@@ -1,0 +1,118 @@
+- alias: Set Kello Volume
+  trigger:
+    - platform: state
+      entity_id: input_slider.volume_kello
+  action:
+  - service: shell_command.kello_volume
+
+
+
+- alias: Mute Kello Alarms
+  trigger:
+    - platform: state
+      entity_id: input_boolean.kello_mute_alarns
+      to: 'on'
+  action:
+  - service: shell_command.kello_mute_alarms
+
+
+
+- alias: Mute Kello Alarms auto
+  trigger:
+    - platform: state
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      from: 'home'
+    - platform: state
+      entity_id: input_boolean.holidays
+      to: 'on'
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.kello_mute_alarns
+  - service: shell_command.kello_mute_alarms
+
+
+
+- alias: Unmute Kello Alarms
+  trigger:
+    - platform: state
+      entity_id: input_boolean.kello_mute_alarns
+      to: 'off'
+  action:
+  - service: shell_command.kello_unmute_alarms
+
+
+- alias: Unmute Kello Alarms Timed
+  trigger:
+    - platform: time
+      hours: 4
+      minutes: 0
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.holidays
+      state: 'off'
+  action:
+  - service: shell_command.kello_unmute_alarms
+
+
+- alias: Unmute Kello Alarms auto
+  trigger:
+    - platform: state
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      to: 'home'
+    - platform: state
+      entity_id: input_boolean.holidays
+      to: 'off'
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.kello_mute_alarns
+  - service: shell_command.kello_unmute_alarms
+
+
+
+- alias: Notify Kello Down
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kello
+      to: 'off'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Kello is unreachable!'
+
+
+
+- alias: Stop Radio on Kello
+  trigger:
+    - platform: state
+      entity_id: input_boolean.kello_play_stop
+      to: 'off'
+  action:
+  - service: shell_command.kello_stop_radio
+
+
+
+- alias: Play Radio on Kello
+  trigger:
+    - platform: state
+      entity_id: input_boolean.kello_play_stop
+      to: 'on'
+    - platform: state
+      entity_id: input_select.kello_radio_station
+  action:
+  - service: shell_command.kello_volume
+  - service: shell_command.kello_play_radio
+    data_template:
+      station_url: >
+        {% if is_state("input_select.kello_radio_station", "RTL2") %} RTL2
+        {% elif is_state("input_select.kello_radio_station", "Absolute Radio") %} AbsoluteRadio
+        {% elif is_state("input_select.kello_radio_station", "Hit West") %} HitWest
+        {% elif is_state("input_select.kello_radio_station", "Chill") %} Chill
+        {% elif is_state("input_select.kello_radio_station", "Weather Forecast") %} WeatherForecast
+        {% endif %}
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.kello_play_stop
+

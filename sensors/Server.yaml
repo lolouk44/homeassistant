@@ -1,0 +1,41 @@
+- platform: command_line
+  name: ZFS Disk Usage
+  command: "/home/cctv/.homeassistant/shell_scripts/zfschecker.py zfs"
+  unit_of_measurement: "%"
+
+- platform: command_line
+  name: Home Disk Usage
+  command: "/home/cctv/.homeassistant/shell_scripts/zfschecker.py home"
+  unit_of_measurement: "%"
+
+- platform: command_line
+  name: Root Disk Usage
+  command: "/home/cctv/.homeassistant/shell_scripts/zfschecker.py root"
+  unit_of_measurement: "%"
+
+- platform: command_line
+  name: RAM Usage
+  command: "/home/cctv/.homeassistant/shell_scripts/memlist.py"
+  unit_of_measurement: "%"
+
+- platform: command_line
+  name: SDA Disk Temp
+  command: "/home/cctv/.homeassistant/shell_scripts/hddtemp.py sda"
+  unit_of_measurement: "°C"
+
+- platform: command_line
+  name: ZFS1 Disk Temp
+  command: "/home/cctv/.homeassistant/shell_scripts/hddtemp.py zfs1"
+  unit_of_measurement: "°C"
+
+- platform: command_line
+  name: ZFS2 Disk Temp
+  command: "/home/cctv/.homeassistant/shell_scripts/hddtemp.py zfs2"
+  unit_of_measurement: "°C"
+
+# - platform: command_line
+  # name: CPU Temperature
+  # command: "cat /sys/class/thermal/thermal_zone0/temp"
+# #  # If errors occur, remove degree symbol below
+  # unit_of_measurement: "°C"
+  # value_template: '{{ value | multiply(0.001) }}'

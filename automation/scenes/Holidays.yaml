@@ -1,0 +1,17 @@
+- alias: Holidays
+  trigger:
+    - platform: state
+      entity_id: input_boolean.holidays
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.holidays
+
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.normal
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.movies
+    - service: tts.google_say
+      entity_id: media_player.mpd
+      data:
+        message: 'Scene, holidays, activated'

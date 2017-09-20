@@ -1,0 +1,52 @@
+- alias: Staircase Light On by PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_staircase
+      to: 'on'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.staircase_led_strip
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_staircase
+      state: 'on'
+    - condition: time
+      after: '06:00'
+      before: '23:00'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.landing
+      brightness: 255
+
+
+- alias: Staircase Light Off by PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_staircase
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.landing
+      state: 'on'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.landing

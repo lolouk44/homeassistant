@@ -1,0 +1,6 @@
+- name: Normal
+  entities:
+    input_boolean.movies:
+      state: off
+    input_boolean.holiday:
+      state: off

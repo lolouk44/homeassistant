@@ -1,0 +1,17 @@
+- platform: mqtt
+  state_topic: "owntracks/zevsmpjl/Lolo_iPhone"
+  name: "Lolo iPhone"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'
+
+- platform: mqtt
+  state_topic: "owntracks/zevsmpjl/Div_iPhone"
+  name: "Div"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'
+
+- platform: mqtt
+  state_topic: "owntracks/zevsmpjl/iPad"
+  name: "iPad"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'

@@ -1,0 +1,54 @@
+- alias: All Lights Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_back
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.pir_conservatory
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.pir_staircase
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_front
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_back
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_conservatory
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_kitchen
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_staircase
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.staircase_led_strip
+  - service: shell_command.staircase_off
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.tv_cabinet_led_strip
+  - service: shell_command.tv_cabinet_off
+  - service: light.turn_off
+    data:
+      entity_id: group.all_lights
+  - service: light.turn_off
+    data:
+      entity_id: group.all_lights

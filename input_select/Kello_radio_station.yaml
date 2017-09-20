@@ -1,0 +1,10 @@
+kello_radio_station:
+  name: 'Select Radio Station:'
+  options:
+    - Absolute Radio
+    - Chill
+    - Hit West
+    - RTL2
+    - Weather Forecast
+  initial: RTL2
+  icon: mdi:radio

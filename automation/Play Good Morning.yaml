@@ -1,0 +1,20 @@
+- alias: Play Good Morning
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'on'
+  condition:
+    - condition: time
+      after: '06:00'
+      before: '12:00'
+    - condition: template
+      # Only run if more than 6 hours (21,600 sec) since it last ran 
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.play_good_morning.attributes.last_triggered) | int > 21600 )}}'
+  action:
+    - service: shell_command.play_good_morning
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.played_good_morning_flag

@@ -1,0 +1,16 @@
+- name: Movies
+  entities:
+    input_boolean.normal:
+      state: off
+    input_boolean.holiday:
+      state: off
+    light.living_room_wall:
+      state: on
+    light.living_room_main:
+      state: off
+    input_slider.staircase_r:
+      state: 255
+    input_slider.staircase_g:
+      state: 0
+    input_slider.staircase_b:
+      state: 0

@@ -1,0 +1,85 @@
+- alias: Outside Temp Sensor Not Updating
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.outside_temperature.last_updated) | int > 3600 )}}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.outside_temp_sensor_not_updating.attributes.last_triggered) | int >= 3600 )}}'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          Outside Temperature Sensor not updated for over 60 min:
+          - Temperature Last updated on {{as_timestamp(states.sensor.outside_temperature.last_updated) | timestamp_local}}
+
+
+- alias: Upstairs Temp Sensor Not Updating
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated) | int > 3600 )}}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.upstairs_temp_sensor_not_updating.attributes.last_triggered) | int >= 3600 )}}'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          Upstairs Temperature Sensor not updated for over 60 min:
+          - Temperature Last updated on {{as_timestamp(states.sensor.upstairs_temperature.last_updated) | timestamp_local}}
+
+
+- alias: CCTV Front Not Updating
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{ states.sensor.cctv_front_status.state != "Connection OK" }}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.cctv_front_status.last_updated) | int > 300 )}}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.cctv_front_not_updating.attributes.last_triggered) | int >= 3600 )}}'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          Front CCTV Lost since {{as_timestamp(states.sensor.cctv_front_status.last_updated) | timestamp_local}}
+
+- alias: CCTV Garage Not Updating
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{ states.sensor.cctv_garage_status.state != "Connection OK" }}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.cctv_garage_status.last_updated) | int > 300 )}}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.cctv_garage_not_updating.attributes.last_triggered) | int >= 3600 )}}'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          Garage CCTV Lost since {{as_timestamp(states.sensor.cctv_garage_status.last_updated) | timestamp_local}}
+
+
+
+
+
+- alias: Notify RPi Down
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.rpi
+      to: 'off'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'RPi is unreachable!'

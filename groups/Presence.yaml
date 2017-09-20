@@ -1,0 +1,6 @@
+Presence:
+  name: Presence
+  control: hidden
+  entities:
+    - camera.lolo
+    - camera.div

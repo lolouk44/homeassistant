@@ -1,0 +1,9 @@
+kello_mute_alarns:
+  name: Mute Alarms
+  initial: off
+  icon: mdi:alarm
+
+kello_play_stop:
+  name: Radio On/Off
+  initial: off
+  icon: mdi:play

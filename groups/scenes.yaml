@@ -1,0 +1,8 @@
+scenes:
+  name: Scenes
+  control: hidden
+  entities:
+    - input_boolean.normal
+    - input_boolean.movies
+    - input_boolean.holidays
+    - input_boolean.Xmas

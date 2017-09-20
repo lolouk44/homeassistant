@@ -1,0 +1,54 @@
+- alias: Start Vacuuming
+  trigger:
+    - platform: time
+      minutes: '/15'
+      seconds: 0
+  condition:
+    - condition: time
+      after: '09:00'
+      before: '15:00'
+      weekday:
+        - tue
+        - thu
+        - sat
+        - sun
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered) | int > 36000)}}'
+    - condition: state
+      entity_id: 'input_boolean.normal'
+      state: "on"
+    - condition: state
+      entity_id: device_tracker.zevsmpjl_div_iphone
+      state: not_home
+    - condition: state
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      state: not_home
+  action:
+    - service: vacuum.turn_on
+      data:
+        entity_id: vacuum.mi_robot_vacuum
+
+
+
+- alias: Started Vacuuming
+  trigger:
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'Cleaning'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Mi Robot Started Vacuuming...'
+
+
+- alias: Finished Vacuuming
+  trigger:
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'Returning home'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          Mi Robot finished Vacuuming...
+          Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }}

@@ -1,0 +1,5 @@
+upstairs_sensors:
+  name: Sensors
+  entities:
+    - sensor.upstairs_temperature
+    - sensor.upstairs_humidity

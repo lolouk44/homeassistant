@@ -1,0 +1,128 @@
+- alias: CurrentCost Sensor Not Updating
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated) | int > 500 )}}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.currentcost_sensor_not_updating.attributes.last_triggered) | int >= 3600 )}}'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          CurrentCost Sensor not updated for over 5 min:
+          - CurrentCost Last updated on {{as_timestamp(states.sensor.currentcost_power.last_updated) | timestamp_local}}
+
+
+- alias: Mark Dehumidifier Tank as not full
+  trigger:
+    - platform: state
+      entity_id: sensor.Dehumidifier_Power
+  condition:
+    - condition: state
+      entity_id: input_boolean.dehumidifier_tank_full
+      state: 'on'
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.dehumidifier_tank_full
+
+
+
+- alias: Mark LWRF Socket as On if CurrentCost On
+  trigger:
+    - platform: state
+      entity_id: sensor.Dehumidifier_Power
+  condition:
+    - condition: state
+      entity_id: switch.Dehumidifier
+      state: 'off'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.switch.Dehumidifier.last_updated) | int > 60 )}}'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.Dehumidifier
+
+
+
+- alias: Dehumidifier Tank is full
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{states.sensor.Dehumidifier_Power.state | int <= 0 }}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.Dehumidifier_Power.last_updated) | int > 60 )}}'
+    - condition: state
+      entity_id: input_boolean.dehumidifier_tank_full
+      state: 'off'
+    - condition: state
+      entity_id: switch.dehumidifier
+      state: 'on'
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.dehumidifier_tank_full
+  - service: tts.google_say
+    entity_id: media_player.mpd
+    data:
+      message: 'Please note: The dehumidifier tank is full'
+  - service: notify.gmaillolo
+    data_template:
+      message: |
+        Dehumidifier Tank is full.
+
+
+- alias: Start Dehumidifier
+  trigger:
+    - platform: time
+      hours: 8
+      minutes: 0
+      seconds: 0
+    - platform: numeric_state
+      entity_id: sensor.upstairs_humidity
+      value_template: '{{ state.attributes.status }}'
+      above: 70
+  condition:
+    - condition: time
+      after: '08:00'
+      before: '16:00'
+    - condition: state
+      entity_id: input_boolean.holidays
+      state: 'off'
+    - condition: template
+      value_template: '{{ states.sensor.season.state != "Summer" }}'
+    - condition: state
+      entity_id: switch.dehumidifier
+      state: 'off'
+    - condition: template
+      value_template: '{{ states.sensor.upstairs_humidity.state | int >= 70 }}'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.dehumidifier
+
+
+- alias: Stop Dehumidifier
+  trigger:
+    - platform: time
+      hours: 16
+      minutes: 0
+      seconds: 0
+    - platform: numeric_state
+      entity_id: sensor.upstairs_humidity
+      value_template: '{{ state.attributes.status }}'
+      below: 60
+  condition:
+    - condition: state
+      entity_id: switch.dehumidifier
+      state: 'on'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.dehumidifier

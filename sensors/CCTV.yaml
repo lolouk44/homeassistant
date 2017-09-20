@@ -1,0 +1,11 @@
+- platform: scrape
+  resource: http://192.168.0.24:8080/1/detection/connection
+  name: cctv_front_status
+  select: "body"
+  value_template: '{{ value.split("Camera 1 ")[1] }}'
+
+- platform: scrape
+  resource: http://192.168.0.24:8080/2/detection/connection
+  name: cctv_garage_status
+  select: "body"
+  value_template: '{{ value.split("Camera 2 ")[1] }}'

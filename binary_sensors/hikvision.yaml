@@ -1,0 +1,7 @@
+- platform: hikvision
+  name: front_cctv
+  host: 192.168.0.31
+  port: 8031
+  ssl: False
+  username: admin
+  password: !secret hikvision_password

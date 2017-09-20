@@ -1,0 +1,6 @@
+entrance_sensors:
+  name: Sensors
+  entities:
+    - binary_sensor.door_lock
+    - binary_sensor.mailbox
+    - sensor.doorbell_last_rang

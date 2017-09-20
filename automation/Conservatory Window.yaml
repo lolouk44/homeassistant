@@ -1,0 +1,17 @@
+- alias: Conservatory Window Open
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.conservatory_window
+      to: 'on'
+  action:
+  - service: shell_command.remote_on
+
+- alias: Conservatory Window Closed
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.conservatory_window
+      to: 'off'
+  action:
+  - service: shell_command.remote_off
+
+

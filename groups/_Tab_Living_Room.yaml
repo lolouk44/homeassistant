@@ -1,0 +1,16 @@
+Living_Room:
+  view: yes
+  icon: mdi:sofa
+  entities:
+    - device_tracker.zevsmpjl_lolo_iphone
+    - device_tracker.zevsmpjl_div_iphone
+    - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_daily_high_temperature
+    - sensor.home_to_verint
+    - sensor.lolo_to_home
+    - sensor.sunset_time
+    - group.living_room_sensors
+    - group.tv_cabinet_led_strip
+    - media_player.onkyo_txnr656
+    - media_player.panasonic_viera_tv
+    - group.Living_Room_Lights

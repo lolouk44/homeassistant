@@ -1,0 +1,14 @@
+Main_Bedroom:
+  view: yes
+  icon: mdi:hotel
+  entities:
+    - device_tracker.zevsmpjl_lolo_iphone
+    - device_tracker.zevsmpjl_div_iphone
+    - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_daily_high_temperature
+    - sensor.home_to_verint
+    - sensor.lolo_to_home
+    - sensor.sunset_time
+    - group.upstairs_sensors
+    - group.kello
+    - group.dehumidifier

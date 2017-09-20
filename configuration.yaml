@@ -1,0 +1,142 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 3
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+  customize: !include_dir_merge_named customizations
+
+
+# Show links to resources in log and frontend
+#introduction:
+
+recorder:
+  db_url: !secret db_url
+
+# Enables the frontend
+frontend:
+config:
+
+http:
+  #Uncomment this to add a password (recommended!)
+  api_password: !secret http_password
+  trusted_networks:
+    - 127.0.0.1
+    - ::1
+    - 192.168.0.0/24
+
+
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+#discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+#conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Logging level
+logger:
+  default: error
+  logs:
+    homeassistant.components.http: warning
+    mirobo.device: critical
+#    homeassistant.components.rfxtrx: debug
+
+#Track the sun
+sun:
+
+
+
+automation: !include_dir_merge_list automation
+binary_sensor: !include_dir_merge_list binary_sensors
+camera: !include cameras.yaml
+group: !include_dir_merge_named groups
+input_select: !include_dir_merge_named input_select
+input_slider: !include_dir_merge_named input_slider
+input_boolean: !include_dir_merge_named input_boolean
+light: !include_dir_merge_list lights
+notify: !include notify.yaml
+scene: !include_dir_merge_named scenes
+script: !include_dir_merge_named scripts
+shell_command: !include_dir_merge_named shell_commands
+sensor: !include_dir_merge_list sensors
+switch: !include_dir_merge_list switches
+zone: !include zones.yaml
+
+
+ifttt:
+  key: !secret ifttt_key
+
+vacuum:
+- platform: xiaomi
+  name: 'Mi Robot Vacuum'
+  host: 192.168.0.18
+  token: !secret xiaomi_token
+
+mqtt:
+  client_id: home-assistant-1
+  broker: m21.cloudmqtt.com
+  port: 26306
+  username: !secret mqtt_user
+  password: !secret mqtt_password
+
+
+device_tracker:
+  - platform: owntracks
+    max_gps_accuracy: 200
+    waypoints: True
+    waypoint_whitelist:
+      - Lolo_iPhone
+      - Div_iPhone
+      - iPad
+
+
+tts:
+  - platform: google
+    cache: false
+
+
+media_player:
+  - platform: cast
+  - platform: onkyo
+    host: 192.168.0.26
+    name: Onkyo TX-NR656
+    sources:
+      video6: 'Main PC'
+      bluray: 'Blu-Ray'
+      cd: 'ChromeCast'
+      video2: 'Sky'
+  - platform: panasonic_viera
+    host: 192.168.0.27
+    mac: 28:24:FF:2A:D8:2F
+  - platform: mpd
+    host: 192.168.0.24 
+
+
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+
+rfxtrx:
+  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
+
+weblink:
+  entities:
+    - name: automations
+      url: http://homeassistant.lolorpi.com/HASS_Automations.php

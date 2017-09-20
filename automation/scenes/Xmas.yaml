@@ -1,0 +1,23 @@
+- alias: Xmas
+  trigger:
+    - platform: state
+      entity_id: input_boolean.xmas
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.xmas
+    - service: tts.google_say
+      entity_id: media_player.mpd
+      data:
+        message: 'Scene, christmas, activated'
+
+- alias: Xmas Off
+  trigger:
+    - platform: state
+      entity_id: input_boolean.xmas
+      to: 'off'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.mpd
+      data:
+        message: 'Scene, christmas, de-activated'

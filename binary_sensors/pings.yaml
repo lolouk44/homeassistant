@@ -1,0 +1,19 @@
+- platform: ping
+  host: 192.168.0.22
+  name: RPi
+
+- platform: ping
+  host: 192.168.0.3
+  name: MAIN
+
+- platform: ping
+  host: 192.168.0.40
+  name: StairCase LED Strip
+
+- platform: ping
+  host: 192.168.0.41
+  name: TV Cabinet LED Strip
+
+- platform: ping
+  host: 192.168.0.42
+  name: House Number LED Strip 

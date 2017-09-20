@@ -1,0 +1,5 @@
+conservatory_sensors:
+  name: Sensors
+  entities:
+    - binary_sensor.pir_conservatory
+    - binary_sensor.Conservatory_Window

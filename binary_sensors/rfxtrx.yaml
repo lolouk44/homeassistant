@@ -1,0 +1,9 @@
+- platform: rfxtrx
+  automatic_add: True
+  devices:
+    0B11002B00018F3C0A010F60:
+      name: Mailbox
+      device_class: opening
+    0B1100300001B0240A000050:
+      name: Conservatory Window
+      device_class: opening

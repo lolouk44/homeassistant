@@ -1,0 +1,5 @@
+kitchen_lights:
+  name: Kitchen Lights
+  entities:
+    - light.Kitchen_Door
+    - light.Kitchen_Window

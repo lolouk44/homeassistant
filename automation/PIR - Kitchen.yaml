@@ -1,0 +1,115 @@
+#{{ relative_time(states.binary_sensor.pir_kitchen.last_updated)}} >> Relative time to now in seconds/minutes?
+# {% if relative_time(states.binary_sensor.pir_kitchen.last_updated)  == "2 minutes" %} true {% else %} false {% endif%}
+#{{(as_timestamp(now()) - as_timestamp(states.binary_sensor.pir_kitchen.last_updated) < 1800)}}
+
+
+- alias: Kitchen Lights On PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'on'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.pir_kitchen
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: group.kitchen_lights
+      brightness: 255
+
+
+- alias: Kitchen Lights Dimmed Off PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'off'
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: light.Kitchen_Door
+        state: 'on'
+      - condition: state
+        entity_id: light.Kitchen_Window
+        state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: group.kitchen_lights
+      brightness: 11
+
+
+- alias: Kitchen Lights Off PIR
+  trigger:
+    platform: time
+    minutes: '/1'
+    seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered) | int > 120 )}}'
+    - condition: state
+      entity_id: binary_sensor.pir_kitchen
+      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: light.Kitchen_Door
+        state: 'on'
+      - condition: state
+        entity_id: light.Kitchen_Window
+        state: 'on'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: group.kitchen_lights
+
+
+
+
+- alias: Kitchen TV On PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'on'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.kitchen_tv
+
+
+
+- alias: Kitchen TV Off PIR
+  trigger:
+    platform: time
+    minutes: '/1'
+    seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered) | int > 120 )}}'
+    - condition: state
+      entity_id: binary_sensor.pir_kitchen
+      state: 'off'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.kitchen_tv
+
+

@@ -1,0 +1,8 @@
+living_room_sensors:
+  name: Sensors
+  entities:
+    - binary_sensor.pir_living_room_front
+    - binary_sensor.pir_living_room_back
+    - binary_sensor.photoresistor
+    - sensor.temp_lounge
+    - sensor.atmospheric_pressure

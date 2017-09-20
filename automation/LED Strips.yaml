@@ -1,0 +1,247 @@
+- alias: TV Cabinet LED Strip On
+  trigger:
+    - platform: state
+      entity_id: input_boolean.tv_cabinet_led_strip
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_back
+      to: 'on'
+    - platform: state
+      entity_id: input_slider.tv_cabinet_r
+    - platform: state
+      entity_id: input_slider.tv_cabinet_g
+    - platform: state
+      entity_id: input_slider.tv_cabinet_b
+  condition:
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.tv_cabinet_led_strip
+  - service: shell_command.tv_cabinet_on
+    data_template:
+      R: '{{ states.input_slider.tv_cabinet_r.state | round(0) }}'
+      G: '{{ states.input_slider.tv_cabinet_g.state | round(0) }}'
+      B: '{{ states.input_slider.tv_cabinet_b.state | round(0) }}'
+
+
+- alias: TV Cabinet LED Strip On Xmas
+  trigger:
+    - platform: state
+      entity_id: input_boolean.tv_cabinet_led_strip
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_back
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.tv_cabinet_led_strip
+  - service: shell_command.tv_cabinet_on_xmas
+
+
+
+- alias: TV Cabinet LED Strip Off
+  trigger:
+    - platform: state
+      entity_id: input_boolean.tv_cabinet_led_strip
+      to: 'off'
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.tv_cabinet_led_strip
+  - service: shell_command.tv_cabinet_on
+    data_template:
+      R: '0'
+      G: '0'
+      B: '0'
+
+
+
+- alias: TV Cabinet LED Strip Off by PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_back
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_front
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_back
+      state: 'off'
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.tv_cabinet_led_strip
+  - service: shell_command.tv_cabinet_on
+    data_template:
+      R: '0'
+      G: '0'
+      B: '0'
+
+
+
+
+- alias: Staircase LED Strip
+  trigger:
+    - platform: state
+      entity_id: input_boolean.staircase_led_strip
+      to: 'on'
+    - platform: state
+      entity_id: input_slider.staircase_r
+    - platform: state
+      entity_id: input_slider.staircase_g
+    - platform: state
+      entity_id: input_slider.staircase_b
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.staircase_led_strip
+  - service: shell_command.staircase_on
+    data_template:
+      R: '{{ states.input_slider.staircase_r.state | round(0) }}'
+      G: '{{ states.input_slider.staircase_g.state | round(0) }}'
+      B: '{{ states.input_slider.staircase_b.state | round(0) }}'
+
+
+- alias: Staircase LED Strip On by PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_staircase
+      to: 'on'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.staircase_led_strip
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_staircase
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.staircase_led_strip
+  - service: shell_command.staircase_on
+    data_template:
+      R: '{{ states.input_slider.staircase_r.state | round(0) }}'
+      G: '{{ states.input_slider.staircase_g.state | round(0) }}'
+      B: '{{ states.input_slider.staircase_b.state | round(0) }}'
+
+
+
+- alias: Staircase LED Strip On Xmas
+  trigger:
+    - platform: state
+      entity_id: input_boolean.staircase_led_strip
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.staircase_led_strip
+  - service: shell_command.staircase_on_xmas
+
+
+
+- alias: Staircase LED Strip On by PIR Xmas
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_staircase
+      to: 'on'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.staircase_led_strip
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_staircase
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.staircase_led_strip
+  - service: shell_command.staircase_on_xmas
+
+- alias: Staircase LED Strip Off
+  trigger:
+    - platform: state
+      entity_id: input_boolean.staircase_led_strip
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.pir_staircase
+      to: 'off'
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.staircase_led_strip
+  - service: shell_command.staircase_on
+    data_template:
+      R: '0'
+      G: '0'
+      B: '0'

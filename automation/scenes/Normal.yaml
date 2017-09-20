@@ -1,0 +1,102 @@
+- alias: Normal
+  trigger:
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.normal
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.movies
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.holidays
+    - service: tts.google_say
+      entity_id: media_player.mpd
+      data:
+        message: 'Scene, normal, activated'
+    - service: light.turn_off
+      data:
+        entity_id: light.living_room_wall
+    - service: input_slider.select_value
+      data_template: 
+        entity_id:
+          - input_slider.tv_cabinet_r
+        value: 0
+    - service: input_slider.select_value
+      data_template: 
+        entity_id:
+          - input_slider.tv_cabinet_g
+        value: 255
+    - service: input_slider.select_value
+      data_template: 
+        entity_id:
+          - input_slider.tv_cabinet_b
+        value: 0
+    - service: shell_command.tv_cabinet_on
+      data_template:
+        R: '{{ states.input_slider.tv_cabinet_r.state | round(0) }}'
+        G: '{{ states.input_slider.tv_cabinet_g.state | round(0) }}'
+        B: '{{ states.input_slider.tv_cabinet_b.state | round(0) }}'
+
+
+
+- alias: Normal from Movies
+  trigger:
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
+    - platform: state
+      entity_id: media_player.onkyo_txnr656
+      to: 'off'
+    - platform: state
+      entity_id: media_player.panasonic_viera_tv
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.movies
+      state: 'on'
+    - condition: state
+      entity_id: media_player.onkyo_txnr656
+      state: 'off'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.mpd
+      data:
+        message: 'Scene, normal, activated'
+    - service: scene.turn_on
+      entity_id: scene.normal
+
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.movies
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.holidays
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_main
+        brightness: 255
+    - service: light.turn_off
+      data:
+        entity_id: light.living_room_wall
+    - service: input_slider.select_value
+      data_template: 
+        entity_id:
+          - input_slider.tv_cabinet_r
+        value: 0
+    - service: input_slider.select_value
+      data_template: 
+        entity_id:
+          - input_slider.tv_cabinet_g
+        value: 255
+    - service: input_slider.select_value
+      data_template: 
+        entity_id:
+          - input_slider.tv_cabinet_b
+        value: 0
+    - service: shell_command.tv_cabinet_on
+      data_template:
+        R: '{{ states.input_slider.tv_cabinet_r.state | round(0) }}'
+        G: '{{ states.input_slider.tv_cabinet_g.state | round(0) }}'
+        B: '{{ states.input_slider.tv_cabinet_b.state | round(0) }}'

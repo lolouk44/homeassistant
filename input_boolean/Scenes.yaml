@@ -1,0 +1,19 @@
+movies:
+  name: Movies
+  initial: off
+  icon: mdi:movie
+
+normal:
+  name: Normal
+  initial: on
+  icon: mdi:home
+
+holidays:
+  name: Holidays
+  initial: off
+  icon: mdi:beach
+
+xmas:
+  name: Xmas
+  initial: off
+  icon: mdi:pine-tree

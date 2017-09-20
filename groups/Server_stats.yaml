@@ -1,0 +1,6 @@
+serverstats:
+  name: Stats
+  control: hidden
+  entities:
+    - sensor.currentcost_power
+    - sensor.ram_usage

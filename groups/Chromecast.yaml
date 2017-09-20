@@ -1,0 +1,8 @@
+ChromeCast:
+  name: ChromeCast Devices
+  entities:
+    - media_player.downstairs
+    - media_player.house
+    - media_player.bedroom
+    - media_player.kitchen
+    - media_player.onkyo_txnr656_e0ee71

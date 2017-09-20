@@ -1,0 +1,5 @@
+Living_Room_Lights:
+  name: Living Room Lights
+  entities:
+    - light.Living_Room_Main
+    - light.Living_Room_Wall

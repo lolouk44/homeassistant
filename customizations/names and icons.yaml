@@ -1,0 +1,104 @@
+#Binary Sensors:
+binary_sensor.conservatory_window:
+  icon: mdi:window-closed
+binary_sensor.front_cctv_disk_error:
+  icon: mdi:harddisk
+binary_sensor.front_cctv_disk_full:
+  icon: mdi:harddisk
+binary_sensor.hallway_thermostat_hvac_state:
+  icon: mid:fire
+binary_sensor.hallway_thermostat_has_leaf:
+  icon: mid:leaf
+binary_sensor.kello:
+  icon: mdi:access-point-network
+binary_sensor.mailbox:
+  icon: mdi:email
+binary_sensor.cctv_front:
+  icon: mdi:cctv
+binary_sensor.cctv_garage:
+  icon: mdi:cctv
+binary_sensor.house_number_led_strip:
+  icon: mdi:access-point-network
+binary_sensor.staircase_led_strip:
+  icon: mdi:access-point-network
+binary_sensor.tv_cabinet_led_strip:
+  icon: mdi:access-point-network
+
+
+#Devices
+device_tracker.zevsmpjl_lolo_iphone:
+  friendly_name: 'Lolo'
+  entity_picture: /local/Lolo_Avatar.jpg
+device_tracker.zevsmpjl_div_iphone:
+  friendly_name: 'Div'
+  entity_picture: /local/Div_Avatar.jpg
+device_tracker.zevsmpjl_ipad:
+  friendly_name: 'iPad'
+  entity_picture: /local/iPad.png
+
+
+#Lights
+light.Kitchen_Door:
+  icon: mdi:ceiling-light
+light.Kitchen_window:
+  icon: mdi:ceiling-light
+light.living_room_main:
+  icon: mdi:ceiling-light
+
+
+
+#Media_Players
+media_player.onkyo_txnr656_e0ee71:
+  friendly_name: 'Onkyo ChromeCast'
+
+
+#Scripts
+script.radio538:
+  friendly_name: Play Radio on Chromecast Audio
+  icon: mdi:play
+
+
+#Sensors
+sensor.currentcost_power:
+  icon: mdi:speedometer
+sensor.dark_sky_daily_low_temperature:
+  friendly_name: 'Min'
+sensor.dark_sky_daily_high_temperature:
+  friendly_name: 'Max'
+sensor.Dehumidifier_Power:
+  icon: mdi:fan
+sensor.doorbell_last_rang:
+  icon: mdi:bell
+sensor.outside_humidity:
+  icon: mdi:water-percent
+sensor.hallway_thermostat_humidity:
+  friendly_name: Hallway Humidity
+  icon: mdi:water-percent
+sensor.hallway_thermostat_temperature:
+  friendly_name: Hallway Temperature
+sensor.upstairs_humidity:
+  icon: mdi:water-percent
+sensor.xiaomi_battery_level:
+  icon: mdi:battery-charging
+sensor.xiaomi_cleaned_area:
+  icon: mdi:chart-areaspline
+sensor.xiaomi_cleaning_time:
+  icon: mdi:timer
+sensor.last_clean:
+  icon: mdi:calendar
+sensor.home_disk_usage:
+  icon: mdi:harddisk
+sensor.root_disk_usage:
+  icon: mdi:harddisk
+sensor.zfs_disk_usage:
+  icon: mdi:harddisk
+sensor.ram_usage:
+  icon: mdi:memory
+
+#Switches
+switch.dehumidifier:
+  icon: mdi:power-socket-uk
+switch.conservatory:
+  icon: mdi:power-socket-uk
+switch.Kitchen_TV:
+  icon: mdi:power-socket-uk

@@ -1,0 +1,75 @@
+- alias: LWRF Remote 1 On
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data:
+        entity_id: switch.lwrf_remote_1
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_on.attributes.last_triggered) | int > 2 )}}'
+    - condition: state
+      entity_id: switch.lwrf_remote_1
+      state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: group.kitchen
+      brightness: 255
+  - service: shell_command.remote_on
+
+- alias: LWRF Remote 1 Off
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data:
+        entity_id: switch.lwrf_remote_1
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_off.attributes.last_triggered) | int > 2 )}}'
+    - condition: state
+      entity_id: switch.lwrf_remote_1
+      state: 'off'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: group.kitchen
+  - service: shell_command.remote_off
+
+
+
+
+- alias: LWRF Remote 2 On
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data:
+        entity_id: switch.lwrf_remote_2
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_on.attributes.last_triggered) | int > 2 )}}'
+    - condition: state
+      entity_id: switch.lwrf_remote_2
+      state: 'on'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.kitchen_tv
+  - service: shell_command.remote_on
+
+- alias: LWRF Remote 2 Off
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data:
+        entity_id: switch.lwrf_remote_2
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_off.attributes.last_triggered) | int > 2 )}}'
+    - condition: state
+      entity_id: switch.lwrf_remote_2
+      state: 'off'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.kitchen_tv
+  - service: shell_command.remote_off

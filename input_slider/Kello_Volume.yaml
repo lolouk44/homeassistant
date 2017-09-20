@@ -1,0 +1,7 @@
+volume_kello:
+  name: Volume
+  icon: mdi:volume-high
+  initial: 40
+  min: 0
+  max: 100
+  step: 1

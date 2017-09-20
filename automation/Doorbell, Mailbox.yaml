@@ -1,0 +1,40 @@
+- alias: Mailbox Notification
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.mailbox
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.mailbox_notification.attributes.last_triggered) | int > 10 )}}'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.mpd
+      data:
+        message: 'Please note: post has been delivered'
+    - service: shell_command.mailbox_notification_email
+
+- alias: Reset Mailbox
+  trigger:
+    - platform: time
+      hours: 0
+      minutes: 0
+      seconds: 0
+  action:
+    - service: shell_command.reset_mailbox
+
+
+
+
+
+- alias: Doorbell Notification
+  trigger:
+    - platform: event
+      event_type: signal_received
+      event_data:
+        entity_id: sensor.doorbell_sound
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.doorbell_notification.attributes.last_triggered) | int > 10 )}}'
+  action:
+  - service: shell_command.doorbell_notification_sound
+  - service: shell_command.doorbell_notification_email

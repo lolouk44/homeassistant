@@ -1,0 +1,12 @@
+- Refresh HomeBridge on iPad
+- Change lost sensor automations into alerts https://home-assistant.io/components/alert/
+- retrieve last state for sensors using https://home-assistant.io/docs/automation/trigger/#home-assistant-trigger
+- Save entities status in file and restore at HASS Start
+- HDD Space notifications
+- Google Calendar?
+- Sky Device?
+- Holiday automations
+- Xmas automations
+- Temp + Pressure from BME280 on Pi to be saved in text file then use https://home-assistant.io/components/sensor.file/ to retrieve
+- Calibrate Mould sensor https://home-assistant.io/components/sensor.mold_indicator/
+- Add DHT22 sensor to RPi?

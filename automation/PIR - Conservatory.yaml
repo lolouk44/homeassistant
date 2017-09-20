@@ -1,0 +1,50 @@
+- alias: Conservatory Lights On PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_conservatory
+      to: 'on'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.pir_conservatory
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.conservatory
+
+
+
+
+- alias: Conservatory Lights Off PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_conservatory
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.conservatory
+      state: 'on'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.conservatory
+
+
+

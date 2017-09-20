@@ -1,0 +1,10 @@
+chromecast_radio:
+  name: 'Select Speakers:'
+  options:
+    - Downstairs
+    - House
+    - Bedroom
+    - Kitchen
+    - Onkyo
+  initial: Downstairs
+  icon: mdi:speaker-wireless

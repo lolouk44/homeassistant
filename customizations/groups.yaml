@@ -1,0 +1,38 @@
+group.media:
+  order: 2
+group.kitchen:
+  order: 3
+group.living_room:
+  order: 4
+group.conservatory:
+  order: 5
+group.entrance:
+  order: 6
+group.staircase:
+  order: 7
+group.main_bedroom:
+  order: 8
+group.cctv:
+  order: 9
+group.automation:
+  order: 10
+group.scenes:
+  order: 11
+group.rpisensors:
+  order: 12
+group.vacuum:
+  order: 13
+group.Radio:
+  order: 11
+group.ChromeCast: 
+  order: 12
+group.Light:
+  order: 11
+group.Staircase_LED_Strip: 
+  order: 12
+group.all_automations:
+  hidden: false
+group.all_lights:
+  hidden: false
+group.all_switches:
+  hidden: false

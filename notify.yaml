@@ -1,0 +1,25 @@
+
+- name: gmaillolo
+  platform: smtp
+  server: smtp.gmail.com
+  port: 587
+  sender: !secret email_from
+  starttls: true
+  username: !secret email_from
+  password: !secret email_password
+  recipient: !secret email_to_lolo
+  encryption: starttls
+- name: gmaildiv
+  platform: smtp
+  server: smtp.gmail.com
+  port: 587
+  sender: !secret email_from
+  starttls: true
+  username: !secret email_from
+  password: !secret email_password
+  recipient: !secret email_to_div
+  encryption: starttls
+- name: googledrivetts
+  platform: file
+  filename: /home/cctv/.homeassistant/test.txt
+  timestamp : false

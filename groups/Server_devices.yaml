@@ -1,0 +1,12 @@
+serverdevices:
+  name: Devices
+  control: hidden
+  entities:
+    - binary_sensor.cctv_front
+    - binary_sensor.cctv_garage
+    - binary_sensor.kello
+    - binary_sensor.main
+    - binary_sensor.RPi
+    - binary_sensor.House_Number_LED_Strip
+    - binary_sensor.StairCase_LED_Strip
+    - binary_sensor.TV_Cabinet_LED_Strip

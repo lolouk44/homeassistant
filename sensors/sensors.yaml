@@ -1,0 +1,44 @@
+- platform: google_travel_time
+  name: Home to Verint
+  api_key: !secret google_travel_api_key
+  origin: RH10 7YS
+  destination: KT13 0RH
+  options:
+    units: imperial
+
+- platform: google_travel_time
+  name: Lolo to Home
+  api_key: !secret google_travel_api_key
+  origin: device_tracker.zevsmpjl_lolo_iphone
+  destination: RH10 7YS
+  options:
+    units: imperial
+
+- platform: darksky
+  api_key: !secret darksky_api_key
+  monitored_conditions:
+    - summary
+    - icon
+    - pressure
+    - minutely_summary
+    - hourly_summary
+    - daily_summary
+    - temperature_max
+    - temperature_min
+
+- platform: template
+  sensors:
+    sunset_time:
+      entity_id:
+        - sun.sun
+      value_template: >
+        {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%H:%M") }}
+      friendly_name: Sunset
+
+
+
+# - platform: mold_indicator
+  # indoor_temp_sensor: sensor.upstairs_temperature
+  # indoor_humidity_sensor: sensor.upstairs_humidity
+  # outdoor_temp_sensor: sensor.outside_temperature
+  # calibration_factor: 2.0

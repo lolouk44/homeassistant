@@ -1,0 +1,9 @@
+tv_cabinet_led_strip:
+  name: TV Cabinet LED Strip
+  initial: off
+  icon: mdi:led-strip
+
+staircase_led_strip:
+  name: Staircase LED Strip
+  initial: off
+  icon: mdi:led-strip

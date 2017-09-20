@@ -1,0 +1,5 @@
+Nest:
+  - climate.hallway
+  - sensor.hallway_thermostat_humidity
+  - sensor.hallway_thermostat_hvac_state
+  - binary_sensor.hallway_thermostat_has_leaf
