@@ -5,7 +5,7 @@ homeassistant:
   latitude: !secret latitude
   longitude: !secret longitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 3
+  elevation: 63
   # metric for Metric, imperial for Imperial
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -124,7 +124,6 @@ media_player:
       video2: 'Sky'
   - platform: panasonic_viera
     host: 192.168.0.27
-    mac: 28:24:FF:2A:D8:2F
   - platform: mpd
     host: 192.168.0.24 
 
