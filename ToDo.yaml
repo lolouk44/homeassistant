@@ -11,3 +11,4 @@
 - Calibrate Mould sensor https://home-assistant.io/components/sensor.mold_indicator/
 - Add DHT22 sensor to RPi?
 - add fail2ban https://home-assistant.io/cookbook/fail2ban/
+- add HTTP to MQTT and close public access, only allow VPN https://home-assistant.io/blog/2017/03/28/http-to-mqtt-bridge/
