@@ -71,19 +71,6 @@
   - service: shell_command.kello_unmute_alarms
 
 
-
-- alias: Notify Kello Down
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.kello
-      to: 'off'
-  action:
-    - service: notify.gmaillolo
-      data_template:
-        message: 'Kello is unreachable!'
-
-
-
 - alias: Stop Radio on Kello
   trigger:
     - platform: state

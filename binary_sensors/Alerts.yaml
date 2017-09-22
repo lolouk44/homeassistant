@@ -13,3 +13,18 @@
       value_template: >
         {{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated) | int > 3600 )}}
       friendly_name: Upstairs Temp Sensor Lost
+
+    currentcost_lost:
+      entity_id:
+        - sensor.currentcost_power
+      value_template: >
+        {{(as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated) | int > 500 )}}
+      friendly_name: CurrentCost Lost
+
+    ram_too_high:
+      entity_id:
+        - sensor.ram_usage
+      value_template: >
+        {{ states.sensor.ram_usage.state | int > 90 }}
+      friendly_name: RAM Too High
+

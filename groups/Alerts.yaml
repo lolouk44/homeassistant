@@ -5,3 +5,7 @@ Alerts:
     - alert.upstairs_temp_sensor_lost
     - alert.cctv_front_lost
     - alert.cctv_garage_lost
+    - alert.currentcost_lost
+    - alert.rpi_lost
+    - alert.kello_lost
+    - alert.ram_too_high

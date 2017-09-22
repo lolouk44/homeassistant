@@ -44,3 +44,55 @@ cctv_garage_lost:
   notifiers:
     - gmaillolo
 
+currentcost_lost:
+  name: CurrentCost Lost
+  entity_id: binary_sensor.currentcost_lost
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
+rpi_lost:
+  name: RPi Lost
+  entity_id: ping.rpi
+  state: 'off'
+  can_acknowledge: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
+kello_lost:
+  name: Kello Lost
+  entity_id: ping.kello
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
+ram_too_high:
+  name: Ram Too High
+  entity_id: binary_sensor.ram_too_high
+  can_acknowledge: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
