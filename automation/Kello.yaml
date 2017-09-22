@@ -103,3 +103,23 @@
     data:
       entity_id: input_boolean.kello_play_stop
 
+
+
+- alias: Build Weather Greeting
+  trigger:
+    - platform: state
+      entity_id: sensor.Kello_MQTT
+      to: 'build_greeting'
+  action:
+  - service: shell_command.weather_on_kello_build
+
+
+
+- alias: Build Weather Greeting
+  trigger:
+    - platform: state
+      entity_id: sensor.Kello_MQTT
+      to: 'play_greeting'
+  action:
+  - service: shell_command.weather_on_kello_play
+

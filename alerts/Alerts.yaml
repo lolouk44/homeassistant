@@ -85,8 +85,32 @@ kello_lost:
     - gmaillolo
 
 ram_too_high:
-  name: Ram Too High
+  name: Ram Usage > 90%
   entity_id: binary_sensor.ram_too_high
+  can_acknowledge: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
+home_disk_usage_too_high:
+  name: Home Disk Usage > 90%
+  entity_id: binary_sensor.home_disk_usage_too_high
+  can_acknowledge: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - gmaillolo
+
+root_disk_usage_too_high:
+  name: Root Disk Usage > 90%
+  entity_id: binary_sensor.root_disk_usage_too_high
   can_acknowledge: True
   repeat:
     - 5

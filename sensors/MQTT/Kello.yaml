@@ -1,0 +1,3 @@
+- platform: mqtt
+  state_topic: 'Kello'
+  name: 'Kello'

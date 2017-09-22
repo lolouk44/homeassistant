@@ -28,3 +28,17 @@
         {{ states.sensor.ram_usage.state | int > 90 }}
       friendly_name: RAM Too High
 
+    home_disk_usage_too_high:
+      entity_id:
+        - sensor.Home_Disk_Usage
+      value_template: >
+        {{ states.sensor.home_disk_usage.state | int > 90 }}
+      friendly_name: Home Disk Usage Too High
+
+    root_disk_usage_too_high:
+      entity_id:
+        - sensor.Root_Disk_Usage
+      value_template: >
+        {{ states.sensor.root_disk_usage.state | int > 90 }}
+      friendly_name: Root Disk Usage Too High
+

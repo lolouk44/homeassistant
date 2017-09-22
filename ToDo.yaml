@@ -1,5 +1,3 @@
-- Refresh HomeBridge on iPad
-- Change lost sensor automations into alerts https://home-assistant.io/components/alert/
 - retrieve last state for sensors using https://home-assistant.io/docs/automation/trigger/#home-assistant-trigger
 - Save entities status in file and restore at HASS Start
 - HDD Space notifications
@@ -10,5 +8,3 @@
 - Temp + Pressure from BME280 on Pi to be saved in text file then use https://home-assistant.io/components/sensor.file/ to retrieve
 - Calibrate Mould sensor https://home-assistant.io/components/sensor.mold_indicator/
 - Add DHT22 sensor to RPi?
-- add fail2ban https://home-assistant.io/cookbook/fail2ban/
-- add HTTP to MQTT and close public access, only allow VPN https://home-assistant.io/blog/2017/03/28/http-to-mqtt-bridge/

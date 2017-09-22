@@ -9,3 +9,5 @@ Alerts:
     - alert.rpi_lost
     - alert.kello_lost
     - alert.ram_too_high
+    - alert.home_disk_usage_too_high
+    - alert.root_disk_usage_too_high
