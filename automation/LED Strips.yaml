@@ -170,7 +170,7 @@
 - alias: Staircase LED Strip On by PIR Xmas
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_staircase
+      entity_id: group.pirs
       to: 'on'
     - platform: state
       entity_id: sun.sun

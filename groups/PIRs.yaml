@@ -1,0 +1,8 @@
+pirs:
+  name: PIR Sensors
+  entities:
+    - binary_sensor.pir_conservatory
+    - binary_sensor.pir_kitchen
+    - binary_sensor.pir_living_room_front
+    - binary_sensor.pir_living_room_back
+    - binary_sensor.pir_staircase
