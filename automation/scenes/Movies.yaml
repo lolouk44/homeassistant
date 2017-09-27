@@ -5,7 +5,7 @@
       to: 'on'
   action:
     - service: tts.google_say
-      entity_id: media_player.mpd
+      entity_id: group.mpd
       data:
         message: 'Scene, movies, activated'
     - service: scene.turn_on

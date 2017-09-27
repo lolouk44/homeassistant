@@ -18,8 +18,8 @@ upstairs_temp_sensor_lost:
 
 cctv_front_lost:
   name: CCTV Front Lost
-  entity_id: binary_sensor.cctv_front
   state: 'off'
+  entity_id: binary_sensor.cctv_front_status
   can_acknowledge: True
   skip_first: True
   repeat:
@@ -32,13 +32,12 @@ cctv_front_lost:
 
 cctv_garage_lost:
   name: CCTV Garage Lost
-  entity_id: binary_sensor.cctv_garage
   state: 'off'
+  entity_id: binary_sensor.cctv_garage_status
   can_acknowledge: True
   skip_first: True
   repeat:
     - 5
-    - 15
     - 30
     - 60
   notifiers:
@@ -51,24 +50,47 @@ currentcost_lost:
   skip_first: True
   repeat:
     - 5
-    - 15
     - 30
     - 60
   notifiers:
     - gmaillolo
+
+dehumidifier_full:
+  name: Dehumidifier Full
+  entity_id: input_boolean.dehumidifier_tank_full
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 1
+    - 60
+  notifiers:
+    - pushbullet
 
 rpi_lost:
   name: RPi Lost
   entity_id: ping.rpi
   state: 'off'
   can_acknowledge: True
+  skip_first: True
   repeat:
-    - 5
-    - 15
+    - 1
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
+
+rpi_zero_w_lost:
+  name: RPi Zero W Lost
+  entity_id: ping.rpi_zero_w
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 1
+    - 30
+    - 60
+  notifiers:
+    - pushbullet
 
 kello_lost:
   name: Kello Lost
@@ -77,12 +99,50 @@ kello_lost:
   can_acknowledge: True
   skip_first: True
   repeat:
-    - 5
-    - 15
+    - 1
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
+
+# house_number_led_strip_lost:
+  # name: House Number LED Strip Lost
+  # entity_id: binary_sensor.House_Number_LED_Strip
+  # state: 'off'
+  # can_acknowledge: True
+  # skip_first: True
+  # repeat:
+    # - 1
+    # - 60
+  # notifiers:
+    # - pushbullet
+
+
+staircase_led_strip_lost:
+  name: StairCase LED Strip Lost
+  entity_id: binary_sensor.StairCase_LED_Strip
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 1
+    - 60
+  notifiers:
+    - pushbullet
+
+
+tv_cabinet_led_strip_lost:
+  name: TV Cabinet LED Strip Lost
+  entity_id: binary_sensor.TV_Cabinet_LED_Strip
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 1
+    - 60
+  notifiers:
+    - pushbullet
+
 
 ram_too_high:
   name: Ram Usage > 90%
@@ -90,11 +150,10 @@ ram_too_high:
   can_acknowledge: True
   repeat:
     - 5
-    - 15
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
 
 home_disk_usage_too_high:
   name: Home Disk Usage > 90%
@@ -102,11 +161,10 @@ home_disk_usage_too_high:
   can_acknowledge: True
   repeat:
     - 5
-    - 15
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
 
 root_disk_usage_too_high:
   name: Root Disk Usage > 90%
@@ -114,9 +172,8 @@ root_disk_usage_too_high:
   can_acknowledge: True
   repeat:
     - 5
-    - 15
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
 

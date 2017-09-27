@@ -107,28 +107,6 @@
 
 
 
-- alias: Staircase LED Strip
-  trigger:
-    - platform: state
-      entity_id: input_boolean.staircase_led_strip
-      to: 'on'
-    - platform: state
-      entity_id: input_slider.staircase_r
-    - platform: state
-      entity_id: input_slider.staircase_g
-    - platform: state
-      entity_id: input_slider.staircase_b
-  action:
-  - service: input_boolean.turn_on
-    data:
-      entity_id: input_boolean.staircase_led_strip
-  - service: shell_command.staircase_on
-    data_template:
-      R: '{{ states.input_slider.staircase_r.state | round(0) }}'
-      G: '{{ states.input_slider.staircase_g.state | round(0) }}'
-      B: '{{ states.input_slider.staircase_b.state | round(0) }}'
-
-
 - alias: Staircase LED Strip On by PIR
   trigger:
     - platform: state
@@ -142,7 +120,7 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: input_boolean.staircase_led_strip
+      entity_id: light.Staircase_LED_Strip
       state: 'off'
     - condition: state
       entity_id: binary_sensor.pir_staircase
@@ -162,31 +140,30 @@
         entity_id: light.living_room_main
         state: 'on'
   action:
-  - service: input_boolean.turn_on
+  - service: light.turn_on
     data:
-      entity_id: input_boolean.staircase_led_strip
-  - service: shell_command.staircase_on
-    data_template:
-      R: '{{ states.input_slider.staircase_r.state | round(0) }}'
-      G: '{{ states.input_slider.staircase_g.state | round(0) }}'
-      B: '{{ states.input_slider.staircase_b.state | round(0) }}'
+      entity_id: light.Staircase_LED_Strip
+      brightness: 255
+      rgb_color: [0,128,255]
+      transition: 1
 
 
-
-- alias: Staircase LED Strip On Xmas
+- alias: Staircase LED Strip Off by PIR
   trigger:
     - platform: state
-      entity_id: input_boolean.staircase_led_strip
-      to: 'on'
+      entity_id: binary_sensor.pir_staircase
+      to: 'off'
   condition:
     - condition: state
       entity_id: input_boolean.xmas
-      state: 'on'
+      state: 'off'
   action:
-  - service: input_boolean.turn_on
+  - service: light.turn_off
     data:
-      entity_id: input_boolean.staircase_led_strip
-  - service: shell_command.staircase_on_xmas
+      entity_id: light.Staircase_LED_Strip
+      transition: 1
+
+
 
 
 
@@ -203,7 +180,7 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: input_boolean.staircase_led_strip
+      entity_id: light.Staircase_LED_Strip
       state: 'off'
     - condition: state
       entity_id: binary_sensor.pir_staircase
@@ -223,25 +200,44 @@
         entity_id: light.living_room_main
         state: 'on'
   action:
-  - service: input_boolean.turn_on
+  - service: light.turn_on
     data:
-      entity_id: input_boolean.staircase_led_strip
-  - service: shell_command.staircase_on_xmas
+      entity_id: light.Staircase_LED_Strip
+      brightness: 255
+      effect: colorfade_fast
 
-- alias: Staircase LED Strip Off
+- alias: Staircase LED Strip Off by PIR Xmas
   trigger:
-    - platform: state
-      entity_id: input_boolean.staircase_led_strip
-      to: 'off'
     - platform: state
       entity_id: binary_sensor.pir_staircase
       to: 'off'
+  condition:
+    - condition: time
+      after: '22:30'
+      before: '08:00'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
   action:
-  - service: input_boolean.turn_off
+  - service: light.turn_off
     data:
-      entity_id: input_boolean.staircase_led_strip
-  - service: shell_command.staircase_on
-    data_template:
-      R: '0'
-      G: '0'
-      B: '0'
+      entity_id: light.Staircase_LED_Strip
+      transition: 1
+
+
+
+
+
+# - alias: House Number Colour Fade Fast
+  # trigger:
+    # - platform: state
+      # entity_id: light.House_Number_LED_Strip
+      # to: 'off'
+  # action:
+  # - service: light.turn_on
+    # data:
+      # entity_id: light.House_Number_LED_Strip
+      #brightness: 255
+      #rgb_color: [255,0,0]
+      #transition: 5
+      # effect: colorfade_fast

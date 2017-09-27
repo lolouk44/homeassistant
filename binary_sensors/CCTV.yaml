@@ -1,17 +1,7 @@
-- platform: template
-  sensors:
-    cctv_front:
-      entity_id:
-        - sensor.cctv_front_status
-      value_template: >
-        {{ states.sensor.cctv_front_status.state == 'Connection OK'}}
-      friendly_name: CCTV Front
-      device_class: connectivity
+- platform: command_line
+  command: "/home/cctv/.homeassistant/shell_scripts/CCTV_Checker.py 1"
+  name: cctv_front_status
 
-    cctv_garage:
-      entity_id:
-        - sensor.cctv_garage_status
-      value_template: >
-        {{ states.sensor.cctv_garage_status.state == 'Connection OK'}}
-      friendly_name: CCTV Garage
-      device_class: connectivity
+- platform: command_line
+  command: "/home/cctv/.homeassistant/shell_scripts/CCTV_Checker.py 2"
+  name: cctv_garage_status

@@ -1,0 +1,5 @@
+mpd:
+  name: MPD Group
+  entities:
+    - media_player.mpd
+    - media_player.mpd_Rpi_Zero_W

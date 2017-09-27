@@ -1,2 +1,0 @@
-remote_on: mpg123 -q /home/cctv/.homeassistant/sounds/RemoteOn.mp3
-remote_off: mpg123 -q /home/cctv/.homeassistant/sounds/RemoteOff.mp3

@@ -11,7 +11,7 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.holidays
     - service: tts.google_say
-      entity_id: media_player.mpd
+      entity_id: group.mpd
       data:
         message: 'Scene, normal, activated'
     - service: light.turn_off
@@ -63,7 +63,7 @@
       state: 'off'
   action:
     - service: tts.google_say
-      entity_id: media_player.mpd
+      entity_id: group.mpd
       data:
         message: 'Scene, normal, activated'
     - service: scene.turn_on

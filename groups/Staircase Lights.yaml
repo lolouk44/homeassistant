@@ -1,0 +1,5 @@
+Staircase_Lights:
+  name: Staircase Lights
+  entities:
+    - light.landing
+    - light.Staircase_LED_Strip

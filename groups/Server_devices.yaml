@@ -2,8 +2,8 @@ serverdevices:
   name: Devices
   control: hidden
   entities:
-    - binary_sensor.cctv_front
-    - binary_sensor.cctv_garage
+    - binary_sensor.cctv_front_status
+    - binary_sensor.cctv_garage_status
     - binary_sensor.kello
     - binary_sensor.main
     - binary_sensor.RPi

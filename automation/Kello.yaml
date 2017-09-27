@@ -115,7 +115,7 @@
 
 
 
-- alias: Build Weather Greeting
+- alias: Play Weather Greeting
   trigger:
     - platform: state
       entity_id: sensor.Kello_MQTT

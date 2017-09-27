@@ -11,6 +11,6 @@ Media:
     - sensor.sunset_time
     - group.radio
     - group.ChromeCast
-#    - media_player.mpd
     - media_player.onkyo_txnr656
     - media_player.panasonic_viera_tv
+    - group.mpd

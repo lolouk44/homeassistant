@@ -12,6 +12,6 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.movies
     - service: tts.google_say
-      entity_id: media_player.mpd
+      entity_id: group.mpd
       data:
         message: 'Scene, holidays, activated'

@@ -12,3 +12,4 @@ Entrance:
     - group.entrance_sensors
     - light.hallway
     - group.Nest
+    - light.House_Number_LED_Strip

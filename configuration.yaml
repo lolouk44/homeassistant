@@ -85,7 +85,7 @@ ifttt:
   key: !secret ifttt_key
 
 vacuum:
-- platform: xiaomi
+- platform: xiaomi_miio
   name: 'Mi Robot Vacuum'
   host: 192.168.0.18
   token: !secret xiaomi_token
@@ -115,6 +115,11 @@ tts:
 
 media_player:
   - platform: cast
+# host: 192.168.0.12
+# - platform: cast
+# host: 192.168.0.13
+# - platform: cast
+# host: 192.168.0.26
   - platform: onkyo
     host: 192.168.0.26
     name: Onkyo TX-NR656
@@ -126,8 +131,11 @@ media_player:
   - platform: panasonic_viera
     host: 192.168.0.27
   - platform: mpd
-    host: 192.168.0.24 
-
+    host: 192.168.0.24
+  - platform: mpd
+    host: 192.168.0.21
+    port: 6600
+    name: MPD RPi Zero W
 
 nest:
   client_id: !secret nest_client_id

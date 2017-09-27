@@ -1,0 +1,20 @@
+- alias: HASS Update Available Notification
+  trigger:
+    - platform: state
+      entity_id: updater.updater
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          There is an update to HomeAssistant: V{{states.updater.updater.state}}
+          Release Notes: {{ states.updater.updater.attributes.release_notes.split("0-")[0]+states.updater.updater.attributes.release_notes.split("0-")[1] }}
+
+- alias: HASS Start
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+  - service: shell_command.play_mp3
+    data_template:
+      File: 'Click.mp3'
+

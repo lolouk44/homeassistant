@@ -6,7 +6,7 @@
     event: leave
   condition:
   - condition: time
-    after: '17:00:00'
+    after: '16:30:00'
   action:
     service: notify.gmaillolo
     data_template:

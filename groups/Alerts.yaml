@@ -6,8 +6,13 @@ Alerts:
     - alert.cctv_front_lost
     - alert.cctv_garage_lost
     - alert.currentcost_lost
+    - alert.dehumidifier_full
     - alert.rpi_lost
+    - alert.rpi_zero_w_lost
     - alert.kello_lost
+    - alert.house_number_led_strip_lost
+    - alert.staircase_led_strip_lost
+    - alert.tv_cabinet_led_strip_lost
     - alert.ram_too_high
     - alert.home_disk_usage_too_high
     - alert.root_disk_usage_too_high

@@ -23,3 +23,6 @@
   platform: file
   filename: /home/cctv/.homeassistant/test.txt
   timestamp : false
+- name: pushbullet
+  platform: pushbullet
+  api_key: o.XjFH26VxLJTwQB6EwdEkvx7nxbgJllke

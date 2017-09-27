@@ -10,5 +10,4 @@ Staircase:
     - sensor.lolo_to_home
     - sensor.sunset_time
     - binary_sensor.pir_staircase
-    - light.landing
-    - group.staircase_led_strip
+    - group.Staircase_Lights

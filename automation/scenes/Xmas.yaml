@@ -7,7 +7,7 @@
     - service: scene.turn_on
       entity_id: scene.xmas
     - service: tts.google_say
-      entity_id: media_player.mpd
+      entity_id: group.mpd
       data:
         message: 'Scene, christmas, activated'
 
@@ -18,6 +18,6 @@
       to: 'off'
   action:
     - service: tts.google_say
-      entity_id: media_player.mpd
+      entity_id: group.mpd
       data:
         message: 'Scene, christmas, de-activated'

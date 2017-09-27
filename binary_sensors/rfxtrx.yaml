@@ -1,5 +1,5 @@
 - platform: rfxtrx
-  automatic_add: True
+#  automatic_add: True
   devices:
     0B11002B00018F3C0A010F60:
       name: Mailbox

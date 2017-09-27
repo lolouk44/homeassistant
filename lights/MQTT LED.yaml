@@ -1,0 +1,22 @@
+- platform: mqtt_json
+  name: House Number LED Strip
+  state_topic: "led_strip/housenumber"
+  command_topic: "led_strip/housenumber/set"
+  brightness: true
+  rgb: true
+  effect: true
+  effect_list: [colorfade_slow, colorfade_fast, flash]
+  optimistic: false
+  qos: 0
+
+- platform: mqtt_json
+  name: Staircase LED Strip
+  state_topic: "led_strip/staircase"
+  command_topic: "led_strip/staircase/set"
+  brightness: true
+  rgb: true
+  effect: true
+  effect_list: [colorfade_slow, colorfade_fast, flash]
+  optimistic: false
+  qos: 0
+

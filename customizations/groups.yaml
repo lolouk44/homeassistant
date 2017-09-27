@@ -16,12 +16,14 @@ group.cctv:
   order: 9
 group.automation:
   order: 10
-group.scenes:
+group.alerts:
   order: 11
-group.rpisensors:
+group.scenes:
   order: 12
-group.vacuum:
+group.rpisensors:
   order: 13
+group.vacuum:
+  order: 14
 group.Radio:
   order: 11
 group.ChromeCast: 

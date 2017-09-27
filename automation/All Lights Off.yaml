@@ -40,10 +40,6 @@
   action:
   - service: input_boolean.turn_off
     data:
-      entity_id: input_boolean.staircase_led_strip
-  - service: shell_command.staircase_off
-  - service: input_boolean.turn_off
-    data:
       entity_id: input_boolean.tv_cabinet_led_strip
   - service: shell_command.tv_cabinet_off
   - service: light.turn_off
