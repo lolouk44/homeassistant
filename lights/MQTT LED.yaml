@@ -20,3 +20,16 @@
   optimistic: false
   qos: 0
 
+- platform: mqtt_json
+  name: TV Cabinet LED Strip
+  state_topic: "led_strip/tvcabinet"
+  command_topic: "led_strip/tvcabinet/set"
+  brightness: true
+  rgb: true
+  effect: true
+  effect_list: [colorfade_slow, colorfade_fast, flash]
+  optimistic: false
+  qos: 0
+
+
+

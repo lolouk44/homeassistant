@@ -3,6 +3,8 @@
     - platform: state
       entity_id: group.pirs
       to: 'off'
+      for:
+        minutes: 2
   condition:
     - condition: state
       entity_id: input_boolean.normal

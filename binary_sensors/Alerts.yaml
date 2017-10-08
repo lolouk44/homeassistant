@@ -18,7 +18,7 @@
       entity_id:
         - sensor.currentcost_power
       value_template: >
-        {{(as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated) | int > 500 )}}
+        {% if (as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated) | int < 500 ) %}off{% else %}on{% endif %}
       friendly_name: CurrentCost Lost
 
     ram_too_high:

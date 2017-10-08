@@ -59,9 +59,11 @@
 
 - alias: Kitchen Lights Off PIR
   trigger:
-    platform: time
-    minutes: '/1'
-    seconds: 0
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'off'
+      for:
+        minutes: 2
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered) | int > 120 )}}'

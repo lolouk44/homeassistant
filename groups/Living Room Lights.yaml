@@ -3,3 +3,4 @@ Living_Room_Lights:
   entities:
     - light.Living_Room_Main
     - light.Living_Room_Wall
+    - light.TV_Cabinet_LED_Strip

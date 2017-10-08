@@ -25,5 +25,6 @@ radio538:
           {% elif is_state("input_select.radio_station", "Absolute Radio") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3
           {% elif is_state("input_select.radio_station", "Hit West") %} http://broadcast.infomaniak.ch/hitwest-high.mp3
           {% elif is_state("input_select.radio_station", "Chill") %} http://media-the.musicradio.com/ChillMP3
+          {% elif is_state("input_select.radio_station", "Custom Station") %} {{states.input_text.custom_station.state}}
           {% endif %}
          media_content_type: 'audio/mp4'

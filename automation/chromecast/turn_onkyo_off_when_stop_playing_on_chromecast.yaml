@@ -8,7 +8,7 @@
     to: 'off'
   condition:
     condition: template
-    value_template: "{% if  (states.media_player.downstairs.state == 'off') and (states.media_player.home.state == 'off') and (states.media_player.panasonic_viera_tv.state == 'off') %} true {% else %} false {% endif %}"
+    value_template: "{% if  (states.media_player.downstairs.state == 'off') and (states.media_player.house.state == 'off') and (states.media_player.panasonic_viera_tv.state == 'off') %} true {% else %} false {% endif %}"
   action:
   - service: media_player.turn_off
     entity_id: media_player.onkyo_txnr656

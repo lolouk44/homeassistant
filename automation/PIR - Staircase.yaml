@@ -11,7 +11,7 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: input_boolean.staircase_led_strip
+      entity_id: light.Staircase_LED_Strip
       state: 'off'
     - condition: state
       entity_id: binary_sensor.pir_staircase

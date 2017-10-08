@@ -5,7 +5,7 @@ outside_temp_sensor_lost:
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
 
 upstairs_temp_sensor_lost:
   name: Outside Temp Sensor Lost
@@ -14,7 +14,7 @@ upstairs_temp_sensor_lost:
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
 
 cctv_front_lost:
   name: CCTV Front Lost
@@ -28,7 +28,7 @@ cctv_front_lost:
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
 
 cctv_garage_lost:
   name: CCTV Garage Lost
@@ -41,7 +41,7 @@ cctv_garage_lost:
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
 
 currentcost_lost:
   name: CurrentCost Lost
@@ -53,7 +53,7 @@ currentcost_lost:
     - 30
     - 60
   notifiers:
-    - gmaillolo
+    - pushbullet
 
 dehumidifier_full:
   name: Dehumidifier Full

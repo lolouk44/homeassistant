@@ -51,7 +51,7 @@
     data:
       entity_id: input_boolean.dehumidifier_tank_full
   - service: tts.google_say
-    entity_id: media_player.mpd
+    entity_id: group.mpd
     data:
       message: 'Please note: The dehumidifier tank is full'
   - service: notify.gmaillolo

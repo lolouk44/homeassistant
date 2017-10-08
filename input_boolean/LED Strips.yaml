@@ -1,4 +1,0 @@
-tv_cabinet_led_strip:
-  name: TV Cabinet LED Strip
-  initial: off
-  icon: mdi:led-strip

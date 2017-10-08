@@ -1,6 +1,7 @@
 radio_station:
   name: 'Select Radio Station:'
   options:
+    - Custom Station
     - Absolute Radio
     - Chill
     - Hit West

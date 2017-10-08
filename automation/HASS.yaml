@@ -18,3 +18,12 @@
     data_template:
       File: 'Click.mp3'
 
+- alias: HASS Stop
+  trigger:
+    - platform: event
+      event_type: homeassistant_stop
+  action:
+  - service: shell_command.play_mp3
+    data_template:
+      File: 'ClickOff.mp3'
+

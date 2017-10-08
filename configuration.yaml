@@ -70,6 +70,7 @@ camera: !include cameras.yaml
 group: !include_dir_merge_named groups
 input_select: !include_dir_merge_named input_select
 input_slider: !include_dir_merge_named input_slider
+input_text: !include_dir_merge_named input_text
 input_boolean: !include_dir_merge_named input_boolean
 light: !include_dir_merge_list lights
 notify: !include notify.yaml
@@ -115,11 +116,12 @@ tts:
 
 media_player:
   - platform: cast
-# host: 192.168.0.12
-# - platform: cast
-# host: 192.168.0.13
-# - platform: cast
-# host: 192.168.0.26
+  - platform: cast
+    host: 192.168.0.12
+  - platform: cast
+    host: 192.168.0.13
+  - platform: cast
+    host: 192.168.0.26
   - platform: onkyo
     host: 192.168.0.26
     name: Onkyo TX-NR656
@@ -143,8 +145,3 @@ nest:
 
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
-
-weblink:
-  entities:
-    - name: automations
-      url: http://homeassistant.lolorpi.com/HASS_Automations.php
