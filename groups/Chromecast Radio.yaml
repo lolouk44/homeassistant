@@ -5,5 +5,5 @@ Radio:
   - input_select.radio_station
   - input_text.custom_station
   - input_select.chromecast_radio
-  - input_slider.volume_radio
+  - input_number.volume_radio
   - script.radio538

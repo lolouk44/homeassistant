@@ -1,1 +1,0 @@
-set_domotiga: curl -sS -X POST -H "Content-Type:application/json" -H "Accept:application/json" -d '{"jsonrpc":"2.0", "method":"device.set", "params":{"device_id":{{device_id}}, "valuenum":"{{valuenum}}", "value":"{{value}}"}, "id":122}' 192.168.0.24:9090

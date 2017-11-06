@@ -7,12 +7,12 @@
   name: MAIN
 
 - platform: ping
-  host: 192.168.0.41
-  name: StairCase LED Strip
-
-- platform: ping
   host: 192.168.0.40
   name: TV Cabinet LED Strip
+
+- platform: ping
+  host: 192.168.0.41
+  name: StairCase LED Strip
 
 - platform: ping
   host: 192.168.0.42
@@ -25,3 +25,15 @@
 - platform: ping
   host: 192.168.0.21
   name: RPi Zero W
+
+- platform: ping
+  host: 192.168.0.30
+  name: Verint CCTV
+
+- platform: ping
+  host: 192.168.0.31
+  name: Hikvision CCTV
+
+- platform: ping
+  host: 192.168.0.32
+  name: Xiaomi Dafang CCTV

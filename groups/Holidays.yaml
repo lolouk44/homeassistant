@@ -1,0 +1,6 @@
+Holidays:
+  name: Holidays
+  control: hidden
+  entities:
+    - input_datetime.holiday_start
+    - input_datetime.holiday_end

@@ -1,7 +1,7 @@
 - alias: Set Kello Volume
   trigger:
     - platform: state
-      entity_id: input_slider.volume_kello
+      entity_id: input_number.volume_kello
   action:
   - service: shell_command.kello_volume
 
@@ -42,18 +42,18 @@
   - service: shell_command.kello_unmute_alarms
 
 
-- alias: Unmute Kello Alarms Timed
-  trigger:
-    - platform: time
-      hours: 4
-      minutes: 0
-      seconds: 0
-  condition:
-    - condition: state
-      entity_id: input_boolean.holidays
-      state: 'off'
-  action:
-  - service: shell_command.kello_unmute_alarms
+# - alias: Unmute Kello Alarms Timed
+  # trigger:
+    # - platform: time
+      # hours: 4
+      # minutes: 0
+      # seconds: 0
+  # condition:
+    # - condition: state
+      # entity_id: input_boolean.holidays
+      # state: 'off'
+  # action:
+  # - service: shell_command.kello_unmute_alarms
 
 
 - alias: Unmute Kello Alarms auto
@@ -123,3 +123,23 @@
   action:
   - service: shell_command.weather_on_kello_play
 
+
+
+- alias: Reboot Kello at Midnight
+  trigger:
+    - platform: time
+      hours: 0
+      minutes: 0
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.holidays
+      state: 'off'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.LWRF_Socket_3
+  - delay: 00:00:05
+  - service: switch.turn_on
+    data:
+      entity_id: switch.LWRF_Socket_3

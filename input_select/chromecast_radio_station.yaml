@@ -1,10 +1,10 @@
 radio_station:
   name: 'Select Radio Station:'
   options:
-    - Custom Station
     - Absolute Radio
     - Chill
     - Hit West
     - RTL2
+    - Custom Station
   initial: RTL2
   icon: mdi:radio

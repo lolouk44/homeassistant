@@ -1,0 +1,69 @@
+- alias: Holiday Living Room
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: 'input_boolean.holidays'
+      state: "on"
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room_main
+      brightness: 255
+  - service: light.turn_on
+    data:
+      entity_id: light.kitchen_window
+      brightness: 255
+
+
+
+- alias: Holiday Upstairs on
+  trigger:
+    - platform: time
+      hours: 22
+      minutes: 34
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: 'input_boolean.holidays'
+      state: "on"
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.LWRF_Socket_3
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_main
+  - service: light.turn_off
+    data:
+      entity_id: light.kitchen_window
+
+
+- alias: Holiday Upstairs off
+  trigger:
+    - platform: time
+      hours: 23
+      minutes: 04
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: 'input_boolean.holidays'
+      state: "on"
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.LWRF_Socket_3
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_main
+  - service: light.turn_off
+    data:
+      entity_id: light.kitchen_window
+
+
+

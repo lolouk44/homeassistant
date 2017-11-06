@@ -17,6 +17,7 @@
   - service: shell_command.play_mp3
     data_template:
       File: 'Click.mp3'
+#  - service: shell_command.getcurrentcost
 
 - alias: HASS Stop
   trigger:

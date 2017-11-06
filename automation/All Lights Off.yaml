@@ -19,4 +19,4 @@
   - service: shell_command.tv_cabinet_off
   - service: light.turn_off
     data:
-      entity_id: group.all_lights
+      entity_id: group.Interior_Lights

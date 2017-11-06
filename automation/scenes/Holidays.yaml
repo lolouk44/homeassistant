@@ -15,3 +15,7 @@
       entity_id: group.mpd
       data:
         message: 'Scene, holidays, activated'
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.hallway
+        away_mode: true

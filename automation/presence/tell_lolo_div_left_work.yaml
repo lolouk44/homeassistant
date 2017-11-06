@@ -8,10 +8,13 @@
   - condition: time
     after: '16:30:00'
   action:
-    service: notify.gmaillolo
-    data_template:
-      message: 'Div left work.'
-
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Div left work.'
+    - service: tts.google_say
+      entity_id: group.mpd
+      data:
+        message: 'Please note: Div left work'
 
 
 # - alias: Tell Lolo Div left work2

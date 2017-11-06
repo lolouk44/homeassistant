@@ -23,6 +23,10 @@
         brightness: 255
         rgb_color: [0,255,0]
         transition: 1
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.hallway
+        away_mode: false
 
 
 

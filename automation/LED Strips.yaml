@@ -20,6 +20,11 @@
       brightness: 255
       rgb_color: [0,255,0]
       transition: 1
+  - service: light.turn_on
+    data:
+      entity_id: light.TV_Cabinet_LED_Strip
+      brightness: 255
+      rgb_color: [0,255,0]
 
 
 
@@ -44,6 +49,67 @@
       entity_id: light.TV_Cabinet_LED_Strip
       brightness: 255
       effect: colorfade_fast
+
+
+
+- alias: Flash Alert
+  trigger:
+    - platform: state
+      entity_id: alert.cctv_front_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.cctv_garage_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.currentcost_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.dehumidifier_full
+      to: 'on'
+    - platform: state
+      entity_id: alert.home_disk_usage_too_high
+      to: 'on'
+    - platform: state
+      entity_id: alert.kello_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.outside_temp_sensor_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.ram_too_high
+      to: 'on'
+    - platform: state
+      entity_id: alert.root_disk_usage_too_high
+      to: 'on'
+    - platform: state
+      entity_id: alert.rpi_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.rpi_zero_w_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.staircase_led_strip_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.tv_cabinet_led_strip_lost
+      to: 'on'
+    - platform: state
+      entity_id: alert.upstairs_temp_sensor_lost
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.mailbox
+      to: 'on'
+    - platform: event
+      event_type: signal_received
+      event_data:
+        entity_id: sensor.doorbell_sound
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.TV_Cabinet_LED_Strip
+      brightness: 255
+      rgb_color: [255,0,0]
+      effect: flash
 
 
 
@@ -223,7 +289,7 @@
     data:
       entity_id: light.House_Number_LED_Strip
       brightness: 255
-      effect: colorfade_fast
+      effect: colorfade_slow
 
 
 

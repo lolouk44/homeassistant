@@ -4,6 +4,7 @@ serverdevices:
   entities:
     - binary_sensor.cctv_front_status
     - binary_sensor.cctv_garage_status
+    - binary_sensor.xiaomi_dafang_cctv
     - binary_sensor.kello
     - binary_sensor.main
     - binary_sensor.RPi

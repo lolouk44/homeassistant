@@ -37,6 +37,10 @@ http:
 
 # Checks for available updates
 updater:
+  include_used_components: True
+
+# Maps
+map:
 
 # Discover some devices automatically
 #discovery:
@@ -54,9 +58,13 @@ logbook:
 logger:
   default: error
   logs:
+#    homeassistant.components.vacuum: error
     homeassistant.components.http: warning
-    mirobo.device: critical
+    miio.device: critical
 #    homeassistant.components.rfxtrx: debug
+    homeassistant.components.rfxtrx.Living_Room_Main: debug
+    homeassistant.components.cast: critical
+    homeassistant.components.ifttt: debug
 
 #Track the sun
 sun:
@@ -68,8 +76,10 @@ automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensors
 camera: !include cameras.yaml
 group: !include_dir_merge_named groups
+#history_graph: !include_dir_merge_named history_graph
+input_datetime: !include_dir_merge_named input_datetime
 input_select: !include_dir_merge_named input_select
-input_slider: !include_dir_merge_named input_slider
+input_number: !include_dir_merge_named input_number
 input_text: !include_dir_merge_named input_text
 input_boolean: !include_dir_merge_named input_boolean
 light: !include_dir_merge_list lights

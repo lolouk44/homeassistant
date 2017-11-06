@@ -19,7 +19,7 @@ upstairs_temp_sensor_lost:
 cctv_front_lost:
   name: CCTV Front Lost
   state: 'off'
-  entity_id: binary_sensor.cctv_front_status
+  entity_id: binary_sensor.hikvision_cctv
   can_acknowledge: True
   skip_first: True
   repeat:
@@ -33,7 +33,20 @@ cctv_front_lost:
 cctv_garage_lost:
   name: CCTV Garage Lost
   state: 'off'
-  entity_id: binary_sensor.cctv_garage_status
+  entity_id: binary_sensor.verint_cctv
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 30
+    - 60
+  notifiers:
+    - pushbullet
+
+cctv_xiaomi_dafang_lost:
+  name: CCTV Xiaomi Dafang Lost
+  state: 'off'
+  entity_id: binary_sensor.xiaomi_dafang_cctv
   can_acknowledge: True
   skip_first: True
   repeat:
@@ -68,7 +81,7 @@ dehumidifier_full:
 
 rpi_lost:
   name: RPi Lost
-  entity_id: ping.rpi
+  entity_id: binary_sensor.rpi
   state: 'off'
   can_acknowledge: True
   skip_first: True
@@ -81,12 +94,12 @@ rpi_lost:
 
 rpi_zero_w_lost:
   name: RPi Zero W Lost
-  entity_id: ping.rpi_zero_w
+  entity_id: binary_sensor.rpi_zero_w
   state: 'off'
   can_acknowledge: True
   skip_first: True
   repeat:
-    - 1
+    - 5
     - 30
     - 60
   notifiers:
@@ -94,28 +107,28 @@ rpi_zero_w_lost:
 
 kello_lost:
   name: Kello Lost
-  entity_id: ping.kello
+  entity_id: binary_sensor.kello
   state: 'off'
   can_acknowledge: True
   skip_first: True
   repeat:
-    - 1
+    - 5
     - 30
     - 60
   notifiers:
     - pushbullet
 
-# house_number_led_strip_lost:
-  # name: House Number LED Strip Lost
-  # entity_id: binary_sensor.House_Number_LED_Strip
-  # state: 'off'
-  # can_acknowledge: True
-  # skip_first: True
-  # repeat:
-    # - 1
-    # - 60
-  # notifiers:
-    # - pushbullet
+house_number_led_strip_lost:
+  name: House Number LED Strip Lost
+  entity_id: binary_sensor.House_Number_LED_Strip
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 60
+  notifiers:
+    - pushbullet
 
 
 staircase_led_strip_lost:
@@ -125,7 +138,7 @@ staircase_led_strip_lost:
   can_acknowledge: True
   skip_first: True
   repeat:
-    - 1
+    - 5
     - 60
   notifiers:
     - pushbullet
@@ -138,7 +151,7 @@ tv_cabinet_led_strip_lost:
   can_acknowledge: True
   skip_first: True
   repeat:
-    - 1
+    - 5
     - 60
   notifiers:
     - pushbullet
@@ -156,7 +169,7 @@ ram_too_high:
     - pushbullet
 
 home_disk_usage_too_high:
-  name: Home Disk Usage > 90%
+  name: Home Disk Usage > 75%
   entity_id: binary_sensor.home_disk_usage_too_high
   can_acknowledge: True
   repeat:
@@ -167,7 +180,7 @@ home_disk_usage_too_high:
     - pushbullet
 
 root_disk_usage_too_high:
-  name: Root Disk Usage > 90%
+  name: Root Disk Usage > 75%
   entity_id: binary_sensor.root_disk_usage_too_high
   can_acknowledge: True
   repeat:
