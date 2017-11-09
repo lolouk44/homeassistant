@@ -1,0 +1,26 @@
+bauble_1_mode:
+  name: 'Bauble 1 Mode:'
+  options:
+    - Sparkle
+    - Rainbow
+    - Uniglow
+  initial: Sparkle
+  icon: mdi:format-list-bulleted-type
+
+bauble_2_mode:
+  name: 'Bauble 2 Mode:'
+  options:
+    - Sparkle
+    - Rainbow
+    - Uniglow
+  initial: Rainbow
+  icon: mdi:format-list-bulleted-type
+
+bauble_3_mode:
+  name: 'Bauble 3 Mode:'
+  options:
+    - Sparkle
+    - Rainbow
+    - Uniglow
+  initial: Uniglow
+  icon: mdi:format-list-bulleted-type
