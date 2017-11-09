@@ -1,0 +1,14 @@
+bauble_1:
+  name: Bauble 1
+  initial: off
+  icon: mdi:pokeball
+
+bauble_2:
+  name: Bauble 2
+  initial: off
+  icon: mdi:pokeball
+
+bauble_3:
+  name: Bauble 3
+  initial: off
+  icon: mdi:pokeball
