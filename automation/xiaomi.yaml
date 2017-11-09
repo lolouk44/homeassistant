@@ -49,4 +49,4 @@
       data_template:
         message: |
           Mi Robot finished Vacuuming...
-          Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }}
+          Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
