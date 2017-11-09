@@ -10,6 +10,10 @@
       entity_id: group.mpd
       data:
         message: 'Scene, christmas, activated'
+    - service: group.set_visibility
+      entity_id: group.baubles
+      data:
+        visible: True
 
 - alias: Xmas Off
   trigger:
@@ -21,3 +25,7 @@
       entity_id: group.mpd
       data:
         message: 'Scene, christmas, de-activated'
+    - service: group.set_visibility
+      entity_id: group.baubles
+      data:
+        visible: False
