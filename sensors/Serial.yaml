@@ -1,3 +1,0 @@
-# - platform: serial
-  # port: /dev/ttyUSB1
-  # name: CurrentCost
