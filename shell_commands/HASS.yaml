@@ -1,1 +1,1 @@
-restart_hass: pkill -9 -f hass && hass
+restart_hass: /home/cctv/.homeassistant/shell_scripts/Restart_HASS.sh

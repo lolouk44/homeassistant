@@ -17,7 +17,7 @@
   - service: shell_command.play_mp3
     data_template:
       File: 'Click.mp3'
-#  - service: shell_command.getcurrentcost
+  - service: shell_command.getcurrentcost
 
 - alias: HASS Stop
   trigger:
@@ -28,3 +28,14 @@
     data_template:
       File: 'ClickOff.mp3'
 
+
+- alias: HASS Restart
+  trigger:
+    - platform: state
+      entity_id: input_boolean.hass_restart
+      to: 'on'
+  action:
+  - service: shell_command.play_mp3
+    data_template:
+      File: 'ClickOff.mp3'
+  - service: shell_command.restart_hass

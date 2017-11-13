@@ -19,3 +19,4 @@ Server:
     - group.all_lights
     - group.all_switches
     - group.alerts
+    - input_boolean.hass_restart

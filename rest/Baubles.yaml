@@ -1,0 +1,24 @@
+bauble_1_state:
+  url: 'http://192.168.0.45/{{states.input_boolean.bauble_1.state}}'
+#  method: post
+
+bauble_2_state:
+  url: 'http://192.168.0.46/{{states.input_boolean.bauble_2.state}}'
+#  method: post
+
+bauble_3_state:
+  url: 'http://192.168.0.47/{{states.input_boolean.bauble_3.state}}'
+#  method: post
+
+bauble_1_mode:
+  url: 'http://192.168.0.45/{{states.input_select.bauble_1_mode.state}}'
+#  method: post
+
+bauble_2_mode:
+  url: 'http://192.168.0.46/{{states.input_select.bauble_2_mode.state}}'
+#  method: post
+
+bauble_3_mode:
+  url: 'http://192.168.0.47/{{states.input_select.bauble_3_mode.state}}'
+#  method: post
+

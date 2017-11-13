@@ -84,6 +84,7 @@ input_text: !include_dir_merge_named input_text
 input_boolean: !include_dir_merge_named input_boolean
 light: !include_dir_merge_list lights
 notify: !include notify.yaml
+rest_command: !include_dir_merge_named rest
 scene: !include_dir_merge_named scenes
 script: !include_dir_merge_named scripts
 shell_command: !include_dir_merge_named shell_commands

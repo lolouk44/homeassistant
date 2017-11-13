@@ -38,3 +38,15 @@
 - platform: command_line
   name: Last Clean
   command: "/home/cctv/.homeassistant/shell_scripts/xiaomi_last_clean.py"
+
+
+
+# - platform: miflora
+  # mac: 'xx:xx:xx:xx:xx:xx'
+  # name: Basil
+  # monitored_conditions:
+    # - temperature
+    # - moisture
+    # - light
+    # - conductivity
+    # - battery
