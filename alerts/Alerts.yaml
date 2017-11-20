@@ -99,7 +99,7 @@ rpi_zero_w_lost:
   can_acknowledge: True
   skip_first: True
   repeat:
-    - 5
+    - 10
     - 30
     - 60
   notifiers:
@@ -189,4 +189,32 @@ root_disk_usage_too_high:
     - 60
   notifiers:
     - pushbullet
+
+basil_humidity_too_low:
+  name: Basil Humidity below 15%
+  entity_id: binary_sensor.basil_humidity_too_low
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 240
+  notifiers:
+    - pushbullet
+    - gmaillolo
+
+basil_battery_too_low:
+  name: Basil Battery below 10%
+  entity_id: binary_sensor.basil_battery_too_low
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 240
+  notifiers:
+    - pushbullet
+    - gmaillolo
+
+
+
+
 

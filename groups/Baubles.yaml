@@ -1,9 +1,6 @@
 baubles:
   name: Baubles
   entities:
-  - input_boolean.bauble_1
-  - input_boolean.bauble_2
-  - input_boolean.bauble_3
-  - input_select.bauble_1_mode
-  - input_select.bauble_2_mode
-  - input_select.bauble_3_mode
+  - light.bauble_1
+  - light.bauble_2
+  - light.bauble_3

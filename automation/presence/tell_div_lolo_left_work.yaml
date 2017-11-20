@@ -10,7 +10,7 @@
   action:
     service: notify.gmaildiv
     data_template:
-      message: 'Lolo left work. Estimated arrival time: {{(as_timestamp(now()) + (states.sensor.lolo_to_home.state | int)*60) | timestamp_custom("%H:%M")}}'
+      message: 'Lolo left work. Estimated arrival time: {{(as_timestamp(now()) + (states.sensor.lolo_to_home.state | default(0) | int)*60) | timestamp_custom("%H:%M")}}'
   # initial_state: false
 
 

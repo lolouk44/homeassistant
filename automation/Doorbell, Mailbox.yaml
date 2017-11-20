@@ -5,7 +5,7 @@
       to: 'on'
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.mailbox_notification.attributes.last_triggered) | int > 10 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.mailbox_notification.attributes.last_triggered | default(0)) | int > 10 )}}'
   action:
     - service: tts.google_say
       entity_id: media_player.mpd
@@ -34,7 +34,7 @@
         entity_id: sensor.doorbell_sound
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.doorbell_notification.attributes.last_triggered) | int > 10 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.doorbell_notification.attributes.last_triggered | default(0)) | int > 10 )}}'
   action:
   - service: shell_command.doorbell_notification_sound
   - service: shell_command.doorbell_notification_email

@@ -3,5 +3,5 @@
   host: 192.168.0.31
   port: 8031
   ssl: False
-  username: admin
+  username: !secret hikvision_username
   password: !secret hikvision_password

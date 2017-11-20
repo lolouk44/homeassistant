@@ -17,3 +17,5 @@ Alerts:
     - alert.home_disk_usage_too_high
     - alert.root_disk_usage_too_high
     - alert.cctv_xiaomi_dafang_lost
+    - alert.basil_humidity_too_low
+    - alert.basil_battery_too_low

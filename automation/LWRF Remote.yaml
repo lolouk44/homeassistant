@@ -6,7 +6,7 @@
         entity_id: switch.lwrf_remote_1
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_on.attributes.last_triggered) | int > 2 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_on.attributes.last_triggered | default(0)) | int > 2 )}}'
     - condition: state
       entity_id: switch.lwrf_remote_1
       state: 'on'
@@ -27,7 +27,7 @@
         entity_id: switch.lwrf_remote_1
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_off.attributes.last_triggered) | int > 2 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_off.attributes.last_triggered | default(0)) | int > 2 )}}'
     - condition: state
       entity_id: switch.lwrf_remote_1
       state: 'off'
@@ -49,7 +49,7 @@
         entity_id: switch.lwrf_remote_2
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_on.attributes.last_triggered) | int > 2 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_on.attributes.last_triggered | default(0)) | int > 2 )}}'
     - condition: state
       entity_id: switch.lwrf_remote_2
       state: 'on'
@@ -69,7 +69,7 @@
         entity_id: switch.lwrf_remote_2
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_off.attributes.last_triggered) | int > 2 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_off.attributes.last_triggered | default(0)) | int > 2 )}}'
     - condition: state
       entity_id: switch.lwrf_remote_2
       state: 'off'

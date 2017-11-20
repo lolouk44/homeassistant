@@ -51,6 +51,14 @@ script.radio538:
 
 
 #Sensors
+sensor.basil_moisture:
+  icon: mdi:water-percent
+sensor.basil_light_intensity:
+  icon: mdi:brightness-7
+sensor.basil_conductivity:
+  icon: mdi:flower
+sensor.basil_battery:
+  icon: mdi:battery-charging
 sensor.currentcost_power:
   icon: mdi:speedometer
 sensor.dark_sky_daily_low_temperature:

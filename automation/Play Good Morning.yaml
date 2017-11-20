@@ -12,7 +12,7 @@
       before: '12:00'
     - condition: template
       # Only run if more than 6 hours (21,600 sec) since it last ran 
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.play_good_morning.attributes.last_triggered) | int > 21600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.play_good_morning.attributes.last_triggered | default(0)) | int > 21600 )}}'
   action:
     - service: shell_command.play_good_morning
     - service: input_boolean.turn_on

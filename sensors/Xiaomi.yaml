@@ -41,12 +41,12 @@
 
 
 
-# - platform: miflora
-  # mac: 'xx:xx:xx:xx:xx:xx'
-  # name: Basil
-  # monitored_conditions:
-    # - temperature
-    # - moisture
-    # - light
-    # - conductivity
-    # - battery
+- platform: miflora
+  mac: 'C4:7C:8D:65:C6:B9'
+  name: Basil
+  monitored_conditions:
+    - temperature
+    - moisture
+    - light
+    - conductivity
+    - battery

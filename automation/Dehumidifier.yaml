@@ -22,7 +22,7 @@
       entity_id: switch.Dehumidifier
       state: 'off'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.switch.Dehumidifier.last_updated) | int > 60 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.switch.Dehumidifier.last_updated | default(0)) | int > 60 )}}'
   action:
   - service: switch.turn_on
     data:
@@ -37,9 +37,9 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{states.sensor.Dehumidifier_Power.state | int <= 0 }}'
+      value_template: '{{states.sensor.Dehumidifier_Power.state | default(0) | int <= 0 }}'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.Dehumidifier_Power.last_updated) | int > 60 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.Dehumidifier_Power.last_updated | default(0)) | int > 60 )}}'
     - condition: state
       entity_id: input_boolean.dehumidifier_tank_full
       state: 'off'
@@ -83,7 +83,7 @@
       entity_id: switch.dehumidifier
       state: 'off'
     - condition: template
-      value_template: '{{ states.sensor.upstairs_humidity.state | int >= 70 }}'
+      value_template: '{{ states.sensor.upstairs_humidity.state | default(0) | int >= 70 }}'
   action:
   - service: switch.turn_on
     data:

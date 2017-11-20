@@ -33,3 +33,36 @@
 
 
 
+
+- platform: mqtt_json
+  name: Bauble 1
+  state_topic: "WeMosBauble/Bauble1"
+  command_topic: "WeMosBauble/Bauble1/set"
+  brightness: false
+  rgb: false
+  effect: true
+  effect_list: [sparkle, rainbow, uniglow]
+  optimistic: false
+  qos: 0
+
+- platform: mqtt_json
+  name: Bauble 2
+  state_topic: "WeMosBauble/Bauble2"
+  command_topic: "WeMosBauble/Bauble2/set"
+  brightness: false
+  rgb: false
+  effect: true
+  effect_list: [sparkle, rainbow, uniglow]
+  optimistic: false
+  qos: 0
+
+- platform: mqtt_json
+  name: Bauble 3
+  state_topic: "WeMosBauble/Bauble3"
+  command_topic: "WeMosBauble/Bauble3/set"
+  brightness: false
+  rgb: false
+  effect: true
+  effect_list: [sparkle, rainbow, uniglow]
+  optimistic: false
+  qos: 0

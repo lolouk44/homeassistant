@@ -6,5 +6,5 @@ chromecast_radio:
     - Bedroom
     - Kitchen
     - Onkyo
-  initial: Downstairs
+  initial: House
   icon: mdi:speaker-wireless

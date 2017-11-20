@@ -8,3 +8,13 @@ Vacuum:
     - sensor.xiaomi_cleaned_area
     - sensor.xiaomi_cleaning_time
     - sensor.last_clean
+
+basil:
+  name: Basil
+  control: hidden
+  entities:
+    - sensor.basil_temperature
+    - sensor.basil_moisture
+    - sensor.basil_light_intensity
+    - sensor.basil_conductivity
+    - sensor.basil_battery

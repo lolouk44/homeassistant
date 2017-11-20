@@ -66,7 +66,7 @@
         minutes: 2
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered | default(0)) | int > 120 )}}'
     - condition: state
       entity_id: binary_sensor.pir_kitchen
       state: 'off'
@@ -105,7 +105,7 @@
     seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered | default(0)) | int > 120 )}}'
     - condition: state
       entity_id: binary_sensor.pir_kitchen
       state: 'off'

@@ -1,44 +1,60 @@
 - platform: template
   sensors:
+    basil_humidity_too_low:
+      entity_id:
+        - sensor.basil_moisture
+      value_template: >
+        {{ states.sensor.basil_moisture.state | default(0) | int < 15 }}
+      friendly_name: Basil Humidity below 15%
+
+    basil_battery_too_low:
+      entity_id:
+        - sensor.basil_battery
+      value_template: >
+        {{ states.sensor.basil_battery.state | default(0) | int < 10 }}
+      friendly_name: Basil Battery below 10%
+
+
+
     outside_temp_sensor_lost:
       entity_id:
         - sensor.outside_temperature
       value_template: >
-        {{(as_timestamp(now()) - as_timestamp(states.sensor.outside_temperature.last_updated) | int > 3600 )}}
+        {{(as_timestamp(now()) - as_timestamp(states.sensor.outside_temperature.last_updated | default(0)) | int > 3600 )}}
       friendly_name: Outside Temp Sensor Lost
 
     upstairs_temp_sensor_lost:
       entity_id:
         - sensor.upstairs_temperature
       value_template: >
-        {{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated) | int > 3600 )}}
+        {{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )}}
       friendly_name: Upstairs Temp Sensor Lost
 
     currentcost_lost:
       entity_id:
         - sensor.currentcost_power
       value_template: >
-        {% if (as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated) | int < 500 ) %}off{% else %}on{% endif %}
+        {% if (as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated | default(0)) | int < 500 ) %}off{% else %}on{% endif %}
       friendly_name: CurrentCost Lost
 
     ram_too_high:
       entity_id:
         - sensor.ram_usage
       value_template: >
-        {{ states.sensor.ram_usage.state | int > 90 }}
+        {{ states.sensor.ram_usage.state | default(0) | int > 90 }}
       friendly_name: RAM Too High
 
     home_disk_usage_too_high:
       entity_id:
         - sensor.Home_Disk_Usage
       value_template: >
-        {{ states.sensor.home_disk_usage.state | int > 90 }}
+        {{ states.sensor.home_disk_usage.state | default(0) | int > 90 }}
       friendly_name: Home Disk Usage Too High
 
     root_disk_usage_too_high:
       entity_id:
         - sensor.Root_Disk_Usage
       value_template: >
-        {{ states.sensor.root_disk_usage.state | int > 90 }}
+        {{ states.sensor.root_disk_usage.state | default(0) | int > 90 }}
       friendly_name: Root Disk Usage Too High
 

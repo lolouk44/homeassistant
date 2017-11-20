@@ -46,7 +46,7 @@ map:
 #discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
-#conversation:
+conversation:
 
 # Enables support for tracking state changes over time.
 history:
@@ -58,13 +58,11 @@ logbook:
 logger:
   default: error
   logs:
-#    homeassistant.components.vacuum: error
     homeassistant.components.http: warning
     miio.device: critical
+    homeassistant.components.media_player.cast: error
+    homeassistant.components.emulated_hue: debug
 #    homeassistant.components.rfxtrx: debug
-    homeassistant.components.rfxtrx.Living_Room_Main: debug
-    homeassistant.components.cast: critical
-    homeassistant.components.ifttt: debug
 
 #Track the sun
 sun:
@@ -82,6 +80,7 @@ input_select: !include_dir_merge_named input_select
 input_number: !include_dir_merge_named input_number
 input_text: !include_dir_merge_named input_text
 input_boolean: !include_dir_merge_named input_boolean
+intent_script: !include_dir_merge_named intent_script
 light: !include_dir_merge_list lights
 notify: !include notify.yaml
 rest_command: !include_dir_merge_named rest
@@ -92,6 +91,16 @@ sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_list switches
 zone: !include zones.yaml
 
+
+emulated_hue:
+  type: google_home
+  listen_port: 8300
+  advertise_port: 80
+  host_ip: 192.168.0.24
+#  listen_port: 80
+  expose_by_default: false
+
+dialogflow:
 
 ifttt:
   key: !secret ifttt_key

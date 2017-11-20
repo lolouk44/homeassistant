@@ -125,21 +125,21 @@
 
 
 
-- alias: Reboot Kello at Midnight
-  trigger:
-    - platform: time
-      hours: 0
-      minutes: 0
-      seconds: 0
-  condition:
-    - condition: state
-      entity_id: input_boolean.holidays
-      state: 'off'
-  action:
-  - service: switch.turn_off
-    data:
-      entity_id: switch.LWRF_Socket_3
-  - delay: 00:00:05
-  - service: switch.turn_on
-    data:
-      entity_id: switch.LWRF_Socket_3
+# - alias: Reboot Kello at Midnight
+  # trigger:
+    # - platform: time
+      # hours: 0
+      # minutes: 0
+      # seconds: 0
+  # condition:
+    # - condition: state
+      # entity_id: input_boolean.holidays
+      # state: 'off'
+  # action:
+  # - service: switch.turn_off
+    # data:
+      # entity_id: switch.LWRF_Socket_3
+  # - delay: 00:00:05
+  # - service: switch.turn_on
+    # data:
+      # entity_id: switch.LWRF_Socket_3
