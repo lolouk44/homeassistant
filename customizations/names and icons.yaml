@@ -39,6 +39,12 @@ device_tracker.zevsmpjl_ipad:
   entity_picture: /local/iPad.png
 
 
+#Date Time
+input_datetime.holiday_start:
+  icon: mdi:calendar-clock
+input_datetime.holiday_end:
+  icon: mdi:calendar
+
 #Media_Players
 media_player.onkyo_txnr656_e0ee71:
   friendly_name: 'Onkyo ChromeCast'

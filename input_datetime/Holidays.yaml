@@ -7,4 +7,4 @@ holiday_end:
   name: Holiday End
   has_date: true
   has_time: false
-  initial: '2017-10-15 00:00'
+  initial: '2017-10-15'

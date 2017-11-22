@@ -76,3 +76,5 @@
         brightness: 255
         rgb_color: [0,255,0]
         transition: 1
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.normal

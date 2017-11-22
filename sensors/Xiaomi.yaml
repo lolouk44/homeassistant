@@ -32,6 +32,7 @@
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }}
       friendly_name: Cleaning Time
+      unit_of_measurement: 'min'
 
 
 
