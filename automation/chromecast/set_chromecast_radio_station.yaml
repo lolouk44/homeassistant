@@ -1,7 +1,0 @@
-- alias: Set Chromecast Radio Station
-  trigger:
-    platform: state
-    entity_id: input_select.radio_station
-  action:
-    service: script.turn_on
-    entity_id: script.radio538

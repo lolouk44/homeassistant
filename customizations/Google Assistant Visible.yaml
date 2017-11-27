@@ -1,0 +1,19 @@
+input_boolean.movies:
+  google_assistant: true
+  google_assistant_name: "Movies"
+  google_assistant_type: switch
+  aliases:
+    - "Movies"
+    - "mood scene movies"
+    - "movie mode"
+input_boolean.normal:
+  google_assistant: true
+  google_assistant_name: "Normal"
+  google_assistant_type: switch
+light.Living_Room_Main:
+  google_assistant: true
+  google_assistant_name: "Living Room Lights"
+script.radio538:
+  google_assistant: true
+  google_assistant_name: "Radio"
+  google_assistant_type: switch

@@ -39,3 +39,9 @@
 # #  # If errors occur, remove degree symbol below
   # unit_of_measurement: "°C"
   # value_template: '{{ value | multiply(0.001) }}'
+
+- platform: command_line
+  name: SSL Cert Expiry
+  unit_of_measurement: days
+  scan_interval: 10800
+  command: "ssl-cert-check -b -c /etc/letsencrypt/live/homeassistant.lolorpi.com/cert.pem | awk '{ print $NF }'"

@@ -1,65 +1,136 @@
-- alias: turn_bauble_on/off
+- alias: turn_baubles_on_1
   trigger:
-    - platform: state
-      entity_id: input_boolean.bauble_1
-    - platform: state
-      entity_id: input_boolean.bauble_2
-    - platform: state
-      entity_id: input_boolean.bauble_3
+    - platform: numeric_state
+      entity_id: sensor.bauble_random_effect
+      below: 2
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: group.pirs
+        state: 'on'
+      - condition: state
+        entity_id: media_player.panasonic_viera_tv
+        state: 'on'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
   action:
-    - service_template: >
-        {% if trigger.entity_id == "input_boolean.bauble_1" %} rest_command.bauble_1_state
-        {% elif trigger.entity_id == "input_boolean.bauble_2" %} rest_command.bauble_2_state
-        {% else %} rest_command.bauble_3_state
-        {% endif %}
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_1
+      effect: "sparkle"
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_2
+      effect: "rainbow"
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_3
+      effect: "uniglow"
 
-
-- alias: set_bauble_mode
+- alias: turn_baubles_on_2
   trigger:
-    - platform: state
-      entity_id: input_select.bauble_1_mode
-    - platform: state
-      entity_id: input_select.bauble_2_mode
-    - platform: state
-      entity_id: input_select.bauble_3_mode
+    - platform: numeric_state
+      entity_id: sensor.bauble_random_effect
+      above: 1
+      below: 3
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: group.pirs
+        state: 'on'
+      - condition: state
+        entity_id: media_player.panasonic_viera_tv
+        state: 'on'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
   action:
-    - service_template: >
-        {% if trigger.entity_id == "input_select.bauble_1_mode" %} rest_command.bauble_1_mode
-        {% elif trigger.entity_id == "input_select.bauble_2_mode" %} rest_command.bauble_2_mode
-        {% else %} rest_command.bauble_3_mode
-        {% endif %}
-    - service_template: >
-        {% if trigger.entity_id == "input_select.bauble_1_mode" %} input_boolean.turn_on > data: >entity_id: input_boolean.bauble_1
-        {% elif trigger.entity_id == "input_select.bauble_2_mode" %} input_boolean.turn_on > data: >entity_id: input_boolean.bauble_2
-        {% else %} input_boolean.turn_on > data: >entity_id: input_boolean.bauble_3
-        {% endif %}
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_2
+      effect: "sparkle"
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_3
+      effect: "rainbow"
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_1
+      effect: "uniglow"
 
-
-- alias: update_bauble_status_1
+- alias: turn_baubles_on_3
   trigger:
-    - platform: state
-      entity_id: input_select.bauble_1_mode
+    - platform: numeric_state
+      entity_id: sensor.bauble_random_effect
+      above: 2
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: group.pirs
+        state: 'on'
+      - condition: state
+        entity_id: media_player.panasonic_viera_tv
+        state: 'on'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
   action:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.bauble_1
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_3
+      effect: "sparkle"
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_1
+      effect: "rainbow"
+  - service: light.turn_on
+    data:
+      entity_id: light.bauble_2
+      effect: "uniglow"
 
-
-- alias: update_bauble_status_2
-  trigger:
-    - platform: state
-      entity_id: input_select.bauble_2_mode
-  action:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.bauble_2
-
-
-- alias: update_bauble_status_3
-  trigger:
-    - platform: state
-      entity_id: input_select.bauble_3_mode
-  action:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.bauble_3

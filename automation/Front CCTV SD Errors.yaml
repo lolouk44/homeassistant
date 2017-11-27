@@ -1,0 +1,23 @@
+- alias: Email when Front CCTV Disk Error
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_cctv_disk_error
+    to: 'on'
+  action:
+  - service: tts.google_say
+    entity_id: media_player.mpd
+    data_template:
+      message: Disk Error Detected on Front CCTV.
+  - service: notify.gmaillolo
+    data_template:
+      message: Disk Error Detected on Front CCTV.
+
+- alias: Email when Front CCTV SD Card Full
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_cctv_disk_full
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: SD Card on Front CCTV is full.

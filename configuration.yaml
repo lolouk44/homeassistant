@@ -26,6 +26,9 @@ config:
 http:
   #Uncomment this to add a password (recommended!)
   api_password: !secret http_password
+  ssl_certificate: /etc/letsencrypt/live/homeassistant.lolorpi.com/fullchain.pem
+  ssl_key: /etc/letsencrypt/live/homeassistant.lolorpi.com/privkey.pem
+  base_url: https://homeassistant.lolorpi.com
   trusted_networks:
     - 127.0.0.1
     - ::1
@@ -92,15 +95,30 @@ switch: !include_dir_merge_list switches
 zone: !include zones.yaml
 
 
-emulated_hue:
-  type: google_home
-  listen_port: 8300
-  advertise_port: 80
-  host_ip: 192.168.0.24
-#  listen_port: 80
-  expose_by_default: false
 
-dialogflow:
+google_assistant:
+  project_id: home-assistant-246cf
+  client_id: rOGYZFLcLHSKM7IIWNUifkNfmojyzGEsbuwIpYADq7EOcEAfDvPHTIDQTD0THzigbCMFlngRWjCWpWOH
+  access_token: xKSVzvKJ2WuqE4q2A8W3axgDU78lfYOWijRA5xL5mRyAv7XDCCOySlrdZPAHQBE2zwWXXYIm5YPsG1KH
+  expose_by_default: false
+  # agent_user_id: lolorpi
+  # api_key: [an API Key generated for the Google Actions project]
+  # exposed_domains:
+    # - switch
+    # - light
+    # - group
+
+
+
+# emulated_hue:
+  # type: google_home
+  # listen_port: 8300
+  # advertise_port: 80
+  # host_ip: 192.168.0.24
+# listen_port: 80
+  # expose_by_default: false
+
+# dialogflow:
 
 ifttt:
   key: !secret ifttt_key

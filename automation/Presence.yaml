@@ -1,0 +1,49 @@
+- alias: Tell Div Lolo left work
+  trigger:
+    platform: zone
+    entity_id: device_tracker.zevsmpjl_lolo_iphone
+    zone: zone.verint
+    event: leave
+  condition:
+  - condition: time
+    after: '16:15:00'
+  action:
+    service: notify.gmaildiv
+    data_template:
+      message: 'Lolo left work. Estimated arrival time: {{(as_timestamp(now()) + (states.sensor.lolo_to_home.state | default(0) | int)*60) | timestamp_custom("%H:%M")}}'
+  # initial_state: false
+
+
+- alias: Tell Div Lolo reached work
+  trigger:
+    platform: zone
+    entity_id: device_tracker.zevsmpjl_lolo_iphone
+    zone: zone.verint
+    event: enter
+  condition:
+  - condition: time
+    before: '10:00:00'
+  action:
+    service: notify.gmaildiv
+    data_template:
+      message: 'Lolo reached work.'
+  # initial_state: false
+
+
+- alias: Tell Lolo Div left work
+  trigger:
+    platform: zone
+    entity_id: device_tracker.zevsmpjl_div_iphone
+    zone: zone.cbc
+    event: leave
+  condition:
+  - condition: time
+    after: '16:30:00'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Div left work.'
+    - service: tts.google_say
+      entity_id: group.mpd
+      data:
+        message: 'Please note: Div left work'

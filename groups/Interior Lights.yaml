@@ -9,3 +9,4 @@ Interior_Lights:
     - light.Hallway
     - light.TV_Cabinet_LED_Strip
     - light.Staircase_LED_Strip
+    - group.baubles

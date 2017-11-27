@@ -31,11 +31,14 @@
 - alias: TV Cabinet LED Strip On Xmas
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room_front
+      entity_id: group.pirs
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.pir_living_room_back
-      to: 'on'
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
   condition:
     - condition: state
       entity_id: input_boolean.xmas
@@ -43,6 +46,17 @@
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
   action:
   - service: light.turn_on
     data:
@@ -225,13 +239,10 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: light.Staircase_LED_Strip
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.pir_staircase
+      entity_id: input_boolean.xmas
       state: 'on'
     - condition: state
-      entity_id: input_boolean.xmas
+      entity_id: input_boolean.normal
       state: 'on'
     - condition: or
       conditions:

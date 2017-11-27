@@ -52,17 +52,6 @@
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
   action:
-    - service: tts.google_say
-      entity_id: group.mpd
-      data:
-        message: 'Scene, normal, activated'
-    - service: scene.turn_on
-      entity_id: scene.normal
-
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.movies
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.holidays
     - service: light.turn_on
       data:
         entity_id: light.living_room_main
@@ -70,11 +59,5 @@
     - service: light.turn_off
       data:
         entity_id: light.living_room_wall
-    - service: light.turn_on
-      data:
-        entity_id: light.TV_Cabinet_LED_Strip
-        brightness: 255
-        rgb_color: [0,255,0]
-        transition: 1
     - service: input_boolean.turn_on
       entity_id: input_boolean.normal

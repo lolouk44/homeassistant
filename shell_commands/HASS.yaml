@@ -1,1 +1,2 @@
 restart_hass: /home/cctv/.homeassistant/shell_scripts/Restart_HASS.sh
+renew_ssl: ~/certbot/certbot-auto renew --quiet --no-self-upgrade --standalone --preferred-challenges tls-sni-01 --tls-sni-01-port 8123 --pre-hook "sudo systemctl stop home-assistant@cctv.service" --post-hook "sudo systemctl start home-assistant@cctv.service"

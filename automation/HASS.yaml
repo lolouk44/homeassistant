@@ -35,7 +35,22 @@
       entity_id: input_boolean.hass_restart
       to: 'on'
   action:
-  - service: shell_command.play_mp3
-    data_template:
-      File: 'ClickOff.mp3'
   - service: shell_command.restart_hass
+
+- alias: 'Auto Renew SSL Cert'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.ssl_cert_expiry
+    below: 29
+  action:
+    service: shell_command.renew_ssl
+
+- alias: 'SSL expiry notification'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.ssl_cert_expiry
+    below: 21
+  action:
+    service: notify.gmaillolo
+    data:
+      message: 'Warning - SSL certificate expires in 21 days and has not been automatically renewed'

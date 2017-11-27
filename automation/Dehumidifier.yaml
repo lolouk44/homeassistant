@@ -32,9 +32,8 @@
 
 - alias: Dehumidifier Tank is full
   trigger:
-    - platform: time
-      minutes: '/1'
-      seconds: 0
+    - platform: state
+      entity_id: sensor.Dehumidifier_Power
   condition:
     - condition: template
       value_template: '{{states.sensor.Dehumidifier_Power.state | default(0) | int <= 0 }}'

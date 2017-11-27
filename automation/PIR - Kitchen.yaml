@@ -82,7 +82,9 @@
   - service: light.turn_off
     data:
       entity_id: group.kitchen_lights
-
+  - service: switch.turn_off
+    data:
+      entity_id: switch.kitchen_tv
 
 
 
@@ -98,20 +100,20 @@
 
 
 
-- alias: Kitchen TV Off PIR
-  trigger:
-    platform: time
-    minutes: '/1'
-    seconds: 0
-  condition:
-    - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered | default(0)) | int > 120 )}}'
-    - condition: state
-      entity_id: binary_sensor.pir_kitchen
-      state: 'off'
-  action:
-  - service: switch.turn_off
-    data:
-      entity_id: switch.kitchen_tv
+# - alias: Kitchen TV Off PIR
+  # trigger:
+    # platform: time
+    # minutes: '/1'
+    # seconds: 0
+  # condition:
+    # - condition: template
+      # value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered | default(0)) | int > 120 )}}'
+    # - condition: state
+      # entity_id: binary_sensor.pir_kitchen
+      # state: 'off'
+  # action:
+  # - service: switch.turn_off
+    # data:
+      # entity_id: switch.kitchen_tv
 
 

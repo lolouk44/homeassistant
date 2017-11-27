@@ -1,9 +1,0 @@
-input_boolean.movies:
-  emulated_hue: true
-  emulated_hue_name: "Movies"
-input_boolean.normal:
-  emulated_hue: true
-  emulated_hue_name: "Normal"
-light.Living_Room_Main:
-  emulated_hue: true
-  emulated_hue_name: "Living Room Lights"

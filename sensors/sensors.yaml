@@ -42,3 +42,8 @@
   # indoor_humidity_sensor: sensor.upstairs_humidity
   # outdoor_temp_sensor: sensor.outside_temperature
   # calibration_factor: 2.0
+- platform: random
+  name: bauble_random_effect
+  minimum: 1
+  maximum: 3
+  scan_interval: 290

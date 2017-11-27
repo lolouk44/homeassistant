@@ -5,22 +5,26 @@
       seconds: 0
   condition:
     - condition: time
-      after: '09:00'
-      before: '15:00'
+      after: '22:30'
       weekday:
         - tue
         - thu
-        - sat
         - sun
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered | default(0)) | int > 36000)}}'
     - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.media_player.panasonic_viera_tv.attributes.last_updated | default(0)) | int > 120)}}'
+    - condition: state
+      entity_id: group.pirs
+      state: 'off'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.group.pirs.attributes.last_updated | default(0)) | int > 120)}}'
+    - condition: state
       entity_id: 'input_boolean.normal'
       state: "on"
-    - condition: template
-      value_template: "{{ states.device_tracker.zevsmpjl_div_iphone.state != 'home'}}"
-    - condition: template
-      value_template: "{{ states.device_tracker.zevsmpjl_lolo_iphone.state != 'home'}}"
   action:
     - service: vacuum.turn_on
       data:
