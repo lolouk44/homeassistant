@@ -7,6 +7,7 @@ serverdevices:
     - binary_sensor.xiaomi_dafang_cctv
     - binary_sensor.kello
     - binary_sensor.main
+    - binary_sensor.RPi_Zero_W
     - binary_sensor.RPi
     - binary_sensor.House_Number_LED_Strip
     - binary_sensor.StairCase_LED_Strip

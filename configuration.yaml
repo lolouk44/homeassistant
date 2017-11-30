@@ -24,7 +24,6 @@ frontend:
 config:
 
 http:
-  #Uncomment this to add a password (recommended!)
   api_password: !secret http_password
   ssl_certificate: /etc/letsencrypt/live/homeassistant.lolorpi.com/fullchain.pem
   ssl_key: /etc/letsencrypt/live/homeassistant.lolorpi.com/privkey.pem
@@ -63,8 +62,7 @@ logger:
   logs:
     homeassistant.components.http: warning
     miio.device: critical
-    homeassistant.components.media_player.cast: error
-    homeassistant.components.emulated_hue: debug
+
 #    homeassistant.components.rfxtrx: debug
 
 #Track the sun
@@ -97,9 +95,9 @@ zone: !include zones.yaml
 
 
 google_assistant:
-  project_id: home-assistant-246cf
-  client_id: rOGYZFLcLHSKM7IIWNUifkNfmojyzGEsbuwIpYADq7EOcEAfDvPHTIDQTD0THzigbCMFlngRWjCWpWOH
-  access_token: xKSVzvKJ2WuqE4q2A8W3axgDU78lfYOWijRA5xL5mRyAv7XDCCOySlrdZPAHQBE2zwWXXYIm5YPsG1KH
+  project_id: !secret GAproject_id
+  client_id: !secret GAclient_id
+  access_token: !secret GAaccess_token
   expose_by_default: false
   # agent_user_id: lolorpi
   # api_key: [an API Key generated for the Google Actions project]
