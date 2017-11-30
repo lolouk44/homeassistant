@@ -25,9 +25,9 @@ config:
 
 http:
   api_password: !secret http_password
-  ssl_certificate: /etc/letsencrypt/live/homeassistant.lolorpi.com/fullchain.pem
-  ssl_key: /etc/letsencrypt/live/homeassistant.lolorpi.com/privkey.pem
-  base_url: https://homeassistant.lolorpi.com
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
   trusted_networks:
     - 127.0.0.1
     - ::1
@@ -99,24 +99,7 @@ google_assistant:
   client_id: !secret GAclient_id
   access_token: !secret GAaccess_token
   expose_by_default: false
-  # agent_user_id: lolorpi
-  # api_key: [an API Key generated for the Google Actions project]
-  # exposed_domains:
-    # - switch
-    # - light
-    # - group
 
-
-
-# emulated_hue:
-  # type: google_home
-  # listen_port: 8300
-  # advertise_port: 80
-  # host_ip: 192.168.0.24
-# listen_port: 80
-  # expose_by_default: false
-
-# dialogflow:
 
 ifttt:
   key: !secret ifttt_key
