@@ -1,7 +1,0 @@
-Graphs:
-  view: yes
-  icon: mdi:chart-areaspline
-  entities:
-    - history_graph.temperature
-    - history_graph.humidity
-    - history_graph.power_consumption
