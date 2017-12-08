@@ -1,8 +1,0 @@
-tv_cabinet_led_strip:
-  name: TV Cabinet LED Strip
-  control: hidden
-  entities:
-    - input_boolean.tv_cabinet_led_strip
-    - input_slider.tv_cabinet_r
-    - input_slider.tv_cabinet_g
-    - input_slider.tv_cabinet_b

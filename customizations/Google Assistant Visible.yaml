@@ -6,14 +6,32 @@ input_boolean.movies:
     - "Movies"
     - "mood scene movies"
     - "movie mode"
+
 input_boolean.normal:
   google_assistant: true
   google_assistant_name: "Normal"
   google_assistant_type: switch
-light.Living_Room_Main:
+
+input_boolean.xmas:
   google_assistant: true
-  google_assistant_name: "Living Room Lights"
-script.radio538:
+  google_assistant_name: "Christmas"
+  google_assistant_type: switch
+
+input_boolean.radio:
   google_assistant: true
   google_assistant_name: "Radio"
   google_assistant_type: switch
+
+input_boolean.vacuum:
+  google_assistant: true
+  google_assistant_name: "Vacuum"
+  google_assistant_type: switch
+  aliases:
+    - "Start vacuuming"
+    - "Stop vacuuming"
+
+light.Living_Room_Main:
+  google_assistant: true
+  google_assistant_name: "Living Room Lights"
+
+

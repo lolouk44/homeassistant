@@ -19,4 +19,5 @@ Server:
     - group.all_lights
     - group.all_switches
     - group.alerts
+    - group.google_assistant
     - input_boolean.hass_restart

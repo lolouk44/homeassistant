@@ -1,0 +1,9 @@
+radio:
+  name: Radio
+  initial: off
+  icon: mdi:radio
+
+vacuum:
+  name: Vacuum
+  initial: off
+  icon: mdi:google-circles-group

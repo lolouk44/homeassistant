@@ -1,3 +1,40 @@
+- alias: Holiday Start
+  trigger:
+    - platform: time
+      minutes: '/15'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_start.attributes.timestamp | default(0)) | int > 0)}}'
+    - condition: template
+      value_template: '{{ ((states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int) - as_timestamp(now()) > 0 }}'
+    - condition: state
+      entity_id: 'input_boolean.holidays'
+      state: "off"
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.holidays
+
+- alias: Holiday End
+  trigger:
+    - platform: state
+      entity_id: group.pirs
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'
+    - condition: state
+      entity_id: 'input_boolean.holidays'
+      state: "on"
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.holidays
+
+
+
+
 - alias: Holiday Living Room
   trigger:
     - platform: state

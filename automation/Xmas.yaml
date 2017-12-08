@@ -1,0 +1,124 @@
+- alias: Xmas Lights On
+  trigger:
+    - platform: state
+      entity_id: group.pirs
+      to: 'on'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: group.pirs
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.lwrf_socket_3
+  - service: light.turn_on
+    data:
+      entity_id: light.TV_Cabinet_LED_Strip
+      brightness: 255
+      effect: colorfade_fast
+  - service: light.turn_on
+    data:
+      entity_id: light.Staircase_LED_Strip
+      brightness: 255
+      effect: colorfade_fast
+
+
+
+
+
+
+- alias: Xmas Lights Off
+  trigger:
+    - platform: state
+      entity_id: group.pirs
+      to: 'off'
+      for:
+        minutes: 2
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_div_iphone
+      zone: zone.home
+      event: leave
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      zone: zone.home
+      event: leave
+  condition:
+    - condition: or
+      conditions:
+      - condition: time
+        after: '22:30'
+        before: '08:00'
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: device_tracker.zevsmpjl_div_iphone
+          state: not_home
+        - condition: state
+          entity_id: device_tracker.zevsmpjl_lolo_iphone
+          state: not_home
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.bauble_1
+  - service: light.turn_off
+    data:
+      entity_id: light.bauble_2
+  - service: light.turn_off
+    data:
+      entity_id: light.bauble_3
+  - service: light.turn_on
+    data:
+      entity_id: light.Staircase_LED_Strip
+      rgb_color: [0,0,0]
+      transition: 1
+  - delay: 00:00:01
+  - service: light.turn_off
+    data:
+      entity_id: light.Staircase_LED_Strip
+  - service: light.turn_on
+    data:
+      entity_id: light.TV_Cabinet_LED_Strip
+      brightness: 255
+      rgb_color: [0,0,0]
+      transition: 1
+  - delay: 00:00:01
+  - service: light.turn_off
+    data:
+      entity_id: light.TV_Cabinet_LED_Strip
+  - service: switch.turn_off
+    data:
+      entity_id: switch.lwrf_socket_3
+
+
+
+
+

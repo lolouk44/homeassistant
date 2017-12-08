@@ -44,6 +44,10 @@ input_datetime.holiday_start:
   icon: mdi:calendar-clock
 input_datetime.holiday_end:
   icon: mdi:calendar
+input_datetime.xmas_start:
+  icon: mdi:calendar
+input_datetime.xmas_end:
+  icon: mdi:calendar
 
 #Media_Players
 media_player.onkyo_txnr656_e0ee71:

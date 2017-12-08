@@ -1,0 +1,9 @@
+google_assistant:
+  name: Google Assistant
+  control: hidden
+  entities:
+    - input_boolean.normal
+    - input_boolean.movies
+    - input_boolean.xmas
+    - input_boolean.radio
+    - input_boolean.vacuum

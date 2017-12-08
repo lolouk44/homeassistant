@@ -14,4 +14,3 @@ Living_Room:
     - media_player.onkyo_txnr656
     - media_player.panasonic_viera_tv
     - group.Living_Room_Lights
-    - group.baubles

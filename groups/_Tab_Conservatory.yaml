@@ -11,3 +11,5 @@ Conservatory:
     - sensor.sunset_time
     - group.conservatory_sensors
     - switch.conservatory
+    - group.baubles
+    - switch.lwrf_socket_3

@@ -1,8 +1,0 @@
-staircase_led_strip:
-  name: Staircase LED Strip
-  control: hidden
-  entities:
-    - input_boolean.staircase_led_strip
-    - input_slider.staircase_r
-    - input_slider.staircase_g
-    - input_slider.staircase_b

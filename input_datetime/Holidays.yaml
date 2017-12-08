@@ -8,3 +8,15 @@ holiday_end:
   has_date: true
   has_time: false
   initial: '2017-10-15'
+
+xmas_start:
+  name: Xmas Start
+  has_date: true
+  has_time: false
+  # initial: '2017-10-12 04:00'
+xmas_end:
+  name: Xmas End
+  has_date: true
+  has_time: false
+  # initial: '2017-10-15'
+

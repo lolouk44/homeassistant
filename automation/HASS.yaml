@@ -9,7 +9,7 @@
           There is an update to HomeAssistant: V{{states.updater.updater.state}}
           Release Notes: {{ states.updater.updater.attributes.release_notes.split("0-")[0]+states.updater.updater.attributes.release_notes.split("0-")[1] }}
 
-- alias: HASS Start
+- alias: HASS Start Sound
   trigger:
     - platform: homeassistant
       event: start
@@ -19,7 +19,7 @@
       File: 'Click.mp3'
   - service: shell_command.getcurrentcost
 
-- alias: HASS Stop
+- alias: HASS Stop Sound
   trigger:
     - platform: event
       event_type: homeassistant_stop
@@ -29,7 +29,7 @@
       File: 'ClickOff.mp3'
 
 
-- alias: HASS Restart
+- alias: HASS Restart Button
   trigger:
     - platform: state
       entity_id: input_boolean.hass_restart
@@ -54,3 +54,26 @@
     service: notify.gmaillolo
     data:
       message: 'Warning - SSL certificate expires in 21 days and has not been automatically renewed'
+
+
+
+- alias: HASS Start Xmas Setup
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.xmas_start.attributes.timestamp | default(0)) | int > 0)}}'
+    - condition: template
+      value_template: '{{ ((states.input_datetime.xmas_end.attributes.timestamp | default(0)) | int ) - as_timestamp(now()) >0 }}'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.xmas
+    - service: group.set_visibility
+      entity_id: group.baubles
+      data_template:
+        visible: >
+          {% if is_state("input_boolean.xmas", "on") %}True
+          {% else %}False
+          {% endif %}
+        

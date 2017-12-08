@@ -1,0 +1,41 @@
+- alias: GA Start Vacuuming
+  trigger:
+    - platform: state
+      entity_id: input_boolean.vacuum
+      to: 'on'
+  action:
+    - service: vacuum.turn_on
+      data:
+        entity_id: vacuum.mi_robot_vacuum
+
+- alias: GA Stop Vacuuming
+  trigger:
+    - platform: state
+      entity_id: input_boolean.vacuum
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: sensor.xiaomi_status
+      state: 'Cleaning'
+  action:
+    - service: vacuum.turn_off
+      data:
+        entity_id: vacuum.mi_robot_vacuum
+
+
+- alias: GA Start Radio
+  trigger:
+    - platform: state
+      entity_id: input_boolean.radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.radio_station
+        option: RTL2
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio
+        option: House
+    - service: script.turn_on
+      entity_id: script.radio538

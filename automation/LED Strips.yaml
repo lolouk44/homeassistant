@@ -28,42 +28,6 @@
 
 
 
-- alias: TV Cabinet LED Strip On Xmas
-  trigger:
-    - platform: state
-      entity_id: group.pirs
-      to: 'on'
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-    - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
-  action:
-  - service: light.turn_on
-    data:
-      entity_id: light.TV_Cabinet_LED_Strip
-      brightness: 255
-      effect: colorfade_fast
-
 
 
 - alias: Flash Alert
@@ -137,6 +101,9 @@
       entity_id: binary_sensor.pir_living_room_back
       to: 'off'
   condition:
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'off'
     - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
@@ -225,65 +192,6 @@
 
 
 
-
-- alias: Staircase LED Strip On by PIR Xmas
-  trigger:
-    - platform: state
-      entity_id: group.pirs
-      to: 'on'
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-    - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
-  action:
-  - service: light.turn_on
-    data:
-      entity_id: light.Staircase_LED_Strip
-      brightness: 255
-      effect: colorfade_fast
-
-- alias: Staircase LED Strip Off by PIR Xmas
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.pir_staircase
-      to: 'off'
-  condition:
-    - condition: time
-      after: '22:30'
-      before: '08:00'
-    - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
-  action:
-  - service: light.turn_on
-    data:
-      entity_id: light.Staircase_LED_Strip
-      rgb_color: [0,0,0]
-      transition: 1
-  - delay: 00:00:01
-  - service: light.turn_off
-    data:
-      entity_id: light.Staircase_LED_Strip
 
 
 

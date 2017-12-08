@@ -13,10 +13,6 @@
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
   action:
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.tv_cabinet_led_strip
-  - service: shell_command.tv_cabinet_off
   - service: light.turn_off
     data:
       entity_id: group.Interior_Lights

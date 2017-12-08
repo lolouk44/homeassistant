@@ -10,9 +10,14 @@
       entity_id: binary_sensor.photoresistor
       to: 'off'
   condition:
-    - condition: state
-      entity_id: light.Staircase_LED_Strip
-      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: light.Staircase_LED_Strip
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.xmas
+        state: 'on'
     - condition: state
       entity_id: binary_sensor.pir_staircase
       state: 'on'

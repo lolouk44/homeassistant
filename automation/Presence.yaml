@@ -47,3 +47,28 @@
       entity_id: group.mpd
       data:
         message: 'Please note: Div left work'
+
+- alias: Switch everything off when we leave home
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_div_iphone
+      zone: zone.home
+      event: leave
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      zone: zone.home
+      event: leave
+  condition:
+    - condition: state
+      entity_id: device_tracker.zevsmpjl_div_iphone
+      state: not_home
+    - condition: state
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      state: not_home
+  action:
+  - service: media_player.turn_off
+    entity_id: media_player.onkyo_txnr656
+  - service: light.turn_off
+    data:
+      entity_id: group.Interior_Lights
+

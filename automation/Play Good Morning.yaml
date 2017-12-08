@@ -3,9 +3,6 @@
     - platform: state
       entity_id: binary_sensor.pir_living_room_front
       to: 'on'
-    - platform: state
-      entity_id: binary_sensor.pir_living_room_front
-      to: 'on'
   condition:
     - condition: time
       after: '06:00'
