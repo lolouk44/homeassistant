@@ -59,12 +59,10 @@
       zone: zone.home
       event: leave
   condition:
-    - condition: state
-      entity_id: device_tracker.zevsmpjl_div_iphone
-      state: not_home
-    - condition: state
-      entity_id: device_tracker.zevsmpjl_lolo_iphone
-      state: not_home
+    - condition: template
+      value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state != "home"}}'
+    - condition: template
+      value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
   action:
   - service: media_player.turn_off
     entity_id: media_player.onkyo_txnr656

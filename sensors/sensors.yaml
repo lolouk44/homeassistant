@@ -19,12 +19,14 @@
   monitored_conditions:
     - summary
     - icon
-    - pressure
     - minutely_summary
     - hourly_summary
     - daily_summary
     - temperature_max
     - temperature_min
+    - precip_probability
+    - summary
+    - temperature
 
 - platform: template
   sensors:

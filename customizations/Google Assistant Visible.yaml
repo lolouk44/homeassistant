@@ -26,9 +26,6 @@ input_boolean.vacuum:
   google_assistant: true
   google_assistant_name: "Vacuum"
   google_assistant_type: switch
-  aliases:
-    - "Start vacuuming"
-    - "Stop vacuuming"
 
 light.Living_Room_Main:
   google_assistant: true

@@ -44,6 +44,9 @@
       entity_id: light.Staircase_LED_Strip
       brightness: 255
       effect: colorfade_fast
+  - service: light.turn_on
+    data:
+      entity_id: group.baubles
 
 
 

@@ -12,7 +12,7 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.movies
     - service: tts.google_say
-      entity_id: group.mpd
+      entity_id: media_player.living_room_google_mini
       data:
         message: 'Scene, holidays, activated'
     - service: climate.set_away_mode

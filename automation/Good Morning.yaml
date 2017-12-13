@@ -1,0 +1,19 @@
+- alias: Play Good Morning
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'on'
+  condition:
+    - condition: time
+      after: '06:00'
+      before: '12:00'
+    - condition: template
+      # Only run if more than 6 hours (21,600 sec) since it last ran 
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.play_good_morning.attributes.last_triggered | default(0)) | int > 21600 )}}'
+  action:
+    # - service: shell_command.play_good_morning
+    - service: tts.google_say
+      data_template:
+        entity_id: media_player.living_room_google_mini
+        message: >
+          {{["Good morning.","Hello.","Greetings.","Hi."] | random}} It's currently {{states.sensor.dark_sky_summary.state}} and {{states.sensor.dark_sky_temperature.state|round}} degrees. Today will be {{states.sensor.dark_sky_hourly_summary.state|replace(".", "")}}, highs: {{states.sensor.dark_sky_daily_high_temperature.state|round}}, lows: {{states.sensor.dark_sky_daily_low_temperature.state|round}}. Chance of rain: {{states.sensor.dark_sky_precip_probability.state}} percent. Estimated travel time to Waybridge: {{states.sensor.home_to_verint.state}} minutes. {% if now().strftime("%a") == 'Mon' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Fri' %} Remember to empy the vacuum. {% endif %}

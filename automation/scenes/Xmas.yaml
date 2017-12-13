@@ -7,7 +7,7 @@
     - service: scene.turn_on
       entity_id: scene.xmas
     - service: tts.google_say
-      entity_id: group.mpd
+      entity_id: media_player.living_room_google_mini
       data:
         message: 'Scene, christmas, activated'
     - service: group.set_visibility
@@ -22,7 +22,7 @@
       to: 'off'
   action:
     - service: tts.google_say
-      entity_id: group.mpd
+      entity_id: media_player.living_room_google_mini
       data:
         message: 'Scene, christmas, de-activated'
     - service: group.set_visibility

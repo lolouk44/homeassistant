@@ -136,6 +136,8 @@ tts:
 media_player:
   - platform: cast
   - platform: cast
+    host: 192.168.0.10
+  - platform: cast
     host: 192.168.0.12
   - platform: cast
     host: 192.168.0.13

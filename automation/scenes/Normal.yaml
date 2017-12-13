@@ -11,7 +11,7 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.holidays
     - service: tts.google_say
-      entity_id: group.mpd
+      entity_id: media_player.living_room_google_mini
       data:
         message: 'Scene, normal, activated'
     - service: light.turn_off
@@ -36,18 +36,14 @@
       entity_id: input_boolean.normal
       to: 'on'
     - platform: state
-      entity_id: media_player.onkyo_txnr656
-      to: 'off'
-    - platform: state
       entity_id: media_player.panasonic_viera_tv
       to: 'off'
+      for:
+        minutes: 2
   condition:
     - condition: state
       entity_id: input_boolean.movies
       state: 'on'
-    - condition: state
-      entity_id: media_player.onkyo_txnr656
-      state: 'off'
     - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
