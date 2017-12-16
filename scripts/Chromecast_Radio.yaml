@@ -23,6 +23,7 @@ radio538:
          media_content_id: >
           {% if is_state("input_select.radio_station", "RTL2") %} http://streaming.radio.rtl2.fr:80/rtl2-1-44-96
           {% elif is_state("input_select.radio_station", "Absolute Radio") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3
+          {% elif is_state("input_select.radio_station", "Absolute Radio Classic Rock") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3
           {% elif is_state("input_select.radio_station", "Hit West") %} http://broadcast.infomaniak.ch/hitwest-high.mp3
           {% elif is_state("input_select.radio_station", "Chill") %} http://media-the.musicradio.com/ChillMP3
           {% elif is_state("input_select.radio_station", "Custom Station") %} {{states.input_text.custom_station.state}}

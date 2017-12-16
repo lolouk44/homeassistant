@@ -112,6 +112,12 @@
       to: 'build_greeting'
   action:
   - service: shell_command.weather_on_kello_build
+  # - service: tts.google_say
+    # data_template:
+      # entity_id: media_player.bedroom
+      # message: >
+        # {{["Good morning.","Hello.","Greetings.","Hi."] | random}} It's currently {{states.sensor.dark_sky_summary.state}} and {{states.sensor.dark_sky_temperature.state|round}} degrees. Today will be {{states.sensor.dark_sky_hourly_summary.state|replace(".", "")}}, highs: {{states.sensor.dark_sky_daily_high_temperature.state|round}}, lows: {{states.sensor.dark_sky_daily_low_temperature.state|round}}. Chance of rain: {{states.sensor.dark_sky_precip_probability.state}} percent. {% if now().strftime("%a") == 'Mon' or now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states.sensor.home_to_verint.state}} minutes.{% endif %} {% if now().strftime("%a") == 'Mon' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Fri' %} Remember to empy the vacuum. {% endif %}
+      # cache: true
 
 
 

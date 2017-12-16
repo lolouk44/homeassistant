@@ -24,9 +24,8 @@
     - daily_summary
     - temperature_max
     - temperature_min
-    - precip_probability
-    - summary
     - temperature
+    - precip_intensity_max
 
 - platform: template
   sensors:
