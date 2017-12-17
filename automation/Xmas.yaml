@@ -76,12 +76,10 @@
         before: '08:00'
       - condition: and
         conditions:
-        - condition: state
-          entity_id: device_tracker.zevsmpjl_div_iphone
-          state: not_home
-        - condition: state
-          entity_id: device_tracker.zevsmpjl_lolo_iphone
-          state: not_home
+        - condition: template
+          value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state != "home"}}'
+        - condition: template
+          value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
     - condition: state
       entity_id: input_boolean.xmas
       state: 'on'
