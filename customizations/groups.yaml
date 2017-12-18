@@ -4,9 +4,9 @@ group.kitchen:
   order: 3
 group.living_room:
   order: 4
-group.conservatory:
-  order: 5
 group.entrance:
+  order: 5
+group.conservatory:
   order: 6
 group.staircase:
   order: 7

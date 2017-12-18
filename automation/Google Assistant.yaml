@@ -23,10 +23,10 @@
         entity_id: vacuum.mi_robot_vacuum
 
 
-- alias: GA Start Radio
+- alias: GA Play RTL2 Radio
   trigger:
     - platform: state
-      entity_id: input_boolean.radio
+      entity_id: input_boolean.rtl2_radio
       to: 'on'
   action:
     - service: input_select.select_option
@@ -39,3 +39,68 @@
         option: House
     - service: script.turn_on
       entity_id: script.radio538
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.rtl2_radio
+
+
+
+- alias: GA Play Chill Radio
+  trigger:
+    - platform: state
+      entity_id: input_boolean.chill_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.radio_station
+        option: Chill
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio
+        option: House
+    - service: script.turn_on
+      entity_id: script.radio538
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.chill_radio
+
+
+- alias: GA Play Absolute CR Radio
+  trigger:
+    - platform: state
+      entity_id: input_boolean.absolute_radio_cr_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.radio_station
+        option: Absolute Radio Classic Rock
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio
+        option: House
+    - service: script.turn_on
+      entity_id: script.radio538
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.absolute_radio_cr_radio
+
+
+- alias: Keep Google Home Alive
+  trigger:
+    platform: time
+    minutes: '/4'
+    seconds: 00
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: media_player.living_room_google_mini
+        state: 'off'
+      - condition: state
+        entity_id: media_player.living_room_google_mini
+        state: 'idle'
+  action:
+    service: media_player.play_media
+    entity_id: media_player.living_room_google_mini
+    data:
+      media_content_id: http://192.168.0.24/audio1sec.mp3
+      media_content_type: music

@@ -150,7 +150,6 @@ media_player:
     sources:
       video6: 'Main PC'
       bluray: 'Blu-Ray'
-      cd: 'ChromeCast'
       video2: 'Sky'
   - platform: panasonic_viera
     host: 192.168.0.27

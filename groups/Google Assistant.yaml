@@ -5,5 +5,7 @@ google_assistant:
     - input_boolean.normal
     - input_boolean.movies
     - input_boolean.xmas
-    - input_boolean.radio
     - input_boolean.vacuum
+    - input_boolean.rtl2_radio
+    - input_boolean.chill_radio
+    - input_boolean.absolute_radio_cr_radio

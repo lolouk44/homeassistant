@@ -5,10 +5,10 @@ binary_sensor.front_cctv_disk_error:
   icon: mdi:harddisk
 binary_sensor.front_cctv_disk_full:
   icon: mdi:harddisk
-binary_sensor.hallway_thermostat_hvac_state:
-  icon: mdi:power
 binary_sensor.hallway_thermostat_has_leaf:
-  icon: mdi:tree
+  icon: mdi:leaf
+binary_sensor.hallway_heating:
+  icon: mdi:power
 binary_sensor.kello:
   icon: mdi:access-point-network
 binary_sensor.mailbox:
@@ -70,7 +70,7 @@ sensor.basil_conductivity:
 sensor.basil_battery:
   icon: mdi:battery-charging
 sensor.currentcost_power:
-  icon: mdi:flash-circle
+  icon: mdi:tree
 sensor.dark_sky_daily_low_temperature:
   friendly_name: 'Min'
 sensor.dark_sky_daily_high_temperature:

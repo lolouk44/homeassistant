@@ -1,5 +1,15 @@
-radio:
-  name: Radio
+rtl2_radio:
+  name: RTL2
+  initial: off
+  icon: mdi:radio
+
+chill_radio:
+  name: Chill
+  initial: off
+  icon: mdi:radio
+
+absolute_radio_cr_radio:
+  name: Absolute Radio Classic Rock
   initial: off
   icon: mdi:radio
 
