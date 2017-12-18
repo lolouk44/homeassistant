@@ -17,9 +17,19 @@ input_boolean.xmas:
   google_assistant_name: "Christmas"
   google_assistant_type: switch
 
-input_boolean.radio:
+input_boolean.rtl2_radio:
   google_assistant: true
-  google_assistant_name: "Radio"
+  google_assistant_name: "RTL 2"
+  google_assistant_type: switch
+
+input_boolean.chill_radio:
+  google_assistant: true
+  google_assistant_name: "Chill"
+  google_assistant_type: switch
+
+input_boolean.absolute_radio_cr_radio:
+  google_assistant: true
+  google_assistant_name: "Absolute Radio Classic Rock"
   google_assistant_type: switch
 
 input_boolean.vacuum:
