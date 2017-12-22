@@ -81,7 +81,6 @@ input_select: !include_dir_merge_named input_select
 input_number: !include_dir_merge_named input_number
 input_text: !include_dir_merge_named input_text
 input_boolean: !include_dir_merge_named input_boolean
-intent_script: !include_dir_merge_named intent_script
 light: !include_dir_merge_list lights
 notify: !include notify.yaml
 rest_command: !include_dir_merge_named rest

@@ -87,7 +87,7 @@
 - alias: Keep Google Home Alive
   trigger:
     platform: time
-    minutes: '/4'
+    minutes: '/2'
     seconds: 00
   condition:
     condition: or

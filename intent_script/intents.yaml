@@ -1,3 +1,0 @@
-Temperature:
-  speech:
-    text: The temperature at home is {{ states('sensor.hallway_thermostat_temperature') }} degrees
