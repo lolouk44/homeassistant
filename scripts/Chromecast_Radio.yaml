@@ -30,34 +30,8 @@ radio538:
           {% endif %}
          media_content_type: 'audio/mp4'
 
-# radio538:
-  # alias: Cast Selected Radio on Chromecast Speakers
-  # sequence:
-    # - service: media_player.volume_set
-      # data_template:
-        # entity_id: >
-          # {% if is_state("input_select.chromecast_radio", "Bedroom") %} media_player.bedroom
-          # {% elif is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
-          # {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo_txnr656_e0ee71
-          # {% elif is_state("input_select.chromecast_radio", "Downstairs") %} group.downstairs
-          # {% elif is_state("input_select.chromecast_radio", "House") %} group.house
-          # {% endif %}
-        # volume_level: '{{  states.input_text.volume_radio.state  }}' 
-    # -  service: media_player.play_media
-       # data_template:
-         # entity_id: >
-          # {% if is_state("input_select.chromecast_radio", "Downstairs") %} group.downstairs
-          # {% elif is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
-          # {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo_txnr656_e0ee71
-          # {% elif is_state("input_select.chromecast_radio", "Bedroom") %} media_player.bedroom
-          # {% elif is_state("input_select.chromecast_radio", "House") %} group.house
-          # {% endif %}
-         # media_content_id: >
-          # {% if is_state("input_select.radio_station", "RTL2") %} http://streaming.radio.rtl2.fr:80/rtl2-1-44-96
-          # {% elif is_state("input_select.radio_station", "Absolute Radio") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3
-          # {% elif is_state("input_select.radio_station", "Hit West") %} http://broadcast.infomaniak.ch/hitwest-high.mp3
-          # {% elif is_state("input_select.radio_station", "Chill") %} http://media-the.musicradio.com/ChillMP3
-          # {% elif is_state("input_select.radio_station", "Custom Station") %} {{states.input_text.custom_station.state}}
-          # {% endif %}
-         # media_content_type: 'audio/mp4'
 
+# Radio Santa Claus: https://streaming.radiostreamlive.com/radiosantaclaus_devices
+# Christmas Radio: http://144.217.180.30:8016/stream
+# Sounds of Christmas: http://198.27.66.225:8360/1
+# ChristmasHits.FM: http://46.105.118.14:24000

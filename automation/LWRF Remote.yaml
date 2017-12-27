@@ -15,9 +15,12 @@
     data:
       entity_id: group.kitchen
       brightness: 255
-  - service: shell_command.play_mp3
-    data_template:
-      File: 'RemoteOn.mp3'
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.living_room_google_mini
+      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+      media_content_type: 'audio/mp3'
+
 
 - alias: LWRF Remote 1 Off
   trigger:
@@ -35,9 +38,11 @@
   - service: light.turn_off
     data:
       entity_id: group.kitchen
-  - service: shell_command.play_mp3
-    data_template:
-      File: 'RemoteOff.mp3'
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.living_room_google_mini
+      media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
+      media_content_type: 'audio/mp3'
 
 
 
@@ -57,9 +62,11 @@
   - service: switch.turn_on
     data:
       entity_id: switch.kitchen_tv
-  - service: shell_command.play_mp3
-    data_template:
-      File: 'RemoteOn.mp3'
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.living_room_google_mini
+      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+      media_content_type: 'audio/mp3'
 
 - alias: LWRF Remote 2 Off
   trigger:
@@ -77,6 +84,8 @@
   - service: switch.turn_off
     data:
       entity_id: switch.kitchen_tv
-  - service: shell_command.play_mp3
-    data_template:
-      File: 'RemoteOff.mp3'
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.living_room_google_mini
+      media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
+      media_content_type: 'audio/mp3'

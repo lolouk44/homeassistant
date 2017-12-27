@@ -20,7 +20,8 @@ recorder:
   db_url: !secret db_url
 
 # Enables the frontend
-frontend:
+frontend: 
+  javascript_version: es5
 config:
 
 http:
