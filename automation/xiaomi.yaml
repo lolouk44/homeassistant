@@ -62,3 +62,5 @@
         message: |
           Mi Robot finished Vacuuming...
           Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.vacuum

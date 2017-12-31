@@ -1,0 +1,5 @@
+- platform: scrape
+  resource: http://192.168.0.24:8080/3/detection/status
+  name: dafang_living_room_status_scrape
+  select: "body"
+  value_template: '{{ value.split("Detection status ")[1] }}'

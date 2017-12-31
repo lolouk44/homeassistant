@@ -116,3 +116,5 @@ switch.conservatory:
   icon: mdi:power-socket-uk
 switch.Kitchen_TV:
   icon: mdi:power-socket-uk
+switch.dafang_living_room_status:
+  icon: mdi:run-fast

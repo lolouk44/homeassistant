@@ -1,0 +1,9 @@
+- platform: template
+  switches:
+    dafang_living_room_status:
+      friendly_name: Dafang Living Room motion Status
+      value_template: "{{ is_state('sensor.dafang_living_room_status_scrape', 'ACTIVE') }}"
+      turn_on:
+        service: shell_command.dafang_living_room_active
+      turn_off:
+        service: shell_command.dafang_living_room_pause

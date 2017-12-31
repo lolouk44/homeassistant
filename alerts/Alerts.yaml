@@ -43,10 +43,10 @@ cctv_garage_lost:
   notifiers:
     - pushbullet
 
-cctv_xiaomi_dafang_lost:
+cctv_dafang_living_room_lost:
   name: CCTV Xiaomi Dafang Lost
   state: 'off'
-  entity_id: binary_sensor.xiaomi_dafang_cctv
+  entity_id: binary_sensor.dafang_living_room
   can_acknowledge: True
   skip_first: True
   repeat:

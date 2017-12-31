@@ -1,0 +1,2 @@
+dafang_living_room_active: wget http://192.168.0.24:8080/3/detection/start
+dafang_living_room_pause: wget http://192.168.0.24:8080/3/detection/pause
