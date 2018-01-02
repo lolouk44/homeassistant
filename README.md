@@ -35,5 +35,6 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Sky+HD Box
 - Verint S5003FD CCTV Camera
 - Wemos D1 Mini Pro via MQTT JSON Light
+- Xiaomi Dafang Camera
 - Xiaomi Mi Flora Plant Sensor
 - Xiaomi Mi Robot Vacuum

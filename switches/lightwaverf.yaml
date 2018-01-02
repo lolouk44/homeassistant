@@ -3,13 +3,13 @@
   signal_repetitions: 2
   devices:
     0A14001E01010404000070:
-      name: dehumidifier
+      name: Dehumidifier
     0A14002201010402000070:
       name: Kitchen TV
     0A14002301010403000070:
       name: LWRF Socket 3
     0B1101020000000102000070:
-      name: conservatory
+      name: Conservatory
     0a1400bef4ff6201010070:
       name: LWRF Remote 1
       fire_event: true

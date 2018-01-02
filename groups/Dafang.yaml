@@ -1,0 +1,7 @@
+dafang_living_room:
+  name: Dafang Living Room
+  control: hidden
+  entities:
+    - switch.dafang_living_room_status
+    - switch.dafang_living_room_blue_led
+    - switch.dafang_living_room_yellow_led

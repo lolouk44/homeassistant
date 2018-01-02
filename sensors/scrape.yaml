@@ -3,3 +3,22 @@
   name: dafang_living_room_status_scrape
   select: "body"
   value_template: '{{ value.split("Detection status ")[1] }}'
+
+- platform: scrape
+  resource: http://192.168.0.32/cgi-bin/status.cgi
+  name: dafang_living_room_rtsp_status_scrape
+  select: "body"
+  value_template: '{{ (value | replace("\n", "")).split("v4l2rtspserver-master -")[1].split("MJPG")[0] }}'
+
+- platform: scrape
+  resource: http://192.168.0.32/cgi-bin/blue.cgi
+  name: dafang_living_room_blue_led_status_scrape
+  select: "body"
+#  value_template: '{{ (value | replace("\n", "")).split("Blue LED:(")[1].split(")")[0] }}'
+
+- platform: scrape
+  resource: http://192.168.0.32/cgi-bin/yellow.cgi
+  name: dafang_living_room_yellow_led_status_scrape
+  select: "body"
+#  value_template: '{{ (value | replace("\n", "")).split("Yellow LED:(")[1].split(")")[0] }}'
+

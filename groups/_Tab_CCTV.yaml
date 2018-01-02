@@ -13,3 +13,4 @@ cctv:
     - group.Hikvision
     - group.Cameras
     - group.Presence
+    - group.dafang_living_room

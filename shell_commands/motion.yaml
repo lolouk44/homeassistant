@@ -1,2 +1,9 @@
 dafang_living_room_active: wget http://192.168.0.24:8080/3/detection/start
 dafang_living_room_pause: wget http://192.168.0.24:8080/3/detection/pause
+dafang_living_room_blue_led_on: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=blue_led_on
+dafang_living_room_blue_led_off: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=blue_led_off
+dafang_living_room_yellow_led_on: http://192.168.0.32/cgi-bin/action.cgi?cmd=yellow_led_on
+dafang_living_room_yellow_led_off: http://192.168.0.32/cgi-bin/action.cgi?cmd=yellow_led_off
+dafang_living_room_start_rtsp: http://192.168.0.32/cgi-bin/action.cgi?cmd=mjpeg_start
+dafang_living_room_stop_rtsp: http://192.168.0.32/cgi-bin/action.cgi?cmd=rtsp_stop
+
