@@ -21,7 +21,7 @@ recorder:
 
 # Enables the frontend
 frontend: 
-  javascript_version: es5
+#  javascript_version: es5
 config:
 
 http:
@@ -34,9 +34,6 @@ http:
     - ::1
     - 192.168.0.0/24
 
-
-  # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
 
 # Checks for available updates
 updater:
@@ -136,10 +133,13 @@ tts:
 
 media_player:
   - platform: cast
+  # Google Home Mini
   - platform: cast
     host: 192.168.0.10
+  # Kitchen Cast
   - platform: cast
     host: 192.168.0.12
+  # Bedroom Cast
   - platform: cast
     host: 192.168.0.13
   - platform: cast
@@ -151,10 +151,12 @@ media_player:
       video6: 'Main PC'
       bluray: 'Blu-Ray'
       video2: 'Sky'
+      network: 'ChromeCast'
+      tv: 'TV'
   - platform: panasonic_viera
     host: 192.168.0.27
-  - platform: mpd
-    host: 192.168.0.24
+#  - platform: mpd
+#    host: 192.168.0.24
   - platform: mpd
     host: 192.168.0.21
     port: 6600
