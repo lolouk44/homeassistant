@@ -1,8 +1,4 @@
-- retrieve last state for sensors using https://home-assistant.io/docs/automation/trigger/#home-assistant-trigger
-- Save entities status in file and restore at HASS Start
 - Google Calendar?
-- Sky Device?
-- Holiday automations
 - Temp + Pressure from BME280 on Pi to be saved in text file then use https://home-assistant.io/components/sensor.file/ to retrieve
 - Calibrate Mould sensor https://home-assistant.io/components/sensor.mold_indicator/
 - Add DHT22 sensor to RPi?
