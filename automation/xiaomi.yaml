@@ -64,3 +64,28 @@
           Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
     - service: input_boolean.turn_off
       entity_id: input_boolean.vacuum
+
+- alias: Scheduled Vacuuming
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_div_iphone
+      zone: zone.home
+      event: leave
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      zone: zone.home
+      event: leave
+  condition:
+    - condition: template
+      value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state != "home"}}'
+    - condition: template
+      value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
+    - condition: state
+      entity_id: input_boolean.scheduled_vacuuming
+      state: "on"
+  action:
+    - service: vacuum.turn_on
+      data:
+        entity_id: vacuum.mi_robot_vacuum
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.scheduled_vacuuming

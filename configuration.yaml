@@ -168,3 +168,7 @@ nest:
 
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
+
+google:
+  client_id: !secret GCal_ID
+  client_secret: !secret GCal_Secret

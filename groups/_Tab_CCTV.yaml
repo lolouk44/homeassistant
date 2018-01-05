@@ -14,3 +14,5 @@ cctv:
     - group.Cameras
     - group.Presence
     - group.dafang_living_room
+    - group.dafang_kitchen
+    - group.cctv_garage

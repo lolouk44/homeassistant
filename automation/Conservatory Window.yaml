@@ -4,7 +4,11 @@
       entity_id: binary_sensor.conservatory_window
       to: 'on'
   action:
-  - service: shell_command.remote_on
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.living_room_google_mini
+      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+      media_content_type: 'audio/mp3'
 
 - alias: Conservatory Window Closed
   trigger:
@@ -12,6 +16,10 @@
       entity_id: binary_sensor.conservatory_window
       to: 'off'
   action:
-  - service: shell_command.remote_off
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.living_room_google_mini
+      media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
+      media_content_type: 'audio/mp3'
 
 

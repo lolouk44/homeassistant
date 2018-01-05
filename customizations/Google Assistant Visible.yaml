@@ -37,6 +37,11 @@ input_boolean.vacuum:
   google_assistant_name: "Vacuum"
   google_assistant_type: switch
 
+input_boolean.scheduled_vacuuming:
+  google_assistant: true
+  google_assistant_name: "Scheduled Vacuuming"
+  google_assistant_type: switch
+
 light.Living_Room_Main:
   google_assistant: true
   google_assistant_name: "Living Room Lights"

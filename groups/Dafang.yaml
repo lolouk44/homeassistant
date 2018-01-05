@@ -2,6 +2,25 @@ dafang_living_room:
   name: Dafang Living Room
   control: hidden
   entities:
+    - camera.living_room
     - switch.dafang_living_room_status
+    - switch.dafang_living_room_rtsp_status
     - switch.dafang_living_room_blue_led
     - switch.dafang_living_room_yellow_led
+
+dafang_kitchen:
+  name: Dafang Kitchen
+  control: hidden
+  entities:
+    - camera.kitchen
+    - switch.dafang_kitchen_status
+    - switch.dafang_kitchen_rtsp_status
+    - switch.dafang_kitchen_blue_led
+    - switch.dafang_kitchen_yellow_led
+
+cctv_garage:
+  name: Garage
+  control: hidden
+  entities:
+    - camera.garage
+    - switch.cctv_garage_status

@@ -3,5 +3,3 @@ Cameras:
   control: hidden
   entities:
     - camera.front
-    - camera.living_room
-    - camera.garage

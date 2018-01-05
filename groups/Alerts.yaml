@@ -5,7 +5,7 @@ Alerts:
     - alert.upstairs_temp_sensor_lost
     - alert.cctv_front_lost
     - alert.cctv_garage_lost
-    - alert.cctv_xiaomi_dafang_lost
+    - alert.cctv_dafang_living_room_lost
     - alert.currentcost_lost
     - alert.dehumidifier_full
     - alert.rpi_lost
@@ -17,6 +17,6 @@ Alerts:
     - alert.ram_too_high
     - alert.home_disk_usage_too_high
     - alert.root_disk_usage_too_high
-    - alert.cctv_xiaomi_dafang_lost
+    - alert.cctv_dafang_kitchen_lost
     - alert.basil_humidity_too_low
     - alert.basil_battery_too_low

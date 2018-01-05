@@ -5,6 +5,9 @@
   mjpeg_url: http://192.168.0.24:8084
   name: 'Living Room'
 - platform: mjpeg
+  mjpeg_url: http://192.168.0.24:8085
+  name: 'Kitchen'
+- platform: mjpeg
   mjpeg_url: http://192.168.0.24:8083
   name: 'Garage'
 - platform: generic

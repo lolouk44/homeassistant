@@ -17,3 +17,8 @@ vacuum:
   name: Vacuum
   initial: off
   icon: mdi:google-circles-group
+
+scheduled_vacuuming:
+  name: Scheduled Vacuuming
+  initial: off
+  icon: mdi:google-circles-group

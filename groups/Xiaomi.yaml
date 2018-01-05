@@ -8,6 +8,7 @@ Vacuum:
     - sensor.xiaomi_cleaned_area
     - sensor.xiaomi_cleaning_time
     - sensor.last_clean
+    - switch.scheduled_vacuuming
 
 basil:
   name: Basil
