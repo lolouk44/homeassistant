@@ -6,11 +6,11 @@ Conservatory:
     - device_tracker.zevsmpjl_div_iphone
     - sensor.dark_sky_daily_low_temperature
     - sensor.dark_sky_daily_high_temperature
-    - sensor.precipitation
+    - sensor.pws_precip_1d
+    - sensor.pws_precip_today_metric
     - sensor.home_to_verint
     - sensor.lolo_to_home
     - sensor.sunset_time
     - group.conservatory_sensors
     - switch.conservatory
     - group.baubles
-    - switch.lwrf_socket_3

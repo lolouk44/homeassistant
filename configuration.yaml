@@ -72,6 +72,7 @@ alert: !include_dir_merge_named alerts
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensors
 camera: !include cameras.yaml
+device_tracker: !include device_tracker.yaml
 group: !include_dir_merge_named groups
 #history_graph: !include_dir_merge_named history_graph
 input_datetime: !include_dir_merge_named input_datetime
@@ -113,17 +114,6 @@ mqtt:
   port: 26306
   username: !secret mqtt_user
   password: !secret mqtt_password
-
-
-device_tracker:
-  - platform: owntracks
-    max_gps_accuracy: 200
-    waypoints: True
-    waypoint_whitelist:
-      - Lolo_iPhone
-      - Div_iPhone
-      - iPad
-
 
 tts:
   - platform: google

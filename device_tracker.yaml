@@ -1,0 +1,11 @@
+- platform: xiaomi
+  host: 192.168.0.1
+  password: !secret xiaomi_router_password
+
+- platform: owntracks
+  max_gps_accuracy: 200
+  waypoints: True
+  waypoint_whitelist:
+    - Lolo_iPhone
+    - Div_iPhone
+    - iPad

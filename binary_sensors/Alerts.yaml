@@ -4,14 +4,14 @@
       entity_id:
         - sensor.basil_moisture
       value_template: >
-        {{ states.sensor.basil_moisture.state | default(0) | int < 15 }}
+        {{ (((states.sensor.basil_moisture.state )| default(100)) | int < 15) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)}}
       friendly_name: Basil Humidity below 15%
 
     basil_battery_too_low:
       entity_id:
         - sensor.basil_battery
       value_template: >
-        {{ states.sensor.basil_battery.state | default(0) | int < 10 }}
+        {{ (((states.sensor.basil_battery.state) | default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)}}
       friendly_name: Basil Battery below 10%
 
 

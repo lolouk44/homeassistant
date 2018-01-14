@@ -27,6 +27,16 @@
     - temperature
     - precip_intensity_max
 
+- platform: wunderground
+  api_key: !secret wu_api_key
+  monitored_conditions:
+    - precip_today_metric
+    - precip_1d_mm 
+    - precip_1d 
+    - wind_dir
+    - wind_1d_kph 
+    - wind_gust_1d_kph 
+
 - platform: template
   sensors:
     sunset_time:
@@ -47,7 +57,7 @@
       unit_of_measurement: "mm"
 
 
-
+- platform: version
 
 # - platform: mold_indicator
   # indoor_temp_sensor: sensor.upstairs_temperature

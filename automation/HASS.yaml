@@ -1,13 +1,14 @@
 - alias: HASS Update Available Notification
   trigger:
-    - platform: state
-      entity_id: updater.updater
+    platform: state
+    entity_id: sensor.ha_online_version
+  condition:
+    - condition: template
+      value_template: '{{states.sensor.ha_online_version.state != states.sensor.current_version.state }}'
   action:
     - service: notify.gmaillolo
       data_template:
-        message: |
-          There is an update to HomeAssistant: V{{states.updater.updater.state}}
-          Release Notes: {{ states.updater.updater.attributes.release_notes.split("0-")[0]+states.updater.updater.attributes.release_notes.split("0-")[1] }}
+        message: 'There is an update to Home-Assistant: {{states.sensor.ha_online_version.state}}'
 
 - alias: HASS Start Sound
   trigger:

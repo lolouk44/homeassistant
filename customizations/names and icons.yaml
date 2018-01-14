@@ -134,3 +134,7 @@ switch.dafang_kitchen_yellow_led:
   icon: mdi:lightbulb
 switch.cctv_garage_status:
   icon: mdi:run-fast
+sensor.pws_precip_1d:
+  friendly_name: Rain (%)
+sensor.pws_precip_today_metric:
+  friendly_name: Rain (mm)

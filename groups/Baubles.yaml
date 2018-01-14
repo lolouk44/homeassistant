@@ -1,6 +1,7 @@
 baubles:
   name: Baubles
   entities:
+  - switch.lwrf_socket_xmas
   - light.bauble_1
   - light.bauble_2
   - light.bauble_3

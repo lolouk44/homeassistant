@@ -33,7 +33,7 @@
   action:
   - service: switch.turn_on
     data:
-      entity_id: switch.lwrf_socket_3
+      entity_id: switch.lwrf_socket_xmas
   - service: light.turn_on
     data:
       entity_id: light.TV_Cabinet_LED_Strip
@@ -117,7 +117,7 @@
       entity_id: light.TV_Cabinet_LED_Strip
   - service: switch.turn_off
     data:
-      entity_id: switch.lwrf_socket_3
+      entity_id: switch.lwrf_socket_xmas
 
 
 

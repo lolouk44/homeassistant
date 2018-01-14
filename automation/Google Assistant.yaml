@@ -1,3 +1,29 @@
+- alias: Set GA Volume To Low At Night
+  trigger:
+    platform: time
+    hours: 22
+    minutes: 0
+    seconds: 0
+  action:
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.living_room_google_mini
+      volume_level: 0.50
+
+
+- alias: Set GA Volume To High Daytime
+  trigger:
+    platform: time
+    hours: 7
+    minutes: 0
+    seconds: 0
+  action:
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.living_room_google_mini
+      volume_level: 0.75
+
+
 - alias: GA Start Vacuuming
   trigger:
     - platform: state
