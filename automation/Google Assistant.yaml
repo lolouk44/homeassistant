@@ -1,8 +1,8 @@
 - alias: Set GA Volume To Low At Night
   trigger:
     platform: time
-    hours: 22
-    minutes: 0
+    hours: 20
+    minutes: 30
     seconds: 0
   action:
   - service: media_player.volume_set
@@ -15,7 +15,7 @@
   trigger:
     platform: time
     hours: 7
-    minutes: 0
+    minutes: 30
     seconds: 0
   action:
   - service: media_player.volume_set

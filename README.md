@@ -18,7 +18,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Cresta TS34C Hygrometers
 - CurrentCost EnviR Energy Monitor
 - CurrentCost IAM Energy Monitor
-- Google Chromecast Audio
+- Google ChromeCast Audio
 - Google Home Mini
 - Hikvision DS-2CD2142FWD-I CCTV Camera
 - H801 LED Strip Controllers
@@ -33,8 +33,10 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Panasonic TX58DX700 TV
 - RFXCOM RFXtrx433 433MHz transceiver
 - Sky+HD Box
+- Tile Mate
 - Verint S5003FD CCTV Camera
 - Wemos D1 Mini Pro via MQTT JSON Light
 - Xiaomi Dafang Camera
 - Xiaomi Mi Flora Plant Sensor
 - Xiaomi Mi Robot Vacuum
+- Xiaomi Router R3P Pro

@@ -61,7 +61,7 @@ logger:
     homeassistant.components.http: warning
     miio.device: critical
 
-#    homeassistant.components.rfxtrx: debug
+    homeassistant.components.rfxtrx: debug
 
 #Track the sun
 sun:

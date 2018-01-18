@@ -8,7 +8,7 @@
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.mailbox_notification.attributes.last_triggered | default(0)) | int > 10 )}}'
   action:
     - service: tts.google_say
-      entity_id: media_player.mpd
+      entity_id: media_player.living_room_google_mini
       data:
         message: 'Please note: post has been delivered'
     - service: shell_command.mailbox_notification_email
