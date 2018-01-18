@@ -65,7 +65,11 @@
       value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
   action:
   - service: media_player.turn_off
+    entity_id: media_player.kitchen
+  - service: media_player.turn_off
     entity_id: media_player.onkyo_txnr656
+  - service: media_player.turn_off
+    entity_id: media_player.bedroom
   - service: light.turn_off
     data:
       entity_id: group.Interior_Lights
