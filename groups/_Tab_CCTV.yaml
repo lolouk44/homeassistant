@@ -11,9 +11,8 @@ cctv:
     - sensor.home_to_verint
     - sensor.lolo_to_home
     - sensor.sunset_time
-    - group.Hikvision
-    - group.Cameras
-    - group.Presence
+    - group.front_cctv
     - group.dafang_living_room
     - group.dafang_kitchen
     - group.cctv_garage
+    - group.Presence

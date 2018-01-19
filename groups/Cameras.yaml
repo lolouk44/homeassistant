@@ -1,5 +1,0 @@
-Cameras:
-  name: Cameras
-  control: hidden
-  entities:
-    - camera.front

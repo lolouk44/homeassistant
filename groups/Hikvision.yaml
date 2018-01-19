@@ -1,6 +1,0 @@
-Hikvision:
-  - binary_sensor.front_cctv_motion
-  - binary_sensor.front_cctv_field_detection
-  - binary_sensor.front_cctv_tamper_detection
-  - binary_sensor.front_cctv_disk_error
-  - binary_sensor.front_cctv_disk_full

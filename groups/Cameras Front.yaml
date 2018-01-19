@@ -1,0 +1,10 @@
+front_cctv:
+  name: Front
+  control: hidden
+  entities:
+    - camera.front
+    - binary_sensor.front_cctv_motion
+    - binary_sensor.front_cctv_field_detection
+    - binary_sensor.front_cctv_line_crossing
+    - binary_sensor.front_cctv_disk_error
+    - binary_sensor.front_cctv_disk_full
