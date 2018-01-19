@@ -65,10 +65,8 @@
       hours: 8
       minutes: 0
       seconds: 0
-    - platform: numeric_state
-      entity_id: sensor.upstairs_humidity
-      value_template: '{{ state.attributes.status }}'
-      above: 70
+    - platform: template
+      value_template: '{{ states.sensor.upstairs_humidity.state | int > 70}}'
   condition:
     - condition: time
       after: '08:00'
@@ -95,10 +93,8 @@
       hours: 16
       minutes: 0
       seconds: 0
-    - platform: numeric_state
-      entity_id: sensor.upstairs_humidity
-      value_template: '{{ state.attributes.status }}'
-      below: 60
+    - platform: template
+      value_template: '{{ states.sensor.upstairs_humidity.state | int < 60}}'
   condition:
     - condition: state
       entity_id: switch.dehumidifier

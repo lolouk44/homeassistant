@@ -1,6 +1,0 @@
-input_boolean.movies:
-  homebridge_visible: true
-input_boolean.normal:
-  homebridge_visible: true
-script.radio538:
-  homebridge_visible: true

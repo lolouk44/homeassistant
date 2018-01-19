@@ -59,6 +59,8 @@ logger:
   default: error
   logs:
     homeassistant.components.http: warning
+    homeassistant.components.camera: error
+    requests.packages.urllib3: critical
     miio.device: critical
 
 #    homeassistant.components.rfxtrx: debug
@@ -73,6 +75,7 @@ automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensors
 camera: !include cameras.yaml
 device_tracker: !include device_tracker.yaml
+google_assistant: !include Google_Assistant.yaml
 group: !include_dir_merge_named groups
 #history_graph: !include_dir_merge_named history_graph
 input_datetime: !include_dir_merge_named input_datetime
@@ -89,14 +92,6 @@ shell_command: !include_dir_merge_named shell_commands
 sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_list switches
 zone: !include zones.yaml
-
-
-
-google_assistant:
-  project_id: !secret GAproject_id
-  client_id: !secret GAclient_id
-  access_token: !secret GAaccess_token
-  expose_by_default: false
 
 
 ifttt:

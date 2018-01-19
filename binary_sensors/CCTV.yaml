@@ -1,8 +1,6 @@
 - platform: template
   sensors:
     dafang_living_room_status:
-      entity_id:
-        - sensor.dafang_living_room_status_scrape
       value_template: >
         {{ states.input_boolean.pir_living_room_back.state == 'ACTIVE'}}
       friendly_name: Dafang Living Room motion Status

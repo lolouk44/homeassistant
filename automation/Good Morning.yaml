@@ -11,7 +11,6 @@
       # Only run if more than 6 hours (21,600 sec) since it last ran 
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.play_good_morning.attributes.last_triggered | default(0)) | int > 21600 )}}'
   action:
-    # - service: shell_command.play_good_morning
     - service: tts.google_say
       data_template:
         entity_id: media_player.living_room_google_mini
@@ -27,7 +26,7 @@
           |replace("E","East ")
           |replace("W","West ")
           }} at {{states.sensor.pws_wind_1d_kph.state}} to {{states.sensor.pws_wind_gust_1d_kph.state}} km/h.
-          Rain: {{states.sensor.pws_precip_today_metric.state | default(0)}} millimeters at {{states.sensor.pws_precip_1d.state | default(0)}}%.
+          Rain: {{states.sensor.pws_precip_today_metric.state | float(0) }} millimeters at {{states.sensor.pws_precip_1d.state | float(0)}}%.
           {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states.sensor.home_to_verint.state}} minutes.{% endif %}
           {% if now().strftime("%a") == 'Mon' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Fri' %} Remember to empty the vacuum.{% endif %}
           {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day != True %} Your next appointment is: {{states.calendar.birthdays__events.attributes.message}} at {{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[0]}} {%if (states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1] != '00'%}{{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}

@@ -1,0 +1,9 @@
+- alias: Free Ram
+  trigger:
+    - platform: template
+      value_template: '{{ states.sensor.ram_usage.state |int > 70}}'
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.ram_too_high.attributes.last_triggered | default(0)) | int > 3600 )}}'
+  action:
+    - service: shell_command.freeram

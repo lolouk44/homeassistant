@@ -1,8 +1,7 @@
 - alias: turn_baubles_on_1
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.bauble_random_effect
-      below: 2
+    - platform: template
+      value_template: '{{states.sensor.bauble_random_effect.state | int == 1 }}'
   condition:
     - condition: or
       conditions:
@@ -45,10 +44,8 @@
 
 - alias: turn_baubles_on_2
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.bauble_random_effect
-      above: 1
-      below: 3
+    - platform: template
+      value_template: '{{states.sensor.bauble_random_effect.state | int == 2 }}'
   condition:
     - condition: or
       conditions:
@@ -91,9 +88,8 @@
 
 - alias: turn_baubles_on_3
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.bauble_random_effect
-      above: 2
+    - platform: template
+      value_template: '{{states.sensor.bauble_random_effect.state | int == 3 }}'
   condition:
     - condition: or
       conditions:
