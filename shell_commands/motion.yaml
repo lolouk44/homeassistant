@@ -1,20 +1,20 @@
-dafang_living_room_active: wget http://192.168.0.24:8080/3/detection/start
-dafang_living_room_pause: wget http://192.168.0.24:8080/3/detection/pause
-dafang_living_room_blue_led_on: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=blue_led_on
-dafang_living_room_blue_led_off: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=blue_led_off
-dafang_living_room_yellow_led_on: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=yellow_led_on
-dafang_living_room_yellow_led_off: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=yellow_led_off
-dafang_living_room_start_rtsp: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=mjpeg_start
-dafang_living_room_stop_rtsp: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=rtsp_stop
+dafang_living_room_active: wget http://192.168.0.24:8080/3/detection/start &>/dev/null
+dafang_living_room_pause: wget http://192.168.0.24:8080/3/detection/pause &>/dev/null
+dafang_living_room_blue_led_on: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=blue_led_on &>/dev/null
+dafang_living_room_blue_led_off: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=blue_led_off &>/dev/null
+dafang_living_room_yellow_led_on: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=yellow_led_on &>/dev/null
+dafang_living_room_yellow_led_off: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=yellow_led_off &>/dev/null
+dafang_living_room_start_rtsp: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=mjpeg_start &>/dev/null
+dafang_living_room_stop_rtsp: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=rtsp_stop &>/dev/null
 
-dafang_kitchen_active: wget http://192.168.0.24:8080/4/detection/start
-dafang_kitchen_pause: wget http://192.168.0.24:8080/4/detection/pause
-dafang_kitchen_blue_led_on: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=blue_led_on
-dafang_kitchen_blue_led_off: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=blue_led_off
-dafang_kitchen_yellow_led_on: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=yellow_led_on
-dafang_kitchen_yellow_led_off: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=yellow_led_off
-dafang_kitchen_start_rtsp: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=mjpeg_start
-dafang_kitchen_stop_rtsp: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=rtsp_stop
+dafang_kitchen_active: wget http://192.168.0.24:8080/4/detection/start &>/dev/null
+dafang_kitchen_pause: wget http://192.168.0.24:8080/4/detection/pause &>/dev/null
+dafang_kitchen_blue_led_on: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=blue_led_on &>/dev/null
+dafang_kitchen_blue_led_off: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=blue_led_off &>/dev/null
+dafang_kitchen_yellow_led_on: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=yellow_led_on &>/dev/null
+dafang_kitchen_yellow_led_off: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=yellow_led_off &>/dev/null
+dafang_kitchen_start_rtsp: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=mjpeg_start &>/dev/null
+dafang_kitchen_stop_rtsp: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=rtsp_stop &>/dev/null
 
-cctv_garage_active: wget http://192.168.0.24:8080/2/detection/start
-cctv_garage_pause: wget http://192.168.0.24:8080/2/detection/pause
+cctv_garage_active: wget http://192.168.0.24:8080/2/detection/start &>/dev/null
+cctv_garage_pause: wget http://192.168.0.24:8080/2/detection/pause &>/dev/null

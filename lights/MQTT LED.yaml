@@ -66,3 +66,36 @@
   effect_list: [sparkle, rainbow, uniglow]
   optimistic: false
   qos: 0
+
+
+
+
+- platform: mqtt_json
+  name: "Garage LED Strip"
+  state_topic: "Garage/LED_Strip"
+  command_topic: "Garage/LED_Strip/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane  
+    - confetti  
+    - cyclon rainbow  
+    - dots  
+    - fire  
+    - glitter  
+    - juggle  
+    - lightning
+    - noise  
+    - police all  
+    - police one  
+    - rainbow  
+    - rainbow with glitter  
+    - ripple  
+    - sinelon  
+    - solid  
+    - twinkle  
+  brightness: true
+  flash: true
+  rgb: true
+  optimistic: false
+  qos: 0

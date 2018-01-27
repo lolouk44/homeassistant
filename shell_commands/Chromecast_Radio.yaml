@@ -1,0 +1,1 @@
+chromecast_radio_picture: /home/cctv/.homeassistant/shell_scripts/ChromeCast_Radio.py {{ my_media_player }} {{ my_radio_station }}

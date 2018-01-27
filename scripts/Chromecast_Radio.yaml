@@ -6,7 +6,7 @@ radio538:
         entity_id: >
           {% if is_state("input_select.chromecast_radio", "Bedroom") %} media_player.bedroom
           {% elif is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
-          {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo_txnr656_e0ee71
+          {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo
           {% elif is_state("input_select.chromecast_radio", "Downstairs") %} media_player.downstairs
           {% elif is_state("input_select.chromecast_radio", "House") %} media_player.house
           {% endif %}
@@ -16,7 +16,7 @@ radio538:
          entity_id: >
           {% if is_state("input_select.chromecast_radio", "Downstairs") %} media_player.downstairs
           {% elif is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
-          {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo_txnr656_e0ee71
+          {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo
           {% elif is_state("input_select.chromecast_radio", "Bedroom") %} media_player.bedroom
           {% elif is_state("input_select.chromecast_radio", "House") %} media_player.house
           {% endif %}
@@ -29,6 +29,8 @@ radio538:
           {% elif is_state("input_select.radio_station", "Custom Station") %} {{states.input_text.custom_station.state}}
           {% endif %}
          media_content_type: 'audio/mp4'
+
+
 
 
 # Radio Santa Claus: https://streaming.radiostreamlive.com/radiosantaclaus_devices

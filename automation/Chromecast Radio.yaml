@@ -1,0 +1,47 @@
+- alias: Set Chromecast Radio Volume
+  trigger:
+    platform: state
+    entity_id: input_number.volume_radio
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id: >
+        {% if is_state("input_select.chromecast_radio", "Bedroom") %} media_player.bedroom
+        {% elif is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
+        {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo_txnr656
+        {% elif is_state("input_select.chromecast_radio", "Downstairs") %} media_player.downstairs
+        {% elif is_state("input_select.chromecast_radio", "House") %} media_player.house
+        {% endif %}
+      volume_level: '{{  states.input_number.volume_radio.state  }}'
+
+
+- alias: Set Chromecast Radio Picture
+  trigger:
+    - platform: event
+      event_type: state_changed
+  condition:
+    - condition: or
+      conditions:
+        #list all chromecast media players here
+        - condition: template 
+          value_template: "{{ trigger.event.data.entity_id == 'media_player.kitchen' }}"
+        - condition: template
+          value_template: "{{ trigger.event.data.entity_id == 'media_player.bedroom' }}"
+        - condition: template
+          value_template: "{{ trigger.event.data.entity_id == 'media_player.house' }}"
+        - condition: template
+          value_template: "{{ trigger.event.data.entity_id == 'media_player.downstairs' }}"
+        - condition: template
+          value_template: "{{ trigger.event.data.entity_id == 'media_player.onkyo' }}"
+    - condition: template
+      value_template: "{{ trigger.event.data.new_state.state  == 'playing' }}"
+    - condition: template
+      value_template: "{{ trigger.event.data.new_state.attributes is not none }}"
+    #only run if script triggered in last 30 sec to not overwrite other music services
+    - condition: template
+      value_template: "{{(as_timestamp(now()) - as_timestamp(states.script.radio538.attributes.last_triggered | default(0)) | int < 30 )}}"
+  action:
+    - service: shell_command.chromecast_radio_picture
+      data_template:
+        my_media_player: '{{ trigger.event.data.entity_id }}'
+        my_radio_station: '{{ states.input_select.radio_station.state | replace(" ", "_") }}'
