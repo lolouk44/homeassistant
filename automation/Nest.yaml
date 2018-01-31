@@ -1,0 +1,86 @@
+- alias: Nest Holiday Start
+  trigger:
+    - platform: state
+      entity_id: input_boolean.holidays
+      to: 'on'
+  action:
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.hallway
+        away_mode: 'on'
+
+- alias: Nest Holiday End
+  trigger:
+    - platform: state
+      entity_id: input_boolean.holidays
+      to: 'off'
+    - platform: time
+      minutes: '/15'
+      seconds: 0
+  condition:
+    - condition: time
+      after: '05:00'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'
+  action:
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.hallway
+        away_mode: 'off'
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.hallway
+        temperature: 20.5
+        operation_mode: Heat
+
+
+- alias: Nest Remove Leaf
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_thermostat_has_leaf
+      to: 'on'
+    - platform: state
+      entity_id: group.pirs
+      to: 'on'
+  condition:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state == "home"}}'
+      - condition: template
+        value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state == "home"}}'
+  action:
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.hallway
+        away_mode: 'off'
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.hallway
+        temperature: 20.5
+        operation_mode: Heat
+
+
+- alias: Nest Set Leaf
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_div_iphone
+      zone: zone.home
+      event: leave
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      zone: zone.home
+      event: leave
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'
+    - condition: template
+      value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state != "home"}}'
+    - condition: template
+      value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.hallway
+        temperature: 16
+        operation_mode: Heat

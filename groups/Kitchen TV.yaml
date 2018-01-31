@@ -1,0 +1,5 @@
+kitchen_tv:
+  name: Kitchen TV
+  entities:
+    - switch.kitchen_tv
+    - input_select.mm_cam_feed

@@ -13,5 +13,5 @@ Kitchen:
     - sensor.sunset_time
     - binary_sensor.pir_kitchen
     - group.kitchen_lights
-    - switch.kitchen_tv
+    - group.kitchen_tv
     - group.basil

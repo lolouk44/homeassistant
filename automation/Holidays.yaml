@@ -1,16 +1,22 @@
 - alias: Holiday Start
   trigger:
-    - platform: time
-      minutes: '/15'
-      seconds: 0
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_div_iphone
+      zone: zone.home
+      event: leave
+    - platform: zone
+      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      zone: zone.home
+      event: leave
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_start.attributes.timestamp | default(0)) | int > 0)}}'
     - condition: template
       value_template: '{{ ((states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int) - as_timestamp(now()) > 0 }}'
-    - condition: state
-      entity_id: 'input_boolean.holidays'
-      state: "off"
+    - condition: template
+      value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state != "home"}}'
+    - condition: template
+      value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
   action:
     - service: input_boolean.turn_on
       data:

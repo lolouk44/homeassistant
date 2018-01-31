@@ -1,0 +1,7 @@
+mm_cam_feed:
+  name: 'MagicMirror Camera Feed:'
+  options:
+    - front
+    - living_room
+  initial: front
+  icon: mdi:cctv

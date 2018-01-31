@@ -1,0 +1,17 @@
+- platform: mqtt
+  state_topic: "CurrentCost/Temperature"
+  name: "CurrentCost_Temperature"
+  unit_of_measurement: "ºC"
+  value_template: '{{ value_json.state }}'
+
+- platform: mqtt
+  state_topic: "CurrentCost/TTL_Power"
+  name: "CurrentCost_Power"
+  unit_of_measurement: "Wh"
+  value_template: '{{ value_json.state }}'
+
+- platform: mqtt
+  state_topic: "CurrentCost/Dehumidifier_Power"
+  name: "Dehumidifier_Power"
+  unit_of_measurement: "Wh"
+  value_template: '{{ value_json.state }}'

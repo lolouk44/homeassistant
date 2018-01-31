@@ -15,14 +15,18 @@
     - platform: homeassistant
       event: start
   action:
-  - service: shell_command.getcurrentcost
-  # - delay: 
-      # seconds: 1
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_mini
       media_content_id: 'http://192.168.0.24/audio/Click.mp3'
       media_content_type: 'audio/mp3'
+
+- alias: HASS Start CurrentCost
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+  - service: shell_command.getcurrentcost
 
 - alias: HASS Stop Sound
   trigger:
