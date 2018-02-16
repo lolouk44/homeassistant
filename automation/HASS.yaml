@@ -21,6 +21,14 @@
       media_content_id: 'http://192.168.0.24/audio/Click.mp3'
       media_content_type: 'audio/mp3'
 
+- alias: HASS Start PlexDNS
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+  - service: shell_command.plexdns
+
+
 - alias: HASS Start CurrentCost
   trigger:
     - platform: homeassistant

@@ -6,7 +6,7 @@ group.living_room:
   order: 4
 group.entrance:
   order: 5
-group.conservatory:
+group.dining_room:
   order: 6
 group.staircase:
   order: 7
