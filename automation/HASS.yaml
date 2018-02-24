@@ -83,6 +83,10 @@
     - platform: homeassistant
       event: start
   action:
+    - service: group.set_visibility
+      entity_id: group.xmas
+      data:
+        visible: False
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(states.input_datetime.xmas_start.attributes.timestamp | default(0)) | int > 0)}}'
     - condition: template
@@ -91,7 +95,7 @@
       data:
         entity_id: input_boolean.xmas
     - service: group.set_visibility
-      entity_id: group.baubles
+      entity_id: group.xmas
       data_template:
         visible: >
           {% if is_state("input_boolean.xmas", "on") %}True

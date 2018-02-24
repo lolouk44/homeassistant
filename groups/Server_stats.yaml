@@ -4,4 +4,5 @@ serverstats:
   entities:
     - sensor.currentcost_power
     - sensor.ram_usage
+    - sensor.hass_db_size_formatted
     - sensor.SSL_Cert_Expiry

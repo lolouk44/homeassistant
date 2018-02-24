@@ -73,6 +73,8 @@ sensor.currentcost_power:
   icon: mdi:flash-circle
 sensor.currentcost_temperature:
   icon: mdi:thermometer
+sensor.hass_db_size_formatted:
+  icon: mdi:harddisk
 sensor.dark_sky_daily_low_temperature:
   friendly_name: 'Min'
 sensor.dark_sky_daily_high_temperature:

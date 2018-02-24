@@ -89,3 +89,27 @@
         service: shell_command.cctv_garage_active
       turn_off:
         service: shell_command.cctv_garage_pause
+
+# - platform: mqtt
+  # name: "DaFang Kitchen RTSP Status"
+  # state_topic: "Kitchen/DaFang/status"
+  # command_topic: "Kitchen/DaFang/set"
+  # payload_on: "h264_noseg_start"
+  # payload_off: "rtsp_stop"
+  # value_template: '{% if value_json["RTSP-Server"] == "running" %} on {% else %} off {% endif %}'
+
+# - platform: mqtt
+  # name: "Dafang Kitchen Blue LED"
+  # state_topic: "Kitchen/DaFang/status"
+  # command_topic: "Kitchen/DaFang/set"
+  # payload_on: "blue_led_on"
+  # payload_off: "blue_led_off"
+  # value_template: '{{ value_json.LEDs.Blue }}'
+
+# - platform: mqtt
+  # name: "Dafang Kitchen Yellow LED"
+  # state_topic: "Kitchen/DaFang/status"
+  # command_topic: "Kitchen/DaFang/set"
+  # payload_on: "yellow_led_on"
+  # payload_off: "yellow_led_off"
+  # value_template: '{{ value_json.LEDs.Yellow }}'

@@ -13,15 +13,15 @@ homeassistant:
   customize: !include_dir_merge_named customizations
 
 
-# Show links to resources in log and frontend
+# Show links to resources in log and front end
 #introduction:
 
 recorder:
   db_url: !secret db_url
 
-# Enables the frontend
+# Enables the front end
 frontend: 
-#  javascript_version: es5
+
 config:
 
 http:
@@ -105,8 +105,10 @@ vacuum:
 
 mqtt:
   client_id: home-assistant-1
-  broker: m21.cloudmqtt.com
-  port: 26306
+#  broker: m21.cloudmqtt.com
+  broker: !secret mqtt_broker
+#  port: 26306
+  port: 1883
   username: !secret mqtt_user
   password: !secret mqtt_password
 

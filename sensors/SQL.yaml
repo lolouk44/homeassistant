@@ -5,3 +5,12 @@
       query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024 /1024, 1) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
       column: 'value'
       unit_of_measurement: MB
+
+- platform: template
+  sensors:
+    hass_db_size_formatted:
+      value_template: >
+        {{'{0:,.2f}'.format(states.sensor.hass_db_size.state|float())}}
+      friendly_name: HA DB Size
+      unit_of_measurement: "MB"
+

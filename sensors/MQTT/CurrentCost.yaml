@@ -1,7 +1,7 @@
 - platform: mqtt
   state_topic: "CurrentCost/Temperature"
   name: "CurrentCost_Temperature"
-  unit_of_measurement: "ºC"
+  unit_of_measurement: '°C'
   value_template: '{{ value_json.state }}'
 
 - platform: mqtt
@@ -15,3 +15,8 @@
   name: "Dehumidifier_Power"
   unit_of_measurement: "Wh"
   value_template: '{{ value_json.state }}'
+
+- platform: mqtt
+  state_topic: "Kitchen/DaFang/status"
+  name: "led1"
+  value_template: '{{ value_json["RTSP-Server"] }}'

@@ -3,9 +3,9 @@ Interior_Lights:
   entities:
     - light.living_room_main
     - light.living_room_wall
-    - switch.conservatory
     - group.kitchen_lights
     - light.Landing
+    - light.conservatory
     - light.Hallway
     - light.TV_Cabinet_LED_Strip
     - light.Staircase_LED_Strip

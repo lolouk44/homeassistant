@@ -1,6 +1,6 @@
-Dining_Room:
+conservatory:
   view: yes
-  icon: mdi:food-fork-drink
+  icon: mdi:home-variant
   entities:
     - device_tracker.zevsmpjl_lolo_iphone
     - device_tracker.zevsmpjl_div_iphone
@@ -12,5 +12,5 @@ Dining_Room:
     - sensor.sunset_time
     - group.conservatory_sensors
     - switch.conservatory
-    - light.dining_room
+    - light.conservatory
     - group.xmas
