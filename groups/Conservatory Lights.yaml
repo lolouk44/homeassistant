@@ -1,0 +1,5 @@
+conservatory_lights:
+  name: Conservatory Lights
+  entities:
+    - light.conservatory
+    - light.red_light

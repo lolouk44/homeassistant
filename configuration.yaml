@@ -18,6 +18,7 @@ homeassistant:
 
 recorder:
   db_url: !secret db_url
+  purge_interval: 0
 
 # Enables the front end
 frontend: 

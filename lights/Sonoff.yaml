@@ -1,0 +1,11 @@
+- platform: mqtt
+  name: "Red Light"
+  state_topic: "stat/sonoff/basic/1/POWER"
+  command_topic: "cmnd/sonoff/basic/1/POWER"
+  availability_topic: "tele/sonoff/basic/1/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true

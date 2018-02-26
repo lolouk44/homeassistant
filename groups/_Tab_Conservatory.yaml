@@ -11,6 +11,5 @@ conservatory:
     - sensor.lolo_to_home
     - sensor.sunset_time
     - group.conservatory_sensors
-    - switch.conservatory
-    - light.conservatory
+    - group.conservatory_lights
     - group.xmas
