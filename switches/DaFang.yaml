@@ -11,7 +11,7 @@
 - platform: mqtt
   name: "DaFang Living Room RTSP"
   state_topic: "LivingRoom/DaFang/status"
-  value_template: '{{ value_json["RTSP-Server"] }}'
+  value_template: "{% if value_json[\"RTSP-Server\"] == 'running' %}h264_noseg_start{% else %}rtsp_stop{% endif %}"
   command_topic: "LivingRoom/DaFang/set"
   payload_on: "h264_noseg_start"
   payload_off: "rtsp_stop"
@@ -20,7 +20,7 @@
 - platform: mqtt
   name: "Dafang Living Room Blue LED"
   state_topic: "LivingRoom/DaFang/status"
-  value_template: '{{ value_json.LEDs.Blue }}'
+  value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
   command_topic: "LivingRoom/DaFang/set"
   payload_on: "blue_led_on"
   payload_off: "blue_led_off"
@@ -29,10 +29,17 @@
 - platform: mqtt
   name: "Dafang Living Room Yellow LED"
   state_topic: "LivingRoom/DaFang/status"
-  value_template: '{{ value_json.LEDs.Yellow }}'
+  value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
   command_topic: "LivingRoom/DaFang/set"
   payload_on: "yellow_led_on"
   payload_off: "yellow_led_off"
+  optimistic: false
+
+- platform: mqtt
+  name: "Dafang Living Room Left Right"
+  command_topic: "LivingRoom/DaFang/set"
+  payload_off: "motor_left"
+  payload_on: "motor_right"
   optimistic: false
 
 
@@ -49,7 +56,7 @@
 - platform: mqtt
   name: "DaFang Kitchen RTSP"
   state_topic: "Kitchen/DaFang/status"
-  value_template: '{{ value_json["RTSP-Server"] }}'
+  value_template: "{% if value_json[\"RTSP-Server\"] == 'running' %}h264_noseg_start{% else %}rtsp_stop{% endif %}"
   command_topic: "Kitchen/DaFang/set"
   payload_on: "h264_noseg_start"
   payload_off: "rtsp_stop"
@@ -58,7 +65,7 @@
 - platform: mqtt
   name: "Dafang Kitchen Blue LED"
   state_topic: "Kitchen/DaFang/status"
-  value_template: '{{ value_json.LEDs.Blue }}'
+  value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
   command_topic: "Kitchen/DaFang/set"
   payload_on: "blue_led_on"
   payload_off: "blue_led_off"
@@ -67,10 +74,26 @@
 - platform: mqtt
   name: "Dafang Kitchen Yellow LED"
   state_topic: "Kitchen/DaFang/status"
-  value_template: '{{ value_json.LEDs.Yellow }}'
+  value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
   command_topic: "Kitchen/DaFang/set"
   payload_on: "yellow_led_on"
   payload_off: "yellow_led_off"
+  optimistic: false
+
+- platform: mqtt
+  name: "Dafang Kitchen Up"
+  state_topic: "Kitchen/DaFang/status"
+  value_template: "{{ value_json }}"
+  command_topic: "Kitchen/DaFang/set"
+  payload_on: "motor_up"
+  # payload_off: "yellow_led_off"
+  optimistic: false
+
+- platform: mqtt
+  name: "Dafang Kitchen Left Right"
+  command_topic: "Kitchen/DaFang/set"
+  payload_off: "motor_left"
+  payload_on: "motor_right"
   optimistic: false
 
 

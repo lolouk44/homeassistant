@@ -7,6 +7,7 @@ dafang_living_room:
     - switch.dafang_living_room_rtsp
     - switch.dafang_living_room_blue_led
     - switch.dafang_living_room_yellow_led
+    - switch.dafang_living_room_left_right
 
 dafang_kitchen:
   name: Dafang Kitchen
@@ -17,6 +18,7 @@ dafang_kitchen:
     - switch.dafang_kitchen_rtsp
     - switch.dafang_kitchen_blue_led
     - switch.dafang_kitchen_yellow_led
+    - switch.dafang_kitchen_left_right
 
 cctv_garage:
   name: Garage
