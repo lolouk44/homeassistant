@@ -38,8 +38,8 @@
     - platform: state
       entity_id: media_player.panasonic_viera_tv
       to: 'off'
-      for:
-        seconds: 30
+      # for:
+        # seconds: 5
   condition:
     - condition: state
       entity_id: input_boolean.movies

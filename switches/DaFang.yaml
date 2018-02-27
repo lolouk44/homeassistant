@@ -8,35 +8,32 @@
       turn_off:
         service: shell_command.dafang_living_room_pause
 
-- platform: template
-  switches:
-    dafang_living_room_rtsp_status:
-      friendly_name: Dafang Living Room RTSP Status
-      value_template: "{{ is_state('sensor.dafang_living_room_rtsp_status_scrape', '\non\n') }}"
-      turn_on:
-        service: shell_command.dafang_living_room_start_rtsp
-      turn_off:
-        service: shell_command.dafang_living_room_stop_rtsp
+- platform: mqtt
+  name: "DaFang Living Room RTSP"
+  state_topic: "LivingRoom/DaFang/status"
+  value_template: '{{ value_json["RTSP-Server"] }}'
+  command_topic: "LivingRoom/DaFang/set"
+  payload_on: "h264_noseg_start"
+  payload_off: "rtsp_stop"
+  optimistic: false
 
-- platform: template
-  switches:
-    dafang_living_room_blue_led:
-      friendly_name: Dafang Living Room Blue LED
-      value_template: "{{ is_state('sensor.dafang_living_room_blue_led_status_scrape', '\n0\n') }}"
-      turn_on:
-        service: shell_command.dafang_living_room_blue_led_on
-      turn_off:
-        service: shell_command.dafang_living_room_blue_led_off
+- platform: mqtt
+  name: "Dafang Living Room Blue LED"
+  state_topic: "LivingRoom/DaFang/status"
+  value_template: '{{ value_json.LEDs.Blue }}'
+  command_topic: "LivingRoom/DaFang/set"
+  payload_on: "blue_led_on"
+  payload_off: "blue_led_off"
+  optimistic: false
 
-- platform: template
-  switches:
-    dafang_living_room_yellow_led:
-      friendly_name: Dafang Living Room Yellow LED
-      value_template: "{{ is_state('sensor.dafang_living_room_yellow_led_status_scrape', '\n0\n') }}"
-      turn_on:
-        service: shell_command.dafang_living_room_yellow_led_on
-      turn_off:
-        service: shell_command.dafang_living_room_yellow_led_off
+- platform: mqtt
+  name: "Dafang Living Room Yellow LED"
+  state_topic: "LivingRoom/DaFang/status"
+  value_template: '{{ value_json.LEDs.Yellow }}'
+  command_topic: "LivingRoom/DaFang/set"
+  payload_on: "yellow_led_on"
+  payload_off: "yellow_led_off"
+  optimistic: false
 
 
 - platform: template
@@ -49,35 +46,33 @@
       turn_off:
         service: shell_command.dafang_kitchen_pause
 
-- platform: template
-  switches:
-    dafang_kitchen_rtsp_status:
-      friendly_name: Dafang Kitchen RTSP Status
-      value_template: "{{ is_state('sensor.dafang_kitchen_rtsp_status_scrape', '\non\n') }}"
-      turn_on:
-        service: shell_command.dafang_kitchen_start_rtsp
-      turn_off:
-        service: shell_command.dafang_kitchen_stop_rtsp
+- platform: mqtt
+  name: "DaFang Kitchen RTSP"
+  state_topic: "Kitchen/DaFang/status"
+  value_template: '{{ value_json["RTSP-Server"] }}'
+  command_topic: "Kitchen/DaFang/set"
+  payload_on: "h264_noseg_start"
+  payload_off: "rtsp_stop"
+  optimistic: false
 
-- platform: template
-  switches:
-    dafang_kitchen_blue_led:
-      friendly_name: Dafang Kitchen Blue LED
-      value_template: "{{ is_state('sensor.dafang_kitchen_blue_led_status_scrape', '\n0\n') }}"
-      turn_on:
-        service: shell_command.dafang_kitchen_blue_led_on
-      turn_off:
-        service: shell_command.dafang_kitchen_blue_led_off
+- platform: mqtt
+  name: "Dafang Kitchen Blue LED"
+  state_topic: "Kitchen/DaFang/status"
+  value_template: '{{ value_json.LEDs.Blue }}'
+  command_topic: "Kitchen/DaFang/set"
+  payload_on: "blue_led_on"
+  payload_off: "blue_led_off"
+  optimistic: false
 
-- platform: template
-  switches:
-    dafang_kitchen_yellow_led:
-      friendly_name: Dafang Kitchen Yellow LED
-      value_template: "{{ is_state('sensor.dafang_kitchen_yellow_led_status_scrape', '\n0\n') }}"
-      turn_on:
-        service: shell_command.dafang_kitchen_yellow_led_on
-      turn_off:
-        service: shell_command.dafang_kitchen_yellow_led_off
+- platform: mqtt
+  name: "Dafang Kitchen Yellow LED"
+  state_topic: "Kitchen/DaFang/status"
+  value_template: '{{ value_json.LEDs.Yellow }}'
+  command_topic: "Kitchen/DaFang/set"
+  payload_on: "yellow_led_on"
+  payload_off: "yellow_led_off"
+  optimistic: false
+
 
 
 - platform: template
@@ -89,27 +84,3 @@
         service: shell_command.cctv_garage_active
       turn_off:
         service: shell_command.cctv_garage_pause
-
-# - platform: mqtt
-  # name: "DaFang Kitchen RTSP Status"
-  # state_topic: "Kitchen/DaFang/status"
-  # command_topic: "Kitchen/DaFang/set"
-  # payload_on: "h264_noseg_start"
-  # payload_off: "rtsp_stop"
-  # value_template: '{% if value_json["RTSP-Server"] == "running" %} on {% else %} off {% endif %}'
-
-# - platform: mqtt
-  # name: "Dafang Kitchen Blue LED"
-  # state_topic: "Kitchen/DaFang/status"
-  # command_topic: "Kitchen/DaFang/set"
-  # payload_on: "blue_led_on"
-  # payload_off: "blue_led_off"
-  # value_template: '{{ value_json.LEDs.Blue }}'
-
-# - platform: mqtt
-  # name: "Dafang Kitchen Yellow LED"
-  # state_topic: "Kitchen/DaFang/status"
-  # command_topic: "Kitchen/DaFang/set"
-  # payload_on: "yellow_led_on"
-  # payload_off: "yellow_led_off"
-  # value_template: '{{ value_json.LEDs.Yellow }}'

@@ -5,40 +5,10 @@
   value_template: '{{ value.split("Detection status ")[1] }}'
 
 - platform: scrape
-  resource: http://192.168.0.32/cgi-bin/RTSP.cgi
-  name: dafang_living_room_rtsp_status_scrape
-  select: "body"
-
-- platform: scrape
-  resource: http://192.168.0.32/cgi-bin/blue.cgi
-  name: dafang_living_room_blue_led_status_scrape
-  select: "body"
-
-- platform: scrape
-  resource: http://192.168.0.32/cgi-bin/yellow.cgi
-  name: dafang_living_room_yellow_led_status_scrape
-  select: "body"
-
-- platform: scrape
   resource: http://192.168.0.24:8080/4/detection/status
   name: dafang_kitchen_status_scrape
   select: "body"
   value_template: '{{ value.split("Detection status ")[1] }}'
-
-- platform: scrape
-  resource: http://192.168.0.33/cgi-bin/RTSP.cgi
-  name: dafang_kitchen_rtsp_status_scrape
-  select: "body"
-
-- platform: scrape
-  resource: http://192.168.0.33/cgi-bin/blue.cgi
-  name: dafang_kitchen_blue_led_status_scrape
-  select: "body"
-
-- platform: scrape
-  resource: http://192.168.0.33/cgi-bin/yellow.cgi
-  name: dafang_kitchen_yellow_led_status_scrape
-  select: "body"
 
 - platform: scrape
   resource: http://192.168.0.24:8080/2/detection/status
