@@ -176,6 +176,14 @@
     - condition: or
       conditions:
       - condition: state
+        entity_id: binary_sensor.pir_living_room_front
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.pir_living_room_back
+        state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
       - condition: state

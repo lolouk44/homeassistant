@@ -102,13 +102,13 @@
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_3_on.attributes.last_triggered | default(0)) | int > 1 )}}'
   action:
-  - service: input_select.select_option
-    data_template:
+  - service: input_select.select_next
+    data:
       entity_id: input_select.mm_cam_feed
-      option: >
-        {% if states.input_select.mm_cam_feed.state =="front" %} living_room
-        {% elif states.input_select.mm_cam_feed.state =="living_room" %} front
-        {% endif %}
+      # option: >
+        # {% if states.input_select.mm_cam_feed.state =="front" %} living_room
+        # {% elif states.input_select.mm_cam_feed.state =="living_room" %} front
+        # {% endif %}
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_mini

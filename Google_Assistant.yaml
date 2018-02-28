@@ -40,4 +40,14 @@ entity_config:
   light.Living_Room_Main:
     name: "Living Room Lights"
 
+  light.conservatory:
+    name: "Conservatory Lights"
 
+
+  media_player.onkyo_txnr656:
+    name: "Onkyo"
+    type: switch
+
+  media_player.panasonic_viera_tv:
+    name: "TV"
+    type: switch
