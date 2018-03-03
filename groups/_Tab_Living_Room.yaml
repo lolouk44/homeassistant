@@ -4,6 +4,7 @@ Living_Room:
   entities:
     - device_tracker.zevsmpjl_lolo_iphone
     - device_tracker.zevsmpjl_div_iphone
+    - sensor.dark_sky_temperature
     - sensor.dark_sky_daily_low_temperature
     - sensor.dark_sky_daily_high_temperature
     - sensor.pws_precip_1d
@@ -15,3 +16,4 @@ Living_Room:
     - media_player.onkyo_txnr656
     - media_player.panasonic_viera_tv
     - group.Living_Room_Lights
+    - switch.skyhd

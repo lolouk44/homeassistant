@@ -43,6 +43,13 @@
       entity_id: group.pirs
       to: 'on'
   condition:
+    - condition: state
+      entity_id: binary_sensor.hallway_thermostat_has_leaf
+      state: 'on'
+    # - condition: time
+      # after: '10:00:00'
+    # - condition: time
+      # before: '20:00:00'
     - condition: or
       conditions:
       - condition: template
@@ -72,6 +79,13 @@
       zone: zone.home
       event: leave
   condition:
+    - condition: state
+      entity_id: binary_sensor.hallway_thermostat_has_leaf
+      state: 'off'
+    # - condition: time
+      # after: '07:00:00'
+    # - condition: time
+      # before: '16:00:00'
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'
     - condition: template

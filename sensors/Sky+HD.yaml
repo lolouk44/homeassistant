@@ -1,0 +1,4 @@
+- platform: command_line
+  name: sky_hd_status
+  command: curl -i -s -o /dev/null -w "%{http_code}"  'http://192.168.0.7:49159/photo-viewing/start?uri=http://192.168.0.24/null.jpg' && curl 'http://192.168.0.7:49159/photo-viewing/stop'
+  scan_interval: 15

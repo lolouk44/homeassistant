@@ -1,0 +1,12 @@
+- alias: Kettle Is Boiled
+  trigger:
+    - platform: state
+      entity_id: sensor.edimax1_watts
+  condition:
+  - condition: template
+    value_template: '{{ states.sensor.edimax1_watts.state | int < 1 }}'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Please note: The Kettle is boiled'

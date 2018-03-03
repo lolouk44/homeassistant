@@ -73,6 +73,8 @@ sensor.currentcost_power:
   icon: mdi:flash-circle
 sensor.currentcost_temperature:
   icon: mdi:thermometer
+sensor.edimax1_watts:
+  icon: mdi:flash-circle
 sensor.hass_db_size_formatted:
   icon: mdi:harddisk
 sensor.dark_sky_daily_low_temperature:
@@ -81,6 +83,8 @@ sensor.dark_sky_daily_high_temperature:
   friendly_name: 'Max'
 sensor.dark_sky_daily_max_precip_intensity:
   friendly_name: 'Rain'
+sensor.dark_sky_temperature:
+  friendly_name: 'Now'
 sensor.Dehumidifier_Power:
   icon: mdi:fan
 sensor.doorbell_last_rang:
@@ -114,11 +118,9 @@ sensor.SSL_Cert_Expiry:
   icon: mdi:calendar
 
 #Switches
-switch.dehumidifier:
-  icon: mdi:power-socket-uk
+switch.cctv_garage_status:
+  icon: mdi:run-fast
 switch.conservatory:
-  icon: mdi:power-socket-uk
-switch.Kitchen_TV:
   icon: mdi:power-socket-uk
 switch.dafang_living_room_status:
   icon: mdi:run-fast
@@ -140,8 +142,14 @@ switch.dafang_kitchen_yellow_led:
   icon: mdi:lightbulb
 switch.dafang_kitchen_left_right:
   icon: mdi:arrow-expand-horizontal
-switch.cctv_garage_status:
-  icon: mdi:run-fast
+switch.dehumidifier:
+  icon: mdi:power-socket-uk
+switch.Kitchen_TV:
+  icon: mdi:power-socket-uk
+switch.skyhd:
+  icon: mdi:television-box
+
+#Sensors
 sensor.pws_precip_1d:
   friendly_name: Rain (%)
 sensor.pws_precip_today_metric:

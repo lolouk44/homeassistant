@@ -4,6 +4,7 @@ Kitchen:
   entities:
     - device_tracker.zevsmpjl_lolo_iphone
     - device_tracker.zevsmpjl_div_iphone
+    - sensor.dark_sky_temperature
     - sensor.dark_sky_daily_low_temperature
     - sensor.dark_sky_daily_high_temperature
     - sensor.pws_precip_1d
@@ -14,3 +15,4 @@ Kitchen:
     - group.kitchen_lights
     - group.kitchen_tv
     - group.basil
+    - group.edimax1

@@ -22,3 +22,8 @@ scheduled_vacuuming:
   name: Scheduled Vacuuming
   initial: off
   icon: mdi:google-circles-group
+
+multimedia:
+  name: Multimedia
+  initial: off
+  icon: mdi:library-music

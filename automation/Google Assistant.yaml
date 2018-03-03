@@ -130,3 +130,67 @@
     data:
       media_content_id: http://192.168.0.24/audio1sec.mp3
       media_content_type: music
+
+
+- alias: Turn Multimedia Switch on if Sky, TV or Onkyo is on
+  trigger:
+    - platform: state
+      entity_id: media_player.panasonic_viera_tv
+      to: 'on'
+    - platform: state
+      entity_id: media_player.onkyo_txnr656
+      to: 'on'
+    - platform: state
+      entity_id: switch.skyhd
+      to: 'on'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.multimedia
+
+
+- alias: Turn Multimedia off if multimedia switch goes off
+  trigger:
+    - platform: state
+      entity_id: input_boolean.multimedia
+      to: 'off'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: media_player.living_room_google_mini
+        state: 'on'
+      - condition: state
+        entity_id: media_player.onkyo_txnr656
+        state: 'on'
+      - condition: state
+        entity_id: switch.skyhd
+        state: 'on'
+  action:
+  - service: script.turn_on
+    entity_id: script.multimedia_off
+
+
+- alias: Turn Multimedia off if all multimedia is off
+  trigger:
+    - platform: state
+      entity_id: media_player.panasonic_viera_tv
+      to: 'off'
+    - platform: state
+      entity_id: media_player.onkyo_txnr656
+      to: 'off'
+    - platform: state
+      entity_id: switch.skyhd
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: media_player.onkyo_txnr656
+      state: 'off'
+    - condition: state
+      entity_id: switch.skyhd
+      state: 'off'
+  action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.multimedia

@@ -1,0 +1,6 @@
+edimax1:
+  name: Kettle
+  control: hidden
+  entities:
+    - sensor.edimax1_watts
+    - switch.edimax1

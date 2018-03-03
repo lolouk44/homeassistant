@@ -1,4 +1,5 @@
 - alias: Start Vacuuming
+  initial_state: false
   trigger:
     - platform: time
       minutes: '/15'

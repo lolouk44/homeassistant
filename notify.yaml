@@ -1,4 +1,3 @@
-
 - name: gmaillolo
   platform: smtp
   server: smtp.gmail.com
@@ -9,6 +8,7 @@
   password: !secret email_password
   recipient: !secret email_to_lolo
   encryption: starttls
+
 - name: gmaildiv
   platform: smtp
   server: smtp.gmail.com
@@ -19,6 +19,7 @@
   password: !secret email_password
   recipient: !secret email_to_div
   encryption: starttls
+
 - name: pushbullet
   platform: pushbullet
   api_key: !secret pushbullet_api_key
