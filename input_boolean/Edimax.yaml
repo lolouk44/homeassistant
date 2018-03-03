@@ -1,0 +1,4 @@
+edimax_applicance:
+  name: Kettle
+  initial: off
+  icon: mdi:kettle

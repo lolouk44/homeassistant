@@ -5,8 +5,42 @@
   condition:
   - condition: template
     value_template: '{{ states.sensor.edimax1_watts.state | int < 1 }}'
+  - condition: state
+    entity_id: input_boolean.edimax_applicance
+    state: 'on'
   action:
     - service: tts.google_say
       entity_id: media_player.living_room_google_mini
       data:
         message: 'Please note: The Kettle is boiled'
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.edimax_applicance
+
+
+- alias: Kettle is on
+  trigger:
+    - platform: state
+      entity_id: sensor.edimax1_watts
+  condition:
+  - condition: template
+    value_template: '{{ states.sensor.edimax1_watts.state | int > 1 }}'
+  - condition: state
+    entity_id: input_boolean.edimax_applicance
+    state: 'off'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.edimax_applicance
+
+
+- alias: Turn Edimax On by PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.edimax1
+    state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.edimax1
