@@ -3,12 +3,15 @@ Vacuum:
   control: hidden
   entities:
     - vacuum.mi_robot_vacuum
+    - input_boolean.scheduled_vacuuming
     - sensor.xiaomi_status
     - sensor.xiaomi_battery_level
     - sensor.xiaomi_cleaned_area
     - sensor.xiaomi_cleaning_time
     - sensor.last_clean
-    - input_boolean.scheduled_vacuuming
+    - sensor.xiaomi_main_brush_left
+    - sensor.xiaomi_side_brush_left
+    - sensor.xiaomi_filter_left
 
 basil:
   name: Basil

@@ -24,7 +24,7 @@
 
     currentcost_lost:
       value_template: >
-        {% if (as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated | default(0)) | int < 500 ) %}off{% else %}on{% endif %}
+        {% if (as_timestamp(now()) - (as_timestamp(states.sensor.currentcost_power.last_updated) | int)) < 300 %}off{% else %}on{% endif %}
       friendly_name: CurrentCost Lost
 
     ram_too_high:

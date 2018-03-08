@@ -27,6 +27,27 @@
       unit_of_measurement: 'min'
 
 
+    xiaomi_main_brush_left:
+      value_template: >
+        {{ states.vacuum.mi_robot_vacuum.attributes.main_brush_left }}
+      friendly_name: Main Brush Left
+      unit_of_measurement: 'Hrs'
+
+
+    xiaomi_side_brush_left:
+      value_template: >
+        {{ states.vacuum.mi_robot_vacuum.attributes.side_brush_left }}
+      friendly_name: Side Brush Left
+      unit_of_measurement: 'Hrs'
+
+
+    xiaomi_filter_left:
+      value_template: >
+        {{ states.vacuum.mi_robot_vacuum.attributes.filter_left }}
+      friendly_name: Filter Left
+      unit_of_measurement: 'Hrs'
+
+
 
 - platform: command_line
   name: Last Clean
