@@ -203,17 +203,16 @@ root_disk_usage_too_high:
   notifiers:
     - pushbullet
 
-# basil_humidity_too_low:
-  # name: Basil Humidity below 15%
-  # entity_id: binary_sensor.basil_humidity_too_low
-  # can_acknowledge: True
-  # skip_first: True
-  # repeat:
-    # - 5
-    # - 240
-  # notifiers:
-    # - pushbullet
-    # - gmaillolo
+basil_humidity_too_low:
+  name: Basil Humidity below 15%
+  entity_id: binary_sensor.basil_humidity_too_low
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 240
+  notifiers:
+    - pushbullet
 
 basil_battery_too_low:
   name: Basil Battery below 10%
@@ -225,7 +224,6 @@ basil_battery_too_low:
     - 240
   notifiers:
     - pushbullet
-    - gmaillolo
 
 
 

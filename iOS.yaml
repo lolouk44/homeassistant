@@ -1,0 +1,11 @@
+push:
+  categories:
+    - name: Alert
+      identifier: 'alert'
+      actions:
+        - identifier: 'DISABLE_ALERT'
+          title: 'Disable Alert'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'

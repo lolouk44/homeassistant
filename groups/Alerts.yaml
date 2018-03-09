@@ -20,3 +20,4 @@ Alerts:
     - alert.cctv_dafang_kitchen_lost
     - alert.basil_humidity_too_low
     - alert.basil_battery_too_low
+    - counter.iosbadgecount
