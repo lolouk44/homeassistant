@@ -28,7 +28,7 @@ binary_sensor.tv_cabinet_led_strip:
 
 
 #Devices
-device_tracker.zevsmpjl_lolo_iphone:
+device_tracker.ha_lolos_iphone:
   friendly_name: 'Lolo'
   entity_picture: /local/Lolo_Avatar.jpg
 device_tracker.zevsmpjl_div_iphone:
@@ -98,12 +98,6 @@ sensor.hallway_thermostat_temperature:
   friendly_name: Hallway Temperature
 sensor.upstairs_humidity:
   icon: mdi:water-percent
-sensor.xiaomi_battery_level:
-  icon: mdi:battery-charging
-sensor.xiaomi_cleaned_area:
-  icon: mdi:chart-areaspline
-sensor.xiaomi_cleaning_time:
-  icon: mdi:timer
 sensor.last_clean:
   icon: mdi:calendar
 sensor.home_disk_usage:
@@ -116,6 +110,21 @@ sensor.ram_usage:
   icon: mdi:memory
 sensor.SSL_Cert_Expiry:
   icon: mdi:calendar
+sensor.xiaomi_battery_level:
+  icon: mdi:battery-charging
+sensor.xiaomi_cleaned_area:
+  icon: mdi:chart-areaspline
+sensor.xiaomi_cleaning_time:
+  icon: mdi:timer
+sensor.xiaomi_main_brush_left:
+  icon: mdi:settings-box
+sensor.xiaomi_side_brush_left:
+  icon: mdi:fan
+sensor.xiaomi_filter_left:
+  icon: mdi:image-filter-tilt-shift
+sensor.xiaomi_status:
+  icon: mdi:checkbox-marked-circle-outline
+
 
 #Switches
 switch.cctv_garage_status:

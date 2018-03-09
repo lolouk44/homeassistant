@@ -20,7 +20,7 @@
 - alias: Mute Kello Alarms auto
   trigger:
     - platform: state
-      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      entity_id: device_tracker.ha_lolos_iphone
       from: 'home'
     - platform: state
       entity_id: input_boolean.holidays
@@ -59,7 +59,7 @@
 - alias: Unmute Kello Alarms auto
   trigger:
     - platform: state
-      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      entity_id: device_tracker.ha_lolos_iphone
       to: 'home'
     - platform: state
       entity_id: input_boolean.holidays

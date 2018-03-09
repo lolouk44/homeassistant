@@ -6,7 +6,5 @@
   max_gps_accuracy: 200
   waypoints: True
   waypoint_whitelist:
-    - Lolo_iPhone
-    - Div_iPhone
-    - iPad
+    - ha
 

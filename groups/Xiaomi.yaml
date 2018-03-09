@@ -1,5 +1,5 @@
 Vacuum:
-  name: Vacuum
+  name: Xiaomi Vacuum
   control: hidden
   entities:
     - vacuum.mi_robot_vacuum

@@ -73,12 +73,12 @@
       zone: zone.home
       event: leave
     - platform: zone
-      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      entity_id: device_tracker.ha_lolos_iphone
       zone: zone.home
       event: leave
   condition:
     - condition: template
-      value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state != "home"}}'
+      value_template: '{{ states.device_tracker.ha_lolos_iphone.state != "home"}}'
     - condition: template
       value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
     - condition: state

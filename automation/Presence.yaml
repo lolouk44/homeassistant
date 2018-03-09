@@ -1,7 +1,7 @@
 - alias: Tell Div Lolo left work
   trigger:
     platform: zone
-    entity_id: device_tracker.zevsmpjl_lolo_iphone
+    entity_id: device_tracker.ha_lolos_iphone
     zone: zone.verint
     event: leave
   condition:
@@ -17,7 +17,7 @@
 - alias: Tell Div Lolo reached work
   trigger:
     platform: zone
-    entity_id: device_tracker.zevsmpjl_lolo_iphone
+    entity_id: device_tracker.ha_lolos_iphone
     zone: zone.verint
     event: enter
   condition:
@@ -55,12 +55,12 @@
       zone: zone.home
       event: leave
     - platform: zone
-      entity_id: device_tracker.zevsmpjl_lolo_iphone
+      entity_id: device_tracker.ha_lolos_iphone
       zone: zone.home
       event: leave
   condition:
     - condition: template
-      value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state != "home"}}'
+      value_template: '{{ states.device_tracker.ha_lolos_iphone.state != "home"}}'
     - condition: template
       value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
   action:
@@ -91,7 +91,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now().strftime("%Y-%m-%d") + " 08:30")  - states.sensor.home_to_verint.attributes.duration.split(" ")[0] | int *60 )  <=  (as_timestamp(now())) }}'
     - condition: template
-      value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state == "home"}}'
+      value_template: '{{ states.device_tracker.ha_lolos_iphone.state == "home"}}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.tell_lolo_to_leave_for_work.attributes.last_triggered | default(0)) | int > 3600)}}'
   action:
@@ -119,7 +119,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.tell_lolo_of_a_long_drive_home.attributes.last_triggered | default(0)) | int > 3600)}}'
     - condition: template
-      value_template: '{{ states.device_tracker.zevsmpjl_lolo_iphone.state == "verint"}}'
+      value_template: '{{ states.device_tracker.ha_lolos_iphone.state == "verint"}}'
   action:
     - service: notify.gmaillolo
       data_template:

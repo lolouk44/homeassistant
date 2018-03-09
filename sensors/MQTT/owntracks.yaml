@@ -1,5 +1,5 @@
 - platform: mqtt
-  state_topic: "owntracks/zevsmpjl/Lolo_iPhone"
+  state_topic: "owntracks/ha/lolos_iphone"
   name: "Lolo iPhone"
   unit_of_measurement: "%"
   value_template: '{{ value_json.batt }}'
@@ -11,7 +11,7 @@
   value_template: '{{ value_json.batt }}'
 
 - platform: mqtt
-  state_topic: "owntracks/zevsmpjl/iPad"
+  state_topic: "owntracks/ha/iPad"
   name: "iPad"
   unit_of_measurement: "%"
   value_template: '{{ value_json.batt }}'
