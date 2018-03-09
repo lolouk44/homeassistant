@@ -164,3 +164,10 @@ counter:
     step: 1
     name: iOS Badge Count
     icon: mdi:numeric-1-box
+
+image_processing:
+ - platform: openalpr_local
+   region: eu
+   source:
+    - entity_id: camera.front
+    - entity_id: camera.fronthd
