@@ -19,20 +19,20 @@
 
 - platform: mqtt
   name: "Dafang Living Room Blue LED"
-  state_topic: "LivingRoom/DaFang/status"
-  value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
-  command_topic: "LivingRoom/DaFang/set"
-  payload_on: "blue_led_on"
-  payload_off: "blue_led_off"
+  state_topic: "LivingRoom/DaFang/Blue_LED"
+  # value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
+  command_topic: "LivingRoom/DaFang/Blue_LED/set"
+  payload_on: "on"
+  payload_off: "off"
   optimistic: false
 
 - platform: mqtt
   name: "Dafang Living Room Yellow LED"
-  state_topic: "LivingRoom/DaFang/status"
-  value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
-  command_topic: "LivingRoom/DaFang/set"
-  payload_on: "yellow_led_on"
-  payload_off: "yellow_led_off"
+  state_topic: "LivingRoom/DaFang/Yellow_LED"
+  # value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
+  command_topic: "LivingRoom/DaFang/Yellow_LED/set"
+  payload_on: "on"
+  payload_off: "off"
   optimistic: false
 
 - platform: mqtt
@@ -64,20 +64,20 @@
 
 - platform: mqtt
   name: "Dafang Kitchen Blue LED"
-  state_topic: "Kitchen/DaFang/status"
-  value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
-  command_topic: "Kitchen/DaFang/set"
-  payload_on: "blue_led_on"
-  payload_off: "blue_led_off"
+  state_topic: "Kitchen/DaFang/Blue_LED"
+  # value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
+  command_topic: "Kitchen/DaFang/Blue_LED/set"
+  payload_on: "on"
+  payload_off: "off"
   optimistic: false
 
 - platform: mqtt
   name: "Dafang Kitchen Yellow LED"
-  state_topic: "Kitchen/DaFang/status"
-  value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
-  command_topic: "Kitchen/DaFang/set"
-  payload_on: "yellow_led_on"
-  payload_off: "yellow_led_off"
+  state_topic: "Kitchen/DaFang/Yellow_LED"
+  # value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
+  command_topic: "Kitchen/DaFang/Yellow_LED/set"
+  payload_on: "on"
+  payload_off: "off"
   optimistic: false
 
 - platform: mqtt
