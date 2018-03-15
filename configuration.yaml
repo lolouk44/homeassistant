@@ -172,9 +172,9 @@ counter:
     # - entity_id: camera.front
     # - entity_id: camera.fronthd
 
-image_processing:
- - platform: openalpr_cloud
-   api_key: 'sk_1d9c94894251e6a2c2d79c09'
-   region: gb
-   source:
-    - entity_id: camera.fronthd
+# image_processing:
+ # - platform: openalpr_cloud
+   # api_key: 'sk_1d9c94894251e6a2c2d79c09'
+   # region: gb
+   # source:
+    # - entity_id: camera.fronthd
