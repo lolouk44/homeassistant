@@ -24,7 +24,7 @@
 
 - platform: mqtt
   name: "RPi PIR Staircase"
-  state_topic: "RPi/PIRLivingStaircase"
+  state_topic: "RPi/PIRStaircase"
   payload_on: "ON"
   payload_off: "OFF"
 

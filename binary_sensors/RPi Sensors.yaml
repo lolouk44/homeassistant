@@ -1,48 +1,5 @@
 - platform: template
   sensors:
-    # pir_living_room_back:
-      # value_template: >
-        # {{ states.input_boolean.pir_living_room_back.state == 'on' or states.binary_sensor.pir_living_room_back_arest.state == 'on' }}
-      # friendly_name: PIR Living Room Back
-      # device_class: motion
-
-    # pir_living_room_front:
-      # value_template: >
-        # {{ states.input_boolean.pir_living_room_front.state == 'on' or states.binary_sensor.pir_living_room_front_arest.state == 'on' }}
-      # friendly_name: PIR Living Room Front
-      # device_class: motion
-
-    # pir_kitchen:
-      # value_template: >
-        # {{ states.input_boolean.pir_kitchen.state == 'on' or states.binary_sensor.pir_kitchen_arest.state == 'on' }}
-      # friendly_name: PIR Kitchen
-      # device_class: motion
-
-    # pir_conservatory:
-      # value_template: >
-        # {{ states.input_boolean.pir_conservatory.state == 'on' or states.binary_sensor.pir_conservatory_arest.state == 'on' }}
-      # friendly_name: PIR Conservatory
-      # device_class: motion
-
-    # pir_staircase:
-      # value_template: >
-        # {{ states.input_boolean.pir_staircase.state == 'on' or states.binary_sensor.pir_staircase_arest.state == 'on' }}
-      # friendly_name: PIR Staircase
-      # device_class: motion
-
-    # photoresistor:
-      # value_template: >
-        # {{ states.input_boolean.photoresistor.state == 'on' or states.binary_sensor.photoresistor_arest.state == 'on' }}
-      # friendly_name: Photoresistor
-      # device_class: light
-
-    # door_lock:
-      # value_template: >
-        # {{ states.input_boolean.door_lock.state == 'on' or states.binary_sensor.door_lock_arest.state == 'on' }}
-      # friendly_name: Door Lock
-      # device_class: safety
-
-
     pir_living_room_back:
       value_template: >
         {{ states.binary_sensor.rpi_pir_living_room_back.state == 'on' or states.binary_sensor.pir_living_room_back_arest.state == 'on' }}
