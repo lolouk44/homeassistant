@@ -6,3 +6,6 @@ dafang_kitchen_pause: wget http://192.168.0.24:8080/4/detection/pause &>/dev/nul
 
 cctv_garage_active: wget http://192.168.0.24:8080/2/detection/start &>/dev/null
 cctv_garage_pause: wget http://192.168.0.24:8080/2/detection/pause &>/dev/null
+
+reboot_dafang_kitchen: wget http://192.168.0.33?action.cgi?cmd=reboot &>/dev/null
+reboot_dafang_livingroom: wget http://192.168.0.32?action.cgi?cmd=reboot &>/dev/null
