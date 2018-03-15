@@ -1,4 +1,5 @@
 - alias: Kettle Is Boiled
+  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.edimax1_watts
