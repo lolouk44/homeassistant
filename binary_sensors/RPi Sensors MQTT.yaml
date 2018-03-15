@@ -1,0 +1,42 @@
+- platform: mqtt
+  name: "RPi PIR Living Room Back"
+  state_topic: "RPi/PIRLivingRoomBack"
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: "RPi PIR Living Room Front"
+  state_topic: "RPi/PIRLivingRoomFront"
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: "RPi PIR Kitchen"
+  state_topic: "RPi/PIRKitchen"
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: "RPi PIR Conservatory"
+  state_topic: "RPi/PIRConservatory"
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: "RPi PIR Staircase"
+  state_topic: "RPi/PIRLivingStaircase"
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: "RPi PhotoResistor"
+  state_topic: "RPi/PhotoResistor"
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: "RPi Door Lock"
+  state_topic: "RPi/DoorLock"
+  payload_on: "ON"
+  payload_off: "OFF"
+
