@@ -2,7 +2,7 @@
   switches:
     skyhd:
       friendly_name: Sky+ HD
-      value_template: "{% if states.sensor.sky_hd_status.state == '200' -%}on{% else %}off{% endif %}"
+      value_template: "{{ states.binary_sensor.sky_hd_status.state }}"
       turn_on:
         service: shell_command.sky_hd_power
       turn_off:
