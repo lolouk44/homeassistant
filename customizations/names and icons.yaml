@@ -31,7 +31,7 @@ binary_sensor.tv_cabinet_led_strip:
 device_tracker.ha_lolos_iphone:
   friendly_name: 'Lolo'
   entity_picture: /local/Lolo_Avatar.jpg
-device_tracker.zevsmpjl_div_iphone:
+device_tracker.ha_div_iphone:
   friendly_name: 'Div'
   entity_picture: /local/Div_Avatar.jpg
 device_tracker.zevsmpjl_ipad:

@@ -5,7 +5,7 @@
   value_template: '{{ value_json.batt }}'
 
 - platform: mqtt
-  state_topic: "owntracks/zevsmpjl/Div_iPhone"
+  state_topic: "owntracks/ha/Div_iPhone"
   name: "Div"
   unit_of_measurement: "%"
   value_template: '{{ value_json.batt }}'

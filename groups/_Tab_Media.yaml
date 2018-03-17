@@ -3,7 +3,7 @@ Media:
   icon: mdi:library-music
   entities:
     - device_tracker.ha_lolos_iphone
-    - device_tracker.zevsmpjl_div_iphone
+    - device_tracker.ha_div_iphone
     - sensor.dark_sky_temperature
     - sensor.dark_sky_daily_low_temperature
     - sensor.dark_sky_daily_high_temperature

@@ -1,7 +1,7 @@
 - alias: Activate motion we leave home
   trigger:
     - platform: zone
-      entity_id: device_tracker.zevsmpjl_div_iphone
+      entity_id: device_tracker.ha_div_iphone
       zone: zone.home
       event: leave
     - platform: zone
@@ -12,7 +12,7 @@
     - condition: template
       value_template: '{{ states.device_tracker.ha_lolos_iphone.state != "home"}}'
     - condition: template
-      value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
+      value_template: '{{ states.device_tracker.ha_div_iphone.state != "home"}}'
   action:
   - service: switch.turn_on
     entity_id: switch.dafang_living_room_status
@@ -26,7 +26,7 @@
 - alias: Deactivate motion we reach home
   trigger:
     - platform: zone
-      entity_id: device_tracker.zevsmpjl_div_iphone
+      entity_id: device_tracker.ha_div_iphone
       zone: zone.home
       event: enter
     - platform: zone

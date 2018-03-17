@@ -33,7 +33,7 @@
 - alias: Tell Lolo Div left work
   trigger:
     platform: zone
-    entity_id: device_tracker.zevsmpjl_div_iphone
+    entity_id: device_tracker.ha_div_iphone
     zone: zone.cbc
     event: leave
   condition:
@@ -51,7 +51,7 @@
 - alias: Switch everything off when we leave home
   trigger:
     - platform: zone
-      entity_id: device_tracker.zevsmpjl_div_iphone
+      entity_id: device_tracker.ha_div_iphone
       zone: zone.home
       event: leave
     - platform: zone
@@ -62,7 +62,7 @@
     - condition: template
       value_template: '{{ states.device_tracker.ha_lolos_iphone.state != "home"}}'
     - condition: template
-      value_template: '{{ states.device_tracker.zevsmpjl_div_iphone.state != "home"}}'
+      value_template: '{{ states.device_tracker.ha_div_iphone.state != "home"}}'
   action:
   - service: media_player.turn_off
     entity_id: media_player.kitchen
