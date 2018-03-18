@@ -16,12 +16,12 @@
   action:
   - service: switch.turn_on
     entity_id: switch.dafang_living_room_status
-  - service: switch.turn_on
-    entity_id: switch.dafang_living_room_blue_led
+  # - service: switch.turn_on
+    # entity_id: switch.dafang_living_room_blue_led
   - service: switch.turn_on
     entity_id: switch.dafang_kitchen_status
-  - service: switch.turn_on
-    entity_id: switch.dafang_kitchen_blue_led
+  # - service: switch.turn_on
+    # entity_id: switch.dafang_kitchen_blue_led
 
 - alias: Deactivate motion we reach home
   trigger:
@@ -36,9 +36,36 @@
   action:
   - service: switch.turn_off
     entity_id: switch.dafang_living_room_status
-  - service: switch.turn_on
-    entity_id: switch.dafang_living_room_yellow_led
+  # - service: switch.turn_on
+    # entity_id: switch.dafang_living_room_yellow_led
   - service: switch.turn_off
     entity_id: switch.dafang_kitchen_status
+  # - service: switch.turn_on
+    # entity_id: switch.dafang_kitchen_yellow_led
+
+
+- alias: Set Dafang Blue LED On
+  trigger:
+    - platform: state
+      entity_id: switch.dafang_living_room_status
+      to: 'on'
+    - platform: state
+      entity_id: switch.dafang_kitchen_status
+      to: 'on'
+  action:
   - service: switch.turn_on
-    entity_id: switch.dafang_kitchen_yellow_led
+    data_template:
+      entity_id: '{{ trigger.entity_id | replace("status","blue_led") }}'
+
+- alias: Set Dafang Yellow LED On
+  trigger:
+    - platform: state
+      entity_id: switch.dafang_living_room_status
+      to: 'off'
+    - platform: state
+      entity_id: switch.dafang_kitchen_status
+      to: 'off'
+  action:
+  - service: switch.turn_on
+    data_template:
+      entity_id: '{{ trigger.entity_id | replace("status","yellow_led") }}'
