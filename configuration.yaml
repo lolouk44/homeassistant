@@ -78,7 +78,7 @@ camera: !include cameras.yaml
 device_tracker: !include device_tracker.yaml
 google_assistant: !include Google_Assistant.yaml
 group: !include_dir_merge_named groups
-#history_graph: !include_dir_merge_named history_graph
+# history_graph: !include_dir_merge_named history_graph
 input_datetime: !include_dir_merge_named input_datetime
 input_select: !include_dir_merge_named input_select
 input_number: !include_dir_merge_named input_number
@@ -87,7 +87,7 @@ input_boolean: !include_dir_merge_named input_boolean
 ios: !include iOS.yaml
 light: !include_dir_merge_list lights
 notify: !include notify.yaml
-rest_command: !include_dir_merge_named rest
+# rest_command: !include_dir_merge_named rest
 scene: !include_dir_merge_named scenes
 script: !include_dir_merge_named scripts
 shell_command: !include_dir_merge_named shell_commands
