@@ -6,6 +6,14 @@
     - platform: state
       entity_id: group.pirs
       to: 'on'
+    - platform: zone
+      entity_id: device_tracker.ha_div_iphone
+      zone: zone.home
+      event: enter
+    - platform: zone
+      entity_id: device_tracker.ha_lolos_iphone
+      zone: zone.home
+      event: enter
   condition:
     - condition: state
       entity_id: binary_sensor.hallway_thermostat_has_leaf

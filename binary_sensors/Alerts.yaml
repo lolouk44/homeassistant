@@ -2,7 +2,7 @@
   sensors:
     basil_humidity_too_low:
       value_template: >
-        {{ (((states.sensor.basil_moisture.state )| default(100)) | int < 15) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)}}
+        {{ (((states.sensor.basil_moisture.state )| default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)}}
       friendly_name: Basil Humidity below 15%
 
     basil_battery_too_low:

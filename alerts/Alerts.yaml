@@ -204,7 +204,7 @@ root_disk_usage_too_high:
     - pushbullet
 
 basil_humidity_too_low:
-  name: Basil Humidity below 15%
+  name: Basil Humidity below 10%
   entity_id: binary_sensor.basil_humidity_too_low
   can_acknowledge: True
   skip_first: True

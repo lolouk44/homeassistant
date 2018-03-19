@@ -28,28 +28,28 @@
   action:
   - service: switch.turn_off
     entity_id: switch.dafang_living_room_status
-  - service: switch.turn_on
-    entity_id: switch.dafang_living_room_yellow_led
+  # - service: switch.turn_on
+    # entity_id: switch.dafang_living_room_yellow_led
   - service: switch.turn_off
     entity_id: switch.dafang_kitchen_status
-  - service: switch.turn_on
-    entity_id: switch.dafang_kitchen_yellow_led
+  # - service: switch.turn_on
+    # entity_id: switch.dafang_kitchen_yellow_led
 
 
-- alias: HASS Start PlexDNS
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-  - service: shell_command.plexdns
+# - alias: HASS Start PlexDNS
+  # trigger:
+    # - platform: homeassistant
+      # event: start
+  # action:
+  # - service: shell_command.plexdns
 
 
-- alias: HASS Start CurrentCost
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-  - service: shell_command.getcurrentcost
+# - alias: HASS Start CurrentCost
+  # trigger:
+    # - platform: homeassistant
+      # event: start
+  # action:
+  # - service: shell_command.getcurrentcost
 
 - alias: HASS Stop Sound
   trigger:
