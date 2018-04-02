@@ -21,3 +21,11 @@
   name: 'Div'
   still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.ha_div_iphone.attributes.latitude }},{{ states.device_tracker.ha_div_iphone.attributes.longitude }}&zoom=15&size=500x500&maptype=roadmap&markers=color:red%7Clabel:D%7C{{ states.device_tracker.ha_div_iphone.attributes.latitude }},{{ states.device_tracker.ha_div_iphone.attributes.longitude }}&markers=color:blue%7Clabel:L%7C{{ states.device_tracker.ha_lolos_iphone.attributes.latitude }},{{ states.device_tracker.ha_lolos_iphone.attributes.longitude }}
   limit_refetch_to_url_change: true
+- platform: generic
+  name: YrForecastCrawley
+  still_image_url: https://www.yr.no/place/United_Kingdom/England/Maidenbower/meteogram.svg
+  content_type: 'image/svg+xml'
+- platform: generic
+  name: YrForecastWeybridge
+  still_image_url: https://www.yr.no/place/United_Kingdom/England/Weybridge/meteogram.svg
+  content_type: 'image/svg+xml'
