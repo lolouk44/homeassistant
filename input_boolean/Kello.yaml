@@ -1,4 +1,4 @@
-kello_mute_alarns:
+kello_mute_alarms:
   name: Mute Alarms
   initial: off
   icon: mdi:alarm

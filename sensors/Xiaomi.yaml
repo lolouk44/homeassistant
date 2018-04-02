@@ -49,10 +49,14 @@
 
 
 
-- platform: command_line
-  name: Last Clean
-  command: "/home/cctv/.homeassistant/shell_scripts/xiaomi_last_clean.py"
+# - platform: command_line
+  # name: Last Clean
+  # command: "/home/cctv/.homeassistant/shell_scripts/xiaomi_last_clean.py"
 
+
+- platform: mqtt
+  state_topic: "Sensors/XiaomiLastClean"
+  name: "Last Clean"
 
 
 - platform: miflora

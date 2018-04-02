@@ -18,42 +18,11 @@
       fire_event: true
 
 
-- platform: command_line
-  name: Doorbell Last Rang
-  command: "/home/cctv/.homeassistant/shell_scripts/doorbell_last_fired.py"
+# - platform: command_line
+  # name: Doorbell Last Rang
+  # command: "/home/cctv/.homeassistant/shell_scripts/doorbell_last_fired.py"
 
 
-
-# 0A520775420E00B73D0169:
-# name: Doorbell2
-# 0716009700b70570:
-# name: Doorbell3
-#0716000200b70570
-#0716001f00b70560
-# from Domotiga: 0716000000b70560
-
-#0A 14 00 08 01 01 01 02 00 00 Kitchen Door, add 70 at the end?
-#0A 14 00 0B 01 01 01 01 00 00 Kitchen Window
-#0A 14 00 0D 01 01 03 02 00 00 Landing
-#0A 14 00 11 01 01 03 01 00 00 Halway
-#0A 14 00 17 01 01 02 02 00 00 Living Room Main
-#0A 14 00 1B 01 01 02 01 00 00 Living Room Wall
-
-#0A 14 00 04 F4 FF 62 01 00 00 70 Socket 1 On
-#0A 14 00 12 F4 FF 62 01 00 00 70 Socket 1 Off
-#0A 14 00 17 F4 FF 62 02 01 00 70 Socket 2 On
-#0A 14 00 19 F4 FF 62 02 00 00 70 Socket 2 Off
-#0A 14 00 1B F4 FF 62 03 01 00 70 Socket 3 On
-#0A 14 00 20 F4 FF 62 03 00 00 70 Socket 3 Off
-
-#0A140023010104030100 HomeEasy Socket 3
-
-#0A140002F4FF620101
-#00F4FF6201010070
-#0B 11 01 40 00 00 00 01 02 00 00
-
-#0B 11 00 2B 00 01 8F 3C 0A 01 0F 60 Mailbox
-#0B 11 00 30 00 01 B0 24 0A 00 00 50 Conservatory Window
-
-#0A14000801010102000070
-#0a140007f2fb1d01000070
+- platform: mqtt
+  state_topic: "Sensors/DoorBellLastFired"
+  name: "Doorbell Last Rang"

@@ -88,6 +88,7 @@
 
 
 - alias: 'Auto Renew SSL Cert'
+  initial_state: false
   trigger:
     platform: template
     value_template: '{{ states.sensor.ssl_cert_expiry.state | int < 29 }}'
@@ -101,7 +102,7 @@
   action:
     service: notify.gmaillolo
     data:
-      message: 'Warning - SSL certificate expires in 21 days and has not been automatically renewed'
+      message: 'Warning - SSL certificate expires in <21 days and has not been automatically renewed'
 
 
 

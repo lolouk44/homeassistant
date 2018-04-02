@@ -2,12 +2,12 @@ holiday_start:
   name: Holiday Start
   has_date: true
   has_time: true
-  initial: '2017-10-12 04:00'
+  #initial: '2017-10-12 04:00'
 holiday_end:
   name: Holiday End
   has_date: true
   has_time: false
-  initial: '2017-10-15'
+  #initial: '2017-10-15'
 
 xmas_start:
   name: Xmas Start

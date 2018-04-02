@@ -27,12 +27,24 @@
     - platform: state
       entity_id: group.pirs
       to: 'on'
+    - platform: zone
+      entity_id: device_tracker.ha_div_iphone
+      zone: zone.home
+      event: enter
+    - platform: zone
+      entity_id: device_tracker.ha_lolos_iphone
+      zone: zone.home
+      event: enter
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'
     - condition: state
       entity_id: 'input_boolean.holidays'
       state: "on"
+    - condition: template
+      value_template: '{{ states.device_tracker.ha_lolos_iphone.state == "home"}}'
+    - condition: template
+      value_template: '{{ states.device_tracker.ha_div_iphone.state == "home"}}'
   action:
     - service: input_boolean.turn_on
       data:

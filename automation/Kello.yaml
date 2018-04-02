@@ -3,22 +3,35 @@
     - platform: state
       entity_id: input_number.volume_kello
   action:
-  - service: shell_command.kello_volume
+#  - service: shell_command.kello_volume
+  - service: mqtt.publish
+    data:
+      topic: "Kello/Volume"
+      payload_template: '{{ states.input_number.volume_kello.state | int(value,16) }}'
+      retain: false
+
+
+
+# - alias: Mute Kello Alarms
+  # trigger:
+    # - platform: state
+      # entity_id: input_boolean.kello_mute_alarms
+      # to: 'on'
+  # action:
+# - service: shell_command.kello_mute_alarms
+  # - service: mqtt.publish
+    # data:
+      # topic: "Kello/MuteAlarms"
+      # payload_template: '{{ states.input_boolean.kello_mute_alarms.state }}'
+      # retain: false
 
 
 
 - alias: Mute Kello Alarms
   trigger:
     - platform: state
-      entity_id: input_boolean.kello_mute_alarns
+      entity_id: input_boolean.kello_mute_alarms
       to: 'on'
-  action:
-  - service: shell_command.kello_mute_alarms
-
-
-
-- alias: Mute Kello Alarms auto
-  trigger:
     - platform: state
       entity_id: device_tracker.ha_lolos_iphone
       from: 'home'
@@ -26,21 +39,47 @@
       entity_id: input_boolean.holidays
       to: 'on'
   action:
-  - service: input_boolean.turn_on
-    data:
-      entity_id: input_boolean.kello_mute_alarns
-  - service: shell_command.kello_mute_alarms
+#  - service: shell_command.kello_mute_alarms
+    - service: mqtt.publish
+      data:
+        topic: "Kello/MuteAlarms"
+        payload_template: 'ON'
+        retain: false
+    - delay: '00:00:05'
+    - condition: state
+      entity_id: input_boolean.kello_mute_alarms
+      state: "off"
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kello_mute_alarms
 
 
 
 - alias: Unmute Kello Alarms
   trigger:
     - platform: state
-      entity_id: input_boolean.kello_mute_alarns
+      entity_id: input_boolean.kello_mute_alarms
+      to: 'off'
+    - platform: state
+      entity_id: device_tracker.ha_lolos_iphone
+      to: 'home'
+    - platform: state
+      entity_id: input_boolean.holidays
       to: 'off'
   action:
-  - service: shell_command.kello_unmute_alarms
-
+#  - service: shell_command.kello_unmute_alarms
+    - service: mqtt.publish
+      data:
+        topic: "Kello/MuteAlarms"
+        payload_template: 'OFF'
+        retain: false
+    - delay: '00:00:05'
+    - condition: state
+      entity_id: input_boolean.kello_mute_alarms
+      state: "on"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kello_mute_alarms
 
 # - alias: Unmute Kello Alarms Timed
   # trigger:
@@ -56,19 +95,24 @@
   # - service: shell_command.kello_unmute_alarms
 
 
-- alias: Unmute Kello Alarms auto
-  trigger:
-    - platform: state
-      entity_id: device_tracker.ha_lolos_iphone
-      to: 'home'
-    - platform: state
-      entity_id: input_boolean.holidays
-      to: 'off'
-  action:
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.kello_mute_alarns
-  - service: shell_command.kello_unmute_alarms
+# - alias: Unmute Kello Alarms auto
+  # trigger:
+    # - platform: state
+      # entity_id: device_tracker.ha_lolos_iphone
+      # to: 'home'
+    # - platform: state
+      # entity_id: input_boolean.holidays
+      # to: 'off'
+  # action:
+  # - service: input_boolean.turn_off
+    # data:
+      # entity_id: input_boolean.kello_mute_alarms
+# - service: shell_command.kello_unmute_alarms
+  # - service: mqtt.publish
+    # data:
+      # topic: "Kello/MuteAlarms"
+      # payload_template: '{{ states.input_boolean.kello_mute_alarms.state }}'
+      # retain: false
 
 
 - alias: Stop Radio on Kello
@@ -77,7 +121,11 @@
       entity_id: input_boolean.kello_play_stop
       to: 'off'
   action:
-  - service: shell_command.kello_stop_radio
+    - service: mqtt.publish
+      data:
+        topic: "Kello/PlayStatus"
+        payload_template: 'OFF'
+        retain: false
 
 
 
@@ -88,21 +136,34 @@
       to: 'on'
     - platform: state
       entity_id: input_select.kello_radio_station
+    - platform: state
+      entity_id: sensor.Kello_MQTT
+      to: 'play_greeting'
   action:
-  - service: shell_command.kello_volume
-  - service: shell_command.kello_play_radio
-    data_template:
-      station_url: >
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.kello_play_stop
+  - service: mqtt.publish
+    data:
+      topic: "Kello/PlayStatus"
+      payload_template: 'ON'
+      retain: False
+  - service: mqtt.publish
+    data:
+      topic: "Kello/Volume"
+      payload_template: '{{ states.input_number.volume_kello.state | int(value,16) }}'
+      retain: false
+  - service: mqtt.publish
+    data:
+      topic: "Kello/Radio"
+      payload_template: >
         {% if is_state("input_select.kello_radio_station", "RTL2") %} RTL2
         {% elif is_state("input_select.kello_radio_station", "Absolute Radio") %} AbsoluteRadio
         {% elif is_state("input_select.kello_radio_station", "Hit West") %} HitWest
         {% elif is_state("input_select.kello_radio_station", "Chill") %} Chill
         {% elif is_state("input_select.kello_radio_station", "Weather Forecast") %} WeatherForecast
         {% endif %}
-  - service: input_boolean.turn_on
-    data:
-      entity_id: input_boolean.kello_play_stop
-
+      retain: false
 
 
 - alias: Build Weather Greeting
@@ -135,13 +196,13 @@
 
 
 
-- alias: Play Weather Greeting
-  trigger:
-    - platform: state
-      entity_id: sensor.Kello_MQTT
-      to: 'play_greeting'
-  action:
-  - service: shell_command.weather_on_kello_play
+# - alias: Play Weather Greeting
+  # trigger:
+    # - platform: state
+      # entity_id: sensor.Kello_MQTT
+      # to: 'play_greeting'
+  # action:
+  # - service: shell_command.weather_on_kello_play
 
 
 

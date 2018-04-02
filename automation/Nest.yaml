@@ -19,7 +19,7 @@
       entity_id: binary_sensor.hallway_thermostat_has_leaf
       state: 'on'
     - condition: time
-      after: '10:00:00'
+      after: '08:00:00'
     - condition: time
       before: '20:00:00'
     - condition: or

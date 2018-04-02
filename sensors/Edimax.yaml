@@ -1,6 +1,6 @@
 - platform: template
   sensors:
     edimax1_watts:
-      value_template: '{{ (states.switch.edimax1.attributes["current_power_w"] | float * 1000000) | round(0)}}'
+      value_template: '{% if states.switch.edimax1.attributes["current_power_w"] is defined %}{{ (states.switch.edimax1.attributes["current_power_w"] | float * 1000000) | round(0)}}{% else %}-{% endif %}'
       unit_of_measurement: 'W'
       friendly_name: Edimax1 Watts

@@ -47,9 +47,13 @@
       entity_id: media_player.living_room_google_mini
       media_content_id: 'http://192.168.0.24/audio/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
-  - service: shell_command.doorbell_notification_email
   - delay: 00:00:10
   - service: media_player.volume_set
     data_template:
       entity_id: media_player.living_room_google_mini
       volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}' 
+  - service: mqtt.publish
+    data:
+      topic: "Sensors/DoorBellEmail"
+      payload_template: 'ON'
+      retain: false

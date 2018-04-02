@@ -64,6 +64,7 @@ logger:
     requests.packages.urllib3: critical
     miio.device: critical
     homeassistant.components.sensor.sky_hd_status: critical
+    homeassistant.components.sensor.template: critical
 
 #    homeassistant.components.rfxtrx: debug
 

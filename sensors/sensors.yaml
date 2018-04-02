@@ -55,11 +55,6 @@
 
 - platform: version
 
-# - platform: mold_indicator
-  # indoor_temp_sensor: sensor.upstairs_temperature
-  # indoor_humidity_sensor: sensor.upstairs_humidity
-  # outdoor_temp_sensor: sensor.outside_temperature
-  # calibration_factor: 2.0
 - platform: random
   name: bauble_random_effect
   minimum: 1
