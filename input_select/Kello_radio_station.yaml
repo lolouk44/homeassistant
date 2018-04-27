@@ -6,5 +6,5 @@ kello_radio_station:
     - Hit West
     - RTL2
     - Weather Forecast
-  initial: RTL2
+#  initial: RTL2
   icon: mdi:radio

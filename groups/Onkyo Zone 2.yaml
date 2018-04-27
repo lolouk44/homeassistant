@@ -1,0 +1,8 @@
+onkyo_zone_2:
+  name: Onkyo Zone 2
+  control: hidden
+  entities:
+    - switch.onkyo_zone2_power
+    - switch.onkyo_zone2_muting
+    - input_number.onkyo_zone2_volume
+    - input_select.onkyo_zone2_source

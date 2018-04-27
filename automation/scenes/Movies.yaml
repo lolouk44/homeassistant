@@ -28,3 +28,10 @@
         brightness: 255
         rgb_color: [255,0,0]
         transition: 1
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        effect: "solid"
+        brightness: 128
+        rgb_color: [255,0,0]
+

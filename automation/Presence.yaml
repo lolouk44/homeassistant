@@ -70,6 +70,10 @@
     entity_id: media_player.onkyo_txnr656
   - service: media_player.turn_off
     entity_id: media_player.bedroom
+  - service: media_player.turn_off
+    entity_id: media_player.house
+  - service: media_player.turn_off
+    entity_id: media_player.downstairs
   - service: light.turn_off
     data:
       entity_id: group.Interior_Lights

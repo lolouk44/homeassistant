@@ -9,5 +9,6 @@ google_assistant:
     - input_boolean.scheduled_vacuuming
     - input_boolean.rtl2_radio
     - input_boolean.chill_radio
+    - input_boolean.absolute_radio_radio
     - input_boolean.absolute_radio_cr_radio
     - input_boolean.multimedia

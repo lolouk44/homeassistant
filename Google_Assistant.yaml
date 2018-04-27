@@ -2,54 +2,53 @@ project_id: !secret GAproject_id
 client_id: !secret GAclient_id
 access_token: !secret GAaccess_token
 api_key: !secret GAHomeGraph_key
+# exposed_domains:
+  # - light
 expose_by_default: false
 entity_config:
 
   input_boolean.movies:
     name: "Movies"
-    type: switch
     room: 'Living Room'
     expose: true
 
   input_boolean.normal:
     name: "Normal"
-    type: switch
     room: 'Living Room'
     expose: true
 
   input_boolean.xmas:
     name: "Christmas"
-    type: switch
     room: 'Living Room'
     expose: true
 
   input_boolean.rtl2_radio:
     name: "RTL 2"
-    type: switch
     room: 'Living Room'
     expose: true
 
   input_boolean.chill_radio:
     name: "Chill"
-    type: switch
     room: 'Living Room'
     expose: true
 
   input_boolean.absolute_radio_cr_radio:
     name: "Absolute Radio Classic Rock"
-    type: switch
+    room: 'Living Room'
+    expose: true
+
+  input_boolean.absolute_radio_radio:
+    name: "Absolute Radio"
     room: 'Living Room'
     expose: true
 
   input_boolean.vacuum:
     name: "Vacuum"
-    type: switch
     room: 'Living Room'
     expose: true
 
   input_boolean.scheduled_vacuuming:
     name: "Scheduled vacuuming"
-    type: switch
     room: 'Living Room'
     expose: true
 
@@ -63,6 +62,11 @@ entity_config:
     room: 'Conservatory'
     expose: true
 
+  light.conservatory_led_strip:
+    name: "Conservatory LED Strip"
+    room: 'Conservatory'
+    expose: true
+
   group.kitchen_lights:
     name: "Kitchen Lights"
     room: 'Kitchen'
@@ -70,6 +74,6 @@ entity_config:
 
   input_boolean.multimedia:
     name: "Multimedia"
-    type: switch
     room: 'Living Room'
     expose: true
+  

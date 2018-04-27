@@ -23,6 +23,8 @@ recorder:
 # Enables the front end
 frontend: 
 
+enable_debug:
+
 config:
 
 http:
@@ -51,6 +53,9 @@ conversation:
 
 # Enables support for tracking state changes over time.
 history:
+  exclude:
+    domains:
+      - automation
 
 # View all events in a logbook
 logbook:
@@ -62,9 +67,9 @@ logger:
     homeassistant.components.http: warning
     homeassistant.components.camera: error
     requests.packages.urllib3: critical
+    requests.packages.urllib3.connectionpool: critical
     miio.device: critical
     homeassistant.components.sensor.sky_hd_status: critical
-    homeassistant.components.sensor.template: critical
 
 #    homeassistant.components.rfxtrx: debug
 
@@ -79,7 +84,7 @@ camera: !include cameras.yaml
 device_tracker: !include device_tracker.yaml
 google_assistant: !include Google_Assistant.yaml
 group: !include_dir_merge_named groups
-# history_graph: !include_dir_merge_named history_graph
+#history_graph: !include_dir_merge_named history_graph
 input_datetime: !include_dir_merge_named input_datetime
 input_select: !include_dir_merge_named input_select
 input_number: !include_dir_merge_named input_number
@@ -96,6 +101,17 @@ sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_list switches
 zone: !include zones.yaml
 
+# automation:
+# - alias: HASS Start Sound
+  # trigger:
+    # - platform: homeassistant
+      # event: start
+  # action:
+  # - service: media_player.play_media
+    # data:
+      # entity_id: media_player.living_room_google_mini
+      # media_content_id: 'http://192.168.0.24/audio/Click.mp3'
+      # media_content_type: 'audio/mp3'
 
 ifttt:
   key: !secret ifttt_key
@@ -165,17 +181,3 @@ counter:
     step: 1
     name: iOS Badge Count
     icon: mdi:numeric-1-box
-
-# image_processing:
- # - platform: openalpr_local
-   # region: gb
-   # source:
-    # - entity_id: camera.front
-    # - entity_id: camera.fronthd
-
-# image_processing:
- # - platform: openalpr_cloud
-   # api_key: 'sk_1d9c94894251e6a2c2d79c09'
-   # region: gb
-   # source:
-    # - entity_id: camera.fronthd

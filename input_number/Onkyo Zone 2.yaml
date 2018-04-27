@@ -1,0 +1,6 @@
+onkyo_zone2_volume:
+  name: Volume
+  icon: mdi:volume-high
+  min: 0
+  max: 100
+  step: 1

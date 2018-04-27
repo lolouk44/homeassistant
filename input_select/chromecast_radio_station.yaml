@@ -7,5 +7,5 @@ radio_station:
     - Hit West
     - RTL2
     - Custom Station
-  initial: RTL2
+#  initial: RTL2
   icon: mdi:radio

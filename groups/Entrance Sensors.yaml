@@ -2,5 +2,5 @@ entrance_sensors:
   name: Sensors
   entities:
     - binary_sensor.door_lock
-    - binary_sensor.mailbox
+    - binary_sensor.garage_back_door
     - sensor.doorbell_last_rang

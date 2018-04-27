@@ -1,0 +1,6 @@
+- platform: command_line
+  resource: http://192.168.0.24:8080/3/detection/status
+  name: onkyo_zone2_volume
+  command: "onkyo zone2.volume=query"
+  value_template: '{{ value.split("TX-NR656: volume = ")[1] }}'
+

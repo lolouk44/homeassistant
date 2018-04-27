@@ -19,6 +19,10 @@
   name: House Number LED Strip
 
 - platform: ping
+  host: 192.168.0.48
+  name: Conservatory LED Strip
+
+- platform: ping
   host: 192.168.0.17
   name: Kello
 

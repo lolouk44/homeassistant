@@ -2,4 +2,5 @@ conservatory_lights:
   name: Conservatory Lights
   entities:
     - light.conservatory
+    - light.conservatory_led_strip
     - light.red_light

@@ -1,4 +1,5 @@
 - alias: Mailbox Notification
+  initial_state: false
   trigger:
     - platform: state
       entity_id: binary_sensor.mailbox
@@ -37,7 +38,6 @@
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.doorbell_notification.attributes.last_triggered | default(0)) | int > 10 )}}'
   action:
-  - service: shell_command.sky_hd_pause
   - service: media_player.volume_set
     data_template:
       entity_id: media_player.living_room_google_mini

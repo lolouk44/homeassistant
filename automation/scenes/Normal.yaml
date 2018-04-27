@@ -17,12 +17,6 @@
     - service: light.turn_off
       data:
         entity_id: light.living_room_wall
-    - service: light.turn_on
-      data:
-        entity_id: light.TV_Cabinet_LED_Strip
-        brightness: 255
-        rgb_color: [0,255,0]
-        transition: 1
     - service: climate.set_away_mode
       data:
         entity_id: climate.hallway
@@ -57,3 +51,16 @@
         entity_id: light.living_room_wall
     - service: input_boolean.turn_on
       entity_id: input_boolean.normal
+    - service: light.turn_on
+      data:
+        entity_id: light.TV_Cabinet_LED_Strip
+        brightness: 255
+        rgb_color: [0,255,0]
+        transition: 1
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        effect: "solid"
+        brightness: 128
+        rgb_color: [255,199,145]
+

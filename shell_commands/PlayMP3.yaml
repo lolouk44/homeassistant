@@ -1,0 +1,1 @@
+play_mp3: mpg123 -q /home/cctv/.homeassistant/sounds/{{ File }}

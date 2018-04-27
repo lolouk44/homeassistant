@@ -90,6 +90,26 @@
       entity_id: input_boolean.chill_radio
 
 
+- alias: GA Play Absolute Radio
+  trigger:
+    - platform: state
+      entity_id: input_boolean.absolute_radio_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.radio_station
+        option: Absolute Radio
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio
+        option: House
+    - service: script.turn_on
+      entity_id: script.radio538
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.absolute_radio_radio
+
+
 - alias: GA Play Absolute CR Radio
   trigger:
     - platform: state

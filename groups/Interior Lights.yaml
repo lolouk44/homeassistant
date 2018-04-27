@@ -6,6 +6,8 @@ Interior_Lights:
     - group.kitchen_lights
     - light.Landing
     - light.conservatory
+    - light.conservatory_led_strip
+    - light.red_light
     - light.Hallway
     - light.TV_Cabinet_LED_Strip
     - light.Staircase_LED_Strip

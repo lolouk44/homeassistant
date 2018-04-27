@@ -12,3 +12,4 @@ serverdevices:
     - binary_sensor.House_Number_LED_Strip
     - binary_sensor.StairCase_LED_Strip
     - binary_sensor.TV_Cabinet_LED_Strip
+    - binary_sensor.Conservatory_LED_Strip

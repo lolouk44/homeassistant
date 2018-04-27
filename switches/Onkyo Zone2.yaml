@@ -1,0 +1,15 @@
+- platform: command_line
+  switches:
+    onkyo_zone2_power:
+      friendly_name: Power
+      command_on: "onkyo zone2.power=on"
+      command_off: "onkyo zone2.power=standby"
+      command_state: "onkyo zone2.power=query"
+      value_template: '{{ value == "TX-NR656: power = on" }}'
+
+    onkyo_zone2_muting:
+      friendly_name: Muting
+      command_on: "onkyo zone2.muting=on"
+      command_off: "onkyo zone2.muting=off"
+      command_state: "onkyo zone2.muting=query"
+      value_template: '{{ value == "TX-NR656: muting = on" }}'

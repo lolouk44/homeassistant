@@ -11,8 +11,6 @@ binary_sensor.hallway_heating:
   icon: mdi:power
 binary_sensor.kello:
   icon: mdi:access-point-network
-binary_sensor.mailbox:
-  icon: mdi:email
 binary_sensor.cctv_front_status:
   icon: mdi:cctv
 binary_sensor.cctv_garage_status:
@@ -25,18 +23,23 @@ binary_sensor.staircase_led_strip:
   icon: mdi:access-point-network
 binary_sensor.tv_cabinet_led_strip:
   icon: mdi:access-point-network
+binary_sensor.Conservatory_led_strip:
+  icon: mdi:access-point-network
 
 
 #Devices
-device_tracker.ha_lolos_iphone:
+device_tracker.lolos_iphone:
   friendly_name: 'Lolo'
   entity_picture: /local/Lolo_Avatar.jpg
-device_tracker.ha_div_iphone:
+device_tracker.ha_lolos_iphone:
+  friendly_name: 'Lolo OT'
+  entity_picture: /local/Lolo_Avatar.jpg
+device_tracker.div_iphone:
   friendly_name: 'Div'
   entity_picture: /local/Div_Avatar.jpg
-device_tracker.zevsmpjl_ipad:
-  friendly_name: 'iPad'
-  entity_picture: /local/iPad.png
+device_tracker.ha_div_iphone:
+  friendly_name: 'Div OT'
+  entity_picture: /local/Div_Avatar.jpg
 
 
 #Date Time
@@ -48,6 +51,15 @@ input_datetime.xmas_start:
   icon: mdi:calendar
 input_datetime.xmas_end:
   icon: mdi:calendar
+
+#Lights
+light.conservatory_led_strip:
+  icon: mdi:vector-polyline
+light.Staircase_LED_Strip:
+  icon: mdi:vector-polyline
+light.TV_Cabinet_LED_Strip:
+  icon: mdi:vector-polyline
+
 
 #Media_Players
 media_player.onkyo_txnr656_e0ee71:
@@ -102,6 +114,10 @@ sensor.last_clean:
   icon: mdi:calendar
 sensor.home_disk_usage:
   icon: mdi:harddisk
+sensor.pws_precip_1d:
+  friendly_name: Rain (%)
+sensor.pws_precip_today_metric:
+  friendly_name: Rain (mm)
 sensor.root_disk_usage:
   icon: mdi:harddisk
 sensor.zfs_disk_usage:
@@ -155,11 +171,11 @@ switch.dehumidifier:
   icon: mdi:power-socket-uk
 switch.Kitchen_TV:
   icon: mdi:power-socket-uk
+switch.onkyo_zone2_muting:
+  icon: mdi:volume-off
+switch.onkyo_zone2_power:
+  icon: mdi:power
 switch.skyhd:
   icon: mdi:television-box
 
-#Sensors
-sensor.pws_precip_1d:
-  friendly_name: Rain (%)
-sensor.pws_precip_today_metric:
-  friendly_name: Rain (mm)
+

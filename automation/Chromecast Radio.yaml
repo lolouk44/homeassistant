@@ -16,6 +16,7 @@
 
 
 - alias: Set Chromecast Radio Picture
+  initial_state: false
   trigger:
     - platform: event
       event_type: state_changed

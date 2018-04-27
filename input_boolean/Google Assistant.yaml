@@ -8,6 +8,11 @@ chill_radio:
   initial: off
   icon: mdi:radio
 
+absolute_radio_radio:
+  name: Absolute Radio
+  initial: off
+  icon: mdi:radio
+
 absolute_radio_cr_radio:
   name: Absolute Radio Classic Rock
   initial: off

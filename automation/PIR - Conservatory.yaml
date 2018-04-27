@@ -80,6 +80,12 @@
     data:
       entity_id: light.conservatory
       brightness: 255
+  - service: light.turn_on
+    data:
+      entity_id: light.conservatory_led_strip
+      effect: "solid"
+      brightness: 128
+      rgb_color: [255,199,145]
 
 
 - alias: Conservatory Lights Dimmed Off PIR
@@ -118,3 +124,54 @@
   - service: light.turn_off
     data:
       entity_id: light.conservatory
+  - delay: 00:00:05
+  - service: light.turn_off
+    data:
+      entity_id: light.conservatory_led_strip
+
+
+
+
+- alias: Conservatory LED Lights On PIR
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_conservatory
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_front
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_living_room_back
+      to: 'on'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.photoresistor
+      to: 'off'
+  condition:
+    # - condition: state
+      # entity_id: binary_sensor.pir_conservatory
+      # state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.conservatory_led_strip
+      effect: "solid"
+      brightness: 128
+      rgb_color: [255,199,145]
+
