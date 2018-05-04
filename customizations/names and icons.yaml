@@ -27,18 +27,12 @@ binary_sensor.Conservatory_led_strip:
   icon: mdi:access-point-network
 
 
-#Devices
-device_tracker.lolos_iphone:
+#Device_Trackers
+device_tracker.lolo:
   friendly_name: 'Lolo'
   entity_picture: /local/Lolo_Avatar.jpg
-device_tracker.ha_lolos_iphone:
-  friendly_name: 'Lolo OT'
-  entity_picture: /local/Lolo_Avatar.jpg
-device_tracker.div_iphone:
+device_tracker.div:
   friendly_name: 'Div'
-  entity_picture: /local/Div_Avatar.jpg
-device_tracker.ha_div_iphone:
-  friendly_name: 'Div OT'
   entity_picture: /local/Div_Avatar.jpg
 
 
@@ -120,6 +114,10 @@ sensor.pws_precip_today_metric:
   friendly_name: Rain (mm)
 sensor.root_disk_usage:
   icon: mdi:harddisk
+sensor.tracker_div:
+  entity_picture: /local/Div_Avatar.jpg
+sensor.tracker_lolo:
+  entity_picture: /local/Lolo_Avatar.jpg
 sensor.zfs_disk_usage:
   icon: mdi:harddisk
 sensor.ram_usage:

@@ -9,7 +9,7 @@
 - platform: google_travel_time
   name: Lolo to Home
   api_key: !secret google_travel_api_key
-  origin: device_tracker.ha_lolos_iphone
+  origin: device_tracker.lolo
   destination: RH10 7YS
   options:
     units: imperial

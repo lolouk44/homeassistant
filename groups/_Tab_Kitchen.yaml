@@ -2,8 +2,8 @@ Kitchen:
   view: yes
   icon: mdi:bowl
   entities:
-    - device_tracker.ha_lolos_iphone
-    - device_tracker.ha_div_iphone
+    - device_tracker.lolo
+    - device_tracker.div
     - sensor.dark_sky_temperature
     - sensor.dark_sky_daily_low_temperature
     - sensor.dark_sky_daily_high_temperature

@@ -1,11 +1,11 @@
 - alias: Holiday Start
   trigger:
     - platform: zone
-      entity_id: device_tracker.ha_div_iphone
+      entity_id: device_tracker.div
       zone: zone.home
       event: leave
     - platform: zone
-      entity_id: device_tracker.ha_lolos_iphone
+      entity_id: device_tracker.lolo
       zone: zone.home
       event: leave
   condition:
@@ -14,9 +14,9 @@
     - condition: template
       value_template: '{{ ((states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int) - as_timestamp(now()) > 0 }}'
     - condition: template
-      value_template: '{{ states.device_tracker.ha_lolos_iphone.state != "home"}}'
+      value_template: '{{ states.device_tracker.lolo.state != "home"}}'
     - condition: template
-      value_template: '{{ states.device_tracker.ha_div_iphone.state != "home"}}'
+      value_template: '{{ states.device_tracker.div.state != "home"}}'
   action:
     - service: input_boolean.turn_on
       data:
@@ -28,11 +28,11 @@
       entity_id: group.pirs
       to: 'on'
     - platform: zone
-      entity_id: device_tracker.ha_div_iphone
+      entity_id: device_tracker.div
       zone: zone.home
       event: enter
     - platform: zone
-      entity_id: device_tracker.ha_lolos_iphone
+      entity_id: device_tracker.lolo
       zone: zone.home
       event: enter
   condition:
@@ -42,9 +42,9 @@
       entity_id: 'input_boolean.holidays'
       state: "on"
     - condition: template
-      value_template: '{{ states.device_tracker.ha_lolos_iphone.state == "home"}}'
+      value_template: '{{ states.device_tracker.lolo.state == "home"}}'
     - condition: template
-      value_template: '{{ states.device_tracker.ha_div_iphone.state == "home"}}'
+      value_template: '{{ states.device_tracker.div.state == "home"}}'
   action:
     - service: input_boolean.turn_on
       data:

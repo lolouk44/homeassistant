@@ -1,8 +1,0 @@
-onkyo_zone2_source:
-  name: 'Source:'
-  options:
-    - strm-box
-    - tv
-    - net
-  initial: strm-box
-  icon: mdi:video-input-component

@@ -1,7 +1,7 @@
 - alias: Tell Div Lolo left work
   trigger:
     platform: zone
-    entity_id: device_tracker.ha_lolos_iphone
+    entity_id: device_tracker.lolo
     zone: zone.verint
     event: leave
   condition:
@@ -17,7 +17,7 @@
 - alias: Tell Div Lolo reached work
   trigger:
     platform: zone
-    entity_id: device_tracker.ha_lolos_iphone
+    entity_id: device_tracker.lolo
     zone: zone.verint
     event: enter
   condition:
@@ -33,7 +33,7 @@
 - alias: Tell Lolo Div left work
   trigger:
     platform: zone
-    entity_id: device_tracker.ha_div_iphone
+    entity_id: device_tracker.div
     zone: zone.cbc
     event: leave
   condition:
@@ -51,18 +51,18 @@
 - alias: Switch everything off when we leave home
   trigger:
     - platform: zone
-      entity_id: device_tracker.ha_div_iphone
+      entity_id: device_tracker.div
       zone: zone.home
       event: leave
     - platform: zone
-      entity_id: device_tracker.ha_lolos_iphone
+      entity_id: device_tracker.lolo
       zone: zone.home
       event: leave
   condition:
     - condition: template
-      value_template: '{{ states.device_tracker.ha_lolos_iphone.state != "home"}}'
+      value_template: '{{ states.device_tracker.lolo.state != "home"}}'
     - condition: template
-      value_template: '{{ states.device_tracker.ha_div_iphone.state != "home"}}'
+      value_template: '{{ states.device_tracker.div.state != "home"}}'
   action:
   - service: media_player.turn_off
     entity_id: media_player.kitchen
@@ -95,7 +95,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now().strftime("%Y-%m-%d") + " 08:30")  - states.sensor.home_to_verint.attributes.duration.split(" ")[0] | int *60 )  <=  (as_timestamp(now())) }}'
     - condition: template
-      value_template: '{{ states.device_tracker.ha_lolos_iphone.state == "home"}}'
+      value_template: '{{ states.device_tracker.lolo.state == "home"}}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.tell_lolo_to_leave_for_work.attributes.last_triggered | default(0)) | int > 3600)}}'
   action:
@@ -123,8 +123,34 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.tell_lolo_of_a_long_drive_home.attributes.last_triggered | default(0)) | int > 3600)}}'
     - condition: template
-      value_template: '{{ states.device_tracker.ha_lolos_iphone.state == "verint"}}'
+      value_template: '{{ states.device_tracker.lolo.state == "Verint"}}'
   action:
     - service: notify.gmaillolo
       data_template:
-        message: 'There is a long drive home...'
+        message: 'There is a long drive home ({{states.sensor.lolo_to_home.state |int(0)}} min)...'
+
+- alias: location_lolo
+  trigger:
+      - platform: state
+        entity_id: 'device_tracker.lolos_iphone'
+      - platform: state
+        entity_id: 'device_tracker.ha_lolos_iphone'
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: 'location/lolo'
+      payload_template: '{{ trigger.to_state.state }}'
+      retain: true
+
+- alias: location_div
+  trigger:
+      - platform: state
+        entity_id: 'device_tracker.div_iphone'
+      - platform: state
+        entity_id: 'device_tracker.ha_div_iphone'
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: 'location/div'
+      payload_template: '{{ trigger.to_state.state }}'
+      retain: true

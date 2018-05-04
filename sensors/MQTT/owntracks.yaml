@@ -15,3 +15,4 @@
   name: "iPad"
   unit_of_measurement: "%"
   value_template: '{{ value_json.batt }}'
+

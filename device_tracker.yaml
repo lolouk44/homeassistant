@@ -8,3 +8,8 @@
   waypoint_whitelist:
     - ha
 
+- platform: mqtt
+  devices:
+    lolo: 'location/lolo'
+    div: 'location/div'
+
