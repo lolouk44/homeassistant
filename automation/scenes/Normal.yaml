@@ -62,5 +62,5 @@
         entity_id: light.conservatory_led_strip
         effect: "solid"
         brightness: 128
-        rgb_color: [255,199,145]
+        rgb_color: [255,255,255]
 

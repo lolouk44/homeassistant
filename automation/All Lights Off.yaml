@@ -19,3 +19,10 @@
   - service: switch.turn_off
     data:
       entity_id: switch.kitchen_tv
+  - service: light.turn_off
+    data:
+      entity_id: light.conservatory_led_strip
+  - delay: 00:00:01
+  - service: light.turn_off
+    data:
+      entity_id: light.conservatory_led_strip
