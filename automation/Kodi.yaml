@@ -1,0 +1,27 @@
+- alias: Turn Movies on when Kodi is Playing
+  trigger:
+    platform: state
+    entity_id: media_player.kodi
+    to: 'playing'
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.photoresistor
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'on'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.movies
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.onkyo_txnr656
+        source: TV
