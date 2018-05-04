@@ -149,9 +149,6 @@
     - platform: state
       entity_id: sun.sun
       to: 'below_horizon'
-    - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
   condition:
     # - condition: state
       # entity_id: binary_sensor.pir_conservatory
@@ -167,11 +164,17 @@
       - condition: state
         entity_id: light.living_room_main
         state: 'on'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
   action:
   - service: light.turn_on
     data:
       entity_id: light.conservatory_led_strip
       effect: "solid"
       brightness: 128
-      rgb_color: [255,199,145]
+      rgb_color: [255,255,255]
 
