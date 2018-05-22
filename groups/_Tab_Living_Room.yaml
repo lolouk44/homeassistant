@@ -15,9 +15,6 @@ Living_Room:
     - group.Living_Room_Lights
     - group.tv_cabinet_led_strip
     - media_player.panasonic_viera_tv
-    - media_player.mibox3
-    - media_player.kodi
     - media_player.onkyo_txnr656
     - media_player.onkyo_txnr656_zone_2
-    # - group.onkyo_zone_2
     - switch.skyhd

@@ -21,7 +21,17 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.movies
+
+- alias: Set Onkyo to StreamBox When Kodi or MiBox CC is playing
+  trigger:
+    - platform: state
+      entity_id: media_player.kodi
+      to: 'playing'
+    - platform: state
+      entity_id: media_player.mibox3
+      to: 'playing'
+  action:
     - service: media_player.select_source
       data:
         entity_id: media_player.onkyo_txnr656
-        source: TV
+        source: 'Stream-Box'
