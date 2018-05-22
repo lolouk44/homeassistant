@@ -1,9 +1,8 @@
 - alias: Tell Div Lolo left work
   trigger:
-    platform: zone
+    platform: state
     entity_id: device_tracker.lolo
-    zone: zone.verint
-    event: leave
+    from: "Verint"
   condition:
   - condition: time
     after: '16:15:00'
@@ -11,15 +10,14 @@
     service: notify.gmaildiv
     data_template:
       message: 'Lolo left work. Estimated arrival time: {{(as_timestamp(now()) + (states.sensor.lolo_to_home.state | default(0) | int)*60) | timestamp_custom("%H:%M")}}'
-  # initial_state: false
+
 
 
 - alias: Tell Div Lolo reached work
   trigger:
-    platform: zone
+    platform: state
     entity_id: device_tracker.lolo
-    zone: zone.verint
-    event: enter
+    to: "Verint"
   condition:
   - condition: time
     before: '10:00:00'
@@ -27,15 +25,13 @@
     service: notify.gmaildiv
     data_template:
       message: 'Lolo reached work.'
-  # initial_state: false
 
 
 - alias: Tell Lolo Div left work
   trigger:
-    platform: zone
+    platform: state
     entity_id: device_tracker.div
-    zone: zone.cbc
-    event: leave
+    from: "CBC"
   condition:
   - condition: time
     after: '16:30:00'
@@ -50,14 +46,12 @@
 
 - alias: Switch everything off when we leave home
   trigger:
-    - platform: zone
+    - platform: state
       entity_id: device_tracker.div
-      zone: zone.home
-      event: leave
-    - platform: zone
+      from: "home"
+    - platform: state
       entity_id: device_tracker.lolo
-      zone: zone.home
-      event: leave
+      from: "home"
   condition:
     - condition: template
       value_template: '{{ states.device_tracker.lolo.state != "home"}}'
@@ -69,7 +63,7 @@
   - service: media_player.turn_off
     entity_id: media_player.onkyo_txnr656
   - service: media_player.turn_off
-    entity_id: media_player.bedroom
+    entity_id: media_player.conservatory
   - service: media_player.turn_off
     entity_id: media_player.house
   - service: media_player.turn_off
@@ -129,6 +123,9 @@
       data_template:
         message: 'There is a long drive home ({{states.sensor.lolo_to_home.state |int(0)}} min)...'
 
+
+
+
 - alias: location_lolo
   trigger:
       - platform: state
@@ -154,3 +151,8 @@
       topic: 'location/div'
       payload_template: '{{ trigger.to_state.state }}'
       retain: true
+
+# {%- for attribute in states.device_tracker.ha_lolos_iphone.attributes -%}
+# {%- if attribute == "latitude" or attribute == "longitude"  or attribute == "battery" -%}
+# "{{attribute}}":"{{state_attr('device_tracker.ha_lolos_iphone',attribute)}}", 
+# {%- endif %} {%- endfor %}"friendly_name":"Lolo", "entity_picture":"/local/Lolo_Avatar.jpg"

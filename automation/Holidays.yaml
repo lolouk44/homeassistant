@@ -1,13 +1,11 @@
 - alias: Holiday Start
   trigger:
-    - platform: zone
+    - platform: state
       entity_id: device_tracker.div
-      zone: zone.home
-      event: leave
-    - platform: zone
+      from: "home"
+    - platform: state
       entity_id: device_tracker.lolo
-      zone: zone.home
-      event: leave
+      from: "home"
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_start.attributes.timestamp | default(0)) | int > 0)}}'
@@ -27,14 +25,12 @@
     - platform: state
       entity_id: group.pirs
       to: 'on'
-    - platform: zone
+    - platform: state
       entity_id: device_tracker.div
-      zone: zone.home
-      event: enter
-    - platform: zone
+      to: "home"
+    - platform: state
       entity_id: device_tracker.lolo
-      zone: zone.home
-      event: enter
+      to: "home"
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'

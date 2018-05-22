@@ -60,14 +60,12 @@
       to: 'off'
       for:
         minutes: 2
-    - platform: zone
+    - platform: state
       entity_id: device_tracker.div
-      zone: zone.home
-      event: leave
-    - platform: zone
+      from: "home"
+    - platform: state
       entity_id: device_tracker.lolo
-      zone: zone.home
-      event: leave
+      from: "home"
   condition:
     - condition: or
       conditions:
