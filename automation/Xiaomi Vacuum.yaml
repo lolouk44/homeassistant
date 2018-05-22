@@ -1,0 +1,90 @@
+- alias: Start Vacuuming
+  initial_state: false
+  trigger:
+    - platform: time
+      minutes: '/15'
+      seconds: 0
+  condition:
+    - condition: time
+      after: '22:30'
+      weekday:
+        - tue
+        - thu
+        - sun
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered | default(0)) | int > 36000)}}'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.media_player.panasonic_viera_tv.attributes.last_updated | default(0)) | int > 120)}}'
+    - condition: state
+      entity_id: group.pirs
+      state: 'off'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.group.pirs.attributes.last_updated | default(0)) | int > 120)}}'
+    - condition: state
+      entity_id: 'input_boolean.normal'
+      state: "on"
+  action:
+    - service: vacuum.turn_on
+      data:
+        entity_id: vacuum.mi_robot_vacuum
+
+
+
+- alias: Started Vacuuming
+  trigger:
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'Cleaning'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Mi Robot Started Vacuuming...'
+    - service: notify.gmaildiv
+      data_template:
+        message: 'Mi Robot Started Vacuuming...'
+
+
+- alias: Finished Vacuuming
+  trigger:
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'Returning home'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          Mi Robot finished Vacuuming...
+          Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
+    - service: notify.gmaildiv
+      data_template:
+        message: |
+          Mi Robot finished Vacuuming...
+          Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.vacuum
+
+- alias: Scheduled Vacuuming
+  trigger:
+    - platform: state
+      entity_id: device_tracker.div
+      from: "home"
+    - platform: state
+      entity_id: device_tracker.lolo
+      from: "home"
+  condition:
+    - condition: template
+      value_template: '{{ states.device_tracker.lolo.state != "home"}}'
+    - condition: template
+      value_template: '{{ states.device_tracker.div.state != "home"}}'
+    - condition: state
+      entity_id: input_boolean.scheduled_vacuuming
+      state: "on"
+  action:
+    - service: vacuum.turn_on
+      data:
+        entity_id: vacuum.mi_robot_vacuum
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.scheduled_vacuuming
