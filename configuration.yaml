@@ -11,17 +11,30 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
   customize: !include_dir_merge_named customizations
+  customize_glob:
+    "sensor.*":
+      show_last_changed: true
+      custom_ui_state_card: state-card-custom-ui
+    "binary_sensor.*":
+      show_last_changed: true
+      custom_ui_state_card: state-card-custom-ui
 
 
 # Show links to resources in log and front end
 #introduction:
-
 recorder:
   db_url: !secret db_url
   purge_interval: 0
 
+customizer:
+  custom_ui: local
+
 # Enables the front end
 frontend: 
+  extra_html_url:
+    - /local/custom_ui/state-card-custom-ui.html
+  extra_html_url_es5:
+    - /local/custom_ui/state-card-custom-ui-es5.html
 
 enable_debug:
 
@@ -143,7 +156,7 @@ media_player:
   # Kitchen Cast
   - platform: cast
     host: 192.168.0.12
-  # Bedroom Cast
+  # Conservatory Cast
   - platform: cast
     host: 192.168.0.13
   # Mi Box
@@ -162,7 +175,7 @@ media_player:
       video2: 'Sky'
       network: 'ChromeCast'
       tv: 'TV'
-      strm-box: 'Z2_ChromeCast'
+      strm-box: 'Stream-Box'
     zone2: true
   - platform: panasonic_viera
     host: 192.168.0.27
