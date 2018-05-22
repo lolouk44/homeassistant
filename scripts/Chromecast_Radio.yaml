@@ -4,20 +4,18 @@ radio538:
     - service: media_player.volume_set
       data_template:
         entity_id: >
-          {% if is_state("input_select.chromecast_radio", "Bedroom") %} media_player.bedroom
+          {% if is_state("input_select.chromecast_radio", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
           {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo
-          {% elif is_state("input_select.chromecast_radio", "Downstairs") %} media_player.downstairs
           {% elif is_state("input_select.chromecast_radio", "House") %} media_player.house
           {% endif %}
         volume_level: '{{  states.input_number.volume_radio.state  }}' 
     -  service: media_player.play_media
        data_template:
          entity_id: >
-          {% if is_state("input_select.chromecast_radio", "Downstairs") %} media_player.downstairs
-          {% elif is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
+          {% if is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
           {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo
-          {% elif is_state("input_select.chromecast_radio", "Bedroom") %} media_player.bedroom
+          {% elif is_state("input_select.chromecast_radio", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio", "House") %} media_player.house
           {% endif %}
          media_content_id: >

@@ -1,9 +1,8 @@
 chromecast_radio:
   name: 'Select Speakers:'
   options:
-    - Downstairs
+    - Conservatory
     - House
-    - Bedroom
     - Kitchen
     - Onkyo
   initial: House
