@@ -153,6 +153,9 @@
     # - condition: state
       # entity_id: binary_sensor.pir_conservatory
       # state: 'on'
+    - condition: state
+      entity_id: group.pirs
+      state: 'on'
     - condition: or
       conditions:
       - condition: state

@@ -192,7 +192,7 @@
         {% if now().strftime("%a") == 'Mon' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Fri' %} Remember to empty the vacuum.{% endif %}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day != True %} Your next appointment is: {{states.calendar.birthdays__events.attributes.message}} at {{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[0]}} {%if (states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1] != '00'%}{{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day == True %} Today is : {{states.calendar.birthdays__events.attributes.message|replace("/","and")}}{%endif%}
-      cache: true
+      # cache: true
 
 
 

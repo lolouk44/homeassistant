@@ -23,6 +23,8 @@
       state: 'off'
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.switch.Dehumidifier.last_updated | default(0)) | int > 60 )}}'
+    - condition: template
+      value_template: '{{states.sensor.Dehumidifier_Power.state | int > 10 }}'
   action:
   - service: switch.turn_on
     data:

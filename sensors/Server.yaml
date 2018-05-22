@@ -41,3 +41,7 @@
 - platform: mqtt
   state_topic: 'Sensors/HASQL'
   name: 'Hass DB Size Formatted'
+
+- platform: cert_expiry
+  host: lolorpi.com
+  name: lolorpi.com site expiry
