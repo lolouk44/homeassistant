@@ -20,9 +20,13 @@
     - condition: state
       entity_id: binary_sensor.pir_kitchen
       state: 'on'
-    - condition: state
-      entity_id: light.kitchen_lights
-      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: group.kitchen_lights
+        state: 'off'
+      - condition: template
+        value_template: '{{ states.light.kitchen_window.attributes.brightness | int < 250 }}'
     - condition: or
       conditions:
       - condition: template

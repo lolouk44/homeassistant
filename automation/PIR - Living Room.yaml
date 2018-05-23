@@ -15,9 +15,13 @@
     - platform: state
       entity_id: sensor.basil_light_intensity
   condition:
-    - condition: state
-      entity_id: light.living_room_main
-      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: light.living_room_main
+        state: 'off'
+      - condition: template
+        value_template: '{{ states.light.living_room_main.attributes.brightness | int < 250 }}'
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.living_room_main_light_on_pir.attributes.last_triggered | default(0)) | int > 10 )}}'
     - condition: and
