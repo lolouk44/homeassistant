@@ -14,12 +14,19 @@
     - platform: state
       entity_id: binary_sensor.photoresistor
       to: 'off'
+    - platform: state
+      entity_id: sensor.basil_light_intensity
   condition:
     - condition: state
       entity_id: binary_sensor.pir_kitchen
       state: 'on'
+    - condition: state
+      entity_id: light.kitchen_lights
+      state: 'off'
     - condition: or
       conditions:
+      - condition: template
+        value_template: '{{ states.sensor.basil_light_intensity.state | int < 300 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'

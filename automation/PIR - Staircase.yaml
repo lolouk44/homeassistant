@@ -9,6 +9,8 @@
     - platform: state
       entity_id: binary_sensor.photoresistor
       to: 'off'
+    - platform: state
+      entity_id: sensor.basil_light_intensity
   condition:
     - condition: or
       conditions:
@@ -26,6 +28,8 @@
       before: '23:00'
     - condition: or
       conditions:
+      - condition: template
+        value_template: '{{ states.sensor.basil_light_intensity.state | int < 300 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'

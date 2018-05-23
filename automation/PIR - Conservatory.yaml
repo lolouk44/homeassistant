@@ -60,12 +60,16 @@
     - platform: state
       entity_id: binary_sensor.photoresistor
       to: 'off'
+    - platform: state
+      entity_id: sensor.basil_light_intensity
   condition:
     - condition: state
       entity_id: binary_sensor.pir_conservatory
       state: 'on'
     - condition: or
       conditions:
+      - condition: template
+        value_template: '{{ states.sensor.basil_light_intensity.state | int < 300 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
@@ -149,15 +153,22 @@
     - platform: state
       entity_id: sun.sun
       to: 'below_horizon'
+    - platform: state
+      entity_id: sensor.basil_light_intensity
   condition:
     # - condition: state
       # entity_id: binary_sensor.pir_conservatory
       # state: 'on'
     - condition: state
+      entity_id: light.conservatory_led_strip
+      state: 'off'
+    - condition: state
       entity_id: group.pirs
       state: 'on'
     - condition: or
       conditions:
+      - condition: template
+        value_template: '{{ states.sensor.basil_light_intensity.state | int < 300 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'

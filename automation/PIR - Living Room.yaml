@@ -12,7 +12,12 @@
     - platform: state
       entity_id: binary_sensor.photoresistor
       to: 'off'
+    - platform: state
+      entity_id: sensor.basil_light_intensity
   condition:
+    - condition: state
+      entity_id: light.living_room_main
+      state: 'off'
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.living_room_main_light_on_pir.attributes.last_triggered | default(0)) | int > 10 )}}'
     - condition: and
@@ -33,6 +38,8 @@
             state: 'on'
         - condition: or
           conditions:
+          - condition: template
+            value_template: '{{ states.sensor.basil_light_intensity.state | int < 300 }}'
           - condition: state
             entity_id: binary_sensor.photoresistor
             state: 'off'
