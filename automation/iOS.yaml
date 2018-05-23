@@ -1,75 +1,26 @@
 - alias: Notify iOS app
   trigger:
     - platform: state
-      entity_id: alert.basil_battery_too_low
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.basil_humidity_too_low
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.cctv_dafang_kitchen_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.cctv_dafang_living_room_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.cctv_front_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.cctv_garage_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.currentcost_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.dehumidifier_full
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.home_disk_usage_too_high
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.house_number_led_strip_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.outside_temp_sensor_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.ram_too_high
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.root_disk_usage_too_high
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.rpi_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.rpi_zero_w_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.staircase_led_strip_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.tv_cabinet_led_strip_lost
-      from: 'idle'
-      to: 'on'
-    - platform: state
-      entity_id: alert.upstairs_temp_sensor_lost
+      entity_id: 
+        - alert.basil_battery_too_low
+        - alert.basil_humidity_too_low
+        - alert.cctv_dafang_kitchen_lost
+        - alert.cctv_dafang_living_room_lost
+        - alert.cctv_front_lost
+        - alert.cctv_garage_lost
+        - alert.currentcost_lost
+        - alert.dehumidifier_full
+        - alert.home_disk_usage_too_high
+        - alert.house_number_led_strip_lost
+        - alert.outside_temp_sensor_lost
+        - alert.ram_too_high
+        - alert.ram_usage_lost
+        - alert.root_disk_usage_too_high
+        - alert.rpi_lost
+        - alert.rpi_zero_w_lost
+        - alert.staircase_led_strip_lost
+        - alert.tv_cabinet_led_strip_lost
+        - alert.upstairs_temp_sensor_lost
       from: 'idle'
       to: 'on'
   action:
@@ -133,6 +84,9 @@
       to: 'idle'
     - platform: state
       entity_id: alert.ram_too_high
+      to: 'idle'
+    - platform: state
+      entity_id: alert.alert_lost_ram_usage_at_300
       to: 'idle'
     - platform: state
       entity_id: alert.root_disk_usage_too_high
