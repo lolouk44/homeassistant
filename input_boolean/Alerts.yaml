@@ -1,0 +1,11 @@
+alert_lost_outside_temperature_at_3600:
+  initial: off
+
+alert_lost_upstairs_temperature_at_3600:
+  initial: off
+
+alert_lost_currentcost_power_at_300:
+  initial: off
+
+alert_lost_ram_usage_at_300:
+  initial: off

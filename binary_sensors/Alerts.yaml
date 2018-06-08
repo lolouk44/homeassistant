@@ -1,46 +1,46 @@
 - platform: template
   sensors:
-    basil_humidity_too_low:
+    alert_basil_humidity_too_low:
       value_template: >-
         {% if (((states.sensor.basil_moisture.state )| default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)%}on{% else %}off{%endif%}
       friendly_name: Basil Humidity below 15%
 
-    basil_battery_too_low:
+    alert_basil_battery_too_low:
       value_template: >-
         {% if (((states.sensor.basil_battery.state) | default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)%}on{% else %}off{%endif%}
       friendly_name: Basil Battery below 10%
 
-    outside_temp_sensor_lost:
-      value_template: >-
-        {% if (as_timestamp(now()) - as_timestamp(states.sensor.outside_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
-      friendly_name: Outside Temp Sensor Lost
+    # alert_outside_temp_sensor_lost:
+      # value_template: >-
+        # {% if (as_timestamp(now()) - as_timestamp(states.sensor.outside_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
+      # friendly_name: Outside Temp Sensor Lost
 
-    upstairs_temp_sensor_lost:
-      value_template: >-
-        {% if (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
-      friendly_name: Upstairs Temp Sensor Lost
+    # alert_upstairs_temp_sensor_lost:
+      # value_template: >-
+        # {% if (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
+      # friendly_name: Upstairs Temp Sensor Lost
 
-    currentcost_lost:
-      value_template: >-
-        {%- if (as_timestamp(now()) - (as_timestamp(states.sensor.currentcost_power.last_updated) | int)) < 300 -%}off{%- else -%}on{% endif %}
-      friendly_name: CurrentCost Lost
+    # alert_currentcost_lost:
+      # value_template: >-
+        # {%- if (as_timestamp(now()) - (as_timestamp(states.sensor.currentcost_power.last_updated) | int)) < 300 -%}off{%- else -%}on{% endif %}
+      # friendly_name: CurrentCost Lost
 
-    ram_too_high:
+    alert_ram_too_high:
       value_template: >-
         {% if states.sensor.ram_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: RAM Too High
 
-    ram_sensor_lost:
-      value_template: >-
-        {% if (as_timestamp(now()) - (as_timestamp(states.sensor.ram_usage.last_updated) | int)) > 300 %}on{% else %}off{%endif%}
-      friendly_name: RAM Sensor Lost
+    # alert_ram_sensor_lost:
+      # value_template: >-
+        # {% if (as_timestamp(now()) - (as_timestamp(states.sensor.ram_usage.last_updated) | int)) > 300 %}on{% else %}off{%endif%}
+      # friendly_name: RAM Sensor Lost
 
-    home_disk_usage_too_high:
+    alert_home_disk_usage_too_high:
       value_template: >-
         {% if states.sensor.home_disk_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: Home Disk Usage Too High
 
-    root_disk_usage_too_high:
+    alert_root_disk_usage_too_high:
       value_template: >-
         {% if states.sensor.root_disk_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: Root Disk Usage Too High

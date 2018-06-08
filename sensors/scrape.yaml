@@ -22,3 +22,15 @@
   select: ".current-version h1"
   value_template: '{{ value.split(":")[1] }}'
 
+- platform: scrape
+  resource: https://hasspodcast.io/feed/podcast
+  name: ha_podcast
+  select: 'enclosure:nth-of-type(1)'
+  attribute: url
+
+- platform: scrape
+  resource: https://iotpodcast.com/feed/
+  name: internet_of_things_podcast
+  select: 'enclosure:nth-of-type(1)'
+  attribute: url
+

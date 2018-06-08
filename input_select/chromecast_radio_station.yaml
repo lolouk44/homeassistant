@@ -5,6 +5,8 @@ radio_station:
     - Absolute Radio Classic Rock
     - Chill
     - Hit West
+    - HA Podcast
+    - IoT Podcast
     - RTL2
     - Custom Station
 #  initial: RTL2

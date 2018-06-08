@@ -1,7 +1,10 @@
 outside_temp_sensor_lost:
   name: Outside Temp Sensor Lost
-  entity_id: binary_sensor.Outside_Temp_Sensor_Lost
+  entity_id: input_boolean.alert_lost_outside_temperature_at_3600
+  skip_first: True
   repeat:
+    - 5
+    - 15
     - 30
     - 60
   notifiers:
@@ -9,8 +12,23 @@ outside_temp_sensor_lost:
 
 upstairs_temp_sensor_lost:
   name: Outside Temp Sensor Lost
-  entity_id: binary_sensor.upstairs_Temp_Sensor_Lost
+  entity_id: input_boolean.alert_lost_upstairs_temperature_at_3600
+  skip_first: True
   repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - pushbullet
+
+ram_usage_lost:
+  name: RAM Usage Sensor Lost
+  entity_id: input_boolean.alert_lost_ram_usage_at_300
+  skip_first: True
+  repeat:
+    - 5
+    - 15
     - 30
     - 60
   notifiers:
@@ -71,7 +89,7 @@ cctv_dafang_kitchen_lost:
 
 currentcost_lost:
   name: CurrentCost Lost
-  entity_id: binary_sensor.currentcost_lost
+  entity_id: input_boolean.alert_lost_currentcost_power_at_300
   can_acknowledge: True
   skip_first: True
   repeat:

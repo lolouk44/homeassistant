@@ -15,6 +15,7 @@ Alerts:
     - alert.staircase_led_strip_lost
     - alert.tv_cabinet_led_strip_lost
     - alert.ram_too_high
+    - alert.ram_usage_lost
     - alert.home_disk_usage_too_high
     - alert.root_disk_usage_too_high
     - alert.cctv_dafang_kitchen_lost

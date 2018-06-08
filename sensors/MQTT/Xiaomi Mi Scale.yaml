@@ -1,0 +1,27 @@
+- platform: mqtt
+  name: "Lolo Weight"
+  state_topic: "lolo/weight/kg"
+  value_template: "{{ value }}"
+  unit_of_measurement: "kg"
+  icon: mdi:weight-kilogram
+
+- platform: mqtt
+  name: "Lolo Impedance"
+  state_topic: "lolo/weight/Impedance"
+  value_template: "{{ value }}"
+  unit_of_measurement: "Ω"
+  icon: mdi:scale-bathroom
+
+- platform: mqtt
+  name: "Div Weight"
+  state_topic: "div/weight/kg"
+  value_template: "{{ value }}"
+  unit_of_measurement: "kg"
+  icon: mdi:weight-kilogram
+
+- platform: mqtt
+  name: "Div Impedance"
+  state_topic: "div/weight/Impedance"
+  value_template: "{{ value }}"
+  unit_of_measurement: "Ω"
+  icon: mdi:scale-bathroom

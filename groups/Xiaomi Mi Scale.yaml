@@ -1,0 +1,8 @@
+miscale:
+  name: Mi Scale
+  control: hidden
+  entities:
+    - sensor.lolo_weight
+    - sensor.lolo_impedance
+    - sensor.div_weight
+    - sensor.div_impedance

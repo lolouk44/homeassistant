@@ -55,45 +55,36 @@
 
 - platform: mqtt
   name: "DaFang Kitchen RTSP"
-  state_topic: "Kitchen/DaFang/status"
-  value_template: "{% if value_json[\"RTSP-Server\"] == 'running' %}h264_noseg_start{% else %}rtsp_stop{% endif %}"
-  command_topic: "Kitchen/DaFang/set"
-  payload_on: "h264_noseg_start"
-  payload_off: "rtsp_stop"
+  state_topic: "Kitchen/DaFang/rtsp_h264_server"
+  # value_template: "{% if value_json[\"RTSP-Server\"] == 'running' %}h264_noseg_start{% else %}rtsp_stop{% endif %}"
+  command_topic: "Kitchen/DaFang/rtsp_h264_server/set"
+  payload_on: "ON"
+  payload_off: "OFF"
   optimistic: false
 
 - platform: mqtt
   name: "Dafang Kitchen Blue LED"
-  state_topic: "Kitchen/DaFang/Blue_LED"
+  state_topic: "Kitchen/DaFang/leds/blue"
   # value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
-  command_topic: "Kitchen/DaFang/Blue_LED/set"
-  payload_on: "on"
-  payload_off: "off"
+  command_topic: "Kitchen/DaFang/leds/blue/set"
+  payload_on: "ON"
+  payload_off: "OFF"
   optimistic: false
 
 - platform: mqtt
   name: "Dafang Kitchen Yellow LED"
-  state_topic: "Kitchen/DaFang/Yellow_LED"
+  state_topic: "Kitchen/DaFang/leds/yellow"
   # value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
-  command_topic: "Kitchen/DaFang/Yellow_LED/set"
-  payload_on: "on"
-  payload_off: "off"
-  optimistic: false
-
-- platform: mqtt
-  name: "Dafang Kitchen Up"
-  state_topic: "Kitchen/DaFang/status"
-  value_template: "{{ value_json }}"
-  command_topic: "Kitchen/DaFang/set"
-  payload_on: "motor_up"
-  # payload_off: "yellow_led_off"
+  command_topic: "Kitchen/DaFang/leds/yellow/set"
+  payload_on: "ON"
+  payload_off: "OFF"
   optimistic: false
 
 - platform: mqtt
   name: "Dafang Kitchen Left Right"
-  command_topic: "Kitchen/DaFang/set"
-  payload_off: "motor_left"
-  payload_on: "motor_right"
+  command_topic: "Kitchen/DaFang/motors/horizontal/set"
+  payload_off: "left"
+  payload_on: "right"
   optimistic: false
 
 

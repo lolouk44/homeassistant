@@ -23,6 +23,8 @@ radio538:
           {% elif is_state("input_select.radio_station", "Absolute Radio") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3
           {% elif is_state("input_select.radio_station", "Absolute Radio Classic Rock") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3
           {% elif is_state("input_select.radio_station", "Hit West") %} http://broadcast.infomaniak.ch/hitwest-high.mp3
+          {% elif is_state("input_select.radio_station", "HA Podcast") %} {{states.sensor.ha_podcast.state}}
+          {% elif is_state("input_select.radio_station", "IoT Podcast") %} {{states.sensor.internet_of_things_podcast.state}}
           {% elif is_state("input_select.radio_station", "Chill") %} http://media-the.musicradio.com/ChillMP3
           {% elif is_state("input_select.radio_station", "Custom Station") %} {{states.input_text.custom_station.state}}
           {% endif %}

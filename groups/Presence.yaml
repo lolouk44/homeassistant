@@ -4,3 +4,10 @@ Presence:
   entities:
     - camera.lolo
     - camera.div
+
+# lolo_location:
+  # name: Presence
+  # control: hidden
+  # entities:
+    # - tracker.ha_lolos_iphone
+    # - tracker.lolos_iphone

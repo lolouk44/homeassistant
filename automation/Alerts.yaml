@@ -1,0 +1,98 @@
+- alias: Alert Lost Temperature Upstairs On
+  initial_state: true
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )}}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_humidity.last_updated | default(0)) | int > 3600 )}}'
+    - condition: state
+      entity_id: alert.upstairs_temp_sensor_lost
+      state: 'idle'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.upstairs_temp_sensor_lost
+
+- alias: Alert Lost Temperature Upstairs Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.upstairs_temperature
+    - platform: state
+      entity_id: sensor.upstairs_humidity
+  condition:
+    - condition: template
+      value_template: '{{states.alert.upstairs_temp_sensor_lost.state != "idle"}}'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.upstairs_temp_sensor_lost
+
+
+
+
+- alias: Alert Lost Temperature Outside On
+  initial_state: true
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.outside_temperature.last_updated | default(0)) | int > 3600 )}}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.outside_humidity.last_updated | default(0)) | int > 3600 )}}'
+    - condition: state
+      entity_id: alert.outside_temp_sensor_lost
+      state: 'idle'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.outside_temp_sensor_lost
+
+- alias: Alert Lost Temperature Outside Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.outside_temperature
+    - platform: state
+      entity_id: sensor.outside_humidity
+  condition:
+    - condition: template
+      value_template: '{{states.alert.outside_temp_sensor_lost.state != "idle"}}'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.outside_temp_sensor_lost
+
+
+
+
+- alias: Alert Lost CurrentCost On
+  initial_state: true
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.CurrentCost_Power.last_updated | default(0)) | int > 3600 )}}'
+    - condition: state
+      entity_id: alert.currentcost_lost
+      state: 'idle'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alert_lost_currentcost_power_at_300
+
+- alias: Alert Lost CurrentCost Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.CurrentCost_Power
+  condition:
+    - condition: template
+      value_template: '{{states.alert.currentcost_lost.state != "idle"}}'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alert_lost_currentcost_power_at_300
+

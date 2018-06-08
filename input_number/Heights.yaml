@@ -1,0 +1,8 @@
+lolo_height:
+  min: 0
+  max: 200
+  initial: 175
+div_height:
+  min: 0
+  max: 200
+  initial: 170
