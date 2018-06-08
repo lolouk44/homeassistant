@@ -1,3 +1,15 @@
+- alias: Set Alerts visibility
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: counter.iosbadgecount
+  action:
+    - service: group.set_visibility
+      entity_id: group.alerts
+      data_template:
+        visible: '{{states.counter.iosbadgecount.state | int > 0}}'
+
+
 - alias: Alert Lost Temperature Upstairs On
   initial_state: true
   trigger:
