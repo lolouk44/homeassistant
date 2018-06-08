@@ -15,7 +15,13 @@
       data_template:
         entity_id: media_player.living_room_google_mini
         message: |
-          Good morning.
+          Good morning. Today is 
+          {{as_timestamp(now()) | timestamp_custom('%A')}}, {% set day = (as_timestamp(now()) | timestamp_custom('%d')) |int-%}
+          {{day}}{%- if day >= 4 and day <= 20 or day >= 24 and day <= 30 -%}th
+          {%- elif day == 1 or day == 21 or day == 31-%}st
+          {%- elif day == 2 or day == 22 -%}nd
+          {%- elif day == 3 or day == 23 -%}rd
+          {%- endif %} {{as_timestamp(now()) | timestamp_custom('%B')}}
           It's currently {{states.sensor.dark_sky_summary.state}} and {{states.sensor.dark_sky_temperature.state|round}} degrees.
           Today will be {{states.sensor.dark_sky_hourly_summary.state|replace(".", "")}},
           highs: {{states.sensor.dark_sky_daily_high_temperature.state|round}},
@@ -25,9 +31,9 @@
           |replace("S","South ")
           |replace("E","East ")
           |replace("W","West ")
-          }} at {{states.sensor.pws_wind_1d_kph.state}} with gusts of {{states.sensor.pws_wind_gust_1d_kph.state}} km/h.
+          }} at {{states.sensor.pws_wind_1d_kph.state}} with gusts off {{states.sensor.pws_wind_gust_1d_kph.state}} km/h.
           Chance of rain: {{states.sensor.pws_precip_1d.state | int(0)}}%.
           {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states.sensor.home_to_verint.state}} minutes.{% endif %}
-          {% if now().strftime("%a") == 'Mon' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Fri' %} Remember to empty the vacuum.{% endif %}
+          {% if (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
           {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day != True %} Your next appointment is: {{states.calendar.birthdays__events.attributes.message}} at {{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[0]}} {%if (states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1] != '00'%}{{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
           {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day == True %} Today is : {{states.calendar.birthdays__events.attributes.message|replace("/","and")}}{%endif%}
