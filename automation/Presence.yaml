@@ -137,6 +137,7 @@
     data_template:
       topic: 'location/lolo'
       payload_template: '{{ trigger.to_state.state }}'
+      #payload_template: '{"lat":"{{- trigger.to_state.attributes.latitude -}}","lon":"{{- trigger.to_state.lolos_iphone.attributes.longitude -}}"}'
       retain: true
 
 - alias: location_div
