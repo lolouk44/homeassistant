@@ -5,6 +5,14 @@ binary_sensor.front_cctv_disk_error:
   icon: mdi:harddisk
 binary_sensor.front_cctv_disk_full:
   icon: mdi:harddisk
+binary_sensor.back_cctv_disk_error:
+  icon: mdi:harddisk
+binary_sensor.back_cctv_disk_full:
+  icon: mdi:harddisk
+binary_sensor.side_cctv_disk_error:
+  icon: mdi:harddisk
+binary_sensor.side_cctv_disk_full:
+  icon: mdi:harddisk
 binary_sensor.hallway_thermostat_has_leaf:
   icon: mdi:leaf
 binary_sensor.hallway_heating:
@@ -83,9 +91,9 @@ sensor.edimax1_watts:
   icon: mdi:flash-circle
 sensor.hass_db_size_formatted:
   icon: mdi:harddisk
-sensor.dark_sky_daily_low_temperature:
+sensor.dark_sky_overnight_low_temperature:
   friendly_name: 'Min'
-sensor.dark_sky_daily_high_temperature:
+sensor.dark_sky_daytime_high_temperature:
   friendly_name: 'Max'
 sensor.dark_sky_daily_max_precip_intensity:
   friendly_name: 'Rain'
@@ -95,7 +103,7 @@ sensor.Dehumidifier_Power:
   icon: mdi:fan
 sensor.doorbell_last_rang:
   icon: mdi:bell
-sensor.outside_humidity:
+sensor.loft_humidity:
   icon: mdi:water-percent
 sensor.hallway_thermostat_humidity:
   friendly_name: Hallway Humidity

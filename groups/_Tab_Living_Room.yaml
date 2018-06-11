@@ -5,8 +5,8 @@ Living_Room:
     - device_tracker.lolo
     - device_tracker.div
     - sensor.dark_sky_temperature
-    - sensor.dark_sky_daily_low_temperature
-    - sensor.dark_sky_daily_high_temperature
+    - sensor.dark_sky_overnight_low_temperature
+    - sensor.dark_sky_daytime_high_temperature
     - sensor.pws_precip_1d
     - sensor.home_to_verint
     - sensor.lolo_to_home
