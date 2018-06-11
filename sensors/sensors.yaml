@@ -22,8 +22,8 @@
     - minutely_summary
     - hourly_summary
     - daily_summary
-    - temperature_max
-    - temperature_min
+    - temperature_high
+    - temperature_low
     - temperature
     - precip_intensity_max
 
