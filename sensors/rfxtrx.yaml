@@ -7,7 +7,7 @@
        - Humidity
        - Temperature
     0A520700420E0104260269:
-      name: Outside
+      name: Loft
       data_type:
        - Humidity
        - Temperature

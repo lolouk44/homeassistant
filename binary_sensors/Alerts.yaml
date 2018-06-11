@@ -12,7 +12,7 @@
 
     # alert_outside_temp_sensor_lost:
       # value_template: >-
-        # {% if (as_timestamp(now()) - as_timestamp(states.sensor.outside_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
+        # {% if (as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
       # friendly_name: Outside Temp Sensor Lost
 
     # alert_upstairs_temp_sensor_lost:

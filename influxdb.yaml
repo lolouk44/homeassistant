@@ -11,8 +11,8 @@ influxdb:
        - sensor.edimax1_watts
        - sensor.hallway_thermostat_humidity
        - sensor.hallway_thermostat_temperature
-       - sensor.outside_humidity
-       - sensor.outside_temperature
+       - sensor.loft_humidity
+       - sensor.loft_temperature
        - sensor.upstairs_humidity
        - sensor.upstairs_temperature
        - sensor.zfs1_disk_temp

@@ -5,9 +5,9 @@ serverhygro:
     - sensor.basil_temperature
     - sensor.currentcost_temperature
     - sensor.hallway_thermostat_temperature
-    - sensor.outside_temperature
+    - sensor.loft_temperature
     - sensor.upstairs_temperature
     - sensor.basil_moisture
     - sensor.hallway_thermostat_humidity
-    - sensor.outside_humidity
+    - sensor.loft_humidity
     - sensor.upstairs_humidity

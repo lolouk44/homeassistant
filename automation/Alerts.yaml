@@ -53,9 +53,9 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.outside_temperature.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated | default(0)) | int > 3600 )}}'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.outside_humidity.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.loft_humidity.last_updated | default(0)) | int > 3600 )}}'
     - condition: state
       entity_id: alert.outside_temp_sensor_lost
       state: 'idle'
@@ -67,9 +67,9 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.outside_temperature
+      entity_id: sensor.loft_temperature
     - platform: state
-      entity_id: sensor.outside_humidity
+      entity_id: sensor.loft_humidity
   condition:
     - condition: template
       value_template: '{{states.alert.outside_temp_sensor_lost.state != "idle"}}'
