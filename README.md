@@ -21,7 +21,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Edimax SP-2101W
 - Google ChromeCast Audio
 - Google Home Mini
-- Hikvision DS-2CD2142FWD-I Camera
+- Hikvision DS-2CD2142FWD-I and DS-2CD2355FWD-I Cameras
 - H801 LED Strip Controllers
 - HomeEasy HE305 Contact Sensors
 - HomeEasy HE830 Sockets
