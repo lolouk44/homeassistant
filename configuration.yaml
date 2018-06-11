@@ -114,17 +114,7 @@ sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_list switches
 zone: !include zones.yaml
 
-# automation:
-# - alias: HASS Start Sound
-  # trigger:
-    # - platform: homeassistant
-      # event: start
-  # action:
-  # - service: media_player.play_media
-    # data:
-      # entity_id: media_player.living_room_google_mini
-      # media_content_id: 'http://192.168.0.24/audio/Click.mp3'
-      # media_content_type: 'audio/mp3'
+
 
 ifttt:
   key: !secret ifttt_key
@@ -201,3 +191,6 @@ counter:
     step: 1
     name: iOS Badge Count
     icon: mdi:numeric-1-box
+
+ffmpeg:
+  # ffmpeg_bin: /usr/bin/avconv

@@ -27,6 +27,12 @@
 # - platform: ffmpeg
   # input: !secret cctv_url_garage
   # name: Garage
+- platform: ffmpeg
+  input: !secret cctv_url_side
+  name: Side
+- platform: ffmpeg
+  input: !secret cctv_url_back
+  name: Back
 
 - platform: generic
   name: 'Lolo'
