@@ -1,20 +1,22 @@
-influxdb:
-  host: 192.168.0.24
-  include:
-    entities:
-       - sensor.basil_light_intensity
-       - sensor.basil_moisture
-       - sensor.basil_temperature
-       - sensor.currentcost_power
-       - sensor.currentcost_temperature
-       - sensor.dehumidifier_power
-       - sensor.edimax1_watts
-       - sensor.hallway_thermostat_humidity
-       - sensor.hallway_thermostat_temperature
-       - sensor.loft_humidity
-       - sensor.loft_temperature
-       - sensor.upstairs_humidity
-       - sensor.upstairs_temperature
-       - sensor.zfs1_disk_temp
-       - sensor.zfs2_disk_temp
-       - sensor.sda_disk_temp
+host: 192.168.0.24
+include:
+  entities:
+     - sensor.dark_sky_temperature
+     - sensor.basil_light_intensity
+     - sensor.basil_moisture
+     - sensor.basil_temperature
+     - sensor.currentcost_power
+     - sensor.currentcost_temperature
+     - sensor.dehumidifier_power
+     - sensor.edimax1_watts
+     - sensor.hallway_thermostat_humidity
+     - sensor.hallway_thermostat_temperature
+     - sensor.loft_humidity
+     - sensor.loft_temperature
+     - sensor.upstairs_humidity
+     - sensor.upstairs_temperature
+     - sensor.zfs1_disk_temp
+     - sensor.zfs2_disk_temp
+     - sensor.sda_disk_temp
+     - sensor.lolo_weight
+     - sensor.lolo_impedance
