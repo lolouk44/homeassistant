@@ -5,6 +5,7 @@ conservatory:
     - device_tracker.lolo
     - device_tracker.div
     - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
     - sensor.dark_sky_overnight_low_temperature
     - sensor.dark_sky_daytime_high_temperature
     - sensor.pws_precip_1d

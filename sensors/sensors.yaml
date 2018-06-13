@@ -25,6 +25,7 @@
     - temperature_high
     - temperature_low
     - temperature
+    - humidity
     - precip_intensity_max
 
 - platform: wunderground

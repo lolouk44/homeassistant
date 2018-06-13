@@ -87,10 +87,6 @@ sensor.currentcost_power:
   icon: mdi:flash-circle
 sensor.currentcost_temperature:
   icon: mdi:thermometer
-sensor.edimax1_watts:
-  icon: mdi:flash-circle
-sensor.hass_db_size_formatted:
-  icon: mdi:harddisk
 sensor.dark_sky_overnight_low_temperature:
   friendly_name: 'Min'
 sensor.dark_sky_daytime_high_temperature:
@@ -98,11 +94,17 @@ sensor.dark_sky_daytime_high_temperature:
 sensor.dark_sky_daily_max_precip_intensity:
   friendly_name: 'Rain'
 sensor.dark_sky_temperature:
-  friendly_name: 'Now'
+  friendly_name: 'Temperature'
+sensor.dark_sky_humidity:
+  friendly_name: 'Humidity'
 sensor.Dehumidifier_Power:
   icon: mdi:fan
 sensor.doorbell_last_rang:
   icon: mdi:bell
+sensor.edimax1_watts:
+  icon: mdi:flash-circle
+sensor.hass_db_size_formatted:
+  icon: mdi:harddisk
 sensor.loft_humidity:
   icon: mdi:water-percent
 sensor.hallway_thermostat_humidity:
