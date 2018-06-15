@@ -54,8 +54,9 @@
       after: '07:00:00'
     - condition: time
       before: '16:00:00'
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'
+    - condition: state
+      entity_id: 'input_boolean.normal'
+      state: "on"
     - condition: template
       value_template: '{{ states.device_tracker.lolo.state != "home"}}'
     - condition: template
