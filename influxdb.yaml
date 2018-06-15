@@ -2,6 +2,7 @@ host: 192.168.0.24
 include:
   entities:
      - sensor.dark_sky_temperature
+     - sensor.dark_sky_humidity
      - sensor.basil_light_intensity
      - sensor.basil_moisture
      - sensor.basil_temperature
