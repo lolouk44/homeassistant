@@ -13,7 +13,6 @@ default_view:
     - sensor.lolo_to_home
     - sensor.sunset_time
     - group.alerts
-    - group.all_alerts
     - group.scenes
     - group.dates
     - group.Weather
