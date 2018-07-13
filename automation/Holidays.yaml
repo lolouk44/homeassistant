@@ -54,9 +54,6 @@
     - platform: state
       entity_id: sun.sun
       to: 'below_horizon'
-    - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
   condition:
     - condition: state
       entity_id: 'input_boolean.holidays'
