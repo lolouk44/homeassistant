@@ -1,5 +1,5 @@
 #Binary Sensors:
-binary_sensor.conservatory_window:
+binary_sensor.conservatory_skylight_left:
   icon: mdi:window-closed
 binary_sensor.front_cctv_disk_error:
   icon: mdi:harddisk

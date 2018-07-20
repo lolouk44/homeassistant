@@ -1,7 +1,7 @@
 - alias: Conservatory Window Open
   trigger:
     - platform: state
-      entity_id: binary_sensor.conservatory_window
+      entity_id: binary_sensor.conservatory_skylight_left
       to: 'on'
   action:
   - service: media_player.play_media
@@ -13,7 +13,7 @@
 - alias: Conservatory Window Closed
   trigger:
     - platform: state
-      entity_id: binary_sensor.conservatory_window
+      entity_id: binary_sensor.conservatory_skylight_left
       to: 'off'
   action:
   - service: media_player.play_media

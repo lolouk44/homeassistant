@@ -86,7 +86,7 @@ logger:
     miio.device: critical
     homeassistant.components.sensor.sky_hd_status: critical
 
-#    homeassistant.components.rfxtrx: debug
+    # homeassistant.components.rfxtrx: debug
 
 #Track the sun
 sun:
