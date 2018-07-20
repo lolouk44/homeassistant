@@ -6,4 +6,6 @@ ChromeCast:
     - media_player.conservatory
     - media_player.kitchen
     - media_player.onkyo
+    - media_player.google_home_minis
+    - media_player.kitchen_google_mini
     - media_player.living_room_google_mini

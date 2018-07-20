@@ -11,7 +11,7 @@
     state: 'on'
   action:
     - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       data:
         message: 'Please note: The Kettle is boiled'
     - service: input_boolean.turn_off

@@ -9,6 +9,14 @@
     data:
       entity_id: media_player.living_room_google_mini
       volume_level: 0.50
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.kitchen_google_mini
+      volume_level: 0.50
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.google_home_minis
+      volume_level: 0.50
 
 
 - alias: Set GA Volume To High Daytime
@@ -21,6 +29,14 @@
   - service: media_player.volume_set
     data:
       entity_id: media_player.living_room_google_mini
+      volume_level: 0.75
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.kitchen_google_mini
+      volume_level: 0.75
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.google_home_minis
       volume_level: 0.75
 
 
@@ -139,14 +155,14 @@
     condition: or
     conditions:
       - condition: state
-        entity_id: media_player.living_room_google_mini
+        entity_id: media_player.google_home_minis
         state: 'off'
       - condition: state
-        entity_id: media_player.living_room_google_mini
+        entity_id: media_player.google_home_minis
         state: 'idle'
   action:
     service: media_player.play_media
-    entity_id: media_player.living_room_google_mini
+    entity_id: media_player.google_home_minis
     data:
       media_content_id: http://192.168.0.24/audio1sec.mp3
       media_content_type: music

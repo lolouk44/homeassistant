@@ -1,0 +1,78 @@
+title: My Awesome Home
+# Exclude entities from "Unused entities" view
+excluded_entities:
+  - weblink.router
+views:
+    # View tab title.
+  - icon: mdi:home
+    # Optional unique id for direct access /lovelace/${id}
+    id: home
+    # Each view can have a different theme applied.
+    #theme: dark-mode
+    # The cards to show on this view.
+    cards:
+        # The filter card will filter entities for their state
+      - type: entity-filter
+        entities:
+          - device_tracker.lolo
+          - device_tracker.div
+        state_filter:
+          - 'home'
+        card_config:
+          type: glance
+          title: People that are home
+
+        # The picture entity card will represent an entity with a picture
+      - type: entities
+        title: Scenes
+        show_header_toggle: false
+        entities:
+          - input_boolean.normal
+          - input_boolean.movies
+          - input_boolean.holidays
+          - input_boolean.xmas
+          #: https://www.yr.no/place/United_Kingdom/England/Maidenbower/meteogram.svg
+        #navigation_path: camera.YrForecastCrawley
+      - type: iframe
+        url: https://www.yr.no/place/United_Kingdom/England/Maidenbower/meteogram.svg
+        aspect_ratio: 55%
+
+
+    # Specify a tab icon if you want the view tab to be an icon.
+  - icon: mdi:home-assistant
+    # Title of the view. Will be used as the tooltip for tab icon
+    title: Second view
+    cards:
+        # Entities card will take a list of entities and show their state.
+      - type: entities
+        # Title of the entities card
+        title: Example
+        # The entities here will be shown in the same order as specified.
+        # Each entry is an entity ID or a map with extra options.
+        entities:
+          - light.kitchen_door
+          - light.kitchen_window
+          - entity: light.living_room_main
+            # Override the name to use
+            name: LR Lights
+
+
+    # Specify a tab icon if you want the view tab to be an icon.
+  - icon: mdi:cctv
+    # Title of the view. Will be used as the tooltip for tab icon
+    title: CCTV
+    cards:
+        # Entities card will take a list of entities and show their state.
+      - type: picture-glance
+        # Title of the entities card
+        title: Living Room
+        # The entities here will be shown in the same order as specified.
+        # Each entry is an entity ID or a map with extra options.
+        entities:
+          - switch.dafang_living_room_status
+          - switch.dafang_living_room_rtsp
+          - switch.dafang_living_room_blue_led
+          - switch.dafang_living_room_yellow_led
+          - switch.dafang_living_room_left_right
+        camera_image: camera.living_room
+

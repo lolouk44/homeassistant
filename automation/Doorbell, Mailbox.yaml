@@ -9,7 +9,7 @@
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.mailbox_notification.attributes.last_triggered | default(0)) | int > 10 )}}'
   action:
     - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       data:
         message: 'Please note: post has been delivered'
     - service: shell_command.mailbox_notification_email
@@ -40,17 +40,17 @@
   action:
   - service: media_player.volume_set
     data_template:
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       volume_level: '1' 
   - service: media_player.play_media
     data:
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
   - delay: 00:00:10
   - service: media_player.volume_set
     data_template:
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}' 
   - service: mqtt.publish
     data:

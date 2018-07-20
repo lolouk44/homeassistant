@@ -17,7 +17,7 @@
   action:
   - service: media_player.play_media
     data:
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/Click.mp3'
       media_content_type: 'audio/mp4'
   - service: group.set_visibility
@@ -47,12 +47,12 @@
   action:
   - service: media_player.play_media
     data:
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/ClickOff.mp3'
       media_content_type: 'audio/mp4'
   - service: media_player.play_media
     data:
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/ClickOff.mp3'
       media_content_type: 'audio/mp4'
 

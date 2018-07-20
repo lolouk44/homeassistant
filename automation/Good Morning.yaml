@@ -3,6 +3,9 @@
     - platform: state
       entity_id: binary_sensor.pir_living_room_front
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'on'
   condition:
     - condition: time
       after: '06:00'
@@ -13,7 +16,7 @@
   action:
     - service: tts.google_say
       data_template:
-        entity_id: media_player.living_room_google_mini
+        entity_id: media_player.google_home_minis
         message: |
           Good morning. Today is 
           {{as_timestamp(now()) | timestamp_custom('%A')}}, {% set day = (as_timestamp(now()) | timestamp_custom('%d')) |int-%}

@@ -6,7 +6,7 @@
   action:
   - service: media_player.play_media
     data:
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
       media_content_type: 'audio/mp3'
 
@@ -18,7 +18,7 @@
   action:
   - service: media_player.play_media
     data:
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
       media_content_type: 'audio/mp3'
 

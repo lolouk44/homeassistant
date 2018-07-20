@@ -143,7 +143,10 @@ tts:
 
 media_player:
   - platform: cast
-  # Google Home Mini
+  # Google Home Mini Kitchen
+  - platform: cast
+    host: 192.168.0.9
+  # Google Home Mini Living Room
   - platform: cast
     host: 192.168.0.10
   # Kitchen Cast

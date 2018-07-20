@@ -40,7 +40,7 @@
       data_template:
         message: 'Div left work.'
     - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       data:
         message: 'Please note: Div left work'
 
@@ -74,29 +74,29 @@
 
 
 
-- alias: Tell Lolo to leave for work
-  trigger:
-    - platform: time
-      minutes: '/1'
-      seconds: 0
-  condition:
-    - condition: time
-      before: '08:00:00'
-      weekday:
-        - tue
-        - wed
-        - thu
-    - condition: template
-      value_template: '{{ (as_timestamp(now().strftime("%Y-%m-%d") + " 08:30")  - states.sensor.home_to_verint.attributes.duration.split(" ")[0] | int *60 )  <=  (as_timestamp(now())) }}'
-    - condition: template
-      value_template: '{{ states.device_tracker.lolo.state == "home"}}'
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.tell_lolo_to_leave_for_work.attributes.last_triggered | default(0)) | int > 3600)}}'
-  action:
-    - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
-      data:
-        message: "Hey lo lo, it's time to leave for work..."
+# - alias: Tell Lolo to leave for work
+  # trigger:
+    # - platform: time
+      # minutes: '/1'
+      # seconds: 0
+  # condition:
+    # - condition: time
+      # before: '08:00:00'
+      # weekday:
+        # - tue
+        # - wed
+        # - thu
+    # - condition: template
+      # value_template: '{{ (as_timestamp(now().strftime("%Y-%m-%d") + " 08:30")  - states.sensor.home_to_verint.attributes.duration.split(" ")[0] | int *60 )  <=  (as_timestamp(now())) }}'
+    # - condition: template
+      # value_template: '{{ states.device_tracker.lolo.state == "home"}}'
+    # - condition: template
+      # value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.tell_lolo_to_leave_for_work.attributes.last_triggered | default(0)) | int > 3600)}}'
+  # action:
+    # - service: tts.google_say
+      # entity_id: media_player.google_home_minis
+      # data:
+        # message: "Hey lo lo, it's time to leave for work..."
 
 
 
@@ -106,7 +106,7 @@
       entity_id: sensor.lolo_to_home
   condition:
     - condition: time
-      after: '16:30:00'
+      after: '15:30:00'
       before: '18:00:00'
       weekday:
         - tue
