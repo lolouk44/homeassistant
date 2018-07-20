@@ -16,6 +16,7 @@ include:
      - sensor.loft_temperature
      - sensor.upstairs_humidity
      - sensor.upstairs_temperature
+     - sensor.ram_usage
      - sensor.zfs1_disk_temp
      - sensor.zfs2_disk_temp
      - sensor.sda_disk_temp
