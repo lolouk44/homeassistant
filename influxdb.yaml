@@ -22,3 +22,5 @@ include:
      - sensor.sda_disk_temp
      - sensor.lolo_weight
      - sensor.lolo_impedance
+     - sensor.div_weight
+     - sensor.div_impedance
