@@ -8,7 +8,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
-        message: 'There is an update to Home-Assistant: {{states.sensor.ha_online_version.state}}'
+        message: 'There is an update to Home-Assistant: {{states.sensor.ha_online_version.state}} (https://hub.docker.com/r/homeassistant/home-assistant/builds/)'
 
 - alias: HASS Start Sound
   trigger:
