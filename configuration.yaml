@@ -18,6 +18,7 @@ homeassistant:
     "binary_sensor.*":
       show_last_changed: true
       custom_ui_state_card: state-card-custom-ui
+  packages: !include_dir_named packages
 
 
 # Show links to resources in log and front end
