@@ -1,9 +1,0 @@
-# - platform: command_line
-  # command: bash /home/cctv/.homeassistant/shell_scripts/SkyHD_Status.sh
-  # name: 'sky_hd_status'
-
-- platform: mqtt
-  name: "sky_hd_status"
-  state_topic: "SkyHD/Status"
-  payload_on: "ON"
-  payload_off: "OFF"
