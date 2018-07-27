@@ -37,7 +37,7 @@
       value_template: '{{ states.device_tracker.div.state != "home"}}'
     - condition: state
       entity_id: binary_sensor.conservatory_skylight_left
-      state: 'off'
+      state: 'on'
   action:
     - service: notify.gmaillolo
       data_template:
@@ -60,7 +60,7 @@
       state: 'below_horizon'
     - condition: state
       entity_id: binary_sensor.conservatory_skylight_left
-      state: 'off'
+      state: 'on'
   action:
     - service: notify.gmaillolo
       data_template:
