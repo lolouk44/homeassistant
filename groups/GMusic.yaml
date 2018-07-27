@@ -1,0 +1,6 @@
+google_music:
+  name: Google Music 
+  entities:
+  - input_select.music
+  - input_select.media_player
+  - switch.google_music

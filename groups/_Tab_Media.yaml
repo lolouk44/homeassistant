@@ -12,6 +12,7 @@ Media:
     - sensor.home_to_verint
     - sensor.lolo_to_home
     - sensor.sunset_time
+    - group.google_music
     - group.radio
     - group.ChromeCast
     - media_player.onkyo_txnr656
