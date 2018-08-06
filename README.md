@@ -40,6 +40,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Verint S5003FD Camera
 - Wemos D1 Mini Pro
 - Xiaomi DaFang Camera
+- Xiaomi Mi Box 3
 - Xiaomi Mi Flora Plant Sensor
 - Xiaomi Mi Robot Vacuum
 - Xiaomi Router R3P Pro
