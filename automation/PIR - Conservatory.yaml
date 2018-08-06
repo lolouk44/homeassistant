@@ -1,54 +1,3 @@
-# - alias: Conservatory Lights On PIR
-  # trigger:
-    # - platform: state
-      # entity_id: binary_sensor.pir_conservatory
-      # to: 'on'
-    # - platform: state
-      # entity_id: sun.sun
-      # to: 'below_horizon'
-    # - platform: state
-      # entity_id: binary_sensor.photoresistor
-      # to: 'off'
-  # condition:
-    # - condition: state
-      # entity_id: binary_sensor.pir_conservatory
-      # state: 'on'
-    # - condition: or
-      # conditions:
-      # - condition: state
-        # entity_id: binary_sensor.photoresistor
-        # state: 'off'
-      # - condition: state
-        # entity_id: sun.sun
-        # state: 'below_horizon'
-      # - condition: state
-        # entity_id: light.living_room_main
-        # state: 'on'
-  # action:
-  # - service: switch.turn_on
-    # data:
-      # entity_id: switch.conservatory
-
-
-
-
-# - alias: Conservatory Lights Off PIR
-  # trigger:
-    # - platform: state
-      # entity_id: binary_sensor.pir_conservatory
-      # to: 'off'
-  # condition:
-    # - condition: state
-      # entity_id: switch.conservatory
-      # state: 'on'
-  # action:
-  # - service: switch.turn_off
-    # data:
-      # entity_id: switch.conservatory
-
-
-
-
 - alias: Conservatory Lights On PIR
   trigger:
     - platform: state
@@ -65,6 +14,9 @@
   condition:
     - condition: state
       entity_id: binary_sensor.pir_conservatory
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.normal
       state: 'on'
     - condition: or
       conditions:
@@ -84,12 +36,7 @@
     data:
       entity_id: light.conservatory
       brightness: 255
-  - service: light.turn_on
-    data:
-      entity_id: light.conservatory_led_strip
-      effect: "solid"
-      brightness: 128
-      rgb_color: [255,199,145]
+
 
 
 - alias: Conservatory Lights Dimmed Off PIR
@@ -128,10 +75,13 @@
   - service: light.turn_off
     data:
       entity_id: light.conservatory
-  - delay: 00:00:05
-  - service: light.turn_off
-    data:
-      entity_id: light.conservatory_led_strip
+  # - delay: 00:00:05
+  # - service: light.turn_off
+    # data:
+      # entity_id: light.conservatory_led_strip
+  # - service: light.turn_off
+    # data:
+      # entity_id: light.conservatory_led_strip
 
 
 
@@ -163,6 +113,9 @@
       entity_id: light.conservatory_led_strip
       state: 'off'
     - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
       entity_id: group.pirs
       state: 'on'
     - condition: or
@@ -185,6 +138,12 @@
       entity_id: input_boolean.normal
       state: 'on'
   action:
+  - service: light.turn_on
+    data:
+      entity_id: light.conservatory_led_strip
+      effect: "solid"
+      brightness: 128
+      rgb_color: [255,255,255]
   - service: light.turn_on
     data:
       entity_id: light.conservatory_led_strip

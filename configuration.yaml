@@ -18,7 +18,7 @@ homeassistant:
     "binary_sensor.*":
       show_last_changed: true
       custom_ui_state_card: state-card-custom-ui
-  packages: !include_dir_named packages
+  # packages: !include_dir_named packages
 
 
 # Show links to resources in log and front end
@@ -26,6 +26,10 @@ homeassistant:
 recorder:
   db_url: !secret db_url
   purge_interval: 0
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
 
 
 customizer:
@@ -197,3 +201,8 @@ counter:
     icon: mdi:numeric-1-box
 
 ffmpeg:
+
+tuya:
+  username: !secret tuya_user
+  password: !secret tuya_password
+  country_code: 44

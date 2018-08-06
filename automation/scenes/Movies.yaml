@@ -4,10 +4,6 @@
       entity_id: input_boolean.movies
       to: 'on'
   action:
-    - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
-      data:
-        message: 'Scene, movies, activated'
     - service: scene.turn_on
       entity_id: scene.movies
 
@@ -34,4 +30,17 @@
         effect: "solid"
         brightness: 128
         rgb_color: [255,0,0]
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        effect: "solid"
+        brightness: 128
+        rgb_color: [255,0,0]
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, movies, activated'
 

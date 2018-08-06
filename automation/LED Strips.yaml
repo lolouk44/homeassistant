@@ -139,6 +139,8 @@
     - platform: state
       entity_id: binary_sensor.photoresistor
       to: 'off'
+    - platform: state
+      entity_id: sensor.basil_light_intensity
   condition:
     - condition: state
       entity_id: light.Staircase_LED_Strip
@@ -147,10 +149,15 @@
       entity_id: binary_sensor.pir_staircase
       state: 'on'
     - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
       entity_id: input_boolean.xmas
       state: 'off'
     - condition: or
       conditions:
+      - condition: template
+        value_template: '{{ states.sensor.basil_light_intensity.state != "unknown" and  states.sensor.basil_light_intensity.state | int < 300 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'

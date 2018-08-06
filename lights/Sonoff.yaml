@@ -1,8 +1,8 @@
 - platform: mqtt
   name: "Red Light"
-  state_topic: "stat/sonoff/basic/1/POWER"
-  command_topic: "cmnd/sonoff/basic/1/POWER"
-  availability_topic: "tele/sonoff/basic/1/LWT"
+  state_topic: "stat/sonoff_basic_1/POWER"
+  command_topic: "cmnd/sonoff_basic_1/POWER"
+  availability_topic: "tele/sonoff_basic_1/LWT"
   qos: 1
   payload_on: "ON"
   payload_off: "OFF"

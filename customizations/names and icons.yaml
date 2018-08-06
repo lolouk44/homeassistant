@@ -178,7 +178,7 @@ switch.dafang_kitchen_left_right:
 switch.dehumidifier:
   icon: mdi:power-socket-uk
 switch.Kitchen_TV:
-  icon: mdi:power-socket-uk
+  icon: mdi:television
 switch.onkyo_zone2_muting:
   icon: mdi:volume-off
 switch.onkyo_zone2_power:

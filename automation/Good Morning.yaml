@@ -8,12 +8,18 @@
       to: 'on'
   condition:
     - condition: time
-      after: '06:00'
+      after: '05:30'
       before: '12:00'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
     - condition: template
       # Only run if more than 6 hours (21,600 sec) since it last ran 
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.play_good_morning.attributes.last_triggered | default(0)) | int > 21600 )}}'
   action:
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
     - service: tts.google_say
       data_template:
         entity_id: media_player.google_home_minis

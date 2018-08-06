@@ -6,3 +6,4 @@ scenes:
     - input_boolean.movies
     - input_boolean.holidays
     - input_boolean.Xmas
+    - input_boolean.silent

@@ -10,10 +10,6 @@
       entity_id: input_boolean.movies
     - service: input_boolean.turn_off
       entity_id: input_boolean.holidays
-    - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
-      data:
-        message: 'Scene, normal, activated'
     - service: light.turn_off
       data:
         entity_id: light.living_room_wall
@@ -21,6 +17,13 @@
       data:
         entity_id: climate.hallway
         away_mode: false
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, normal, activated'
 
 
 
@@ -57,6 +60,12 @@
         brightness: 255
         rgb_color: [0,255,0]
         transition: 1
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        effect: "solid"
+        brightness: 128
+        rgb_color: [255,255,255]
     - service: light.turn_on
       data:
         entity_id: light.conservatory_led_strip

@@ -23,6 +23,7 @@
       entity_id: input_boolean.movies
 
 - alias: Set Onkyo to StreamBox When Kodi or MiBox CC is playing
+  initial_state: false
   trigger:
     - platform: state
       entity_id: media_player.kodi

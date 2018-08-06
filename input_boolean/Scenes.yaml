@@ -17,3 +17,8 @@ xmas:
   name: Xmas
   initial: off
   icon: mdi:pine-tree
+
+silent:
+  name: Silent
+  initial: off
+  icon: mdi:volume-off

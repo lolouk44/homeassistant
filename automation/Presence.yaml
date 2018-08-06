@@ -39,6 +39,9 @@
     - service: notify.gmaillolo
       data_template:
         message: 'Div left work.'
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
     - service: tts.google_say
       entity_id: media_player.google_home_minis
       data:
@@ -119,6 +122,9 @@
     - condition: template
       value_template: '{{ states.device_tracker.lolo.state == "Verint"}}'
   action:
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
     - service: notify.gmaillolo
       data_template:
         message: 'There is a long drive home ({{states.sensor.lolo_to_home.state |int(0)}} min)...'

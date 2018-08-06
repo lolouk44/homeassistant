@@ -12,6 +12,9 @@
     - platform: state
       entity_id: sensor.basil_light_intensity
   condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
     - condition: or
       conditions:
       - condition: state

@@ -24,7 +24,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.group.pirs.attributes.last_updated | default(0)) | int > 120)}}'
     - condition: state
-      entity_id: 'input_boolean.normal'
+      entity_id: input_boolean.normal
       state: "on"
   action:
     - service: vacuum.turn_on
@@ -75,6 +75,9 @@
       entity_id: device_tracker.lolo
       from: "home"
   condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
     - condition: template
       value_template: '{{ states.device_tracker.lolo.state != "home"}}'
     - condition: template

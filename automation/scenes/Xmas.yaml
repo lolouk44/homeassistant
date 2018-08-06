@@ -6,14 +6,17 @@
   action:
     - service: scene.turn_on
       entity_id: scene.xmas
-    - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
-      data:
-        message: 'Scene, christmas, activated'
     - service: group.set_visibility
       entity_id: group.baubles
       data:
         visible: True
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, christmas, activated'
 
 - alias: Xmas Off
   trigger:
@@ -21,11 +24,14 @@
       entity_id: input_boolean.xmas
       to: 'off'
   action:
-    - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
-      data:
-        message: 'Scene, christmas, de-activated'
     - service: group.set_visibility
       entity_id: group.baubles
       data:
         visible: False
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, christmas, de-activated'

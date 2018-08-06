@@ -65,6 +65,9 @@
     - service: notify.gmaillolo
       data_template:
         message: 'Conservatory SkyLight Left Open!'
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
     - service: media_player.volume_set
       data:
         entity_id: media_player.living_room_google_mini

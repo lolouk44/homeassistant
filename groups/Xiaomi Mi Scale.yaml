@@ -4,5 +4,10 @@ miscale:
   entities:
     - sensor.lolo_weight
     - sensor.lolo_impedance
+    - sensor.lolo_bmi
     - sensor.div_weight
     - sensor.div_impedance
+    - sensor.div_bmi
+    - sensor.kiaan_weight
+    - sensor.kiaan_impedance
+    - sensor.kiaan_bmi

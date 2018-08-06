@@ -15,15 +15,15 @@
     - platform: homeassistant
       event: start
   action:
+  - service: group.set_visibility
+    entity_id: group.alerts
+    data_template:
+      visible: '{{states.counter.iosbadgecount.state | int > 0}}'
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/Click.mp3'
       media_content_type: 'audio/mp4'
-  - service: group.set_visibility
-    entity_id: group.alerts
-    data_template:
-      visible: '{{states.counter.iosbadgecount.state | int > 0}}'
 
 - alias: HASS Stop Motion Detection
   trigger:

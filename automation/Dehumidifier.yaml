@@ -48,17 +48,20 @@
       entity_id: switch.dehumidifier
       state: 'on'
   action:
-  - service: input_boolean.turn_on
-    data:
-      entity_id: input_boolean.dehumidifier_tank_full
-  - service: tts.google_say
-    entity_id: media_player.google_home_minis
-    data:
-      message: 'Please note: The dehumidifier tank is full'
-  - service: notify.gmaillolo
-    data_template:
-      message: |
-        Dehumidifier Tank is full.
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.dehumidifier_tank_full
+    - service: notify.gmaillolo
+      data_template:
+        message: |
+          Dehumidifier Tank is full.
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data:
+        message: 'Please note: The dehumidifier tank is full'
 
 
 - alias: Start Dehumidifier
@@ -74,8 +77,8 @@
       after: '08:00'
       before: '16:00'
     - condition: state
-      entity_id: input_boolean.holidays
-      state: 'off'
+      entity_id: input_boolean.normal
+      state: 'on'
     - condition: template
       value_template: '{{ states.sensor.season.state != "Summer" }}'
     - condition: state

@@ -10,12 +10,15 @@
     entity_id: input_boolean.edimax_applicance
     state: 'on'
   action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.edimax_applicance
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
     - service: tts.google_say
       entity_id: media_player.google_home_minis
       data:
         message: 'Please note: The Kettle is boiled'
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.edimax_applicance
 
 
 - alias: Kettle is on

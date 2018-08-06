@@ -25,6 +25,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - H801 LED Strip Controllers
 - HomeEasy HE305 Contact Sensors
 - HomeEasy HE830 Sockets
+- Houzetek socket controlled via Tuya
 - iPhone 6
 - iPad Air 2
 - LightWaveRF Switches & Sockets

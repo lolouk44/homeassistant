@@ -11,11 +11,15 @@
       entity_id: input_boolean.normal
     - service: input_boolean.turn_off
       entity_id: input_boolean.movies
-    - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
-      data:
-        message: 'Scene, holidays, activated'
     - service: climate.set_away_mode
       data:
         entity_id: climate.hallway
         away_mode: true
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, holidays, activated'
+    
