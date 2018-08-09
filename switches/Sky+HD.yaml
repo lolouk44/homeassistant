@@ -1,13 +1,3 @@
-# - platform: template
-  # switches:
-    # skyhd:
-      # friendly_name: Sky+ HD
-      # value_template: "{{ states.binary_sensor.sky_hd_status.state }}"
-      # turn_on:
-        # service: shell_command.sky_hd_power
-      # turn_off:
-        # service: shell_command.sky_hd_power
-
 - platform: mqtt
   name: "SkyHD"
   state_topic: "SkyHD/Status"

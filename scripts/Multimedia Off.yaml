@@ -8,5 +8,6 @@ multimedia_off:
   - condition: state
     entity_id: switch.skyhd
     state: 'on'
-  - service_template: shell_command.sky_hd_power
+  - service: switch.turn_off
+    entity_id: switch.skyhd
 
