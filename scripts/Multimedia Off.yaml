@@ -5,6 +5,8 @@ multimedia_off:
     entity_id: media_player.onkyo_txnr656
   - service: media_player.turn_off
     entity_id: media_player.panasonic_viera_tv
-  - service_template: >
-      shell_command.{% if states.switch.skyhd.state =='on' %}sky_hd_power{% else %}cctv_garage_active{% endif %}
+  - condition: state
+    entity_id: switch.skyhd
+    state: 'on'
+  - service_template: shell_command.sky_hd_power
 
