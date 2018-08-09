@@ -23,3 +23,9 @@
 - name: pushbullet
   platform: pushbullet
   api_key: !secret pushbullet_api_key
+
+- platform: nfandroidtv
+  name: Kitchen
+  host: 192.168.0.28
+  duration: 3
+  interrupt: on
