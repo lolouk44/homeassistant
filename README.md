@@ -44,3 +44,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Mi Flora Plant Sensor
 - Xiaomi Mi Robot Vacuum
 - Xiaomi Router R3P Pro
+
+
+## View of my Home Assistant UI
+![My Home Assistant](http://www.lolorpi.com/wordpress/wp-content/uploads/2018/08/HA_UI_Example.png)
