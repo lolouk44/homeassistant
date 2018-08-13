@@ -656,7 +656,7 @@ views:
     icon: mdi:verified
     cards:
       - type: custom:alarm_control_panel-card
-        entity: alarm_control_panel.ha_alarm
+        entity: alarm_control_panel.alarm
         show_keypad: true
         title: Alarm
         style: '--alarm-color-disarmed: var(--label-badge-blue);'
