@@ -1,20 +1,20 @@
 title: Home
+resources:
+  - url: /local/alarm_control_panel-card.js?v=1
+    type: js
+  - url: /local/kiosk.js
+    type: js
 views:
   - title: default_view
     icon: mdi:home
     cards:
-      - type: entities
+      - type: glance
         entities:
-          - sensor.home_to_verint
-          - sensor.dark_sky_overnight_low_temperature
-          - sensor.dark_sky_temperature
-          - sensor.dark_sky_daytime_high_temperature
-          - sensor.lolo_to_home
-          - sensor.dark_sky_humidity
-          - sensor.sunset_time
-          - sensor.pws_precip_1d
-          - device_tracker.div
-          - device_tracker.lolo
+        - device_tracker.lolo
+        - device_tracker.div
+        - sensor.dark_sky_temperature
+        - sensor.dark_sky_humidity
+        - sensor.pws_precip_1d
       - type: entity-filter
         title: Alerts
         show_header_toggle: false
@@ -50,6 +50,34 @@ views:
           - input_boolean.movies
           - input_boolean.holidays
           - input_boolean.xmas
+          - input_boolean.silent
+      - type: glance
+        entities:
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_verint
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+      - type: entities
+        title: RPi Sensors
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.door_lock
+            secondary_info: last-changed
+          - entity: binary_sensor.pir_kitchen
+            secondary_info: last-changed
+          - entity: binary_sensor.pir_conservatory
+            secondary_info: last-changed
+          - entity: binary_sensor.pir_staircase
+            secondary_info: last-changed
+          - entity: binary_sensor.pir_living_room_front
+            secondary_info: last-changed
+          - entity: binary_sensor.pir_living_room_back
+            secondary_info: last-changed
+          - entity: binary_sensor.photoresistor
+            secondary_info: last-changed
+      - type: weather-forecast
+        entity: weather.dark_sky
       - type: entities
         title: Dates
         show_header_toggle: false
@@ -72,23 +100,6 @@ views:
           - sensor.xiaomi_main_brush_left
           - sensor.xiaomi_side_brush_left
           - sensor.xiaomi_filter_left
-      - type: entities
-        title: RPi Sensors
-        show_header_toggle: false
-        entities:
-          - binary_sensor.door_lock
-          - binary_sensor.pir_kitchen
-          - binary_sensor.pir_conservatory
-          - binary_sensor.pir_staircase
-          - binary_sensor.pir_living_room_front
-          - binary_sensor.pir_living_room_back
-          - binary_sensor.photoresistor
-      - type: entities
-        title: Weather
-        show_header_toggle: true
-        entities:
-          - sensor.dark_sky_hourly_summary
-          - sensor.dark_sky_minutely_summary
       - type: picture-entity
         title: YrForecastCrawley
         entity: camera.yrforecastcrawley
@@ -287,38 +298,50 @@ views:
   - title: conservatory
     icon: mdi:home-variant
     cards:
-      - type: entities
+      - type: glance
         entities:
-          - sensor.home_to_verint
-          - sensor.dark_sky_overnight_low_temperature
-          - sensor.dark_sky_temperature
-          - sensor.dark_sky_daytime_high_temperature
-          - sensor.lolo_to_home
-          - sensor.dark_sky_humidity
-          - sensor.sunset_time
-          - sensor.pws_precip_1d
-          - device_tracker.div
-          - device_tracker.lolo
+        - device_tracker.lolo
+        - device_tracker.div
+        - sensor.dark_sky_temperature
+        - sensor.dark_sky_humidity
+        - sensor.pws_precip_1d
       - type: entities
         title: Sensors
         show_header_toggle: true
         entities:
-          - binary_sensor.pir_conservatory
-          - binary_sensor.conservatory_skylight_left
-      - type: entities
-        title: Xmas
-        show_header_toggle: true
+          - entity: binary_sensor.pir_conservatory
+            secondary_info: last-changed
+          - entity: binary_sensor.conservatory_skylight_left
+            secondary_info: last-changed
+      - type: glance
         entities:
-          - light.bauble_1
-          - light.bauble_2
-          - light.bauble_3
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_verint
+        - sensor.lolo_to_home
+        - sensor.sunset_time
       - type: entities
         title: Conservatory Lights
         show_header_toggle: true
         entities:
-          - light.conservatory
-          - light.red_light
-          - light.conservatory_led_strip
+          - entity: light.conservatory
+            secondary_info: last-changed
+          - entity: light.red_light
+            secondary_info: last-changed
+          - entity: light.conservatory_led_strip
+            secondary_info: last-changed
+      - type: conditional
+        conditions:
+          - entity: input_boolean.xmas
+            state: "on"
+        card:
+          type: entities
+          title: Xmas
+          entities:
+            - light.garage_led_strip
+            - light.bauble_1
+            - light.bauble_2
+            - light.bauble_3
   - title: Staircase
     icon: mdi:stairs
     cards:
@@ -629,3 +652,14 @@ views:
           - binary_sensor.staircase_led_strip
           - binary_sensor.tv_cabinet_led_strip
           - binary_sensor.conservatory_led_strip
+  - title: Alarm
+    icon: mdi:verified
+    cards:
+      - type: custom:alarm_control_panel-card
+        entity: alarm_control_panel.ha_alarm
+        show_keypad: true
+        title: Alarm
+        style: '--alarm-color-disarmed: var(--label-badge-blue);'
+        states:
+          - arm_home
+          - arm_away
