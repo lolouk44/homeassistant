@@ -15,4 +15,4 @@ Main_Bedroom:
     - group.upstairs_sensors
     - group.kello
     - group.dehumidifier
-    - group.miscale
+    - group.miscale_us

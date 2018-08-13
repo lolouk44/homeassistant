@@ -12,10 +12,12 @@ group.staircase:
   order: 7
 group.main_bedroom:
   order: 8
-group.cctv:
+group.kiaan_bedroom:
   order: 9
-group.automation:
+group.cctv:
   order: 10
+group.automation:
+  order: 11
 group.alerts:
   order: 11
 group.scenes:

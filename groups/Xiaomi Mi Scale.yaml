@@ -1,4 +1,4 @@
-miscale:
+miscale_us:
   name: Mi Scale
   control: hidden
   entities:
@@ -8,6 +8,12 @@ miscale:
     - sensor.div_weight
     - sensor.div_impedance
     - sensor.div_bmi
+
+miscale_kiaan:
+  name: Mi Scale
+  control: hidden
+  entities:
     - sensor.kiaan_weight
     - sensor.kiaan_impedance
     - sensor.kiaan_bmi
+

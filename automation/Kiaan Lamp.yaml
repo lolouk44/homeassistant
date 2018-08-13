@@ -1,0 +1,75 @@
+- alias: Kiaan Night Light Sleep
+  trigger:
+    - platform: time
+      hours: 19
+      minutes: 0
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
+    - condition: state
+      entity_id: light.kiaan_lamp
+      state: "off"
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.kiaan_lamp
+      brightness: 0
+      rgb_color: [0,0,0]
+  - service: light.turn_on
+    data:
+      entity_id: light.kiaan_lamp
+      brightness: 255
+      rgb_color: [0,0,255]
+      transition: 1
+
+
+
+- alias: Kiaan Night Light Wake
+  trigger:
+    - platform: time
+      hours: 7
+      minutes: 0
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
+    - condition: state
+      entity_id: light.kiaan_lamp
+      state: "on"
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.kiaan_lamp
+      brightness: 255
+      rgb_color: [0,255,0]
+      transition: 1
+
+
+
+- alias: Kiaan Night Light Off
+  trigger:
+    - platform: time
+      hours: 8
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.kiaan_lamp
+      brightness: 0
+      rgb_color: [0,0,0]
+      transition: 1
+  - delay: 00:00:05
+  - service: light.turn_off
+    data:
+      entity_id: light.kiaan_lamp
+
+
+

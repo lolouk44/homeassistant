@@ -130,3 +130,34 @@
   rgb: true
   optimistic: false
   qos: 0
+
+
+- platform: mqtt_json
+  name: "Kiaan Lamp"
+  state_topic: "Kiaan_Bedroom/Kiaan_Lamp"
+  command_topic: "Kiaan_Bedroom/Kiaan_Lamp/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane  
+    - confetti  
+    - cyclon rainbow  
+    - dots  
+    - fire  
+    - glitter  
+    - juggle  
+    - lightning
+    - noise  
+    - police all  
+    - police one  
+    - rainbow  
+    - rainbow with glitter  
+    - ripple  
+    - sinelon  
+    - solid  
+    - twinkle  
+  brightness: true
+  flash: true
+  rgb: true
+  optimistic: false
+  qos: 0
