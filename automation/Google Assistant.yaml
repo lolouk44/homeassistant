@@ -152,14 +152,12 @@
     minutes: '/2'
     seconds: 00
   condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: media_player.google_home_minis
-        state: 'off'
-      - condition: state
-        entity_id: media_player.google_home_minis
-        state: 'idle'
+    - condition: template
+      value_template: '{{ states.media_player.kitchen_google_mini.state != "playing"}}'
+    - condition: template
+      value_template: '{{ states.media_player.living_room_google_mini.state != "playing"}}'
+    - condition: template
+      value_template: '{{ states.media_player.google_home_minis.state != "playing"}}'
   action:
     service: media_player.play_media
     entity_id: media_player.google_home_minis
