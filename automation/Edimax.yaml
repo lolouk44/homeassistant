@@ -7,11 +7,11 @@
   - condition: template
     value_template: '{{ states.sensor.edimax1_watts.state | int < 1 }}'
   - condition: state
-    entity_id: input_boolean.edimax_applicance
+    entity_id: input_boolean.edimax_appliance
     state: 'on'
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.edimax_applicance
+      entity_id: input_boolean.edimax_appliance
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
@@ -29,14 +29,15 @@
   - condition: template
     value_template: '{{ states.sensor.edimax1_watts.state | int > 1 }}'
   - condition: state
-    entity_id: input_boolean.edimax_applicance
+    entity_id: input_boolean.edimax_appliance
     state: 'off'
   action:
     - service: input_boolean.turn_on
-      entity_id: input_boolean.edimax_applicance
+      entity_id: input_boolean.edimax_appliance
 
 
 - alias: Turn Edimax On by PIR
+  initial_state: false
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_kitchen
