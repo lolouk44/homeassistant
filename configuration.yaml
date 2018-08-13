@@ -36,6 +36,7 @@ customizer:
 
 # Enables the front end
 frontend: 
+  javascript_version: latest
   extra_html_url:
     - /local/custom_ui/state-card-custom-ui.html
   extra_html_url_es5:
@@ -208,3 +209,7 @@ tuya:
 
 alarm_control_panel:
   - platform: manual
+    name: Alarm
+    code: !secret alarm_code
+    pending_time: 30
+    delay_time: 30

@@ -16,3 +16,4 @@ Entrance:
     - light.hallway
     - group.Nest
     - light.House_Number_LED_Strip
+    - group.alarm_panel
