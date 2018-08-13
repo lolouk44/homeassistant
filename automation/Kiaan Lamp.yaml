@@ -16,6 +16,7 @@
     data:
       entity_id: light.kiaan_lamp
       brightness: 0
+      effect: "solid"
       rgb_color: [0,0,0]
   - service: light.turn_on
     data:

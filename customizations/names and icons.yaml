@@ -61,6 +61,8 @@ light.Staircase_LED_Strip:
   icon: mdi:vector-polyline
 light.TV_Cabinet_LED_Strip:
   icon: mdi:vector-polyline
+light.kiaan_lamp:
+  icon: mdi:lamp
 
 
 #Media_Players
