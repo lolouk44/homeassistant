@@ -1,2 +1,0 @@
-restart_hass: /home/cctv/.homeassistant/shell_scripts/Restart_HASS.sh
-renew_ssl: /home/cctv/.homeassistant/shell_scripts/RenewSSLCert.sh
