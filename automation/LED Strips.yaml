@@ -19,7 +19,6 @@
       entity_id: light.TV_Cabinet_LED_Strip
       brightness: 255
       rgb_color: [0,255,0]
-      transition: 1
   - service: light.turn_on
     data:
       entity_id: light.TV_Cabinet_LED_Strip
@@ -113,13 +112,15 @@
     - condition: state
       entity_id: binary_sensor.pir_living_room_back
       state: 'off'
+    - condition: state
+      entity_id: light.TV_Cabinet_LED_Strip
+      state: 'on'
   action:
   - service: light.turn_on
     data:
       entity_id: light.TV_Cabinet_LED_Strip
       brightness: 255
       rgb_color: [0,0,0]
-      transition: 1
   - delay: 00:00:01
   - service: light.turn_off
     data:
@@ -185,6 +186,9 @@
     - condition: state
       entity_id: input_boolean.xmas
       state: 'off'
+    - condition: state
+      entity_id: light.Staircase_LED_Strip
+      state: 'on'
   action:
   - service: light.turn_on
     data:
