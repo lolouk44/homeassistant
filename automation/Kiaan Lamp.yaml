@@ -21,7 +21,7 @@
   - service: light.turn_on
     data:
       entity_id: light.kiaan_lamp
-      brightness: 255
+      brightness: 1
       rgb_color: [0,0,255]
       transition: 1
 
