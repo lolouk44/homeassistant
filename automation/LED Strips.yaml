@@ -80,6 +80,15 @@
       event_type: signal_received
       event_data:
         entity_id: sensor.doorbell_sound
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.pir_living_room_front
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.pir_living_room_back
+        state: 'on'
   action:
   - service: light.turn_on
     data:
