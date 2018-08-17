@@ -13,3 +13,6 @@
     lolo: 'location/lolo'
     div: 'location/div'
 
+- platform: google_maps
+  username: !secret Google_Maps_Location_Sharing_User
+  password: !secret Google_Maps_Location_Sharing_Password
