@@ -1,0 +1,183 @@
+- alias: Holidays
+  trigger:
+    - platform: state
+      entity_id: input_boolean.holidays
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.holidays
+
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.normal
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.movies
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.hallway
+        away_mode: true
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, holidays, activated'
+
+- alias: Movies
+  trigger:
+    - platform: state
+      entity_id: input_boolean.movies
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.movies
+
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.normal
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.holidays
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_wall
+        brightness: 255
+    - service: light.turn_off
+      data:
+        entity_id: light.living_room_main
+    - service: light.turn_on
+      data:
+        entity_id: light.TV_Cabinet_LED_Strip
+        brightness: 255
+        rgb_color: [255,0,0]
+        transition: 1
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        effect: "solid"
+        brightness: 128
+        rgb_color: [255,0,0]
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        effect: "solid"
+        brightness: 128
+        rgb_color: [255,0,0]
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, movies, activated'
+
+- alias: Normal
+  trigger:
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.normal
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.movies
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.holidays
+    - service: light.turn_off
+      data:
+        entity_id: light.living_room_wall
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.hallway
+        away_mode: false
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, normal, activated'
+
+
+
+- alias: Normal from Movies
+  trigger:
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
+    - platform: state
+      entity_id: media_player.panasonic_viera_tv
+      to: 'off'
+      # for:
+        # seconds: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.movies
+      state: 'on'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_main
+        brightness: 255
+    - service: light.turn_off
+      data:
+        entity_id: light.living_room_wall
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.normal
+    - service: light.turn_on
+      data:
+        entity_id: light.TV_Cabinet_LED_Strip
+        brightness: 255
+        rgb_color: [0,255,0]
+        transition: 1
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        effect: "solid"
+        brightness: 128
+        rgb_color: [255,255,255]
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        effect: "solid"
+        brightness: 128
+        rgb_color: [255,255,255]
+
+- alias: Xmas On
+  trigger:
+    - platform: state
+      entity_id: input_boolean.xmas
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.xmas
+    - service: group.set_visibility
+      entity_id: group.xmas
+      data:
+        visible: True
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, christmas, activated'
+
+- alias: Xmas Off
+  trigger:
+    - platform: state
+      entity_id: input_boolean.xmas
+      to: 'off'
+  action:
+    - service: group.set_visibility
+      entity_id: group.xmas
+      data:
+        visible: False
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.living_room_google_mini
+      data:
+        message: 'Scene, christmas, de-activated'
