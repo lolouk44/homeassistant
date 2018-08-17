@@ -15,18 +15,6 @@
   name: 'Garage'
 
 
-# - platform: ffmpeg
-  # input: !secret cctv_url_front
-  # name: 'Front'
-# - platform: ffmpeg
-  # input: !secret cctv_url_living_room
-  # name: 'Living Room'
-# - platform: ffmpeg
-  # input: !secret cctv_url_kitchen
-  # name: Kitchen
-# - platform: ffmpeg
-  # input: !secret cctv_url_garage
-  # name: Garage
 - platform: ffmpeg
   input: !secret cctv_url_side
   name: Side
