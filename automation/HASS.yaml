@@ -85,4 +85,18 @@
           {% if is_state("input_boolean.xmas", "on") %}True
           {% else %}False
           {% endif %}
-        
+
+
+- alias: "Failed Login Attempt Notification"
+  trigger:
+    - platform: state
+      entity_id: persistent_notification.httplogin
+  condition:
+    - condition: template
+      value_template: "{{ trigger.to_state.state != off }}"
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: >
+          Login Attempt Failed\n
+          http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ states.persistent_notification.httplogin.attributes.message.split ("from ") [1]}}
