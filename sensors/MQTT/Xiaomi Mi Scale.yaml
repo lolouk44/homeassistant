@@ -39,6 +39,7 @@
   value_template: "{{ value }}"
   unit_of_measurement: "Ω"
   icon: mdi:scale-bathroom
+  
 
 - platform: template
   sensors:
@@ -47,13 +48,16 @@
         {{(states.sensor.lolo_weight.state | float * 1 / (1.75*1.75)) | round(1)}}
       friendly_name: Lolo BMI
       icon_template: mdi:human-pregnant
+      unit_of_measurement: "kg/m²"
     div_bmi:
       value_template: >
         {{(states.sensor.div_weight.state | float * 1 / (1.70*1.70)) | round(1)}}
       friendly_name: Div BMI
       icon_template: mdi:human-pregnant
+      unit_of_measurement: "kg/m²"
     kiaan_bmi:
       value_template: >
         {{(states.sensor.kiaan_weight.state | float * 1 / (0.97*0.97)) | round(1)}}
       friendly_name: Kiaan BMI
       icon_template: mdi:human-pregnant
+      unit_of_measurement: "kg/m²"
