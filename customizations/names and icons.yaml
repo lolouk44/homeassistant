@@ -57,13 +57,14 @@ input_datetime.xmas_end:
 #Lights
 light.conservatory_led_strip:
   icon: mdi:vector-polyline
+light.house_number_led_strip:
+  icon: mdi:numeric-4-box-multiple-outline
+light.kiaan_lamp:
+  icon: mdi:lamp
 light.Staircase_LED_Strip:
   icon: mdi:vector-polyline
 light.TV_Cabinet_LED_Strip:
   icon: mdi:vector-polyline
-light.kiaan_lamp:
-  icon: mdi:lamp
-
 
 #Media_Players
 media_player.onkyo_txnr656_e0ee71:
