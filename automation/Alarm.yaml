@@ -1,0 +1,45 @@
+- alias: 'Alarm - Trigger while armed away'
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.pir_conservatory
+        - binary_sensor.pir_kitchen
+        - binary_sensor.pir_living_room_front
+        -  binary_sensor.pir_living_room_back
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.alarm
+      state: armed_away
+  action:
+    service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.alarm
+
+
+- alias: 'Alarm - notify when triggered'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'triggered'
+  action:
+    # - service: notify.gmaildiv
+      # data_template:
+        # message: >
+          # "ALARM! The alarm has been triggered"\n
+          # ({{ trigger.entity_id | replace("binary_sensor.","") | replace("_"," ") |capitalize }})
+    - service: notify.gmaillolo
+      data_template:
+        message: >
+          ALARM! The alarm has been triggered\n
+          {% for state in states.binary_sensor -%}
+          {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir" and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}}, {% endif %}
+          {%- endfor %}.
+    - service: notify.ios_lolos_iphone
+      data_template:
+        message: 'ALARM Triggered !({{ trigger.entity_id | replace("binary_sensor.","") | replace("_"," ") |capitalize }})'
+        data:
+          push:
+            badge: '{{states.counter.iosbadgecount.state}}'
+            category: "alarm"
+          action_data:
+            entity_id: '{{trigger.entity_id}}'

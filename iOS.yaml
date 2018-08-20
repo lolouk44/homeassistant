@@ -9,3 +9,12 @@ push:
           authenticationRequired: yes
           destructive: yes
           behavior: 'default'
+    - name: Alarm
+      identifier: 'alarm'
+      actions:
+        - identifier: 'SILENCE_ALARM'
+          title: 'Silence Alarm'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
