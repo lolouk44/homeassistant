@@ -2,11 +2,13 @@ serverhygro:
   name: Hygro Sensors
   control: hidden
   entities:
+    - sensor.dark_sky_temperature
     - sensor.basil_temperature
     - sensor.currentcost_temperature
     - sensor.hallway_thermostat_temperature
     - sensor.loft_temperature
     - sensor.upstairs_temperature
+    - sensor.dark_sky_humidity
     - sensor.basil_moisture
     - sensor.hallway_thermostat_humidity
     - sensor.loft_humidity
