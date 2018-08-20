@@ -24,7 +24,7 @@ homeassistant:
 #introduction:
 recorder:
   db_url: !secret db_url
-  purge_interval: 0
+  # purge_interval: 0
 
 weather:
   - platform: darksky
