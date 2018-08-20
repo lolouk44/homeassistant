@@ -30,13 +30,17 @@
     - service: notify.gmaillolo
       data_template:
         message: >
-          ALARM! The alarm has been triggered\n
+          ALARM! The alarm has been triggered (
           {% for state in states.binary_sensor -%}
           {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir" and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}}, {% endif %}
-          {%- endfor %}.
+          {%- endfor %})
     - service: notify.ios_lolos_iphone
       data_template:
-        message: 'ALARM Triggered !({{ trigger.entity_id | replace("binary_sensor.","") | replace("_"," ") |capitalize }})'
+        message: >
+          ALARM! The alarm has been triggered (
+          {% for state in states.binary_sensor -%}
+          {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir" and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}}, {% endif %}
+          {%- endfor %})
         data:
           push:
             badge: '{{states.counter.iosbadgecount.state}}'
