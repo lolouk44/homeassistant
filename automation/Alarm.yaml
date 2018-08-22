@@ -5,7 +5,8 @@
         - binary_sensor.pir_conservatory
         - binary_sensor.pir_kitchen
         - binary_sensor.pir_living_room_front
-        -  binary_sensor.pir_living_room_back
+        - binary_sensor.pir_living_room_back
+        - binary_sensor.conservatory_skylight_left
       to: 'on'
   condition:
     - condition: state
@@ -32,14 +33,18 @@
         message: >
           ALARM! The alarm has been triggered (
           {% for state in states.binary_sensor -%}
-          {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir" and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}}, {% endif %}
+          {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir"  and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}},
+          {% elif state.entity_id.split("binary_sensor.")[1].split("_")[0] == "conservatory"  and state.state =="on" %}Conservatory Skylight
+          {% endif %}
           {%- endfor %})
     - service: notify.ios_lolos_iphone
       data_template:
         message: >
           ALARM! The alarm has been triggered (
           {% for state in states.binary_sensor -%}
-          {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir" and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}}, {% endif %}
+          {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir"  and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}},
+          {% elif state.entity_id.split("binary_sensor.")[1].split("_")[0] == "conservatory"  and state.state =="on" %}Conservatory Skylight
+          {% endif %}
           {%- endfor %})
         data:
           push:
