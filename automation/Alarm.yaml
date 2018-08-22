@@ -13,8 +13,8 @@
       entity_id: alarm_control_panel.alarm
       state: armed_away
   action:
-    service: alarm_control_panel.alarm_trigger
-    entity_id: alarm_control_panel.alarm
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.alarm
 
 
 - alias: 'Alarm - notify when triggered'
@@ -52,3 +52,25 @@
             category: "alarm"
           action_data:
             entity_id: '{{trigger.entity_id}}'
+
+
+- alias: 'Alarm - Stop arming when windows left open'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'pending'
+      from: 'disarmed'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.conservatory_skylight_left
+      state: 'on'
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.alarm
+      data:
+        code: !secret alarm_code
+    - service: tts.google_say
+      data_template:
+        entity_id: media_player.google_home_minis
+        message: |
+          Please note, one or more windows are left open. Disarming alarm...
