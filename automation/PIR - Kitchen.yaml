@@ -48,6 +48,9 @@
       - condition: state
         entity_id: light.living_room_main
         state: 'on'
+      - condition: state
+        entity_id: light.conservatory
+        state: 'on'
   action:
   - service: light.turn_on
     data:
