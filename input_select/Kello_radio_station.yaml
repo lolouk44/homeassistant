@@ -6,5 +6,6 @@ kello_radio_station:
     - Hit West
     - RTL2
     - Weather Forecast
+    - Conservatory Windows Left Open
 #  initial: RTL2
   icon: mdi:radio

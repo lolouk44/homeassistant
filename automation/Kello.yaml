@@ -3,29 +3,11 @@
     - platform: state
       entity_id: input_number.volume_kello
   action:
-#  - service: shell_command.kello_volume
   - service: mqtt.publish
     data:
       topic: "Kello/Volume"
       payload_template: '{{ states.input_number.volume_kello.state | int(value,16) }}'
       retain: false
-
-
-
-# - alias: Mute Kello Alarms
-  # trigger:
-    # - platform: state
-      # entity_id: input_boolean.kello_mute_alarms
-      # to: 'on'
-  # action:
-# - service: shell_command.kello_mute_alarms
-  # - service: mqtt.publish
-    # data:
-      # topic: "Kello/MuteAlarms"
-      # payload_template: '{{ states.input_boolean.kello_mute_alarms.state }}'
-      # retain: false
-
-
 
 - alias: Mute Kello Alarms
   trigger:
@@ -39,7 +21,6 @@
       entity_id: input_boolean.holidays
       to: 'on'
   action:
-#  - service: shell_command.kello_mute_alarms
     - service: mqtt.publish
       data:
         topic: "Kello/MuteAlarms"
@@ -53,8 +34,6 @@
       data:
         entity_id: input_boolean.kello_mute_alarms
 
-
-
 - alias: Unmute Kello Alarms
   trigger:
     - platform: state
@@ -67,7 +46,6 @@
       entity_id: input_boolean.holidays
       to: 'off'
   action:
-#  - service: shell_command.kello_unmute_alarms
     - service: mqtt.publish
       data:
         topic: "Kello/MuteAlarms"
@@ -81,40 +59,6 @@
       data:
         entity_id: input_boolean.kello_mute_alarms
 
-# - alias: Unmute Kello Alarms Timed
-  # trigger:
-    # - platform: time
-      # hours: 4
-      # minutes: 0
-      # seconds: 0
-  # condition:
-    # - condition: state
-      # entity_id: input_boolean.holidays
-      # state: 'off'
-  # action:
-  # - service: shell_command.kello_unmute_alarms
-
-
-# - alias: Unmute Kello Alarms auto
-  # trigger:
-    # - platform: state
-      # entity_id: device_tracker.lolo
-      # to: 'home'
-    # - platform: state
-      # entity_id: input_boolean.holidays
-      # to: 'off'
-  # action:
-  # - service: input_boolean.turn_off
-    # data:
-      # entity_id: input_boolean.kello_mute_alarms
-# - service: shell_command.kello_unmute_alarms
-  # - service: mqtt.publish
-    # data:
-      # topic: "Kello/MuteAlarms"
-      # payload_template: '{{ states.input_boolean.kello_mute_alarms.state }}'
-      # retain: false
-
-
 - alias: Stop Radio on Kello
   trigger:
     - platform: state
@@ -126,8 +70,6 @@
         topic: "Kello/PlayStatus"
         payload_template: 'OFF'
         retain: false
-
-
 
 - alias: Play Radio on Kello
   trigger:
@@ -157,14 +99,8 @@
     data:
       topic: "Kello/Radio"
       payload_template: >
-        {% if is_state("input_select.kello_radio_station", "RTL2") %} RTL2
-        {% elif is_state("input_select.kello_radio_station", "Absolute Radio") %} AbsoluteRadio
-        {% elif is_state("input_select.kello_radio_station", "Hit West") %} HitWest
-        {% elif is_state("input_select.kello_radio_station", "Chill") %} Chill
-        {% elif is_state("input_select.kello_radio_station", "Weather Forecast") %} WeatherForecast
-        {% endif %}
+        {{ states.input_select.kello_radio_station.state.replace(" ","") }}
       retain: false
-
 
 - alias: Build Weather Greeting
   trigger:
@@ -198,35 +134,3 @@
         {% if (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day != True %} Your next appointment is: {{states.calendar.birthdays__events.attributes.message}} at {{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[0]}} {%if (states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1] != '00'%}{{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day == True %} Today is : {{states.calendar.birthdays__events.attributes.message|replace("/","and")}}{%endif%}
-      # cache: true
-
-
-
-# - alias: Play Weather Greeting
-  # trigger:
-    # - platform: state
-      # entity_id: sensor.Kello_MQTT
-      # to: 'play_greeting'
-  # action:
-  # - service: shell_command.weather_on_kello_play
-
-
-
-# - alias: Reboot Kello at Midnight
-  # trigger:
-    # - platform: time
-      # hours: 0
-      # minutes: 0
-      # seconds: 0
-  # condition:
-    # - condition: state
-      # entity_id: input_boolean.holidays
-      # state: 'off'
-  # action:
-  # - service: switch.turn_off
-    # data:
-      # entity_id: switch.LWRF_Socket_3
-  # - delay: 00:00:05
-  # - service: switch.turn_on
-    # data:
-      # entity_id: switch.LWRF_Socket_3
