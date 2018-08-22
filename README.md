@@ -36,13 +36,14 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - RFXCOM RFXtrx433 433MHz transceiver
 - Sky+HD Box
 - Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
-- Tile Mate
+- Tile Mate, Slim
 - Verint S5003FD Camera
 - Wemos D1 Mini Pro
 - Xiaomi DaFang Camera
+- Xiaomi Mi Bluetooth V4.0 Body Composition Smart Scale
 - Xiaomi Mi Box 3
 - Xiaomi Mi Flora Plant Sensor
-- Xiaomi Mi Robot Vacuum
+- Xiaomi Mi Robot Vacuum V1
 - Xiaomi Router R3P Pro
 
 

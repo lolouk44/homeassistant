@@ -10,15 +10,15 @@ radio538:
           {% elif is_state("input_select.chromecast_radio", "House") %} media_player.house
           {% endif %}
         volume_level: '{{  states.input_number.volume_radio.state  }}' 
-    -  service: media_player.play_media
-       data_template:
-         entity_id: >
+    - service: media_player.play_media
+      data_template:
+        entity_id: >
           {% if is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
           {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo
           {% elif is_state("input_select.chromecast_radio", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio", "House") %} media_player.house
           {% endif %}
-         media_content_id: >
+        media_content_id: >
           {% if is_state("input_select.radio_station", "RTL2") %} http://streaming.radio.rtl2.fr:80/rtl2-1-44-96
           {% elif is_state("input_select.radio_station", "Absolute Radio") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3
           {% elif is_state("input_select.radio_station", "Absolute Radio Classic Rock") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3
@@ -28,7 +28,7 @@ radio538:
           {% elif is_state("input_select.radio_station", "Chill") %} http://media-the.musicradio.com/ChillMP3
           {% elif is_state("input_select.radio_station", "Custom Station") %} {{states.input_text.custom_station.state}}
           {% endif %}
-         media_content_type: 'audio/mp4'
+        media_content_type: 'audio/mp4'
 
 
 

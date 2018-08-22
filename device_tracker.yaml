@@ -16,3 +16,7 @@
 - platform: google_maps
   username: !secret Google_Maps_Location_Sharing_User
   password: !secret Google_Maps_Location_Sharing_Password
+
+- platform: tile
+  username: !secret tile_user
+  password: !secret tile_password
