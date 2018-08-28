@@ -13,12 +13,12 @@ Vacuum:
     - sensor.xiaomi_side_brush_left
     - sensor.xiaomi_filter_left
 
-basil:
-  name: Basil
+aloe_vera:
+  name: Aloe Vera
   control: hidden
   entities:
-    - sensor.basil_temperature
-    - sensor.basil_moisture
-    - sensor.basil_light_intensity
-    - sensor.basil_conductivity
-    - sensor.basil_battery
+    - sensor.aloe_vera_temperature
+    - sensor.aloe_vera_moisture
+    - sensor.aloe_vera_light_intensity
+    - sensor.aloe_vera_conductivity
+    - sensor.aloe_vera_battery

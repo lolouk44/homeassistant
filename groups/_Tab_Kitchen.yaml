@@ -15,5 +15,5 @@ Kitchen:
     - binary_sensor.pir_kitchen
     - group.kitchen_lights
     - group.kitchen_tv
-    - group.basil
+    - group.aloe_vera
     - group.edimax1

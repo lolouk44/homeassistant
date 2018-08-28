@@ -3,13 +3,13 @@ serverhygro:
   control: hidden
   entities:
     - sensor.dark_sky_temperature
-    - sensor.basil_temperature
+    - sensor.aloe_vera_temperature
     - sensor.currentcost_temperature
     - sensor.hallway_thermostat_temperature
     - sensor.loft_temperature
     - sensor.upstairs_temperature
     - sensor.dark_sky_humidity
-    - sensor.basil_moisture
+    - sensor.aloe_vera_moisture
     - sensor.hallway_thermostat_humidity
     - sensor.loft_humidity
     - sensor.upstairs_humidity

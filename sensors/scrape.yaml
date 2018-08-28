@@ -39,3 +39,9 @@
   name: Random_list
   select: 'div[id="answer"]'
   value_template: '{{ value | replace (" ", "") }}'
+
+- platform: scrape
+  resource: https://www.calculatorsoup.com/calculators/statistics/number-generator.php?num_samples=10&range=9-0&duplicates=no&commas=no&action=solve
+  name: RTL2_Pic
+  select: 'img[class="pic img-echo timeline-media--music__img"]:nth-of-type(1)'
+  attribute: data-src

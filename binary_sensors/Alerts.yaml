@@ -1,14 +1,14 @@
 - platform: template
   sensors:
-    alert_basil_humidity_too_low:
+    alert_aloe_vera_humidity_too_low:
       value_template: >-
-        {% if (((states.sensor.basil_moisture.state )| default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)%}on{% else %}off{%endif%}
-      friendly_name: Basil Humidity below 15%
+        {% if (((states.sensor.aloe_vera_moisture.state )| default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)%}on{% else %}off{%endif%}
+      friendly_name: Aloe Vera Humidity below 15%
 
-    alert_basil_battery_too_low:
+    alert_aloe_vera_battery_too_low:
       value_template: >-
-        {% if (((states.sensor.basil_battery.state) | default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)%}on{% else %}off{%endif%}
-      friendly_name: Basil Battery below 10%
+        {% if (((states.sensor.aloe_vera_battery.state) | default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)%}on{% else %}off{%endif%}
+      friendly_name: Aloe Vera Battery below 10%
 
     # alert_outside_temp_sensor_lost:
       # value_template: >-

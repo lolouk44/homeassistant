@@ -2,8 +2,8 @@
   trigger:
     - platform: state
       entity_id: 
-        - alert.basil_battery_too_low
-        - alert.basil_humidity_too_low
+        - alert.aloe_vera_battery_too_low
+        - alert.aloe_vera_humidity_too_low
         - alert.cctv_dafang_kitchen_lost
         - alert.cctv_dafang_living_room_lost
         - alert.cctv_front_lost
@@ -50,10 +50,10 @@
 - alias: Decrease Counter with Alert to Idle
   trigger:
     - platform: state
-      entity_id: alert.basil_battery_too_low
+      entity_id: alert.aloe_vera_battery_too_low
       to: 'idle'
     - platform: state
-      entity_id: alert.basil_humidity_too_low
+      entity_id: alert.aloe_vera_humidity_too_low
       to: 'idle'
     - platform: state
       entity_id: alert.cctv_dafang_kitchen_lost

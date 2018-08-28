@@ -221,9 +221,9 @@ root_disk_usage_too_high:
   notifiers:
     - pushbullet
 
-basil_humidity_too_low:
-  name: Basil Humidity below 10%
-  entity_id: binary_sensor.basil_humidity_too_low
+aloe_vera_humidity_too_low:
+  name: Aloe Vera Humidity below 10%
+  entity_id: binary_sensor.aloe_vera_humidity_too_low
   can_acknowledge: True
   skip_first: True
   repeat:
@@ -232,9 +232,9 @@ basil_humidity_too_low:
   notifiers:
     - pushbullet
 
-basil_battery_too_low:
-  name: Basil Battery below 10%
-  entity_id: binary_sensor.basil_battery_too_low
+aloe_vera_battery_too_low:
+  name: Aloe Vera Battery below 10%
+  entity_id: binary_sensor.aloe_vera_battery_too_low
   can_acknowledge: True
   skip_first: True
   repeat:

@@ -37,8 +37,8 @@ views:
           - alert.home_disk_usage_too_high
           - alert.root_disk_usage_too_high
           - alert.cctv_dafang_kitchen_lost
-          - alert.basil_humidity_too_low
-          - alert.basil_battery_too_low
+          - alert.aloe_vera_humidity_too_low
+          - alert.aloe_vera_battery_too_low
           - counter.iosbadgecount
         state_filter:
           - "on"
@@ -199,14 +199,14 @@ views:
           - switch.kitchen_tv
           - input_select.mm_cam_feed
       - type: entities
-        title: Basil
+        title: Aloe Vera
         show_header_toggle: false
         entities:
-          - sensor.basil_temperature
-          - sensor.basil_battery
-          - sensor.basil_conductivity
-          - sensor.basil_moisture
-          - sensor.basil_light_intensity
+          - sensor.aloe_vera_temperature
+          - sensor.aloe_vera_battery
+          - sensor.aloe_vera_conductivity
+          - sensor.aloe_vera_moisture
+          - sensor.aloe_vera_light_intensity
       - type: entities
         title: Kettle
         show_header_toggle: false
@@ -558,12 +558,12 @@ views:
         title: Hygro Sensors
         show_header_toggle: false
         entities:
-          - sensor.basil_temperature
+          - sensor.aloe_vera_temperature
           - sensor.currentcost_temperature
           - sensor.hallway_thermostat_temperature
           - sensor.loft_temperature
           - sensor.upstairs_temperature
-          - sensor.basil_moisture
+          - sensor.aloe_vera_moisture
           - sensor.hallway_thermostat_humidity
           - sensor.loft_humidity
           - sensor.upstairs_humidity
@@ -625,8 +625,8 @@ views:
           - alert.home_disk_usage_too_high
           - alert.root_disk_usage_too_high
           - alert.cctv_dafang_kitchen_lost
-          - alert.basil_humidity_too_low
-          - alert.basil_battery_too_low
+          - alert.aloe_vera_humidity_too_low
+          - alert.aloe_vera_battery_too_low
           - counter.iosbadgecount
       - type: entities
         title: all lights

@@ -19,6 +19,6 @@ Alerts:
     - alert.home_disk_usage_too_high
     - alert.root_disk_usage_too_high
     - alert.cctv_dafang_kitchen_lost
-    - alert.basil_humidity_too_low
-    - alert.basil_battery_too_low
+    - alert.aloe_vera_humidity_too_low
+    - alert.aloe_vera_battery_too_low
     - counter.iosbadgecount

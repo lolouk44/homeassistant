@@ -78,13 +78,13 @@ script.radio538:
 
 
 #Sensors
-sensor.basil_moisture:
+sensor.aloe_vera_moisture:
   icon: mdi:water-percent
-sensor.basil_light_intensity:
+sensor.aloe_vera_light_intensity:
   icon: mdi:brightness-7
-sensor.basil_conductivity:
+sensor.aloe_vera_conductivity:
   icon: mdi:flower
-sensor.basil_battery:
+sensor.aloe_vera_battery:
   icon: mdi:battery-charging
 sensor.currentcost_power:
   icon: mdi:flash-circle
@@ -151,6 +151,12 @@ sensor.xiaomi_filter_left:
   icon: mdi:image-filter-tilt-shift
 sensor.xiaomi_status:
   icon: mdi:checkbox-marked-circle-outline
+sensor.pressure_158d0001f5218a:
+  friendly_name: Aqara Pressure
+sensor.humidity_158d0001f5218a:
+  friendly_name: Aqara Humidity
+sensor.temperature_158d0001f5218a:
+  friendly_name: Aqara Temperature
 
 
 #Switches

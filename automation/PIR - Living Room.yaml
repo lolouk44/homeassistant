@@ -13,7 +13,7 @@
       entity_id: binary_sensor.photoresistor
       to: 'off'
     - platform: state
-      entity_id: sensor.basil_light_intensity
+      entity_id: sensor.aloe_vera_light_intensity
   condition:
     - condition: or
       conditions:
@@ -43,7 +43,7 @@
         - condition: or
           conditions:
           - condition: template
-            value_template: '{{ states.sensor.basil_light_intensity.state != "unknown" and  states.sensor.basil_light_intensity.state | int < 300 }}'
+            value_template: '{{ states.sensor.aloe_vera_light_intensity.state != "unknown" and  states.sensor.aloe_vera_light_intensity.state | int < 300 }}'
           - condition: state
             entity_id: binary_sensor.photoresistor
             state: 'off'
