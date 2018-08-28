@@ -39,7 +39,9 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Tile Mate, Slim
 - Verint S5003FD Camera
 - Wemos D1 Mini Pro
+- Xiaomi Aqara V3 Gateway
 - Xiaomi DaFang Camera
+- Xiaomi Aqara Sensors (Hygro, window/door)
 - Xiaomi Mi Bluetooth V4.0 Body Composition Smart Scale
 - Xiaomi Mi Box 3
 - Xiaomi Mi Flora Plant Sensor

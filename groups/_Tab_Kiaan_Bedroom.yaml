@@ -12,6 +12,6 @@ Kiaan_Bedroom:
     - sensor.home_to_verint
     - sensor.lolo_to_home
     - sensor.sunset_time
-    - group.upstairs_sensors
+    - group.kiaan_bedroom_sensors
     - group.Kiaan_Bedroom_lights
     - group.miscale_kiaan

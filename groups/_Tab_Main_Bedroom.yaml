@@ -12,7 +12,7 @@ Main_Bedroom:
     - sensor.home_to_verint
     - sensor.lolo_to_home
     - sensor.sunset_time
-    - group.upstairs_sensors
+    - group.main_bedroom_sensors
     - group.kello
     - group.dehumidifier
     - group.miscale_us

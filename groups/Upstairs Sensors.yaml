@@ -1,5 +1,13 @@
-upstairs_sensors:
+main_bedroom_sensors:
+  name: Sensors
+  entities:
+    - sensor.temperature_158d0001f5218a
+    - sensor.humidity_158d0001f5218a
+    - sensor.pressure_158d0001f5218a
+
+kiaan_bedroom_sensors:
   name: Sensors
   entities:
     - sensor.upstairs_temperature
     - sensor.upstairs_humidity
+
