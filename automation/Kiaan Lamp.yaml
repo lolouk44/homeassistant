@@ -27,7 +27,7 @@
 
 
 
-- alias: Kiaan Night Light Wake
+- alias: Kiaan Night Light Wake Phase1
   trigger:
     - platform: time
       hours: 5
@@ -44,9 +44,32 @@
   - service: light.turn_on
     data:
       entity_id: light.kiaan_lamp
-      brightness: 255
+      brightness: 1
       rgb_color: [0,255,0]
       transition: 1
+
+
+
+- alias: Kiaan Night Light Wake Phase2
+  trigger:
+    - platform: time
+      hours: 7
+      minutes: 00
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
+    - condition: state
+      entity_id: light.kiaan_lamp
+      state: "on"
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.kiaan_lamp
+      brightness: 255
+      rgb_color: [0,255,0]
+      transition: 5
 
 
 
