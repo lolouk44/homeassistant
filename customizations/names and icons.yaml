@@ -119,8 +119,12 @@ sensor.upstairs_humidity:
   icon: mdi:water-percent
 sensor.last_clean:
   icon: mdi:calendar
+sensor.lolo_to_home:
+  icon: mdi:car
 sensor.home_disk_usage:
   icon: mdi:harddisk
+sensor.home_to_verint:
+  icon: mdi:car
 sensor.pws_precip_1d:
   friendly_name: Rain (%)
 sensor.pws_precip_today_metric:

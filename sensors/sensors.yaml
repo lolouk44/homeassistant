@@ -44,6 +44,7 @@
       value_template: >
         {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%H:%M") }}
       friendly_name: Sunset
+      icon_template: '{% if states.sun.sun.state == "above_horizon" %}mdi:white-balance-sunny{% else %}mdi:weather-night{% endif %}'
 
 - platform: template
   sensors:
