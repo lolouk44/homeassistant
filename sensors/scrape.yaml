@@ -41,7 +41,7 @@
   value_template: '{{ value | replace (" ", "") }}'
 
 - platform: scrape
-  resource: https://www.calculatorsoup.com/calculators/statistics/number-generator.php?num_samples=10&range=9-0&duplicates=no&commas=no&action=solve
+  resource: https://www.rtl2.fr/direct
   name: RTL2_Pic
-  select: 'img[class="pic img-echo timeline-media--music__img"]:nth-of-type(1)'
+  select: 'img[class="pic img-echo timeline-media--music__img"]'
   attribute: data-src
