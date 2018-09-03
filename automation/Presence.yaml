@@ -140,6 +140,8 @@
         entity_id: 'device_tracker.ha_lolos_iphone'
       - platform: state
         entity_id: 'device_tracker.google_maps_110345542315981072615'
+      - platform: state
+        entity_id: 'device_tracker.laurent_mah_iphone_5s'
   action:
     service: mqtt.publish
     data_template:
