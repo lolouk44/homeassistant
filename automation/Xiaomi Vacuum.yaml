@@ -27,7 +27,7 @@
       entity_id: input_boolean.normal
       state: "on"
   action:
-    - service: vacuum.turn_on
+    - service: vacuum.start
       data:
         entity_id: vacuum.mi_robot_vacuum
 
@@ -86,7 +86,7 @@
       entity_id: input_boolean.scheduled_vacuuming
       state: "on"
   action:
-    - service: vacuum.turn_on
+    - service: vacuum.start
       data:
         entity_id: vacuum.mi_robot_vacuum
     - service: input_boolean.turn_off

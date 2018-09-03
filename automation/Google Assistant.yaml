@@ -46,7 +46,7 @@
       entity_id: input_boolean.vacuum
       to: 'on'
   action:
-    - service: vacuum.turn_on
+    - service: vacuum.start
       data:
         entity_id: vacuum.mi_robot_vacuum
 
@@ -60,7 +60,7 @@
       entity_id: sensor.xiaomi_status
       state: 'Cleaning'
   action:
-    - service: vacuum.turn_off
+    - service: vacuum.return_to_dock
       data:
         entity_id: vacuum.mi_robot_vacuum
 
@@ -159,11 +159,19 @@
     - condition: template
       value_template: '{{ states.media_player.google_home_minis.state != "playing"}}'
   action:
-    service: media_player.play_media
-    entity_id: media_player.google_home_minis
-    data:
-      media_content_id: http://192.168.0.24/audio1sec.mp3
-      media_content_type: music
+    - service: media_player.play_media
+      entity_id: media_player.google_home_minis
+      data:
+        media_content_id: http://192.168.0.24/audio1sec.mp3
+        media_content_type: music
+    - wait_template: "{{ states('media_player.sovrum') != 'off' }}"
+    - delay:
+        seconds: 0.1
+    - service: media_player.play_media
+      entity_id: media_player.google_home_minis
+      data:
+        media_content_id: http://192.168.0.24/audio1sec.mp3
+        media_content_type: music
 
 
 - alias: Turn Multimedia Switch on if Sky, TV or Onkyo is on

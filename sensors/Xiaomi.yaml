@@ -16,7 +16,7 @@
 
     xiaomi_status:
       value_template: >
-        {{ states.vacuum.mi_robot_vacuum.attributes.status }}
+        {{ states.vacuum.mi_robot_vacuum.state }}
       friendly_name: Status
 
 
