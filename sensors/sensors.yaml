@@ -1,18 +1,32 @@
-- platform: google_travel_time
-  name: Home to Verint
-  api_key: !secret google_travel_api_key
-  origin: RH10 7YS
-  destination: KT13 0RH
-  options:
-    units: imperial
+# - platform: google_travel_time
+  # name: Home to Verint
+  # api_key: !secret google_travel_api_key
+  # origin: RH10 7YS
+  # destination: KT13 0RH
+  # options:
+    # units: imperial
 
-- platform: google_travel_time
+# - platform: google_travel_time
+  # name: Lolo to Home
+  # api_key: !secret google_travel_api_key
+  # origin: device_tracker.lolo
+  # destination: RH10 7YS
+  # options:
+    # units: imperial
+
+- platform: waze_travel_time
+  name: Home to Work
+  origin: !secret postcode_home
+  destination: !secret postcode_work
+  region: 'EU'
+
+- platform: waze_travel_time
   name: Lolo to Home
-  api_key: !secret google_travel_api_key
   origin: device_tracker.lolo
-  destination: RH10 7YS
-  options:
-    units: imperial
+  destination: !secret postcode_home
+  region: 'EU'
+
+
 
 - platform: darksky
   api_key: !secret darksky_api_key

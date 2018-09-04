@@ -90,7 +90,7 @@
         # - wed
         # - thu
     # - condition: template
-      # value_template: '{{ (as_timestamp(now().strftime("%Y-%m-%d") + " 08:30")  - states.sensor.home_to_verint.attributes.duration.split(" ")[0] | int *60 )  <=  (as_timestamp(now())) }}'
+      # value_template: '{{ (as_timestamp(now().strftime("%Y-%m-%d") + " 08:30")  - states.sensor.home_to_work.attributes.duration.split(" ")[0] | int *60 )  <=  (as_timestamp(now())) }}'
     # - condition: template
       # value_template: '{{ states.device_tracker.lolo.state == "home"}}'
     # - condition: template

@@ -9,7 +9,7 @@ Kiaan_Bedroom:
     - sensor.dark_sky_overnight_low_temperature
     - sensor.dark_sky_daytime_high_temperature
     - sensor.pws_precip_1d
-    - sensor.home_to_verint
+    - sensor.home_to_work
     - sensor.lolo_to_home
     - sensor.sunset_time
     - group.kiaan_bedroom_sensors

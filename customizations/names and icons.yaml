@@ -123,7 +123,7 @@ sensor.lolo_to_home:
   icon: mdi:car
 sensor.home_disk_usage:
   icon: mdi:harddisk
-sensor.home_to_verint:
+sensor.home_to_work:
   icon: mdi:car
 sensor.pws_precip_1d:
   friendly_name: Rain (%)
