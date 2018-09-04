@@ -92,7 +92,6 @@ views:
         entities:
           - vacuum.mi_robot_vacuum
           - input_boolean.scheduled_vacuuming
-          - sensor.xiaomi_status
           - sensor.xiaomi_battery_level
           - sensor.xiaomi_cleaned_area
           - sensor.xiaomi_cleaning_time
@@ -100,6 +99,7 @@ views:
           - sensor.xiaomi_main_brush_left
           - sensor.xiaomi_side_brush_left
           - sensor.xiaomi_filter_left
+          - sensor.xiaomi_sensor_dirty_left
       - type: picture-entity
         title: YrForecastCrawley
         entity: camera.yrforecastcrawley
@@ -386,8 +386,9 @@ views:
         title: Sensors
         show_header_toggle: true
         entities:
-          - sensor.upstairs_temperature
-          - sensor.upstairs_humidity
+        - sensor.temperature_158d0001f5218a
+        - sensor.humidity_158d0001f5218a
+        - sensor.pressure_158d0001f5218a
       - type: glance
         entities:
         - sensor.dark_sky_overnight_low_temperature
@@ -417,8 +418,45 @@ views:
         entities:
           - sensor.lolo_weight
           - sensor.lolo_impedance
+          - sensor.lolo_bmi
           - sensor.div_weight
           - sensor.div_impedance
+          - sensor.div_bmi
+  - title: Kiaan_Bedroom
+    icon: mdi:baby
+    cards:
+      - type: glance
+        entities:
+        - device_tracker.lolo
+        - device_tracker.div
+        - sensor.dark_sky_temperature
+        - sensor.dark_sky_humidity
+        - sensor.pws_precip_1d
+      - type: entities
+        title: Sensors
+        show_header_toggle: true
+        entities:
+          - sensor.upstairs_temperature
+          - sensor.upstairs_humidity
+      - type: glance
+        entities:
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+      - type: entities
+        title: Lights
+        show_header_toggle: false
+        entities:
+          - light.kiaan_lamp
+      - type: entities
+        title: Mi Scale
+        show_header_toggle: false
+        entities:
+          - sensor.kiaan_weight
+          - sensor.kiaan_impedance
+          - sensor.kiaan_bmi
   - title: cctv
     icon: mdi:cctv
     cards:
@@ -561,6 +599,33 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+      - type: entity-filter
+        title: Alerts
+        show_header_toggle: false
+        entities:
+          - alert.outside_temp_sensor_lost
+          - alert.upstairs_temp_sensor_lost
+          - alert.cctv_front_lost
+          - alert.cctv_garage_lost
+          - alert.cctv_dafang_living_room_lost
+          - alert.currentcost_lost
+          - alert.dehumidifier_full
+          - alert.rpi_lost
+          - alert.rpi_zero_w_lost
+          - alert.kello_lost
+          - alert.house_number_led_strip_lost
+          - alert.staircase_led_strip_lost
+          - alert.tv_cabinet_led_strip_lost
+          - alert.ram_too_high
+          - alert.ram_usage_lost
+          - alert.home_disk_usage_too_high
+          - alert.root_disk_usage_too_high
+          - alert.cctv_dafang_kitchen_lost
+          - alert.aloe_vera_humidity_too_low
+          - alert.aloe_vera_battery_too_low
+          - counter.iosbadgecount
+        state_filter:
+          - "on"
       - type: entities
         title: RPi Sensors
         show_header_toggle: false
@@ -587,10 +652,12 @@ views:
           - sensor.currentcost_temperature
           - sensor.hallway_thermostat_temperature
           - sensor.loft_temperature
+          - sensor.temperature_158d0001f5218a
           - sensor.upstairs_temperature
           - sensor.aloe_vera_moisture
           - sensor.hallway_thermostat_humidity
           - sensor.loft_humidity
+          - sensor.humidity_158d0001f5218a
           - sensor.upstairs_humidity
       - type: entities
         title: Disk Temperature
@@ -628,31 +695,6 @@ views:
           - sensor.ram_usage
           - sensor.hass_db_size_formatted
           - sensor.ssl_cert_expiry
-      - type: entities
-        title: Alerts
-        show_header_toggle: true
-        entities:
-          - alert.outside_temp_sensor_lost
-          - alert.upstairs_temp_sensor_lost
-          - alert.cctv_front_lost
-          - alert.cctv_garage_lost
-          - alert.cctv_dafang_living_room_lost
-          - alert.currentcost_lost
-          - alert.dehumidifier_full
-          - alert.rpi_lost
-          - alert.rpi_zero_w_lost
-          - alert.kello_lost
-          - alert.house_number_led_strip_lost
-          - alert.staircase_led_strip_lost
-          - alert.tv_cabinet_led_strip_lost
-          - alert.ram_too_high
-          - alert.ram_usage_lost
-          - alert.home_disk_usage_too_high
-          - alert.root_disk_usage_too_high
-          - alert.cctv_dafang_kitchen_lost
-          - alert.aloe_vera_humidity_too_low
-          - alert.aloe_vera_battery_too_low
-          - counter.iosbadgecount
       - type: entities
         title: all lights
         show_header_toggle: true

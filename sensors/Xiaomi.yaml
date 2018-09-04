@@ -48,6 +48,13 @@
       unit_of_measurement: 'Hrs'
 
 
+    xiaomi_sensor_dirty_left:
+      value_template: >
+        {{ states.vacuum.mi_robot_vacuum.attributes.sensor_dirty_left }}
+      friendly_name: Filter Left
+      unit_of_measurement: 'Hrs'
+
+
 
 # - platform: command_line
   # name: Last Clean

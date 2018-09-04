@@ -106,8 +106,6 @@ sensor.doorbell_last_rang:
   icon: mdi:bell
 sensor.edimax1_watts:
   icon: mdi:flash-circle
-sensor.hass_db_size_formatted:
-  icon: mdi:harddisk
 sensor.loft_humidity:
   icon: mdi:water-percent
 sensor.hallway_thermostat_humidity:
@@ -121,26 +119,16 @@ sensor.last_clean:
   icon: mdi:calendar
 sensor.lolo_to_home:
   icon: mdi:car
-sensor.home_disk_usage:
-  icon: mdi:harddisk
 sensor.home_to_work:
   icon: mdi:car
 sensor.pws_precip_1d:
   friendly_name: Rain (%)
 sensor.pws_precip_today_metric:
   friendly_name: Rain (mm)
-sensor.root_disk_usage:
-  icon: mdi:harddisk
 sensor.tracker_div:
   entity_picture: /local/Div_Avatar.jpg
 sensor.tracker_lolo:
   entity_picture: /local/Lolo_Avatar.jpg
-sensor.zfs_disk_usage:
-  icon: mdi:harddisk
-sensor.ram_usage:
-  icon: mdi:memory
-sensor.SSL_Cert_Expiry:
-  icon: mdi:calendar
 sensor.xiaomi_battery_level:
   icon: mdi:battery-charging
 sensor.xiaomi_cleaned_area:
