@@ -40,7 +40,7 @@
           |replace("S","South ")
           |replace("E","East ")
           |replace("W","West ")
-          }} at {{states.sensor.pws_wind_1d_kph.state}} with gusts off {{states.sensor.pws_wind_gust_1d_kph.state}} km/h.
+          }} at {{states.sensor.pws_wind_1d_kph.state}} to {{states.sensor.pws_wind_gust_1d_kph.state}} km/h.
           Chance of rain: {{states.sensor.pws_precip_1d.state | int(0)}}%.
           {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states.sensor.home_to_work.state}} minutes.{% endif %}
           {% if (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
