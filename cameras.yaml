@@ -38,3 +38,6 @@
   name: YrForecastWeybridge
   still_image_url: https://www.yr.no/place/United_Kingdom/England/Weybridge/meteogram.svg
   content_type: 'image/svg+xml'
+- platform: generic
+  name: RTL2_Pic
+  still_image_url: '{{states.sensor.rtl2_pic.state}}'

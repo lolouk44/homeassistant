@@ -40,8 +40,4 @@
   select: 'div[id="answer"]'
   value_template: '{{ value | replace (" ", "") }}'
 
-- platform: scrape
-  resource: https://www.rtl2.fr/direct
-  name: RTL2_Pic
-  select: 'img[class="pic img-echo timeline-media--music__img"]'
-  attribute: data-src
+

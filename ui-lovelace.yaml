@@ -730,3 +730,32 @@ views:
         states:
           - arm_home
           - arm_away
+  - title: test
+    icon: mdi:comment-question
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: picture-glance
+          camera_image: camera.rtl2_pic
+          entities:
+            - entity: switch.chromecast_radio_rtl2_on
+            - entity: switch.chromecast_radio_vol_down
+            - entity: switch.chromecast_radio_mute
+            - entity: switch.chromecast_radio_vol_up
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - type: divider
+              style:
+                height: 50px
+                margin: 4px 0
+                background: center / contain url("/local/RTL2.jpg") no-repeat
+            - entity: sensor.rtl2_artist
+              name: Artist
+              icon: mdi:account
+            - entity: sensor.rtl2_track
+              name: Track
+              icon: mdi:file-music
+            - entity: sensor.current_speaker
+              name: Playing On
+              icon: mdi:speaker

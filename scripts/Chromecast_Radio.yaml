@@ -30,7 +30,15 @@ radio538:
           {% endif %}
         media_content_type: 'audio/mp4'
 
-
+play_rtl2:
+  alias: Play RTL2 Radio on Selected Chromecast Speakers
+  sequence:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.radio_station
+        option: RTL2
+    - service: script.turn_on
+      entity_id: script.radio538
 
 
 # Radio Santa Claus: https://streaming.radiostreamlive.com/radiosantaclaus_devices
