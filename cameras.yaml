@@ -39,5 +39,27 @@
   still_image_url: https://www.yr.no/place/United_Kingdom/England/Weybridge/meteogram.svg
   content_type: 'image/svg+xml'
 - platform: generic
-  name: RTL2_Pic
-  still_image_url: '{{states.sensor.rtl2_pic.state}}'
+  name: chromecast_radio_pic
+  still_image_url: >
+    {% set my_speaker = "media_player."+states.input_select.chromecast_radio_speakers.state|lower %}
+    {% if is_state(my_speaker,"playing")%}
+    {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states.sensor.rtl2_pic.state}}
+    {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states.sensor.absolute_radio_pic.state}}
+    {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states.sensor.absolute_radio_CR_pic.state}}
+    {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} https://upload.wikimedia.org/wikipedia/fr/b/bd/HitWestLogo.jpg
+    {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} https://secureimg.stitcher.com/feedimageswide/480x270_176113.jpg
+    {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} https://is1-ssl.mzstatic.com/image/thumb/Music62/v4/b3/d6/64/b3d664ab-0560-f24d-2379-d01142267f94/source/1200x630bb.jpg
+    {% elif is_state("input_select.chromecast_radio_station", "Chill") %} http://images.radio.orange.com/radios/large_helpmechill.png
+    {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} https://www.holyscripturesandisrael.com/images/radio/radio-icon.png
+    {% endif %}
+    {%else%}http://192.168.0.24/Select_Radio.png
+    {%endif%}
+- platform: generic
+  name: test1
+  still_image_url: 'local/Select_Radio.png'
+- platform: generic
+  name: test2
+  still_image_url: '/local/Select_Radio.png'
+- platform: generic
+  name: test3
+  still_image_url: http://192.168.0.24/Select_Radio.png

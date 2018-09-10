@@ -1,0 +1,22 @@
+chromecast_radio_station:
+  name: 'Select Radio Station:'
+  options:
+    - Absolute Radio
+    - Absolute Radio Classic Rock
+    - Chill
+    - Hit West
+    - HA Podcast
+    - IoT Podcast
+    - RTL2
+    - Custom Station
+  icon: mdi:radio
+
+chromecast_radio_speakers:
+  name: 'Select Speakers:'
+  options:
+    - Conservatory
+    - House
+    - Kitchen
+    - Onkyo
+  initial: House
+  icon: mdi:speaker-wireless

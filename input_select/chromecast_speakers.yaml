@@ -1,9 +1,0 @@
-chromecast_radio:
-  name: 'Select Speakers:'
-  options:
-    - Conservatory
-    - House
-    - Kitchen
-    - Onkyo
-  initial: House
-  icon: mdi:speaker-wireless

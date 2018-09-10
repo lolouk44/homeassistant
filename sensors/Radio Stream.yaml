@@ -1,0 +1,103 @@
+- platform: scrape
+  resource: https://www.rtl2.fr/direct
+  name: RTL2_Pic
+  select: 'img[class="pic img-echo timeline-media--music__img"]'
+  attribute: data-src
+
+- platform: scrape
+  resource: https://www.rtl2.fr/direct
+  name: RTL2_Artist
+  select: 'span[class="timeline-media--music__artist"]'
+  value_template: '{{ value | title }}'
+
+- platform: scrape
+  resource: https://www.rtl2.fr/direct
+  name: RTL2_Track
+  select: 'strong[class="timeline-media--music__title"]'
+  value_template: '{{ value | title }}'
+
+- platform: scrape
+  resource: https://absoluteradio.co.uk/classic-rock/music/
+  name: Absolute_Radio_CR_Pic
+  select: '.song-artist-image img'
+  attribute: src
+
+- platform: scrape
+  resource: https://absoluteradio.co.uk/classic-rock/music/
+  name: Absolute_Radio_CR_Artist
+  select: '.song-artist-image img'
+  attribute: alt
+
+- platform: scrape
+  resource: https://absoluteradio.co.uk/classic-rock/music/
+  name: Absolute_Radio_CR_Track
+  select: '.song-title a'
+
+- platform: scrape
+  resource: https://absoluteradio.co.uk/absolute-radio/music/
+  name: Absolute_Radio_Pic
+  select: '.song-artist-image img'
+  attribute: src
+
+- platform: scrape
+  resource: https://absoluteradio.co.uk/absolute-radio/music/
+  name: Absolute_Radio_Artist
+  select: '.song-artist-image img'
+  attribute: alt
+
+- platform: scrape
+  resource: https://absoluteradio.co.uk/absolute-radio/music/
+  name: Absolute_Radio_Track
+  select: '.song-title a'
+
+- platform: scrape
+  resource: https://hasspodcast.io/feed/podcast
+  name: ha_podcast
+  select: 'enclosure:nth-of-type(1)'
+  attribute: url
+
+- platform: scrape
+  resource: https://hasspodcast.io/feed/podcast
+  name: ha_podcast_track
+  select: 'title:nth-of-type(3)'
+
+- platform: scrape
+  resource: https://iotpodcast.com/feed/
+  name: internet_of_things_podcast
+  select: 'enclosure:nth-of-type(1)'
+  attribute: url
+
+- platform: scrape
+  resource: https://iotpodcast.com/feed/
+  name: internet_of_things_podcast_track
+  select: 'title:nth-of-type(3)'
+
+
+- platform: template
+  sensors:
+    stream_artist:
+      value_template: >
+        {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states.sensor.rtl2_artist.state}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states.sensor.absolute_radio_artist.state}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states.sensor.absolute_radio_CR_artist.state}}
+        {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} Phil & Rohan
+        {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} Stacey & Kevin
+        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
+        {% endif %}
+      friendly_name: Artist
+      icon_template: 'mdi:account'
+    stream_track:
+      value_template: >
+        {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states.sensor.rtl2_track.state}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states.sensor.absolute_radio_track.state}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states.sensor.absolute_radio_CR_track.state}}
+        {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} {{states.sensor.ha_podcast_track.state}}
+        {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} {{states.sensor.internet_of_things_podcast_track.state}}
+        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
+        {% endif %}
+      friendly_name: Artist
+      icon_template: 'mdi:account'

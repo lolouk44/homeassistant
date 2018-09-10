@@ -72,7 +72,7 @@ media_player.onkyo_txnr656_e0ee71:
 
 
 #Scripts
-script.radio538:
+script.play_chromecast_radio:
   friendly_name: Play Radio on Chromecast Audio
   icon: mdi:play
 

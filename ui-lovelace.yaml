@@ -122,15 +122,28 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-      - type: entities
-        title: ChromeCast Radio
-        show_header_toggle: true
-        entities:
-          - input_select.chromecast_radio
-          - input_text.custom_station
-          - script.radio538
-          - input_select.radio_station
-          - input_number.volume_radio
+      - type: vertical-stack
+        cards:
+        - type: picture-glance
+          camera_image: camera.chromecast_radio_pic
+          entities:
+            - entity: input_select.chromecast_radio_station
+            - entity: input_text.custom_station
+            - entity: input_select.chromecast_radio_speakers
+            - entity: switch.chromecast_radio_vol_down
+            - entity: switch.chromecast_radio_mute
+            - entity: switch.chromecast_radio_vol_up
+            - entity: switch.chromecast_radio_stop
+            - entity: switch.chromecast_radio_play
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - entity: sensor.stream_artist
+              name: Artist
+              icon: mdi:account
+            - entity: sensor.stream_track
+              name: Track
+              icon: mdi:disc
       - type: glance
         entities:
         - sensor.dark_sky_overnight_low_temperature
@@ -730,32 +743,15 @@ views:
         states:
           - arm_home
           - arm_away
-  - title: test
-    icon: mdi:comment-question
+  - title: Radio Stream
+    icon: mdi:radio
     cards:
-      - type: vertical-stack
-        cards:
-        - type: picture-glance
-          camera_image: camera.rtl2_pic
-          entities:
-            - entity: switch.chromecast_radio_rtl2_on
-            - entity: switch.chromecast_radio_vol_down
-            - entity: switch.chromecast_radio_mute
-            - entity: switch.chromecast_radio_vol_up
-        - type: entities
-          show_header_toggle: false
-          entities:
-            - type: divider
-              style:
-                height: 50px
-                margin: 4px 0
-                background: center / contain url("/local/RTL2.jpg") no-repeat
-            - entity: sensor.rtl2_artist
-              name: Artist
-              icon: mdi:account
-            - entity: sensor.rtl2_track
-              name: Track
-              icon: mdi:file-music
-            - entity: sensor.current_speaker
-              name: Playing On
-              icon: mdi:speaker
+      - type: picture-entity
+        entity: camera.test1
+        camera_image: camera.test1
+      - type: picture-entity
+        entity: camera.test2
+        camera_image: camera.test2
+      - type: picture-entity
+        entity: camera.test3
+        camera_image: camera.test3

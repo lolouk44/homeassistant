@@ -23,18 +23,6 @@
   value_template: '{{ value.split(":")[1] }}'
 
 - platform: scrape
-  resource: https://hasspodcast.io/feed/podcast
-  name: ha_podcast
-  select: 'enclosure:nth-of-type(1)'
-  attribute: url
-
-- platform: scrape
-  resource: https://iotpodcast.com/feed/
-  name: internet_of_things_podcast
-  select: 'enclosure:nth-of-type(1)'
-  attribute: url
-
-- platform: scrape
   resource: https://www.calculatorsoup.com/calculators/statistics/number-generator.php?num_samples=10&range=9-0&duplicates=no&commas=no&action=solve
   name: Random_list
   select: 'div[id="answer"]'

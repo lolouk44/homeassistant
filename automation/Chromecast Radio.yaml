@@ -6,10 +6,10 @@
     service: media_player.volume_set
     data_template:
       entity_id: >
-        {% if is_state("input_select.chromecast_radio", "Conservatory") %} media_player.conservatory
-        {% elif is_state("input_select.chromecast_radio", "Kitchen") %} media_player.kitchen
-        {% elif is_state("input_select.chromecast_radio", "Onkyo") %} media_player.onkyo_txnr656
-        {% elif is_state("input_select.chromecast_radio", "House") %} media_player.house
+        {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
+        {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
+        {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_txnr656
+        {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
         {% endif %}
       volume_level: '{{  states.input_number.volume_radio.state  }}'
 
@@ -37,20 +37,9 @@
       value_template: "{{ trigger.event.data.new_state.attributes is not none }}"
     #only run if script triggered in last 30 sec to not overwrite other music services
     - condition: template
-      value_template: "{{(as_timestamp(now()) - as_timestamp(states.script.radio538.attributes.last_triggered | default(0)) | int < 30 )}}"
+      value_template: "{{(as_timestamp(now()) - as_timestamp(states.script.play_chromecast_radio.attributes.last_triggered | default(0)) | int < 30 )}}"
   action:
     - service: shell_command.chromecast_radio_picture
       data_template:
         my_media_player: '{{ trigger.event.data.entity_id }}'
-        my_radio_station: '{{ states.input_select.radio_station.state | replace(" ", "_") }}'
-
-- alias: Get RTL2 Pic
-  trigger:
-    platform: state
-    entity_id: sensor.rtl2_pic
-  action:
-    service: downloader.download_file
-    data_template:
-      url: '{{states.sensor.rtl2_pic.state}}'
-      filename: 'RTL2_Pic.jpg'
-      overwrite: 'yes'
+        my_radio_station: '{{ states.input_select.chromecast_radio_station.state | replace(" ", "_") }}'
