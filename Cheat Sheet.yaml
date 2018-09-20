@@ -1,0 +1,22 @@
+# Add travel time to next bus time (https://community.home-assistant.io/t/adding-two-time-based-sensors/68267)
+
+# Get a time string that contains todays date and the next bus time
+{% set nextbus = "08:35" %}
+{% set time_string = now().strftime("%Y-%m-%d ")+nextbus  %}
+# Convert that to a time_string into a datetime object and get the current time in seconds
+{% set next_bus_time = strptime(time_string,"%Y-%m-%d %H:%M").timestamp() %}
+# get the estimated bus route time in seconds
+{% set trip_time = (states('sensor.home_to_work') | int * 60) %}
+# Add the bus time and the trip time, return the estimated arrival time
+{{ ( next_bus_time + trip_time ) | timestamp_custom("%H:%M") }}
+
+
+
+#count how many lights are on:
+{% set lights = [
+      states.light.kitchen_lights,
+      states.light.living_room_main,
+      states.light.conservatory,
+      states.light.staircase ] %}
+{% set lights_on = lights | selectattr('state','eq','on') | list %}
+{{ lights_on | length }} of {{ lights | length }} lights are on.

@@ -4,17 +4,32 @@ resources:
     type: js
   - url: /local/kiosk.js
     type: js
+  - url: /local/group-card.js
+    type: js
 views:
   - title: default_view
     icon: mdi:home
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
+      - type: entity-filter
+        title: Persistent Notifications
+        show_header_toggle: false
+        entities:
+          - persistent_notification.httplogin
+          - persistent_notification.ipban
+        state_filter:
+          - "notifying"
+        show_empty: false
       - type: entity-filter
         title: Alerts
         show_header_toggle: false
@@ -42,6 +57,7 @@ views:
           - counter.iosbadgecount
         state_filter:
           - "on"
+        show_empty: false
       - type: entities
         title: Scenes
         show_header_toggle: false
@@ -51,13 +67,6 @@ views:
           - input_boolean.holidays
           - input_boolean.xmas
           - input_boolean.silent
-      - type: glance
-        entities:
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
-        - sensor.home_to_work
-        - sensor.lolo_to_home
-        - sensor.sunset_time
       - type: entities
         title: RPi Sensors
         show_header_toggle: false
@@ -104,24 +113,30 @@ views:
         title: YrForecastCrawley
         entity: camera.yrforecastcrawley
         camera_image: camera.yrforecastcrawley
-        show_info: true
+        show_name: false
+        show_state: false
         tap_action: dialog
       - type: picture-entity
         title: YrForecastWeybridge
         entity: camera.yrforecastweybridge
         camera_image: camera.yrforecastweybridge
-        show_info: true
+        show_name: false
+        show_state: false
         tap_action: dialog
   - title: Media
     icon: mdi:library-music
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
       - type: vertical-stack
         cards:
         - type: picture-glance
@@ -135,30 +150,70 @@ views:
             - entity: switch.chromecast_radio_vol_up
             - entity: switch.chromecast_radio_stop
             - entity: switch.chromecast_radio_play
-        - type: entities
-          show_header_toggle: false
-          entities:
-            - entity: sensor.stream_artist
-              name: Artist
-              icon: mdi:account
-            - entity: sensor.stream_track
-              name: Track
-              icon: mdi:disc
-      - type: glance
-        entities:
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
-        - sensor.home_to_work
-        - sensor.lolo_to_home
-        - sensor.sunset_time
-      - type: media-control
-        entity: media_player.house
-      - type: media-control
-        entity: media_player.conservatory
-      - type: media-control
-        entity: media_player.kitchen
-      - type: media-control
-        entity: media_player.onkyo
+        - type: conditional
+          conditions:
+            - entity: media_player.house
+              state_not: "off"
+          card:
+            type: entities
+            show_header_toggle: false
+            entities:
+              - entity: sensor.stream_artist
+                name: Artist
+                icon: mdi:account
+              - entity: sensor.stream_track
+                name: Track
+                icon: mdi:disc
+        - type: conditional
+          conditions:
+            - entity: media_player.conservatory
+              state_not: "off"
+          card:
+            type: entities
+            show_header_toggle: false
+            entities:
+              - entity: sensor.stream_artist
+                name: Artist
+                icon: mdi:account
+              - entity: sensor.stream_track
+                name: Track
+                icon: mdi:disc
+        - type: conditional
+          conditions:
+            - entity: media_player.kitchen
+              state_not: "off"
+          card:
+            type: entities
+            show_header_toggle: false
+            entities:
+              - entity: sensor.stream_artist
+                name: Artist
+                icon: mdi:account
+              - entity: sensor.stream_track
+                name: Track
+                icon: mdi:disc
+        - type: conditional
+          conditions:
+            - entity: media_player.onkyo
+              state_not: "off"
+          card:
+            type: entities
+            show_header_toggle: false
+            entities:
+              - entity: sensor.stream_artist
+                name: Artist
+                icon: mdi:account
+              - entity: sensor.stream_track
+                name: Track
+                icon: mdi:disc
+      # - type: media-control
+        # entity: media_player.house
+      # - type: media-control
+        # entity: media_player.conservatory
+      # - type: media-control
+        # entity: media_player.kitchen
+      # - type: media-control
+        # entity: media_player.onkyo
       - type: media-control
         entity: media_player.google_home_minis
       - type: media-control
@@ -177,14 +232,18 @@ views:
         entity: media_player.panasonic_viera_tv
   - title: Kitchen
     icon: mdi:bowl
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
       - type: picture-glance
         # Title of the entities card
         title: Kitchen
@@ -195,34 +254,35 @@ views:
           - light.kitchen_lights
           - switch.kitchen_tv
         camera_image: camera.kitchen
-      - type: glance
-        entities:
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
-        - sensor.home_to_work
-        - sensor.lolo_to_home
-        - sensor.sunset_time
       - type: entities
         title: Kitchen Lights
         show_header_toggle: true
         entities:
-          - light.kitchen_door
-          - light.kitchen_window
+          - entity: light.kitchen_door
+            secondary_info: last-changed
+          - entity: light.kitchen_window
+            secondary_info: last-changed
       - type: entities
         title: Kitchen TV
         show_header_toggle: true
         entities:
-          - switch.kitchen_tv
+          - entity: switch.kitchen_tv
+            secondary_info: last-changed
           - input_select.mm_cam_feed
       - type: entities
         title: Aloe Vera
         show_header_toggle: false
         entities:
-          - sensor.aloe_vera_temperature
-          - sensor.aloe_vera_battery
-          - sensor.aloe_vera_conductivity
-          - sensor.aloe_vera_moisture
-          - sensor.aloe_vera_light_intensity
+          - entity: sensor.aloe_vera_temperature
+            secondary_info: last-changed
+          - entity: sensor.aloe_vera_battery
+            secondary_info: last-changed
+          - entity: sensor.aloe_vera_conductivity
+            secondary_info: last-changed
+          - entity: sensor.aloe_vera_moisture
+            secondary_info: last-changed
+          - entity: sensor.aloe_vera_light_intensity
+            secondary_info: last-changed
       - type: entities
         title: Kettle
         show_header_toggle: false
@@ -231,14 +291,32 @@ views:
           - switch.edimax1
   - title: Living_Room
     icon: mdi:sofa
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
+      - type: entities
+        title: Sensors
+        show_header_toggle: true
+        entities:
+          - entity: binary_sensor.pir_living_room_front
+            secondary_info: last-changed
+          - entity: binary_sensor.pir_living_room_back
+            secondary_info: last-changed
+          - entity: binary_sensor.photoresistor
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d00022d2d3d
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d0002434385
+            secondary_info: last-changed
       - type: picture-glance
         # Title of the entities card
         title: Living Room
@@ -252,20 +330,16 @@ views:
           - light.living_room_wall
           - light.tv_cabinet_led_strip
         camera_image: camera.living_room
-      - type: glance
-        entities:
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
-        - sensor.home_to_work
-        - sensor.lolo_to_home
-        - sensor.sunset_time
       - type: entities
         title: Living Room Lights
         show_header_toggle: true
         entities:
-          - light.living_room_main
-          - light.living_room_wall
-          - light.tv_cabinet_led_strip
+          - entity: light.living_room_main
+            secondary_info: last-changed
+          - entity: light.living_room_wall
+            secondary_info: last-changed
+          - entity: light.tv_cabinet_led_strip
+            secondary_info: last-changed
       - type: media-control
         entity: media_player.onkyo_txnr656
       - type: media-control
@@ -276,55 +350,72 @@ views:
         title: Switch
         show_header_toggle: true
         entities:
-          - switch.skyhd
+          - entity: switch.skyhd
+            secondary_info: last-changed
   - title: Entrance
     icon: mdi:home-modern
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-      - type: entities
-        title: Lighs
-        show_header_toggle: false
-        entities:
-          - light.hallway
-          - light.house_number_led_strip
-      - type: glance
-        entities:
         - sensor.dark_sky_overnight_low_temperature
         - sensor.dark_sky_daytime_high_temperature
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
+    cards:
       - type: entities
         title: Sensors
         show_header_toggle: true
         entities:
-          - binary_sensor.door_lock
-          - binary_sensor.garage_back_door
-          - sensor.doorbell_last_rang
+          - entity: binary_sensor.door_lock
+            secondary_info: last-changed
+          - entity: binary_sensor.garage_back_door
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d000232ddf8
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d000232dcd3
+            secondary_info: last-changed
+          - entity: sensor.doorbell_last_rang
+            secondary_info: last-changed
       - type: entities
-        title: Nest
+        title: Lights
+        show_header_toggle: false
+        entities:
+          - entity: light.hallway
+            secondary_info: last-changed
+          - entity: light.house_number_led_strip
+            secondary_info: last-changed
+          - entity: light.gateway_light_7811dcdae94a
+            secondary_info: last-changed
+      - type: entities
+        title: Nest Thermostat
         show_header_toggle: true
         entities:
-          - climate.hallway
-          - sensor.hallway_thermostat_humidity
-          - binary_sensor.hallway_heating
-          - binary_sensor.hallway_thermostat_has_leaf
+          - entity: climate.hallway
+            secondary_info: last-changed
+          - entity: sensor.hallway_thermostat_humidity
+            secondary_info: last-changed
+          - entity: binary_sensor.hallway_heating
+            secondary_info: last-changed
+          - entity: binary_sensor.hallway_thermostat_has_leaf
+            secondary_info: last-changed
   - title: conservatory
     icon: mdi:home-variant
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
       - type: entities
         title: Sensors
         show_header_toggle: true
@@ -333,13 +424,24 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.conservatory_skylight_left
             secondary_info: last-changed
-      - type: glance
+          - entity: binary_sensor.door_window_sensor_158d00022d2c49
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d0002435612
+            secondary_info: last-changed
+      - type: entities
+        title: Aloe Vera
+        show_header_toggle: true
         entities:
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
-        - sensor.home_to_work
-        - sensor.lolo_to_home
-        - sensor.sunset_time
+          - entity: sensor.aloe_vera_temperature
+            secondary_info: last-changed
+          - entity: sensor.aloe_vera_moisture
+            secondary_info: last-changed
+          - entity: sensor.aloe_vera_light_intensity
+            secondary_info: last-changed
+          - entity: sensor.aloe_vera_conductivity
+            secondary_info: last-changed
+          - entity: sensor.aloe_vera_battery
+            secondary_info: last-changed
       - type: entities
         title: Conservatory Lights
         show_header_toggle: true
@@ -356,59 +458,62 @@ views:
             state: "on"
         card:
           type: entities
-          title: Xmas
+          title: Xmas Lights
           entities:
-            - light.garage_led_strip
-            - light.bauble_1
-            - light.bauble_2
-            - light.bauble_3
+            - entity: light.garage_led_strip
+              secondary_info: last-changed
+            - entity: light.bauble_1
+              secondary_info: last-changed
+            - entity: light.bauble_2
+              secondary_info: last-changed
+            - entity: light.bauble_3
+              secondary_info: last-changed
   - title: Staircase
     icon: mdi:stairs
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
       - type: entities
         title: Staircase Lights
         show_header_toggle: true
         entities:
-          - light.landing
-          - light.staircase_led_strip
-      - type: glance
-        entities:
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
-        - sensor.home_to_work
-        - sensor.lolo_to_home
-        - sensor.sunset_time
+          - entity: light.landing
+            secondary_info: last-changed
+          - entity: light.staircase_led_strip
+            secondary_info: last-changed
   - title: Main_Bedroom
     icon: mdi:hotel
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-      - type: entities
-        title: Sensors
-        show_header_toggle: true
-        entities:
-        - sensor.temperature_158d0001f5218a
-        - sensor.humidity_158d0001f5218a
-        - sensor.pressure_158d0001f5218a
-      - type: glance
-        entities:
         - sensor.dark_sky_overnight_low_temperature
         - sensor.dark_sky_daytime_high_temperature
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
+    cards:
+      - type: entities
+        title: Sensors
+        show_header_toggle: true
+        entities:
+        - entity: sensor.temperature_158d0001f5218a
+          secondary_info: last-changed
+        - entity: sensor.humidity_158d0001f5218a
+          secondary_info: last-changed
+        - entity: sensor.pressure_158d0001f5218a
+          secondary_info: last-changed
       - type: entities
         title: Kello
         show_header_toggle: false
@@ -422,119 +527,139 @@ views:
         title: Dehumidifier
         show_header_toggle: false
         entities:
-          - switch.dehumidifier
-          - sensor.dehumidifier_power
-          - input_boolean.dehumidifier_tank_full
+          - entity: switch.dehumidifier
+            secondary_info: last-changed
+          - entity: sensor.dehumidifier_power
+            secondary_info: last-changed
+          - entity: input_boolean.dehumidifier_tank_full
+            secondary_info: last-changed
       - type: entities
         title: Mi Scale
         show_header_toggle: false
         entities:
-          - sensor.lolo_weight
-          - sensor.lolo_impedance
-          - sensor.lolo_bmi
-          - sensor.div_weight
-          - sensor.div_impedance
-          - sensor.div_bmi
+          - entity: sensor.lolo_weight
+            secondary_info: last-changed
+          - entity: sensor.lolo_impedance
+            secondary_info: last-changed
+          - entity: sensor.lolo_bmi
+            secondary_info: last-changed
+          - entity: sensor.div_weight
+            secondary_info: last-changed
+          - entity: sensor.div_impedance
+            secondary_info: last-changed
+          - entity: sensor.div_bmi
+            secondary_info: last-changed
   - title: Kiaan_Bedroom
     icon: mdi:baby
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
       - type: entities
         title: Sensors
         show_header_toggle: true
         entities:
-          - sensor.upstairs_temperature
-          - sensor.upstairs_humidity
-      - type: glance
-        entities:
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
-        - sensor.home_to_work
-        - sensor.lolo_to_home
-        - sensor.sunset_time
+          - entity: sensor.upstairs_temperature
+            secondary_info: last-changed
+          - entity: sensor.upstairs_humidity
+            secondary_info: last-changed
       - type: entities
         title: Lights
         show_header_toggle: false
         entities:
-          - light.kiaan_lamp
+          - entity: light.kiaan_lamp
+            secondary_info: last-changed
       - type: entities
         title: Mi Scale
         show_header_toggle: false
         entities:
-          - sensor.kiaan_weight
-          - sensor.kiaan_impedance
-          - sensor.kiaan_bmi
+          - entity: sensor.kiaan_weight
+            secondary_info: last-changed
+          - entity: sensor.kiaan_impedance
+            secondary_info: last-changed
+          - entity: sensor.kiaan_bmi
+            secondary_info: last-changed
   - title: cctv
     icon: mdi:cctv
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-      - type: vertical-stack
-        cards:
-        - type: entities
-          title: Front
-          show_header_toggle: false
-          entities:
-            - binary_sensor.front_cctv_motion
-            - binary_sensor.front_cctv_line_crossing
-            - binary_sensor.front_cctv_disk_full
-            - binary_sensor.front_cctv_disk_error
-        - type: picture-entity
-          title: Front
-          entity: camera.front
-          camera_image: camera.front
-          show_info: true
-          tap_action: dialog
-      - type: glance
-        entities:
         - sensor.dark_sky_overnight_low_temperature
         - sensor.dark_sky_daytime_high_temperature
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Front
+          show_header_toggle: false
+          entities:
+            - entity: binary_sensor.front_cctv_motion
+              secondary_info: last-changed
+            - entity: binary_sensor.front_cctv_line_crossing
+              secondary_info: last-changed
+            - entity: binary_sensor.front_cctv_disk_full
+              secondary_info: last-changed
+            - entity: binary_sensor.front_cctv_disk_error
+              secondary_info: last-changed
+        - type: picture-entity
+          title: Front
+          entity: camera.front
+          camera_image: camera.front
+          show_name: false
+          show_state: false
       - type: vertical-stack
         cards:
         - type: entities
           title: Side
           show_header_toggle: false
           entities:
-            - binary_sensor.side_cctv_motion
-            - binary_sensor.side_cctv_line_crossing
-            - binary_sensor.side_cctv_disk_full
-            - binary_sensor.side_cctv_disk_error
+            - entity: binary_sensor.side_cctv_motion
+              secondary_info: last-changed
+            - entity: binary_sensor.side_cctv_line_crossing
+              secondary_info: last-changed
+            - entity: binary_sensor.side_cctv_disk_full
+              secondary_info: last-changed
+            - entity: binary_sensor.side_cctv_disk_error
+              secondary_info: last-changed
         - type: picture-entity
           title: Side
           entity: camera.side
           camera_image: camera.side
-          show_info: true
-          tap_action: dialog
+          show_name: false
+          show_state: false
       - type: vertical-stack
         cards:
         - type: entities
           title: Back
           show_header_toggle: false
           entities:
-            - binary_sensor.back_cctv_motion
-            - binary_sensor.back_cctv_line_crossing
-            - binary_sensor.back_cctv_disk_full
-            - binary_sensor.back_cctv_disk_error
+            - entity: binary_sensor.back_cctv_motion
+              secondary_info: last-changed
+            - entity: binary_sensor.back_cctv_line_crossing
+              secondary_info: last-changed
+            - entity: binary_sensor.back_cctv_disk_full
+              secondary_info: last-changed
+            - entity: binary_sensor.back_cctv_disk_error
+              secondary_info: last-changed
         - type: picture-entity
-          title: Back
           entity: camera.back
           camera_image: camera.back
-          show_info: true
-          tap_action: dialog
+          show_name: false
+          show_state: false
       - type: vertical-stack
         cards:
         - type: entities
@@ -546,8 +671,8 @@ views:
           title: Garage
           entity: camera.garage
           camera_image: camera.garage
-          show_info: true
-          tap_action: dialog
+          show_name: false
+          show_state: false
       - type: vertical-stack
         cards:
         - type: entities
@@ -563,8 +688,8 @@ views:
           title: Living Room
           entity: camera.living_room
           camera_image: camera.living_room
-          show_info: true
-          tap_action: dialog
+          show_name: false
+          show_state: false
       - type: vertical-stack
         cards:
         - type: entities
@@ -580,38 +705,40 @@ views:
           title: Kitchen
           entity: camera.kitchen
           camera_image: camera.kitchen
-          show_info: true
-          tap_action: dialog
+          show_name: false
+          show_state: false
       - type: picture-entity
         title: Lolo
         entity: camera.lolo
         camera_image: camera.lolo
-        show_info: true
-        tap_action: dialog
+        show_state: false
       - type: picture-entity
         title: Div
         entity: camera.div
         camera_image: camera.div
-        show_info: true
-        tap_action: dialog
+        show_state: false
   - title: Automation
     icon: mdi:calendar-check
     cards:
-      - type: entities
-        title: all automations
-        show_header_toggle: true
-        entities:
-          - group.all_automations
+      - type: custom:group-card
+        card:
+          type: entities
+          title: All Switches
+        group: group.all_automations
   - title: Server
     icon: mdi:desktop-classic
-    cards:
-      - type: glance
-        entities:
+    badges:
         - device_tracker.lolo
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
       - type: entity-filter
         title: Alerts
         show_header_toggle: false
@@ -639,6 +766,7 @@ views:
           - counter.iosbadgecount
         state_filter:
           - "on"
+        show_empty: false
       - type: entities
         title: RPi Sensors
         show_header_toggle: false
@@ -650,13 +778,6 @@ views:
           - binary_sensor.pir_living_room_front
           - binary_sensor.pir_living_room_back
           - binary_sensor.photoresistor
-      - type: glance
-        entities:
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
-        - sensor.home_to_work
-        - sensor.lolo_to_home
-        - sensor.sunset_time
       - type: entities
         title: Hygro Sensors
         show_header_toggle: false
@@ -691,6 +812,7 @@ views:
           - input_boolean.absolute_radio_radio
           - input_boolean.absolute_radio_cr_radio
           - input_boolean.chill_radio
+          - input_boolean.radio_fiji_two_radio
           - input_boolean.rtl2_radio
           - input_boolean.multimedia
       - type: entities
@@ -708,16 +830,16 @@ views:
           - sensor.ram_usage
           - sensor.hass_db_size_formatted
           - sensor.ssl_cert_expiry
-      - type: entities
-        title: all lights
-        show_header_toggle: true
-        entities:
-          - group.all_lights
-      - type: entities
-        title: all switches
-        show_header_toggle: true
-        entities:
-          - group.all_switches
+      - type: custom:group-card
+        card:
+          type: entities
+          title: All Lights
+        group: group.all_lights
+      - type: custom:group-card
+        card:
+          type: entities
+          title: All Switches
+        group: group.all_switches
       - type: entities
         title: Devices
         show_header_toggle: false
@@ -732,9 +854,35 @@ views:
           - binary_sensor.staircase_led_strip
           - binary_sensor.tv_cabinet_led_strip
           - binary_sensor.conservatory_led_strip
+      - type: entities
+        title: HA Restart
+        show_header_toggle: false
+        entities:
+          - input_boolean.hass_restart
   - title: Alarm
     icon: mdi:verified
     cards:
+      - type: entity-filter
+        entities:
+          - entity: binary_sensor.garage_back_door
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d000232ddf8
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d000232dcd3
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d00022d2d3d
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d0002434385
+            secondary_info: last-changed
+          - entity: binary_sensor.conservatory_skylight_left
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d00022d2c49
+            secondary_info: last-changed
+          - entity: binary_sensor.door_window_sensor_158d0002435612
+            secondary_info: last-changed
+        state_filter:
+          - "on"
+        show_empty: false
       - type: custom:alarm_control_panel-card
         entity: alarm_control_panel.alarm
         show_keypad: true
@@ -743,15 +891,3 @@ views:
         states:
           - arm_home
           - arm_away
-  - title: Radio Stream
-    icon: mdi:radio
-    cards:
-      - type: picture-entity
-        entity: camera.test1
-        camera_image: camera.test1
-      - type: picture-entity
-        entity: camera.test2
-        camera_image: camera.test2
-      - type: picture-entity
-        entity: camera.test3
-        camera_image: camera.test3

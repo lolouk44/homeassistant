@@ -23,7 +23,7 @@
 
     homeassistant:
       container_name: hass
-      image: homeassistant/home-assistant:0.77.3
+      image: homeassistant/home-assistant:latest
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
