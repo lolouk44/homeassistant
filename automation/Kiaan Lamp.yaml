@@ -27,13 +27,20 @@
 
 
 
-- alias: Kiaan Night Light Wake Phase1
+- alias: Kiaan Night Light Wake Phase1 weekdays
   trigger:
     - platform: time
       hours: 5
       minutes: 30
       seconds: 0
   condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
     - condition: state
       entity_id: input_boolean.normal
       state: "on"
@@ -50,7 +57,34 @@
 
 
 
-- alias: Kiaan Night Light Wake Phase2
+- alias: Kiaan Night Light Wake Phase1 weekend
+  trigger:
+    - platform: time
+      hours: 6
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - sat
+        - sun
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
+    - condition: state
+      entity_id: light.kiaan_lamp
+      state: "on"
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.kiaan_lamp
+      brightness: 1
+      rgb_color: [0,255,0]
+      transition: 1
+
+
+
+- alias: Kiaan Night Light Wake Phase2 
   trigger:
     - platform: time
       hours: 7
@@ -73,13 +107,46 @@
 
 
 
-- alias: Kiaan Night Light Off
+- alias: Kiaan Night Light Off weedays
   trigger:
     - platform: time
       hours: 7
       minutes: 30
       seconds: 0
   condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.kiaan_lamp
+      brightness: 255
+      rgb_color: [255,255,255]
+  - service: light.turn_off
+    data:
+      entity_id: light.kiaan_lamp
+
+
+
+- alias: Kiaan Night Light Off weekend
+  trigger:
+    - platform: time
+      hours: 8
+      minutes: 0
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - sat
+        - sun
     - condition: state
       entity_id: input_boolean.normal
       state: "on"
