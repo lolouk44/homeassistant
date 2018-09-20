@@ -39,6 +39,19 @@
   # - service: switch.turn_on
     # entity_id: switch.dafang_kitchen_yellow_led
 
+- alias: HASS Restart
+  trigger:
+    platform: state
+    entity_id: input_boolean.hass_restart
+    to: "on"
+  action:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.google_home_minis
+      media_content_id: 'http://192.168.0.24/audio/ClickOff.mp3'
+      media_content_type: 'audio/mp4'
+  - service: shell_command.harestart
+
 - alias: HASS Nightly Restart
   initial_state: false
   trigger:
@@ -49,7 +62,7 @@
   action:
   - service: shell_command.reboot_dafang_kitchen
   - service: shell_command.reboot_dafang_livingroom
-  - service: homeassistant.restart
+  - service: shell_command.harestart
 
 - alias: 'SSL expiry notification'
   trigger:

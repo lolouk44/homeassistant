@@ -1,0 +1,13 @@
+dafang_living_room_active: wget http://192.168.0.24:8080/3/detection/start &>/dev/null
+dafang_living_room_pause: wget http://192.168.0.24:8080/3/detection/pause &>/dev/null
+
+dafang_kitchen_active: wget http://192.168.0.24:8080/4/detection/start &>/dev/null
+dafang_kitchen_pause: wget http://192.168.0.24:8080/4/detection/pause &>/dev/null
+
+cctv_garage_active: wget http://192.168.0.24:8080/2/detection/start &>/dev/null
+cctv_garage_pause: wget http://192.168.0.24:8080/2/detection/pause &>/dev/null
+
+reboot_dafang_kitchen: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=reboot &>/dev/null
+reboot_dafang_livingroom: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=reboot &>/dev/null
+
+harestart: wget http://192.168.0.24:8126/container/hass/restart &>/dev/null
