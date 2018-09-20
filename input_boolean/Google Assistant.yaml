@@ -18,6 +18,11 @@ absolute_radio_cr_radio:
   initial: off
   icon: mdi:radio
 
+radio_fiji_two_radio:
+  name: Radio Fiji Two
+  initial: off
+  icon: mdi:radio
+
 vacuum:
   name: Vacuum
   initial: off

@@ -146,6 +146,26 @@
       entity_id: input_boolean.absolute_radio_cr_radio
 
 
+- alias: GA Play Radi Fiji Two Radio
+  trigger:
+    - platform: state
+      entity_id: input_boolean.radio_fiji_two_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: Radio Fiji Two
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: House
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.radio_fiji_two_radio
+
+
 - alias: Keep Google Home Alive
   trigger:
     platform: time

@@ -22,10 +22,10 @@
   select: ".current-version h1"
   value_template: '{{ value.split(":")[1] }}'
 
-- platform: scrape
-  resource: https://www.calculatorsoup.com/calculators/statistics/number-generator.php?num_samples=10&range=9-0&duplicates=no&commas=no&action=solve
-  name: Random_list
-  select: 'div[id="answer"]'
-  value_template: '{{ value | replace (" ", "") }}'
+# - platform: scrape
+  # resource: https://www.calculatorsoup.com/calculators/statistics/number-generator.php?num_samples=10&range=9-0&duplicates=no&commas=no&action=solve
+  # name: Random_list
+  # select: 'div[id="answer"]'
+  # value_template: '{{ value | replace (" ", "") }}'
 
 

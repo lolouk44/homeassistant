@@ -1,5 +1,5 @@
 chromecast_radio_station:
-  name: 'Select Radio Station:'
+  name: 'Select Radio Station'
   options:
     - Absolute Radio
     - Absolute Radio Classic Rock
@@ -7,12 +7,13 @@ chromecast_radio_station:
     - Hit West
     - HA Podcast
     - IoT Podcast
+    - Radio Fiji Two
     - RTL2
     - Custom Station
   icon: mdi:radio
 
 chromecast_radio_speakers:
-  name: 'Select Speakers:'
+  name: 'Select Speakers'
   options:
     - Conservatory
     - House

@@ -84,6 +84,7 @@
         {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} Phil & Rohan
         {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} Stacey & Kevin
         {% elif is_state("input_select.chromecast_radio_station", "Chill") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
         {% endif %}
       friendly_name: Artist
@@ -97,6 +98,7 @@
         {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} {{states.sensor.ha_podcast_track.state}}
         {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} {{states.sensor.internet_of_things_podcast_track.state}}
         {% elif is_state("input_select.chromecast_radio_station", "Chill") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
         {% endif %}
       friendly_name: Artist
