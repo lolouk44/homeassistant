@@ -108,3 +108,36 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_currentcost_power_at_300
 
+
+
+
+- alias: RAM Above 90% On
+  initial_state: true
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{states.sensor.ram_usage.state | default(0) | int >= 90 }}'
+    - condition: state
+      entity_id: alert.ram_usage_lost
+      state: 'idle'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alert_lost_ram_usage_at_300
+
+- alias: RAM Above 90% Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.ram_usage_lost
+  condition:
+    - condition: template
+      value_template: '{{states.alert.ram_usage_lost.state != "idle"}}'
+    - condition: template
+      value_template: '{{states.sensor.ram_usage.state | default(0) | int < 90 }}'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alert_lost_ram_usage_at_300
+
