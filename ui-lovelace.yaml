@@ -6,6 +6,8 @@ resources:
     type: js
   - url: /local/group-card.js
     type: js
+  - url: /local/mini-media-player.js?ver=0.5
+    type: module
 views:
   - title: default_view
     icon: mdi:home
@@ -206,6 +208,63 @@ views:
               - entity: sensor.stream_track
                 name: Track
                 icon: mdi:disc
+      - type: entities
+        title: ChromeCast Audio
+        icon: 'mdi:chromecast'
+        artwork_border: true
+        power_color: true
+        entities:
+        - entity: media_player.house
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.conservatory
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.kitchen
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.onkyo
+          type: "custom:mini-media-player"
+          group: true
+      - type: entities
+        title: Onkyo
+        icon: 'mdi:audio-video'
+        artwork_border: true
+        power_color: true
+        entities:
+        - entity: media_player.onkyo_txnr656
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.onkyo_txnr656_zone_2
+          type: "custom:mini-media-player"
+          group: true
+      - type: entities
+        title: Video
+        entities:
+        - entity: media_player.panasonic_viera_tv
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.mibox3
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.kodi
+          type: "custom:mini-media-player"
+          group: true
+      - type: entities
+        title: Google Home Minis
+        icon: 'mdi:google-home'
+        artwork_border: true
+        power_color: true
+        entities:
+        - entity: media_player.google_home_minis
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.kitchen_google_mini
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.living_room_google_mini
+          type: "custom:mini-media-player"
+          group: true
       # - type: media-control
         # entity: media_player.house
       # - type: media-control
@@ -214,22 +273,22 @@ views:
         # entity: media_player.kitchen
       # - type: media-control
         # entity: media_player.onkyo
-      - type: media-control
-        entity: media_player.google_home_minis
-      - type: media-control
-        entity: media_player.kitchen_google_mini
-      - type: media-control
-        entity: media_player.living_room_google_mini
-      - type: media-control
-        entity: media_player.kodi
-      - type: media-control
-        entity: media_player.mibox3
-      - type: media-control
-        entity: media_player.onkyo_txnr656
-      - type: media-control
-        entity: media_player.onkyo_txnr656_zone_2
-      - type: media-control
-        entity: media_player.panasonic_viera_tv
+      # - type: media-control
+        # entity: media_player.google_home_minis
+      # - type: media-control
+        # entity: media_player.kitchen_google_mini
+      # - type: media-control
+        # entity: media_player.living_room_google_mini
+      # - type: media-control
+        # entity: media_player.kodi
+      # - type: media-control
+        # entity: media_player.mibox3
+      # - type: media-control
+        # entity: media_player.onkyo_txnr656
+      # - type: media-control
+        # entity: media_player.onkyo_txnr656_zone_2
+      # - type: media-control
+        # entity: media_player.panasonic_viera_tv
   - title: Kitchen
     icon: mdi:bowl
     badges:
