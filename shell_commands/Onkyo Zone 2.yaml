@@ -1,1 +1,0 @@
-onkyo_zone2_set_volume: onkyo zone2.volume={{- states.input_number.onkyo_zone2_volume.state | int -}}

@@ -1,7 +1,0 @@
-weather_on_kello_play: /home/cctv/.homeassistant/shell_scripts/Kello-Greeting.sh
-play_good_morning: /home/cctv/.homeassistant/shell_scripts/WeatherForecast.sh
-kello_mute_alarms: printf "\n0p231\r" | nc 192.168.0.17 4444
-kello_unmute_alarms: printf "\n0d231\r" | nc 192.168.0.17 4444
-kello_volume: /home/cctv/.homeassistant/shell_scripts/Kello-Volume.py {{ states.input_number.volume_kello.state | int(value,16) }}
-kello_play_radio: /home/cctv/.homeassistant/shell_scripts/Kello-Radio.py {{states.input_select.kello_radio_station.state }}
-kello_stop_radio: printf "\n0d41\r" | nc 192.168.0.17 4444

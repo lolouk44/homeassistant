@@ -1,6 +1,0 @@
-tv_cabinet_on: /home/cctv/.homeassistant/shell_scripts/LEDStrip.py 1 {{ R }} {{ G }} {{ B }}
-tv_cabinet_off: /home/cctv/.homeassistant/shell_scripts/LEDStrip.py 1 0 0 0
-tv_cabinet_on_xmas: /home/cctv/.homeassistant/shell_scripts/LEDStripXmas.py 1
-staircase_on: /home/cctv/.homeassistant/shell_scripts/LEDStrip.py 2 {{ R }} {{ G }} {{ B }}
-staircase_off: /home/cctv/.homeassistant/shell_scripts/LEDStrip.py 2 0 0 0
-staircase_on_xmas: /home/cctv/.homeassistant/shell_scripts/LEDStripXmas.py 2

@@ -1,5 +1,0 @@
-doorbell_notification_email: /home/cctv/.homeassistant/shell_scripts/Doorbell_Email.py
-doorbell_notification_sound: mpg123 -q /home/cctv/.homeassistant/sounds/Doorbell_Tubular_2.mp3
-mailbox_notification_email: /home/cctv/.homeassistant/shell_scripts/Mailbox_Email.py
-reset_mailbox: /home/cctv/.homeassistant/shell_scripts/Reset_Mailbox.sh
-reset_doorbell: /home/cctv/.homeassistant/shell_scripts/Reset_Doorbell.sh
