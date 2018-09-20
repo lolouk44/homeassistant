@@ -1,4 +1,6 @@
 homeassistant:
+  # auth_providers:
+   # - type: homeassistant
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
@@ -11,13 +13,13 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
   customize: !include_dir_merge_named customizations
-  customize_glob:
-    "sensor.*":
-      show_last_changed: true
-      custom_ui_state_card: state-card-custom-ui
-    "binary_sensor.*":
-      show_last_changed: true
-      custom_ui_state_card: state-card-custom-ui
+  # customize_glob:
+    # "sensor.*":
+      # show_last_changed: true
+      # custom_ui_state_card: state-card-custom-ui
+    # "binary_sensor.*":
+      # show_last_changed: true
+      # custom_ui_state_card: state-card-custom-ui
 
 
 # Show links to resources in log and front end
@@ -37,10 +39,10 @@ customizer:
 # Enables the front end
 frontend: 
   javascript_version: latest
-  extra_html_url:
-    - /local/custom_ui/state-card-custom-ui.html
-  extra_html_url_es5:
-    - /local/custom_ui/state-card-custom-ui-es5.html
+  # extra_html_url:
+    # - /local/custom_ui/state-card-custom-ui.html
+  # extra_html_url_es5:
+    # - /local/custom_ui/state-card-custom-ui-es5.html
 
 enable_debug:
 
@@ -58,7 +60,9 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
-# Checks for available updates
+
+
+# Checks for available dates
 updater:
   include_used_components: True
 
@@ -140,6 +144,7 @@ mqtt:
 
 tts:
   - platform: google
+    language: 'en-uk'
 
 
 
@@ -213,3 +218,9 @@ alarm_control_panel:
     code: !secret alarm_code
     pending_time: 30
     delay_time: 30
+
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - mac: !secret xiaomi_aqara_mac
+      key: !secret xiaomi_aqara_password

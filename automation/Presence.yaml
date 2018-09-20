@@ -71,9 +71,20 @@
     entity_id: media_player.house
   - service: media_player.turn_off
     entity_id: media_player.downstairs
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.normal
   - service: light.turn_off
     data:
       entity_id: group.Interior_Lights
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_main
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.silent
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.normal
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.silent
 
 
 
@@ -137,8 +148,6 @@
       - platform: state
         entity_id: 'device_tracker.lolos_iphone'
       - platform: state
-        entity_id: 'device_tracker.ha_lolos_iphone'
-      - platform: state
         entity_id: 'device_tracker.google_maps_110345542315981072615'
       - platform: state
         entity_id: 'device_tracker.laurent_mah_iphone_5s'
@@ -147,15 +156,12 @@
     data_template:
       topic: 'location/lolo'
       payload_template: '{{ trigger.to_state.state }}'
-      #payload_template: '{"lat":"{{- trigger.to_state.attributes.latitude -}}","lon":"{{- trigger.to_state.lolos_iphone.attributes.longitude -}}"}'
       retain: true
 
 - alias: location_div
   trigger:
       - platform: state
         entity_id: 'device_tracker.div_iphone'
-      - platform: state
-        entity_id: 'device_tracker.ha_div_iphone'
       - platform: state
         entity_id: 'device_tracker.google_maps_113578038090869627198'
   action:

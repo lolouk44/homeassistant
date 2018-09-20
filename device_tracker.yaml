@@ -1,12 +1,6 @@
-# - platform: xiaomi
-  # host: 192.168.0.1
-  # password: !secret xiaomi_router_password
-
-- platform: owntracks
-  max_gps_accuracy: 200
-  waypoints: True
-  waypoint_whitelist:
-    - ha
+- platform: xiaomi
+  host: 192.168.0.1
+  password: !secret xiaomi_router_password
 
 - platform: mqtt
   devices:
