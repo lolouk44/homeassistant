@@ -151,6 +151,9 @@
         entity_id: 'device_tracker.google_maps_110345542315981072615'
       - platform: state
         entity_id: 'device_tracker.laurent_mah_iphone_5s'
+      - platform: state
+        entity_id: 'device_tracker.lolosiphone'
+        to: 'home'
   action:
     service: mqtt.publish
     data_template:
@@ -164,6 +167,9 @@
         entity_id: 'device_tracker.div_iphone'
       - platform: state
         entity_id: 'device_tracker.google_maps_113578038090869627198'
+      - platform: state
+        entity_id: 'device_tracker.diviphone'
+        to: 'home'
   action:
     service: mqtt.publish
     data_template:
