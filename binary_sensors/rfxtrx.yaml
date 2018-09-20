@@ -6,4 +6,4 @@
       device_class: door
     0B1100300001B0240A000050:
       name: Conservatory Skylight Left
-      device_class: opening
+      device_class: window

@@ -6,7 +6,7 @@
         - binary_sensor.pir_kitchen
         - binary_sensor.pir_living_room_front
         - binary_sensor.pir_living_room_back
-        - binary_sensor.conservatory_skylight_left
+        - group.door_and_window_sensors
       to: 'on'
   condition:
     - condition: state
@@ -23,28 +23,30 @@
       entity_id: alarm_control_panel.alarm
       to: 'triggered'
   action:
-    # - service: notify.gmaildiv
-      # data_template:
-        # message: >
-          # "ALARM! The alarm has been triggered"\n
-          # ({{ trigger.entity_id | replace("binary_sensor.","") | replace("_"," ") |capitalize }})
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        gw_mac: 7811dcdae94a
+        ringtone_id: 2
+        ringtone_vol: 100
     - service: notify.gmaillolo
       data_template:
         message: >
-          ALARM! The alarm has been triggered (
-          {% for state in states.binary_sensor -%}
-          {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir"  and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}},
-          {% elif state.entity_id.split("binary_sensor.")[1].split("_")[0] == "conservatory"  and state.state =="on" %}Conservatory Skylight
-          {% endif %}
+          ALARM! The alarm has been triggered !(
+          ({% for windoor in states.group.door_and_window_sensors.attributes['entity_id']|list  -%}
+          {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+          {%- endfor -%}
+          {% for mypirs in states.group.pirs.attributes['entity_id']|list  -%}
+          {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
           {%- endfor %})
     - service: notify.ios_lolos_iphone
       data_template:
         message: >
-          ALARM! The alarm has been triggered (
-          {% for state in states.binary_sensor -%}
-          {% if state.entity_id.split("binary_sensor.")[1].split("_")[0] == "pir"  and state.state =="on" %}{{ state.entity_id.split("binary_sensor.")[1].split("pir_")[1]}},
-          {% elif state.entity_id.split("binary_sensor.")[1].split("_")[0] == "conservatory"  and state.state =="on" %}Conservatory Skylight
-          {% endif %}
+          ALARM triggered !(
+          ({% for windoor in states.group.door_and_window_sensors.attributes['entity_id']|list  -%}
+          {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+          {%- endfor -%}
+          {% for mypirs in states.group.pirs.attributes['entity_id']|list  -%}
+          {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
           {%- endfor %})
         data:
           push:
@@ -62,15 +64,58 @@
       from: 'disarmed'
   condition:
     - condition: state
-      entity_id: binary_sensor.conservatory_skylight_left
+      entity_id: group.door_and_window_sensors
       state: 'on'
   action:
-    - service: alarm_control_panel.alarm_disarm
-      entity_id: alarm_control_panel.alarm
-      data:
-        code: !secret alarm_code
     - service: tts.google_say
       data_template:
         entity_id: media_player.google_home_minis
         message: |
           Please note, one or more windows are left open. Disarming alarm...
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.alarm
+      data:
+        code: !secret alarm_code
+
+
+- alias: 'Alarm - Arming'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'pending'
+      from: 'disarmed'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.gateway_light_7811dcdae94a
+        brightness: 255
+        rgb_color: [255,0,0]
+
+
+- alias: 'Alarm - Disarming'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'disarmed'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.gateway_light_7811dcdae94a]
+
+
+- alias: 'Alarm - Armed'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+  condition:
+    - condition: template
+      value_template: '{{ states.alarm_control_panel.alarm.state.split("_")[0] == "armed"}}'
+  action:
+    - service: script.turn_on
+      data:
+        entity_id: script.flash_aqara_light
+
+
+# {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}
+  # {% if is_state(state,"on")%}{{state_attr(state,"friendly_name")}}, {%else%}{% endif %} 
+# {%- endfor %}

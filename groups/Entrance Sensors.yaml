@@ -3,4 +3,6 @@ entrance_sensors:
   entities:
     - binary_sensor.door_lock
     - binary_sensor.garage_back_door
+    - binary_sensor.door_window_sensor_158d000232ddf8
+    - binary_sensor.door_window_sensor_158d000232dcd3
     - sensor.doorbell_last_rang

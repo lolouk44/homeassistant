@@ -1,6 +1,22 @@
 #Binary Sensors:
-binary_sensor.conservatory_skylight_left:
-  icon: mdi:window-closed
+binary_sensor.door_window_sensor_158d00022d2c49:
+  friendly_name: Conservatory Single Door
+  device_class: door
+binary_sensor.door_window_sensor_158d0002435612:
+  friendly_name: Conservatory Double Door
+  device_class: door
+binary_sensor.door_window_sensor_158d0002434385:
+  friendly_name: Living Room Right Window
+  device_class: window
+binary_sensor.door_window_sensor_158d00022d2d3d:
+  friendly_name: Living Room Left Window
+  device_class: window
+binary_sensor.door_window_sensor_158d000232dcd3:
+  friendly_name: Cloakroom Window
+  device_class: window
+binary_sensor.door_window_sensor_158d000232ddf8:
+  friendly_name: Main Door
+  device_class: door
 binary_sensor.front_cctv_disk_error:
   icon: mdi:harddisk
 binary_sensor.front_cctv_disk_full:
@@ -57,6 +73,10 @@ input_datetime.xmas_end:
 #Lights
 light.conservatory_led_strip:
   icon: mdi:vector-polyline
+light.garage_led_strip:
+  icon: mdi:vector-polyline
+light.gateway_light_7811dcdae94a:
+  friendly_name: 'Xiaomi Aqara Gateway'
 light.house_number_led_strip:
   icon: mdi:numeric-4-box-multiple-outline
 light.kiaan_lamp:

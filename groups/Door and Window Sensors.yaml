@@ -1,0 +1,11 @@
+door_and_window_sensors:
+  name: Door & Window Sensors
+  entities:
+    - binary_sensor.door_window_sensor_158d00022d2c49
+    - binary_sensor.door_window_sensor_158d0002435612
+    - binary_sensor.conservatory_skylight_left
+    - binary_sensor.door_window_sensor_158d0002434385
+    - binary_sensor.door_window_sensor_158d00022d2d3d
+    - binary_sensor.door_window_sensor_158d000232dcd3
+    - binary_sensor.door_window_sensor_158d000232ddf8
+    - binary_sensor.garage_back_door

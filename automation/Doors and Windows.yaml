@@ -1,0 +1,136 @@
+- alias: Door or Window Opens
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.conservatory_skylight_left
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00022d2c49
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002435612
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002434385
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00022d2d3d
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d000232dcd3
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d000232ddf8
+      to: 'on'
+  action:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.google_home_minis
+      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+      media_content_type: 'audio/mp3'
+
+- alias: Door or Window Closes
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.conservatory_skylight_left
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00022d2c49
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002435612
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002434385
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00022d2d3d
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d000232dcd3
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d000232ddf8
+      to: 'off'
+  action:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.google_home_minis
+      media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
+      media_content_type: 'audio/mp3'
+
+- alias: Conservatory SkyLight Left Open When Leaving
+  trigger:
+    - platform: state
+      entity_id: device_tracker.div
+      from: "home"
+    - platform: state
+      entity_id: device_tracker.lolo
+      from: "home"
+  condition:
+    - condition: template
+      value_template: '{{ states.device_tracker.lolo.state != "home"}}'
+    - condition: template
+      value_template: '{{ states.device_tracker.div.state != "home"}}'
+    - condition: state
+      entity_id: binary_sensor.conservatory_skylight_left
+      state: 'on'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Conservatory SkyLight Left Open!'
+
+- alias: Conservatory SkyLight Left Open At Night
+  trigger:
+    - platform: state
+      entity_id: group.pirs
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: state
+      entity_id: binary_sensor.conservatory_skylight_left
+      state: 'on'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Conservatory SkyLight Left Open!'
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.living_room_google_mini
+        volume_level: 1
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.kitchen_google_mini
+        volume_level: 1
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.google_home_minis
+        volume_level: 1
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data:
+        message: 'Please note: The conservatory skylight windows are open'
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.living_room_google_mini
+        volume_level: 0.50
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.kitchen_google_mini
+        volume_level: 0.50
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.google_home_minis
+        volume_level: 0.50
+
+
