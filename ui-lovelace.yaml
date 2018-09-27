@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/group-card.js
     type: js
-  - url: /local/mini-media-player.js?ver=0.5
+  - url: /local/mini-media-player.js?ver=0.8
     type: module
 views:
   - title: default_view
@@ -111,20 +111,22 @@ views:
           - sensor.xiaomi_side_brush_left
           - sensor.xiaomi_filter_left
           - sensor.xiaomi_sensor_dirty_left
-      - type: picture-entity
-        title: YrForecastCrawley
-        entity: camera.yrforecastcrawley
-        camera_image: camera.yrforecastcrawley
-        show_name: false
-        show_state: false
-        tap_action: dialog
-      - type: picture-entity
-        title: YrForecastWeybridge
-        entity: camera.yrforecastweybridge
-        camera_image: camera.yrforecastweybridge
-        show_name: false
-        show_state: false
-        tap_action: dialog
+      - type: vertical-stack
+        cards:
+        - type: picture-entity
+          title: YrForecastCrawley
+          entity: camera.yrforecastcrawley
+          camera_image: camera.yrforecastcrawley
+          show_name: false
+          show_state: false
+          tap_action: dialog
+        - type: picture-entity
+          title: YrForecastWeybridge
+          entity: camera.yrforecastweybridge
+          camera_image: camera.yrforecastweybridge
+          show_name: false
+          show_state: false
+          tap_action: dialog
   - title: Media
     icon: mdi:library-music
     badges:
@@ -216,15 +218,34 @@ views:
         entities:
         - entity: media_player.house
           type: "custom:mini-media-player"
+          power_color: true
           group: true
         - entity: media_player.conservatory
           type: "custom:mini-media-player"
+          power_color: true
           group: true
         - entity: media_player.kitchen
           type: "custom:mini-media-player"
+          power_color: true
           group: true
         - entity: media_player.onkyo
           type: "custom:mini-media-player"
+          power_color: true
+          group: true
+      - type: entities
+        title: Video
+        entities:
+        - entity: media_player.panasonic_viera_tv
+          type: "custom:mini-media-player"
+          power_color: true
+          group: true
+        - entity: media_player.mibox3
+          type: "custom:mini-media-player"
+          power_color: true
+          group: true
+        - entity: media_player.kodi
+          type: "custom:mini-media-player"
+          power_color: true
           group: true
       - type: entities
         title: Onkyo
@@ -234,37 +255,33 @@ views:
         entities:
         - entity: media_player.onkyo_txnr656
           type: "custom:mini-media-player"
+          power_color: true
+          show_source: true
           group: true
         - entity: media_player.onkyo_txnr656_zone_2
           type: "custom:mini-media-player"
-          group: true
-      - type: entities
-        title: Video
-        entities:
-        - entity: media_player.panasonic_viera_tv
-          type: "custom:mini-media-player"
-          group: true
-        - entity: media_player.mibox3
-          type: "custom:mini-media-player"
-          group: true
-        - entity: media_player.kodi
-          type: "custom:mini-media-player"
+          power_color: true
           group: true
       - type: entities
         title: Google Home Minis
         icon: 'mdi:google-home'
         artwork_border: true
+        artwork: 'https://cdn.images.express.co.uk/img/dynamic/59/590x/Google-Home-Mini-862385.jpg'
         power_color: true
         entities:
         - entity: media_player.google_home_minis
           type: "custom:mini-media-player"
+          artwork: 'https://ksassets.timeincuk.net/wp/uploads/sites/56/2017/10/Google-Home-Mini-side.jpg'
           group: true
+          power_color: true
         - entity: media_player.kitchen_google_mini
           type: "custom:mini-media-player"
           group: true
+          power_color: true
         - entity: media_player.living_room_google_mini
           type: "custom:mini-media-player"
           group: true
+          power_color: true
       # - type: media-control
         # entity: media_player.house
       # - type: media-control
@@ -348,7 +365,7 @@ views:
         entities:
           - sensor.edimax1_watts
           - switch.edimax1
-  - title: Living_Room
+  - title: Living Room
     icon: mdi:sofa
     badges:
         - device_tracker.lolo
@@ -363,7 +380,7 @@ views:
         - sensor.sunset_time
     cards:
       - type: entities
-        title: Sensors
+        title: Living Room Sensors
         show_header_toggle: true
         entities:
           - entity: binary_sensor.pir_living_room_front
@@ -426,7 +443,7 @@ views:
         - sensor.sunset_time
     cards:
       - type: entities
-        title: Sensors
+        title: Entrance Sensors
         show_header_toggle: true
         entities:
           - entity: binary_sensor.door_lock
@@ -439,8 +456,10 @@ views:
             secondary_info: last-changed
           - entity: sensor.doorbell_last_rang
             secondary_info: last-changed
+          - entity: binary_sensor.smoke_sensor_158d0001e642ae
+            secondary_info: last-changed
       - type: entities
-        title: Lights
+        title: Entrance Lights
         show_header_toggle: false
         entities:
           - entity: light.hallway
@@ -461,7 +480,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.hallway_thermostat_has_leaf
             secondary_info: last-changed
-  - title: conservatory
+  - title: Conservatory
     icon: mdi:home-variant
     badges:
         - device_tracker.lolo
@@ -476,7 +495,7 @@ views:
         - sensor.sunset_time
     cards:
       - type: entities
-        title: Sensors
+        title: Conservatory Sensors
         show_header_toggle: true
         entities:
           - entity: binary_sensor.pir_conservatory
@@ -549,7 +568,23 @@ views:
             secondary_info: last-changed
           - entity: light.staircase_led_strip
             secondary_info: last-changed
-  - title: Main_Bedroom
+      - type: entities
+        title: Staircase Sensors
+        show_header_toggle: true
+        entities:
+        - entity: binary_sensor.smoke_sensor_158d000205ac9c
+          secondary_info: last-changed
+      - type: entities
+        title: Dehumidifier
+        show_header_toggle: false
+        entities:
+          - entity: switch.dehumidifier
+            secondary_info: last-changed
+          - entity: sensor.dehumidifier_power
+            secondary_info: last-changed
+          - entity: input_boolean.dehumidifier_tank_full
+            secondary_info: last-changed
+  - title: Main Bedroom
     icon: mdi:hotel
     badges:
         - device_tracker.lolo
@@ -564,7 +599,7 @@ views:
         - sensor.sunset_time
     cards:
       - type: entities
-        title: Sensors
+        title: Main Bedroom Sensors
         show_header_toggle: true
         entities:
         - entity: sensor.temperature_158d0001f5218a
@@ -583,16 +618,6 @@ views:
           - input_boolean.kello_play_stop
           - input_boolean.kello_mute_alarms
       - type: entities
-        title: Dehumidifier
-        show_header_toggle: false
-        entities:
-          - entity: switch.dehumidifier
-            secondary_info: last-changed
-          - entity: sensor.dehumidifier_power
-            secondary_info: last-changed
-          - entity: input_boolean.dehumidifier_tank_full
-            secondary_info: last-changed
-      - type: entities
         title: Mi Scale
         show_header_toggle: false
         entities:
@@ -608,7 +633,7 @@ views:
             secondary_info: last-changed
           - entity: sensor.div_bmi
             secondary_info: last-changed
-  - title: Kiaan_Bedroom
+  - title: Kiaan's Bedroom
     icon: mdi:baby
     badges:
         - device_tracker.lolo
@@ -623,7 +648,7 @@ views:
         - sensor.sunset_time
     cards:
       - type: entities
-        title: Sensors
+        title: Kiaan's Bedroom Sensors
         show_header_toggle: true
         entities:
           - entity: sensor.upstairs_temperature
@@ -631,7 +656,7 @@ views:
           - entity: sensor.upstairs_humidity
             secondary_info: last-changed
       - type: entities
-        title: Lights
+        title: Kiaan's Bedroom Lights
         show_header_toggle: false
         entities:
           - entity: light.kiaan_lamp
@@ -722,19 +747,6 @@ views:
       - type: vertical-stack
         cards:
         - type: entities
-          title: Garage
-          show_header_toggle: false
-          entities:
-            - switch.cctv_garage_status
-        - type: picture-entity
-          title: Garage
-          entity: camera.garage
-          camera_image: camera.garage
-          show_name: false
-          show_state: false
-      - type: vertical-stack
-        cards:
-        - type: entities
           title: Dafang Living Room
           show_header_toggle: false
           entities:
@@ -764,6 +776,19 @@ views:
           title: Kitchen
           entity: camera.kitchen
           camera_image: camera.kitchen
+          show_name: false
+          show_state: false
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Garage
+          show_header_toggle: false
+          entities:
+            - switch.cctv_garage_status
+        - type: picture-entity
+          title: Garage
+          entity: camera.garage
+          camera_image: camera.garage
           show_name: false
           show_state: false
       - type: picture-entity
@@ -886,6 +911,7 @@ views:
         show_header_toggle: false
         entities:
           - sensor.currentcost_power
+          - sensor.cpu_usage
           - sensor.ram_usage
           - sensor.hass_db_size_formatted
           - sensor.ssl_cert_expiry
@@ -950,3 +976,67 @@ views:
         states:
           - arm_home
           - arm_away
+
+
+  - title: Test
+    icon: mdi:verified
+    cards:
+      - type: picture-elements
+        image: /local/Google-Home-Mini.jpg
+        elements:
+          - type: entities
+            title: Google Home Minis
+            icon: 'mdi:google-home'
+            artwork_border: true
+            artwork: 'https://cdn.images.express.co.uk/img/dynamic/59/590x/Google-Home-Mini-862385.jpg'
+            power_color: true
+            entities:
+            - entity: media_player.google_home_minis
+              type: "custom:mini-media-player"
+              artwork: 'https://ksassets.timeincuk.net/wp/uploads/sites/56/2017/10/Google-Home-Mini-side.jpg'
+              group: true
+              power_color: true
+              style:
+                top: 47%
+                left: 42%
+            - entity: media_player.kitchen_google_mini
+              type: "custom:mini-media-player"
+              group: true
+              power_color: true
+            - entity: media_player.living_room_google_mini
+              type: "custom:mini-media-player"
+              group: true
+              power_color: true
+
+          - type: state-icon
+            tap_action: toggle
+            entity: light.ceiling_lights
+            style:
+              top: 47%
+              left: 42%
+          - type: state-icon
+            tap_action: toggle
+            entity: light.kitchen_lights
+            style:
+              top: 30%
+              left: 15%
+          - type: state-label
+            entity: sensor.outside_temperature
+            style:
+              top: 82%
+              left: 79%
+          - type: service-button
+            title: Turn lights off
+            style:
+              top: 95%
+              left: 60%
+            service: homeassistant.turn_off
+            service_data:
+              entity_id: group.all_lights
+          - type: icon
+            icon: mdi:home
+            tap_action: navigate
+            navigation_path: /lovelace/0
+            style:
+              top: 10%
+              left: 10%
