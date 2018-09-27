@@ -72,6 +72,8 @@
       seconds: 0
     - platform: template
       value_template: '{{ states.sensor.upstairs_humidity.state | int > 70}}'
+    - platform: template
+      value_template: '{{ states.sensor.humidity_158d0001f5218a.state | int > 70}}'
   condition:
     - condition: time
       after: '08:00'
@@ -86,6 +88,8 @@
       state: 'off'
     - condition: template
       value_template: '{{ states.sensor.upstairs_humidity.state | default(0) | int >= 70 }}'
+    - condition: template
+      value_template: '{{ states.sensor.sensor.humidity_158d0001f5218a.state | default(0) | int >= 70 }}'
   action:
   - service: switch.turn_on
     data:
@@ -100,6 +104,8 @@
       seconds: 0
     - platform: template
       value_template: '{{ states.sensor.upstairs_humidity.state | int < 60}}'
+    - platform: template
+      value_template: '{{ states.sensor.humidity_158d0001f5218a.state | int < 60}}'
   condition:
     - condition: state
       entity_id: switch.dehumidifier
