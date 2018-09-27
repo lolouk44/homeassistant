@@ -6,8 +6,18 @@ Presence:
     - camera.div
 
 # lolo_location:
-  # name: Presence
+  # name: lolo_location
   # control: hidden
   # entities:
-    # - tracker.ha_lolos_iphone
-    # - tracker.lolos_iphone
+    # - device_tracker.lolos_iphone
+    # - device_tracker.google_maps_110345542315981072615
+    # - device_tracker.laurent_mah_iphone_5s
+    # - device_tracker.lolosiphone
+
+# div_location:
+  # name: div_location
+  # control: hidden
+  # entities:
+    # - device_tracker.div_iphone
+    # - device_tracker.google_maps_113578038090869627198
+    # - device_tracker.diviphone

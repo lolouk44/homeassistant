@@ -23,7 +23,7 @@
 
     homeassistant:
       container_name: hass
-      image: homeassistant/home-assistant:latest
+      image: homeassistant/home-assistant:0.78.3
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
@@ -31,6 +31,6 @@
       devices:
         - /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0:/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
       depends_on:
-        - "influxdb"
+        - influxdb
       restart: always
       network_mode: host
