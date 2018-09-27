@@ -37,7 +37,7 @@
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
-      to: 'Cleaning'
+      to: 'cleaning'
   action:
     - service: notify.gmaillolo
       data_template:
@@ -51,7 +51,7 @@
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
-      to: 'Returning home'
+      to: 'returning to dock'
   action:
     - service: notify.gmaillolo
       data_template:
