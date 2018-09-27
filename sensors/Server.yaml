@@ -48,6 +48,12 @@
   name: 'Hass DB Size Formatted'
   icon: mdi:database
 
+- platform: mqtt
+  state_topic: 'Sensors/CPU'
+  name: 'CPU Usage'
+  icon: mdi:chip
+  unit_of_measurement: '%'
+
 - platform: cert_expiry
   host: lolorpi.com
   name: lolorpi.com site expiry
