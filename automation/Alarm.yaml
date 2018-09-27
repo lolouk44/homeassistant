@@ -116,6 +116,36 @@
         entity_id: script.flash_aqara_light
 
 
+
+
+
+- alias: 'Alarm - Fire Alarm'
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.smoke_sensor_158d0001e642ae
+        - binary_sensor.smoke_sensor_158d000205ac9c
+      to: 'on'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: >
+          FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d000205ac9c' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
+    - service: notify.gmaildiv
+      data_template:
+        message: >
+          FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d000205ac9c' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
+    - service: notify.ios_lolos_iphone
+      data_template:
+        message: >
+          FIRE ALARM!({% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d0001e642ae' %}Gnd Floor Smoke Detector{% else %}1st Floor Smoke Detector{% endif %})
+        data:
+          push:
+            badge: '{{states.counter.iosbadgecount.state}}'
+            category: "alarm"
+          action_data:
+            entity_id: '{{trigger.entity_id}}'
+
 # {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}
   # {% if is_state(state,"on")%}{{state_attr(state,"friendly_name")}}, {%else%}{% endif %} 
 # {%- endfor %}
