@@ -164,11 +164,11 @@
 - alias: location_div
   trigger:
       - platform: state
-        entity_id: 'device_tracker.div_iphone'
+        entity_id: device_tracker.div_iphone
       - platform: state
-        entity_id: 'device_tracker.google_maps_113578038090869627198'
+        entity_id: device_tracker.google_maps_113578038090869627198
       - platform: state
-        entity_id: 'device_tracker.diviphone'
+        entity_id: device_tracker.diviphone
         to: 'home'
   action:
     service: mqtt.publish

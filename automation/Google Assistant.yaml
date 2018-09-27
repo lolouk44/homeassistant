@@ -184,7 +184,6 @@
       data:
         media_content_id: http://192.168.0.24/audio1sec.mp3
         media_content_type: music
-    - wait_template: "{{ states('media_player.sovrum') != 'off' }}"
     - delay:
         seconds: 0.1
     - service: media_player.play_media

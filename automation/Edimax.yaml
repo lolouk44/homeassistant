@@ -1,51 +1,20 @@
-- alias: Kettle Is Boiled
-  initial_state: false
+- alias: Edimax - Battery Is Charged
   trigger:
     - platform: state
       entity_id: sensor.edimax1_watts
   condition:
-  - condition: template
-    value_template: '{{ states.sensor.edimax1_watts.state | int < 1 }}'
-  - condition: state
-    entity_id: input_boolean.edimax_appliance
-    state: 'on'
+    - condition: template
+      value_template: '{{ states.sensor.edimax1_watts.state | int < 1 }}'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0))) | int > 90}}'
   action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.edimax_appliance
+    - delay: '0:0:30'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0))) | int > 90}}'
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
     - service: tts.google_say
       entity_id: media_player.google_home_minis
       data:
-        message: 'Please note: The Kettle is boiled'
-
-
-- alias: Kettle is on
-  trigger:
-    - platform: state
-      entity_id: sensor.edimax1_watts
-  condition:
-  - condition: template
-    value_template: '{{ states.sensor.edimax1_watts.state | int > 1 }}'
-  - condition: state
-    entity_id: input_boolean.edimax_appliance
-    state: 'off'
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.edimax_appliance
-
-
-- alias: Turn Edimax On by PIR
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.pir_kitchen
-      to: 'on'
-  condition:
-  - condition: state
-    entity_id: switch.edimax1
-    state: 'off'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.edimax1
+        message: 'Please note: The battery is charged'
