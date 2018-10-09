@@ -38,6 +38,7 @@
     - platform: state
       entity_id: sensor.xiaomi_status
       to: 'cleaning'
+      from: 'docked'
   action:
     - service: notify.gmaillolo
       data_template:
@@ -45,24 +46,52 @@
     - service: notify.gmaildiv
       data_template:
         message: 'Mi Robot Started Vacuuming...'
+
+
+
+- alias: Vacuuming Error
+  trigger:
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'error'
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'error'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Looks like something is wrong with the Vacuum...'
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data:
+        message: 'Looks like something is wrong with the Vacuum...'
+        data:
+          images:
+            - /config/www/navmap.png
 
 
 - alias: Finished Vacuuming
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
-      to: 'returning to dock'
+      to: 'returning'
   action:
     - service: notify.gmaillolo
       data_template:
         message: |
           Mi Robot finished Vacuuming...
           Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
+        data:
+          images:
+            - /config/www/navmap.png
     - service: notify.gmaildiv
       data_template:
         message: |
           Mi Robot finished Vacuuming...
           Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
+        data:
+          images:
+            - /config/www/navmap.png
     - service: input_boolean.turn_off
       entity_id: input_boolean.vacuum
 

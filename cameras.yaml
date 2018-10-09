@@ -23,6 +23,12 @@
   name: Back
 
 - platform: generic
+  name: Vacuum Map
+  still_image_url: https://homeassistant.lolorpi.com/local/navmap.png
+  content_type: image/png
+  framerate: 1
+
+- platform: generic
   name: 'Lolo'
   still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.ha_lolos_iphone.attributes.latitude }},{{ states.device_tracker.ha_lolos_iphone.attributes.longitude }}&zoom=15&size=500x500&maptype=roadmap&markers=color:blue%7Clabel:L%7C{{ states.device_tracker.ha_lolos_iphone.attributes.latitude }},{{ states.device_tracker.ha_lolos_iphone.attributes.longitude }}&markers=color:red%7Clabel:D%7C{{ states.device_tracker.ha_div_iphone.attributes.latitude }},{{ states.device_tracker.ha_div_iphone.attributes.longitude }}
   limit_refetch_to_url_change: true
