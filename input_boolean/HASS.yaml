@@ -1,4 +1,0 @@
-hass_restart:
-  name: Restart HASS
-  initial: off
-  icon: mdi:skull
