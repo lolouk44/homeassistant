@@ -15,9 +15,6 @@
     - condition: state
       entity_id: binary_sensor.pir_conservatory
       state: 'on'
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
     - condition: or
       conditions:
       - condition: template
