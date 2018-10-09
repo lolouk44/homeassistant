@@ -203,13 +203,23 @@ switch.dafang_kitchen_left_right:
   icon: mdi:arrow-expand-horizontal
 switch.dehumidifier:
   icon: mdi:power-socket-uk
+switch.grafana:
+  icon: mdi:docker
+switch.influxdb:
+  icon: mdi:docker
 switch.Kitchen_TV:
   icon: mdi:television
 switch.onkyo_zone2_muting:
   icon: mdi:volume-off
 switch.onkyo_zone2_power:
   icon: mdi:power
+switch.portainer:
+  icon: mdi:docker
 switch.skyhd:
   icon: mdi:television-box
+switch.syncthing:
+  icon: mdi:docker
+switch.watchtower:
+  icon: mdi:docker
 
 
