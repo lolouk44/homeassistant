@@ -1,8 +1,8 @@
 - alias: Kiaan Night Light Sleep
   trigger:
     - platform: time
-      hours: 20
-      minutes: 0
+      hours: 19
+      minutes: 30
       seconds: 0
   condition:
     - condition: state
