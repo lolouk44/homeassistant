@@ -26,25 +26,39 @@
       entity_id: group.pirs
       to: 'on'
     - platform: state
-      entity_id: device_tracker.div
-      to: "home"
+      entity_id: 'device_tracker.lolos_iphone'
     - platform: state
-      entity_id: device_tracker.lolo
-      to: "home"
+      entity_id: 'device_tracker.google_maps_110345542315981072615'
+    - platform: state
+      entity_id: 'device_tracker.laurent_mah_iphone_5s'
+    - platform: state
+      entity_id: device_tracker.div_iphone
+    - platform: state
+      entity_id: device_tracker.google_maps_113578038090869627198
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'
     - condition: state
       entity_id: 'input_boolean.holidays'
       state: "on"
-    - condition: template
-      value_template: '{{ states.device_tracker.lolo.state == "home"}}'
-    - condition: template
-      value_template: '{{ states.device_tracker.div.state == "home"}}'
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ distance(states.device_tracker.lolos_iphone) | int  < 3}}'
+      - condition: template
+        value_template: '{{ distance(states.device_tracker.google_maps_110345542315981072615) | int  < 3}}'
+      - condition: template
+        value_template: '{{ distance(states.device_tracker.laurent_mah_iphone_5s) | int  < 3}}'
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ distance(states.device_tracker.div_iphone) | int  < 3}}'
+      - condition: template
+        value_template: '{{ distance(states.device_tracker.google_maps_113578038090869627198) | int  < 3}}'
   action:
     - service: input_boolean.turn_on
       data:
-        entity_id: input_boolean.holidays
+        entity_id: input_boolean.normal
 
 
 
@@ -86,6 +100,12 @@
   - service: switch.turn_on
     data:
       entity_id: switch.LWRF_Socket_3
+  - service: light.turn_on
+    data:
+      entity_id: light.kiaan_lamp
+      brightness: 255
+      effect: "solid"
+      rgb_color: [255,255,255]
   - delay: "{{range(0,300+1)|random|timestamp_custom('%X',false)}}"
   - service: light.turn_off
     data:
@@ -94,12 +114,6 @@
   - service: light.turn_off
     data:
       entity_id: light.kitchen_window
-  - service: light.turn_on
-    data:
-      entity_id: light.kiaan_lamp
-      brightness: 255
-      effect: "solid"
-      rgb_color: [255,255,255]
 
 
 - alias: Holiday Upstairs off
