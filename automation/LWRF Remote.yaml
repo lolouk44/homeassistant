@@ -1,4 +1,5 @@
 - alias: LWRF Remote 1 On
+  # Kitchen lights on
   trigger:
     - platform: event
       event_type: button_pressed
@@ -6,7 +7,7 @@
         entity_id: switch.lwrf_remote_1
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_on.attributes.last_triggered | default(0)) | int > 2 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_on.attributes.last_triggered | default(0)) | int > 1 )}}'
     - condition: state
       entity_id: switch.lwrf_remote_1
       state: 'on'
@@ -23,6 +24,7 @@
 
 
 - alias: LWRF Remote 1 Off
+  # Kitchen lights on
   trigger:
     - platform: event
       event_type: button_pressed
@@ -30,7 +32,7 @@
         entity_id: switch.lwrf_remote_1
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_off.attributes.last_triggered | default(0)) | int > 2 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_1_off.attributes.last_triggered | default(0)) | int > 1 )}}'
     - condition: state
       entity_id: switch.lwrf_remote_1
       state: 'off'
@@ -47,6 +49,7 @@
 
 
 - alias: LWRF Remote 2 On
+  # Go through CCTV feeds on TV
   trigger:
     - platform: event
       event_type: button_pressed
@@ -54,53 +57,7 @@
         entity_id: switch.lwrf_remote_2
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_on.attributes.last_triggered | default(0)) | int > 2 )}}'
-    - condition: state
-      entity_id: switch.lwrf_remote_2
-      state: 'on'
-  action:
-  - service: switch.turn_on
-    data:
-      entity_id: switch.kitchen_tv
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.living_room_google_mini
-      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
-      media_content_type: 'audio/mp3'
-
-- alias: LWRF Remote 2 Off
-  trigger:
-    - platform: event
-      event_type: button_pressed
-      event_data:
-        entity_id: switch.lwrf_remote_2
-  condition:
-    - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_off.attributes.last_triggered | default(0)) | int > 2 )}}'
-    - condition: state
-      entity_id: switch.lwrf_remote_2
-      state: 'off'
-  action:
-  - service: switch.turn_off
-    data:
-      entity_id: switch.kitchen_tv
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.living_room_google_mini
-      media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
-      media_content_type: 'audio/mp3'
-
-
-
-- alias: LWRF Remote 3 On
-  trigger:
-    - platform: event
-      event_type: button_pressed
-      event_data:
-        entity_id: switch.lwrf_remote_3
-  condition:
-    - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_3_on.attributes.last_triggered | default(0)) | int > 1 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_2_on.attributes.last_triggered | default(0)) | int > 1 )}}'
   action:
   - service: input_select.select_next
     data:
@@ -114,3 +71,44 @@
       entity_id: media_player.living_room_google_mini
       media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
       media_content_type: 'audio/mp3'
+
+
+
+
+- alias: LWRF Remote 3 On
+  # Unute ChromeCasts
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data:
+        entity_id: switch.lwrf_remote_3
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_3_on.attributes.last_triggered | default(0)) | int > 1 )}}'
+    - condition: state
+      entity_id: switch.lwrf_remote_3
+      state: 'on'
+  action:
+  - service: media_player.volume_mute
+    data:
+      entity_id: media_player.house
+      is_volume_muted: false
+
+- alias: LWRF Remote 3 Off
+  # Mute ChromeCasts
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data:
+        entity_id: switch.lwrf_remote_3
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.lwrf_remote_3_off.attributes.last_triggered | default(0)) | int > 1 )}}'
+    - condition: state
+      entity_id: switch.lwrf_remote_3
+      state: 'off'
+  action:
+  - service: media_player.volume_mute
+    data:
+      entity_id: media_player.house
+      is_volume_muted: true
