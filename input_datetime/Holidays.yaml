@@ -2,12 +2,12 @@ holiday_start:
   name: Holiday Start
   has_date: true
   has_time: true
-  initial: '2018-06-20 16:00'
+  initial: !secret HolStart
 holiday_end:
   name: Holiday End
   has_date: true
   has_time: false
-  initial: '2018-07-12'
+  initial: !secret HolEnd
 
 xmas_start:
   name: Xmas Start
