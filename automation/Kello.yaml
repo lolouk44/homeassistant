@@ -102,11 +102,12 @@
         {{ states.input_select.kello_radio_station.state.replace(" ","") }}
       retain: false
 
-- alias: Build Weather Greeting
+- alias: Build Weather Greeting IFTTT
   trigger:
-    - platform: state
-      entity_id: sensor.Kello_MQTT
-      to: 'build_greeting'
+    - platform: event
+      event_type: ifttt_webhook_received
+      event_data:
+        action: build_greeting
   action:
   - service: tts.google_say
     data_template:
@@ -134,3 +135,32 @@
         {% if (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day != True %} Your next appointment is: {{states.calendar.birthdays__events.attributes.message}} at {{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[0]}} {%if (states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1] != '00'%}{{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day == True %} Today is : {{states.calendar.birthdays__events.attributes.message|replace("/","and")}}{%endif%}
+  - delay: 00:00:05
+  - service: mqtt.publish
+    data:
+      topic: "Kello"
+      payload_template: 'build_greeting'
+      retain: false
+
+- alias: Play Weather Greeting IFTTT
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: play_greeting
+  action:
+  - service: mqtt.publish
+    data:
+      topic: "Kello/PlayStatus"
+      payload_template: 'ON'
+      retain: False
+  - service: mqtt.publish
+    data:
+      topic: "Kello/Volume"
+      payload_template: '{{ 40 | int(value,16) }}'
+      retain: false
+  - service: mqtt.publish
+    data:
+      topic: "Kello/Radio"
+      payload_template: 'WeatherForecast'
+      retain: false
