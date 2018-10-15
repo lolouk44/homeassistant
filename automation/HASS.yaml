@@ -53,7 +53,7 @@
   - service: shell_command.harestart
 
 - alias: HASS Nightly Restart
-  initial_state: false
+  initial_state: true
   trigger:
     platform: time
     hours: 2
@@ -62,7 +62,8 @@
   action:
   - service: shell_command.reboot_dafang_kitchen
   - service: shell_command.reboot_dafang_livingroom
-  - service: shell_command.harestart
+  - service: shell_command.reboot_pi_zero_w
+#  - service: shell_command.harestart
 
 - alias: 'SSL expiry notification'
   trigger:
