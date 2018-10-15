@@ -19,7 +19,7 @@
       entity_id: input_boolean.silent
       state: "off"
     - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       data:
         message: 'Scene, holidays, activated'
 
@@ -65,7 +65,7 @@
       entity_id: input_boolean.silent
       state: "off"
     - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       data:
         message: 'Scene, movies, activated'
 
@@ -92,7 +92,7 @@
       entity_id: input_boolean.silent
       state: "off"
     - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       data:
         message: 'Scene, normal, activated'
 
@@ -160,7 +160,7 @@
       entity_id: input_boolean.silent
       state: "off"
     - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       data:
         message: 'Scene, christmas, activated'
 
@@ -178,6 +178,6 @@
       entity_id: input_boolean.silent
       state: "off"
     - service: tts.google_say
-      entity_id: media_player.living_room_google_mini
+      entity_id: media_player.google_home_minis
       data:
         message: 'Scene, christmas, de-activated'
