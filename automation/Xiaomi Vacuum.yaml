@@ -76,6 +76,9 @@
     - platform: state
       entity_id: sensor.xiaomi_status
       to: 'returning to dock'
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'returning'
   action:
     - service: notify.gmaillolo
       data_template:
