@@ -34,7 +34,7 @@
     - service: climate.set_temperature
       data_template:
         entity_id: climate.hallway
-        temperature: '{% if states.sensor.season.state == "winter" %}20.5{% else %}19{% endif %}'
+        temperature: '{% if states.sensor.season.state == "summer" or states.sensor.season.state == "spring" %}18{% else %}20{% endif %}'
         operation_mode: Heat
 
 

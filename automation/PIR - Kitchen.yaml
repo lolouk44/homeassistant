@@ -104,6 +104,15 @@
   - service: light.turn_off
     data:
       entity_id: group.kitchen_lights
+  - condition: state
+    entity_id: binary_sensor.pir_conservatory
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.pir_living_room_front
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.pir_living_room_back
+    state: 'off'
   - service: switch.turn_off
     data:
       entity_id: switch.kitchen_tv

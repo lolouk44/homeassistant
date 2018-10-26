@@ -39,6 +39,10 @@
       entity_id: sensor.xiaomi_status
       to: 'cleaning'
       from: 'docked'
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'cleaning'
+      from: 'idle'
   action:
     - service: notify.gmaillolo
       data_template:
@@ -54,15 +58,12 @@
     - platform: state
       entity_id: sensor.xiaomi_status
       to: 'error'
-    - platform: state
-      entity_id: sensor.xiaomi_status
-      to: 'error'
   action:
-    - service: notify.gmaillolo
-      data_template:
-        message: 'Looks like something is wrong with the Vacuum...'
     - service: tts.google_say
       entity_id: media_player.google_home_minis
+      data:
+        message: 'Looks like something is wrong with the Vacuum...'
+    - service: notify.gmaillolo
       data:
         message: 'Looks like something is wrong with the Vacuum...'
         data:
@@ -74,7 +75,7 @@
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
-      to: 'returning'
+      to: 'returning to dock'
   action:
     - service: notify.gmaillolo
       data_template:
