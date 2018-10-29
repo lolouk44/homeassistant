@@ -1,17 +1,18 @@
 title: Home
 resources:
-  - url: /local/alarm_control_panel-card.js?v=1
-    type: js
+  # - url: /local/alarm_control_panel-card.js?v=1
+    # type: js
   - url: /local/kiosk.js
     type: js
   - url: /local/group-card.js
     type: js
   - url: /local/mini-media-player.js?ver=0.8
     type: module
-  - url: /local/vertical-stack-in-card.js?v=0.0.2
+  - url: /local/vertical-stack-in-card.js?v=0.0.8
     type: js
 views:
   - title: default_view
+    background: url("/local/home.png") fixed
     icon: mdi:home
     badges:
         - device_tracker.lolo
@@ -116,6 +117,7 @@ views:
           show_state: false
           tap_action: dialog
   - title: Media
+    background: url("/local/library-music.png") fixed
     icon: mdi:library-music
     badges:
         - device_tracker.lolo
@@ -295,6 +297,7 @@ views:
       # - type: media-control
         # entity: media_player.panasonic_viera_tv
   - title: Living Room
+    background: url("/local/sofa.png") fixed
     icon: mdi:sofa
     badges:
         - device_tracker.lolo
@@ -458,6 +461,7 @@ views:
               background-color: rgb(54, 65, 78)
               opacity: 0.8
   - title: Kitchen
+    background: url("/local/bowl.png") fixed
     icon: mdi:bowl
     badges:
         - device_tracker.lolo
@@ -506,6 +510,7 @@ views:
           - switch.edimax1
           - input_boolean.edimax_charging
   - title: Entrance
+    background: url("/local/home.png") fixed
     icon: mdi:home-modern
     badges:
         - device_tracker.lolo
@@ -558,6 +563,7 @@ views:
           - entity: binary_sensor.hallway_thermostat_has_leaf
             secondary_info: last-changed
   - title: Conservatory
+    background: url("/local/home-variant-outline.png") fixed
     icon: mdi:home-variant
     badges:
         - device_tracker.lolo
@@ -624,6 +630,7 @@ views:
             - entity: light.bauble_3
               secondary_info: last-changed
   - title: Staircase
+    background: url("/local/stairs.png") fixed
     icon: mdi:stairs
     badges:
         - device_tracker.lolo
@@ -662,6 +669,7 @@ views:
           - entity: input_boolean.dehumidifier_tank_full
             secondary_info: last-changed
   - title: Main Bedroom
+    background: url("/local/hotel.png") fixed
     icon: mdi:hotel
     badges:
         - device_tracker.lolo
@@ -711,6 +719,7 @@ views:
           - entity: sensor.div_bmi
             secondary_info: last-changed
   - title: Kiaan's Bedroom
+    background: url("/local/baby.png") fixed
     icon: mdi:baby
     badges:
         - device_tracker.lolo
@@ -749,6 +758,7 @@ views:
           - entity: sensor.kiaan_bmi
             secondary_info: last-changed
   - title: cctv
+    background: url("/local/cctv.png") fixed
     icon: mdi:cctv
     badges:
         - device_tracker.lolo
@@ -879,6 +889,7 @@ views:
         camera_image: camera.div
         show_state: false
   - title: Automation
+    background: url("/local/calendar-check.png") fixed
     icon: mdi:calendar-check
     cards:
       - type: custom:group-card
@@ -886,7 +897,10 @@ views:
           type: entities
           title: All Switches
         group: group.all_automations
+
+
   - title: Server
+    background: url("/local/home.png") fixed
     icon: mdi:desktop-classic
     badges:
         - device_tracker.lolo
@@ -1025,7 +1039,71 @@ views:
           - binary_sensor.staircase_led_strip
           - binary_sensor.tv_cabinet_led_strip
           - binary_sensor.conservatory_led_strip
+
+
+  - title: Server-stats
+    background: url("/local/chart-areaspline.png") fixed
+    icon: mdi:chart-areaspline
+    cards:
+      - type: entity-filter
+        title: Alerts
+        show_header_toggle: false
+        entities:
+          - alert.outside_temp_sensor_lost
+          - alert.upstairs_temp_sensor_lost
+          - alert.cctv_front_lost
+          - alert.cctv_garage_lost
+          - alert.cctv_dafang_living_room_lost
+          - alert.currentcost_lost
+          - alert.dehumidifier_full
+          - alert.rpi_lost
+          - alert.rpi_zero_w_lost
+          - alert.kello_lost
+          - alert.house_number_led_strip_lost
+          - alert.staircase_led_strip_lost
+          - alert.tv_cabinet_led_strip_lost
+          - alert.ram_too_high
+          - alert.ram_usage_lost
+          - alert.home_disk_usage_too_high
+          - alert.root_disk_usage_too_high
+          - alert.cctv_dafang_kitchen_lost
+          - alert.aloe_vera_humidity_too_low
+          - alert.aloe_vera_battery_too_low
+          - counter.iosbadgecount
+        state_filter:
+          - "on"
+        show_empty: false
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          entity: sensor.cpu_usage
+          severity:
+            green: 0
+            yellow: 50
+            red: 85
+        - type: sensor
+          entity: sensor.cpu_usage
+          name: CPU Usage
+          height: 75
+#          line_color: "#3498db"
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          entity: sensor.ram_usage
+          severity:
+            green: 0
+            yellow: 60
+            red: 85
+        - type: sensor
+          entity: sensor.ram_usage
+          name: RAM Usage
+          height: 75
+          line_color: "#3498db"
+
   - title: Alarm
+    background: url("/local/verified.png") fixed
     icon: mdi:verified
     cards:
       - type: entity-filter
@@ -1049,7 +1127,7 @@ views:
         state_filter:
           - "on"
         show_empty: false
-      - type: custom:alarm_control_panel-card
+      - type: alarm-panel
         entity: alarm_control_panel.alarm
         show_keypad: true
         title: Alarm
