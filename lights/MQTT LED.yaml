@@ -102,9 +102,9 @@
 
 
 - platform: mqtt_json
-  name: "Garage LED Strip"
-  state_topic: "Garage/LED_Strip"
-  command_topic: "Garage/LED_Strip/set"
+  name: "Porch Om Xmas LED Strip"
+  state_topic: "Porch/Om_Sign"
+  command_topic: "Porch/Om_Sign/set"
   effect: true
   effect_list:
     - bpm

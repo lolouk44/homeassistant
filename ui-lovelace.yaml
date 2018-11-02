@@ -6,7 +6,7 @@ resources:
     type: js
   - url: /local/group-card.js
     type: js
-  - url: /local/mini-media-player.js?ver=0.8
+  - url: /local/mini-media-player.js?ver=0.8.8
     type: module
   - url: /local/vertical-stack-in-card.js?v=0.0.8
     type: js
@@ -108,14 +108,12 @@ views:
           camera_image: camera.yrforecastcrawley
           show_name: false
           show_state: false
-          tap_action: dialog
         - type: picture-entity
           title: YrForecastWeybridge
           entity: camera.yrforecastweybridge
           camera_image: camera.yrforecastweybridge
           show_name: false
           show_state: false
-          tap_action: dialog
   - title: Media
     background: url("/local/library-music.png") fixed
     icon: mdi:library-music
@@ -550,6 +548,8 @@ views:
             secondary_info: last-changed
           - entity: light.gateway_light_7811dcdae94a
             secondary_info: last-changed
+          - entity: light.porch_om_xmas_led_strip
+            secondary_info: last-changed
       - type: entities
         title: Nest Thermostat
         show_header_toggle: true
@@ -563,8 +563,8 @@ views:
           - entity: binary_sensor.hallway_thermostat_has_leaf
             secondary_info: last-changed
   - title: Conservatory
-    background: url("/local/home-variant-outline.png") fixed
-    icon: mdi:home-variant
+    background: url("/local/home-outline.png") fixed
+    icon: mdi:home-outline
     badges:
         - device_tracker.lolo
         - device_tracker.div

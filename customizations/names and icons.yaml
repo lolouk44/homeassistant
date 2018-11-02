@@ -83,10 +83,13 @@ light.garage_led_strip:
   icon: mdi:vector-polyline
 light.gateway_light_7811dcdae94a:
   friendly_name: 'Xiaomi Aqara Gateway'
+  icon: mdi:circle-slice-8
 light.house_number_led_strip:
   icon: mdi:numeric-4-box-multiple-outline
 light.kiaan_lamp:
   icon: mdi:lamp
+light.porch_om_xmas_led_strip:
+  icon: mdi:hinduism
 light.Staircase_LED_Strip:
   icon: mdi:vector-polyline
 light.TV_Cabinet_LED_Strip:
