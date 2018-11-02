@@ -39,6 +39,7 @@
 - platform: template
   sensors:
     sunset_time:
+      entity_id: sun.sun
       value_template: >
         {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%H:%M") }}
       friendly_name: Sunset
@@ -47,6 +48,7 @@
 - platform: template
   sensors:
     precipitation:
+      entity_id: sensor.dark_sky_daily_max_precip_intensity
       value_template: >
         {{(states.sensor.dark_sky_daily_max_precip_intensity.state | float * 10) | round(1)}}
       friendly_name: Precipitation

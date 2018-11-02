@@ -1,6 +1,7 @@
 - platform: template
   sensors:
     xiaomi_battery_level:
+      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.attributes.battery_level }}
       friendly_name: Battery Level
@@ -9,6 +10,7 @@
 
 
     xiaomi_cleaned_area:
+      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }}
       friendly_name: Cleaned Area
@@ -17,6 +19,7 @@
 
 
     xiaomi_status:
+      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.state }}
       friendly_name: Status
@@ -24,6 +27,7 @@
 
 
     xiaomi_cleaning_time:
+      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }}
       friendly_name: Cleaning Time
@@ -32,6 +36,7 @@
 
 
     xiaomi_main_brush_left:
+      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.attributes.main_brush_left }}
       friendly_name: Main Brush Left
@@ -40,6 +45,7 @@
 
 
     xiaomi_side_brush_left:
+      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.attributes.side_brush_left }}
       friendly_name: Side Brush Left
@@ -48,6 +54,7 @@
 
 
     xiaomi_filter_left:
+      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.attributes.filter_left }}
       friendly_name: Filter Left
@@ -56,6 +63,7 @@
 
 
     xiaomi_sensor_dirty_left:
+      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ states.vacuum.mi_robot_vacuum.attributes.sensor_dirty_left }}
       friendly_name: Filter Left

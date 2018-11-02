@@ -1,31 +1,37 @@
 - platform: template
   sensors:
     alert_aloe_vera_humidity_too_low:
+      entity_id: sensor.aloe_vera_moisture
       value_template: >-
         {% if (((states.sensor.aloe_vera_moisture.state )| default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)%}on{% else %}off{%endif%}
       friendly_name: Aloe Vera Humidity below 15%
 
     alert_aloe_vera_battery_too_low:
+      entity_id: sensor.aloe_vera_moisture
       value_template: >-
         {% if (((states.sensor.aloe_vera_battery.state) | default(100)) | int < 10) and (as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0)) | int > 900)%}on{% else %}off{%endif%}
       friendly_name: Aloe Vera Battery below 10%
 
-    # alert_outside_temp_sensor_lost:
-      # value_template: >-
-        # {% if (as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
-      # friendly_name: Outside Temp Sensor Lost
+    alert_outside_temp_sensor_lost:
+      entity_id: sensor.loft_temperature
+      value_template: >-
+        {% if (as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
+      friendly_name: Outside Temp Sensor Lost
 
-    # alert_upstairs_temp_sensor_lost:
-      # value_template: >-
-        # {% if (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
-      # friendly_name: Upstairs Temp Sensor Lost
+    alert_upstairs_temp_sensor_lost:
+      entity_id: sensor.upstairs_temperature
+      value_template: >-
+        {% if (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
+      friendly_name: Upstairs Temp Sensor Lost
 
-    # alert_currentcost_lost:
-      # value_template: >-
-        # {%- if (as_timestamp(now()) - (as_timestamp(states.sensor.currentcost_power.last_updated) | int)) < 300 -%}off{%- else -%}on{% endif %}
-      # friendly_name: CurrentCost Lost
+    alert_currentcost_lost:
+      entity_id: sensor.currentcost_power
+      value_template: >-
+        {%- if (as_timestamp(now()) - (as_timestamp(states.sensor.currentcost_power.last_updated) | int)) < 300 -%}off{%- else -%}on{% endif %}
+      friendly_name: CurrentCost Lost
 
     alert_ram_too_high:
+      entity_id: sensor.ram_usage
       value_template: >-
         {% if states.sensor.ram_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: RAM Too High
@@ -36,11 +42,13 @@
       # friendly_name: RAM Sensor Lost
 
     alert_home_disk_usage_too_high:
+      entity_id: sensor.home_disk_usage
       value_template: >-
         {% if states.sensor.home_disk_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: Home Disk Usage Too High
 
     alert_root_disk_usage_too_high:
+      entity_id: sensor.root_disk_usage
       value_template: >-
         {% if states.sensor.root_disk_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: Root Disk Usage Too High

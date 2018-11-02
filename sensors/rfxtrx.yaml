@@ -17,12 +17,6 @@
        - Sound
       fire_event: true
 
-
-# - platform: command_line
-  # name: Doorbell Last Rang
-  # command: "/home/cctv/.homeassistant/shell_scripts/doorbell_last_fired.py"
-
-
 - platform: mqtt
   state_topic: "Sensors/DoorBellLastFired"
   name: "Doorbell Last Rang"

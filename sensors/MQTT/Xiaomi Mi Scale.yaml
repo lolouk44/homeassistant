@@ -44,18 +44,21 @@
 - platform: template
   sensors:
     lolo_bmi:
+      entity_id: sensor.lolo_weight
       value_template: >
         {{(states.sensor.lolo_weight.state | float / (1.75*1.75)) | round(1)}}
       friendly_name: Lolo BMI
       icon_template: mdi:human-pregnant
       unit_of_measurement: "kg/m²"
     div_bmi:
+      entity_id: sensor.div_weight
       value_template: >
         {{(states.sensor.div_weight.state | float / (1.70*1.70)) | round(1)}}
       friendly_name: Div BMI
       icon_template: mdi:human-pregnant
       unit_of_measurement: "kg/m²"
     kiaan_bmi:
+      entity_id: sensor.kiaan_weight
       value_template: >
         {{(states.sensor.kiaan_weight.state | float / (0.97*0.97)) | round(1)}}
       friendly_name: Kiaan BMI

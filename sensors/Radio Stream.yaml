@@ -76,6 +76,10 @@
 - platform: template
   sensors:
     stream_artist:
+      entity_id:
+        - sensor.rtl2_artist
+        - sensor.absolute_radio_cr_artist
+        - sensor.absolute_radio_artist
       value_template: >
         {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states.sensor.rtl2_artist.state}}
         {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states.sensor.absolute_radio_artist.state}}
@@ -90,6 +94,12 @@
       friendly_name: Artist
       icon_template: 'mdi:account'
     stream_track:
+      entity_id:
+        - sensor.rtl2_track
+        - sensor.absolute_radio_track
+        - sensor.absolute_radio_cr_track
+        - sensor.ha_podcast_track
+        - sensor.internet_of_things_podcast_track
       value_template: >
         {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states.sensor.rtl2_track.state}}
         {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states.sensor.absolute_radio_track.state}}

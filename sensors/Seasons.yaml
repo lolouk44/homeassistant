@@ -1,9 +1,2 @@
 - platform: season
   type: astronomical
-# - platform: template
-  # sensors:
-    # rain_in_x_min:
-      # value_template: '{{states.sensor.dark_sky_minutely_summary.state.split("Rain starting in ")[1].split(" ")[0]}}'
-      # unit_of_measurement: 'min'
-      # friendly_name: Rain in X min
-  
