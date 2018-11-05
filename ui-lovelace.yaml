@@ -1101,6 +1101,48 @@ views:
           name: RAM Usage
           height: 75
           line_color: "#3498db"
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          entity: sensor.home_disk_usage
+          severity:
+            green: 0
+            yellow: 60
+            red: 85
+        - type: sensor
+          entity: sensor.home_disk_usage
+          name: Home Disk Usage
+          height: 75
+          line_color: "#3498db"
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          entity: sensor.root_disk_usage
+          severity:
+            green: 0
+            yellow: 60
+            red: 85
+        - type: sensor
+          entity: sensor.root_disk_usage
+          name: Root Disk Usage
+          height: 75
+          line_color: "#3498db"
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          entity: sensor.zfs_disk_usage
+          severity:
+            green: 0
+            yellow: 60
+            red: 85
+        - type: sensor
+          entity: sensor.zfs_disk_usage
+          name: ZFS Disk Usage
+          height: 75
+          line_color: "#3498db"
 
   - title: Alarm
     background: url("/local/verified.png") fixed
