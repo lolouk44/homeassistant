@@ -56,6 +56,8 @@
 
 
 - platform: version
+- platform: uptime
+  unit_of_measurement: hours
 
 - platform: random
   name: bauble_random_effect

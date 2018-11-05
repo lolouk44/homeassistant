@@ -6,7 +6,7 @@
     - condition: template
       value_template: '{{ states.sensor.edimax1_watts.state | float  <= 0.1 }}'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.hass_start_sound.attributes.last_triggered | default(0))) | int > 300}}'
+      value_template: '{{states.sensor.uptime.state | float > 0.03}}'
   action:
     - delay: '0:0:30'
     - condition: state

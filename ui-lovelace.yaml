@@ -966,6 +966,7 @@ views:
         title: Server Stats
         show_header_toggle: false
         entities:
+          - sensor.uptime
           - sensor.currentcost_power
           - sensor.cpu_usage
           - sensor.ram_usage
