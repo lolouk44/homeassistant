@@ -230,8 +230,6 @@
       brightness: 255
       effect: colorfade_slow
 
-
-
 - alias: House Number Off
   trigger:
     - platform: time
@@ -248,3 +246,34 @@
   - service: light.turn_off
     data:
       entity_id: light.House_Number_LED_Strip
+
+
+- alias: Om Xmas LED On
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.porch_om_xmas_led_strip
+      brightness: 255
+      effect: rainbow
+
+- alias: Om Xmas LED Off
+  trigger:
+    - platform: time
+      hours: 0
+      minutes: 0
+      seconds: 0
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.porch_om_xmas_led_strip
+      rgb_color: [0,0,0]
+      transition: 1
+  - delay: 00:00:01
+  - service: light.turn_off
+    data:
+      entity_id: light.porch_om_xmas_led_strip
