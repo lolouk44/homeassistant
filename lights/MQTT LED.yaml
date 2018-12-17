@@ -1,5 +1,6 @@
-- platform: mqtt_json
+- platform: mqtt
   name: House Number LED Strip
+  schema: json
   state_topic: "led_strip/housenumber"
   command_topic: "led_strip/housenumber/set"
   brightness: true
@@ -9,8 +10,9 @@
   optimistic: false
   qos: 0
 
-- platform: mqtt_json
+- platform: mqtt
   name: Staircase LED Strip
+  schema: json
   state_topic: "led_strip/staircase"
   command_topic: "led_strip/staircase/set"
   brightness: true
@@ -20,8 +22,9 @@
   optimistic: false
   qos: 0
 
-- platform: mqtt_json
+- platform: mqtt
   name: TV Cabinet LED Strip
+  schema: json
   state_topic: "led_strip/tvcabinet"
   command_topic: "led_strip/tvcabinet/set"
   brightness: true
@@ -34,8 +37,9 @@
 
 
 
-- platform: mqtt_json
+- platform: mqtt
   name: Bauble 1
+  schema: json
   state_topic: "WeMosBauble/Bauble1"
   command_topic: "WeMosBauble/Bauble1/set"
   brightness: false
@@ -45,8 +49,9 @@
   optimistic: false
   qos: 0
 
-- platform: mqtt_json
+- platform: mqtt
   name: Bauble 2
+  schema: json
   state_topic: "WeMosBauble/Bauble2"
   command_topic: "WeMosBauble/Bauble2/set"
   brightness: false
@@ -56,8 +61,9 @@
   optimistic: false
   qos: 0
 
-- platform: mqtt_json
+- platform: mqtt
   name: Bauble 3
+  schema: json
   state_topic: "WeMosBauble/Bauble3"
   command_topic: "WeMosBauble/Bauble3/set"
   brightness: false
@@ -70,8 +76,9 @@
 
 
 
-- platform: mqtt_json
+- platform: mqtt
   name: "Conservatory LED Strip"
+  schema: json
   state_topic: "Conservatory/LED_Strip"
   command_topic: "Conservatory/LED_Strip/set"
   effect: true
@@ -101,10 +108,11 @@
   qos: 0
 
 
-- platform: mqtt_json
+- platform: mqtt
   name: "Porch Om Xmas LED Strip"
-  state_topic: "Porch/Om_Sign"
-  command_topic: "Porch/Om_Sign/set"
+  schema: json
+  state_topic: "Porch/Snowman"
+  command_topic: "Porch/Snowman/set"
   effect: true
   effect_list:
     - bpm
@@ -132,8 +140,9 @@
   qos: 0
 
 
-- platform: mqtt_json
+- platform: mqtt
   name: "Kiaan Lamp"
+  schema: json
   state_topic: "Kiaan_Bedroom/Kiaan_Lamp"
   command_topic: "Kiaan_Bedroom/Kiaan_Lamp/set"
   effect: true
