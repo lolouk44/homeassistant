@@ -4,7 +4,7 @@ Interior_Lights:
     - light.living_room_main
     - light.living_room_wall
     - group.kitchen_lights
-    - light.Landing
+    - light.staircase
     - light.conservatory
     - light.conservatory_led_strip
     - light.red_light

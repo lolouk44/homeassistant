@@ -1,5 +1,5 @@
 - platform: rfxtrx
-#automatic_add: True
+  # automatic_add: True
   signal_repetitions: 2
   devices:
     0A14001E01010404000070:
@@ -9,7 +9,7 @@
     0A14002301010403000070:
       name: LWRF Socket 3
     0B1101020000000102000070:
-      name: Conservatory
+      name: LWRF Socket Xmas
     0a1400bef4ff6201010070:
       name: LWRF Remote 1
       fire_event: true
@@ -19,3 +19,15 @@
     0a1400c1f4ff6203010070:
       name: LWRF Remote 3
       fire_event: true
+    09130006131408015e70:
+      name: Alarm Siren 1
+      fire_event: true
+      # data_bits: 4
+      # command_on: 0x8
+      # command_off: 0x2
+    '09130008131402016070':
+      name: Alarm Siren 2
+      fire_event: true
+      # data_bits: 4
+      # command_on: 0x2
+      # command_off: 0x8
