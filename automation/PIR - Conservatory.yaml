@@ -1,4 +1,5 @@
 - alias: Conservatory Lights On PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_conservatory
@@ -18,7 +19,7 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states.sensor.aloe_vera_light_intensity.state != "unknown" and  states.sensor.aloe_vera_light_intensity.state | int < 250 }}'
+        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
@@ -37,6 +38,7 @@
 
 
 - alias: Conservatory Lights Dimmed Off PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_conservatory
@@ -53,6 +55,7 @@
 
 
 - alias: Conservatory Lights Off PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_conservatory
@@ -61,7 +64,7 @@
         minutes: 2
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.conservatory_lights_dimmed_off_pir.attributes.last_triggered | default(0)) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.conservatory_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
     - condition: state
       entity_id: binary_sensor.pir_conservatory
       state: 'off'
@@ -75,6 +78,7 @@
 
 
 - alias: Conservatory LED Lights On PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_conservatory
@@ -109,7 +113,7 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states.sensor.aloe_vera_light_intensity.state != "unknown" and  states.sensor.aloe_vera_light_intensity.state | int < 250 }}'
+        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'

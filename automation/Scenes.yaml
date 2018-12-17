@@ -1,4 +1,5 @@
 - alias: Holidays
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.holidays
@@ -24,6 +25,7 @@
         message: 'Scene, holidays, activated'
 
 - alias: Movies
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.movies
@@ -70,6 +72,7 @@
         message: 'Scene, movies, activated'
 
 - alias: Normal
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.normal
@@ -99,6 +102,7 @@
 
 
 - alias: Normal from Movies
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.normal
@@ -145,6 +149,7 @@
         rgb_color: [255,255,255]
 
 - alias: Xmas On
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.xmas
@@ -165,6 +170,7 @@
         message: 'Scene, christmas, activated'
 
 - alias: Xmas Off
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.xmas

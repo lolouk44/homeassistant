@@ -1,4 +1,5 @@
 - alias: Set Kello Volume
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_number.volume_kello
@@ -6,16 +7,17 @@
   - service: mqtt.publish
     data:
       topic: "Kello/Volume"
-      payload_template: '{{ states.input_number.volume_kello.state | int(value,16) }}'
+      payload_template: '{{ states("input_number.volume_kello") | int(value,16) }}'
       retain: false
 
 - alias: Mute Kello Alarms
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.kello_mute_alarms
       to: 'on'
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: group.lolo_location
       from: 'home'
     - platform: state
       entity_id: input_boolean.holidays
@@ -35,12 +37,13 @@
         entity_id: input_boolean.kello_mute_alarms
 
 - alias: Unmute Kello Alarms
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.kello_mute_alarms
       to: 'off'
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: group.lolo_location
       to: 'home'
     - platform: state
       entity_id: input_boolean.holidays
@@ -60,6 +63,7 @@
         entity_id: input_boolean.kello_mute_alarms
 
 - alias: Stop Radio on Kello
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.kello_play_stop
@@ -72,6 +76,7 @@
         retain: false
 
 - alias: Play Radio on Kello
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.kello_play_stop
@@ -93,16 +98,17 @@
   - service: mqtt.publish
     data:
       topic: "Kello/Volume"
-      payload_template: '{{ states.input_number.volume_kello.state | int(value,16) }}'
+      payload_template: '{{ states("input_number.volume_kello") | int(value,16) }}'
       retain: false
   - service: mqtt.publish
     data:
       topic: "Kello/Radio"
       payload_template: >
-        {{ states.input_select.kello_radio_station.state.replace(" ","") }}
+        {{ states("input_select.kello_radio_station").replace(" ","") }}
       retain: false
 
 - alias: Build Weather Greeting IFTTT
+  initial_state: true
   trigger:
     - platform: event
       event_type: ifttt_webhook_received
@@ -120,21 +126,20 @@
         {%- elif day == 2 or day == 22 -%}nd
         {%- elif day == 3 or day == 23 -%}rd
         {%- endif %} {{as_timestamp(now()) | timestamp_custom('%B')}}
-        It's currently {{states.sensor.dark_sky_summary.state}} and {{states.sensor.dark_sky_temperature.state|round}} degrees.
-        Today will be {{states.sensor.dark_sky_hourly_summary.state|replace(".", "")}},
-        highs: {{states.sensor.dark_sky_daytime_high_temperature.state|round}},
-        lows: {{states.sensor.dark_sky_overnight_low_temperature.state|round}}.
-        Winds {{states.sensor.pws_wind_dir.state
-        |replace("N","North ")
-        |replace("S","South ")
-        |replace("E","East ")
-        |replace("W","West ")
-        }} at {{states.sensor.pws_wind_1d_kph.state}} to {{states.sensor.pws_wind_gust_1d_kph.state}} km/h.
-        Chance of rain: {{states.sensor.pws_precip_1d.state | int(0)}}%.
-        {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states.sensor.home_to_work.state}} minutes.{% endif %}
-        {% if (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
-        {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day != True %} Your next appointment is: {{states.calendar.birthdays__events.attributes.message}} at {{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[0]}} {%if (states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1] != '00'%}{{(states.calendar.birthdays__events.attributes.start_time).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
-        {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (states.calendar.birthdays__events.attributes.start_time).split(" ")[0] and states.calendar.birthdays__events.attributes.all_day == True %} Today is : {{states.calendar.birthdays__events.attributes.message|replace("/","and")}}{%endif%}
+        It's currently {{states('sensor.dark_sky_summary')}} and {{state_attr('weather.dark_sky','temperature')|round}} degrees.
+        Today will be {{states('sensor.dark_sky_hourly_summary')|replace(".", "")}},
+        highs: {{state_attr('weather.dark_sky', 'forecast')[0].temperature|round}},
+        lows: {{state_attr('weather.dark_sky', 'forecast')[0].templow|round}}.
+        Winds:
+        {% set winbearing = (state_attr('weather.dark_sky','forecast')[0].wind_bearing/90)|round +1 %}
+        {% set winddir = ['North', 'North East','East','South East','South','South West','West','North West']%}
+        {{ winddir[winbearing]}}
+        at {{(states('sensor.dark_sky_wind_speed_0')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0')|int*3.6)|round}} km/h.
+        Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|round}} millimeters.
+        {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states('sensor.home_to_work')}} minutes.{% endif %}
+        {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.start_vacuuming", "last_triggered") | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
+        {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays__events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays__events", "all_day") != True %} Your next appointment is: {{state_attr("calendar.birthdays__events", "message")}} at {{(state_attr("calendar.birthdays__events", "start_time")).split(" ")[1].split(":")[0]}} {%if (state_attr("calendar.birthdays__events", "start_time")).split(" ")[1].split(":")[1] != '00'%}{{(state_attr("calendar.birthdays__events", "start_time")).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
+        {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays__events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays__events", "all_day") == True %} Today is : {{state_attr("calendar.birthdays__events", "message")|replace("/","and")}}{%endif%}
   - delay: 00:00:05
   - service: mqtt.publish
     data:
@@ -143,6 +148,7 @@
       retain: false
 
 - alias: Play Weather Greeting IFTTT
+  initial_state: true
   trigger:
     platform: event
     event_type: ifttt_webhook_received

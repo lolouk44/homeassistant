@@ -1,4 +1,5 @@
 - alias: Staircase Light On by PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_staircase
@@ -32,7 +33,7 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states.sensor.aloe_vera_light_intensity.state != "unknown" and  states.sensor.aloe_vera_light_intensity.state | int < 250 }}'
+        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
@@ -48,20 +49,21 @@
   action:
   - service: light.turn_on
     data:
-      entity_id: light.landing
+      entity_id: light.staircase
       brightness: 255
 
 
 - alias: Staircase Light Off by PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_staircase
       to: 'off'
   condition:
     - condition: state
-      entity_id: light.landing
+      entity_id: light.staircase
       state: 'on'
   action:
   - service: light.turn_off
     data:
-      entity_id: light.landing
+      entity_id: light.staircase

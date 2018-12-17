@@ -1,4 +1,5 @@
 - alias: Turn Onkyo Off When Stop Playing On ChromeCast
+  initial_state: true
   trigger:
   - platform: state
     entity_id: media_player.house
@@ -12,12 +13,13 @@
       minutes: 2
   condition:
     - condition: template
-      value_template: "{% if (states.media_player.house.state == 'off') and (states.media_player.panasonic_viera_tv.state == 'off') %} true {% else %} false {% endif %}"
+      value_template: '{% if (states("media_player.house") == "off") and (states("media_player.panasonic_viera_tv") == "off") %} true {% else %} false {% endif %}'
   action:
   - service: media_player.turn_off
     entity_id: media_player.onkyo_txnr656
 
 - alias: Turn Onkyo On When TV Goes On
+  initial_state: true
   trigger:
   - platform: state
     entity_id: media_player.panasonic_viera_tv
@@ -31,6 +33,7 @@
     entity_id: media_player.onkyo_txnr656
 
 - alias: Switch Onkyo Viera and Sky Off at 02:00
+  initial_state: true
   trigger:
     platform: time
     hours: 2

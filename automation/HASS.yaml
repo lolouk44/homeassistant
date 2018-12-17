@@ -1,16 +1,18 @@
 - alias: HASS Update Available Notification
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.ha_online_version
   condition:
     - condition: template
-      value_template: '{{states.sensor.ha_online_version.state != states.sensor.current_version.state }}'
+      value_template: '{{states("sensor.ha_online_version") != states("sensor.current_version") }}'
   action:
     - service: notify.gmaillolo
       data_template:
-        message: 'There is an update to Home-Assistant: {{states.sensor.ha_online_version.state}} (https://hub.docker.com/r/homeassistant/home-assistant/builds/)'
+        message: 'There is an update to Home-Assistant: {{states("sensor.ha_online_version")}} (https://hub.docker.com/r/homeassistant/home-assistant/builds/)'
 
 - alias: HASS Start Sound
+  initial_state: true
   trigger:
     - platform: homeassistant
       event: start
@@ -18,7 +20,7 @@
   - service: group.set_visibility
     entity_id: group.alerts
     data_template:
-      visible: '{{states.counter.iosbadgecount.state | int > 0}}'
+      visible: '{{states("counter.iosbadgecount") | int > 0}}'
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis
@@ -26,6 +28,7 @@
       media_content_type: 'audio/mp4'
 
 - alias: HASS Stop Motion Detection
+  initial_state: true
   trigger:
     - platform: homeassistant
       event: start
@@ -40,6 +43,7 @@
     # entity_id: switch.dafang_kitchen_yellow_led
 
 - alias: HASS Restart
+  initial_state: true
   trigger:
     platform: state
     entity_id: input_boolean.hass_restart
@@ -66,9 +70,10 @@
 #  - service: shell_command.harestart
 
 - alias: 'SSL expiry notification'
+  initial_state: true
   trigger:
     platform: template
-    value_template: '{{ states.sensor.ssl_cert_expiry.state | int < 21 }}'
+    value_template: '{{ states("sensor.ssl_cert_expiry") | int < 21 }}'
   action:
     service: notify.gmaillolo
     data:
@@ -77,6 +82,7 @@
 
 
 - alias: HASS Start Xmas Setup
+  initial_state: true
   trigger:
     - platform: homeassistant
       event: start
@@ -86,12 +92,9 @@
       data:
         visible: False
     - condition: template
-      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.xmas_start.attributes.timestamp | default(0)) | int > 0)}}'
+      value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.xmas_start", "timestamp") | default(0)) | int > 0)}}'
     - condition: template
-      value_template: '{{ ((states.input_datetime.xmas_end.attributes.timestamp | default(0)) | int ) - as_timestamp(now()) >0 }}'
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.xmas
+      value_template: '{{ ((state_attr("input_datetime.xmas_end", "timestamp") | default(0)) | int ) - as_timestamp(now()) >0 }}'
     - service: group.set_visibility
       entity_id: group.xmas
       data_template:
@@ -99,9 +102,16 @@
           {% if is_state("input_boolean.xmas", "on") %}True
           {% else %}False
           {% endif %}
+    - condition: state
+      entity_id: input_boolean.turn_on
+      state: 'off'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.xmas
 
 
 - alias: "Failed Login Attempt Notification"
+  initial_state: true
   trigger:
     - platform: state
       entity_id: persistent_notification.httplogin
@@ -113,4 +123,4 @@
       data_template:
         message: >
           Login Attempt Failed\n
-          http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ states.persistent_notification.httplogin.attributes.message.split ("from ") [1]}}
+          http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ state_attr("persistent_notification.httplogin", "message").split ("from ") [1]}}

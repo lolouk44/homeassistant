@@ -1,4 +1,5 @@
 - alias: Turn Movies on when Kodi is Playing
+  initial_state: true
   trigger:
     platform: state
     entity_id: media_player.kodi

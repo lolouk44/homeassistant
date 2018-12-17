@@ -1,4 +1,5 @@
 - alias: Doorbell Notification
+  initial_state: true
   trigger:
     - platform: event
       event_type: signal_received
@@ -6,7 +7,7 @@
         entity_id: sensor.doorbell_sound
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.doorbell_notification.attributes.last_triggered | default(0)) | int > 10 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.doorbell_notification", "last_triggered") | default(0)) | int > 10 )}}'
   action:
   - service: media_player.volume_set
     data_template:
@@ -30,6 +31,7 @@
 
 
 - alias: 'Hallway Light On When Opening Main Door'
+  initial_state: true
   trigger:
     - platform: state
       entity_id:
@@ -42,7 +44,7 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states.sensor.aloe_vera_light_intensity.state != "unknown" and  states.sensor.aloe_vera_light_intensity.state | int < 250 }}'
+        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'

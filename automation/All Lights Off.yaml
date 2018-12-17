@@ -1,4 +1,5 @@
 - alias: All Lights Off
+  initial_state: true
   trigger:
     - platform: state
       entity_id: group.pirs

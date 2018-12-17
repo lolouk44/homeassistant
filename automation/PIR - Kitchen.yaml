@@ -4,6 +4,7 @@
 
 
 - alias: Kitchen Lights On PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_kitchen
@@ -26,7 +27,7 @@
         entity_id: group.kitchen_lights
         state: 'off'
       - condition: template
-        value_template: '{{ states.light.kitchen_window.attributes.brightness | int < 250 }}'
+        value_template: '{{ state_attr("light.kitchen_window","brightness") | int < 250 }}'
     - condition: or
       conditions:
       - condition: state
@@ -38,7 +39,7 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states.sensor.aloe_vera_light_intensity.state != "unknown" and  states.sensor.aloe_vera_light_intensity.state | int < 250 }}'
+        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
@@ -62,6 +63,7 @@
 
 
 - alias: Kitchen Lights Dimmed Off PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_kitchen
@@ -83,6 +85,7 @@
 
 
 - alias: Kitchen Lights Off PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_kitchen
@@ -91,7 +94,7 @@
         minutes: 2
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.automation.kitchen_lights_dimmed_off_pir.attributes.last_triggered | default(0)) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.kitchen_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
     - condition: state
       entity_id: binary_sensor.pir_kitchen
       state: 'off'
@@ -123,6 +126,7 @@
 
 
 - alias: Kitchen TV On PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_kitchen

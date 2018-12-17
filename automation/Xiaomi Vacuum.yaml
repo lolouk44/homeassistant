@@ -12,17 +12,17 @@
         - thu
         - sun
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.start_vacuuming.attributes.last_triggered | default(0)) | int > 36000)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.start_vacuuming", "last_triggered") | default(0)) | int > 36000)}}'
     - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.media_player.panasonic_viera_tv.attributes.last_updated | default(0)) | int > 120)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("media_player.panasonic_viera_tv","last_updated") | default(0)) | int > 120)}}'
     - condition: state
       entity_id: group.pirs
       state: 'off'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.group.pirs.attributes.last_updated | default(0)) | int > 120)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("group.pirs","last_updated") | default(0)) | int > 120)}}'
     - condition: state
       entity_id: input_boolean.normal
       state: "on"
@@ -34,6 +34,7 @@
 
 
 - alias: Started Vacuuming
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
@@ -53,11 +54,31 @@
 
 
 
-- alias: Vacuuming Error
+- alias: Vacuuming Error - continue
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
       to: 'error'
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuuming_error_-_stop", "last_triggered") | default(0)) | int > 1800)}}'
+  action:
+    - service: vacuum.start
+      data:
+        entity_id: vacuum.mi_robot_vacuum
+
+
+
+- alias: Vacuuming Error - stop
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.xiaomi_status
+      to: 'error'
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuuming_error_-_continue", "last_triggered") | default(0)) | int < 1800)}}'
   action:
     - service: tts.google_say
       entity_id: media_player.google_home_minis
@@ -72,6 +93,7 @@
 
 
 - alias: Finished Vacuuming
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
@@ -84,7 +106,7 @@
       data_template:
         message: |
           Mi Robot finished Vacuuming...
-          Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
+          Cleaned {{ state_attr("vacuum.mi_robot_vacuum","cleaned_area") }} m² in {{ state_attr("vacuum.mi_robot_vacuum","cleaning_time") }} min.
         data:
           images:
             - /config/www/navmap.png
@@ -92,7 +114,7 @@
       data_template:
         message: |
           Mi Robot finished Vacuuming...
-          Cleaned {{ states.vacuum.mi_robot_vacuum.attributes.cleaned_area }} m² in {{ states.vacuum.mi_robot_vacuum.attributes.cleaning_time }} min.
+          Cleaned {{ state_attr("vacuum.mi_robot_vacuum","cleaned_area") }} m² in {{ state_attr("vacuum.mi_robot_vacuum","cleaning_time") }} min.
         data:
           images:
             - /config/www/navmap.png
@@ -100,6 +122,7 @@
       entity_id: input_boolean.vacuum
 
 - alias: Scheduled Vacuuming
+  initial_state: true
   trigger:
     - platform: state
       entity_id: device_tracker.div
@@ -112,9 +135,9 @@
       entity_id: input_boolean.normal
       state: "on"
     - condition: template
-      value_template: '{{ states.device_tracker.lolo.state != "home"}}'
+      value_template: '{{ states("device_tracker.lolo") != "home"}}'
     - condition: template
-      value_template: '{{ states.device_tracker.div.state != "home"}}'
+      value_template: '{{ states("device_tracker.div") != "home"}}'
     - condition: state
       entity_id: input_boolean.scheduled_vacuuming
       state: "on"

@@ -1,4 +1,5 @@
 - alias: TV Cabinet LED Strip On PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_living_room_front
@@ -30,6 +31,7 @@
 
 
 - alias: Flash Alert
+  initial_state: true
   trigger:
     - platform: state
       entity_id: alert.cctv_front_lost
@@ -101,6 +103,7 @@
 
 
 - alias: TV Cabinet LED Strip Off by PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_living_room_front
@@ -139,6 +142,7 @@
 
 
 - alias: Staircase LED Strip On by PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_staircase
@@ -167,7 +171,7 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states.sensor.aloe_vera_light_intensity.state != "unknown" and  states.sensor.aloe_vera_light_intensity.state | int < 300 }}'
+        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 300 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
@@ -187,6 +191,7 @@
 
 
 - alias: Staircase LED Strip Off by PIR
+  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_staircase
@@ -219,6 +224,7 @@
 
 
 - alias: House Number On
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sun.sun
@@ -231,38 +237,8 @@
       effect: colorfade_slow
 
 - alias: House Number Off
-  trigger:
-    - platform: time
-      hours: 0
-      minutes: 0
-      seconds: 0
-  action:
-  - service: light.turn_on
-    data:
-      entity_id: light.House_Number_LED_Strip
-      rgb_color: [0,0,0]
-      transition: 1
-  - delay: 00:00:01
-  - service: light.turn_off
-    data:
-      entity_id: light.House_Number_LED_Strip
-
-
-- alias: Om Xmas LED On
   initial_state: true
   trigger:
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-  action:
-  - service: light.turn_on
-    data:
-      entity_id: light.porch_om_xmas_led_strip
-      brightness: 255
-      effect: rainbow
-
-- alias: Om Xmas LED Off
-  trigger:
     - platform: time
       hours: 0
       minutes: 0
@@ -270,10 +246,12 @@
   action:
   - service: light.turn_on
     data:
-      entity_id: light.porch_om_xmas_led_strip
+      entity_id: light.House_Number_LED_Strip
       rgb_color: [0,0,0]
       transition: 1
   - delay: 00:00:01
   - service: light.turn_off
     data:
-      entity_id: light.porch_om_xmas_led_strip
+      entity_id: light.House_Number_LED_Strip
+
+

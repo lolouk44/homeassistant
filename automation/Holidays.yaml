@@ -1,4 +1,5 @@
 - alias: Holiday Start
+  initial_state: true
   trigger:
     - platform: state
       entity_id: device_tracker.div
@@ -8,19 +9,20 @@
       from: "home"
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_start.attributes.timestamp | default(0)) | int > 0)}}'
+      value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.holiday_start", "timestamp") | default(0)) | int > 0)}}'
     - condition: template
-      value_template: '{{ ((states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int) - as_timestamp(now()) > 0 }}'
+      value_template: '{{ ((state_attr("input_datetime.holiday_end", "timestamp") | default(0)) | int) - as_timestamp(now()) > 0 }}'
     - condition: template
-      value_template: '{{ states.device_tracker.lolo.state != "home"}}'
+      value_template: '{{ states("device_tracker.lolo") != "home"}}'
     - condition: template
-      value_template: '{{ states.device_tracker.div.state != "home"}}'
+      value_template: '{{ states("device_tracker.div") != "home"}}'
   action:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.holidays
 
 - alias: Holiday End
+  initial_state: true
   trigger:
     - platform: state
       entity_id: group.pirs
@@ -37,7 +39,7 @@
       entity_id: device_tracker.google_maps_113578038090869627198
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) -(states.input_datetime.holiday_end.attributes.timestamp | default(0)) | int > 0)}}'
+      value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.holiday_end", "timestamp") | default(0)) | int > 0)}}'
     - condition: state
       entity_id: 'input_boolean.holidays'
       state: "on"
@@ -64,6 +66,7 @@
 
 
 - alias: Holiday Living Room
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sun.sun
@@ -86,6 +89,7 @@
 
 
 - alias: Holiday Upstairs on
+  initial_state: true
   trigger:
     - platform: time
       hours: 22
@@ -117,6 +121,7 @@
 
 
 - alias: Holiday Upstairs off
+  initial_state: true
   trigger:
     - platform: time
       hours: 23

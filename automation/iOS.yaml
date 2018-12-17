@@ -1,4 +1,5 @@
 - alias: Notify iOS app
+  initial_state: true
   trigger:
     - platform: state
       entity_id: 
@@ -31,12 +32,13 @@
         message: '{{ trigger.entity_id | replace("alert.","") | replace("_"," ") |capitalize }}'
         data:
           push:
-            badge: '{{states.counter.iosbadgecount.state}}'
+            badge: '{{states("counter.iosbadgecount")}}'
             category: "alert"
           action_data:
             entity_id: '{{trigger.entity_id}}'
 
 - alias: Turn Alert Off
+  initial_state: true
   trigger:
     - platform: event
       event_type: ios.notification_action_fired
@@ -48,6 +50,7 @@
         entity_id: '{{ trigger.event.data["action_data"]["entity_id"] }}'
 
 - alias: Decrease Counter with Alert to Idle
+  initial_state: true
   trigger:
     - platform: state
       entity_id: alert.aloe_vera_battery_too_low

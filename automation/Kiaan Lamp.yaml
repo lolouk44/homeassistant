@@ -1,4 +1,5 @@
 - alias: Kiaan Night Light Sleep
+  initial_state: true
   trigger:
     - platform: time
       hours: 19
@@ -28,6 +29,7 @@
 
 
 - alias: Kiaan Night Light Wake Phase1 weekdays
+  initial_state: true
   trigger:
     - platform: time
       hours: 5
@@ -58,6 +60,7 @@
 
 
 - alias: Kiaan Night Light Wake Phase1 weekend
+  initial_state: true
   trigger:
     - platform: time
       hours: 6
@@ -85,6 +88,7 @@
 
 
 - alias: Kiaan Night Light Wake Phase2 
+  initial_state: true
   trigger:
     - platform: time
       hours: 7
@@ -108,6 +112,7 @@
 
 
 - alias: Kiaan Night Light Off weedays
+  initial_state: true
   trigger:
     - platform: time
       hours: 7
@@ -137,6 +142,7 @@
 
 
 - alias: Kiaan Night Light Off weekend
+  initial_state: true
   trigger:
     - platform: time
       hours: 8

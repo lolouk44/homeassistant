@@ -7,7 +7,7 @@
     - service: group.set_visibility
       entity_id: group.alerts
       data_template:
-        visible: '{{states.counter.iosbadgecount.state | int > 0}}'
+        visible: '{{states("counter.iosbadgecount") | int > 0}}'
 
 
 - alias: Alert Lost Temperature Upstairs On
@@ -37,7 +37,7 @@
       entity_id: sensor.upstairs_humidity
   condition:
     - condition: template
-      value_template: '{{states.alert.upstairs_temp_sensor_lost.state != "idle"}}'
+      value_template: '{{states("alert.upstairs_temp_sensor_lost") != "idle"}}'
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.upstairs_temp_sensor_lost
@@ -72,7 +72,7 @@
       entity_id: sensor.loft_humidity
   condition:
     - condition: template
-      value_template: '{{states.alert.outside_temp_sensor_lost.state != "idle"}}'
+      value_template: '{{states("alert.outside_temp_sensor_lost") != "idle"}}'
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.outside_temp_sensor_lost
@@ -103,7 +103,7 @@
       entity_id: sensor.CurrentCost_Power
   condition:
     - condition: template
-      value_template: '{{states.alert.currentcost_lost.state != "idle"}}'
+      value_template: '{{states("alert.currentcost_lost") != "idle"}}'
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_currentcost_power_at_300
@@ -119,7 +119,7 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{states.sensor.ram_usage.state | default(0) | int >= 90 }}'
+      value_template: '{{states("sensor.ram_usage") | default(0) | int >= 90 }}'
     - condition: state
       entity_id: alert.ram_usage_lost
       state: 'idle'
@@ -134,9 +134,9 @@
       entity_id: sensor.ram_usage_lost
   condition:
     - condition: template
-      value_template: '{{states.alert.ram_usage_lost.state != "idle"}}'
+      value_template: '{{states("alert.ram_usage_lost") != "idle"}}'
     - condition: template
-      value_template: '{{states.sensor.ram_usage.state | default(0) | int < 90 }}'
+      value_template: '{{states("sensor.ram_usage") | default(0) | int < 90 }}'
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_ram_usage_at_300

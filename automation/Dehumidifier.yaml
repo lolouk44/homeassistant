@@ -1,4 +1,5 @@
 - alias: Mark Dehumidifier Tank as not full
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.Dehumidifier_Power
@@ -14,6 +15,7 @@
 
 
 - alias: Mark LWRF Socket as On if CurrentCost On
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.Dehumidifier_Power
@@ -24,7 +26,7 @@
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.switch.Dehumidifier.last_updated | default(0)) | int > 60 )}}'
     - condition: template
-      value_template: '{{states.sensor.Dehumidifier_Power.state | int > 10 }}'
+      value_template: '{{states("sensor.Dehumidifier_Power") | int > 10 }}'
   action:
   - service: switch.turn_on
     data:
@@ -33,12 +35,13 @@
 
 
 - alias: Dehumidifier Tank is full
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.Dehumidifier_Power
   condition:
     - condition: template
-      value_template: '{{states.sensor.Dehumidifier_Power.state | default(0) | int <= 0 }}'
+      value_template: '{{states("sensor.Dehumidifier_Power") | default(0) | int <= 0 }}'
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.Dehumidifier_Power.last_updated | default(0)) | int > 60 )}}'
     - condition: state
@@ -65,15 +68,16 @@
 
 
 - alias: Start Dehumidifier
+  initial_state: true
   trigger:
     - platform: time
       hours: 8
       minutes: 0
       seconds: 0
     - platform: template
-      value_template: '{{ states.sensor.upstairs_humidity.state | int > 70}}'
+      value_template: '{{ states("sensor.upstairs_humidity") | int > 70}}'
     - platform: template
-      value_template: '{{ states.sensor.humidity_158d0001f5218a.state | int > 70}}'
+      value_template: '{{ states("sensor.humidity_158d0001f5218a") | int > 70}}'
   condition:
     - condition: time
       after: '08:00'
@@ -82,14 +86,14 @@
       entity_id: input_boolean.normal
       state: 'on'
     - condition: template
-      value_template: '{{ states.sensor.season.state != "Summer" }}'
+      value_template: '{{ states("sensor.season") != "Summer" }}'
     - condition: state
       entity_id: switch.dehumidifier
       state: 'off'
     - condition: template
-      value_template: '{{ states.sensor.upstairs_humidity.state | default(0) | int >= 70 }}'
+      value_template: '{{ states("sensor.upstairs_humidity") | default(0) | int >= 70 }}'
     - condition: template
-      value_template: '{{ states.sensor.sensor.humidity_158d0001f5218a.state | default(0) | int >= 70 }}'
+      value_template: '{{ states("sensor.sensor.humidity_158d0001f5218a") | default(0) | int >= 70 }}'
   action:
   - service: switch.turn_on
     data:
@@ -97,15 +101,16 @@
 
 
 - alias: Stop Dehumidifier
+  initial_state: true
   trigger:
     - platform: time
       hours: 16
       minutes: 0
       seconds: 0
     - platform: template
-      value_template: '{{ states.sensor.upstairs_humidity.state | int < 60}}'
+      value_template: '{{ states("sensor.upstairs_humidity") | int < 60}}'
     - platform: template
-      value_template: '{{ states.sensor.humidity_158d0001f5218a.state | int < 60}}'
+      value_template: '{{ states("sensor.humidity_158d0001f5218a") | int < 60}}'
   condition:
     - condition: state
       entity_id: switch.dehumidifier

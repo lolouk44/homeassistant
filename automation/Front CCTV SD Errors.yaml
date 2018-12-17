@@ -1,4 +1,5 @@
 - alias: Email when Front CCTV Disk Error
+  initial_state: true
   trigger:
   - platform: state
     entity_id: binary_sensor.front_cctv_disk_error
@@ -13,6 +14,7 @@
       message: Disk Error Detected on Front CCTV.
 
 - alias: Email when Front CCTV SD Card Full
+  initial_state: true
   trigger:
   - platform: state
     entity_id: binary_sensor.front_cctv_disk_full

@@ -1,0 +1,15 @@
+# {% for state in states.sensor -%}
+  # {%- if state.attributes.attribution =='Data provided by 17track.net' and state.state == 'In Transit'%}{{state_attr("sensor."+state.name|lower,"location")}}{% endif -%}
+# {%- endfor %}
+- alias: 17Track Updates
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.packages_delivered
+        - sensor.packages_in_transit
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: >
+          {{ trigger.from_state.state }}->{{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","17Track") | replace("_"," ") |capitalize }}

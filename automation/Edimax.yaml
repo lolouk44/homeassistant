@@ -1,30 +1,13 @@
-- alias: Edimax - Battery Is Charged
-  trigger:
-    - platform: state
-      entity_id: sensor.edimax1_watts
-  condition:
-    - condition: template
-      value_template: '{{ states.sensor.edimax1_watts.state | float  <= 0.1 }}'
-    - condition: template
-      value_template: '{{states.sensor.uptime.state | float > 0.03}}'
-  action:
-    - delay: '0:0:30'
-    - condition: state
-      entity_id: input_boolean.silent
-      state: "off"
-    - service: tts.google_say
-      entity_id: media_player.google_home_minis
-      data:
-        message: 'Please note: The battery is charged'
-
-
 - alias: Edimax - Battery Is Charged, Turning Edimax Off
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.edimax1_watts
   condition:
     - condition: template
-      value_template: '{{ states.sensor.edimax1_watts.state | float  <= 0.1 }}'
+      value_template: '{{ states("sensor.edimax1_watts") | float  <= 0.1 }}'
+    - condition: template
+      value_template: '{{states("sensor.uptime") | float > 0.03}}'
     - condition: state
       entity_id: input_boolean.edimax_charging
       state: 'on'
@@ -36,9 +19,17 @@
     - service: switch.turn_off
       data:
         entity_id: switch.edimax1
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data:
+        message: 'Please note: The battery is charged'
 
 
 - alias: Edimax - Battery Needs Charging
+  initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.edimax_charging

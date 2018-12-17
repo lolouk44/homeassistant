@@ -1,4 +1,5 @@
 - alias: 'Alarm - Trigger while armed away'
+  initial_state: true
   trigger:
     - platform: state
       entity_id:
@@ -6,18 +7,51 @@
         - binary_sensor.pir_kitchen
         - binary_sensor.pir_living_room_front
         - binary_sensor.pir_living_room_back
-        - group.door_and_window_sensors
+        - binary_sensor.door_window_sensor_158d00022d2c49
+        - binary_sensor.door_window_sensor_158d0002435612
+        - binary_sensor.conservatory_skylight_left
+        - binary_sensor.door_window_sensor_158d0002434385
+        - binary_sensor.door_window_sensor_158d00022d2d3d
+        - binary_sensor.door_window_sensor_158d000232dcd3
+        - binary_sensor.door_window_sensor_158d000232ddf8
       to: 'on'
   condition:
     - condition: state
       entity_id: alarm_control_panel.alarm
       state: armed_away
+    - condition: template
+      value_template: >
+        {% set pirs = [
+              states.binary_sensor.pir_conservatory,
+              states.binary_sensor.pir_kitchen,
+              states.binary_sensor.pir_living_room_front,
+              states.binary_sensor.pir_living_room_back,
+              states.binary_sensor.pir_staircase,
+              states.binary_sensor.door_window_sensor_158d00022d2c49,
+              states.binary_sensor.door_window_sensor_158d0002435612,
+              states.binary_sensor.conservatory_skylight_left,
+              states.binary_sensor.door_window_sensor_158d0002434385,
+              states.binary_sensor.door_window_sensor_158d00022d2d3d,
+              states.binary_sensor.door_window_sensor_158d000232dcd3,
+              states.binary_sensor.door_window_sensor_158d000232ddf8 ] %}
+        {% set pirs_on = pirs | selectattr('state','eq','on') | list %}
+        {{ ((pirs_on | length) | int ) > 1}}
   action:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.alarm
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.google_home_minis
+        volume_level: '1' 
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.0.24/audio/Alarm-CountDown.mp3'
+        media_content_type: 'audio/mp3'
 
 
 - alias: 'Alarm - notify when triggered'
+  initial_state: true
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm
@@ -28,35 +62,41 @@
         gw_mac: 7811dcdae94a
         ringtone_id: 2
         ringtone_vol: 100
+    - service: switch.turn_off
+      data:
+        entity_id: switch.alarm_siren_1
     - service: notify.gmaillolo
       data_template:
         message: >
           ALARM! The alarm has been triggered !(
-          ({% for windoor in states.group.door_and_window_sensors.attributes['entity_id']|list  -%}
+          ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
-          {% for mypirs in states.group.pirs.attributes['entity_id']|list  -%}
+          {% if is_state('binary_sensor.door_window_sensor_158d000232ddf8','on') %}Main Door,{% endif%}
+          {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
           {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
           {%- endfor %})
     - service: notify.ios_lolos_iphone
       data_template:
         message: >
-          ALARM triggered !(
-          ({% for windoor in states.group.door_and_window_sensors.attributes['entity_id']|list  -%}
+          ALARM! The alarm has been triggered !(
+          ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
-          {% for mypirs in states.group.pirs.attributes['entity_id']|list  -%}
+          {% if is_state('binary_sensor.door_window_sensor_158d000232ddf8','on') %}Main Door,{% endif%}
+          {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
           {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
           {%- endfor %})
         data:
           push:
-            badge: '{{states.counter.iosbadgecount.state}}'
+            badge: '{{states("counter.iosbadgecount")}}'
             category: "alarm"
           action_data:
             entity_id: '{{trigger.entity_id}}'
 
 
 - alias: 'Alarm - Stop arming when windows left open'
+  initial_state: true
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm
@@ -67,6 +107,9 @@
       entity_id: group.door_and_window_sensors
       state: 'on'
   action:
+    - service: light.turn_off
+      data:
+        entity_id: light.gateway_light_7811dcdae94a
     - service: tts.google_say
       data_template:
         entity_id: media_player.google_home_minis
@@ -76,41 +119,30 @@
       entity_id: alarm_control_panel.alarm
       data:
         code: !secret alarm_code
+    - delay:
+        seconds: 2
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.google_home_minis
+        volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}' 
 
 
-- alias: 'Alarm - Arming'
+- alias: 'Alarm - Pending Arming/Siren'
+  initial_state: true
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm
       to: 'pending'
-      from: 'disarmed'
   action:
-    - service: light.turn_on
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.google_home_minis
+        volume_level: '1' 
+    - service: media_player.play_media
       data:
-        entity_id: light.gateway_light_7811dcdae94a
-        brightness: 255
-        rgb_color: [255,0,0]
-
-
-- alias: 'Alarm - Disarming'
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.alarm
-      to: 'disarmed'
-  action:
-    - service: light.turn_off
-      data:
-        entity_id: light.gateway_light_7811dcdae94a]
-
-
-- alias: 'Alarm - Armed'
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.alarm
-  condition:
-    - condition: template
-      value_template: '{{ states.alarm_control_panel.alarm.state.split("_")[0] == "armed"}}'
-  action:
+        entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.0.24/audio/Alarm-CountDown.mp3'
+        media_content_type: 'audio/mp3'
     - service: script.turn_on
       data:
         entity_id: script.flash_aqara_light
@@ -118,8 +150,55 @@
 
 
 
+- alias: 'Alarm - Disarming'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'disarmed'
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.alarm_siren_2
+    - service: media_player.turn_off
+      data_template:
+        entity_id: media_player.google_home_minis
+    - service: light.turn_off
+      data:
+        entity_id: light.gateway_light_7811dcdae94a
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.google_home_minis
+        volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}' 
+
+
+- alias: 'Alarm - Armed'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'armed_away'
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'armed_home'
+  action:
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+        media_content_type: 'audio/mp3'
+    - service: light.turn_on
+      data:
+        entity_id: light.gateway_light_7811dcdae94a
+        brightness: 255
+        rgb_color: [255,0,0]
+
+
+
+
 
 - alias: 'Alarm - Fire Alarm'
+  initial_state: true
   trigger:
     - platform: state
       entity_id:
@@ -141,10 +220,46 @@
           FIRE ALARM!({% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d0001e642ae' %}Gnd Floor Smoke Detector{% else %}1st Floor Smoke Detector{% endif %})
         data:
           push:
-            badge: '{{states.counter.iosbadgecount.state}}'
+            badge: '{{states("counter.iosbadgecount")}}'
             category: "alarm"
           action_data:
             entity_id: '{{trigger.entity_id}}'
+
+
+
+
+- alias: 'Alarm - Start Charging Fire 7'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.fire7_battery
+  condition:
+    - condition: template
+      value_template: "{{ states('sensor.fire7_battery')|int < 65 }}"
+    - condition: state
+      entity_id: switch.0220016868c63aa168d9
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.0220016868c63aa168d9
+
+- alias: 'Alarm - Stop Charging Fire 7'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.fire7_battery
+  condition:
+    - condition: template
+      value_template: "{{ states('sensor.fire7_battery')|int > 75 }}"
+    - condition: state
+      entity_id: switch.0220016868c63aa168d9
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.0220016868c63aa168d9
+
 
 # {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}
   # {% if is_state(state,"on")%}{{state_attr(state,"friendly_name")}}, {%else%}{% endif %} 

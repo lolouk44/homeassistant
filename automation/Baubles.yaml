@@ -1,7 +1,8 @@
 - alias: Turn Baubles On 1
+  initial_state: true
   trigger:
     - platform: template
-      value_template: '{{states.sensor.bauble_random_effect.state | int == 1 }}'
+      value_template: '{{states("sensor.bauble_random_effect") | int == 1 }}'
   condition:
     - condition: or
       conditions:
@@ -43,9 +44,10 @@
       effect: "uniglow"
 
 - alias: Turn Baubles On 2
+  initial_state: true
   trigger:
     - platform: template
-      value_template: '{{states.sensor.bauble_random_effect.state | int == 2 }}'
+      value_template: '{{states("sensor.bauble_random_effect") | int == 2 }}'
   condition:
     - condition: or
       conditions:
@@ -87,9 +89,10 @@
       effect: "uniglow"
 
 - alias: Turn Baubles On 3
+  initial_state: true
   trigger:
     - platform: template
-      value_template: '{{states.sensor.bauble_random_effect.state | int == 3 }}'
+      value_template: '{{states("sensor.bauble_random_effect") | int == 3 }}'
   condition:
     - condition: or
       conditions:

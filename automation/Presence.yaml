@@ -1,4 +1,5 @@
 - alias: Tell Div Lolo left work
+  initial_state: true
   trigger:
     platform: state
     entity_id: device_tracker.lolo
@@ -9,11 +10,12 @@
   action:
     service: notify.gmaildiv
     data_template:
-      message: 'Lolo left work. Estimated arrival time: {{(as_timestamp(now()) + (states.sensor.lolo_to_home.state | default(0) | int)*60) | timestamp_custom("%H:%M")}}'
+      message: 'Lolo left work. Estimated arrival time: {{(as_timestamp(now()) + (states("sensor.lolo_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}}'
 
 
 
 - alias: Tell Div Lolo reached work
+  initial_state: true
   trigger:
     platform: state
     entity_id: device_tracker.lolo
@@ -28,6 +30,7 @@
 
 
 - alias: Tell Lolo Div left work
+  initial_state: true
   trigger:
     platform: state
     entity_id: device_tracker.div
@@ -48,6 +51,7 @@
         message: 'Please note: Div left work'
 
 - alias: Switch everything off when we leave home
+  initial_state: false
   trigger:
     - platform: state
       entity_id: device_tracker.div
@@ -57,9 +61,9 @@
       from: "home"
   condition:
     - condition: template
-      value_template: '{{ states.device_tracker.lolo.state != "home"}}'
+      value_template: '{{ states("group.lolo_location") != "home"}}'
     - condition: template
-      value_template: '{{ states.device_tracker.div.state != "home"}}'
+      value_template: '{{ states("group.div_location") != "home"}}'
   action:
   - service: media_player.turn_off
     entity_id: media_player.kitchen
@@ -88,33 +92,8 @@
 
 
 
-# - alias: Tell Lolo to leave for work
-  # trigger:
-    # - platform: time
-      # minutes: '/1'
-      # seconds: 0
-  # condition:
-    # - condition: time
-      # before: '08:00:00'
-      # weekday:
-        # - tue
-        # - wed
-        # - thu
-    # - condition: template
-      # value_template: '{{ (as_timestamp(now().strftime("%Y-%m-%d") + " 08:30")  - states.sensor.home_to_work.attributes.duration.split(" ")[0] | int *60 )  <=  (as_timestamp(now())) }}'
-    # - condition: template
-      # value_template: '{{ states.device_tracker.lolo.state == "home"}}'
-    # - condition: template
-      # value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.tell_lolo_to_leave_for_work.attributes.last_triggered | default(0)) | int > 3600)}}'
-  # action:
-    # - service: tts.google_say
-      # entity_id: media_player.google_home_minis
-      # data:
-        # message: "Hey lo lo, it's time to leave for work..."
-
-
-
 - alias: Tell Lolo of a long drive home
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.lolo_to_home
@@ -127,23 +106,24 @@
         - wed
         - thu
     - condition: template
-      value_template: '{{ states.sensor.lolo_to_home.state |int(0) >= 65 }}'
+      value_template: '{{ states("sensor.lolo_to_home") |int(0) >= 65 }}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.tell_lolo_of_a_long_drive_home.attributes.last_triggered | default(0)) | int > 3600)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.tell_lolo_of_a_long_drive_home", "last_triggered") | default(0)) | int > 3600)}}'
     - condition: template
-      value_template: '{{ states.device_tracker.lolo.state == "Verint"}}'
+      value_template: '{{ states("device_tracker.lolo") == "Verint"}}'
   action:
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
     - service: notify.gmaillolo
       data_template:
-        message: 'There is a long drive home ({{states.sensor.lolo_to_home.state |int(0)}} min)...'
+        message: 'There is a long drive home ({{states("sensor.lolo_to_home") |int(0)}} min)...'
 
 
 
 
 - alias: location_lolo
+  initial_state: true
   trigger:
       - platform: state
         entity_id: 'device_tracker.lolos_iphone'
@@ -162,6 +142,7 @@
       retain: true
 
 - alias: location_div
+  initial_state: true
   trigger:
       - platform: state
         entity_id: device_tracker.div_iphone
