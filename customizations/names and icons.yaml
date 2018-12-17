@@ -1,4 +1,6 @@
 #Binary Sensors:
+binary_sensor.220d_lights_parking:
+  icon: mdi:car-light-dimmed
 binary_sensor.door_window_sensor_158d00022d2c49:
   friendly_name: Conservatory Single Door
   device_class: door
@@ -64,7 +66,10 @@ device_tracker.lolo:
 device_tracker.div:
   friendly_name: 'Div'
   entity_picture: /local/Div_Avatar.jpg
-
+device_tracker.tile_50596aa49d611bee:
+  friendly_name: 'Tile Wallet'
+device_tracker.tile_1dd2bf719e0233c1:
+  friendly_name: 'Tile Keys'
 
 #Date Time
 input_datetime.holiday_start:
@@ -77,6 +82,12 @@ input_datetime.xmas_end:
   icon: mdi:calendar
 
 #Lights
+light.bauble_1:
+  icon: mdi:google-circles-communities
+light.bauble_2:
+  icon: mdi:google-circles-communities
+light.bauble_3:
+  icon: mdi:google-circles-communities
 light.conservatory_led_strip:
   icon: mdi:vector-polyline
 light.garage_led_strip:
@@ -168,8 +179,8 @@ sensor.temperature_158d0001f5218a:
 #Switches
 switch.cctv_garage_status:
   icon: mdi:run-fast
-switch.conservatory:
-  icon: mdi:power-socket-uk
+switch.lwrf_socket_xmas:
+  icon: mdi:pine-tree
 switch.dafang_living_room_status:
   icon: mdi:run-fast
 switch.dafang_living_room_rtsp:

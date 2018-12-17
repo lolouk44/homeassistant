@@ -1,0 +1,52 @@
+- platform: template
+  sensors:
+    bmw_220d_doordriverdront:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","doorDriverFront") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Door Driver Front
+      device_class: door
+    bmw_220d_doordriverrear:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","doorDriverRear") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Door Driver Rear
+      device_class: door
+    bmw_220d_doorpassengerfront:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","doorPassengerFront") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Door Passenger Front
+      device_class: door
+    bmw_220d_doorpassengerrear:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","doorPassengerRear") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Door Passenger Rear
+      device_class: door
+    bmw_220d_hood:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","hood") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Bonnet
+      device_class: opening
+    bmw_220d_trunk:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","trunk") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Trunk
+      device_class: opening
+    bmw_220d_windowdriverdront:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","windowDriverFront") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Window Driver Front
+      device_class: window
+    bmw_220d_windowdriverrear:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","windowDriverRear") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Window Driver Rear
+      device_class: window
+    bmw_220d_windowpassengerfront:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","windowPassengerFront") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Window Passenger Front
+      device_class: window
+    bmw_220d_windowpassengerrear:
+      entity_id: binary_sensor.220d_lids
+      value_template: '{% if state_attr("binary_sensor.220d_lids","windowPassengerRear") == "CLOSED"%}off{% else %}on{% endif %}'
+      friendly_name: Window Passenger Rear
+      device_class: window

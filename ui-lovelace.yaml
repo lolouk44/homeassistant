@@ -1,15 +1,21 @@
 title: Home
 resources:
-  # - url: /local/alarm_control_panel-card.js?v=1
-    # type: js
+    #Kiosk mode for Alarm panel https://gist.github.com/ciotlosm/1f09b330aa5bd5ea87b59f33609cc931
   - url: /local/kiosk.js
     type: js
+    #List entities in a group https://github.com/ciotlosm/custom-lovelace/tree/master/group-card
   - url: /local/group-card.js
     type: js
-  - url: /local/mini-media-player.js?ver=0.8.8
+    #Mini media player https://github.com/kalkih/mini-media-player
+  - url: /local/mini-media-player-bundle.js?ver=0.9.1
     type: module
+    #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
   - url: /local/vertical-stack-in-card.js?v=0.0.8
     type: js
+    #Swiper Card https://community.home-assistant.io/t/lovelace-swiper-card/72447
+    # https://github.com/bramkragten/custom-ui/tree/master/swipe-card
+  # - url: /local/custom-lovelace/swipe-card/swipe-card.js?v=1.1.0
+    # type: module
 views:
   - title: default_view
     background: url("/local/home.png") fixed
@@ -114,6 +120,14 @@ views:
           camera_image: camera.yrforecastweybridge
           show_name: false
           show_state: false
+      - type: entities
+        title: 17Track
+        show_header_toggle: false
+        entities:
+          - entity: sensor.packages_in_transit
+            icon: mdi:truck-fast
+          - entity: sensor.packages_delivered
+            icon: mdi:package-variant
   - title: Media
     background: url("/local/library-music.png") fixed
     icon: mdi:library-music
@@ -249,6 +263,7 @@ views:
         - entity: media_player.onkyo_txnr656_zone_2
           type: "custom:mini-media-player"
           power_color: true
+          show_source: true
           group: true
       - type: entities
         title: Google Home Minis
@@ -364,14 +379,6 @@ views:
             - sensor.xiaomi_side_brush_left
             - sensor.xiaomi_filter_left
             - sensor.xiaomi_sensor_dirty_left
-        - type: picture-glance
-          # Title of the entities card
-          title: Xiaomi Vacuum Map
-          # The entities here will be shown in the same order as specified.
-          # Each entry is an entity ID or a map with extra options.
-          entities:
-            - vacuum.mi_robot_vacuum
-          camera_image: camera.vacuum_map
       - type: custom:vertical-stack-in-card
         cards:
         - type: entities
@@ -393,6 +400,7 @@ views:
           - entity: media_player.onkyo_txnr656_zone_2
             type: "custom:mini-media-player"
             power_color: true
+            show_source: true
             group: true
         - type: entities
           show_header_toggle: false
@@ -419,12 +427,20 @@ views:
               top: 95%
               left: 20%
               "--paper-item-icon-color": rgb(115, 122, 130)
+          - type: icon
+            icon: mdi:robot-vacuum
+            tap_action: more-info
+            entity: vacuum.mi_robot_vacuum
+            style:
+              top: 95%
+              left: 10%
+              "--paper-item-icon-color": rgb(115, 122, 130)
           - type: state-icon
             entity: sensor.xiaomi_battery_level
             service: vacuum.start_pause
             style:
               top: 95%
-              left: 10%
+              left: 30%
               "--paper-item-icon-color": rgb(50, 50, 50)
           - type: state-label
             entity: sensor.xiaomi_cleaned_area
@@ -476,10 +492,7 @@ views:
       - type: custom:vertical-stack-in-card
         cards:
         - type: picture-glance
-          # Title of the entities card
           title: Kitchen
-          # The entities here will be shown in the same order as specified.
-          # Each entry is an entity ID or a map with extra options.
           entities:
             - binary_sensor.pir_kitchen
             - light.kitchen_lights
@@ -538,18 +551,24 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.smoke_sensor_158d0001e642ae
             secondary_info: last-changed
-      - type: entities
-        title: Entrance Lights
-        show_header_toggle: false
-        entities:
-          - entity: light.hallway
-            secondary_info: last-changed
-          - entity: light.house_number_led_strip
-            secondary_info: last-changed
-          - entity: light.gateway_light_7811dcdae94a
-            secondary_info: last-changed
-          - entity: light.porch_om_xmas_led_strip
-            secondary_info: last-changed
+      - type: conditional
+        conditions:
+          - entity: input_boolean.xmas
+            state: "off"
+            show_empty: false
+        card:
+          type: entities
+          title: Entrance Lights
+          entities:
+            - entity: light.hallway
+              secondary_info: last-changed
+            - entity: light.house_number_led_strip
+              secondary_info: last-changed
+            - entity: light.gateway_light_7811dcdae94a
+              secondary_info: last-changed
+            - entity: light.porch_om_xmas_led_strip
+              secondary_info: last-changed
+              name: Om LED Strip
       - type: entities
         title: Nest Thermostat
         show_header_toggle: true
@@ -562,6 +581,25 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.hallway_thermostat_has_leaf
             secondary_info: last-changed
+      - type: conditional
+        conditions:
+          - entity: input_boolean.xmas
+            state: "on"
+            show_empty: false
+        card:
+          type: entities
+          title: Entrance Lights
+          entities:
+            - entity: light.hallway
+              secondary_info: last-changed
+            - entity: light.house_number_led_strip
+              secondary_info: last-changed
+            - entity: light.gateway_light_7811dcdae94a
+              secondary_info: last-changed
+            - entity: light.porch_om_xmas_led_strip
+              secondary_info: last-changed
+              icon: mdi:snowman
+              name: Snowman LED Strip
   - title: Conservatory
     background: url("/local/home-outline.png") fixed
     icon: mdi:home-outline
@@ -621,7 +659,7 @@ views:
           type: entities
           title: Xmas Lights
           entities:
-            - entity: light.garage_led_strip
+            - entity: switch.lwrf_socket_xmas
               secondary_info: last-changed
             - entity: light.bauble_1
               secondary_info: last-changed
@@ -648,7 +686,7 @@ views:
         title: Staircase Lights
         show_header_toggle: true
         entities:
-          - entity: light.landing
+          - entity: light.staircase
             secondary_info: last-changed
           - entity: light.staircase_led_strip
             secondary_info: last-changed
@@ -878,16 +916,24 @@ views:
           show_header_toggle: false
           entities:
             - switch.cctv_garage_status
-      - type: picture-entity
-        title: Lolo
-        entity: camera.lolo
-        camera_image: camera.lolo
-        show_state: false
-      - type: picture-entity
-        title: Div
-        entity: camera.div
-        camera_image: camera.div
-        show_state: false
+      - type: map
+        entities:
+          - device_tracker.div_iphone
+          - device_tracker.diviphone
+          - device_tracker.google_maps_113578038090869627198
+          - device_tracker.lolos_iphone
+          - device_tracker.lolosiphone
+          - device_tracker.laurent_mah_iphone_5s
+          - device_tracker.google_maps_110345542315981072615
+          - device_tracker.tile_1dd2bf719e0233c1
+          - device_tracker.tile_50596aa49d611bee
+          - entity: device_tracker.220d
+          - zone.home
+          - zone.cbc
+          - zone.vikki
+          - zone.asda
+          - zone.tesco
+          - zone.busy_bees
   - title: Automation
     background: url("/local/calendar-check.png") fixed
     icon: mdi:calendar-check
@@ -895,7 +941,8 @@ views:
       - type: custom:group-card
         card:
           type: entities
-          title: All Switches
+          title: All Automations
+        show_header_toggle: true
         group: group.all_automations
 
 
@@ -1074,76 +1121,79 @@ views:
         state_filter:
           - "on"
         show_empty: false
-      - type: custom:vertical-stack-in-card
-        cards:
-        - type: gauge
-          unit_of_measurement: '%'
-          entity: sensor.cpu_usage
-          severity:
-            green: 0
-            yellow: 50
-            red: 85
-        - type: sensor
-          entity: sensor.cpu_usage
-          name: CPU Usage
-          height: 75
+#      - type: custom:vertical-stack-in-card
+#        cards:
+      - type: gauge
+        unit_of_measurement: '%'
+        entity: sensor.cpu_usage
+        severity:
+          green: 0
+          yellow: 50
+          red: 85
+      - type: sensor
+        entity: sensor.cpu_usage
+        name: CPU Usage
+        height: 75
 #          line_color: "#3498db"
-      - type: custom:vertical-stack-in-card
-        cards:
-        - type: gauge
-          unit_of_measurement: '%'
-          entity: sensor.ram_usage
-          severity:
-            green: 0
-            yellow: 60
-            red: 85
-        - type: sensor
-          entity: sensor.ram_usage
-          name: RAM Usage
-          height: 75
-          line_color: "#3498db"
-      - type: custom:vertical-stack-in-card
-        cards:
-        - type: gauge
-          unit_of_measurement: '%'
-          entity: sensor.home_disk_usage
-          severity:
-            green: 0
-            yellow: 60
-            red: 85
-        - type: sensor
-          entity: sensor.home_disk_usage
-          name: Home Disk Usage
-          height: 75
-          line_color: "#3498db"
-      - type: custom:vertical-stack-in-card
-        cards:
-        - type: gauge
-          unit_of_measurement: '%'
-          entity: sensor.root_disk_usage
-          severity:
-            green: 0
-            yellow: 60
-            red: 85
-        - type: sensor
-          entity: sensor.root_disk_usage
-          name: Root Disk Usage
-          height: 75
-          line_color: "#3498db"
-      - type: custom:vertical-stack-in-card
-        cards:
-        - type: gauge
-          unit_of_measurement: '%'
-          entity: sensor.zfs_disk_usage
-          severity:
-            green: 0
-            yellow: 60
-            red: 85
-        - type: sensor
-          entity: sensor.zfs_disk_usage
-          name: ZFS Disk Usage
-          height: 75
-          line_color: "#3498db"
+#    - type: custom:vertical-stack-in-card
+#        cards:
+      - type: gauge
+        unit_of_measurement: '%'
+        entity: sensor.ram_usage
+        severity:
+          green: 0
+          yellow: 60
+          red: 85
+      - type: sensor
+        entity: sensor.ram_usage
+        name: RAM Usage
+        height: 75
+        line_color: "#3498db"
+      # - type: custom:vertical-stack-in-card
+        # cards:
+      - type: gauge
+        unit_of_measurement: '%'
+        title: Home Disk Usage
+        entity: sensor.home_disk_usage
+        severity:
+          green: 0
+          yellow: 60
+          red: 85
+      # - type: sensor
+        # entity: sensor.home_disk_usage
+        # name: Home Disk Usage
+        # height: 75
+        # line_color: "#3498db"
+      # - type: custom:vertical-stack-in-card
+        # cards:
+      - type: gauge
+        unit_of_measurement: '%'
+        entity: sensor.root_disk_usage
+        title: Root Disk Usage
+        severity:
+          green: 0
+          yellow: 60
+          red: 85
+      # - type: sensor
+        # entity: sensor.root_disk_usage
+        # name: Root Disk Usage
+        # height: 75
+        # line_color: "#3498db"
+      # - type: custom:vertical-stack-in-card
+        # cards:
+      - type: gauge
+        title: ZFS Disk Usage
+        unit_of_measurement: '%'
+        entity: sensor.zfs_disk_usage
+        severity:
+          green: 0
+          yellow: 60
+          red: 85
+      # - type: sensor
+        # entity: sensor.zfs_disk_usage
+        # name: ZFS Disk Usage
+        # height: 75
+        # line_color: "#3498db"
 
   - title: Alarm
     background: url("/local/verified.png") fixed
@@ -1151,22 +1201,12 @@ views:
     cards:
       - type: entity-filter
         entities:
-          - entity: binary_sensor.garage_back_door
-            secondary_info: last-changed
-          - entity: binary_sensor.door_window_sensor_158d000232ddf8
-            secondary_info: last-changed
           - entity: binary_sensor.door_window_sensor_158d000232dcd3
-            secondary_info: last-changed
           - entity: binary_sensor.door_window_sensor_158d00022d2d3d
-            secondary_info: last-changed
           - entity: binary_sensor.door_window_sensor_158d0002434385
-            secondary_info: last-changed
           - entity: binary_sensor.conservatory_skylight_left
-            secondary_info: last-changed
           - entity: binary_sensor.door_window_sensor_158d00022d2c49
-            secondary_info: last-changed
           - entity: binary_sensor.door_window_sensor_158d0002435612
-            secondary_info: last-changed
         state_filter:
           - "on"
         show_empty: false
@@ -1174,9 +1214,122 @@ views:
         entity: alarm_control_panel.alarm
         show_keypad: true
         title: Alarm
-        style: '--alarm-color-disarmed: var(--label-badge-blue);'
         states:
           - arm_home
           - arm_away
-
-
+  - title: Car
+    background: url("/local/BMW_220d_GT.png") center / contain no-repeat
+    icon: mdi:car-connected
+    badges:
+        - device_tracker.lolo
+        - device_tracker.div
+        - sensor.dark_sky_temperature
+        - sensor.dark_sky_humidity
+        - sensor.pws_precip_1d
+        - sensor.dark_sky_overnight_low_temperature
+        - sensor.dark_sky_daytime_high_temperature
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
+      - type: entity-filter
+        title: Persistent Notifications
+        show_header_toggle: false
+        entities:
+          - persistent_notification.httplogin
+          - persistent_notification.ipban
+        state_filter:
+          - "notifying"
+        show_empty: false
+      - type: entity-filter
+        title: Alerts
+        show_header_toggle: false
+        entities:
+          - alert.outside_temp_sensor_lost
+          - alert.upstairs_temp_sensor_lost
+          - alert.cctv_front_lost
+          - alert.cctv_garage_lost
+          - alert.cctv_dafang_living_room_lost
+          - alert.currentcost_lost
+          - alert.dehumidifier_full
+          - alert.rpi_lost
+          - alert.rpi_zero_w_lost
+          - alert.kello_lost
+          - alert.house_number_led_strip_lost
+          - alert.staircase_led_strip_lost
+          - alert.tv_cabinet_led_strip_lost
+          - alert.ram_too_high
+          - alert.ram_usage_lost
+          - alert.home_disk_usage_too_high
+          - alert.root_disk_usage_too_high
+          - alert.cctv_dafang_kitchen_lost
+          - alert.aloe_vera_humidity_too_low
+          - alert.aloe_vera_battery_too_low
+          - counter.iosbadgecount
+        state_filter:
+          - "on"
+        show_empty: false
+      - type: entities
+        title: BMW 220d Gran Tourer
+        show_header_toggle: false
+        entities:
+          - entity: device_tracker.220d
+            secondary_info: last-changed
+          - entity: binary_sensor.220d_check_control_messages
+            secondary_info: last-changed
+          - entity: binary_sensor.220d_condition_based_services
+            secondary_info: last-changed
+          - entity: binary_sensor.220d_door_lock_state
+            secondary_info: last-changed
+          - entity: binary_sensor.220d_lights_parking
+            secondary_info: last-changed
+            icon: mdi:brightness-6
+          - entity: sensor.bmw_220d_mileage
+            secondary_info: last-changed
+          - entity: sensor.220d_remaining_fuel
+            secondary_info: last-changed
+          - entity: sensor.bmw_220d_remaining_fuel
+            secondary_info: last-changed
+      - type: entities
+        title: Actions
+        show_header_toggle: false
+        entities:
+          - entity:  lock.220d_lock
+            secondary_info: last-changed
+          - entity: script.bmw_flash_lights
+            icon: mdi:brightness-6
+            secondary_info: last-changed
+          - entity: script.bmw_sound_horn
+            icon: mdi:bullhorn
+            secondary_info: last-changed
+          - entity: script.bmw_ventilate
+            icon: mdi:fan
+            secondary_info: last-changed
+      - type: entities
+        title: Doors
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.bmw_220d_doordriverdront
+            secondary_info: last-changed
+          - entity: binary_sensor.bmw_220d_doorpassengerfront
+            secondary_info: last-changed
+          - entity: binary_sensor.bmw_220d_doordriverrear
+            secondary_info: last-changed
+          - entity: binary_sensor.bmw_220d_doorpassengerrear
+            secondary_info: last-changed
+          - entity: binary_sensor.bmw_220d_hood
+            secondary_info: last-changed
+          - entity:  binary_sensor.bmw_220d_trunk
+            secondary_info: last-changed
+      - type: entities
+        title: Windows
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.bmw_220d_windowdriverdront
+            secondary_info: last-changed
+          - entity: binary_sensor.bmw_220d_windowpassengerfront
+            secondary_info: last-changed
+          - entity: binary_sensor.bmw_220d_windowdriverrear
+            secondary_info: last-changed
+          - entity: binary_sensor.bmw_220d_windowpassengerrear
+            secondary_info: last-changed

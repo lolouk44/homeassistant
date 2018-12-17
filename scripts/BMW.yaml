@@ -1,0 +1,22 @@
+bmw_flash_lights:
+  alias: BMW - Flash Lights
+  sequence:
+  - service: bmw_connected_drive.light_flash
+    data:
+        vin: !secret bmw_connected_drive_vin
+
+bmw_sound_horn:
+  alias: BMW - Sound The Horn
+  sequence:
+  - service: bmw_connected_drive.sound_horn
+    data:
+        vin: !secret bmw_connected_drive_vin
+
+bmw_ventilate:
+  alias: BMW - Ventilate
+  sequence:
+  - service: bmw_connected_drive.activate_air_conditioning
+    data:
+        vin: !secret bmw_connected_drive_vin
+
+

@@ -13,37 +13,20 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
   customize: !include_dir_merge_named customizations
-  # customize_glob:
-    # "sensor.*":
-      # show_last_changed: true
-      # custom_ui_state_card: state-card-custom-ui
-    # "binary_sensor.*":
-      # show_last_changed: true
-      # custom_ui_state_card: state-card-custom-ui
 
 
-# Show links to resources in log and front end
-#introduction:
+
 recorder:
   db_url: !secret db_url
   # purge_interval: 0
 
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    mode: daily
 
-
-customizer:
-  custom_ui: local
+# customizer:
+  # custom_ui: local
 
 # Enables the front end
 frontend: 
   javascript_version: latest
-  # extra_html_url:
-    # - /local/custom_ui/state-card-custom-ui.html
-  # extra_html_url_es5:
-    # - /local/custom_ui/state-card-custom-ui-es5.html
 
 enable_debug:
 
@@ -53,7 +36,6 @@ http:
   api_password: !secret http_password
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
-  # ssl_profile: intermediate
   base_url: !secret base_url
   trusted_networks:
     - 127.0.0.1
@@ -62,7 +44,8 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
-
+lovelace:
+  mode: yaml
 
 # Checks for available dates
 updater:
@@ -73,9 +56,6 @@ map:
 
 # Discover some devices automatically
 #discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
 
 # Enables support for tracking state changes over time.
 history:
@@ -91,12 +71,15 @@ logger:
   default: error
   logs:
     homeassistant.components.http: warning
-    homeassistant.components.camera: error
-    requests.packages.urllib3: critical
-    requests.packages.urllib3.connectionpool: critical
-    miio.device: critical
-    homeassistant.components.sensor.sky_hd_status: critical
-
+    homeassistant.components.bmw_connected_drive: debug
+    # homeassistant.components.camera: error
+    # requests.packages.urllib3: critical
+    # requests.packages.urllib3.connectionpool: critical
+    # miio.device: critical
+    # homeassistant.components.sensor.sky_hd_status: critical
+    # homeassistant.components.switch.rest: critical
+    # homeassistant.components.sensor.rest: critical
+    # aiohttp.server: critical
     # homeassistant.components.rfxtrx: debug
 
 #Track the sun
@@ -127,6 +110,11 @@ switch: !include_dir_merge_list switches
 zone: !include zones.yaml
 
 
+bmw_connected_drive:
+  220d:
+    username: !secret bmw_connected_drive_username
+    password: !secret bmw_connected_drive_password
+    region: "rest_of_world"
 
 ifttt:
   key: !secret ifttt_key
@@ -219,10 +207,15 @@ alarm_control_panel:
     name: Alarm
     code: !secret alarm_code
     pending_time: 30
-    delay_time: 30
+    # delay_time: 30
 
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - mac: !secret xiaomi_aqara_mac
       key: !secret xiaomi_aqara_password
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    mode: daily

@@ -1,0 +1,14 @@
+- platform: template
+  sensors:
+    bmw_220d_mileage:
+      entity_id: sensor.220d_mileage
+      value_template: '{{((states("sensor.220d_mileage")|float)/1.609)|round}}'
+      unit_of_measurement: 'mi'
+      friendly_name: 220d Mileage
+      icon_template: 'mdi:ruler'
+    bmw_220d_remaining_fuel:
+      entity_id: sensor.220d_remaining_fuel
+      value_template: '{{((states("sensor.220d_remaining_range_fuel")|float)/1.609)|round}}'
+      unit_of_measurement: 'mi'
+      friendly_name: 220d Remaining Range
+      icon_template: 'mdi:gas-station'
