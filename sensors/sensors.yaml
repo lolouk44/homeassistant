@@ -14,17 +14,21 @@
 
 - platform: darksky
   api_key: !secret darksky_api_key
+  forecast:
+    - 0
   monitored_conditions:
     - summary
     - icon
     - minutely_summary
     - hourly_summary
     - daily_summary
-    - temperature_high
-    - temperature_low
     - temperature
     - humidity
+    - temperature_high
+    - temperature_low
     - precip_intensity_max
+    - wind_speed
+    - wind_gust
 
 - platform: wunderground
   api_key: !secret wu_api_key
@@ -41,16 +45,16 @@
     sunset_time:
       entity_id: sun.sun
       value_template: >
-        {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%H:%M") }}
+        {{ as_timestamp(state_attr("sun.sun","next_setting")) | timestamp_custom("%H:%M") }}
       friendly_name: Sunset
-      icon_template: '{% if states.sun.sun.state == "above_horizon" %}mdi:white-balance-sunny{% else %}mdi:weather-night{% endif %}'
+      icon_template: '{% if states("sun.sun") == "above_horizon" %}mdi:white-balance-sunny{% else %}mdi:weather-night{% endif %}'
 
 - platform: template
   sensors:
     precipitation:
       entity_id: sensor.dark_sky_daily_max_precip_intensity
       value_template: >
-        {{(states.sensor.dark_sky_daily_max_precip_intensity.state | float * 10) | round(1)}}
+        {{(states("sensor.dark_sky_daily_max_precip_intensity") | float * 10) | round(1)}}
       friendly_name: Precipitation
       unit_of_measurement: "mm"
 
@@ -64,3 +68,9 @@
   minimum: 1
   maximum: 3
   scan_interval: 290
+  
+  
+- platform: seventeentrack
+  username: !secret seventeentrack_email
+  password: !secret seventeentrack_passwqord
+  show_delivered: true

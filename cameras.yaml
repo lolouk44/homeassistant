@@ -30,11 +30,11 @@
 
 - platform: generic
   name: 'Lolo'
-  still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.ha_lolos_iphone.attributes.latitude }},{{ states.device_tracker.ha_lolos_iphone.attributes.longitude }}&zoom=15&size=500x500&maptype=roadmap&markers=color:blue%7Clabel:L%7C{{ states.device_tracker.ha_lolos_iphone.attributes.latitude }},{{ states.device_tracker.ha_lolos_iphone.attributes.longitude }}&markers=color:red%7Clabel:D%7C{{ states.device_tracker.ha_div_iphone.attributes.latitude }},{{ states.device_tracker.ha_div_iphone.attributes.longitude }}
+  still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ state_attr("device_tracker.ha_lolos_iphone","latitude") }},{{ state_attr("device_tracker.ha_lolos_iphone","longitude") }}&zoom=15&size=500x500&maptype=roadmap&markers=color:blue%7Clabel:L%7C{{ state_attr("device_tracker.ha_lolos_iphone","latitude") }},{{ state_attr("device_tracker.ha_lolos_iphone","longitude") }}&markers=color:red%7Clabel:D%7C{{ state_attr("device_tracker.ha_div_iphone","latitude") }},{{ state_attr("device_tracker.ha_div_iphone","longitude") }}
   limit_refetch_to_url_change: true
 - platform: generic
   name: 'Div'
-  still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.ha_div_iphone.attributes.latitude }},{{ states.device_tracker.ha_div_iphone.attributes.longitude }}&zoom=15&size=500x500&maptype=roadmap&markers=color:red%7Clabel:D%7C{{ states.device_tracker.ha_div_iphone.attributes.latitude }},{{ states.device_tracker.ha_div_iphone.attributes.longitude }}&markers=color:blue%7Clabel:L%7C{{ states.device_tracker.ha_lolos_iphone.attributes.latitude }},{{ states.device_tracker.ha_lolos_iphone.attributes.longitude }}
+  still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ state_attr("device_tracker.ha_div_iphone","latitude") }},{{ state_attr("device_tracker.ha_div_iphone","longitude") }}&zoom=15&size=500x500&maptype=roadmap&markers=color:red%7Clabel:D%7C{{ state_attr("device_tracker.ha_div_iphone","latitude") }},{{ state_attr("device_tracker.ha_div_iphone","longitude") }}&markers=color:blue%7Clabel:L%7C{{ state_attr("device_tracker.ha_lolos_iphone","latitude") }},{{ state_attr("device_tracker.ha_lolos_iphone","longitude") }}
   limit_refetch_to_url_change: true
 - platform: generic
   name: YrForecastCrawley
@@ -47,11 +47,11 @@
 - platform: generic
   name: chromecast_radio_pic
   still_image_url: >
-    {% set my_speaker = "media_player."+states.input_select.chromecast_radio_speakers.state|lower %}
+    {% set my_speaker = "media_player."+states("input_select.chromecast_radio_speakers")|lower %}
     {% if is_state(my_speaker,"playing")%}
-    {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states.sensor.rtl2_pic.state}}
-    {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states.sensor.absolute_radio_pic.state}}
-    {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states.sensor.absolute_radio_CR_pic.state}}
+    {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states("sensor.rtl2_pic")}}
+    {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states("sensor.absolute_radio_pic")}}
+    {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states("sensor.absolute_radio_CR_pic")}}
     {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} https://upload.wikimedia.org/wikipedia/fr/b/bd/HitWestLogo.jpg
     {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} https://secureimg.stitcher.com/feedimageswide/480x270_176113.jpg
     {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} https://is1-ssl.mzstatic.com/image/thumb/Music62/v4/b3/d6/64/b3d664ab-0560-f24d-2379-d01142267f94/source/1200x630bb.jpg

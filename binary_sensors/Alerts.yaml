@@ -3,13 +3,13 @@
     alert_aloe_vera_humidity_too_low:
       entity_id: sensor.aloe_vera_moisture
       value_template: >-
-        {% if (((states.sensor.aloe_vera_moisture.state )| default(100)) | int < 10) and (states.sensor.uptime.state | float > 0.1)%}on{% else %}off{%endif%}
+        {% if (((states("sensor.aloe_vera_moisture") )| default(100)) | int < 10) and (states("sensor.uptime") | float > 0.1)%}on{% else %}off{%endif%}
       friendly_name: Aloe Vera Humidity below 15%
 
     alert_aloe_vera_battery_too_low:
       entity_id: sensor.aloe_vera_moisture
       value_template: >-
-        {% if (((states.sensor.aloe_vera_battery.state) | default(100)) | int < 10) and (states.sensor.uptime.state | float > 0.1)%}on{% else %}off{%endif%}
+        {% if (((states("sensor.aloe_vera_battery")) | default(100)) | int < 10) and (states("sensor.uptime") | float > 0.1)%}on{% else %}off{%endif%}
       friendly_name: Aloe Vera Battery below 10%
 
     alert_outside_temp_sensor_lost:
@@ -33,23 +33,19 @@
     alert_ram_too_high:
       entity_id: sensor.ram_usage
       value_template: >-
-        {% if states.sensor.ram_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
+        {% if states("sensor.ram_usage") | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: RAM Too High
 
-    # alert_ram_sensor_lost:
-      # value_template: >-
-        # {% if (as_timestamp(now()) - (as_timestamp(states.sensor.ram_usage.last_updated) | int)) > 300 %}on{% else %}off{%endif%}
-      # friendly_name: RAM Sensor Lost
 
     alert_home_disk_usage_too_high:
       entity_id: sensor.home_disk_usage
       value_template: >-
-        {% if states.sensor.home_disk_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
+        {% if states("sensor.home_disk_usage") | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: Home Disk Usage Too High
 
     alert_root_disk_usage_too_high:
       entity_id: sensor.root_disk_usage
       value_template: >-
-        {% if states.sensor.root_disk_usage.state | default(0) | int > 90 %}on{% else %}off{%endif%}
+        {% if states("sensor.root_disk_usage") | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: Root Disk Usage Too High
 

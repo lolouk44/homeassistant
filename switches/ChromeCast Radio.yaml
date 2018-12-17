@@ -3,10 +3,10 @@
     chromecast_radio_mute:
       icon_template: '{% if states("switch.chromecast_radio_mute") %}mdi:volume-off{% else %}mdi:volume-high{% endif %}'
       value_template: >
-        {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} {% if states.media_player.conservatory.attributes.is_volume_muted %}on{% else %}off{% endif %}
-        {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} {% if states.media_player.kitchen.attributes.is_volume_muted %}on{% else %}off{% endif %}
-        {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} {% if states.media_player.onkyo_txnr656.attributes.is_volume_muted %}on{% else %}off{% endif %}
-        {% elif is_state("input_select.chromecast_radio_speakers", "House") %} {% if states.media_player.house.attributes.is_volume_muted %}on{% else %}off{% endif %}
+        {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} {% if state_attr("media_player.conservatory","is_volume_muted") %}on{% else %}off{% endif %}
+        {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} {% if state_attr("media_player.kitchen","is_volume_muted") %}on{% else %}off{% endif %}
+        {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} {% if state_attr("media_player.onkyo_txnr656","is_volume_muted") %}on{% else %}off{% endif %}
+        {% elif is_state("input_select.chromecast_radio_speakers", "House") %} {% if state_attr("media_player.house","is_volume_muted") %}on{% else %}off{% endif %}
         {% else %}off
         {% endif %}
       turn_on:

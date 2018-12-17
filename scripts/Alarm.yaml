@@ -2,7 +2,7 @@ flash_aqara_light:
   alias: 'Flash Lights When Alarm Armed'
   sequence:
     - condition: template
-      value_template: '{{ states.alarm_control_panel.alarm.state.split("_")[0] == "armed"}}'
+      value_template: '{{ states("alarm_control_panel.alarm").split("_")[0] == "pending"}}'
     - service: light.turn_on
       data:
         entity_id: light.gateway_light_7811dcdae94a
