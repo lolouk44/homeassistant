@@ -7,5 +7,3 @@ door_and_window_sensors:
     - binary_sensor.door_window_sensor_158d0002434385
     - binary_sensor.door_window_sensor_158d00022d2d3d
     - binary_sensor.door_window_sensor_158d000232dcd3
-    - binary_sensor.door_window_sensor_158d000232ddf8
-    - binary_sensor.garage_back_door
