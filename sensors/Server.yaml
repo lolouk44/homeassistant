@@ -21,21 +21,25 @@
   name: "RAM Usage"
   unit_of_measurement: '%'
   icon: mdi:memory
+  force_update: true
 
 - platform: mqtt
   state_topic: "Sensors/SDATemp"
   name: "ZFS1 Disk Temp"
   unit_of_measurement: '°C'
+  force_update: true
 
 - platform: mqtt
   state_topic: "Sensors/SDBTemp"
   name: "ZFS2 Disk Temp"
   unit_of_measurement: '°C'
+  force_update: true
 
 - platform: mqtt
   state_topic: "Sensors/SDCTemp"
   name: "SDA Disk Temp"
   unit_of_measurement: '°C'
+  force_update: true
 
 - platform: mqtt
   state_topic: "Sensors/SSLDays"
@@ -53,6 +57,7 @@
   name: 'CPU Usage'
   icon: mdi:chip
   unit_of_measurement: '%'
+  force_update: true
 
 - platform: cert_expiry
   host: lolorpi.com
