@@ -154,7 +154,7 @@ sensor.hallway_thermostat_temperature:
   friendly_name: Hallway Temperature
 sensor.upstairs_humidity:
   icon: mdi:water-percent
-sensor.last_clean:
+sensor.xiaomi_last_clean:
   icon: mdi:calendar
 sensor.lolo_to_home:
   icon: mdi:car
