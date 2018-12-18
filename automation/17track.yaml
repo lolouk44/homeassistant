@@ -1,6 +1,3 @@
-# {% for state in states.sensor -%}
-  # {%- if state.attributes.attribution =='Data provided by 17track.net' and state.state == 'In Transit'%}{{state_attr("sensor."+state.name|lower,"location")}}{% endif -%}
-# {%- endfor %}
 - alias: 17Track Updates
   initial_state: true
   trigger:
@@ -8,8 +5,19 @@
       entity_id:
         - sensor.packages_delivered
         - sensor.packages_in_transit
+  condition:
+    - condition: template
+      value_template: '{{ (trigger.to_state.state | int ) > 0 }}'
   action:
     - service: notify.gmaillolo
       data_template:
         message: >
-          {{ trigger.from_state.state }}->{{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","17Track") | replace("_"," ") |capitalize }}
+          {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","17track") | replace("_"," ") |capitalize }}
+          {% for state in states.sensor -%}
+          {% if (state.entity_id|replace("sensor.","")).split("_")[0] == "17track" %}
+          Sensor: {{state.entity_id}}
+          Tracking #: {{state.attributes.tracking_number}} (https://t.17track.net/en#nums={{state.attributes.tracking_number}})
+          Location: {{state.attributes.location}}
+          Last Updated: {{as_timestamp(state.last_changed)|timestamp_custom('%X on %d %h %Y',false)}}
+          {% endif %}
+          {%- endfor %}
