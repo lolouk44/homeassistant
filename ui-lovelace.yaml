@@ -215,6 +215,7 @@ views:
       - type: entities
         title: ChromeCast Audio
         icon: 'mdi:chromecast'
+        show_header_toggle: false
         artwork_border: true
         power_color: true
         entities:
@@ -236,6 +237,7 @@ views:
           group: true
       - type: entities
         title: Video
+        show_header_toggle: false
         entities:
         - entity: media_player.panasonic_viera_tv
           type: "custom:mini-media-player"
@@ -252,6 +254,7 @@ views:
       - type: entities
         title: Onkyo
         icon: 'mdi:audio-video'
+        show_header_toggle: false
         artwork_border: true
         power_color: true
         entities:
@@ -268,6 +271,7 @@ views:
       - type: entities
         title: Google Home Minis
         icon: 'mdi:google-home'
+        show_header_toggle: false
         artwork_border: true
         artwork: 'https://cdn.images.express.co.uk/img/dynamic/59/590x/Google-Home-Mini-862385.jpg'
         power_color: true
@@ -326,7 +330,7 @@ views:
     cards:
       - type: entities
         title: Living Room Sensors
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - entity: binary_sensor.pir_living_room_front
             secondary_info: last-changed
@@ -355,7 +359,7 @@ views:
           camera_image: camera.living_room
         - type: entities
           title: Living Room Lights
-          show_header_toggle: true
+          show_header_toggle: false
           entities:
             - entity: light.living_room_main
               secondary_info: last-changed
@@ -384,6 +388,7 @@ views:
         - type: entities
           title: AV
           icon: 'mdi:audio-video'
+          show_header_toggle: false
           artwork_border: true
           power_color: true
           entities:
@@ -612,7 +617,7 @@ views:
               secondary_info: last-changed
       - type: entities
         title: Kitchen TV
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - entity: switch.kitchen_tv
             secondary_info: last-changed
@@ -641,7 +646,7 @@ views:
     cards:
       - type: entities
         title: Entrance Sensors
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - entity: binary_sensor.door_lock
             secondary_info: last-changed
@@ -675,7 +680,7 @@ views:
               name: Om LED Strip
       - type: entities
         title: Nest Thermostat
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - entity: climate.hallway
             secondary_info: last-changed
@@ -721,7 +726,7 @@ views:
     cards:
       - type: entities
         title: Conservatory Sensors
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - entity: binary_sensor.pir_conservatory
             secondary_info: last-changed
@@ -733,7 +738,7 @@ views:
             secondary_info: last-changed
       - type: entities
         title: Aloe Vera
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - entity: sensor.aloe_vera_temperature
             secondary_info: last-changed
@@ -796,7 +801,7 @@ views:
             secondary_info: last-changed
       - type: entities
         title: Staircase Sensors
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
         - entity: binary_sensor.smoke_sensor_158d000205ac9c
           secondary_info: last-changed
@@ -827,7 +832,7 @@ views:
     cards:
       - type: entities
         title: Main Bedroom Sensors
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
         - entity: sensor.temperature_158d0001f5218a
           secondary_info: last-changed
@@ -877,7 +882,7 @@ views:
     cards:
       - type: entities
         title: Kiaan's Bedroom Sensors
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - entity: sensor.upstairs_temperature
             secondary_info: last-changed
