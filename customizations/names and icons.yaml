@@ -1,6 +1,14 @@
 #Binary Sensors:
 binary_sensor.220d_lights_parking:
   icon: mdi:car-light-dimmed
+binary_sensor.bmw_220d_doordriverdront:
+  icon: mdi:car-door
+binary_sensor.bmw_220d_doorpassengerfront:
+  icon: mdi:car-door
+binary_sensor.bmw_220d_doordriverrear:
+  icon: mdi:car-door
+binary_sensor.bmw_220d_doorpassengerrear:
+  icon: mdi:car-door
 binary_sensor.door_window_sensor_158d00022d2c49:
   friendly_name: Conservatory Single Door
   device_class: door

@@ -7,7 +7,7 @@ resources:
   - url: /local/group-card.js
     type: js
     #Mini media player https://github.com/kalkih/mini-media-player
-  - url: /local/mini-media-player-bundle.js?ver=0.9.1
+  - url: /local/mini-media-player-bundle.js?ver=0.9.8
     type: module
     #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
   - url: /local/vertical-stack-in-card.js?v=0.0.8
@@ -453,7 +453,7 @@ views:
             entity: sensor.xiaomi_status
             style:
               top: 5%
-              left: 5%
+              left: 1%
               color: rgb(255, 255, 255)
               transform: translate(0%,-50%)
               pointer-events: none
@@ -469,7 +469,7 @@ views:
             entity: sensor.xiaomi_cleaning_time
             style:
               top: 15%
-              left: 5%
+              left: 1%
               color: rgb(255, 255, 255)
               transform: translate(0%,-50%)
               pointer-events: none
@@ -485,7 +485,7 @@ views:
             entity: sensor.xiaomi_cleaned_area
             style:
               top: 22%
-              left: 5%
+              left: 1%
               color: rgb(255, 255, 255)
               transform: translate(0%,-50%)
               pointer-events: none
@@ -501,7 +501,7 @@ views:
             entity: sensor.xiaomi_main_brush_left
             style:
               top: 32%
-              left: 5%
+              left: 1%
               color: rgb(255, 255, 255)
               transform: translate(0%,-50%)
               pointer-events: none
@@ -517,7 +517,7 @@ views:
             entity: sensor.xiaomi_side_brush_left
             style:
               top: 39%
-              left: 5%
+              left: 1%
               color: rgb(255, 255, 255)
               transform: translate(0%,-50%)
               pointer-events: none
@@ -533,7 +533,7 @@ views:
             entity: sensor.xiaomi_filter_left
             style:
               top: 46%
-              left: 5%
+              left: 1%
               color: rgb(255, 255, 255)
               transform: translate(0%,-50%)
               pointer-events: none
@@ -549,7 +549,7 @@ views:
             entity: sensor.xiaomi_sensor_dirty_left
             style:
               top: 53%
-              left: 5%
+              left: 1%
               color: rgb(255, 255, 255)
               transform: translate(0%,-50%)
               pointer-events: none
@@ -565,7 +565,7 @@ views:
             entity: sensor.xiaomi_last_clean
             style:
               top: 95%
-              right: 5%
+              right: 1%
               color: rgb(255, 255, 255)
               transform: translate(0%,-50%)
               pointer-events: none
@@ -1373,6 +1373,128 @@ views:
         state_filter:
           - "on"
         show_empty: false
+        
+      - type: picture-elements
+        image: /local/BMW_220d_GT_Top_View.png
+        elements:
+          - type: icon
+            icon: mdi:lock
+            tap_action:
+              action: call-service
+              service: lock.lock
+              service_data:
+              entity: lock.220d_lock
+            style:
+              top: 5%
+              left: 7%
+              color: Tomato
+          - type: icon
+            icon: mdi:lock-open
+            tap_action:
+              action: call-service
+              service: lock.unlock
+              service_data:
+              entity: lock.220d_lock
+            style:
+              top: 12%
+              left: 7%
+              color: Tomato
+          - type: icon
+            icon: mdi:brightness-6
+            tap_action:
+              action: call-service
+              service: bmw_connected_drive.light_flash
+              service_data:
+              vin: !secret bmw_connected_drive_vin
+            style:
+              top: 5%
+              right: 3%
+              color: DeepSkyBlue
+          - type: icon
+            icon: mdi:bullhorn
+            tap_action:
+              action: call-service
+              service: bmw_connected_drive.sound_horn
+              service_data:
+              vin: !secret bmw_connected_drive_vin
+            style:
+              top: 12%
+              right: 3%
+              color: DeepSkyBlue
+          - type: icon
+            icon: mdi:fan
+            tap_action:
+              action: call-service
+              service: bmw_connected_drive.activate_air_conditioning
+              service_data:
+              vin: !secret bmw_connected_drive_vin
+            style:
+              top: 19%
+              right: 3%
+              color: DeepSkyBlue
+          - type: icon
+            icon: mdi:sync
+            tap_action:
+              action: call-service
+              service: bmw_connected_drive.update_state
+            style:
+              top: 26%
+              right: 3%
+              color: DeepSkyBlue
+
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_doordriverdront
+            style:
+              top: 50%
+              right: 13%
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_doorpassengerfront
+            style:
+              top: 50%
+              left: 17%
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_doordriverrear
+            style:
+              top: 70%
+              right: 14%
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_doorpassengerrear
+            style:
+              top: 70%
+              left: 17%
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_hood
+            style:
+              top: 3%
+              left: 50%
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_trunk
+            style:
+              bottom: -2%
+              left: 46%
+
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_windowdriverdront
+            style:
+              top: 45%
+              right: 13%
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_windowpassengerfront
+            style:
+              top: 45%
+              left: 17%
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_windowdriverrear
+            style:
+              top: 65%
+              right: 14%
+          - type: state-icon
+            entity: binary_sensor.bmw_220d_windowpassengerrear
+            style:
+              top: 65%
+              left: 17%
+
+        
       - type: entities
         title: BMW 220d Gran Tourer
         show_header_toggle: false
@@ -1394,46 +1516,5 @@ views:
             secondary_info: last-changed
           - entity: sensor.bmw_220d_remaining_fuel
             secondary_info: last-changed
-      - type: entities
-        title: Actions
-        show_header_toggle: false
-        entities:
-          - entity:  lock.220d_lock
-            secondary_info: last-changed
-          - entity: script.bmw_flash_lights
-            icon: mdi:brightness-6
-            secondary_info: last-changed
-          - entity: script.bmw_sound_horn
-            icon: mdi:bullhorn
-            secondary_info: last-changed
-          - entity: script.bmw_ventilate
-            icon: mdi:fan
-            secondary_info: last-changed
-      - type: entities
-        title: Doors
-        show_header_toggle: false
-        entities:
-          - entity: binary_sensor.bmw_220d_doordriverdront
-            secondary_info: last-changed
-          - entity: binary_sensor.bmw_220d_doorpassengerfront
-            secondary_info: last-changed
-          - entity: binary_sensor.bmw_220d_doordriverrear
-            secondary_info: last-changed
-          - entity: binary_sensor.bmw_220d_doorpassengerrear
-            secondary_info: last-changed
-          - entity: binary_sensor.bmw_220d_hood
-            secondary_info: last-changed
-          - entity:  binary_sensor.bmw_220d_trunk
-            secondary_info: last-changed
-      - type: entities
-        title: Windows
-        show_header_toggle: false
-        entities:
-          - entity: binary_sensor.bmw_220d_windowdriverdront
-            secondary_info: last-changed
-          - entity: binary_sensor.bmw_220d_windowpassengerfront
-            secondary_info: last-changed
-          - entity: binary_sensor.bmw_220d_windowdriverrear
-            secondary_info: last-changed
-          - entity: binary_sensor.bmw_220d_windowpassengerrear
+          - entity: sensor.bmw_220d_mpg
             secondary_info: last-changed
