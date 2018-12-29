@@ -5,10 +5,6 @@
     entity_id: binary_sensor.front_cctv_disk_error
     to: 'on'
   action:
-  - service: tts.google_say
-    entity_id: media_player.mpd
-    data_template:
-      message: Disk Error Detected on Front CCTV.
   - service: notify.gmaillolo
     data_template:
       message: Disk Error Detected on Front CCTV.
@@ -23,3 +19,50 @@
   - service: notify.gmaillolo
     data_template:
       message: SD Card on Front CCTV is full.
+
+
+- alias: Email when Back CCTV Disk Error
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_cctv_disk_error
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: Disk Error Detected on Back CCTV.
+
+- alias: Email when Back CCTV SD Card Full
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_cctv_disk_full
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: SD Card on Back CCTV is full.
+
+
+- alias: Email when Side CCTV Disk Error
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.side_cctv_disk_error
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: Disk Error Detected on Side CCTV.
+
+- alias: Email when Side CCTV SD Card Full
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.side_cctv_disk_full
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: SD Card on Side CCTV is full.
+
