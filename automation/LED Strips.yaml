@@ -235,6 +235,11 @@
       entity_id: light.House_Number_LED_Strip
       brightness: 255
       effect: colorfade_slow
+  - service: light.turn_on
+    data:
+      entity_id: light.porch_om_xmas_led_strip
+      brightness: 100
+      effect: rainbow
 
 - alias: House Number Off
   initial_state: true
@@ -253,5 +258,8 @@
   - service: light.turn_off
     data:
       entity_id: light.House_Number_LED_Strip
+  - service: light.turn_off
+    data:
+      entity_id: light.porch_om_xmas_led_strip
 
 
