@@ -16,21 +16,11 @@ homeassistant:
 
 
 
-recorder:
-  db_url: !secret db_url
-  # purge_interval: 0
-
-
-# customizer:
-  # custom_ui: local
+config:
 
 # Enables the front end
 frontend: 
   javascript_version: latest
-
-enable_debug:
-
-config:
 
 http:
   api_password: !secret http_password
@@ -51,10 +41,6 @@ lovelace:
 updater:
   include_used_components: True
 
-# Maps
-map:
-
-# Discover some devices automatically
 #discovery:
 
 # Enables support for tracking state changes over time.
@@ -67,11 +53,11 @@ history:
 logbook:
 
 # Logging level
+enable_debug:
 logger:
   default: error
   logs:
     homeassistant.components.http: warning
-    homeassistant.components.bmw_connected_drive: debug
     # homeassistant.components.camera: error
     # requests.packages.urllib3: critical
     # requests.packages.urllib3.connectionpool: critical
@@ -82,10 +68,8 @@ logger:
     # aiohttp.server: critical
     # homeassistant.components.rfxtrx: debug
 
+
 #Track the sun
-sun:
-
-
 alert: !include_dir_merge_named alerts
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensors
@@ -110,11 +94,30 @@ switch: !include_dir_merge_list switches
 zone: !include zones.yaml
 
 
+alarm_control_panel:
+  - platform: manual
+    name: Alarm
+    code: !secret alarm_code
+    pending_time: 30
+
 bmw_connected_drive:
   220d:
     username: !secret bmw_connected_drive_username
     password: !secret bmw_connected_drive_password
     region: "rest_of_world"
+
+counter:
+  iosbadgecount:
+    initial: 0
+    step: 1
+    name: iOS Badge Count
+    icon: mdi:numeric-1-box
+
+ffmpeg:
+
+google:
+  client_id: !secret GCal_ID
+  client_secret: !secret GCal_Secret
 
 ifttt:
   key: !secret ifttt_key
@@ -125,18 +128,7 @@ vacuum:
   host: 192.168.0.18
   token: !secret xiaomi_token
 
-mqtt:
-  client_id: home-assistant-1
-  broker: !secret mqtt_broker
-  port: 1883
-  username: !secret mqtt_user
-  password: !secret mqtt_password
-
-tts:
-  - platform: google
-    language: 'en-uk'
-
-
+map:
 
 media_player:
   - platform: cast
@@ -177,6 +169,13 @@ media_player:
     port: 6600
     name: MPD RPi Zero W
 
+mqtt:
+  client_id: home-assistant-1
+  broker: !secret mqtt_broker
+  port: 1883
+  username: !secret mqtt_user
+  password: !secret mqtt_password
+
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
@@ -184,38 +183,27 @@ nest:
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
 
-google:
-  client_id: !secret GCal_ID
-  client_secret: !secret GCal_Secret
+recorder:
+  db_url: !secret db_url
+  # purge_interval: 0
 
-counter:
-  iosbadgecount:
-    initial: 0
-    step: 1
-    name: iOS Badge Count
-    icon: mdi:numeric-1-box
+sun:
 
-ffmpeg:
-
+tts:
+  - platform: google
+    language: 'en-uk'
 tuya:
   username: !secret tuya_user
   password: !secret tuya_password
   country_code: 44
 
-alarm_control_panel:
-  - platform: manual
-    name: Alarm
-    code: !secret alarm_code
-    pending_time: 30
-    # delay_time: 30
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    mode: daily
 
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - mac: !secret xiaomi_aqara_mac
       key: !secret xiaomi_aqara_password
-
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    mode: daily
