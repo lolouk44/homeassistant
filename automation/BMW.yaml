@@ -1,0 +1,46 @@
+- alias: BMW - Windows/Doors left open
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.220d
+  condition:
+    - condition: template
+      value_template: '{{ states("device_tracker.220d") != "not_home"}}'
+  action:
+    - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
+      timeout: '00:06:00'
+      continue_on_timeout: 'false'
+    - condition: template
+      value_template: >
+        {%- set doors = [
+              states.binary_sensor.bmw_220d_windowdriverdront,
+              states.binary_sensor.bmw_220d_windowdriverrear,
+              states.binary_sensor.bmw_220d_windowpassengerfront,
+              states.binary_sensor.bmw_220d_windowpassengerrear,
+              states.binary_sensor.bmw_220d_doordriverdront,
+              states.binary_sensor.bmw_220d_doordriverrear,
+              states.binary_sensor.bmw_220d_doorpassengerfront,
+              states.binary_sensor.bmw_220d_doorpassengerrear,
+              states.binary_sensor.bmw_220d_hood,
+              states.binary_sensor.bmw_220d_trunk] -%}
+        {%- set doors_on = doors | selectattr('state','eq','on') | list -%}
+        {{ ((doors_on | length) | int ) >= 1}}
+    - service: notify.gmaillolo
+      data_template:
+        message: >
+          The following BMW doors/windows are not closed: 
+          {% set doors = [
+                states.binary_sensor.bmw_220d_windowdriverdront,
+                states.binary_sensor.bmw_220d_windowdriverrear,
+                states.binary_sensor.bmw_220d_windowpassengerfront,
+                states.binary_sensor.bmw_220d_windowpassengerrear,
+                states.binary_sensor.bmw_220d_doordriverdront,
+                states.binary_sensor.bmw_220d_doordriverrear,
+                states.binary_sensor.bmw_220d_doorpassengerfront,
+                states.binary_sensor.bmw_220d_doorpassengerrear,
+                states.binary_sensor.bmw_220d_hood,
+                states.binary_sensor.bmw_220d_trunk] -%}
+          {%- set doors_on = doors | selectattr('state','eq','off') | list -%}
+          {% for door_names in doors_on -%}
+          {{(door_names | string).split("friendly_name=")[1].split(",")[0]}}, 
+          {%- endfor %}
