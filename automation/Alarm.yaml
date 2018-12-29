@@ -19,23 +19,30 @@
     - condition: state
       entity_id: alarm_control_panel.alarm
       state: armed_away
-    - condition: template
-      value_template: >
-        {% set pirs = [
-              states.binary_sensor.pir_conservatory,
-              states.binary_sensor.pir_kitchen,
-              states.binary_sensor.pir_living_room_front,
-              states.binary_sensor.pir_living_room_back,
-              states.binary_sensor.pir_staircase,
-              states.binary_sensor.door_window_sensor_158d00022d2c49,
-              states.binary_sensor.door_window_sensor_158d0002435612,
-              states.binary_sensor.conservatory_skylight_left,
-              states.binary_sensor.door_window_sensor_158d0002434385,
-              states.binary_sensor.door_window_sensor_158d00022d2d3d,
-              states.binary_sensor.door_window_sensor_158d000232dcd3,
-              states.binary_sensor.door_window_sensor_158d000232ddf8 ] %}
-        {% set pirs_on = pirs | selectattr('state','eq','on') | list %}
-        {{ ((pirs_on | length) | int ) > 1}}
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: >
+          {%- set pirs = [
+                states.binary_sensor.door_window_sensor_158d00022d2c49,
+                states.binary_sensor.door_window_sensor_158d0002435612,
+                states.binary_sensor.conservatory_skylight_left,
+                states.binary_sensor.door_window_sensor_158d0002434385,
+                states.binary_sensor.door_window_sensor_158d00022d2d3d,
+                states.binary_sensor.door_window_sensor_158d000232dcd3,
+                states.binary_sensor.door_window_sensor_158d000232ddf8 ] -%}
+          {%- set pirs_on = pirs | selectattr('state','eq','on') | list -%}
+          {{ ((pirs_on | length) | int ) >= 1}}
+      - condition: template
+        value_template: >
+          {%- set pirs = [
+                states.binary_sensor.pir_conservatory,
+                states.binary_sensor.pir_kitchen,
+                states.binary_sensor.pir_living_room_front,
+                states.binary_sensor.pir_living_room_back,
+                states.binary_sensor.pir_staircase] -%}
+          {%- set pirs_on = pirs | selectattr('state','eq','on') | list -%}
+          {{ ((pirs_on | length) | int ) > 1}}
   action:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.alarm
