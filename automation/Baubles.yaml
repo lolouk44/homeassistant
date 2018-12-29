@@ -18,17 +18,6 @@
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
   action:
   - service: light.turn_on
     data:
@@ -63,17 +52,6 @@
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
   action:
   - service: light.turn_on
     data:
@@ -108,17 +86,6 @@
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
   action:
   - service: light.turn_on
     data:
