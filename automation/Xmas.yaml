@@ -46,11 +46,6 @@
       entity_id: group.baubles
   - service: light.turn_on
     data:
-      entity_id: light.porch_om_xmas_led_strip
-      brightness: 255
-      effect: rainbow
-  - service: light.turn_on
-    data:
       entity_id: light.conservatory_led_strip
       effect: "rainbow"
       brightness: 255
@@ -62,6 +57,9 @@
   - service: switch.turn_on
     data:
       entity_id: switch.edimax1
+  - service: light.turn_on
+    data:
+      entity_id: group.xmas
 
 
 
@@ -84,7 +82,7 @@
   action:
   - service: light.turn_off
     data:
-      entity_id: group.baubles
+      entity_id: group.xmas
   - service: light.turn_off
     data:
       entity_id: light.Staircase_LED_Strip
@@ -100,6 +98,9 @@
   - service: switch.turn_off
     data:
       entity_id: switch.edimax1
+  - service: light.turn_off
+    data:
+      entity_id: group.xmas
 
 
 
