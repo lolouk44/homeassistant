@@ -59,7 +59,7 @@
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
-      to: 'error'
+      to: 'Status: Error'
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuuming_error_-_stop", "last_triggered") | default(0)) | int > 1800)}}'
@@ -75,7 +75,7 @@
   trigger:
     - platform: state
       entity_id: sensor.xiaomi_status
-      to: 'error'
+      to: 'Status: Error'
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuuming_error_-_continue", "last_triggered") | default(0)) | int < 1800)}}'

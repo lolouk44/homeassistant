@@ -25,9 +25,9 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.precipitation
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -137,8 +137,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -322,8 +322,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -592,8 +592,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -638,8 +638,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -718,8 +718,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -785,8 +785,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -824,8 +824,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -874,8 +874,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -913,8 +913,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -1064,8 +1064,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -1335,8 +1335,8 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.pws_precip_1d
-        - sensor.dark_sky_overnight_low_temperature
-        - sensor.dark_sky_daytime_high_temperature
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
@@ -1382,6 +1382,11 @@ views:
       - type: picture-elements
         image: /local/BMW_220d_GT_Top_View.png
         elements:
+          - type: state-icon
+            entity: binary_sensor.220d_door_lock_state
+            style:
+              top: 5%
+              left: 7%
           - type: icon
             icon: mdi:lock
             tap_action:
@@ -1390,7 +1395,7 @@ views:
               service_data:
               entity: lock.220d_lock
             style:
-              top: 5%
+              top: 12%
               left: 7%
               color: Tomato
           - type: icon
@@ -1401,7 +1406,7 @@ views:
               service_data:
               entity: lock.220d_lock
             style:
-              top: 12%
+              top: 19%
               left: 7%
               color: Tomato
           - type: icon

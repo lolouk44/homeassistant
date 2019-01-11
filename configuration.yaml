@@ -164,6 +164,7 @@ media_player:
     zone2: true
   - platform: panasonic_viera
     host: 192.168.0.27
+  - platform: plex
   - platform: mpd
     host: 192.168.0.21
     port: 6600

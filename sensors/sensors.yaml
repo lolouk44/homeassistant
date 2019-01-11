@@ -52,9 +52,9 @@
 - platform: template
   sensors:
     precipitation:
-      entity_id: sensor.dark_sky_daily_max_precip_intensity
+      entity_id: sensor.dark_sky_daily_max_precip_intensity_0
       value_template: >
-        {{(states("sensor.dark_sky_daily_max_precip_intensity") | float * 10) | round(1)}}
+        {{(states("sensor.dark_sky_daily_max_precip_intensity_0") | float * 10) | round(1)}}
       friendly_name: Precipitation
       unit_of_measurement: "mm"
 

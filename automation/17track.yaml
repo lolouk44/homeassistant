@@ -12,9 +12,9 @@
     - service: notify.gmaillolo
       data_template:
         message: >
-          {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","17track") | replace("_"," ") |capitalize }}
+          {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","seventeentrack") | replace("_"," ") |capitalize }}
           {% for state in states.sensor -%}
-          {% if (state.entity_id|replace("sensor.","")).split("_")[0] == "17track" %}
+          {% if (state.entity_id|replace("sensor.","")).split("_")[0] == "seventeentrack" %}
           Sensor: {{state.entity_id}}
           Tracking #: {{state.attributes.tracking_number}} (https://t.17track.net/en#nums={{state.attributes.tracking_number}})
           Location: {{state.attributes.location}}

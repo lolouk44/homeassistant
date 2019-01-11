@@ -13,6 +13,14 @@
     - platform: state
       entity_id: sensor.aloe_vera_light_intensity
   condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.movies
+        state: 'on'
     - condition: state
       entity_id: binary_sensor.pir_conservatory
       state: 'on'
@@ -44,6 +52,14 @@
       entity_id: binary_sensor.pir_conservatory
       to: 'off'
   condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.movies
+        state: 'on'
     - condition: state
       entity_id: light.conservatory
       state: 'on'
@@ -63,6 +79,14 @@
       for:
         minutes: 2
   condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.movies
+        state: 'on'
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.conservatory_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
     - condition: state

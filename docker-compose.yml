@@ -23,7 +23,7 @@
 
     homeassistant:
       container_name: hass
-      image: homeassistant/home-assistant:0.84.6
+      image: homeassistant/home-assistant:0.85.0
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
@@ -34,7 +34,3 @@
         - influxdb
       restart: always
       network_mode: host
-      # healthcheck:
-        # test: ["CMD", "curl", "-f", "https://127.0.0.1:8123"]
-        # interval: 30s
-        # timeout: 10s
