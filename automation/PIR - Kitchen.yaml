@@ -72,6 +72,14 @@
     - condition: or
       conditions:
       - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.movies
+        state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
         entity_id: light.Kitchen_Door
         state: 'on'
       - condition: state
@@ -93,6 +101,14 @@
       for:
         minutes: 2
   condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.movies
+        state: 'on'
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.kitchen_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
     - condition: state
