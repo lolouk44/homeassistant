@@ -210,7 +210,7 @@
       entity_id: media_player.panasonic_viera_tv
       to: 'on'
     - platform: state
-      entity_id: media_player.onkyo_txnr656
+      entity_id: media_player.onkyo_tx_nr656
       to: 'on'
     - platform: state
       entity_id: switch.skyhd
@@ -233,7 +233,7 @@
         entity_id: media_player.living_room_google_mini
         state: 'on'
       - condition: state
-        entity_id: media_player.onkyo_txnr656
+        entity_id: media_player.onkyo_tx_nr656
         state: 'on'
       - condition: state
         entity_id: switch.skyhd
@@ -250,7 +250,7 @@
       entity_id: media_player.panasonic_viera_tv
       to: 'off'
     - platform: state
-      entity_id: media_player.onkyo_txnr656
+      entity_id: media_player.onkyo_tx_nr656
       to: 'off'
     - platform: state
       entity_id: switch.skyhd
@@ -260,7 +260,7 @@
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
     - condition: state
-      entity_id: media_player.onkyo_txnr656
+      entity_id: media_player.onkyo_tx_nr656
       state: 'off'
     - condition: state
       entity_id: switch.skyhd
