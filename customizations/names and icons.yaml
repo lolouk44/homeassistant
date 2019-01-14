@@ -221,6 +221,8 @@ switch.onkyo_zone2_muting:
   icon: mdi:volume-off
 switch.onkyo_zone2_power:
   icon: mdi:power
+switch.plex:
+  icon: mdi:docker
 switch.portainer:
   icon: mdi:docker
 switch.skyhd:
