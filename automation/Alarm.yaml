@@ -176,7 +176,7 @@
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.google_home_minis
-        volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}' 
+        volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}'
 
 
 - alias: 'Alarm - Armed'
@@ -266,6 +266,39 @@
     - service: switch.turn_off
       data:
         entity_id: switch.0220016868c63aa168d9
+
+
+- alias: 'Alarm - Switch everything off when we leave home'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'armed_away'
+  action:
+  - service: media_player.turn_off
+    entity_id: media_player.kitchen
+  - service: media_player.turn_off
+    entity_id: media_player.onkyo_tx_nr656
+  - service: media_player.turn_off
+    entity_id: media_player.conservatory
+  - service: media_player.turn_off
+    entity_id: media_player.house
+  - service: media_player.turn_off
+    entity_id: media_player.downstairs
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.normal
+  - service: light.turn_off
+    data:
+      entity_id: group.Interior_Lights
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_main
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.silent
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.normal
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.silent
 
 
 # {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}

@@ -234,7 +234,8 @@
     data:
       entity_id: light.House_Number_LED_Strip
       brightness: 255
-      effect: colorfade_slow
+      # effect: colorfade_slow
+      rgb_color: [0,0,255]
   - service: light.turn_on
     data:
       entity_id: light.porch_om_xmas_led_strip
