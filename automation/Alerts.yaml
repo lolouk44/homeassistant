@@ -13,7 +13,7 @@
 - alias: Alert Lost Temperature Upstairs On
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/1'
       seconds: 0
   condition:
@@ -48,7 +48,7 @@
 - alias: Alert Lost Temperature Outside On
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/1'
       seconds: 0
   condition:
@@ -83,7 +83,7 @@
 - alias: Alert Lost CurrentCost On
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/1'
       seconds: 0
   condition:
@@ -114,7 +114,7 @@
 - alias: RAM Above 90% On
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/1'
       seconds: 0
   condition:

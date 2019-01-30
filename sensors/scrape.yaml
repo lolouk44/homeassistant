@@ -22,9 +22,9 @@
   select: ".current-version h1"
   value_template: '{{ value.split(":")[1] }}'
 
-- platform: scrape
-  resource: !secret fire7url
-  name: fire7_battery
-  select: "td:nth-of-type(44)"
-  value_template: '{{ value.split("%")[0] }}'
-  unit_of_measurement: '%'
+# - platform: scrape
+  # resource: !secret fire7url
+  # name: Fire7 Battery
+  # select: "td:nth-of-type(44)"
+  # value_template: '{{ value.split("%")[0] }}'
+  # unit_of_measurement: '%'

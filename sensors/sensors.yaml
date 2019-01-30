@@ -30,15 +30,15 @@
     - wind_speed
     - wind_gust
 
-- platform: wunderground
-  api_key: !secret wu_api_key
-  monitored_conditions:
-    - precip_today_metric
-    - precip_1d_mm 
-    - precip_1d 
-    - wind_dir
-    - wind_1d_kph 
-    - wind_gust_1d_kph 
+# - platform: wunderground
+  # api_key: !secret wu_api_key
+  # monitored_conditions:
+    # - precip_today_metric
+    # - precip_1d_mm 
+    # - precip_1d 
+    # - wind_dir
+    # - wind_1d_kph 
+    # - wind_gust_1d_kph 
 
 - platform: template
   sensors:
@@ -52,9 +52,9 @@
 - platform: template
   sensors:
     precipitation:
-      entity_id: sensor.dark_sky_daily_max_precip_intensity_0
+      entity_id: weather.dark_sky
       value_template: >
-        {{(states("sensor.dark_sky_daily_max_precip_intensity_0") | float * 10) | round(1)}}
+        {{state_attr('weather.dark_sky', 'forecast')[0].precipitation}}
       friendly_name: Precipitation
       unit_of_measurement: "mm"
 

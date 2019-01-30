@@ -19,15 +19,23 @@
     0a1400c1f4ff6203010070:
       name: LWRF Remote 3
       fire_event: true
-    09130006131408015e70:
-      name: Alarm Siren 1
-      fire_event: true
+    # 09130006131408015e70:
+      # name: Alarm Siren 1
+      # fire_event: true
       # data_bits: 4
       # command_on: 0x8
       # command_off: 0x2
-    '09130008131402016070':
-      name: Alarm Siren 2
-      fire_event: true
+    # '09130008131402016070':
+      # name: Alarm Siren 2
+      # fire_event: true
       # data_bits: 4
       # command_on: 0x2
       # command_off: 0x8
+    09130009a68a48012b70:
+      # name: Kerui Panic
+      name: Kerui Alarm
+      fire_event: true
+    0913000aa68a41012970:
+      # name: Kerui Arm Home
+      name: Kerui Disarm
+      fire_event: true

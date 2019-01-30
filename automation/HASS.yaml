@@ -59,7 +59,7 @@
 - alias: HASS Nightly Restart
   initial_state: true
   trigger:
-    platform: time
+    platform: time_pattern
     hours: 2
     minutes: 0
     seconds: 0

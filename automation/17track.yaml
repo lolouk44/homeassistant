@@ -11,13 +11,15 @@
   action:
     - service: notify.gmaillolo
       data_template:
-        message: >
-          {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","seventeentrack") | replace("_"," ") |capitalize }}
+        message: |
+          {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","17track") | replace("_"," ") | title }}:
           {% for state in states.sensor -%}
-          {% if (state.entity_id|replace("sensor.","")).split("_")[0] == "seventeentrack" %}
-          Sensor: {{state.entity_id}}
+          {% if (state.entity_id|replace("sensor.","")|replace("17track","seventeentrack")).split("_")[0] == "seventeentrack"  and state.state == ( trigger.entity_id | replace("sensor.packages_","") | replace("_"," ") | title )%}
+          Sensor: {{state.attributes.friendly_name | replace("Seventeentrack Package: ","")}}
+          State: {{state.state}}
           Tracking #: {{state.attributes.tracking_number}} (https://t.17track.net/en#nums={{state.attributes.tracking_number}})
           Location: {{state.attributes.location}}
+          info_text: {{state.attributes.info_text}}
           Last Updated: {{as_timestamp(state.last_updated)|timestamp_custom('%X on %d %h %Y',false)}}
           {% endif %}
           {%- endfor %}

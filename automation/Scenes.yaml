@@ -49,20 +49,20 @@
       data:
         entity_id: light.TV_Cabinet_LED_Strip
         brightness: 255
-        rgb_color: [255,0,0]
+        rgb_color: [0,0,255]
         transition: 1
     - service: light.turn_on
       data:
         entity_id: light.conservatory_led_strip
         effect: "solid"
         brightness: 128
-        rgb_color: [255,0,0]
+        rgb_color: [0,0,255]
     - service: light.turn_on
       data:
         entity_id: light.conservatory_led_strip
         effect: "solid"
         brightness: 128
-        rgb_color: [255,0,0]
+        rgb_color: [0,0,255]
     - condition: state
       entity_id: input_boolean.silent
       state: "off"

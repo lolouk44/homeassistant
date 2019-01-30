@@ -1,7 +1,7 @@
 - alias: Start Vacuuming
   initial_state: false
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/15'
       seconds: 0
   condition:
@@ -37,11 +37,11 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.xiaomi_status
+      entity_id: vacuum.mi_robot_vacuum
       to: 'cleaning'
       from: 'docked'
     - platform: state
-      entity_id: sensor.xiaomi_status
+      entity_id: vacuum.mi_robot_vacuum
       to: 'cleaning'
       from: 'idle'
   action:
@@ -96,10 +96,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.xiaomi_status
+      entity_id: vacuum.mi_robot_vacuum
       to: 'returning to dock'
     - platform: state
-      entity_id: sensor.xiaomi_status
+      entity_id: vacuum.mi_robot_vacuum
       to: 'returning'
   action:
     - service: notify.gmaillolo

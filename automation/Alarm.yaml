@@ -57,7 +57,7 @@
         media_content_type: 'audio/mp3'
 
 
-- alias: 'Alarm - notify when triggered'
+- alias: 'Alarm - Notify when triggered'
   initial_state: true
   trigger:
     - platform: state
@@ -71,7 +71,31 @@
         ringtone_vol: 100
     - service: switch.turn_off
       data:
-        entity_id: switch.alarm_siren_1
+        entity_id: switch.kerui_alarm
+    - service: camera.snapshot
+      data:
+        entity_id: camera.front
+        filename: '/config/www/CCTV_Snapshots/Front.jpg'
+    - service: camera.snapshot
+      data:
+        entity_id: camera.side
+        filename: '/config/www/CCTV_Snapshots/Side.jpg'
+    - service: camera.snapshot
+      data:
+        entity_id: camera.back
+        filename: '/config/www/CCTV_Snapshots/Back.jpg'
+    - service: camera.snapshot
+      data:
+        entity_id: camera.kitchen
+        filename: '/config/www/CCTV_Snapshots/Kitchen.jpg'
+    - service: camera.snapshot
+      data:
+        entity_id: camera.living_room
+        filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
+    - service: camera.snapshot
+      data:
+        entity_id: camera.garage
+        filename: '/config/www/CCTV_Snapshots/Garage.jpg'
     - service: notify.gmaillolo
       data_template:
         message: >
@@ -83,6 +107,33 @@
           {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
           {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
           {%- endfor %})
+        data:
+          images:
+            - /config/www/CCTV_Snapshots/LivingRoom.jpg
+            - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Front.jpg
+            - /config/www/CCTV_Snapshots/Side.jpg
+            - /config/www/CCTV_Snapshots/Back.jpg
+            - /config/www/CCTV_Snapshots/Garage.jpg
+    - service: notify.gmaildiv
+      data_template:
+        message: >
+          ALARM! The alarm has been triggered !(
+          ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
+          {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+          {%- endfor -%}
+          {% if is_state('binary_sensor.door_window_sensor_158d000232ddf8','on') %}Main Door,{% endif%}
+          {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
+          {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
+          {%- endfor %})
+        data:
+          images:
+            - /config/www/CCTV_Snapshots/LivingRoom.jpg
+            - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Front.jpg
+            - /config/www/CCTV_Snapshots/Side.jpg
+            - /config/www/CCTV_Snapshots/Back.jpg
+            - /config/www/CCTV_Snapshots/Garage.jpg
     - service: notify.ios_lolos_iphone
       data_template:
         message: >
@@ -98,6 +149,8 @@
           push:
             badge: '{{states("counter.iosbadgecount")}}'
             category: "alarm"
+          attachment:
+            url: !secret url_cctv_living_room
           action_data:
             entity_id: '{{trigger.entity_id}}'
 
@@ -141,6 +194,9 @@
       entity_id: alarm_control_panel.alarm
       to: 'pending'
   action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.kerui_disarm
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.google_home_minis
@@ -164,12 +220,16 @@
       entity_id: alarm_control_panel.alarm
       to: 'disarmed'
   action:
-    - service: switch.turn_off
+    - service: switch.turn_on
       data:
-        entity_id: switch.alarm_siren_2
-    - service: media_player.turn_off
-      data_template:
+        entity_id: switch.kerui_disarm
+    - service: media_player.play_media
+      data:
         entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.0.24/audio/Armed_Disarmed.mp3'
+        media_content_type: 'audio/mp3'
+    - delay:
+        seconds: 2
     - service: light.turn_off
       data:
         entity_id: light.gateway_light_7811dcdae94a
@@ -213,14 +273,30 @@
         - binary_sensor.smoke_sensor_158d000205ac9c
       to: 'on'
   action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.kitchen
+        filename: '/config/www/CCTV_Snapshots/Kitchen.jpg'
+    - service: camera.snapshot
+      data:
+        entity_id: camera.living_room
+        filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
     - service: notify.gmaillolo
       data_template:
         message: >
           FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d000205ac9c' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
+        data:
+          images:
+            - /config/www/CCTV_Snapshots/LivingRoom.jpg
+            - /config/www/CCTV_Snapshots/Kitchen.jpg
     - service: notify.gmaildiv
       data_template:
         message: >
           FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d000205ac9c' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
+        data:
+          images:
+            - /config/www/CCTV_Snapshots/LivingRoom.jpg
+            - /config/www/CCTV_Snapshots/Kitchen.jpg
     - service: notify.ios_lolos_iphone
       data_template:
         message: >
@@ -231,6 +307,7 @@
             category: "alarm"
           action_data:
             entity_id: '{{trigger.entity_id}}'
+
 
 
 
@@ -285,6 +362,8 @@
     entity_id: media_player.house
   - service: media_player.turn_off
     entity_id: media_player.downstairs
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.silent
   - service: input_boolean.turn_off
     entity_id: input_boolean.normal
   - service: light.turn_off
@@ -293,8 +372,6 @@
   - service: light.turn_off
     data:
       entity_id: light.living_room_main
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.silent
   - service: input_boolean.turn_on
     entity_id: input_boolean.normal
   - service: input_boolean.turn_off

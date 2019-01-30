@@ -1,0 +1,21 @@
+- platform: rest
+  resource: !secret fire7url
+  name: Fire 7 Device Info
+  value_template: '{{ value_json.hostname4 }}'
+  force_update: true
+  scan_interval: 120
+  json_attributes:
+    - appVersionName
+    - batteryLevel
+    - plugged
+    - screenBrightness
+- platform: template
+  sensors:
+    fire7_battery:
+      friendly_name: Fire7 Battery
+      unit_of_measurement: '%'
+      value_template: '{{state_attr("sensor.fire_7_device_info", "batteryLevel")}}'
+      device_class: battery
+    # fire7_appversion:
+      # friendly_name: App Version
+      # value_template: '{{ states.sensor.fire_1_device_info.attributes["appVersionName"] }}'

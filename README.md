@@ -28,9 +28,9 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - [Houzetek SWA1](https://www.houzetek.com/product-wifi-smart-plug-uk) socket controlled via Tuya
 - iPhone 6
 - iPad Air 2
-- LightWaveRF [Switches](https://lightwaverf.com/products/smart-dimmer-2-gang?variant=16341551480921) & [Sockets](https://lightwaverf.com/products/basic-remote-on-off-socket-kit)
 - [Kello](https://www.getkello.com/) Smart Alarm
 - Kerui J008 Strobe Sirens in Yale Dummy Box
+- LightWaveRF [Switches](https://lightwaverf.com/products/smart-dimmer-2-gang?variant=16341551480921) & [Sockets](https://lightwaverf.com/products/basic-remote-on-off-socket-kit)
 - Nest V3 Thermostat
 - Onkyo TX-NR656 AV Amplifier
 - Panasonic TX58DX700 TV
@@ -47,6 +47,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Mi Box 3
 - Xiaomi Mi Flora Plant Sensor
 - Xiaomi Mi Robot Vacuum V1
+- Xiaomi Mijia Honeywell Fire Alarm Detector
 - Xiaomi Router R3P Pro
 
 

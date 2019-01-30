@@ -70,7 +70,7 @@
 - alias: Start Dehumidifier
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       hours: 8
       minutes: 0
       seconds: 0
@@ -103,7 +103,7 @@
 - alias: Stop Dehumidifier
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       hours: 16
       minutes: 0
       seconds: 0

@@ -114,6 +114,9 @@
       event_type: ifttt_webhook_received
       event_data:
         action: build_greeting
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.build_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'
   action:
   - service: tts.google_say
     data_template:
@@ -154,6 +157,9 @@
     event_type: ifttt_webhook_received
     event_data:
       action: play_greeting
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.play_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'
   action:
   - service: mqtt.publish
     data:

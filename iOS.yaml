@@ -18,3 +18,12 @@ push:
           authenticationRequired: yes
           destructive: yes
           behavior: 'default'
+    - name: BMWAlert
+      identifier: 'bmwalert'
+      actions:
+        - identifier: 'LOCK_BMW'
+          title: 'Lock BMW'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'

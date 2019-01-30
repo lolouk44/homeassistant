@@ -16,6 +16,9 @@ resources:
     # https://github.com/bramkragten/custom-ui/tree/master/swipe-card
   # - url: /local/custom-lovelace/swipe-card/swipe-card.js?v=1.1.0
     # type: module
+    #'https://github.com/custom-cards/tracker-card
+  - url: /local/tracker-card.js?v=0
+    type: js
 views:
   - title: default_view
     background: url("/local/home.png") fixed
@@ -136,7 +139,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -329,7 +333,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -599,7 +604,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -645,7 +651,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -717,6 +724,14 @@ views:
               secondary_info: last-changed
               icon: mdi:snowman
               name: Snowman LED Strip
+      - type: entities
+        title: Fire 7
+        show_header_toggle: false
+        entities:
+          - entity: sensor.fire7_battery
+            secondary_info: last-changed
+          - entity: switch.0220016868c63aa168d9
+            secondary_info: last-changed
   - title: Conservatory
     background: url("/local/home-outline.png") fixed
     icon: mdi:home-outline
@@ -725,7 +740,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -792,7 +808,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -831,7 +848,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -881,7 +899,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -920,7 +939,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -1071,7 +1091,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -1106,6 +1127,11 @@ views:
         state_filter:
           - "on"
         show_empty: false
+      - type: custom:tracker-card
+        title:
+        trackers:
+          - sensor.custom_card_tracker
+          - sensor.custom_component_tracker
       - type: entities
         title: RPi Sensors
         show_header_toggle: false
@@ -1122,6 +1148,7 @@ views:
         show_header_toggle: false
         entities:
           - entity: switch.grafana
+          - entity: switch.ha_dockermon
           - entity: switch.influxdb
           - entity: switch.plex
           - entity: switch.portainer
@@ -1343,7 +1370,8 @@ views:
         - device_tracker.div
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
-        - sensor.pws_precip_1d
+        - sensor.precipitation
+
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
@@ -1539,3 +1567,13 @@ views:
             secondary_info: last-changed
           - entity: sensor.bmw_220d_mpg
             secondary_info: last-changed
+      - type: map
+        entities:
+          - device_tracker.div_iphone
+          - device_tracker.diviphone
+          - device_tracker.google_maps_113578038090869627198
+          - device_tracker.lolos_iphone
+          - device_tracker.lolosiphone
+          - device_tracker.laurent_mah_iphone_5s
+          - device_tracker.google_maps_110345542315981072615
+          - device_tracker.220d

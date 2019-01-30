@@ -1,7 +1,7 @@
 - alias: Set GA Volume To Low At Night
   initial_state: true
   trigger:
-    platform: time
+    platform: time_pattern
     hours: 20
     minutes: 30
     seconds: 0
@@ -23,7 +23,7 @@
 - alias: Set GA Volume To High Daytime
   initial_state: true
   trigger:
-    platform: time
+    platform: time_pattern
     hours: 7
     minutes: 30
     seconds: 0
@@ -178,7 +178,7 @@
 - alias: Keep Google Home Alive
   initial_state: true
   trigger:
-    platform: time
+    platform: time_pattern
     minutes: '/2'
     seconds: 00
   condition:

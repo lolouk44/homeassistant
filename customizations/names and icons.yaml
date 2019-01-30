@@ -1,4 +1,16 @@
 #Binary Sensors:
+# binary_sensor.09130007a68a42012970:
+  # friendly_name: Kerui Disarm
+  # device_class: door
+# binary_sensor.09130008a68a44012b70:
+  # friendly_name: Kerui Arm Away
+  # device_class: door
+# binary_sensor.09130009a68a48012b70:
+  # friendly_name: Kerui Panic
+  # device_class: door
+# binary_sensor.0913000aa68a41012970:
+  # friendly_name: Kerui Arm Home
+  # device_class: door
 binary_sensor.220d_lights_parking:
   icon: mdi:car-light-dimmed
 binary_sensor.bmw_220d_doordriverdront:
@@ -213,6 +225,8 @@ switch.dehumidifier:
   icon: mdi:power-socket-uk
 switch.grafana:
   icon: mdi:docker
+switch.ha_dockermon:
+  icon: mdi:docker
 switch.influxdb:
   icon: mdi:docker
 switch.Kitchen_TV:
@@ -231,5 +245,6 @@ switch.syncthing:
   icon: mdi:docker
 switch.watchtower:
   icon: mdi:docker
+
 
 

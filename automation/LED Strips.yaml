@@ -245,7 +245,7 @@
 - alias: House Number Off
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       hours: 0
       minutes: 0
       seconds: 0

@@ -91,7 +91,7 @@
 - alias: Holiday Upstairs on
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       hours: 22
       minutes: 30
       seconds: 0
@@ -123,7 +123,7 @@
 - alias: Holiday Upstairs off
   initial_state: true
   trigger:
-    - platform: time
+    - platform: time_pattern
       hours: 23
       minutes: 0
       seconds: 0

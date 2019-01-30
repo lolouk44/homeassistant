@@ -1,42 +1,48 @@
 - platform: rest
   resource: http://192.168.0.24:8126/container/influxdb
-  name: InfluxDB
+  name: influxdb
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/grafana
-  name: Grafana
+  name: grafana
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+- platform: rest
+  resource: http://192.168.0.24:8126/container/ha_dockermon
+  name: ha_dockermon
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/portainer
-  name: Portainer
+  name: portainer
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/watchtower
-  name: WatchTower
+  name: watchtower
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/syncthing
-  name: Syncthing
+  name: syncthing
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/plex
-  name: Plex
+  name: plex
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-

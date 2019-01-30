@@ -57,7 +57,7 @@
       entity_id: device_tracker.div
       from: "home"
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: device_tracker.laurent
       from: "home"
   condition:
     - condition: template
@@ -110,7 +110,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.tell_lolo_of_a_long_drive_home", "last_triggered") | default(0)) | int > 3600)}}'
     - condition: template
-      value_template: '{{ states("device_tracker.lolo") == "Verint"}}'
+      value_template: '{{ states("device_tracker.laurent") == "Verint"}}'
   action:
     - condition: state
       entity_id: input_boolean.silent
@@ -127,13 +127,15 @@
   trigger:
       - platform: state
         entity_id: 'device_tracker.lolos_iphone'
-      - platform: state
-        entity_id: 'device_tracker.google_maps_110345542315981072615'
+      # - platform: state
+        # entity_id: 'device_tracker.google_maps_110345542315981072615'
       - platform: state
         entity_id: 'device_tracker.laurent_mah_iphone_5s'
       - platform: state
         entity_id: 'device_tracker.lolosiphone'
         to: 'home'
+      - platform: state
+        entity_id: device_tracker.laurent
   action:
     service: mqtt.publish
     data_template:
@@ -146,8 +148,8 @@
   trigger:
       - platform: state
         entity_id: device_tracker.div_iphone
-      - platform: state
-        entity_id: device_tracker.google_maps_113578038090869627198
+      # - platform: state
+        # entity_id: device_tracker.google_maps_113578038090869627198
       - platform: state
         entity_id: device_tracker.diviphone
         to: 'home'
