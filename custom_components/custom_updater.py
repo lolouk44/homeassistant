@@ -1,5 +1,6 @@
 """
 A component which allows you to update your custom cards and components.
+
 For more details about this component, please refer to the documentation at
 https://github.com/custom-components/custom_updater
 """
@@ -9,11 +10,11 @@ import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.event import track_time_interval
 
-VERSION = '3.1.8'
+VERSION = '3.1.9'
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['pyupdate==0.2.16']
+REQUIREMENTS = ['pyupdate==0.2.17']
 
 CONF_TRACK = 'track'
 CONF_HIDE_SENSOR = 'hide_sensor'
@@ -254,3 +255,4 @@ class CustomPythonScripts():
 
     def install(self, element):
         """Install single python_script."""
+        self.pyupdate.install(self.ha_conf_dir, element, self.custom_url)
