@@ -28,31 +28,3 @@
       topic: "Sensors/DoorBellEmail"
       payload_template: 'ON'
       retain: false
-
-
-- alias: 'Hallway Light On When Opening Main Door'
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id:
-        - binary_sensor.door_window_sensor_158d000232ddf8
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: group.pirs
-      state: 'off'
-    - condition: or
-      conditions:
-      - condition: template
-        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-  action:
-  - service: light.turn_on
-    data:
-      entity_id: light.hallway
-      brightness: 255

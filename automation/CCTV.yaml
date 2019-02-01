@@ -1,3 +1,71 @@
+- alias: Email when Front CCTV Disk Error
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_cctv_disk_error
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: Disk Error Detected on Front CCTV.
+
+- alias: Email when Front CCTV SD Card Full
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_cctv_disk_full
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: SD Card on Front CCTV is full.
+
+
+- alias: Email when Back CCTV Disk Error
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_cctv_disk_error
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: Disk Error Detected on Back CCTV.
+
+- alias: Email when Back CCTV SD Card Full
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_cctv_disk_full
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: SD Card on Back CCTV is full.
+
+
+- alias: Email when Side CCTV Disk Error
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.side_cctv_disk_error
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: Disk Error Detected on Side CCTV.
+
+- alias: Email when Side CCTV SD Card Full
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.side_cctv_disk_full
+    to: 'on'
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: SD Card on Side CCTV is full.
+
 - alias: Activate motion we leave home
   initial_state: true
   trigger:
@@ -15,12 +83,8 @@
   action:
   - service: switch.turn_on
     entity_id: switch.dafang_living_room_status
-  # - service: switch.turn_on
-    # entity_id: switch.dafang_living_room_blue_led
   - service: switch.turn_on
     entity_id: switch.dafang_kitchen_status
-  # - service: switch.turn_on
-    # entity_id: switch.dafang_kitchen_blue_led
 
 - alias: Deactivate motion we reach home
   initial_state: true
@@ -34,12 +98,8 @@
   action:
   - service: switch.turn_off
     entity_id: switch.dafang_living_room_status
-  # - service: switch.turn_on
-    # entity_id: switch.dafang_living_room_yellow_led
   - service: switch.turn_off
     entity_id: switch.dafang_kitchen_status
-  # - service: switch.turn_on
-    # entity_id: switch.dafang_kitchen_yellow_led
 
 
 - alias: Set Dafang Blue LED On
