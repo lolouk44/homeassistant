@@ -74,6 +74,10 @@
         entity_id: switch.kerui_alarm
     - service: camera.snapshot
       data:
+        entity_id: camera.fire7
+        filename: '/config/www/CCTV_Snapshots/Fire7.jpg'
+    - service: camera.snapshot
+      data:
         entity_id: camera.front
         filename: '/config/www/CCTV_Snapshots/Front.jpg'
     - service: camera.snapshot
@@ -111,6 +115,7 @@
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
             - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Fire7.jpg
             - /config/www/CCTV_Snapshots/Front.jpg
             - /config/www/CCTV_Snapshots/Side.jpg
             - /config/www/CCTV_Snapshots/Back.jpg
@@ -130,6 +135,7 @@
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
             - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Fire7.jpg
             - /config/www/CCTV_Snapshots/Front.jpg
             - /config/www/CCTV_Snapshots/Side.jpg
             - /config/www/CCTV_Snapshots/Back.jpg
@@ -275,6 +281,10 @@
   action:
     - service: camera.snapshot
       data:
+        entity_id: camera.fire7
+        filename: '/config/www/CCTV_Snapshots/Fire7.jpg'
+    - service: camera.snapshot
+      data:
         entity_id: camera.kitchen
         filename: '/config/www/CCTV_Snapshots/Kitchen.jpg'
     - service: camera.snapshot
@@ -297,6 +307,7 @@
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
             - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Fire7.jpg
     - service: notify.ios_lolos_iphone
       data_template:
         message: >

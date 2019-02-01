@@ -61,3 +61,7 @@
     {% endif %}
     {%else%}http://192.168.0.24/Select_Radio.png
     {%endif%}
+    
+- name: Fire7
+  platform: generic
+  still_image_url: !secret fire7camshot

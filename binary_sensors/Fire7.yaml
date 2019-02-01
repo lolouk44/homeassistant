@@ -1,0 +1,3 @@
+- platform: mqtt
+  name: Fire7 Motion
+  state_topic: any/value

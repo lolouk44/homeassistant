@@ -11,6 +11,8 @@
 # binary_sensor.0913000aa68a41012970:
   # friendly_name: Kerui Arm Home
   # device_class: door
+binary_sensor.fire7_motion:
+  friendly_name: Fire7 Motion
 binary_sensor.220d_lights_parking:
   icon: mdi:car-light-dimmed
 binary_sensor.bmw_220d_doordriverdront:

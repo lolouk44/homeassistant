@@ -19,6 +19,11 @@ resources:
     #'https://github.com/custom-cards/tracker-card
   - url: /local/tracker-card.js?v=0
     type: js
+    # Fully Kiosk https://github.com/thomasloven/lovelace-fullykiosk
+  - url: /local/lovelace-fullykiosk.js
+    type: js
+  - url: /local/kiosk-config.js
+    type: js
 views:
   - title: default_view
     background: url("/local/home.png") fixed
@@ -728,6 +733,8 @@ views:
         title: Fire 7
         show_header_toggle: false
         entities:
+          - entity: binary_sensor.fire7_motion
+            secondary_info: last-changed
           - entity: sensor.fire7_battery
             secondary_info: last-changed
           - entity: switch.0220016868c63aa168d9
@@ -1053,6 +1060,19 @@ views:
           show_header_toggle: false
           entities:
             - switch.cctv_garage_status
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: picture-entity
+          title: Hallway
+          entity: camera.fire7
+          camera_image: camera.fire7
+          show_name: false
+          show_state: false
+        - type: entities
+          title: Hallway
+          show_header_toggle: false
+          entities:
+            - binary_sensor.fire7_motion
       - type: map
         entities:
           - device_tracker.div_iphone
