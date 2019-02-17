@@ -145,8 +145,8 @@ sensor.aloe_vera_light_intensity:
   icon: mdi:brightness-7
 sensor.aloe_vera_conductivity:
   icon: mdi:flower
-sensor.aloe_vera_battery:
-  icon: mdi:battery-charging
+# sensor.aloe_vera_battery:
+  # icon: mdi:battery-charging
 sensor.currentcost_power:
   icon: mdi:flash-circle
 sensor.currentcost_temperature:
@@ -231,6 +231,8 @@ switch.ha_dockermon:
   icon: mdi:docker
 switch.influxdb:
   icon: mdi:docker
+switch.letsencrypt:
+  icon: mdi:docker
 switch.Kitchen_TV:
   icon: mdi:television
 switch.onkyo_zone2_muting:
@@ -246,6 +248,8 @@ switch.skyhd:
 switch.syncthing:
   icon: mdi:docker
 switch.watchtower:
+  icon: mdi:docker
+switch.wordpress:
   icon: mdi:docker
 
 

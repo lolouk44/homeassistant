@@ -4,6 +4,7 @@
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/grafana
@@ -11,6 +12,7 @@
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/ha_dockermon
@@ -18,6 +20,15 @@
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
+  resource: http://192.168.0.24:8126/container/letsencrypt
+  name: letsencrypt
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/portainer
@@ -25,6 +36,7 @@
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/watchtower
@@ -32,6 +44,7 @@
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/syncthing
@@ -39,6 +52,7 @@
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/plex
@@ -46,3 +60,12 @@
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
+  resource: http://192.168.0.24:8126/container/wordpress
+  name: wordpress
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30

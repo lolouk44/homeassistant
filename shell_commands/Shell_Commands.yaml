@@ -11,4 +11,3 @@ reboot_dafang_kitchen: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=reboot &>
 reboot_dafang_livingroom: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=reboot &>/dev/null
 
 harestart: wget http://192.168.0.24:8126/container/hass/restart &>/dev/null
-reboot_pi_zero_w: ssh pi@192.168.0.21 'sudo reboot'

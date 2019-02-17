@@ -157,10 +157,10 @@
   action:
     - service: scene.turn_on
       entity_id: scene.xmas
-    - service: group.set_visibility
-      entity_id: group.xmas
-      data:
-        visible: True
+    # - service: group.set_visibility
+      # entity_id: group.xmas
+      # data:
+        # visible: True
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
@@ -176,10 +176,10 @@
       entity_id: input_boolean.xmas
       to: 'off'
   action:
-    - service: group.set_visibility
-      entity_id: group.xmas
-      data:
-        visible: False
+    # - service: group.set_visibility
+      # entity_id: group.xmas
+      # data:
+        # visible: False
     - condition: state
       entity_id: input_boolean.silent
       state: "off"

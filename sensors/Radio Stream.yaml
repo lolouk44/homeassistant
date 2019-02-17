@@ -59,7 +59,7 @@
 - platform: scrape
   resource: https://hasspodcast.io/feed/podcast
   name: ha_podcast_track
-  select: 'title:nth-of-type(3)'
+  select: 'item:nth-of-type(1) title'
 
 - platform: scrape
   resource: https://iotpodcast.com/feed/
@@ -70,7 +70,7 @@
 - platform: scrape
   resource: https://iotpodcast.com/feed/
   name: internet_of_things_podcast_track
-  select: 'title:nth-of-type(3)'
+  select: 'item:nth-of-type(1) title'
 
 
 - platform: template

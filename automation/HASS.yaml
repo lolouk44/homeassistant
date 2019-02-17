@@ -17,10 +17,10 @@
     - platform: homeassistant
       event: start
   action:
-  - service: group.set_visibility
-    entity_id: group.alerts
-    data_template:
-      visible: '{{states("counter.iosbadgecount") | int > 0}}'
+  # - service: group.set_visibility
+    # entity_id: group.alerts
+    # data_template:
+      # visible: '{{states("counter.iosbadgecount") | int > 0}}'
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis
@@ -42,20 +42,6 @@
   # - service: switch.turn_on
     # entity_id: switch.dafang_kitchen_yellow_led
 
-- alias: HASS Restart
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: input_boolean.hass_restart
-    to: "on"
-  action:
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.google_home_minis
-      media_content_id: 'http://192.168.0.24/audio/ClickOff.mp3'
-      media_content_type: 'audio/mp4'
-  - service: shell_command.harestart
-
 - alias: HASS Nightly Restart
   initial_state: true
   trigger:
@@ -66,8 +52,6 @@
   action:
   - service: shell_command.reboot_dafang_kitchen
   - service: shell_command.reboot_dafang_livingroom
-  - service: shell_command.reboot_pi_zero_w
-#  - service: shell_command.harestart
 
 - alias: 'SSL expiry notification'
   initial_state: true
@@ -87,21 +71,21 @@
     - platform: homeassistant
       event: start
   action:
-    - service: group.set_visibility
-      entity_id: group.xmas
-      data:
-        visible: False
+    # - service: group.set_visibility
+      # entity_id: group.xmas
+      # data:
+        # visible: False
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.xmas_start", "timestamp") | default(0)) | int > 0)}}'
     - condition: template
       value_template: '{{ ((state_attr("input_datetime.xmas_end", "timestamp") | default(0)) | int ) - as_timestamp(now()) >0 }}'
-    - service: group.set_visibility
-      entity_id: group.xmas
-      data_template:
-        visible: >
-          {% if is_state("input_boolean.xmas", "on") %}True
-          {% else %}False
-          {% endif %}
+    # - service: group.set_visibility
+      # entity_id: group.xmas
+      # data_template:
+        # visible: >
+          # {% if is_state("input_boolean.xmas", "on") %}True
+          # {% else %}False
+          # {% endif %}
     - condition: state
       entity_id: input_boolean.xmas
       state: 'off'
@@ -131,15 +115,3 @@
         message: >
           Login Attempt Failed\n
           http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ state_attr("persistent_notification.httplogin", "message").split ("from ") [1]}}
-
-
-- alias: Free Ram
-  initial_state: true
-  trigger:
-    - platform: template
-      value_template: '{{ states("sensor.ram_usage") |int > 70}}'
-  condition:
-    - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.ram_too_high", "last_triggered") | default(0)) | int > 3600 )}}'
-  action:
-    - service: shell_command.freeram

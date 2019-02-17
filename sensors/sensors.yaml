@@ -6,7 +6,7 @@
 
 - platform: waze_travel_time
   name: Lolo to Home
-  origin: device_tracker.lolo
+  origin: device_tracker.laurent
   destination: !secret postcode_home
   region: 'EU'
 

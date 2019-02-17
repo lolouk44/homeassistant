@@ -18,8 +18,11 @@ homeassistant:
 #Life360 Device Tracker: https://github.com/pnbruckner/homeassistant-config/blob/master/docs/custom_updater.md
 custom_updater:
   track:
+    - cards
     - components
     - python_scripts
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
   component_urls:
     - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
   python_script_urls:
@@ -34,15 +37,15 @@ frontend:
 
 http:
   # api_password: !secret http_password
-  ssl_certificate: !secret ssl_certificate
-  ssl_key: !secret ssl_key
+  # ssl_certificate: !secret ssl_certificate
+  # ssl_key: !secret ssl_key
   base_url: !secret base_url
   trusted_networks:
     - 127.0.0.1
     - ::1
     - 192.168.0.0/24
   ip_ban_enabled: false
-  # login_attempts_threshold: 3
+  login_attempts_threshold: 3
 
 lovelace:
   mode: yaml
@@ -66,8 +69,8 @@ logbook:
 enable_debug:
 logger:
   default: error
-  logs:
-    homeassistant.components.http: warning
+  # logs:
+    # homeassistant.components.http: warning
     # homeassistant.components.camera: error
     # requests.packages.urllib3: critical
     # requests.packages.urllib3.connectionpool: critical
@@ -81,7 +84,7 @@ logger:
     # homeassistant.components.sensor.rest: critical
 
 
-#Track the sun
+#Config Split
 alert: !include_dir_merge_named alerts
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensors
@@ -201,6 +204,8 @@ recorder:
   # purge_interval: 0
 
 sun:
+
+system_health:
 
 tts:
   - platform: google

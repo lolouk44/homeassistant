@@ -193,7 +193,44 @@
         volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}' 
 
 
-- alias: 'Alarm - Pending Arming/Siren'
+- alias: 'Alarm - Pending Arming'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'pending'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.kerui_disarm
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.google_home_minis
+        volume_level: '1' 
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.0.24/audio/Alarm-CountDown.mp3'
+        media_content_type: 'audio/mp3'
+    - wait_template: "{{ is_state('binary_sensor.door_window_sensor_158d000232ddf8', 'on') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: 'true'
+    - wait_template: "{{ is_state('binary_sensor.door_window_sensor_158d000232ddf8', 'off') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: 'true'
+    - condition: template
+      value_template: '{{states("alarm_control_panel.alarm")=="armed_away" or states("alarm_control_panel.alarm")=="armed_home" or states("alarm_control_panel.alarm")=="pending" }}'
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.0.24/audio/Armed_Disarmed.mp3'
+        media_content_type: 'audio/mp3'
+    - service: script.turn_on
+      data:
+        entity_id: script.flash_aqara_light
+
+
+- alias: 'Alarm - Pending Siren'
   initial_state: true
   trigger:
     - platform: state
@@ -215,8 +252,6 @@
     - service: script.turn_on
       data:
         entity_id: script.flash_aqara_light
-
-
 
 
 - alias: 'Alarm - Disarming'
@@ -258,7 +293,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+        media_content_id: 'http://192.168.0.24/audio/Armed_Disarmed.mp3'
         media_content_type: 'audio/mp3'
     - service: light.turn_on
       data:
@@ -330,7 +365,7 @@
       entity_id: sensor.fire7_battery
   condition:
     - condition: template
-      value_template: "{{ states('sensor.fire7_battery')|int < 65 }}"
+      value_template: "{{ states('sensor.fire7_battery')|int < 45 }}"
     - condition: state
       entity_id: switch.0220016868c63aa168d9
       state: 'off'
@@ -346,7 +381,7 @@
       entity_id: sensor.fire7_battery
   condition:
     - condition: template
-      value_template: "{{ states('sensor.fire7_battery')|int > 75 }}"
+      value_template: "{{ states('sensor.fire7_battery')|int > 85 }}"
     - condition: state
       entity_id: switch.0220016868c63aa168d9
       state: 'on'
@@ -387,6 +422,23 @@
     entity_id: input_boolean.normal
   - service: input_boolean.turn_off
     entity_id: input_boolean.silent
+
+
+- alias: 'Alarm - Re-arm Alarm after unplanned reboot'
+  initial_state: true
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay:
+        seconds: 2
+    - condition: state
+      entity_id: light.gateway_light_7811dcdae94a
+      state: 'on'
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.alarm
+      data:
+        code: !secret alarm_code
 
 
 # {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}

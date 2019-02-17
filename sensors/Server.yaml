@@ -58,7 +58,3 @@
   icon: mdi:chip
   unit_of_measurement: '%'
   force_update: true
-
-- platform: cert_expiry
-  host: lolorpi.com
-  name: lolorpi.com site expiry

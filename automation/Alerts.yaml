@@ -1,13 +1,13 @@
-- alias: Set Alerts visibility
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: counter.iosbadgecount
-  action:
-    - service: group.set_visibility
-      entity_id: group.alerts
-      data_template:
-        visible: '{{states("counter.iosbadgecount") | int > 0}}'
+# - alias: Set Alerts visibility
+  # initial_state: false
+  # trigger:
+    # - platform: state
+      # entity_id: counter.iosbadgecount
+  # action:
+    # - service: group.set_visibility
+      # entity_id: group.alerts
+      # data_template:
+        # visible: '{{states("counter.iosbadgecount") | int > 0}}'
 
 
 - alias: Alert Lost Temperature Upstairs On
@@ -140,4 +140,35 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_ram_usage_at_300
+
+
+
+
+- alias: Fire 7 Lost On
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.fire7_battery.last_updated | default(0)) | int > 3600 )}}'
+    - condition: state
+      entity_id: alert.fire7_lost
+      state: 'idle'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alert_lost_fire7_at_300
+
+- alias: Fire 7 Lost Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.fire7_battery
+  condition:
+    - condition: template
+      value_template: '{{states("alert.fire7_lost") != "idle"}}'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alert_lost_fire7_at_300
 

@@ -34,6 +34,18 @@ ram_usage_lost:
   notifiers:
     - pushbullet
 
+fire7_lost:
+  name: Fire 7 Lost
+  entity_id: input_boolean.alert_lost_Fire7_at_300
+  skip_first: True
+  repeat:
+    - 5
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - pushbullet
+
 cctv_front_lost:
   name: CCTV Front Lost
   state: 'off'

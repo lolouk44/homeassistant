@@ -11,6 +11,7 @@
         - alert.cctv_garage_lost
         - alert.currentcost_lost
         - alert.dehumidifier_full
+        - alert.fire7_lost
         - alert.home_disk_usage_too_high
         - alert.house_number_led_strip_lost
         - alert.outside_temp_sensor_lost
@@ -75,6 +76,9 @@
       to: 'idle'
     - platform: state
       entity_id: alert.dehumidifier_full
+      to: 'idle'
+    - platform: state
+      entity_id: alert.fire7_lost
       to: 'idle'
     - platform: state
       entity_id: alert.home_disk_usage_too_high

@@ -9,3 +9,6 @@ alert_lost_currentcost_power_at_300:
 
 alert_lost_ram_usage_at_300:
   initial: off
+
+alert_lost_fire7_at_300:
+  initial: off

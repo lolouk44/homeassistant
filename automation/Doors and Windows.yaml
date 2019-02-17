@@ -179,6 +179,15 @@
       to: 'on'
       for:
         minutes: 2
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.holidays
+        state: 'on'
   action:
   - service: light.turn_off
     data:

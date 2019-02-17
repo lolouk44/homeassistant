@@ -7,10 +7,10 @@ resources:
   - url: /local/group-card.js
     type: js
     #Mini media player https://github.com/kalkih/mini-media-player
-  - url: /local/mini-media-player-bundle.js?ver=0.9.8
+  - url: /local/mini-media-player-bundle.js?ver=1.0.1
     type: module
     #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
-  - url: /local/vertical-stack-in-card.js?v=0.0.8
+  - url: /local/vertical-stack-in-card.js?v=0.0.9
     type: js
     #Swiper Card https://community.home-assistant.io/t/lovelace-swiper-card/72447
     # https://github.com/bramkragten/custom-ui/tree/master/swipe-card
@@ -25,7 +25,29 @@ resources:
   - url: /local/kiosk-config.js
     type: js
 views:
-  - title: default_view
+  - title: Alarm
+    background: url("/local/verified.png") fixed
+    icon: mdi:shield-check
+    cards:
+      - type: entity-filter
+        entities:
+          - entity: binary_sensor.door_window_sensor_158d000232dcd3
+          - entity: binary_sensor.door_window_sensor_158d00022d2d3d
+          - entity: binary_sensor.door_window_sensor_158d0002434385
+          - entity: binary_sensor.conservatory_skylight_left
+          - entity: binary_sensor.door_window_sensor_158d00022d2c49
+          - entity: binary_sensor.door_window_sensor_158d0002435612
+        state_filter:
+          - "on"
+        show_empty: false
+      - type: alarm-panel
+        entity: alarm_control_panel.alarm
+        show_keypad: true
+        title: Alarm
+        states:
+          - arm_home
+          - arm_away
+  - title: Home
     background: url("/local/home.png") fixed
     icon: mdi:home
     badges:
@@ -60,6 +82,7 @@ views:
           - alert.cctv_dafang_living_room_lost
           - alert.currentcost_lost
           - alert.dehumidifier_full
+          - alert.fire7_lost
           - alert.rpi_lost
           - alert.rpi_zero_w_lost
           - alert.kello_lost
@@ -668,6 +691,8 @@ views:
         title: Entrance Sensors
         show_header_toggle: false
         entities:
+          - entity: binary_sensor.fire7_motion
+            secondary_info: last-changed
           - entity: binary_sensor.door_lock
             secondary_info: last-changed
           - entity: binary_sensor.garage_back_door
@@ -1076,8 +1101,8 @@ views:
       - type: map
         entities:
           - device_tracker.div_iphone
-          - device_tracker.diviphone
           - device_tracker.google_maps_113578038090869627198
+          - device_tracker.laurent
           - device_tracker.lolos_iphone
           - device_tracker.lolosiphone
           - device_tracker.laurent_mah_iphone_5s
@@ -1130,6 +1155,7 @@ views:
           - alert.cctv_dafang_living_room_lost
           - alert.currentcost_lost
           - alert.dehumidifier_full
+          - alert.fire7_lost
           - alert.rpi_lost
           - alert.rpi_zero_w_lost
           - alert.kello_lost
@@ -1147,6 +1173,33 @@ views:
         state_filter:
           - "on"
         show_empty: false
+      - type: entities
+        title: Server Stats
+        show_header_toggle: false
+        entities:
+          - sensor.uptime
+          - sensor.currentcost_power
+          - sensor.cpu_usage
+          - sensor.ram_usage
+          - sensor.hass_db_size_formatted
+          - sensor.ssl_cert_expiry
+      - type: entities
+        title: Battery Levels
+        show_header_toggle: false
+        entities:
+          - sensor.aloe_vera_battery2
+          - sensor.aqara_hygro_battery
+          - sensor.cloakroom_window_battery
+          - sensor.conservatory_single_door_battery
+          - sensor.conservatory_double_door_battery
+          - sensor.fire7_battery
+          - sensor.first_floor_smoke_detector_battery
+          - sensor.ground_floor_smoke_detector_battery
+          - sensor.living_room_left_window_battery
+          - sensor.living_room_right_window_battery
+          - sensor.main_door_battery
+          - sensor.loft_temperature_battery
+          - sensor.upstairs_temperature_battery
       - type: custom:tracker-card
         title:
         trackers:
@@ -1168,22 +1221,23 @@ views:
         show_header_toggle: false
         entities:
           - entity: switch.grafana
+            name: Grafana
           - entity: switch.ha_dockermon
+            name: Dockermon
           - entity: switch.influxdb
+            name: InfluxDB
+          - entity: switch.letsencrypt
+            name: LetsEncrypt
           - entity: switch.plex
+            name: Plex
           - entity: switch.portainer
+            name: Portainer
           - entity: switch.syncthing
+            name: SyncThing
           - entity: switch.watchtower
-      - type: entities
-        title: Server Stats
-        show_header_toggle: false
-        entities:
-          - sensor.uptime
-          - sensor.currentcost_power
-          - sensor.cpu_usage
-          - sensor.ram_usage
-          - sensor.hass_db_size_formatted
-          - sensor.ssl_cert_expiry
+            name: WatchTower
+          - entity: switch.wordpress
+            name: Wordpress
       - type: entities
         title: Hygro Sensors
         show_header_toggle: false
@@ -1286,102 +1340,74 @@ views:
         state_filter:
           - "on"
         show_empty: false
-#      - type: custom:vertical-stack-in-card
-#        cards:
-      - type: gauge
-        unit_of_measurement: '%'
-        entity: sensor.cpu_usage
-        severity:
-          green: 0
-          yellow: 50
-          red: 85
-      - type: sensor
-        entity: sensor.cpu_usage
-        name: CPU Usage
-        height: 75
-#          line_color: "#3498db"
-#    - type: custom:vertical-stack-in-card
-#        cards:
-      - type: gauge
-        unit_of_measurement: '%'
-        entity: sensor.ram_usage
-        severity:
-          green: 0
-          yellow: 60
-          red: 85
-      - type: sensor
-        entity: sensor.ram_usage
-        name: RAM Usage
-        height: 75
-        line_color: "#3498db"
-      # - type: custom:vertical-stack-in-card
-        # cards:
-      - type: gauge
-        unit_of_measurement: '%'
-        title: Home Disk Usage
-        entity: sensor.home_disk_usage
-        severity:
-          green: 0
-          yellow: 60
-          red: 85
-      # - type: sensor
-        # entity: sensor.home_disk_usage
-        # name: Home Disk Usage
-        # height: 75
-        # line_color: "#3498db"
-      # - type: custom:vertical-stack-in-card
-        # cards:
-      - type: gauge
-        unit_of_measurement: '%'
-        entity: sensor.root_disk_usage
-        title: Root Disk Usage
-        severity:
-          green: 0
-          yellow: 60
-          red: 85
-      # - type: sensor
-        # entity: sensor.root_disk_usage
-        # name: Root Disk Usage
-        # height: 75
-        # line_color: "#3498db"
-      # - type: custom:vertical-stack-in-card
-        # cards:
-      - type: gauge
-        title: ZFS Disk Usage
-        unit_of_measurement: '%'
-        entity: sensor.zfs_disk_usage
-        severity:
-          green: 0
-          yellow: 60
-          red: 85
-      # - type: sensor
-        # entity: sensor.zfs_disk_usage
-        # name: ZFS Disk Usage
-        # height: 75
-        # line_color: "#3498db"
-
-  - title: Alarm
-    background: url("/local/verified.png") fixed
-    icon: mdi:verified
-    cards:
-      - type: entity-filter
-        entities:
-          - entity: binary_sensor.door_window_sensor_158d000232dcd3
-          - entity: binary_sensor.door_window_sensor_158d00022d2d3d
-          - entity: binary_sensor.door_window_sensor_158d0002434385
-          - entity: binary_sensor.conservatory_skylight_left
-          - entity: binary_sensor.door_window_sensor_158d00022d2c49
-          - entity: binary_sensor.door_window_sensor_158d0002435612
-        state_filter:
-          - "on"
-        show_empty: false
-      - type: alarm-panel
-        entity: alarm_control_panel.alarm
-        show_keypad: true
-        title: Alarm
-        states:
-          - arm_home
-          - arm_away
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          entity: sensor.cpu_usage
+          severity:
+            green: 0
+            yellow: 50
+            red: 85
+        - type: history-graph
+          entities:
+            - sensor.cpu_usage
+          # refresh_interval: 15
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          entity: sensor.ram_usage
+          severity:
+            green: 0
+            yellow: 60
+            red: 85
+        - type: history-graph
+          entities:
+            - sensor.ram_usage
+          # refresh_interval: 15
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          title: Home Disk Usage
+          entity: sensor.home_disk_usage
+          severity:
+            green: 0
+            yellow: 60
+            red: 85
+        - type: history-graph
+          entities:
+            - sensor.home_disk_usage
+          # refresh_interval: 15
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          unit_of_measurement: '%'
+          entity: sensor.root_disk_usage
+          title: Root Disk Usage
+          severity:
+            green: 0
+            yellow: 60
+            red: 85
+        - type: history-graph
+          entities:
+            - sensor.root_disk_usage
+          # refresh_interval: 15
+      - type: custom:vertical-stack-in-card
+        cards:
+        - type: gauge
+          title: ZFS Disk Usage
+          unit_of_measurement: '%'
+          entity: sensor.zfs_disk_usage
+          severity:
+            green: 0
+            yellow: 60
+            red: 85
+        - type: history-graph
+          entities:
+            - sensor.zfs_disk_usage
+          # refresh_interval: 15
   - title: Car
     background: url("/local/BMW_220d_GT.png") center / contain no-repeat
     icon: mdi:car-connected
@@ -1467,7 +1493,7 @@ views:
               left: 7%
               color: Tomato
           - type: icon
-            icon: mdi:brightness-6
+            icon: mdi:car-light-dimmed
             tap_action:
               action: call-service
               service: bmw_connected_drive.light_flash
@@ -1568,6 +1594,7 @@ views:
         entities:
           - entity: device_tracker.220d
             secondary_info: last-changed
+            icon: mdi:car-connected
           - entity: binary_sensor.220d_check_control_messages
             secondary_info: last-changed
           - entity: binary_sensor.220d_condition_based_services
@@ -1577,8 +1604,7 @@ views:
             icon: mdi:car-key
           - entity: binary_sensor.220d_lights_parking
             secondary_info: last-changed
-            icon: mdi:brightness-6
-            # icon: mdi:car-light-dimmed
+            icon: mdi:car-light-dimmed
           - entity: sensor.bmw_220d_mileage
             secondary_info: last-changed
           - entity: sensor.220d_remaining_fuel
