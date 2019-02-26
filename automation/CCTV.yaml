@@ -70,16 +70,16 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: device_tracker.div
+      entity_id: person.laurent
       from: "home"
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: person.div
       from: "home"
   condition:
     - condition: template
-      value_template: '{{ states("device_tracker.lolo") != "home"}}'
+      value_template: '{{ states("person.laurent") != "home"}}'
     - condition: template
-      value_template: '{{ states("device_tracker.div") != "home"}}'
+      value_template: '{{ states("person.div") != "home"}}'
   action:
   - service: switch.turn_on
     entity_id: switch.dafang_living_room_status
@@ -90,10 +90,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: device_tracker.div
+      entity_id: person.laurent
       to: "home"
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: person.div
       to: "home"
   action:
   - service: switch.turn_off

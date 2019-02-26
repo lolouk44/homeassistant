@@ -120,7 +120,7 @@
   action:
   - service: tts.google_say
     data_template:
-      entity_id: media_player.mpd_rpi_zero_w
+      entity_id: media_player.mpd_rpi_kitchen
       message: |
         Good morning. Today is 
         {{as_timestamp(now()) | timestamp_custom('%A')}}, {% set day = (as_timestamp(now()) | timestamp_custom('%d')) |int-%}

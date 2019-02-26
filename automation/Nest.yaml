@@ -8,10 +8,10 @@
       entity_id: group.pirs
       to: 'on'
     - platform: state
-      entity_id: device_tracker.div
+      entity_id: person.div
       to: "home"
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: person.laurent
       to: "home"
   condition:
     - condition: state
@@ -24,9 +24,9 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states("device_tracker.lolo") == "home"}}'
+        value_template: '{{ states("person.laurent") == "home"}}'
       - condition: template
-        value_template: '{{ states("device_tracker.div") == "home"}}'
+        value_template: '{{ states("person.div") == "home"}}'
   action:
     - service: climate.set_away_mode
       data:
@@ -43,10 +43,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: device_tracker.div
+      entity_id: person.laurent
       from: "home"
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: person.div
       from: "home"
   condition:
     - condition: state
@@ -60,9 +60,9 @@
       entity_id: 'input_boolean.normal'
       state: "on"
     - condition: template
-      value_template: '{{ states("device_tracker.lolo") != "home"}}'
+      value_template: '{{ states("person.laurent") != "home"}}'
     - condition: template
-      value_template: '{{ states("device_tracker.div") != "home"}}'
+      value_template: '{{ states("person.div") != "home"}}'
   action:
     - service: climate.set_temperature
       data:

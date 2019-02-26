@@ -125,19 +125,19 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: device_tracker.div
+      entity_id: person.laurent
       from: "home"
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: person.div
       from: "home"
   condition:
     - condition: state
       entity_id: input_boolean.normal
       state: "on"
     - condition: template
-      value_template: '{{ states("device_tracker.lolo") != "home"}}'
+      value_template: '{{ states("person.laurent") != "home"}}'
     - condition: template
-      value_template: '{{ states("device_tracker.div") != "home"}}'
+      value_template: '{{ states("person.div") != "home"}}'
     - condition: state
       entity_id: input_boolean.scheduled_vacuuming
       state: "on"

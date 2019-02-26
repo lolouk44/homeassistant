@@ -44,6 +44,11 @@ http:
     - 127.0.0.1
     - ::1
     - 192.168.0.0/24
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
+    # - 192.168.0.0/24
   ip_ban_enabled: false
   login_attempts_threshold: 3
 
@@ -69,7 +74,7 @@ logbook:
 enable_debug:
 logger:
   default: error
-  # logs:
+  logs:
     # homeassistant.components.http: warning
     # homeassistant.components.camera: error
     # requests.packages.urllib3: critical
@@ -80,7 +85,7 @@ logger:
     # homeassistant.components.sensor.rest: critical
     # aiohttp.server: critical
     # homeassistant.components.rfxtrx: debug
-    # homeassistant.components.sensor.scrape: critical
+    homeassistant.components.sensor.scrape: critical
     # homeassistant.components.sensor.rest: critical
 
 
@@ -176,14 +181,14 @@ media_player:
       network: 'ChromeCast'
       tv: 'TV'
       strm-box: 'Stream-Box'
-    zone2: true
+    # zone2: true
   - platform: panasonic_viera
     host: 192.168.0.27
   - platform: plex
   - platform: mpd
     host: 192.168.0.21
     port: 6600
-    name: MPD RPi Zero W
+    name: MPD RPi Kitchen
 
 mqtt:
   client_id: home-assistant-1
@@ -196,12 +201,32 @@ nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
 
+person:
+  - name: Laurent
+    id: laurent
+    user_id: !secret ha_lolo_user_id
+    device_trackers:
+      - device_tracker.lolos_iphone
+      - device_tracker.google_maps_110345542315981072615
+      - device_tracker.laurent_mah_iphone_5s
+      - device_tracker.lolosiphone
+      - device_tracker.laurent
+  - name: Div
+    id: divashni
+    user_id: !secret ha_div_user_id
+    device_trackers:
+      - device_tracker.div_iphone
+      - device_tracker.diviphone
+
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
 
 recorder:
   db_url: !secret db_url
   # purge_interval: 0
+
+# speedtestdotnet:
+  # scan_interval: '04:00'
 
 sun:
 

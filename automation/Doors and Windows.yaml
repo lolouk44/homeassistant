@@ -72,16 +72,16 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: device_tracker.div
+      entity_id: person.laurent
       from: "home"
     - platform: state
-      entity_id: device_tracker.lolo
+      entity_id: person.div
       from: "home"
   condition:
     - condition: template
-      value_template: '{{ states("device_tracker.lolo") != "home"}}'
+      value_template: '{{ states("person.laurent") != "home"}}'
     - condition: template
-      value_template: '{{ states("device_tracker.div") != "home"}}'
+      value_template: '{{ states("person.div") != "home"}}'
     - condition: state
       entity_id: binary_sensor.conservatory_skylight_left
       state: 'on'

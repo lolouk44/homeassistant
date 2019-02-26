@@ -2,7 +2,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: device_tracker.lolo
+    entity_id: person.laurent
     from: "Verint"
   condition:
   - condition: time
@@ -18,7 +18,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: device_tracker.lolo
+    entity_id: person.laurent
     to: "Verint"
   condition:
   - condition: time
@@ -33,7 +33,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: device_tracker.div
+    entity_id: person.div
     from: "CBC"
   condition:
   - condition: time
@@ -57,7 +57,7 @@
       entity_id: device_tracker.div
       from: "home"
     - platform: state
-      entity_id: device_tracker.laurent
+      entity_id: person.laurent
       from: "home"
   condition:
     - condition: template
@@ -126,16 +126,7 @@
   initial_state: true
   trigger:
       - platform: state
-        entity_id: 'device_tracker.lolos_iphone'
-      # - platform: state
-        # entity_id: 'device_tracker.google_maps_110345542315981072615'
-      - platform: state
-        entity_id: 'device_tracker.laurent_mah_iphone_5s'
-      - platform: state
-        entity_id: 'device_tracker.lolosiphone'
-        to: 'home'
-      - platform: state
-        entity_id: device_tracker.laurent
+        entity_id: person.laurent
   action:
     service: mqtt.publish
     data_template:
@@ -147,12 +138,7 @@
   initial_state: true
   trigger:
       - platform: state
-        entity_id: device_tracker.div_iphone
-      # - platform: state
-        # entity_id: device_tracker.google_maps_113578038090869627198
-      - platform: state
-        entity_id: device_tracker.diviphone
-        to: 'home'
+        entity_id: person.div
   action:
     service: mqtt.publish
     data_template:
