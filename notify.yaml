@@ -29,3 +29,9 @@
   host: 192.168.0.28
   duration: 3
   interrupt: on
+  
+- platform: group
+  name: divandlolo
+  services:
+    - service: ios_lolos_iphone
+    - service: ios_div_iphone

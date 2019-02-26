@@ -131,7 +131,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.ram_usage_lost
+      entity_id: sensor.ram_usage
   condition:
     - condition: template
       value_template: '{{states("alert.ram_usage_lost") != "idle"}}'

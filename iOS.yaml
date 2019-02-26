@@ -27,3 +27,12 @@ push:
           authenticationRequired: yes
           destructive: yes
           behavior: 'default'
+    - name: Arm_Alarm
+      identifier: 'armalarm'
+      actions:
+        - identifier: 'ARM_ALARM'
+          title: 'Arm Alarm'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'

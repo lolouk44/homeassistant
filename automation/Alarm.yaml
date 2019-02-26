@@ -57,7 +57,7 @@
         media_content_type: 'audio/mp3'
 
 
-- alias: 'Alarm - Notify when triggered'
+- alias: 'Alarm - Alarm Triggered'
   initial_state: true
   trigger:
     - platform: state
@@ -69,6 +69,12 @@
         gw_mac: 7811dcdae94a
         ringtone_id: 2
         ringtone_vol: 100
+    # play alert, 0.9 on onkyo, 1 on conservatory, google minis
+    # - service: media_player.play_media
+      # data:
+        # entity_id: media_player.google_home_minis
+        # media_content_id: 'http://192.168.0.24/audio/Alarm-Intrusion.mp3'
+        # media_content_type: 'audio/mp3'
     - service: switch.turn_off
       data:
         entity_id: switch.kerui_alarm
@@ -76,6 +82,9 @@
       data:
         entity_id: camera.fire7
         filename: '/config/www/CCTV_Snapshots/Fire7.jpg'
+    - service: switch.turn_off
+      data:
+        entity_id: switch.kerui_alarm
     - service: camera.snapshot
       data:
         entity_id: camera.front
@@ -264,13 +273,20 @@
     - service: switch.turn_on
       data:
         entity_id: switch.kerui_disarm
+    # - service: media_player.play_media
+      # data:
+        # media_content_id: 'http://192.168.0.24/audio/1sec.mp3'
+        # media_content_type: 'audio/mp3'
+    - service: switch.turn_on
+      data:
+        entity_id: switch.kerui_disarm
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
         media_content_id: 'http://192.168.0.24/audio/Armed_Disarmed.mp3'
         media_content_type: 'audio/mp3'
-    - delay:
-        seconds: 2
+    # - delay:
+        # seconds: 2
     - service: light.turn_off
       data:
         entity_id: light.gateway_light_7811dcdae94a
@@ -278,6 +294,11 @@
       data_template:
         entity_id: media_player.google_home_minis
         volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}'
+    # - service: media_player.turn_off
+      # entity_id: media_player.panasonic_viera_tv
+    # - service: media_player.turn_off
+      # entity_id: media_player.onkyo_tx_nr656
+
 
 
 - alias: 'Alarm - Armed'
@@ -440,6 +461,72 @@
       data:
         code: !secret alarm_code
 
+- alias: Alarm - Remote Arm
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data:
+        entity_id: switch.kerui_remote_lock
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.alarm
+      data:
+        code: !secret alarm_code
+
+- alias: Alarm - Remote Disarm
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data:
+        entity_id: switch.kerui_remote_unlock
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.alarm
+      data:
+        code: !secret alarm_code
+
+
+- alias: Alarm - Notify to Arm when leaving home unarmed
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.div
+      from: "home"
+    - platform: state
+      entity_id: person.laurent
+      from: "home"
+  condition:
+    - condition: template
+      value_template: '{{ states("person.laurent") != "home"}}'
+    - condition: template
+      value_template: '{{ states("person.div") != "home"}}'
+    - condition: template
+      value_template: "{{ states('alarm_control_panel.alarm') != 'armed away' }}"
+  action:
+    - service: notify.ios_lolos_iphone
+      data_template:
+        message: 'The alarm has not been armed !'
+        data:
+          push:
+            badge: '{{states("counter.iosbadgecount")}}'
+            category: "armalarm"
+          action_data:
+            entity_id: alarm_control_panel.alarm
+
+- alias: Alarm - Arm Alarm from iOS Notification
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: ARM_ALARM
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.alarm
+      data:
+        code: !secret alarm_code
 
 # {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}
   # {% if is_state(state,"on")%}{{state_attr(state,"friendly_name")}}, {%else%}{% endif %} 
