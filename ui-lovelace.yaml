@@ -7,17 +7,17 @@ resources:
   - url: /local/group-card.js
     type: js
     #Mini media player https://github.com/kalkih/mini-media-player
-  - url: /local/mini-media-player-bundle.js?ver=1.0.1
+  - url: /local/mini-media-player-bundle.js?ver=1.0.2
     type: module
     #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
-  - url: /local/vertical-stack-in-card.js?v=0.0.9
+  - url: /local/vertical-stack-in-card.js?v=0.1.1
     type: js
     #Swiper Card https://community.home-assistant.io/t/lovelace-swiper-card/72447
     # https://github.com/bramkragten/custom-ui/tree/master/swipe-card
   # - url: /local/custom-lovelace/swipe-card/swipe-card.js?v=1.1.0
     # type: module
-    #'https://github.com/custom-cards/tracker-card
-  - url: /local/tracker-card.js?v=0
+    # https://github.com/custom-cards/tracker-card
+  - url: /local/tracker-card.js?v=1.2.5
     type: js
     # Fully Kiosk https://github.com/thomasloven/lovelace-fullykiosk
   - url: /local/lovelace-fullykiosk.js
@@ -1192,6 +1192,7 @@ views:
           - sensor.cloakroom_window_battery
           - sensor.conservatory_single_door_battery
           - sensor.conservatory_double_door_battery
+          - sensor.doorbell_battery
           - sensor.fire7_battery
           - sensor.first_floor_smoke_detector_battery
           - sensor.ground_floor_smoke_detector_battery
@@ -1618,6 +1619,7 @@ views:
           - device_tracker.div_iphone
           - device_tracker.diviphone
           - device_tracker.google_maps_113578038090869627198
+          - device_tracker.laurent
           - device_tracker.lolos_iphone
           - device_tracker.lolosiphone
           - device_tracker.laurent_mah_iphone_5s
