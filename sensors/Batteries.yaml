@@ -1,67 +1,72 @@
 - platform: template
   sensors:
     aloe_vera_battery2:
-      friendly_name: Fire7 Battery
+      friendly_name: Aloe Vera Battery
       unit_of_measurement: '%'
-      value_template: '{{states("sensor.aloe_vera_battery")}}'
+      value_template: '{{states("sensor.aloe_vera_battery") | int}}'
       device_class: battery
     fire7_battery:
       friendly_name: Fire7 Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.fire7_motion", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.fire7_motion", "battery_level") | int}}'
       device_class: battery
     ground_floor_smoke_detector_battery:
       friendly_name: Ground Floor Smoke Detector Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.smoke_sensor_158d0001e642ae", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.smoke_sensor_158d0001e642ae", "battery_level") | int}}'
       device_class: battery
     first_floor_smoke_detector_battery:
       friendly_name: First Floor Smoke Detector Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.smoke_sensor_158d000205ac9c", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.smoke_sensor_158d000205ac9c", "battery_level") | int}}'
       device_class: battery
     aqara_hygro_battery:
       friendly_name: Aqara Hygro Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("sensor.pressure_158d0001f5218a", "battery_level")}}'
+      value_template: '{{state_attr("sensor.pressure_158d0001f5218a", "battery_level") | int}}'
       device_class: battery
     conservatory_single_door_battery:
       friendly_name: Conservatory Single Door Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d00022d2c49", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d00022d2c49", "battery_level") | int}}'
       device_class: battery
     conservatory_double_door_battery:
       friendly_name: Conservatory Double Door
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d0002435612", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d0002435612", "battery_level") | int}}'
+      device_class: battery
+    doorbell_battery:
+      friendly_name: Doorbell Battery
+      unit_of_measurement: '%'
+      value_template: '{% if state_attr("sensor.doorbell_sound", "Battery numeric")|int == 9 %}90{% else %}9{% endif %}'
       device_class: battery
     living_room_left_window_battery:
       friendly_name: Living Room Left Window Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d00022d2d3d", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d00022d2d3d", "battery_level") | int}}'
       device_class: battery
     living_room_right_window_battery:
       friendly_name: Living Room Right Window Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d0002434385", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d0002434385", "battery_level") | int}}'
       device_class: battery
     cloakroom_window_battery:
       friendly_name: Cloakroom Window Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d000232dcd3", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d000232dcd3", "battery_level") | int}}'
+      device_class: battery
+    loft_temperature_battery:
+      friendly_name: Loft Temperature Battery
+      unit_of_measurement: '%'
+      value_template: '{% if state_attr("sensor.loft_temperature", "Battery numeric")|int == 9 %}90{% else %}9{% endif %}'
       device_class: battery
     main_door_battery:
       friendly_name: Main Door Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d000232ddf8", "battery_level")}}'
+      value_template: '{{state_attr("binary_sensor.door_window_sensor_158d000232ddf8", "battery_level") | int}}'
       device_class: battery
-    loft_temperature_battery:
-      friendly_name: Loft Temperature Battery
-      # unit_of_measurement: '%'
-      value_template: '{{state_attr("sensor.loft_temperature", "battery_numeric")}}'
-      # device_class: battery
     upstairs_temperature_battery:
       friendly_name: Upstairs Temperature Battery
-      # unit_of_measurement: '%'
-      value_template: '{{state_attr("sensor.upstairs_temperature", "battery_numeric")}}'
-      # device_class: battery
+      unit_of_measurement: '%'
+      value_template: '{% if state_attr("sensor.upstairs_temperature", "Battery numeric")|int == 9 %}90{% else %}9{% endif %}'
+      device_class: battery
