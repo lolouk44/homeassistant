@@ -8,10 +8,14 @@
       name: Conservatory Skylight Left
       device_class: window
     # 09130007a68a42012970:
-      # name: Kerui Disarm
+      # name: Kerui Remote Disarm
+      # fire_event: true
     # 09130008a68a44012b70:
-      # name: Kerui Arm Away
+      # name: Kerui Remote Arm Away
+      # fire_event: true
     # 09130009a68a48012b70:
-      # name: Kerui Panic
+      # name: Kerui Remote Panic
+      # fire_event: true
     # 0913000aa68a41012970:
-      # name: Kerui Arm Home
+      # name: Kerui Remote Arm Home
+      # fire_event: true
