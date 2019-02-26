@@ -10,6 +10,7 @@ chromecast_radio_station:
     - Radio Fiji Two
     - RTL2
     - Custom Station
+  initial: RTL2
   icon: mdi:radio
 
 chromecast_radio_speakers:

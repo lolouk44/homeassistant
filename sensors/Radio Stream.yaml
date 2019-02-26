@@ -1,19 +1,19 @@
 - platform: scrape
-  resource: https://www.rtl2.fr/direct
+  resource: https://www.6play.fr/rtl2/quel-est-ce-titre
   name: RTL2_Pic
-  select: 'img[class="pic img-echo timeline-media--music__img"]'
-  attribute: data-src
+  select: '.ecfper-2'
+  attribute: src
 
 - platform: scrape
-  resource: https://www.rtl2.fr/direct
+  resource: https://www.6play.fr/rtl2/quel-est-ce-titre
   name: RTL2_Artist
-  select: 'span[class="timeline-media--music__artist"]'
+  select: '.ecfper-6'
   value_template: '{{ value | title }}'
 
 - platform: scrape
-  resource: https://www.rtl2.fr/direct
+  resource: https://www.6play.fr/rtl2/quel-est-ce-titre
   name: RTL2_Track
-  select: 'strong[class="timeline-media--music__title"]'
+  select: '.ecfper-5'
   value_template: '{{ value | title }}'
 
 - platform: scrape
