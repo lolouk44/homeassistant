@@ -8,6 +8,8 @@
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
+    - condition: template
+      value_template: '{{state_attr("media_player.kodi","media_title").split(" ")[0] != "Pups"}}'
     - condition: or
       conditions:
       - condition: state

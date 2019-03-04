@@ -7,13 +7,44 @@
     for:
       minutes: 2
   - platform: state
+    entity_id: media_player.conservatory
+    to: 'off'
+    for:
+      minutes: 2
+  - platform: state
+    entity_id: media_player.kitchen
+    to: 'off'
+    for:
+      minutes: 2
+  - platform: state
     entity_id: media_player.onkyo
     to: 'off'
     for:
       minutes: 2
+  - platform: state
+    entity_id: media_player.onkyo_tx_nr656
+    to: 'off'
+    for:
+      minutes: 2
   condition:
-    - condition: template
-      value_template: '{% if (states("media_player.house") == "off") and (states("media_player.panasonic_viera_tv") == "off") %} true {% else %} false {% endif %}'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: media_player.house
+      state: 'off'
+    - condition: state
+      entity_id: media_player.conservatory
+      state: 'off'
+    - condition: state
+      entity_id: media_player.kitchen
+      state: 'off'
+    - condition: state
+      entity_id: media_player.onkyo
+      state: 'off'
+    - condition: state
+      entity_id: media_player.onkyo_tx_nr656
+      state: 'off'
   action:
   - service: media_player.turn_off
     entity_id: media_player.onkyo_tx_nr656
