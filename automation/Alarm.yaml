@@ -285,8 +285,6 @@
         entity_id: media_player.google_home_minis
         media_content_id: 'http://192.168.0.24/audio/Armed_Disarmed.mp3'
         media_content_type: 'audio/mp3'
-    # - delay:
-        # seconds: 2
     - service: light.turn_off
       data:
         entity_id: light.gateway_light_7811dcdae94a
@@ -499,12 +497,14 @@
       from: "home"
   condition:
     - condition: template
+      value_template: "{{ states('alarm_control_panel.alarm') == 'disarmed' }}"
+  action:
+    - delay:
+        minutes: 2
+    - condition: template
       value_template: '{{ states("person.laurent") != "home"}}'
     - condition: template
       value_template: '{{ states("person.div") != "home"}}'
-    - condition: template
-      value_template: "{{ states('alarm_control_panel.alarm') != 'armed away' }}"
-  action:
     - service: notify.ios_lolos_iphone
       data_template:
         message: 'The alarm has not been armed !'
