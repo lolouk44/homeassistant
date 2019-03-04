@@ -1,4 +1,4 @@
-- alias: Email when Front CCTV Disk Error
+- alias: CCTV - Email when Front CCTV Disk Error
   initial_state: true
   trigger:
   - platform: state
@@ -9,7 +9,7 @@
     data_template:
       message: Disk Error Detected on Front CCTV.
 
-- alias: Email when Front CCTV SD Card Full
+- alias: CCTV - Email when Front CCTV SD Card Full
   initial_state: true
   trigger:
   - platform: state
@@ -21,7 +21,7 @@
       message: SD Card on Front CCTV is full.
 
 
-- alias: Email when Back CCTV Disk Error
+- alias: CCTV - Email when Back CCTV Disk Error
   initial_state: true
   trigger:
   - platform: state
@@ -32,7 +32,7 @@
     data_template:
       message: Disk Error Detected on Back CCTV.
 
-- alias: Email when Back CCTV SD Card Full
+- alias: CCTV - Email when Back CCTV SD Card Full
   initial_state: true
   trigger:
   - platform: state
@@ -44,7 +44,7 @@
       message: SD Card on Back CCTV is full.
 
 
-- alias: Email when Side CCTV Disk Error
+- alias: CCTV - Email when Side CCTV Disk Error
   initial_state: true
   trigger:
   - platform: state
@@ -55,7 +55,7 @@
     data_template:
       message: Disk Error Detected on Side CCTV.
 
-- alias: Email when Side CCTV SD Card Full
+- alias: CCTV - Email when Side CCTV SD Card Full
   initial_state: true
   trigger:
   - platform: state
@@ -66,7 +66,7 @@
     data_template:
       message: SD Card on Side CCTV is full.
 
-- alias: Activate motion we leave home
+- alias: CCTV - Activate motion we leave home
   initial_state: true
   trigger:
     - platform: state
@@ -86,7 +86,7 @@
   - service: switch.turn_on
     entity_id: switch.dafang_kitchen_status
 
-- alias: Deactivate motion we reach home
+- alias: CCTV - Deactivate motion we reach home
   initial_state: true
   trigger:
     - platform: state
@@ -102,7 +102,7 @@
     entity_id: switch.dafang_kitchen_status
 
 
-- alias: Set Dafang Blue LED On
+- alias: CCTV - Set Dafang Blue LED On
   initial_state: true
   trigger:
     - platform: state
@@ -116,7 +116,7 @@
     data_template:
       entity_id: '{{ trigger.entity_id | replace("status","blue_led") }}'
 
-- alias: Set Dafang Yellow LED On
+- alias: CCTV - Set Dafang Yellow LED On
   initial_state: true
   trigger:
     - platform: state
@@ -129,3 +129,46 @@
   - service: switch.turn_on
     data_template:
       entity_id: '{{ trigger.entity_id | replace("status","yellow_led") }}'
+
+
+- alias: CCTV - Kitchen CCTV Motion Connection Lost
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.dafang_kitchen_connection_scrape
+      to: '	Lost connection'
+      for:
+        minutes: 3
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: Kitchen CCTV Motion Connection Lost!
+
+
+- alias: CCTV - Living Room CCTV Motion Connection Lost
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.dafang_living_room_connection_scrape
+      to: '	Lost connection'
+      for:
+        minutes: 3
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: Living Room CCTV Motion Connection Lost!
+
+
+- alias: CCTV - Garage CCTV Motion Connection Lost
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.cctv_garage_connection_scrape
+      to: '	Lost connection'
+      for:
+        minutes: 3
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      message: Garage CCTV Motion Connection Lost!
+
