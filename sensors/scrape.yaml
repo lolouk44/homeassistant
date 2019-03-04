@@ -17,6 +17,24 @@
   value_template: '{{ value.split("Detection status ")[1] }}'
 
 - platform: scrape
+  resource: http://192.168.0.24:8080/3/detection/connection
+  name: dafang_living_room_connection_scrape
+  select: "body"
+  value_template: '{{ value.split("Camera 3 ")[1] }}'
+
+- platform: scrape
+  resource: http://192.168.0.24:8080/4/detection/connection
+  name: dafang_kitchen_connection_scrape
+  select: "body"
+  value_template: '{{ value.split("Camera 4 ")[1] }}'
+
+- platform: scrape
+  resource: http://192.168.0.24:8080/2/detection/connection
+  name: cctv_garage_connection_scrape
+  select: "body"
+  value_template: '{{ value.split("Camera 2 ")[1] }}'
+
+- platform: scrape
   resource: https://www.home-assistant.io
   name: ha_online_version
   select: ".current-version h1"
