@@ -139,6 +139,11 @@ google:
   client_id: !secret GCal_ID
   client_secret: !secret GCal_Secret
 
+googlehome:
+  devices:
+    - host: 192.168.0.9
+    - host: 192.168.0.10
+
 ifttt:
   key: !secret ifttt_key
 
