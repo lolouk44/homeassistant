@@ -1,5 +1,0 @@
-Weather:
-  - sensor.dark_sky_minutely_summary
-  - sensor.dark_sky_hourly_summary
-  - camera.YrForecastCrawley
-  - camera.YrForecastWeybridge

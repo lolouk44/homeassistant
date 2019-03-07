@@ -1,7 +1,0 @@
-conservatory_sensors:
-  name: Sensors
-  entities:
-    - binary_sensor.pir_conservatory
-    - binary_sensor.door_window_sensor_158d00022d2c49
-    - binary_sensor.door_window_sensor_158d0002435612
-    - binary_sensor.conservatory_skylight_left

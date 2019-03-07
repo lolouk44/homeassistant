@@ -1,4 +1,4 @@
-Xmas:
+xmas:
   name: Xmas
   entities:
   - switch.lwrf_socket_xmas

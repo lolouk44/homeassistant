@@ -15,7 +15,7 @@
   action:
   - service: light.turn_on
     data:
-      entity_id: group.kitchen
+      entity_id: group.kitchen_lights
       brightness: 255
   - service: media_player.play_media
     data:
@@ -41,7 +41,7 @@
   action:
   - service: light.turn_off
     data:
-      entity_id: group.kitchen
+      entity_id: group.kitchen_lights
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis

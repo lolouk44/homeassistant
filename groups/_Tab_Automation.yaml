@@ -1,6 +1,0 @@
-Automation:
-  view: yes
-  icon: mdi:calendar-check
-  entities:
-    - weblink.automations
-    - group.all_automations

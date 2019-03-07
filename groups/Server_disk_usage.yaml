@@ -1,7 +1,0 @@
-server_disk_usage:
-  name: Disk Usage
-  control: hidden
-  entities:
-    - sensor.home_disk_usage
-    - sensor.root_disk_usage
-    - sensor.zfs_disk_usage

@@ -17,7 +17,7 @@
       entity_id: input_boolean.kello_mute_alarms
       to: 'on'
     - platform: state
-      entity_id: group.lolo_location
+      entity_id: person.laurent
       from: 'home'
     - platform: state
       entity_id: input_boolean.holidays
@@ -43,7 +43,7 @@
       entity_id: input_boolean.kello_mute_alarms
       to: 'off'
     - platform: state
-      entity_id: group.lolo_location
+      entity_id: person.laurent
       to: 'home'
     - platform: state
       entity_id: input_boolean.holidays

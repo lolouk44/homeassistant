@@ -1,9 +1,0 @@
-Radio:
-  name: ChromeCast Radio
-  icon: mdi:radio
-  entities:
-  - input_select.chromecast_radio_station
-  - input_text.custom_station
-  - input_select.chromecast_radio_speakers
-  - input_number.volume_radio
-  - script.play_chromecast_radio

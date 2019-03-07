@@ -43,9 +43,6 @@
       effect: colorfade_fast
   - service: light.turn_on
     data:
-      entity_id: group.baubles
-  - service: light.turn_on
-    data:
       entity_id: light.conservatory_led_strip
       effect: "rainbow"
       brightness: 255

@@ -61,9 +61,9 @@
       from: "home"
   condition:
     - condition: template
-      value_template: '{{ states("group.lolo_location") != "home"}}'
+      value_template: '{{ states("person.laurent") != "home"}}'
     - condition: template
-      value_template: '{{ states("group.div_location") != "home"}}'
+      value_template: '{{ states("person.div") != "home"}}'
   action:
   - service: media_player.turn_off
     entity_id: media_player.kitchen

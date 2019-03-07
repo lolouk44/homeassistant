@@ -1,4 +1,0 @@
-Kiaan_Bedroom_lights:
-  name: Lights
-  entities:
-    - light.kiaan_lamp

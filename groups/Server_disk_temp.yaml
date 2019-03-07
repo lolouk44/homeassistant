@@ -1,7 +1,0 @@
-server_disk_temp:
-  name: Disk Temperature
-  control: hidden
-  entities:
-    - sensor.sda_disk_temp
-    - sensor.zfs1_disk_temp
-    - sensor.zfs2_disk_temp

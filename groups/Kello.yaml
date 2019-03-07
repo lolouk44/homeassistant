@@ -1,9 +1,0 @@
-kello:
-  name: Kello
-  control: hidden
-  entities:
-    - binary_sensor.kello
-    - input_select.kello_radio_station
-    - input_number.volume_kello
-    - input_boolean.kello_play_stop
-    - input_boolean.kello_mute_alarms

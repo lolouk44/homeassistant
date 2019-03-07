@@ -1,7 +1,0 @@
-dehumidifier:
-  name: Dehumidifier
-  control: hidden
-  entities:
-    - switch.Dehumidifier
-    - sensor.Dehumidifier_Power
-    - input_boolean.dehumidifier_tank_full
