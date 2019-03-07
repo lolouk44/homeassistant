@@ -7,17 +7,17 @@ resources:
   - url: /local/group-card.js
     type: js
     #Mini media player https://github.com/kalkih/mini-media-player
-  - url: /local/mini-media-player-bundle.js?ver=1.0.2
+  - url: /local/mini-media-player-bundle.js
     type: module
     #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
-  - url: /local/vertical-stack-in-card.js?v=0.1.1
+  - url: /local/vertical-stack-in-card.js
     type: js
     #Swiper Card https://community.home-assistant.io/t/lovelace-swiper-card/72447
     # https://github.com/bramkragten/custom-ui/tree/master/swipe-card
   # - url: /local/custom-lovelace/swipe-card/swipe-card.js?v=1.1.0
     # type: module
     # https://github.com/custom-cards/tracker-card
-  - url: /local/tracker-card.js?v=1.2.5
+  - url: /local/tracker-card.js?track=true
     type: js
     # Fully Kiosk https://github.com/thomasloven/lovelace-fullykiosk
   - url: /local/lovelace-fullykiosk.js
@@ -1101,12 +1101,10 @@ views:
       - type: map
         entities:
           - device_tracker.div_iphone
-          - device_tracker.google_maps_113578038090869627198
           - device_tracker.laurent
           - device_tracker.lolos_iphone
           - device_tracker.lolosiphone
           - device_tracker.laurent_mah_iphone_5s
-          - device_tracker.google_maps_110345542315981072615
           - device_tracker.tile_1dd2bf719e0233c1
           - device_tracker.tile_50596aa49d611bee
           - entity: device_tracker.220d
@@ -1618,10 +1616,8 @@ views:
         entities:
           - device_tracker.div_iphone
           - device_tracker.diviphone
-          - device_tracker.google_maps_113578038090869627198
           - device_tracker.laurent
           - device_tracker.lolos_iphone
           - device_tracker.lolosiphone
           - device_tracker.laurent_mah_iphone_5s
-          - device_tracker.google_maps_110345542315981072615
           - device_tracker.220d

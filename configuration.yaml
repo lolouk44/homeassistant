@@ -21,8 +21,6 @@ custom_updater:
     - cards
     - components
     - python_scripts
-  card_urls:
-    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
   component_urls:
     - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
   python_script_urls:
@@ -30,6 +28,7 @@ custom_updater:
 
 
 config:
+default_config:
 
 # Enables the front end
 frontend: 
@@ -86,7 +85,7 @@ logger:
     # aiohttp.server: critical
     # homeassistant.components.rfxtrx: debug
     homeassistant.components.sensor.scrape: critical
-    # homeassistant.components.sensor.rest: critical
+    homeassistant.components.sensor.rest: critical
 
 
 #Config Split
@@ -139,10 +138,10 @@ google:
   client_id: !secret GCal_ID
   client_secret: !secret GCal_Secret
 
-googlehome:
-  devices:
-    - host: 192.168.0.9
-    - host: 192.168.0.10
+# googlehome:
+  # devices:
+    # - host: 192.168.0.9
+    # - host: 192.168.0.10
 
 ifttt:
   key: !secret ifttt_key
@@ -212,7 +211,6 @@ person:
     user_id: !secret ha_lolo_user_id
     device_trackers:
       - device_tracker.lolos_iphone
-      - device_tracker.google_maps_110345542315981072615
       - device_tracker.laurent_mah_iphone_5s
       - device_tracker.lolosiphone
       - device_tracker.laurent
