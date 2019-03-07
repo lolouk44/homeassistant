@@ -115,3 +115,16 @@
         message: >
           Login Attempt Failed\n
           http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ state_attr("persistent_notification.httplogin", "message").split ("from ") [1]}}
+
+
+- alias: hasspodcast Update Available
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.ha_podcast_track
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: >
+          There is a new hass podcast: {{ states("sensor.ha_podcast_track")}}
+
