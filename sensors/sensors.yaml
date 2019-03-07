@@ -6,7 +6,7 @@
 
 - platform: waze_travel_time
   name: Lolo to Home
-  origin: device_tracker.laurent
+  origin: person.laurent
   destination: !secret postcode_home
   region: 'EU'
 
@@ -29,16 +29,6 @@
     - precip_intensity_max
     - wind_speed
     - wind_gust
-
-# - platform: wunderground
-  # api_key: !secret wu_api_key
-  # monitored_conditions:
-    # - precip_today_metric
-    # - precip_1d_mm 
-    # - precip_1d 
-    # - wind_dir
-    # - wind_1d_kph 
-    # - wind_gust_1d_kph 
 
 - platform: template
   sensors:
