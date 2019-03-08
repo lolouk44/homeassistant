@@ -31,6 +31,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - iPad Air 2
 - [Kello](https://www.getkello.com/) Smart Alarm
 - Kerui J008 Strobe Sirens in Yale Dummy Box
+- Kerui RC531 Remote Control
 - LightWaveRF [Switches](https://lightwaverf.com/products/smart-dimmer-2-gang?variant=16341551480921) & [Sockets](https://lightwaverf.com/products/basic-remote-on-off-socket-kit)
 - Nest V3 Thermostat
 - Onkyo TX-NR656 AV Amplifier
