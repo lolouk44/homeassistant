@@ -17,10 +17,6 @@
     - platform: homeassistant
       event: start
   action:
-  # - service: group.set_visibility
-    # entity_id: group.alerts
-    # data_template:
-      # visible: '{{states("counter.iosbadgecount") | int > 0}}'
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis
