@@ -58,7 +58,7 @@ lovelace:
 updater:
   include_used_components: True
 
-#discovery:
+# discovery:
 
 # Enables support for tracking state changes over time.
 history:
@@ -220,6 +220,7 @@ person:
     device_trackers:
       - device_tracker.div_iphone
       - device_tracker.diviphone
+      - device_tracker.divashni
 
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
