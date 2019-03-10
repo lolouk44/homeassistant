@@ -54,6 +54,9 @@
       to: 'unlocked'
       for:
         minutes: 5
+  condition:
+    - condition: template
+      value_template: '{{ states("person.laurent") != "driving"}}'
   action:
     - service: notify.ios_lolos_iphone
       data_template:
