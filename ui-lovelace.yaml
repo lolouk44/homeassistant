@@ -31,12 +31,20 @@ views:
     cards:
       - type: entity-filter
         entities:
-          - entity: binary_sensor.door_window_sensor_158d000232dcd3
-          - entity: binary_sensor.door_window_sensor_158d00022d2d3d
-          - entity: binary_sensor.door_window_sensor_158d0002434385
           - entity: binary_sensor.conservatory_skylight_left
-          - entity: binary_sensor.door_window_sensor_158d00022d2c49
-          - entity: binary_sensor.door_window_sensor_158d0002435612
+          - entity: binary_sensor.conservatory_single_door
+          - entity: binary_sensor.conservatory_double_door
+          - entity: binary_sensor.living_room_right_window
+          - entity: binary_sensor.living_room_left_window
+          - entity: binary_sensor.master_bedroom_right_window
+          - entity: binary_sensor.master_bedroom_left_window
+          - entity: binary_sensor.cloakroom_window
+          - entity: binary_sensor.bathroom_window
+          - entity: binary_sensor.kiaan_big_window
+          - entity: binary_sensor.kiaan_small_window
+          - entity: binary_sensor.blue_room_big_window
+          - entity: binary_sensor.blue_room_small_window
+          - entity: binary_sensor.kitchen_window
         state_filter:
           - "on"
         show_empty: false
@@ -379,9 +387,9 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.photoresistor
             secondary_info: last-changed
-          - entity: binary_sensor.door_window_sensor_158d00022d2d3d
+          - entity: binary_sensor.living_room_left_window
             secondary_info: last-changed
-          - entity: binary_sensor.door_window_sensor_158d0002434385
+          - entity: binary_sensor.living_room_right_window
             secondary_info: last-changed
       - type: custom:vertical-stack-in-card
         cards:
@@ -633,13 +641,20 @@ views:
         - sensor.dark_sky_temperature
         - sensor.dark_sky_humidity
         - sensor.precipitation
-
         - sensor.dark_sky_overnight_low_temperature_0
         - sensor.dark_sky_daytime_high_temperature_0
         - sensor.home_to_work
         - sensor.lolo_to_home
         - sensor.sunset_time
     cards:
+      - type: entities
+        title: Sensors
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.pir_kitchen
+            secondary_info: last-changed
+          - entity: binary_sensor.kitchen_window
+            secondary_info: last-changed
       - type: custom:vertical-stack-in-card
         cards:
         - type: picture-glance
@@ -665,7 +680,7 @@ views:
             secondary_info: last-changed
           - input_select.mm_cam_feed
       - type: entities
-        title: Kettle
+        title: Edimax
         show_header_toggle: false
         entities:
           - sensor.edimax1_watts
@@ -697,9 +712,9 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.garage_back_door
             secondary_info: last-changed
-          - entity: binary_sensor.door_window_sensor_158d000232ddf8
+          - entity: binary_sensor.cloakroom_window
             secondary_info: last-changed
-          - entity: binary_sensor.door_window_sensor_158d000232dcd3
+          - entity: binary_sensor.main_door
             secondary_info: last-changed
           - entity: sensor.doorbell_last_rang
             secondary_info: last-changed
@@ -788,9 +803,9 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.conservatory_skylight_left
             secondary_info: last-changed
-          - entity: binary_sensor.door_window_sensor_158d00022d2c49
+          - entity: binary_sensor.conservatory_single_door
             secondary_info: last-changed
-          - entity: binary_sensor.door_window_sensor_158d0002435612
+          - entity: binary_sensor.conservatory_double_door
             secondary_info: last-changed
       - type: entities
         title: Aloe Vera
@@ -898,6 +913,10 @@ views:
           secondary_info: last-changed
         - entity: sensor.pressure_158d0001f5218a
           secondary_info: last-changed
+        - entity: binary_sensor.master_bedroom_left_window
+          secondary_info: last-changed
+        - entity: binary_sensor.master_bedroom_right_window
+          secondary_info: last-changed
       - type: entities
         title: Kello
         show_header_toggle: false
@@ -946,6 +965,10 @@ views:
           - entity: sensor.upstairs_temperature
             secondary_info: last-changed
           - entity: sensor.upstairs_humidity
+            secondary_info: last-changed
+          - entity: binary_sensor.kiaan_big_window
+            secondary_info: last-changed
+          - entity: binary_sensor.kiaan_small_window
             secondary_info: last-changed
       - type: entities
         title: Kiaan's Bedroom Lights
@@ -1102,6 +1125,7 @@ views:
         entities:
           - device_tracker.div_iphone
           - device_tracker.laurent
+          - device_tracker.divashni
           - device_tracker.lolos_iphone
           - device_tracker.lolosiphone
           - device_tracker.laurent_mah_iphone_5s
@@ -1187,15 +1211,23 @@ views:
         entities:
           - sensor.aloe_vera_battery2
           - sensor.aqara_hygro_battery
+          - sensor.bathroom_window_battery
           - sensor.cloakroom_window_battery
+          - sensor.blue_room_big_window_battery
+          - sensor.blue_room_small_window_battery
           - sensor.conservatory_single_door_battery
           - sensor.conservatory_double_door_battery
           - sensor.doorbell_battery
           - sensor.fire7_battery
           - sensor.first_floor_smoke_detector_battery
           - sensor.ground_floor_smoke_detector_battery
+          - sensor.kiaan_big_window_battery
+          - sensor.kiaan_small_window_battery
+          - sensor.kitchen_window_battery
           - sensor.living_room_left_window_battery
           - sensor.living_room_right_window_battery
+          - sensor.master_bedroom_left_window_battery
+          - sensor.master_bedroom_right_window_battery
           - sensor.main_door_battery
           - sensor.loft_temperature_battery
           - sensor.upstairs_temperature_battery
@@ -1617,6 +1649,7 @@ views:
           - device_tracker.div_iphone
           - device_tracker.diviphone
           - device_tracker.laurent
+          - device_tracker.divashni
           - device_tracker.lolos_iphone
           - device_tracker.lolosiphone
           - device_tracker.laurent_mah_iphone_5s

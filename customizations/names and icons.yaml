@@ -23,23 +23,33 @@ binary_sensor.bmw_220d_doordriverrear:
   icon: mdi:car-door
 binary_sensor.bmw_220d_doorpassengerrear:
   icon: mdi:car-door
-binary_sensor.door_window_sensor_158d00022d2c49:
-  friendly_name: Conservatory Single Door
+binary_sensor.conservatory_single_door:
   device_class: door
-binary_sensor.door_window_sensor_158d0002435612:
-  friendly_name: Conservatory Double Door
+binary_sensor.conservatory_double_door:
   device_class: door
-binary_sensor.door_window_sensor_158d0002434385:
-  friendly_name: Living Room Right Window
+binary_sensor.living_room_right_window:
   device_class: window
-binary_sensor.door_window_sensor_158d00022d2d3d:
-  friendly_name: Living Room Left Window
+binary_sensor.living_room_left_window:
   device_class: window
-binary_sensor.door_window_sensor_158d000232dcd3:
-  friendly_name: Cloakroom Window
+binary_sensor.master_bedroom_right_window:
   device_class: window
-binary_sensor.door_window_sensor_158d000232ddf8:
-  friendly_name: Main Door
+binary_sensor.master_bedroom_left_window:
+  device_class: window
+binary_sensor.cloakroom_window:
+  device_class: window
+binary_sensor.bathroom_window:
+  device_class: window
+binary_sensor.kiaan_big_window:
+  device_class: window
+binary_sensor.kiaan_small_window:
+  device_class: window
+binary_sensor.kitchen_window:
+  device_class: window
+binary_sensor.blue_room_big_window:
+  device_class: window
+binary_sensor.blue_room_small_window:
+  device_class: window
+binary_sensor.main_door:
   device_class: door
 binary_sensor.front_cctv_disk_error:
   icon: mdi:harddisk
@@ -88,6 +98,8 @@ device_tracker.lolo:
 device_tracker.div:
   friendly_name: 'Div'
   entity_picture: /local/Div_Avatar.jpg
+device_tracker.divashni:
+  entity_picture: /local/Div_Avatar2.jpg
 device_tracker.tile_50596aa49d611bee:
   friendly_name: 'Tile Wallet'
 device_tracker.tile_1dd2bf719e0233c1:

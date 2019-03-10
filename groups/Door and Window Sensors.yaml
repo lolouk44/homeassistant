@@ -1,9 +1,17 @@
 door_and_window_sensors:
   name: Door & Window Sensors
   entities:
-    - binary_sensor.door_window_sensor_158d00022d2c49
-    - binary_sensor.door_window_sensor_158d0002435612
     - binary_sensor.conservatory_skylight_left
-    - binary_sensor.door_window_sensor_158d0002434385
-    - binary_sensor.door_window_sensor_158d00022d2d3d
-    - binary_sensor.door_window_sensor_158d000232dcd3
+    - binary_sensor.conservatory_single_door
+    - binary_sensor.conservatory_double_door
+    - binary_sensor.living_room_right_window
+    - binary_sensor.living_room_left_window
+    - binary_sensor.master_bedroom_right_window
+    - binary_sensor.master_bedroom_left_window
+    - binary_sensor.cloakroom_window
+    - binary_sensor.bathroom_window
+    - binary_sensor.kiaan_big_window
+    - binary_sensor.kiaan_small_window
+    - binary_sensor.blue_room_big_window
+    - binary_sensor.blue_room_small_window
+    - binary_sensor.kitchen_window

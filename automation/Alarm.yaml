@@ -3,17 +3,21 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.pir_conservatory
-        - binary_sensor.pir_kitchen
-        - binary_sensor.pir_living_room_front
-        - binary_sensor.pir_living_room_back
-        - binary_sensor.door_window_sensor_158d00022d2c49
-        - binary_sensor.door_window_sensor_158d0002435612
         - binary_sensor.conservatory_skylight_left
-        - binary_sensor.door_window_sensor_158d0002434385
-        - binary_sensor.door_window_sensor_158d00022d2d3d
-        - binary_sensor.door_window_sensor_158d000232dcd3
-        - binary_sensor.door_window_sensor_158d000232ddf8
+        - binary_sensor.conservatory_single_door
+        - binary_sensor.conservatory_double_door
+        - binary_sensor.living_room_right_window
+        - binary_sensor.living_room_left_window
+        - binary_sensor.master_bedroom_right_window
+        - binary_sensor.master_bedroom_left_window
+        - binary_sensor.cloakroom_window
+        - binary_sensor.bathroom_window
+        - binary_sensor.kiaan_big_window
+        - binary_sensor.kiaan_small_window
+        - binary_sensor.blue_room_big_window
+        - binary_sensor.blue_room_small_window
+        - binary_sensor.main_door
+        - binary_sensor.kitchen_window
       to: 'on'
   condition:
     - condition: state
@@ -24,13 +28,20 @@
       - condition: template
         value_template: >
           {%- set pirs = [
-                states.binary_sensor.door_window_sensor_158d00022d2c49,
-                states.binary_sensor.door_window_sensor_158d0002435612,
-                states.binary_sensor.conservatory_skylight_left,
-                states.binary_sensor.door_window_sensor_158d0002434385,
-                states.binary_sensor.door_window_sensor_158d00022d2d3d,
-                states.binary_sensor.door_window_sensor_158d000232dcd3,
-                states.binary_sensor.door_window_sensor_158d000232ddf8 ] -%}
+          states.binary_sensor.conservatory_single_door,
+          states.binary_sensor.conservatory_double_door,
+          states.binary_sensor.living_room_right_window,
+          states.binary_sensor.living_room_left_window,
+          states.binary_sensor.master_bedroom_right_window,
+          states.binary_sensor.master_bedroom_left_window,
+          states.binary_sensor.cloakroom_window,
+          states.binary_sensor.bathroom_window,
+          states.binary_sensor.kiaan_big_window,
+          states.binary_sensor.kiaan_small_window,
+          states.binary_sensor.blue_room_big_window,
+          states.binary_sensor.blue_room_small_window,
+          states.binary_sensor.kitchen_window,
+          states.binary_sensor.main_door ] -%}
           {%- set pirs_on = pirs | selectattr('state','eq','on') | list -%}
           {{ ((pirs_on | length) | int ) >= 1}}
       - condition: template
@@ -116,7 +127,7 @@
           ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
-          {% if is_state('binary_sensor.door_window_sensor_158d000232ddf8','on') %}Main Door,{% endif%}
+          {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
           {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
           {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
           {%- endfor %})
@@ -136,7 +147,7 @@
           ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
-          {% if is_state('binary_sensor.door_window_sensor_158d000232ddf8','on') %}Main Door,{% endif%}
+          {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
           {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
           {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
           {%- endfor %})
@@ -156,7 +167,7 @@
           ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
-          {% if is_state('binary_sensor.door_window_sensor_158d000232ddf8','on') %}Main Door,{% endif%}
+          {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
           {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
           {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
           {%- endfor %})
@@ -221,10 +232,10 @@
         entity_id: media_player.google_home_minis
         media_content_id: 'http://192.168.0.24/audio/Alarm-CountDown.mp3'
         media_content_type: 'audio/mp3'
-    - wait_template: "{{ is_state('binary_sensor.door_window_sensor_158d000232ddf8', 'on') }}"
+    - wait_template: "{{ is_state('binary_sensor.main_door', 'on') }}"
       timeout: '00:00:30'
       continue_on_timeout: 'true'
-    - wait_template: "{{ is_state('binary_sensor.door_window_sensor_158d000232ddf8', 'off') }}"
+    - wait_template: "{{ is_state('binary_sensor.main_door', 'off') }}"
       timeout: '00:00:30'
       continue_on_timeout: 'true'
     - condition: template
