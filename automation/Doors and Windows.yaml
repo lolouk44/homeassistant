@@ -16,6 +16,7 @@
         - binary_sensor.kiaan_small_window
         - binary_sensor.blue_room_big_window
         - binary_sensor.blue_room_small_window
+        - binary_sensor.kitchen_window
         - binary_sensor.main_door
       to: 'on'
   condition:
@@ -47,6 +48,7 @@
         - binary_sensor.kiaan_small_window
         - binary_sensor.blue_room_big_window
         - binary_sensor.blue_room_small_window
+        - binary_sensor.kitchen_window
         - binary_sensor.main_door
       to: 'off'
   condition:

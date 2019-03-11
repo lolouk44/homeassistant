@@ -22,7 +22,7 @@
   - service: light.turn_on
     data:
       entity_id: light.kiaan_lamp
-      brightness: 1
+      brightness: 128
       rgb_color: [0,0,255]
       transition: 1
 
@@ -53,7 +53,7 @@
   - service: light.turn_on
     data:
       entity_id: light.kiaan_lamp
-      brightness: 1
+      brightness: 128
       rgb_color: [0,255,0]
       transition: 1
 
@@ -81,7 +81,7 @@
   - service: light.turn_on
     data:
       entity_id: light.kiaan_lamp
-      brightness: 1
+      brightness: 128
       rgb_color: [0,255,0]
       transition: 1
 

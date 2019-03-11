@@ -18,7 +18,7 @@ resources:
     # type: module
     # https://github.com/custom-cards/tracker-card
   - url: /local/tracker-card.js?track=true
-    type: js
+    type: module
     # Fully Kiosk https://github.com/thomasloven/lovelace-fullykiosk
   - url: /local/lovelace-fullykiosk.js
     type: js

@@ -525,6 +525,15 @@
             category: "armalarm"
           action_data:
             entity_id: alarm_control_panel.alarm
+    - service: notify.ios_diviphone
+      data_template:
+        message: 'The alarm has not been armed !'
+        data:
+          push:
+            badge: '{{states("counter.iosbadgecount")}}'
+            category: "armalarm"
+          action_data:
+            entity_id: alarm_control_panel.alarm
 
 - alias: Alarm - Arm Alarm from iOS Notification
   initial_state: true
