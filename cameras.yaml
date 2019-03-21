@@ -1,9 +1,9 @@
 - platform: mjpeg
   mjpeg_url: http://192.168.0.24:8082
   name: 'Front'
-- platform: mjpeg
-  mjpeg_url: http://192.168.0.24:8081
-  name: 'FrontHD'
+# - platform: mjpeg
+  # mjpeg_url: http://192.168.0.24:8081
+  # name: 'FrontHD'
 - platform: mjpeg
   mjpeg_url: http://192.168.0.24:8084
   name: 'Living Room'
@@ -16,6 +16,9 @@
 
 
 - platform: ffmpeg
+  input: !secret cctv_url_front
+  name: FrontHD
+- platform: ffmpeg
   input: !secret cctv_url_side
   name: Side
 - platform: ffmpeg
@@ -23,8 +26,8 @@
   name: Back
 
 - platform: generic
+  still_image_url: /config/www/navmap.png
   name: Vacuum Map
-  still_image_url: https://homeassistant.lolorpi.com/local/navmap.png
   content_type: image/png
   framerate: 1
 
@@ -65,3 +68,9 @@
 - name: Fire7
   platform: generic
   still_image_url: !secret fire7camshot
+  
+  
+- platform: generic
+  name: Streaming Enabled
+  still_image_url: https://homeassistant.lolorpi.com/local/navmap.png
+  stream_source: !secret cctv_url_front

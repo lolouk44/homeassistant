@@ -1,7 +1,12 @@
 homeassistant:
-  # auth_providers:
-   # - type: homeassistant
-  # Name of the location where Home Assistant is running
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 127.0.0.1
+        - ::1
+        - 192.168.0.0/24
+ # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude
@@ -39,10 +44,10 @@ http:
   # ssl_certificate: !secret ssl_certificate
   # ssl_key: !secret ssl_key
   base_url: !secret base_url
-  trusted_networks:
-    - 127.0.0.1
-    - ::1
-    - 192.168.0.0/24
+  # trusted_networks:
+    # - 127.0.0.1
+    # - ::1
+    # - 192.168.0.0/24
   use_x_forwarded_for: true
   trusted_proxies:
     - 127.0.0.1
@@ -86,6 +91,7 @@ logger:
     # homeassistant.components.rfxtrx: debug
     homeassistant.components.sensor.scrape: critical
     homeassistant.components.sensor.rest: critical
+    # homeassistant.components.sensor.waze_travel_time: debug # does not work
 
 
 #Config Split
