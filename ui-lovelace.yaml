@@ -3,9 +3,18 @@ resources:
     #Kiosk mode for Alarm panel https://gist.github.com/ciotlosm/1f09b330aa5bd5ea87b59f33609cc931
   - url: /local/kiosk.js
     type: js
-    #List entities in a group https://github.com/ciotlosm/custom-lovelace/tree/master/group-card
-  - url: /local/group-card.js
+    #https://github.com/thomasloven/lovelace-card-tools
+  - url: /local/card-tools.js?track=true
     type: js
+    # fold-entity https://github.com/thomasloven/lovelace-fold-entity-row
+  - url: /local/fold-entity-row.js?track=true
+    type: js
+    #auto-entities  https://github.com/thomasloven/lovelace-auto-entities
+  - url: /local/auto-entities.js?track=true
+    type: js
+    #List entities in a group https://github.com/ciotlosm/custom-lovelace/tree/master/group-card
+  # - url: /local/group-card.js
+    # type: js
     #Mini media player https://github.com/kalkih/mini-media-player
   - url: /local/mini-media-player-bundle.js
     type: module
@@ -25,6 +34,8 @@ resources:
   - url: /local/kiosk-config.js
     type: js
 views:
+  # - !include '/config/lovelace_views/lovelace_main_view.yaml'
+  # - !include '/config/lovelace_views/lovelace_media_view.yaml'
   - title: Alarm
     background: url("/local/verified.png") fixed
     icon: mdi:shield-check
@@ -416,22 +427,22 @@ views:
               secondary_info: last-changed
             - entity: light.tv_cabinet_led_strip
               secondary_info: last-changed
-      - type: vertical-stack
-        cards:
-        - type: entities
-          title: Xiaomi Vacuum
-          show_header_toggle: false
-          entities:
-            - vacuum.mi_robot_vacuum
-            - input_boolean.scheduled_vacuuming
-            - sensor.xiaomi_battery_level
-            - sensor.xiaomi_cleaned_area
-            - sensor.xiaomi_cleaning_time
-            - sensor.xiaomi_last_clean
-            - sensor.xiaomi_main_brush_left
-            - sensor.xiaomi_side_brush_left
-            - sensor.xiaomi_filter_left
-            - sensor.xiaomi_sensor_dirty_left
+      # - type: vertical-stack
+        # cards:
+        # - type: entities
+          # title: Xiaomi Vacuum
+          # show_header_toggle: false
+          # entities:
+            # - vacuum.mi_robot_vacuum
+            # - input_boolean.scheduled_vacuuming
+            # - sensor.xiaomi_battery_level
+            # - sensor.xiaomi_cleaned_area
+            # - sensor.xiaomi_cleaning_time
+            # - sensor.xiaomi_last_clean
+            # - sensor.xiaomi_main_brush_left
+            # - sensor.xiaomi_side_brush_left
+            # - sensor.xiaomi_filter_left
+            # - sensor.xiaomi_sensor_dirty_left
       - type: custom:vertical-stack-in-card
         cards:
         - type: entities
@@ -718,7 +729,7 @@ views:
             secondary_info: last-changed
           - entity: sensor.doorbell_last_rang
             secondary_info: last-changed
-          - entity: binary_sensor.smoke_sensor_158d0001e642ae
+          - entity: binary_sensor.ground_floor_smoke_detector
             secondary_info: last-changed
       - type: conditional
         conditions:
@@ -733,7 +744,7 @@ views:
               secondary_info: last-changed
             - entity: light.house_number_led_strip
               secondary_info: last-changed
-            - entity: light.gateway_light_7811dcdae94a
+            - entity: light.aqara_gateway_light
               secondary_info: last-changed
             - entity: light.porch_om_xmas_led_strip
               secondary_info: last-changed
@@ -763,7 +774,7 @@ views:
               secondary_info: last-changed
             - entity: light.house_number_led_strip
               secondary_info: last-changed
-            - entity: light.gateway_light_7811dcdae94a
+            - entity: light.aqara_gateway_light
               secondary_info: last-changed
             - entity: light.porch_om_xmas_led_strip
               secondary_info: last-changed
@@ -819,7 +830,7 @@ views:
             secondary_info: last-changed
           - entity: sensor.aloe_vera_conductivity
             secondary_info: last-changed
-          - entity: sensor.aloe_vera_battery
+          - entity: sensor.aloe_vera_battery2
             secondary_info: last-changed
       - type: entities
         title: Conservatory Lights
@@ -875,7 +886,7 @@ views:
         title: Staircase Sensors
         show_header_toggle: false
         entities:
-        - entity: binary_sensor.smoke_sensor_158d000205ac9c
+        - entity: binary_sensor.first_floor_smoke_detector
           secondary_info: last-changed
       - type: entities
         title: Dehumidifier
@@ -1142,12 +1153,16 @@ views:
     background: url("/local/calendar-check.png") fixed
     icon: mdi:calendar-check
     cards:
-      - type: custom:group-card
+      - type: custom:auto-entities
         card:
-          type: entities
-          title: All Automations
-        show_header_toggle: true
-        group: group.all_automations
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Automations
+          open: true
+        filter:
+          include:
+            - entity_id: "automation.*"
 
 
   - title: Server
@@ -1195,9 +1210,13 @@ views:
         state_filter:
           - "on"
         show_empty: false
-      - type: entities
-        title: Server Stats
-        show_header_toggle: false
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Server Stats
+          open: true
         entities:
           - sensor.uptime
           - sensor.currentcost_power
@@ -1205,51 +1224,41 @@ views:
           - sensor.ram_usage
           - sensor.hass_db_size_formatted
           - sensor.ssl_cert_expiry
-      - type: entities
-        title: Battery Levels
-        show_header_toggle: false
-        entities:
-          - sensor.aloe_vera_battery2
-          - sensor.aqara_hygro_battery
-          - sensor.bathroom_window_battery
-          - sensor.cloakroom_window_battery
-          - sensor.blue_room_big_window_battery
-          - sensor.blue_room_small_window_battery
-          - sensor.conservatory_single_door_battery
-          - sensor.conservatory_double_door_battery
-          - sensor.doorbell_battery
-          - sensor.fire7_battery
-          - sensor.first_floor_smoke_detector_battery
-          - sensor.ground_floor_smoke_detector_battery
-          - sensor.kiaan_big_window_battery
-          - sensor.kiaan_small_window_battery
-          - sensor.kitchen_window_battery
-          - sensor.living_room_left_window_battery
-          - sensor.living_room_right_window_battery
-          - sensor.master_bedroom_left_window_battery
-          - sensor.master_bedroom_right_window_battery
-          - sensor.main_door_battery
-          - sensor.loft_temperature_battery
-          - sensor.upstairs_temperature_battery
       - type: custom:tracker-card
         title:
         trackers:
           - sensor.custom_card_tracker
           - sensor.custom_component_tracker
-      - type: entities
-        title: RPi Sensors
-        show_header_toggle: false
-        entities:
-          - binary_sensor.door_lock
-          - binary_sensor.pir_kitchen
-          - binary_sensor.pir_conservatory
-          - binary_sensor.pir_staircase
-          - binary_sensor.pir_living_room_front
-          - binary_sensor.pir_living_room_back
-          - binary_sensor.photoresistor
-      - type: entities
-        title: Docker Containers
-        show_header_toggle: false
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Batteries
+          open: false
+        filter:
+          include:
+            - entity_id: "sensor.*battery2"
+            - entity_id: "sensor.*battery"
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: RPI Sensors
+          open: false
+        filter:
+          include:
+            - entity_id: binary_sensor.door_lock
+            - entity_id: "binary_sensor.pir*"
+            - entity_id: binary_sensor.photoresistor
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Docker Containers
+          open: false
         entities:
           - entity: switch.grafana
             name: Grafana
@@ -1269,9 +1278,13 @@ views:
             name: WatchTower
           - entity: switch.wordpress
             name: Wordpress
-      - type: entities
-        title: Hygro Sensors
-        show_header_toggle: false
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Hygro Sensors
+          open: false
         entities:
           - sensor.aloe_vera_temperature
           - sensor.currentcost_temperature
@@ -1284,16 +1297,27 @@ views:
           - sensor.loft_humidity
           - sensor.humidity_158d0001f5218a
           - sensor.upstairs_humidity
-      - type: entities
-        title: Disk Temperature
-        show_header_toggle: false
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Server Disk Stats
+          open: false
         entities:
+          - sensor.home_disk_usage
+          - sensor.root_disk_usage
+          - sensor.zfs_disk_usage
           - sensor.sda_disk_temp
           - sensor.zfs1_disk_temp
           - sensor.zfs2_disk_temp
-      - type: entities
-        title: Google Assistant
-        show_header_toggle: false
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Goggle Assistant
+          open: false
         entities:
           - input_boolean.normal
           - input_boolean.movies
@@ -1306,26 +1330,33 @@ views:
           - input_boolean.radio_fiji_two_radio
           - input_boolean.rtl2_radio
           - input_boolean.multimedia
-      - type: entities
-        title: Disk Usage
-        show_header_toggle: false
-        entities:
-          - sensor.home_disk_usage
-          - sensor.root_disk_usage
-          - sensor.zfs_disk_usage
-      - type: custom:group-card
+      - type: custom:auto-entities
         card:
-          type: entities
-          title: All Lights
-        group: group.all_lights
-      - type: custom:group-card
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Lights
+          open: false
+        filter:
+          include:
+            - entity_id: "light.*"
+      - type: custom:auto-entities
         card:
-          type: entities
-          title: All Switches
-        group: group.all_switches
-      - type: entities
-        title: Devices
-        show_header_toggle: false
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Switches
+          open: false
+        filter:
+          include:
+            - entity_id: "switch.*"
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Connected Devices
+          open: false
         entities:
           - binary_sensor.dafang_kitchen
           - binary_sensor.dafang_living_room
@@ -1533,7 +1564,7 @@ views:
             style:
               top: 5%
               right: 3%
-              color: DeepSkyBlue
+              color: rgb(68, 115, 158)
           - type: icon
             icon: mdi:bullhorn
             tap_action:
@@ -1544,7 +1575,7 @@ views:
             style:
               top: 12%
               right: 3%
-              color: DeepSkyBlue
+              color: rgb(68, 115, 158)
           - type: icon
             icon: mdi:fan
             tap_action:
@@ -1555,7 +1586,7 @@ views:
             style:
               top: 19%
               right: 3%
-              color: DeepSkyBlue
+              color: rgb(68, 115, 158)
           - type: icon
             icon: mdi:sync
             tap_action:
@@ -1564,7 +1595,7 @@ views:
             style:
               top: 26%
               right: 3%
-              color: DeepSkyBlue
+              color: rgb(68, 115, 158)
 
           - type: state-icon
             entity: binary_sensor.bmw_220d_doordriverdront
