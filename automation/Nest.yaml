@@ -13,6 +13,9 @@
     - platform: state
       entity_id: person.laurent
       to: "home"
+    - platform: state
+      entity_id: group.door_and_window_sensors
+      to: 'off'
   condition:
     - condition: state
       entity_id: binary_sensor.hallway_thermostat_has_leaf
@@ -27,6 +30,9 @@
         value_template: '{{ states("person.laurent") == "home"}}'
       - condition: template
         value_template: '{{ states("person.div") == "home"}}'
+    - condition: state
+      entity_id: group.door_and_window_sensors
+      state: 'off'
   action:
     - service: climate.set_away_mode
       data:
@@ -48,6 +54,11 @@
     - platform: state
       entity_id: person.div
       from: "home"
+    - platform: state
+      entity_id: group.door_and_window_sensors
+      to: 'on'
+      for:
+        minutes: 2
   condition:
     - condition: state
       entity_id: binary_sensor.hallway_thermostat_has_leaf
@@ -59,10 +70,13 @@
     - condition: state
       entity_id: 'input_boolean.normal'
       state: "on"
-    - condition: template
-      value_template: '{{ states("person.laurent") != "home"}}'
-    - condition: template
-      value_template: '{{ states("person.div") != "home"}}'
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home"}}'
+      - condition: state
+        entity_id: group.door_and_window_sensors
+        state: 'on'
   action:
     - service: climate.set_temperature
       data:

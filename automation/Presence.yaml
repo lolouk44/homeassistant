@@ -54,7 +54,7 @@
   initial_state: false
   trigger:
     - platform: state
-      entity_id: device_tracker.div
+      entity_id: person.div
       from: "home"
     - platform: state
       entity_id: person.laurent
@@ -110,7 +110,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.tell_lolo_of_a_long_drive_home", "last_triggered") | default(0)) | int > 3600)}}'
     - condition: template
-      value_template: '{{ states("device_tracker.laurent") == "Verint"}}'
+      value_template: '{{ states("person.laurent") == "Verint"}}'
   action:
     - condition: state
       entity_id: input_boolean.silent
@@ -145,8 +145,3 @@
       topic: 'location/div'
       payload_template: '{{ trigger.to_state.state }}'
       retain: true
-
-# {%- for attribute in states.device_tracker.ha_lolos_iphone.attributes -%}
-# {%- if attribute == "latitude" or attribute == "longitude"  or attribute == "battery" -%}
-# "{{attribute}}":"{{state_attr('device_tracker.ha_lolos_iphone',attribute)}}", 
-# {%- endif %} {%- endfor %}"friendly_name":"Lolo", "entity_picture":"/local/Lolo_Avatar.jpg"
