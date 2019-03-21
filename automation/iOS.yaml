@@ -54,65 +54,34 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: alert.aloe_vera_battery_too_low
-      to: 'idle'
-    - platform: state
-      entity_id: alert.aloe_vera_humidity_too_low
-      to: 'idle'
-    - platform: state
-      entity_id: alert.cctv_dafang_kitchen_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.cctv_dafang_living_room_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.cctv_front_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.cctv_garage_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.currentcost_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.dehumidifier_full
-      to: 'idle'
-    - platform: state
-      entity_id: alert.fire7_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.home_disk_usage_too_high
-      to: 'idle'
-    - platform: state
-      entity_id: alert.house_number_led_strip_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.outside_temp_sensor_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.ram_too_high
-      to: 'idle'
-    - platform: state
-      entity_id: alert.alert_lost_ram_usage_at_300
-      to: 'idle'
-    - platform: state
-      entity_id: alert.root_disk_usage_too_high
-      to: 'idle'
-    - platform: state
-      entity_id: alert.rpi_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.rpi_zero_w_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.staircase_led_strip_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.tv_cabinet_led_strip_lost
-      to: 'idle'
-    - platform: state
-      entity_id: alert.upstairs_temp_sensor_lost
+      entity_id: 
+        - alert.aloe_vera_battery_too_low
+        - alert.aloe_vera_humidity_too_low
+        - alert.cctv_dafang_kitchen_lost
+        - alert.cctv_dafang_living_room_lost
+        - alert.cctv_front_lost
+        - alert.cctv_garage_lost
+        - alert.currentcost_lost
+        - alert.dehumidifier_full
+        - alert.fire7_lost
+        - alert.home_disk_usage_too_high
+        - alert.house_number_led_strip_lost
+        - alert.outside_temp_sensor_lost
+        - alert.ram_too_high
+        - alert.ram_usage_lost
+        - alert.root_disk_usage_too_high
+        - alert.rpi_lost
+        - alert.rpi_zero_w_lost
+        - alert.staircase_led_strip_lost
+        - alert.tv_cabinet_led_strip_lost
+        - alert.upstairs_temp_sensor_lost
       to: 'idle'
   action:
     - service: counter.decrement
       entity_id: counter.iosbadgecount
+    - condition: state
+      entity_id: counter.iosbadgecount
+      state: '0'
+    - service: notify.ios_lolos_iphone
+      data:
+        message: clear_badge
