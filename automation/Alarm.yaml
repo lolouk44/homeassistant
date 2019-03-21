@@ -195,7 +195,7 @@
   action:
     - service: light.turn_off
       data:
-        entity_id: light.gateway_light_7811dcdae94a
+        entity_id: light.aqara_gateway_light
     - service: tts.google_say
       data_template:
         entity_id: media_player.google_home_minis
@@ -219,6 +219,7 @@
     - platform: state
       entity_id: alarm_control_panel.alarm
       to: 'pending'
+      from: 'disarmed'
   action:
     - service: switch.turn_on
       data:
@@ -239,11 +240,11 @@
       timeout: '00:00:30'
       continue_on_timeout: 'true'
     - condition: template
-      value_template: '{{states("alarm_control_panel.alarm")=="armed_away" or states("alarm_control_panel.alarm")=="armed_home" or states("alarm_control_panel.alarm")=="pending" }}'
+      value_template: '{{ states("alarm_control_panel.alarm")=="pending" }}'
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24/audio/Armed_Disarmed.mp3'
+        media_content_id: 'http://192.168.0.24/audio/1sec.mp3'
         media_content_type: 'audio/mp3'
     - service: script.turn_on
       data:
@@ -256,6 +257,11 @@
     - platform: state
       entity_id: alarm_control_panel.alarm
       to: 'pending'
+      from: 'armed_away'
+    - platform: state
+      entity_id: alarm_control_panel.alarm
+      to: 'pending'
+      from: 'armed_home'
   action:
     - service: switch.turn_on
       data:
@@ -284,10 +290,7 @@
     - service: switch.turn_on
       data:
         entity_id: switch.kerui_disarm
-    # - service: media_player.play_media
-      # data:
-        # media_content_id: 'http://192.168.0.24/audio/1sec.mp3'
-        # media_content_type: 'audio/mp3'
+
     - service: switch.turn_on
       data:
         entity_id: switch.kerui_disarm
@@ -298,7 +301,7 @@
         media_content_type: 'audio/mp3'
     - service: light.turn_off
       data:
-        entity_id: light.gateway_light_7811dcdae94a
+        entity_id: light.aqara_gateway_light
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.google_home_minis
@@ -327,7 +330,7 @@
         media_content_type: 'audio/mp3'
     - service: light.turn_on
       data:
-        entity_id: light.gateway_light_7811dcdae94a
+        entity_id: light.aqara_gateway_light
         brightness: 255
         rgb_color: [255,0,0]
 
@@ -340,8 +343,8 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.smoke_sensor_158d0001e642ae
-        - binary_sensor.smoke_sensor_158d000205ac9c
+        - binary_sensor.ground_floor_smoke_detector
+        - binary_sensor.first_floor_smoke_detector
       to: 'on'
   action:
     - service: camera.snapshot
@@ -359,7 +362,7 @@
     - service: notify.gmaillolo
       data_template:
         message: >
-          FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d000205ac9c' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
+          FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.first_floor_smoke_detector' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
         data:
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
@@ -367,7 +370,7 @@
     - service: notify.gmaildiv
       data_template:
         message: >
-          FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d000205ac9c' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
+          FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.first_floor_smoke_detector' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
         data:
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
@@ -376,7 +379,7 @@
     - service: notify.ios_lolos_iphone
       data_template:
         message: >
-          FIRE ALARM!({% if trigger.entity_id == 'binary_sensor.smoke_sensor_158d0001e642ae' %}Gnd Floor Smoke Detector{% else %}1st Floor Smoke Detector{% endif %})
+          FIRE ALARM!({% if trigger.entity_id == 'binary_sensor.ground_floor_smoke_detector' %}Gnd Floor Smoke Detector{% else %}1st Floor Smoke Detector{% endif %})
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
@@ -463,7 +466,7 @@
     - delay:
         seconds: 2
     - condition: state
-      entity_id: light.gateway_light_7811dcdae94a
+      entity_id: light.aqara_gateway_light
       state: 'on'
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.alarm

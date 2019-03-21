@@ -63,11 +63,9 @@ binary_sensor.side_cctv_disk_error:
   icon: mdi:harddisk
 binary_sensor.side_cctv_disk_full:
   icon: mdi:harddisk
-binary_sensor.smoke_sensor_158d000205ac9c:
-  friendly_name: First Floor Smoke Detector
+binary_sensor.first_floor_smoke_detector:
   icon: mdi:fire
-binary_sensor.smoke_sensor_158d0001e642ae:
-  friendly_name: Ground Floor Smoke Detector
+binary_sensor.ground_floor_smoke_detector:
   icon: mdi:fire
 binary_sensor.hallway_thermostat_has_leaf:
   icon: mdi:leaf
@@ -126,8 +124,7 @@ light.conservatory_led_strip:
   icon: mdi:vector-polyline
 light.garage_led_strip:
   icon: mdi:vector-polyline
-light.gateway_light_7811dcdae94a:
-  friendly_name: 'Xiaomi Aqara Gateway'
+light.aqara_gateway_light:
   icon: mdi:circle-slice-8
 light.house_number_led_strip:
   icon: mdi:numeric-4-box-multiple-outline

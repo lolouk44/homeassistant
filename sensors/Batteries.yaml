@@ -13,12 +13,12 @@
     ground_floor_smoke_detector_battery:
       friendly_name: Ground Floor Smoke Detector Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.smoke_sensor_158d0001e642ae", "battery_level") | int}}'
+      value_template: '{{state_attr("binary_sensor.ground_floor_smoke_detector", "battery_level") | int}}'
       device_class: battery
     first_floor_smoke_detector_battery:
       friendly_name: First Floor Smoke Detector Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.smoke_sensor_158d000205ac9c", "battery_level") | int}}'
+      value_template: '{{state_attr("binary_sensor.first_floor_smoke_detector", "battery_level") | int}}'
       device_class: battery
     aqara_hygro_battery:
       friendly_name: Aqara Hygro Battery
