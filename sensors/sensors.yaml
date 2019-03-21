@@ -1,13 +1,13 @@
 - platform: waze_travel_time
   name: Home to Work
-  origin: !secret postcode_home
-  destination: !secret postcode_work
+  origin: zone.home
+  destination: zone.verint
   region: 'EU'
 
 - platform: waze_travel_time
   name: Lolo to Home
   origin: person.laurent
-  destination: !secret postcode_home
+  destination: zone.home
   region: 'EU'
 
 
