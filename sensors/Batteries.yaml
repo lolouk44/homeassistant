@@ -68,12 +68,12 @@
     living_room_left_window_battery:
       friendly_name: Living Room Left Window Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.living_room_left_window", "battery_level") | int}}'
+      value_template: '{{state_attr("binary_sensor.living_room_right_small_window", "battery_level") | int}}'
       device_class: battery
     living_room_right_window_battery:
       friendly_name: Living Room Right Window Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.living_room_right_window", "battery_level") | int}}'
+      value_template: '{{state_attr("binary_sensor.living_room_right_big_window", "battery_level") | int}}'
       device_class: battery
     master_bedroom_left_window_battery:
       friendly_name: Master Bedroom Left Window Battery

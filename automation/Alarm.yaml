@@ -6,8 +6,8 @@
         - binary_sensor.conservatory_skylight_left
         - binary_sensor.conservatory_single_door
         - binary_sensor.conservatory_double_door
-        - binary_sensor.living_room_right_window
-        - binary_sensor.living_room_left_window
+        - binary_sensor.living_room_right_big_window
+        - binary_sensor.living_room_right_small_window
         - binary_sensor.master_bedroom_right_window
         - binary_sensor.master_bedroom_left_window
         - binary_sensor.cloakroom_window
@@ -30,8 +30,8 @@
           {%- set pirs = [
           states.binary_sensor.conservatory_single_door,
           states.binary_sensor.conservatory_double_door,
-          states.binary_sensor.living_room_right_window,
-          states.binary_sensor.living_room_left_window,
+          states.binary_sensor.living_room_right_big_window,
+          states.binary_sensor.living_room_right_small_window,
           states.binary_sensor.master_bedroom_right_window,
           states.binary_sensor.master_bedroom_left_window,
           states.binary_sensor.cloakroom_window,
@@ -545,8 +545,29 @@
       event_type: ios.notification_action_fired
       event_data:
         actionName: ARM_ALARM
+    - platform: event
+      event_type: ios._action_fired
+      event_data:
+        actionName: ARM_ALARM
   action:
     - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.alarm
+      data:
+        code: !secret alarm_code
+
+- alias: Alarm - DisArm Alarm from iOS Notification
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: ARM_ALARM
+    - platform: event
+      event_type: ios._action_fired
+      event_data:
+        actionName: ARM_DISALARM
+  action:
+    - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.alarm
       data:
         code: !secret alarm_code
