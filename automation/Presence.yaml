@@ -41,7 +41,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
-        message: 'Div left work.'
+        message: 'Div left work. ETA: {{states("sensor.div_to_home")}} min.'
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
@@ -49,6 +49,21 @@
       entity_id: media_player.google_home_minis
       data:
         message: 'Please note: Div left work'
+
+
+- alias: Tell Lolo Div left yoga
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: person.div
+    from: "Ifield College"
+  condition:
+  - condition: time
+    after: '19:00:00'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        message: 'Div left yoga. ETA: {{states("sensor.div_to_home")}} min.'
 
 - alias: Switch everything off when we leave home
   initial_state: false

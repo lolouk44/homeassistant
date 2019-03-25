@@ -10,6 +10,12 @@
   destination: zone.home
   region: 'EU'
 
+- platform: waze_travel_time
+  name: Div to Home
+  origin: person.div
+  destination: zone.home
+  region: 'EU'
+
 
 
 - platform: darksky
