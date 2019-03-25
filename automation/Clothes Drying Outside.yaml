@@ -1,0 +1,33 @@
+- alias: Clothes Drying Outside and Raining
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.dark_sky_icon
+      to: 'rain'
+  condition:
+    - condition: state
+      entity_id: input_boolean.clothes_drying_outside
+      state: 'on'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data:
+        message: "Please note: It is raining and clothes are drying outside"
+
+
+
+- alias: Clothes Drying Outside - Reset at night
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      hours: 2
+      minutes: 0
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.clothes_drying_outside
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.clothes_drying_outside

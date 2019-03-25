@@ -1,7 +1,7 @@
 title: Home
 resources:
     #Kiosk mode for Alarm panel https://gist.github.com/ciotlosm/1f09b330aa5bd5ea87b59f33609cc931
-  - url: /local/kiosk.js
+  - url: /local/kiosk.js?v=1.1
     type: js
     #https://github.com/thomasloven/lovelace-card-tools
   - url: /local/card-tools.js?track=true
@@ -45,8 +45,8 @@ views:
           - entity: binary_sensor.conservatory_skylight_left
           - entity: binary_sensor.conservatory_single_door
           - entity: binary_sensor.conservatory_double_door
-          - entity: binary_sensor.living_room_right_window
-          - entity: binary_sensor.living_room_left_window
+          - entity: binary_sensor.living_room_right_big_window
+          - entity: binary_sensor.living_room_right_small_window
           - entity: binary_sensor.master_bedroom_right_window
           - entity: binary_sensor.master_bedroom_left_window
           - entity: binary_sensor.cloakroom_window
@@ -259,6 +259,8 @@ views:
           conditions:
             - entity: media_player.onkyo
               state_not: "off"
+            - entity: media_player.onkyo
+              state_not: "unavailable"
             - entity: sensor.radio_is_streaming
               state: "yes"
           card:
@@ -398,9 +400,9 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.photoresistor
             secondary_info: last-changed
-          - entity: binary_sensor.living_room_left_window
+          - entity: binary_sensor.living_room_right_small_window
             secondary_info: last-changed
-          - entity: binary_sensor.living_room_right_window
+          - entity: binary_sensor.living_room_right_big_window
             secondary_info: last-changed
       - type: custom:vertical-stack-in-card
         cards:
@@ -842,6 +844,15 @@ views:
             secondary_info: last-changed
           - entity: light.conservatory_led_strip
             secondary_info: last-changed
+      - type: entities
+        title: Rotary Clothes Airer
+        show_header_toggle: false
+        entities:
+          - entity: input_boolean.clothes_drying_outside
+            secondary_info: last-changed
+          - entity: sensor.dark_sky_icon
+            secondary_info: last-changed
+            icon: mdi:weather-rainy
       - type: conditional
         conditions:
           - entity: input_boolean.xmas

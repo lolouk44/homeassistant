@@ -22,3 +22,7 @@ silent:
   name: Silent
   initial: off
   icon: mdi:volume-off
+
+clothes_drying_outside:
+  name: Clothes Drying Outside
+  icon: mdi:tshirt-crew-outline
