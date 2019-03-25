@@ -3,7 +3,7 @@
   trigger:
     - platform: time_pattern
       hours: 19
-      minutes: 30
+      minutes: 00
       seconds: 0
   condition:
     - condition: state

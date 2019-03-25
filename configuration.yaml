@@ -75,7 +75,7 @@ history:
 logbook:
 
 # Logging level
-enable_debug:
+# enable_debug:
 logger:
   default: error
   logs:
@@ -177,10 +177,10 @@ media_player:
   # Mi Box
   - platform: cast
     host: 192.168.0.28
-  - platform: kodi
-    host: 192.168.0.28
   - platform: cast
     host: 192.168.0.26
+  - platform: kodi
+    host: 192.168.0.28
   - platform: onkyo
     host: 192.168.0.26
     name: Onkyo TX-NR656
@@ -237,6 +237,8 @@ recorder:
 
 # speedtestdotnet:
   # scan_interval: '04:00'
+
+# stream:
 
 sun:
 

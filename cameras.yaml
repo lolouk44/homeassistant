@@ -15,9 +15,9 @@
   name: 'Garage'
 
 
-- platform: ffmpeg
-  input: !secret cctv_url_front
-  name: FrontHD
+# - platform: ffmpeg
+  # input: !secret cctv_url_front
+  # name: FrontHD
 - platform: ffmpeg
   input: !secret cctv_url_side
   name: Side
@@ -26,10 +26,9 @@
   name: Back
 
 - platform: generic
-  still_image_url: /config/www/navmap.png
+  still_image_url: !secret xiaomi_vacuum_map
   name: Vacuum Map
   content_type: image/png
-  framerate: 1
 
 - platform: generic
   name: 'Lolo'
@@ -70,7 +69,7 @@
   still_image_url: !secret fire7camshot
   
   
-- platform: generic
-  name: Streaming Enabled
-  still_image_url: https://homeassistant.lolorpi.com/local/navmap.png
-  stream_source: !secret cctv_url_front
+# - platform: generic
+  # name: Streaming Enabled
+  # still_image_url: https://homeassistant.lolorpi.com/local/navmap.png
+  # stream_source: !secret cctv_url_front
