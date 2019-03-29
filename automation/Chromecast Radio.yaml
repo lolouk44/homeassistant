@@ -13,3 +13,39 @@
         {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
         {% endif %}
       volume_level: '{{  states("input_number.volume_radio")  }}'
+
+
+- alias: Chromecast - Set Speakers & Station
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id:
+      - media_player.conservatory
+      - media_player.kitchen
+      - media_player.onkyo_tx_nr656
+      - media_player.house
+    to: 'playing'
+  action:
+    service: input_select.select_option
+    data_template:
+      entity_id: input_select.chromecast_radio_speakers
+      option: >
+        {% if is_state(trigger.entity_id, "media_player.conservatory") %} Conservatory
+        {% elif is_state(trigger.entity_id, "media_player.kitchen") %} Kitchen
+        {% elif is_state(trigger.entity_id, "media_player.onkyo_tx_nr656") %} Onkyo
+        {% elif is_state(trigger.entity_id, "media_player.house") %} House
+        {% endif %}
+    service: input_select.select_option
+    data_template:
+      entity_id: input_select.chromecast_radio_station
+      option: >
+        {% if is_state_attr(trigger.entity_id, 'media_content_id', 'http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3') %} Absolute Radio
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3') %} Absolute Radio Classic Rock
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://media-the.musicradio.com/ChillMP3') %} Chill
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://broadcast.infomaniak.ch/hitwest-high.mp3') %} Hit West
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', states("sensor.ha_podcast")) %} HA Podcast
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', states("sensor.internet_of_things_podcast")) %} IoT Podcast
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://peridot.streamguys.com:7150/RFTwo?play') %} Radio Fiji Two
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://streaming.radio.rtl2.fr:80/rtl2-1-44-96') %} RTL2
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'states("input_text.custom_station")') %} Custom Station
+        {% endif %}
