@@ -69,7 +69,7 @@
   still_image_url: !secret fire7camshot
   
   
-# - platform: generic
-  # name: Streaming Enabled
-  # still_image_url: https://homeassistant.lolorpi.com/local/navmap.png
-  # stream_source: !secret cctv_url_front
+- platform: generic
+  name: FrontHD
+  still_image_url: !secret xiaomi_vacuum_map
+  stream_source: !secret cctv_url_front

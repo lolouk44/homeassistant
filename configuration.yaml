@@ -63,7 +63,7 @@ lovelace:
 updater:
   include_used_components: True
 
-# discovery:
+discovery:
 
 # Enables support for tracking state changes over time.
 history:
@@ -194,6 +194,7 @@ media_player:
     # zone2: true
   - platform: panasonic_viera
     host: 192.168.0.27
+    mac: D8:AF:F1:47:7A:16
   - platform: plex
   - platform: mpd
     host: 192.168.0.21
@@ -238,7 +239,7 @@ recorder:
 # speedtestdotnet:
   # scan_interval: '04:00'
 
-# stream:
+stream:
 
 sun:
 
