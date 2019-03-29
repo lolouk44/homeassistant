@@ -45,7 +45,12 @@ entity_config:
     room: 'Living Room'
     expose: true
 
-  input_boolean.vacuum:
+  # input_boolean.vacuum:
+    # name: "Vacuum"
+    # room: 'Living Room'
+    # expose: true
+
+  vacuum.mi_robot_vacuum:
     name: "Vacuum"
     room: 'Living Room'
     expose: true
