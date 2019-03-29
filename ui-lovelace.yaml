@@ -227,6 +227,8 @@ views:
           conditions:
             - entity: media_player.conservatory
               state_not: "off"
+            - entity: media_player.conservatory
+              state_not: "unavailable"
             - entity: sensor.radio_is_streaming
               state: "yes"
           card:
@@ -243,6 +245,8 @@ views:
           conditions:
             - entity: media_player.kitchen
               state_not: "off"
+            - entity: media_player.kitchen
+              state_not: "unavailable"
             - entity: sensor.radio_is_streaming
               state: "yes"
           card:
