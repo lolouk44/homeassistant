@@ -200,7 +200,36 @@
       data_template:
         entity_id: media_player.google_home_minis
         message: |
-          Please note, one or more windows are left open. Disarming alarm...
+          Please note, the following doors or windows are not closed:
+          {% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
+          {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+          {%- endfor -%}
+          {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
+          The alarm has not been armed
+    - service: notify.ios_lolos_iphone
+      data_template:
+        message: |
+          The {% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
+          {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+          {%- endfor -%}
+          {%- if is_state('binary_sensor.main_door','on') -%}Main Door,{%- endif -%}
+           are not closed.
+           The alarm has not been armed !
+        data:
+          push:
+            category: "alarm"
+    # - service: notify.ios_diviphone
+      # data_template:
+        # message: |
+          # The {% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
+          # {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+          # {%- endfor -%}
+          # {%- if is_state('binary_sensor.main_door','on') -%}Main Door,{%- endif -%}
+           # are not closed.
+           # The alarm has not been armed !
+        # data:
+          # push:
+            # category: "alarm"
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.alarm
       data:
@@ -546,7 +575,7 @@
       event_data:
         actionName: ARM_ALARM
     - platform: event
-      event_type: ios._action_fired
+      event_type: ios.action_fired
       event_data:
         actionName: ARM_ALARM
   action:
@@ -561,11 +590,11 @@
     - platform: event
       event_type: ios.notification_action_fired
       event_data:
-        actionName: ARM_ALARM
+        actionName: DISARM_ALARM
     - platform: event
-      event_type: ios._action_fired
+      event_type: ios.action_fired
       event_data:
-        actionName: ARM_DISALARM
+        actionName: DISARM_ALARM
   action:
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.alarm

@@ -36,3 +36,12 @@ push:
           authenticationRequired: yes
           destructive: yes
           behavior: 'default'
+    - name: Disarm_Alarm
+      identifier: 'disarmalarm'
+      actions:
+        - identifier: 'DISARM_ALARM'
+          title: 'Disarm Alarm'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
