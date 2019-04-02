@@ -42,33 +42,6 @@
       volume_level: 0.75
 
 
-- alias: GA Start Vacuuming
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: input_boolean.vacuum
-      to: 'on'
-  action:
-    - service: vacuum.start
-      data:
-        entity_id: vacuum.mi_robot_vacuum
-
-- alias: GA Stop Vacuuming
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: input_boolean.vacuum
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: sensor.xiaomi_status
-      state: 'Cleaning'
-  action:
-    - service: vacuum.return_to_dock
-      data:
-        entity_id: vacuum.mi_robot_vacuum
-
-
 - alias: GA Play RTL2 Radio
   initial_state: true
   trigger:

@@ -23,11 +23,6 @@ radio_fiji_two_radio:
   initial: off
   icon: mdi:radio
 
-vacuum:
-  name: Vacuum
-  initial: off
-  icon: mdi:google-circles-group
-
 scheduled_vacuuming:
   name: Scheduled Vacuuming
   initial: off
