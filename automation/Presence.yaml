@@ -54,9 +54,12 @@
 - alias: Tell Lolo Div left yoga
   initial_state: true
   trigger:
-    platform: state
-    entity_id: person.div
-    from: "Ifield College"
+    - platform: state
+      entity_id: person.div
+      from: "Ifield College"
+    - platform: state
+      entity_id: person.div
+      from: "Oriel High School"
   condition:
   - condition: time
     after: '19:00:00'
