@@ -26,7 +26,7 @@
       - media_player.house
     to: 'playing'
   action:
-    service: input_select.select_option
+  - service: input_select.select_option
     data_template:
       entity_id: input_select.chromecast_radio_speakers
       option: >
@@ -35,7 +35,7 @@
         {% elif is_state(trigger.entity_id, "media_player.onkyo_tx_nr656") %} Onkyo
         {% elif is_state(trigger.entity_id, "media_player.house") %} House
         {% endif %}
-    service: input_select.select_option
+  - service: input_select.select_option
     data_template:
       entity_id: input_select.chromecast_radio_station
       option: >
