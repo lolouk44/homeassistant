@@ -1,9 +1,9 @@
-- alias: Nest Remove Leaf
+- alias: Nest Remove Away Mode
   initial_state: true
   trigger:
-    - platform: state
-      entity_id: binary_sensor.hallway_thermostat_has_leaf
-      to: 'on'
+    # - platform: state
+      # entity_id: binary_sensor.hallway_thermostat_has_leaf
+      # to: 'on'
     - platform: state
       entity_id: group.pirs
       to: 'on'
@@ -18,8 +18,8 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: binary_sensor.hallway_thermostat_has_leaf
-      state: 'on'
+      entity_id: climate.hallway
+      state: 'eco'
     - condition: or
       conditions:
       - condition: template
@@ -41,7 +41,7 @@
         operation_mode: Heat
 
 
-- alias: Nest Set Leaf
+- alias: Nest Set Away Mode
   initial_state: true
   trigger:
     - platform: state
@@ -51,14 +51,17 @@
       entity_id: person.div
       from: "home"
     - platform: state
+      entity_id: climate.hallway
+      to: "heat"
+    - platform: state
       entity_id: group.door_and_window_sensors
       to: 'on'
       for:
         minutes: 2
   condition:
     - condition: state
-      entity_id: binary_sensor.hallway_thermostat_has_leaf
-      state: 'off'
+      entity_id: climate.hallway
+      state: 'heat'
     - condition: state
       entity_id: 'input_boolean.normal'
       state: "on"
@@ -70,8 +73,12 @@
         entity_id: group.door_and_window_sensors
         state: 'on'
   action:
-    - service: climate.set_temperature
+    - service: climate.set_away_mode
       data:
         entity_id: climate.hallway
-        temperature: 16
-        operation_mode: Heat
+        away_mode: 'on'
+    # - service: climate.set_temperature
+      # data:
+        # entity_id: climate.hallway
+        # temperature: 16
+        # operation_mode: Heat
