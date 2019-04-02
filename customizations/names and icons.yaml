@@ -174,8 +174,6 @@ sensor.Dehumidifier_Power:
   icon: mdi:fan
 sensor.doorbell_last_rang:
   icon: mdi:bell
-sensor.edimax1_watts:
-  icon: mdi:flash-circle
 sensor.loft_humidity:
   icon: mdi:water-percent
 sensor.hallway_thermostat_humidity:
@@ -233,7 +231,9 @@ switch.dafang_kitchen_yellow_led:
 switch.dafang_kitchen_left_right:
   icon: mdi:arrow-expand-horizontal
 switch.dehumidifier:
-  icon: mdi:power-socket-uk
+  icon: mdi:power-plug
+switch.edimax1:
+  icon: mdi:power-plug
 switch.grafana:
   icon: mdi:docker
 switch.ha_dockermon:

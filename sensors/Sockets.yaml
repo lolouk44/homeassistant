@@ -1,0 +1,14 @@
+- platform: template
+  sensors:
+    edimax1_watts:
+      entity_id: switch.edimax1
+      value_template: '{{state_attr("switch.edimax1","current_power_w")|float}}'
+      unit_of_measurement: 'W'
+      friendly_name: Edimax1 Watts
+      icon_template: '{% if is_state("switch.edimax1","on") %}mdi:flash{% else %}mdi:flash-off{% endif %}'
+    xiaomi_garage_socket_watts:
+      entity_id: switch.xiaomi_garage_socket
+      value_template: '{{state_attr("switch.xiaomi_garage_socket","load_power")|float}}'
+      unit_of_measurement: 'W'
+      friendly_name: Xiaomi Garage Socket Watts
+      icon_template: '{% if is_state("switch.xiaomi_garage_socket","on") %}mdi:flash{% else %}mdi:flash-off{% endif %}'

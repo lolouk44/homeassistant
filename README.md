@@ -8,17 +8,16 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 
 ## Devices
 
-- HP ProLiant N54L MicroServer (Main server with HASS)
+- HP ProLiant N54L MicroServer (Main server with Home-Assistant)
 - Raspberry Pi Model B (for motion sensors, photoresistor sensor, BME280 Temperature and Barometer Sensor)
-- Raspberry Pi 3 Model B (Mainly running Kodi)
-- Raspberry Pi Zero W (mainly used as a Smart Calendar Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
+- Raspberry Pi 3 Model B (Kodi)
+- Raspberry Pi 3 Model B (Smart Calendar Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
 
 - Amazon Fire7 (alarm keypad with [Fully Kiosk](https://fully-kiosk.com), motion detection)
 - BME280 Temperature and Barometer Sensor
 - Byron SX-20T Doorbell
 - [Cresta TS34C](https://www.conrad-electronic.co.uk/ce/en/product/672148/5-Channel-TS34C-Wireless-Thermo-Hygro-Sensor) Hygrometers
-- CurrentCost EnviR Energy Monitor
-- CurrentCost IAM Energy Monitor
+- CurrentCost EnviR Energy Monitor & IAM Energy Monitors
 - [Edimax SP-2101W](https://www.amazon.co.uk/Edimax-Switch-Intelligent-Energy-Management/dp/B00T647F2C/)
 - Google ChromeCast Audio
 - Google Home Mini
@@ -51,7 +50,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Mi Robot Vacuum V1
 - Xiaomi Mijia Honeywell Fire Alarm Detector
 - Xiaomi Router R3P Pro
-
+- Xiaomi Mijia Zigbee Smart Socket
 
 ## View of my Home Assistant UI
 ![My Home Assistant](http://www.lolorpi.com/wordpress/wp-content/uploads/2018/08/HA_UI_Example.png)

@@ -727,8 +727,6 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.door_lock
             secondary_info: last-changed
-          - entity: binary_sensor.garage_back_door
-            secondary_info: last-changed
           - entity: binary_sensor.cloakroom_window
             secondary_info: last-changed
           - entity: binary_sensor.main_door
@@ -1337,7 +1335,6 @@ views:
           - input_boolean.normal
           - input_boolean.movies
           - input_boolean.xmas
-          - input_boolean.vacuum
           - input_boolean.scheduled_vacuuming
           - input_boolean.absolute_radio_radio
           - input_boolean.absolute_radio_cr_radio
@@ -1700,3 +1697,70 @@ views:
           - device_tracker.lolosiphone
           - device_tracker.laurent_mah_iphone_5s
           - device_tracker.220d
+  - title: Garage
+    background: url("/local/verified.png") fixed
+    icon: mdi:garage
+    badges:
+        - device_tracker.lolo
+        - device_tracker.div
+        - sensor.dark_sky_temperature
+        - sensor.dark_sky_humidity
+        - sensor.precipitation
+        - sensor.dark_sky_overnight_low_temperature_0
+        - sensor.dark_sky_daytime_high_temperature_0
+        - sensor.home_to_work
+        - sensor.lolo_to_home
+        - sensor.sunset_time
+    cards:
+      - type: entity-filter
+        title: Persistent Notifications
+        show_header_toggle: false
+        entities:
+          - persistent_notification.httplogin
+          - persistent_notification.ipban
+        state_filter:
+          - "notifying"
+        show_empty: false
+      - type: entity-filter
+        title: Alerts
+        show_header_toggle: false
+        entities:
+          - alert.outside_temp_sensor_lost
+          - alert.upstairs_temp_sensor_lost
+          - alert.cctv_front_lost
+          - alert.cctv_garage_lost
+          - alert.cctv_dafang_living_room_lost
+          - alert.currentcost_lost
+          - alert.dehumidifier_full
+          - alert.fire7_lost
+          - alert.rpi_lost
+          - alert.rpi_zero_w_lost
+          - alert.kello_lost
+          - alert.house_number_led_strip_lost
+          - alert.staircase_led_strip_lost
+          - alert.tv_cabinet_led_strip_lost
+          - alert.ram_too_high
+          - alert.ram_usage_lost
+          - alert.home_disk_usage_too_high
+          - alert.root_disk_usage_too_high
+          - alert.cctv_dafang_kitchen_lost
+          - alert.aloe_vera_humidity_too_low
+          - alert.aloe_vera_battery_too_low
+          - counter.iosbadgecount
+        state_filter:
+          - "on"
+        show_empty: false
+      - type: entities
+        title: Garage Sensors
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.garage_back_door
+            secondary_info: last-changed
+      - type: entities
+        title: Xiaomi Garage Socket
+        show_header_toggle: false
+        entities:
+          - entity: switch.xiaomi_garage_socket
+            secondary_info: last-changed
+          - entity: sensor.xiaomi_garage_socket_watts
+            secondary_info: last-changed
