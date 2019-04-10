@@ -137,7 +137,7 @@
         {% set winbearing = (state_attr('weather.dark_sky','forecast')[0].wind_bearing/90)|round +1 %}
         {% set winddir = ['North', 'North East','East','South East','South','South West','West','North West']%}
         {{ winddir[winbearing]}}
-        at {{(states('sensor.dark_sky_wind_speed_0')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0')|int*3.6)|round}} km/h.
+        at {{(states('sensor.dark_sky_wind_speed_0d')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0d')|int*3.6)|round}} km/h.
         Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|float|round}} millimeters.
         {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states('sensor.home_to_work')}} minutes.{% endif %}
         {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.start_vacuuming", "last_triggered") | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}

@@ -160,9 +160,9 @@ sensor.currentcost_power:
   icon: mdi:flash-circle
 sensor.currentcost_temperature:
   icon: mdi:thermometer
-sensor.dark_sky_overnight_low_temperature_0:
+sensor.dark_sky_overnight_low_temperature_0d:
   friendly_name: 'Tº Min'
-sensor.dark_sky_daytime_high_temperature_0:
+sensor.dark_sky_daytime_high_temperature_0d:
   friendly_name: 'Tº Max'
 sensor.dark_sky_daily_max_precip_intensity_0:
   friendly_name: 'Rain'

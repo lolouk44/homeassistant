@@ -195,11 +195,13 @@ media_player:
   - platform: panasonic_viera
     host: 192.168.0.27
     mac: D8:AF:F1:47:7A:16
-  - platform: plex
+  # - platform: plex
   - platform: mpd
     host: 192.168.0.21
     port: 6600
     name: MPD RPi Kitchen
+
+mobile_app: !include iOS.yaml
 
 mqtt:
   client_id: home-assistant-1
