@@ -1,0 +1,10 @@
+edimax_charging:
+  name: Edimax Charging
+  initial: off
+  icon: mdi:battery-charging-50
+
+xiaomi_switch_charging:
+  name: Xiaomi Switch Charging
+  initial: off
+  icon: mdi:battery-charging-50
+

@@ -1766,3 +1766,5 @@ views:
             secondary_info: last-changed
           - entity: sensor.xiaomi_garage_socket_watts
             secondary_info: last-changed
+          - entity: input_boolean.xiaomi_switch_charging
+            secondary_info: last-changed

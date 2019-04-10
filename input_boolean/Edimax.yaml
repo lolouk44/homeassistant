@@ -1,4 +1,0 @@
-edimax_charging:
-  name: Edimax Charging
-  initial: off
-  icon: mdi:battery-charging-50

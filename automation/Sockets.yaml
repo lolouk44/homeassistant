@@ -1,0 +1,91 @@
+- alias: Edimax - Battery Is Charged, Turning Edimax Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.edimax1_watts
+  condition:
+    - condition: template
+      value_template: '{{ states("sensor.edimax1_watts") | float  <= 0.1 }}'
+    - condition: template
+      value_template: '{{states("sensor.uptime") | float > 0.03}}'
+    - condition: state
+      entity_id: input_boolean.edimax_charging
+      state: 'on'
+  action:
+    - delay: '0:10:00'
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.edimax_charging
+    - service: switch.turn_off
+      data:
+        entity_id: switch.edimax1
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data:
+        message: 'Please note: The battery on the Edimax switch is charged'
+
+
+- alias: Edimax - Start Charging Battery
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.edimax_charging
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.edimax1
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.edimax1
+
+
+
+- alias: Xiaomi Switch - Battery Is Charged, Turning Xiaomi Switch Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.xiaomi_garage_socket_watts
+  condition:
+    - condition: template
+      value_template: '{{ states("sensor.xiaomi_garage_socket_watts") | float  <= 0.1 }}'
+    - condition: template
+      value_template: '{{states("sensor.uptime") | float > 0.03}}'
+    - condition: state
+      entity_id: input_boolean.xiaomi_switch_charging
+      state: 'on'
+  action:
+    - delay: '0:10:00'
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.xiaomi_switch_charging
+    - service: switch.turn_off
+      data:
+        entity_id: switch.xiaomi_garage_socket
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: notify.gmaillolo
+      data_template:
+        message: 'The battery on the Xiaomi switch is charged. Charging time: {{ (as_timestamp(now()) - as_timestamp(states.switch.xiaomi_garage_socket.last_changed | default(0)) | int ) | timestamp_custom("%Hh %Mm", false)}}.'
+
+
+- alias: Xiaomi Switch - Start Charging Battery
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.xiaomi_switch_charging
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.xiaomi_garage_socket
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.xiaomi_garage_socket
+
