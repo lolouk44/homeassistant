@@ -82,3 +82,25 @@
         # entity_id: climate.hallway
         # temperature: 16
         # operation_mode: Heat
+
+
+
+- alias: Nest Set ETA
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.laurent
+      from: "Verint"
+    - platform: state
+      entity_id: person.laurent
+      from: "Uncle P"
+  condition:
+    - condition: time
+      after: '15:30:00'
+    - condition: template
+      value_template: '{{ states("person.div") != "home"}}'
+  action:
+    - service: nest.set_eta
+      data_template:
+        eta: '{{ ((states("sensor.lolo_to_home") | int) * 60) | timestamp_custom("%H:%M:00", false)}}'
+        trip_id: Lolo Going Home
