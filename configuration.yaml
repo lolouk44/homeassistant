@@ -35,70 +35,13 @@ custom_updater:
 config:
 default_config:
 
-# Enables the front end
-frontend: 
-  javascript_version: latest
-
-http:
-  # api_password: !secret http_password
-  # ssl_certificate: !secret ssl_certificate
-  # ssl_key: !secret ssl_key
-  base_url: !secret base_url
-  # trusted_networks:
-    # - 127.0.0.1
-    # - ::1
-    # - 192.168.0.0/24
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 127.0.0.1
-    - ::1
-    # - 192.168.0.0/24
-  ip_ban_enabled: false
-  login_attempts_threshold: 3
-
-lovelace:
-  mode: yaml
-
-# Checks for available dates
-updater:
-  include_used_components: True
-
-discovery:
-
-# Enables support for tracking state changes over time.
-history:
-  exclude:
-    domains:
-      - automation
-
-# View all events in a logbook
-logbook:
-
-# Logging level
-# enable_debug:
-logger:
-  default: error
-  logs:
-    # homeassistant.components.http: warning
-    # homeassistant.components.camera: error
-    # requests.packages.urllib3: critical
-    # requests.packages.urllib3.connectionpool: critical
-    # miio.device: critical
-    # homeassistant.components.sensor.sky_hd_status: critical
-    # homeassistant.components.switch.rest: critical
-    # homeassistant.components.sensor.rest: critical
-    # aiohttp.server: critical
-    # homeassistant.components.rfxtrx: debug
-    homeassistant.components.sensor.scrape: critical
-    homeassistant.components.sensor.rest: critical
-    # homeassistant.components.sensor.waze_travel_time: debug # does not work
-
 
 #Config Split
 alert: !include_dir_merge_named alerts
 automation: !include_dir_merge_list automation
 binary_sensor: !include_dir_merge_list binary_sensors
 camera: !include cameras.yaml
+cast: !include media_player/media_player.yaml
 device_tracker: !include device_tracker.yaml
 google_assistant: !include Google_Assistant.yaml
 group: !include_dir_merge_named groups
@@ -110,6 +53,8 @@ input_text: !include_dir_merge_named input_text
 input_boolean: !include_dir_merge_named input_boolean
 ios: !include iOS.yaml
 light: !include_dir_merge_list lights
+media_player: !include media_player/media_player.yaml
+mobile_app: !include iOS.yaml
 notify: !include notify.yaml
 scene: !include_dir_merge_named scenes
 script: !include_dir_merge_named scripts
@@ -138,7 +83,13 @@ counter:
     name: iOS Badge Count
     icon: mdi:numeric-1-box
 
+discovery:
+
 ffmpeg:
+
+# Enables the front end
+frontend: 
+  javascript_version: latest
 
 google:
   client_id: !secret GCal_ID
@@ -149,59 +100,51 @@ google:
     # - host: 192.168.0.9
     # - host: 192.168.0.10
 
+# Enables support for tracking state changes over time.
+history:
+  exclude:
+    domains:
+      - automation
+
+http:
+  base_url: !secret base_url
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
+  ip_ban_enabled: false
+  login_attempts_threshold: 3
+
 ifttt:
   key: !secret ifttt_key
 
-vacuum:
-- platform: xiaomi_miio
-  name: 'Mi Robot Vacuum'
-  host: 192.168.0.18
-  token: !secret xiaomi_token
+# View all events in a logbook
+logbook:
+
+# Logging level
+# enable_debug:
+logger:
+  default: error
+  logs:
+    # homeassistant.components.http: warning
+    # homeassistant.components.camera: error
+    # requests.packages.urllib3: critical
+    # requests.packages.urllib3.connectionpool: critical
+    # miio.device: critical
+    # homeassistant.components.sensor.sky_hd_status: critical
+    # homeassistant.components.switch.rest: critical
+    # homeassistant.components.sensor.rest: critical
+    # aiohttp.server: critical
+    # homeassistant.components.rfxtrx: debug
+    homeassistant.components.sensor.scrape: critical
+    homeassistant.components.sensor.rest: critical
+    # homeassistant.components.sensor.waze_travel_time: debug # does not work
+    homeassistant.components.mobile_app: debug
+
+lovelace:
+  mode: yaml
 
 map:
-
-media_player:
-  - platform: cast
-  # Google Home Mini Kitchen
-  - platform: cast
-    host: 192.168.0.9
-  # Google Home Mini Living Room
-  - platform: cast
-    host: 192.168.0.10
-  # Kitchen Cast
-  - platform: cast
-    host: 192.168.0.12
-  # Conservatory Cast
-  - platform: cast
-    host: 192.168.0.13
-  # Mi Box
-  - platform: cast
-    host: 192.168.0.28
-  - platform: cast
-    host: 192.168.0.26
-  - platform: kodi
-    host: 192.168.0.28
-  - platform: onkyo
-    host: 192.168.0.26
-    name: Onkyo TX-NR656
-    sources:
-      video6: 'Main PC'
-      bluray: 'Blu-Ray'
-      video2: 'Sky'
-      network: 'ChromeCast'
-      tv: 'TV'
-      strm-box: 'Stream-Box'
-    # zone2: true
-  - platform: panasonic_viera
-    host: 192.168.0.27
-    mac: D8:AF:F1:47:7A:16
-  # - platform: plex
-  - platform: mpd
-    host: 192.168.0.21
-    port: 6600
-    name: MPD RPi Kitchen
-
-mobile_app: !include iOS.yaml
 
 mqtt:
   client_id: home-assistant-1
@@ -236,10 +179,6 @@ rfxtrx:
 
 recorder:
   db_url: !secret db_url
-  # purge_interval: 0
-
-# speedtestdotnet:
-  # scan_interval: '04:00'
 
 stream:
 
@@ -250,10 +189,21 @@ system_health:
 tts:
   - platform: google
     language: 'en-uk'
+
 tuya:
   username: !secret tuya_user
   password: !secret tuya_password
   country_code: 44
+
+# Checks for available dates
+updater:
+  include_used_components: True
+
+vacuum:
+- platform: xiaomi_miio
+  name: 'Mi Robot Vacuum'
+  host: 192.168.0.18
+  token: !secret xiaomi_token
 
 weather:
   - platform: darksky
