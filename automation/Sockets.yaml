@@ -13,6 +13,8 @@
       state: 'on'
   action:
     - delay: '0:10:00'
+    - condition: template
+      value_template: '{{ states("sensor.edimax1_watts") | float  <= 0.1 }}'
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.edimax_charging
@@ -60,6 +62,8 @@
       state: 'on'
   action:
     - delay: '0:10:00'
+    - condition: template
+      value_template: '{{ states("sensor.xiaomi_garage_socket_watts") | float  <= 0.1 }}'
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.xiaomi_switch_charging
