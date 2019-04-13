@@ -564,10 +564,12 @@
 - alias: Alarm - Arm Alarm from iOS Notification
   initial_state: true
   trigger:
+    # iOS 1.5 App Support
     - platform: event
       event_type: ios.notification_action_fired
       event_data:
         actionName: ARM_ALARM
+    # iOS 2.0 App Support
     - platform: event
       event_type: ios.action_fired
       event_data:
@@ -581,10 +583,12 @@
 - alias: Alarm - DisArm Alarm from iOS Notification
   initial_state: true
   trigger:
+    # iOS 1.5 App Support
     - platform: event
       event_type: ios.notification_action_fired
       event_data:
         actionName: DISARM_ALARM
+    # iOS 2.0 App Support
     - platform: event
       event_type: ios.action_fired
       event_data:
