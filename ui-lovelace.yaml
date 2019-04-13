@@ -103,7 +103,7 @@ views:
           - alert.dehumidifier_full
           - alert.fire7_lost
           - alert.rpi_lost
-          - alert.rpi_zero_w_lost
+          - alert.rpi_kitchen_lost
           - alert.kello_lost
           - alert.house_number_led_strip_lost
           - alert.staircase_led_strip_lost
@@ -1209,7 +1209,7 @@ views:
           - alert.dehumidifier_full
           - alert.fire7_lost
           - alert.rpi_lost
-          - alert.rpi_zero_w_lost
+          - alert.rpi_kitchen_lost
           - alert.kello_lost
           - alert.house_number_led_strip_lost
           - alert.staircase_led_strip_lost
@@ -1376,7 +1376,7 @@ views:
           - binary_sensor.dafang_living_room
           - binary_sensor.kello
           - binary_sensor.main
-          - binary_sensor.rpi_zero_w
+          - binary_sensor.rpi_kitchen
           - binary_sensor.rpi
           - binary_sensor.house_number_led_strip
           - binary_sensor.staircase_led_strip
@@ -1400,7 +1400,7 @@ views:
           - alert.currentcost_lost
           - alert.dehumidifier_full
           - alert.rpi_lost
-          - alert.rpi_zero_w_lost
+          - alert.rpi_kitchen_lost
           - alert.kello_lost
           - alert.house_number_led_strip_lost
           - alert.staircase_led_strip_lost
@@ -1521,7 +1521,7 @@ views:
           - alert.currentcost_lost
           - alert.dehumidifier_full
           - alert.rpi_lost
-          - alert.rpi_zero_w_lost
+          - alert.rpi_kitchen_lost
           - alert.kello_lost
           - alert.house_number_led_strip_lost
           - alert.staircase_led_strip_lost
@@ -1736,7 +1736,7 @@ views:
           - alert.dehumidifier_full
           - alert.fire7_lost
           - alert.rpi_lost
-          - alert.rpi_zero_w_lost
+          - alert.rpi_kitchen_lost
           - alert.kello_lost
           - alert.house_number_led_strip_lost
           - alert.staircase_led_strip_lost

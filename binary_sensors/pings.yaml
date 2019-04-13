@@ -28,7 +28,7 @@
 
 - platform: ping
   host: 192.168.0.21
-  name: RPi Zero W
+  name: RPi Kitchen
 
 - platform: ping
   host: 192.168.0.30

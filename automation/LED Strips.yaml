@@ -64,7 +64,7 @@
       entity_id: alert.rpi_lost
       to: 'on'
     - platform: state
-      entity_id: alert.rpi_zero_w_lost
+      entity_id: alert.rpi_kitchen_lost
       to: 'on'
     - platform: state
       entity_id: alert.staircase_led_strip_lost

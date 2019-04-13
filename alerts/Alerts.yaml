@@ -135,9 +135,9 @@ rpi_lost:
   notifiers:
     - pushbullet
 
-rpi_zero_w_lost:
-  name: RPi Zero W Lost
-  entity_id: binary_sensor.rpi_zero_w
+rpi_kitchen_lost:
+  name: RPi Kitchen Lost
+  entity_id: binary_sensor.rpi_kitchen
   state: 'off'
   can_acknowledge: True
   skip_first: True

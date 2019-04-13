@@ -19,7 +19,7 @@
         - alert.ram_usage_lost
         - alert.root_disk_usage_too_high
         - alert.rpi_lost
-        - alert.rpi_zero_w_lost
+        - alert.rpi_kitchen_lost
         - alert.staircase_led_strip_lost
         - alert.tv_cabinet_led_strip_lost
         - alert.upstairs_temp_sensor_lost
@@ -71,7 +71,7 @@
         - alert.ram_usage_lost
         - alert.root_disk_usage_too_high
         - alert.rpi_lost
-        - alert.rpi_zero_w_lost
+        - alert.rpi_kitchen_lost
         - alert.staircase_led_strip_lost
         - alert.tv_cabinet_led_strip_lost
         - alert.upstairs_temp_sensor_lost
