@@ -1,6 +1,5 @@
 """
 A Device Tracker platform that retrieves location from Life360.
-
 For more details about this platform, please refer to
 https://github.com/pnbruckner/homeassistant-config#life360-device-tracker-platform
 """
@@ -34,13 +33,7 @@ from homeassistant.util.async_ import run_coroutine_threadsafe
 from homeassistant.util.distance import convert
 import homeassistant.util.dt as dt_util
 
-
-__version__ = '2.9.0'
-
 _LOGGER = logging.getLogger(__name__)
-
-DEPENDENCIES = ['zone']
-REQUIREMENTS = ['life360==3.0.0', 'timezonefinderL==2.0.1']
 
 DEFAULT_FILENAME = 'life360.conf'
 DEFAULT_HOME_PLACE = 'Home'
