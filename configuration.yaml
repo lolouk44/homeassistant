@@ -133,13 +133,12 @@ logger:
     # miio.device: critical
     # homeassistant.components.sensor.sky_hd_status: critical
     # homeassistant.components.switch.rest: critical
-    # homeassistant.components.sensor.rest: critical
-    # aiohttp.server: critical
     # homeassistant.components.rfxtrx: debug
-    homeassistant.components.sensor.scrape: critical
-    homeassistant.components.sensor.rest: critical
-    # homeassistant.components.sensor.waze_travel_time: debug # does not work
-    homeassistant.components.mobile_app: debug
+    homeassistant.helpers.entity: critical
+    homeassistant.components.scrape: critical
+    homeassistant.components.rest: critical
+    homeassistant.components.waze_travel_time: critical
+
 
 lovelace:
   mode: yaml
@@ -203,7 +202,7 @@ vacuum:
 - platform: xiaomi_miio
   name: 'Mi Robot Vacuum'
   host: 192.168.0.18
-  token: !secret xiaomi_token
+  token: !secret xiaomi_token_vacuum
 
 weather:
   - platform: darksky
@@ -211,7 +210,8 @@ weather:
     mode: daily
 
 xiaomi_aqara:
-  discovery_retry: 5
+  discovery_retry: 10
   gateways:
     - mac: !secret xiaomi_aqara_mac
       key: !secret xiaomi_aqara_password
+      host: 192.168.0.5

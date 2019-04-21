@@ -51,6 +51,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Mijia Honeywell Fire Alarm Detector
 - Xiaomi Router R3P Pro
 - Xiaomi Mijia Zigbee Smart Socket
+- Xiaomi Philips Zhirui Candle Light
 
 ## View of my Home Assistant UI
 ![My Home Assistant](http://www.lolorpi.com/wordpress/wp-content/uploads/2018/08/HA_UI_Example.png)

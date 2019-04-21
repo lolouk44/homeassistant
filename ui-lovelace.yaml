@@ -930,6 +930,13 @@ views:
         - sensor.sunset_time
     cards:
       - type: entities
+        title: Main Bedroom Lights
+        show_header_toggle: false
+        entities:
+        - entity: light.lolo_bedside_light
+          secondary_info: last-changed
+          icon: mdi:lamp
+      - type: entities
         title: Main Bedroom Sensors
         show_header_toggle: false
         entities:
