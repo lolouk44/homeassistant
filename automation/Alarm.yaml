@@ -89,13 +89,13 @@
     - service: switch.turn_off
       data:
         entity_id: switch.kerui_alarm
+    - service: switch.turn_off
+      data:
+        entity_id: switch.kerui_alarm
     - service: camera.snapshot
       data:
         entity_id: camera.fire7
         filename: '/config/www/CCTV_Snapshots/Fire7.jpg'
-    - service: switch.turn_off
-      data:
-        entity_id: switch.kerui_alarm
     - service: camera.snapshot
       data:
         entity_id: camera.front

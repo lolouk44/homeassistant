@@ -128,12 +128,6 @@
       entity_id: light.TV_Cabinet_LED_Strip
       state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.TV_Cabinet_LED_Strip
-      brightness: 255
-      rgb_color: [0,0,0]
-  - delay: 00:00:01
   - service: light.turn_off
     data:
       entity_id: light.TV_Cabinet_LED_Strip
@@ -204,19 +198,9 @@
       entity_id: light.Staircase_LED_Strip
       state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.Staircase_LED_Strip
-      rgb_color: [0,0,0]
-      transition: 1
-  - delay: 00:00:01
   - service: light.turn_off
     data:
       entity_id: light.Staircase_LED_Strip
-
-
-
-
 
 
 
@@ -250,17 +234,6 @@
       minutes: 0
       seconds: 0
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.House_Number_LED_Strip
-      rgb_color: [0,0,0]
-      transition: 1
-  - delay: 00:00:01
   - service: light.turn_off
     data:
       entity_id: light.House_Number_LED_Strip
-  - service: light.turn_off
-    data:
-      entity_id: light.porch_om_xmas_led_strip
-
-
