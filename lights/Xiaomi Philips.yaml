@@ -2,4 +2,3 @@
   name: Lolo Bedside Light
   host: 192.168.0.54
   token: !secret xiaomi_token_lolo_bedside_light
-  # model: philips.light.bulb

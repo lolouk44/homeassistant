@@ -23,6 +23,16 @@
       media_content_id: 'http://192.168.0.24/audio/Click.mp3'
       media_content_type: 'audio/mp4'
 
+- alias: HASS Start RadioStream Scrape
+  initial_state: true
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+  - service: shell_command.stop_radiostream_sensors
+  - delay: 00:00:02
+  - service: shell_command.start_radiostream_sensors
+
 - alias: HASS Stop Motion Detection
   initial_state: true
   trigger:

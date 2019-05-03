@@ -19,18 +19,6 @@ homeassistant:
   time_zone: Europe/London
   customize: !include_dir_merge_named customizations
 
-# Custom Updater: https://github.com/custom-components/custom_updater
-#Life360 Device Tracker: https://github.com/pnbruckner/homeassistant-config/blob/master/docs/custom_updater.md
-custom_updater:
-  track:
-    - cards
-    - components
-    - python_scripts
-  component_urls:
-    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
-  python_script_urls:
-    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/python_scripts.json
-
 
 config:
 default_config:
@@ -82,6 +70,20 @@ counter:
     step: 1
     name: iOS Badge Count
     icon: mdi:numeric-1-box
+
+# Custom Updater: https://github.com/custom-components/custom_updater
+#Life360 Device Tracker: https://github.com/pnbruckner/homeassistant-config/blob/master/docs/custom_updater.md
+custom_updater:
+  track:
+    - cards
+    - components
+    - python_scripts
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+  component_urls:
+    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
+  python_script_urls:
+    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/python_scripts.json
 
 discovery:
 
@@ -138,6 +140,7 @@ logger:
     homeassistant.components.scrape: critical
     homeassistant.components.rest: critical
     homeassistant.components.waze_travel_time: critical
+    homeassistant.components.xiaomi_miio.light: critical
 
 
 lovelace:
@@ -169,9 +172,9 @@ person:
     id: divashni
     user_id: !secret ha_div_user_id
     device_trackers:
+      - device_tracker.divashni
       - device_tracker.div_iphone
       - device_tracker.diviphone
-      - device_tracker.divashni
 
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
@@ -186,7 +189,8 @@ sun:
 system_health:
 
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
     language: 'en-uk'
 
 tuya:

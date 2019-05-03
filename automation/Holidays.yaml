@@ -87,9 +87,10 @@
       state: "on"
   action:
   - delay: "{{range(0,1200+1)|random|timestamp_custom('%X',false)}}"
-  - service: switch.turn_on
+  - service: light.turn_on
     data:
-      entity_id: switch.LWRF_Socket_3
+      entity_id: light.lolo_bedside_light
+      scene: 1
   - service: light.turn_on
     data:
       entity_id: light.kiaan_lamp
@@ -119,9 +120,9 @@
       state: "on"
   action:
   - delay: "{{range(0,1200+1)|random|timestamp_custom('%X',false)}}"
-  - service: switch.turn_off
+  - service: light.turn_off
     data:
-      entity_id: switch.LWRF_Socket_3
+      entity_id: light.lolo_bedside_light
   - service: light.turn_off
     data:
       entity_id: light.living_room_main

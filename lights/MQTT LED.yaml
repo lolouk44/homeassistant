@@ -8,7 +8,7 @@
   effect: true
   effect_list: [colorfade_slow, colorfade_fast, flash]
   optimistic: false
-  qos: 0
+  qos: 1
 
 - platform: mqtt
   name: Staircase LED Strip
@@ -20,7 +20,7 @@
   effect: true
   effect_list: [colorfade_slow, colorfade_fast, flash]
   optimistic: false
-  qos: 0
+  qos: 1
 
 - platform: mqtt
   name: TV Cabinet LED Strip
@@ -32,7 +32,7 @@
   effect: true
   effect_list: [colorfade_slow, colorfade_fast, flash]
   optimistic: false
-  qos: 0
+  qos: 1
 
 
 
@@ -47,7 +47,7 @@
   effect: true
   effect_list: [sparkle, rainbow, uniglow]
   optimistic: false
-  qos: 0
+  qos: 1
 
 - platform: mqtt
   name: Bauble 2
@@ -59,7 +59,7 @@
   effect: true
   effect_list: [sparkle, rainbow, uniglow]
   optimistic: false
-  qos: 0
+  qos: 1
 
 - platform: mqtt
   name: Bauble 3
@@ -71,7 +71,7 @@
   effect: true
   effect_list: [sparkle, rainbow, uniglow]
   optimistic: false
-  qos: 0
+  qos: 1
 
 
 
@@ -104,7 +104,7 @@
   brightness: true
   rgb: true
   optimistic: false
-  qos: 0
+  qos: 1
 
 
 - platform: mqtt
@@ -135,7 +135,7 @@
   brightness: true
   rgb: true
   optimistic: false
-  qos: 0
+  qos: 1
 
 
 - platform: mqtt
@@ -166,4 +166,4 @@
   brightness: true
   rgb: true
   optimistic: false
-  qos: 0
+  qos: 1

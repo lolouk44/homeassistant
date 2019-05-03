@@ -50,7 +50,7 @@
   name: chromecast_radio_pic
   still_image_url: >
     {% set my_speaker = "media_player."+states("input_select.chromecast_radio_speakers")|lower %}
-    {% if is_state(my_speaker,"playing") and is_state("sensor.radio_is_streaming", "yes")%}
+    {% if is_state(my_speaker,"playing") and is_state("binary_sensor.radio_is_streaming", "on")%}
     {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states("sensor.rtl2_pic")}}
     {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states("sensor.absolute_radio_pic")}}
     {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states("sensor.absolute_radio_CR_pic")}}

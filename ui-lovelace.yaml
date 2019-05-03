@@ -209,66 +209,8 @@ views:
             - entity: switch.chromecast_radio_play
         - type: conditional
           conditions:
-            - entity: media_player.house
-              state_not: "off"
-            - entity: media_player.house
-              state_not: "unavailable"
-            - entity: sensor.radio_is_streaming
-              state: "yes"
-          card:
-            type: entities
-            show_header_toggle: false
-            entities:
-              - entity: sensor.stream_artist
-                name: Artist
-                icon: mdi:account
-              - entity: sensor.stream_track
-                name: Track
-                icon: mdi:disc
-        - type: conditional
-          conditions:
-            - entity: media_player.conservatory
-              state_not: "off"
-            - entity: media_player.conservatory
-              state_not: "unavailable"
-            - entity: sensor.radio_is_streaming
-              state: "yes"
-          card:
-            type: entities
-            show_header_toggle: false
-            entities:
-              - entity: sensor.stream_artist
-                name: Artist
-                icon: mdi:account
-              - entity: sensor.stream_track
-                name: Track
-                icon: mdi:disc
-        - type: conditional
-          conditions:
-            - entity: media_player.kitchen
-              state_not: "off"
-            - entity: media_player.kitchen
-              state_not: "unavailable"
-            - entity: sensor.radio_is_streaming
-              state: "yes"
-          card:
-            type: entities
-            show_header_toggle: false
-            entities:
-              - entity: sensor.stream_artist
-                name: Artist
-                icon: mdi:account
-              - entity: sensor.stream_track
-                name: Track
-                icon: mdi:disc
-        - type: conditional
-          conditions:
-            - entity: media_player.onkyo
-              state_not: "off"
-            - entity: media_player.onkyo
-              state_not: "unavailable"
-            - entity: sensor.radio_is_streaming
-              state: "yes"
+            - entity: binary_sensor.radio_is_streaming
+              state: "on"
           card:
             type: entities
             show_header_toggle: false

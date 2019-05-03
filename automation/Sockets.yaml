@@ -60,10 +60,15 @@
     - condition: state
       entity_id: input_boolean.xiaomi_switch_charging
       state: 'on'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.input_boolean.xiaomi_switch_charging.last_changed | default(0)) | int  > 60)}}'
   action:
     - delay: '0:10:00'
     - condition: template
       value_template: '{{ states("sensor.xiaomi_garage_socket_watts") | float  <= 0.1 }}'
+    - service: notify.gmaillolo
+      data_template:
+        message: 'The battery on the Xiaomi switch is charged. Charging time: {{ (as_timestamp(now()) - as_timestamp(states.input_boolean.xiaomi_switch_charging.last_changed | default(0)) | int ) | timestamp_custom("%Hh %Mm", false)}}.'
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.xiaomi_switch_charging
@@ -73,9 +78,6 @@
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
-    - service: notify.gmaillolo
-      data_template:
-        message: 'The battery on the Xiaomi switch is charged. Charging time: {{ (as_timestamp(now()) - as_timestamp(states.switch.xiaomi_garage_socket.last_changed | default(0)) | int ) | timestamp_custom("%Hh %Mm", false)}}.'
 
 
 - alias: Xiaomi Switch - Start Charging Battery

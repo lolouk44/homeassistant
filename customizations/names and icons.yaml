@@ -156,6 +156,8 @@ sensor.aloe_vera_conductivity:
   icon: mdi:flower
 # sensor.aloe_vera_battery:
   # icon: mdi:battery-charging
+sensor.battery:
+  friendly_name: "Lolo's iPhone Battery"
 sensor.currentcost_power:
   icon: mdi:flash-circle
 sensor.currentcost_temperature:

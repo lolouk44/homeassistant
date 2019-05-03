@@ -1,76 +1,141 @@
-- platform: scrape
-  resource: https://www.6play.fr/rtl2/quel-est-ce-titre
-  name: RTL2_Pic
-  select: '.ecfper-2'
-  attribute: src
+- platform: mqtt
+  name: "RTL2_Pic"
+  state_topic: "RadioStream/RTL2/pic_url"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://www.6play.fr/rtl2/quel-est-ce-titre
-  name: RTL2_Artist
-  select: '.ecfper-6'
-  value_template: '{{ value | title }}'
+- platform: mqtt
+  name: "RTL2_Artist"
+  state_topic: "RadioStream/RTL2/artist"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://www.6play.fr/rtl2/quel-est-ce-titre
-  name: RTL2_Track
-  select: '.ecfper-5'
-  value_template: '{{ value | title }}'
+- platform: mqtt
+  name: "RTL2_Track"
+  state_topic: "RadioStream/RTL2/track"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://absoluteradio.co.uk/classic-rock/music/
-  name: Absolute_Radio_CR_Pic
-  select: '.song-artist-image img'
-  attribute: src
+- platform: mqtt
+  name: "Absolute_Radio_Pic"
+  state_topic: "RadioStream/Absolute_Radio/pic_url"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://absoluteradio.co.uk/classic-rock/music/
-  name: Absolute_Radio_CR_Artist
-  select: '.song-artist-image img'
-  attribute: alt
+- platform: mqtt
+  name: "Absolute_Radio_Artist"
+  state_topic: "RadioStream/Absolute_Radio/artist"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://absoluteradio.co.uk/classic-rock/music/
-  name: Absolute_Radio_CR_Track
-  select: '.song-title a'
+- platform: mqtt
+  name: "Absolute_Radio_Track"
+  state_topic: "RadioStream/Absolute_Radio/track"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://absoluteradio.co.uk/absolute-radio/music/
-  name: Absolute_Radio_Pic
-  select: '.song-artist-image img'
-  attribute: src
+- platform: mqtt
+  name: "Absolute_Radio_CR_Pic"
+  state_topic: "RadioStream/Absolute_Radio_CR/pic_url"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://absoluteradio.co.uk/absolute-radio/music/
-  name: Absolute_Radio_Artist
-  select: '.song-artist-image img'
-  attribute: alt
+- platform: mqtt
+  name: "Absolute_Radio_CR_Artist"
+  state_topic: "RadioStream/Absolute_Radio_CR/artist"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://absoluteradio.co.uk/absolute-radio/music/
-  name: Absolute_Radio_Track
-  select: '.song-title a'
+- platform: mqtt
+  name: "ha_podcast"
+  state_topic: "RadioStream/Hass Podcast/mp3_url"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://hasspodcast.io/feed/podcast
-  name: ha_podcast
-  select: 'enclosure:nth-of-type(1)'
-  attribute: url
+- platform: mqtt
+  name: "ha_podcast_track"
+  state_topic: "RadioStream/Hass Podcast/track"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://hasspodcast.io/feed/podcast
-  name: ha_podcast_track
-  select: 'item:nth-of-type(1) title'
+- platform: mqtt
+  name: "Absolute_Radio_CR_Track"
+  state_topic: "RadioStream/Absolute_Radio_CR/track"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://iotpodcast.com/feed/
-  name: internet_of_things_podcast
-  select: 'enclosure:nth-of-type(1)'
-  attribute: url
+- platform: mqtt
+  name: "internet_of_things_podcast"
+  state_topic: "RadioStream/IoT Podcast/mp3_url"
+  value_template: "{{ value }}"
 
-- platform: scrape
-  resource: https://iotpodcast.com/feed/
-  name: internet_of_things_podcast_track
-  select: 'item:nth-of-type(1) title'
+- platform: mqtt
+  name: "internet_of_things_podcast_track"
+  state_topic: "RadioStream/IoT Podcast/track"
+  value_template: "{{ value }}"
+
+# - platform: scrape
+  # resource: https://www.6play.fr/rtl2/quel-est-ce-titre
+  # name: RTL2_Pic
+  # select: '.ecfper-2'
+  # attribute: src
+
+# - platform: scrape
+  # resource: https://www.6play.fr/rtl2/quel-est-ce-titre
+  # name: RTL2_Artist
+  # select: '.ecfper-6'
+  # value_template: '{{ value | title }}'
+
+# - platform: scrape
+  # resource: https://www.6play.fr/rtl2/quel-est-ce-titre
+  # name: RTL2_Track
+  # select: '.ecfper-5'
+  # value_template: '{{ value | title }}'
+
+# - platform: scrape
+  # resource: https://absoluteradio.co.uk/classic-rock/music/
+  # name: Absolute_Radio_CR_Pic
+  # select: '.song-artist-image img'
+  # attribute: src
+
+# - platform: scrape
+  # resource: https://absoluteradio.co.uk/classic-rock/music/
+  # name: Absolute_Radio_CR_Artist
+  # select: '.song-artist-image img'
+  # attribute: alt
+
+# - platform: scrape
+  # resource: https://absoluteradio.co.uk/classic-rock/music/
+  # name: Absolute_Radio_CR_Track
+  # select: '.song-title a'
+
+# - platform: scrape
+  # resource: https://absoluteradio.co.uk/absolute-radio/music/
+  # name: Absolute_Radio_Pic
+  # select: '.song-artist-image img'
+  # attribute: src
+
+# - platform: scrape
+  # resource: https://absoluteradio.co.uk/absolute-radio/music/
+  # name: Absolute_Radio_Artist
+  # select: '.song-artist-image img'
+  # attribute: alt
+
+# - platform: scrape
+  # resource: https://absoluteradio.co.uk/absolute-radio/music/
+  # name: Absolute_Radio_Track
+  # select: '.song-title a'
+
+# - platform: scrape
+  # resource: https://hasspodcast.io/feed/podcast
+  # name: ha_podcast
+  # select: 'enclosure:nth-of-type(1)'
+  # attribute: url
+
+# - platform: scrape
+  # resource: https://hasspodcast.io/feed/podcast
+  # name: ha_podcast_track
+  # select: 'item:nth-of-type(1) title'
+
+# - platform: scrape
+  # resource: https://iotpodcast.com/feed/
+  # name: internet_of_things_podcast
+  # select: 'enclosure:nth-of-type(1)'
+  # attribute: url
+
+# - platform: scrape
+  # resource: https://iotpodcast.com/feed/
+  # name: internet_of_things_podcast_track
+  # select: 'item:nth-of-type(1) title'
 
 
 - platform: template
@@ -130,16 +195,3 @@
         {% endif %}
       friendly_name: Artist
       icon_template: 'mdi:account'
-    radio_is_streaming:
-      entity_id:
-        - media_player.conservatory
-        - media_player.house
-        - media_player.kitchen
-        - media_player.onkyo
-        - media_player.onkyo_tx_nr656
-      value_template: >
-        {% for state in states.media_player -%}
-        {%- if state.entity_id in ["media_player.conservatory", "media_player.house", "media_player.kitchen",  "media_player.onkyo", "media_player.onkyo_tx_nr656"] -%}
-        {% if state_attr(state.entity_id, "media_content_id") in ["http://streaming.radio.rtl2.fr:80/rtl2-1-44-96", "http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3", "http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3", "http://broadcast.infomaniak.ch/hitwest-high.mp3", states("sensor.ha_podcast"), states("sensor.internet_of_things_podcast"), "http://media-the.musicradio.com/ChillMP3", "http://peridot.streamguys.com:7150/RFTwo?play", states("input_text.custom_station")] %}yes{% endif %}
-        {% endif %}  
-        {%- endfor %}

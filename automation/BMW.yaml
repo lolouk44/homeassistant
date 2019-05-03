@@ -79,3 +79,16 @@
     - service: lock.lock
       data:
         entity_id: lock.220d_lock
+
+- alias: BMW - Ventilate the car from iOS Notification
+  initial_state: true
+  trigger:
+    # iOS 2.0 App Support
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: BMW_VENTILATE
+  action:
+    - service: bmw_connected_drive.activate_air_conditioning
+      data:
+        vin: !secret bmw_connected_drive_vin

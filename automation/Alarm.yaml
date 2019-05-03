@@ -122,6 +122,7 @@
         filename: '/config/www/CCTV_Snapshots/Garage.jpg'
     - service: notify.gmaillolo
       data_template:
+        title: "Alarm Triggered !"
         message: >
           ALARM! The alarm has been triggered !(
           ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
@@ -142,6 +143,7 @@
             - /config/www/CCTV_Snapshots/Garage.jpg
     - service: notify.gmaildiv
       data_template:
+        title: "Alarm Triggered !"
         message: >
           ALARM! The alarm has been triggered !(
           ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
@@ -162,6 +164,7 @@
             - /config/www/CCTV_Snapshots/Garage.jpg
     - service: notify.ios_lolos_iphone
       data_template:
+        title: "Alarm Triggered !"
         message: >
           ALARM! The alarm has been triggered !(
           ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
@@ -313,7 +316,6 @@
     - service: switch.turn_on
       data:
         entity_id: switch.kerui_disarm
-
     - service: switch.turn_on
       data:
         entity_id: switch.kerui_disarm

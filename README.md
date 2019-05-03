@@ -13,7 +13,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Raspberry Pi 3 Model B (Kodi)
 - Raspberry Pi 3 Model B (Smart Calendar Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
 
-- Amazon Fire7 (alarm keypad with [Fully Kiosk](https://fully-kiosk.com), motion detection)
+- Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
 - BME280 Temperature and Barometer Sensor
 - Byron SX-20T Doorbell
 - [Cresta TS34C](https://www.conrad-electronic.co.uk/ce/en/product/672148/5-Channel-TS34C-Wireless-Thermo-Hygro-Sensor) Hygrometers

@@ -8,7 +8,7 @@ outside_temp_sensor_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 upstairs_temp_sensor_lost:
   name: Outside Temp Sensor Lost
@@ -20,7 +20,7 @@ upstairs_temp_sensor_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 ram_usage_lost:
   name: RAM Usage Sensor Lost
@@ -32,7 +32,7 @@ ram_usage_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 fire7_lost:
   name: Fire 7 Lost
@@ -44,7 +44,7 @@ fire7_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 cctv_front_lost:
   name: CCTV Front Lost
@@ -58,7 +58,7 @@ cctv_front_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 cctv_garage_lost:
   name: CCTV Garage Lost
@@ -71,7 +71,7 @@ cctv_garage_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 cctv_dafang_living_room_lost:
   name: CCTV Dafang Living Room Lost
@@ -84,7 +84,7 @@ cctv_dafang_living_room_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 cctv_dafang_kitchen_lost:
   name: CCTV Dafang Kitchen Lost
@@ -97,7 +97,7 @@ cctv_dafang_kitchen_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 currentcost_lost:
   name: CurrentCost Lost
@@ -109,7 +109,7 @@ currentcost_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 dehumidifier_full:
   name: Dehumidifier Full
@@ -120,7 +120,7 @@ dehumidifier_full:
     - 1
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 rpi_lost:
   name: RPi Lost
@@ -133,7 +133,7 @@ rpi_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 rpi_kitchen_lost:
   name: RPi Kitchen Lost
@@ -146,20 +146,19 @@ rpi_kitchen_lost:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
-# kello_lost:
-  # name: Kello Lost
-  # entity_id: binary_sensor.kello
-  # state: 'off'
-  # can_acknowledge: True
-  # skip_first: True
-  # repeat:
-    # - 5
-    # - 30
-    # - 60
-  # notifiers:
-    # - pushbullet
+kello_lost:
+  name: Kello Lost
+  entity_id: binary_sensor.kello
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 60
+  notifiers:
+    - ios_lolos_iphone
 
 house_number_led_strip_lost:
   name: House Number LED Strip Lost
@@ -171,7 +170,7 @@ house_number_led_strip_lost:
     - 5
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 
 staircase_led_strip_lost:
@@ -184,7 +183,7 @@ staircase_led_strip_lost:
     - 5
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 
 tv_cabinet_led_strip_lost:
@@ -197,7 +196,7 @@ tv_cabinet_led_strip_lost:
     - 5
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 
 ram_too_high:
@@ -209,7 +208,7 @@ ram_too_high:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 home_disk_usage_too_high:
   name: Home Disk Usage > 75%
@@ -220,7 +219,7 @@ home_disk_usage_too_high:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 root_disk_usage_too_high:
   name: Root Disk Usage > 75%
@@ -231,7 +230,7 @@ root_disk_usage_too_high:
     - 30
     - 60
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 aloe_vera_humidity_too_low:
   name: Aloe Vera Humidity below 10%
@@ -242,7 +241,7 @@ aloe_vera_humidity_too_low:
     - 5
     - 240
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
 
 aloe_vera_battery_too_low:
   name: Aloe Vera Battery below 10%
@@ -253,7 +252,19 @@ aloe_vera_battery_too_low:
     - 5
     - 240
   notifiers:
-    - pushbullet
+    - ios_lolos_iphone
+
+lolo_bedside_light_lost:
+  name: Lolo Bedside Light Lost
+  state: 'unavailable'
+  entity_id: light.lolo_bedside_light
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 240
+  notifiers:
+    - ios_lolos_iphone
 
 
 
