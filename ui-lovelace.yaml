@@ -174,9 +174,9 @@ views:
         title: 17Track
         show_header_toggle: false
         entities:
-          - entity: sensor.packages_in_transit
+          - entity: sensor.seventeentrack_packages_in_transit
             icon: mdi:truck-fast
-          - entity: sensor.packages_delivered
+          - entity: sensor.seventeentrack_packages_delivered
             icon: mdi:package-variant
   - title: Media
     background: url("/local/library-music.png") fixed
@@ -690,13 +690,12 @@ views:
           entities:
             - entity: light.hallway
               secondary_info: last-changed
-            - entity: light.house_number_led_strip
-              secondary_info: last-changed
             - entity: light.aqara_gateway_light
               secondary_info: last-changed
             - entity: light.porch_om_xmas_led_strip
               secondary_info: last-changed
               name: Om LED Strip
+              icon: mdi:numeric-4-box-multiple-outline
       - type: entities
         title: Nest Thermostat
         show_header_toggle: false
@@ -882,11 +881,11 @@ views:
         title: Main Bedroom Sensors
         show_header_toggle: false
         entities:
-        - entity: sensor.temperature_158d0001f5218a
+        - entity: sensor.master_bedroom_aqara_temperature
           secondary_info: last-changed
-        - entity: sensor.humidity_158d0001f5218a
+        - entity: sensor.master_bedroom_aqara_humidity
           secondary_info: last-changed
-        - entity: sensor.pressure_158d0001f5218a
+        - entity: sensor.master_bedroom_aqara_pressure
           secondary_info: last-changed
         - entity: binary_sensor.master_bedroom_left_window
           secondary_info: last-changed
@@ -907,13 +906,9 @@ views:
         entities:
           - entity: sensor.lolo_weight
             secondary_info: last-changed
-          - entity: sensor.lolo_impedance
-            secondary_info: last-changed
           - entity: sensor.lolo_bmi
             secondary_info: last-changed
           - entity: sensor.div_weight
-            secondary_info: last-changed
-          - entity: sensor.div_impedance
             secondary_info: last-changed
           - entity: sensor.div_bmi
             secondary_info: last-changed
@@ -956,8 +951,6 @@ views:
         show_header_toggle: false
         entities:
           - entity: sensor.kiaan_weight
-            secondary_info: last-changed
-          - entity: sensor.kiaan_impedance
             secondary_info: last-changed
           - entity: sensor.kiaan_bmi
             secondary_info: last-changed

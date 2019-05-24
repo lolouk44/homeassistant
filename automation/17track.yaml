@@ -3,8 +3,8 @@
   trigger:
     - platform: state
       entity_id:
-        - sensor.packages_delivered
-        - sensor.packages_in_transit
+        - sensor.seventeentrack_packages_delivered
+        - sensor.seventeentrack_packages_in_transit
   condition:
     - condition: template
       value_template: '{{ (trigger.to_state.state | int ) > 0 }}'
