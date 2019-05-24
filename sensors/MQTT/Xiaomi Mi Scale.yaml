@@ -1,66 +1,64 @@
 - platform: mqtt
   name: "Lolo Weight"
-  state_topic: "lolo/weight/kg"
-  value_template: "{{ value }}"
+  state_topic: "lolo/weight"
+  value_template: "{{ value_json['Weight'] }}"
   unit_of_measurement: "kg"
-  icon: mdi:weight-kilogram
+  json_attributes_topic: "lolo/weight"
+  icon: mdi:scale-bathroom
 
 - platform: mqtt
-  name: "Lolo Impedance"
-  state_topic: "lolo/weight/Impedance"
-  value_template: "{{ value }}"
-  unit_of_measurement: "Ω"
-  icon: mdi:scale-bathroom
+  name: "Lolo BMI"
+  state_topic: "lolo/weight"
+  value_template: "{{ value_json['BMI'] }}"
+  icon: mdi:human-pregnant
 
 - platform: mqtt
   name: "Div Weight"
-  state_topic: "div/weight/kg"
-  value_template: "{{ value }}"
+  state_topic: "div/weight"
+  value_template: "{{ value_json['Weight'] }}"
   unit_of_measurement: "kg"
-  icon: mdi:weight-kilogram
+  icon: mdi:scale-bathroom
 
 - platform: mqtt
-  name: "Div Impedance"
-  state_topic: "div/weight/Impedance"
-  value_template: "{{ value }}"
-  unit_of_measurement: "Ω"
-  icon: mdi:scale-bathroom
+  name: "Div BMI"
+  state_topic: "div/weight"
+  value_template: "{{ value_json['BMI'] }}"
+  icon: mdi:human-pregnant
 
 - platform: mqtt
   name: "Kiaan Weight"
-  state_topic: "kiaan/weight/kg"
-  value_template: "{{ value }}"
+  state_topic: "kiaan/weight"
+  value_template: "{{ value_json['Weight'] }}"
   unit_of_measurement: "kg"
-  icon: mdi:weight-kilogram
+  icon: mdi:scale-bathroom
 
 - platform: mqtt
-  name: "Kiaan Impedance"
-  state_topic: "kiaan/weight/Impedance"
-  value_template: "{{ value }}"
-  unit_of_measurement: "Ω"
-  icon: mdi:scale-bathroom
+  name: "Kiaan BMI"
+  state_topic: "kiaan/weight"
+  value_template: "{{ value_json['BMI'] }}"
+  icon: mdi:human-pregnant
   
 
-- platform: template
-  sensors:
-    lolo_bmi:
-      entity_id: sensor.lolo_weight
-      value_template: >
-        {{(states("sensor.lolo_weight") | float / (1.75*1.75)) | round(1)}}
-      friendly_name: Lolo BMI
-      icon_template: mdi:human-pregnant
-      unit_of_measurement: "kg/m²"
-    div_bmi:
-      entity_id: sensor.div_weight
-      value_template: >
-        {{(states("sensor.div_weight") | float / (1.70*1.70)) | round(1)}}
-      friendly_name: Div BMI
-      icon_template: mdi:human-pregnant
-      unit_of_measurement: "kg/m²"
-    kiaan_bmi:
-      entity_id: sensor.kiaan_weight
-      value_template: >
-        {{(states("sensor.kiaan_weight") | float / (0.97*0.97)) | round(1)}}
-      friendly_name: Kiaan BMI
-      icon_template: mdi:human-pregnant
-      unit_of_measurement: "kg/m²"
+# - platform: template
+  # sensors:
+    # lolo_bmi:
+      # entity_id: sensor.lolo_weight
+      # value_template: >
+        # {{(states("sensor.lolo_weight") | float / (1.75*1.75)) | round(1)}}
+      # friendly_name: Lolo BMI
+      # icon_template: mdi:human-pregnant
+      # unit_of_measurement: "kg/m²"
+    # div_bmi:
+      # entity_id: sensor.div_weight
+      # value_template: >
+        # {{(states("sensor.div_weight") | float / (1.70*1.70)) | round(1)}}
+      # friendly_name: Div BMI
+      # icon_template: mdi:human-pregnant
+      # unit_of_measurement: "kg/m²"
+    # kiaan_bmi:
+      # entity_id: sensor.kiaan_weight
+      # value_template: >
+        # {{(states("sensor.kiaan_weight") | float / (0.97*0.97)) | round(1)}}
+      # friendly_name: Kiaan BMI
+      # icon_template: mdi:human-pregnant
+      # unit_of_measurement: "kg/m²"

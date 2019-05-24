@@ -10,7 +10,7 @@
   action:
     - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
       timeout: '00:06:00'
-      continue_on_timeout: 'false'
+      continue_on_timeout: 'true'
     - condition: template
       value_template: >
         {%- set doors = [
@@ -52,12 +52,12 @@
     - platform: state
       entity_id: lock.220d_lock
       to: 'unlocked'
-      for:
-        minutes: 5
-  condition:
-    - condition: template
-      value_template: '{{ states("person.laurent") != "driving"}}'
   action:
+    - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
+      timeout: '00:06:00'
+      continue_on_timeout: 'true'
+    - condition: template
+      value_template: '{{ states("device_tracker.laurent") != "driving"}}'
     - service: notify.ios_lolos_iphone
       data_template:
         message: 'BMW 220d Not Locked !'

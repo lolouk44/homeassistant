@@ -254,18 +254,6 @@ aloe_vera_battery_too_low:
   notifiers:
     - ios_lolos_iphone
 
-lolo_bedside_light_lost:
-  name: Lolo Bedside Light Lost
-  state: 'unavailable'
-  entity_id: light.lolo_bedside_light
-  can_acknowledge: True
-  skip_first: True
-  repeat:
-    - 5
-    - 240
-  notifiers:
-    - ios_lolos_iphone
-
 
 
 

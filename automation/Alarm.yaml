@@ -601,6 +601,28 @@
       data:
         code: !secret alarm_code
 
+- alias: Alarm - DisArm Alarm when reaching home from iOS Notification
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: device_tracker.laurent
+    to: "home"
+  condition:
+    - condition: template
+      value_template: "{{ states('alarm_control_panel.alarm') != 'disarmed' }}"
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_-_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
+  action:
+    - service: notify.ios_lolos_iphone
+      data_template:
+        message: 'Disarm alarm ?'
+        data:
+          push:
+            badge: '{{states("counter.iosbadgecount")}}'
+            category: "disarmalarm"
+          action_data:
+            entity_id: alarm_control_panel.alarm
+
 # {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}
   # {% if is_state(state,"on")%}{{state_attr(state,"friendly_name")}}, {%else%}{% endif %} 
 # {%- endfor %}

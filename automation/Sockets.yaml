@@ -36,6 +36,9 @@
     - platform: state
       entity_id: input_boolean.edimax_charging
       to: 'on'
+    - platform: state
+      entity_id: switch.xiaomi_garage_socket
+      from: 'unavailable'
   condition:
     - condition: state
       entity_id: switch.edimax1
