@@ -1,0 +1,33 @@
+title: Alarm
+background: url("/local/verified.png") fixed
+icon: mdi:shield-check
+cards:
+  - type: entity-filter
+    entities:
+      - entity: binary_sensor.conservatory_skylight_left
+      - entity: binary_sensor.conservatory_skylight_right
+      - entity: binary_sensor.conservatory_single_door
+      - entity: binary_sensor.conservatory_double_door
+      - entity: binary_sensor.living_room_right_big_window
+      - entity: binary_sensor.living_room_right_small_window
+      - entity: binary_sensor.master_bedroom_right_window
+      - entity: binary_sensor.master_bedroom_left_window
+      - entity: binary_sensor.cloakroom_window
+      - entity: binary_sensor.bathroom_window
+      - entity: binary_sensor.kiaan_big_window
+      - entity: binary_sensor.kiaan_small_window
+      - entity: binary_sensor.blue_room_big_window
+      - entity: binary_sensor.blue_room_small_window
+      - entity: binary_sensor.kitchen_window
+      - entity: binary_sensor.pooja_room_small_window
+      - entity: binary_sensor.pooja_room_big_window
+    state_filter:
+      - "on"
+    show_empty: false
+  - type: alarm-panel
+    entity: alarm_control_panel.alarm
+    show_keypad: true
+    title: Alarm
+    states:
+      - arm_home
+      - arm_away

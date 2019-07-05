@@ -1,0 +1,58 @@
+title: Main Bedroom
+background: url("/local/hotel.png") fixed
+icon: mdi:hotel
+badges:
+    - device_tracker.lolo
+    - device_tracker.div
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.precipitation
+
+    - sensor.dark_sky_overnight_low_temperature_0d
+    - sensor.dark_sky_daytime_high_temperature_0d
+    - sensor.home_to_work
+    - sensor.lolo_to_home
+    - sensor.sunset_time
+cards:
+  - type: entities
+    title: Main Bedroom Lights
+    show_header_toggle: false
+    entities:
+    - entity: light.lolo_bedside_light
+      secondary_info: last-changed
+      icon: mdi:lamp
+  - type: entities
+    title: Main Bedroom Sensors
+    show_header_toggle: false
+    entities:
+    - entity: sensor.master_bedroom_aqara_temperature
+      secondary_info: last-changed
+    - entity: sensor.master_bedroom_aqara_humidity
+      secondary_info: last-changed
+    - entity: sensor.master_bedroom_aqara_pressure
+      secondary_info: last-changed
+    - entity: binary_sensor.master_bedroom_left_window
+      secondary_info: last-changed
+    - entity: binary_sensor.master_bedroom_right_window
+      secondary_info: last-changed
+  - type: entities
+    title: Kello
+    show_header_toggle: false
+    entities:
+      - binary_sensor.kello
+      - input_select.kello_radio_station
+      - input_number.volume_kello
+      - input_boolean.kello_play_stop
+      - input_boolean.kello_mute_alarms
+  - type: entities
+    title: Mi Scale
+    show_header_toggle: false
+    entities:
+      - entity: sensor.lolo_weight
+        secondary_info: last-changed
+      - entity: sensor.lolo_bmi
+        secondary_info: last-changed
+      - entity: sensor.div_weight
+        secondary_info: last-changed
+      - entity: sensor.div_bmi
+        secondary_info: last-changed

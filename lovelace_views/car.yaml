@@ -1,0 +1,215 @@
+title: Car
+background: url("/local/BMW_220d_GT.png") center / contain no-repeat
+icon: mdi:car-connected
+badges:
+    - device_tracker.lolo
+    - device_tracker.div
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.precipitation
+
+    - sensor.dark_sky_overnight_low_temperature_0d
+    - sensor.dark_sky_daytime_high_temperature_0d
+    - sensor.home_to_work
+    - sensor.lolo_to_home
+    - sensor.sunset_time
+cards:
+  - type: entity-filter
+    title: Persistent Notifications
+    show_header_toggle: false
+    entities:
+      - persistent_notification.httplogin
+      - persistent_notification.ipban
+    state_filter:
+      - "notifying"
+    show_empty: false
+  - type: entity-filter
+    title: Alerts
+    show_header_toggle: false
+    entities:
+      - alert.outside_temp_sensor_lost
+      - alert.upstairs_temp_sensor_lost
+      - alert.cctv_front_lost
+      - alert.cctv_garage_lost
+      - alert.cctv_dafang_living_room_lost
+      - alert.currentcost_lost
+      - alert.dehumidifier_full
+      - alert.rpi_lost
+      - alert.rpi_kitchen_lost
+      - alert.kello_lost
+      - alert.house_number_led_strip_lost
+      - alert.staircase_led_strip_lost
+      - alert.tv_cabinet_led_strip_lost
+      - alert.ram_too_high
+      - alert.ram_usage_lost
+      - alert.home_disk_usage_too_high
+      - alert.root_disk_usage_too_high
+      - alert.cctv_dafang_kitchen_lost
+      - alert.aloe_vera_humidity_too_low
+      - alert.aloe_vera_battery_too_low
+      - counter.iosbadgecount
+    state_filter:
+      - "on"
+    show_empty: false
+    
+  - type: picture-elements
+    image: /local/BMW_220d_GT_Top_View.png
+    elements:
+      - type: state-icon
+        entity: binary_sensor.220d_door_lock_state
+        style:
+          top: 5%
+          left: 7%
+      - type: icon
+        icon: mdi:lock
+        tap_action:
+          action: call-service
+          service: lock.lock
+          service_data:
+          entity: lock.220d_lock
+        style:
+          top: 12%
+          left: 7%
+          color: Tomato
+      - type: icon
+        icon: mdi:lock-open
+        tap_action:
+          action: call-service
+          service: lock.unlock
+          service_data:
+          entity: lock.220d_lock
+        style:
+          top: 19%
+          left: 7%
+          color: Tomato
+      - type: icon
+        icon: mdi:car-light-dimmed
+        tap_action:
+          action: call-service
+          service: bmw_connected_drive.light_flash
+          service_data:
+            vin: !secret bmw_connected_drive_vin
+        style:
+          top: 5%
+          right: 3%
+          color: rgb(68, 115, 158)
+      - type: icon
+        icon: mdi:bullhorn
+        tap_action:
+          action: call-service
+          service: bmw_connected_drive.sound_horn
+          service_data:
+            vin: !secret bmw_connected_drive_vin
+        style:
+          top: 12%
+          right: 3%
+          color: rgb(68, 115, 158)
+      - type: icon
+        icon: mdi:fan
+        tap_action:
+          action: call-service
+          service: bmw_connected_drive.activate_air_conditioning
+          service_data:
+            vin: !secret bmw_connected_drive_vin
+        style:
+          top: 19%
+          right: 3%
+          color: rgb(68, 115, 158)
+      - type: icon
+        icon: mdi:sync
+        tap_action:
+          action: call-service
+          service: bmw_connected_drive.update_state
+        style:
+          top: 26%
+          right: 3%
+          color: rgb(68, 115, 158)
+
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_doordriverdront
+        style:
+          top: 50%
+          right: 13%
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_doorpassengerfront
+        style:
+          top: 50%
+          left: 17%
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_doordriverrear
+        style:
+          top: 70%
+          right: 14%
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_doorpassengerrear
+        style:
+          top: 70%
+          left: 17%
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_hood
+        style:
+          top: 3%
+          left: 50%
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_trunk
+        style:
+          bottom: -2%
+          left: 46%
+
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_windowdriverdront
+        style:
+          top: 45%
+          right: 13%
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_windowpassengerfront
+        style:
+          top: 45%
+          left: 17%
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_windowdriverrear
+        style:
+          top: 65%
+          right: 14%
+      - type: state-icon
+        entity: binary_sensor.bmw_220d_windowpassengerrear
+        style:
+          top: 65%
+          left: 17%
+
+    
+  - type: entities
+    title: BMW 220d Gran Tourer
+    show_header_toggle: false
+    entities:
+      - entity: device_tracker.220d
+        secondary_info: last-changed
+        icon: mdi:car-connected
+      - entity: binary_sensor.220d_check_control_messages
+        secondary_info: last-changed
+      - entity: binary_sensor.220d_condition_based_services
+        secondary_info: last-changed
+      - entity: binary_sensor.220d_door_lock_state
+        secondary_info: last-changed
+        icon: mdi:car-key
+      - entity: binary_sensor.220d_lights_parking
+        secondary_info: last-changed
+        icon: mdi:car-light-dimmed
+      - entity: sensor.bmw_220d_mileage
+        secondary_info: last-changed
+      - entity: sensor.220d_remaining_fuel
+        secondary_info: last-changed
+      - entity: sensor.bmw_220d_remaining_fuel
+        secondary_info: last-changed
+      - entity: sensor.bmw_220d_mpg
+        secondary_info: last-changed
+  - type: map
+    entities:
+      - device_tracker.div_iphone
+      - device_tracker.diviphone
+      - device_tracker.laurent
+      - device_tracker.divashni
+      - device_tracker.lolos_iphone
+      - device_tracker.lolosiphone
+      - device_tracker.laurent_mah_iphone_5s
+      - device_tracker.220d

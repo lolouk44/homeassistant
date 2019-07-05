@@ -1,0 +1,90 @@
+title: Entrance
+background: url("/local/home.png") fixed
+icon: mdi:home-modern
+badges:
+    - device_tracker.lolo
+    - device_tracker.div
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.precipitation
+
+    - sensor.dark_sky_overnight_low_temperature_0d
+    - sensor.dark_sky_daytime_high_temperature_0d
+    - sensor.home_to_work
+    - sensor.lolo_to_home
+    - sensor.sunset_time
+cards:
+  - type: entities
+    title: Entrance Sensors
+    show_header_toggle: false
+    entities:
+      - entity: binary_sensor.fire7_motion
+        secondary_info: last-changed
+      - entity: binary_sensor.door_lock
+        secondary_info: last-changed
+      - entity: binary_sensor.cloakroom_window
+        secondary_info: last-changed
+      - entity: binary_sensor.main_door
+        secondary_info: last-changed
+      - entity: sensor.doorbell_last_rang
+        secondary_info: last-changed
+      - entity: binary_sensor.ground_floor_smoke_detector
+        secondary_info: last-changed
+  - type: conditional
+    conditions:
+      - entity: input_boolean.xmas
+        state: "off"
+        show_empty: false
+    card:
+      type: entities
+      title: Entrance Lights
+      entities:
+        - entity: light.hallway
+          secondary_info: last-changed
+        - entity: light.aqara_gateway_light
+          secondary_info: last-changed
+        - entity: light.porch_om_xmas_led_strip
+          secondary_info: last-changed
+          name: Om LED Strip
+          icon: mdi:numeric-4-box-multiple-outline
+  - type: entities
+    title: Nest Thermostat
+    show_header_toggle: false
+    entities:
+      - entity: climate.hallway
+        secondary_info: last-changed
+      - entity: sensor.hallway_thermostat_humidity
+        secondary_info: last-changed
+      - entity: binary_sensor.hallway_heating
+        secondary_info: last-changed
+      - entity: binary_sensor.hallway_thermostat_has_leaf
+        secondary_info: last-changed
+  - type: conditional
+    conditions:
+      - entity: input_boolean.xmas
+        state: "on"
+        show_empty: false
+    card:
+      type: entities
+      title: Entrance Lights
+      entities:
+        - entity: light.hallway
+          secondary_info: last-changed
+        - entity: light.house_number_led_strip
+          secondary_info: last-changed
+        - entity: light.aqara_gateway_light
+          secondary_info: last-changed
+        - entity: light.porch_om_xmas_led_strip
+          secondary_info: last-changed
+          icon: mdi:snowman
+          name: Snowman LED Strip
+  - type: entities
+    title: Fire 7
+    show_header_toggle: false
+    entities:
+      - entity: binary_sensor.fire7_motion
+        secondary_info: last-changed
+      - entity: sensor.fire7_battery
+        secondary_info: last-changed
+      - entity: switch.0220016868c63aa168d9
+        secondary_info: last-changed

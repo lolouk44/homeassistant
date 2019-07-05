@@ -1,0 +1,153 @@
+title: cctv
+background: url("/local/cctv.png") fixed
+icon: mdi:cctv
+badges:
+    - device_tracker.lolo
+    - device_tracker.div
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.precipitation
+
+    - sensor.dark_sky_overnight_low_temperature_0d
+    - sensor.dark_sky_daytime_high_temperature_0d
+    - sensor.home_to_work
+    - sensor.lolo_to_home
+    - sensor.sunset_time
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-entity
+      title: Front
+      entity: camera.front
+      camera_image: camera.front
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Front
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.front_cctv_motion
+          secondary_info: last-changed
+        - entity: binary_sensor.front_cctv_line_crossing
+          secondary_info: last-changed
+        - entity: binary_sensor.front_cctv_disk_full
+          secondary_info: last-changed
+        - entity: binary_sensor.front_cctv_disk_error
+          secondary_info: last-changed
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-entity
+      title: Side
+      entity: camera.side
+      camera_image: camera.side
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Side
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.side_cctv_motion
+          secondary_info: last-changed
+        - entity: binary_sensor.side_cctv_line_crossing
+          secondary_info: last-changed
+        - entity: binary_sensor.side_cctv_disk_full
+          secondary_info: last-changed
+        - entity: binary_sensor.side_cctv_disk_error
+          secondary_info: last-changed
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-entity
+      entity: camera.back
+      camera_image: camera.back
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Back
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.back_cctv_motion
+          secondary_info: last-changed
+        - entity: binary_sensor.back_cctv_line_crossing
+          secondary_info: last-changed
+        - entity: binary_sensor.back_cctv_disk_full
+          secondary_info: last-changed
+        - entity: binary_sensor.back_cctv_disk_error
+          secondary_info: last-changed
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-entity
+      title: Living Room
+      entity: camera.living_room
+      camera_image: camera.living_room
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Dafang Living Room
+      show_header_toggle: false
+      entities:
+        - switch.dafang_living_room_status
+        - switch.dafang_living_room_rtsp
+        - switch.dafang_living_room_blue_led
+        - switch.dafang_living_room_yellow_led
+        - switch.dafang_living_room_left_right
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-entity
+      title: Kitchen
+      entity: camera.kitchen
+      camera_image: camera.kitchen
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Dafang Kitchen
+      show_header_toggle: false
+      entities:
+        - switch.dafang_kitchen_status
+        - switch.dafang_kitchen_rtsp
+        - switch.dafang_kitchen_blue_led
+        - switch.dafang_kitchen_yellow_led
+        - switch.dafang_kitchen_left_right
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-entity
+      title: Garage
+      entity: camera.garage
+      camera_image: camera.garage
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Garage
+      show_header_toggle: false
+      entities:
+        - switch.cctv_garage_status
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-entity
+      title: Hallway
+      entity: camera.fire7
+      camera_image: camera.fire7
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Hallway
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.fire7_motion
+          secondary_info: last-changed
+  - type: map
+    entities:
+      - device_tracker.div_iphone
+      - device_tracker.laurent
+      - device_tracker.divashni
+      - device_tracker.lolos_iphone
+      - device_tracker.lolosiphone
+      - device_tracker.laurent_mah_iphone_5s
+      - device_tracker.tile_1dd2bf719e0233c1
+      - device_tracker.tile_50596aa49d611bee
+      - entity: device_tracker.220d
+      - zone.home
+      - zone.cbc
+      - zone.vikki
+      - zone.asda
+      - zone.tesco
+      - zone.busy_bees

@@ -1,0 +1,42 @@
+title: Staircase
+background: url("/local/stairs.png") fixed
+icon: mdi:stairs
+badges:
+    - device_tracker.lolo
+    - device_tracker.div
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.precipitation
+
+    - sensor.dark_sky_overnight_low_temperature_0d
+    - sensor.dark_sky_daytime_high_temperature_0d
+    - sensor.home_to_work
+    - sensor.lolo_to_home
+    - sensor.sunset_time
+cards:
+  - type: entities
+    title: Staircase Lights
+    show_header_toggle: true
+    entities:
+      - entity: light.staircase
+        secondary_info: last-changed
+      - entity: light.staircase_led_strip
+        secondary_info: last-changed
+  - type: entities
+    title: Staircase Sensors
+    show_header_toggle: false
+    entities:
+    - entity: binary_sensor.fire7_motion
+      secondary_info: last-changed
+    - entity: binary_sensor.first_floor_smoke_detector
+      secondary_info: last-changed
+  - type: entities
+    title: Dehumidifier
+    show_header_toggle: false
+    entities:
+      - entity: switch.dehumidifier
+        secondary_info: last-changed
+      - entity: sensor.dehumidifier_power
+        secondary_info: last-changed
+      - entity: input_boolean.dehumidifier_tank_full
+        secondary_info: last-changed
