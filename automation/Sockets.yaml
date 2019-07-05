@@ -98,3 +98,21 @@
       data:
         entity_id: switch.xiaomi_garage_socket
 
+
+- alias: Xiaomi Switch - Automatic Battery Charging 
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: switch.xiaomi_garage_socket
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.xiaomi_switch_charging
+      state: 'off'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.xiaomi_switch_automatic_battery_charging.attributes.last_triggered | default(0)) | int  > 300)}}'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.xiaomi_switch_charging
+
