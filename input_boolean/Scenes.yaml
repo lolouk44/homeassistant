@@ -18,6 +18,10 @@ xmas:
   # initial: off
   icon: mdi:pine-tree
 
+guests:
+  name: Guests
+  icon: mdi:account-group
+
 silent:
   name: Silent
   initial: off

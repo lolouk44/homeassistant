@@ -455,6 +455,10 @@
     - platform: state
       entity_id: alarm_control_panel.alarm
       to: 'armed_away'
+  condition:
+    - condition: state
+      entity_id: input_boolean.guests
+      state: 'off'
   action:
   - service: media_player.turn_off
     entity_id: media_player.kitchen
@@ -535,6 +539,9 @@
       entity_id: person.laurent
       from: "home"
   condition:
+    - condition: state
+      entity_id: input_boolean.guests
+      state: 'off'
     - condition: template
       value_template: "{{ states('alarm_control_panel.alarm') == 'disarmed' }}"
   action:
