@@ -23,6 +23,11 @@ radio_fiji_two_radio:
   initial: off
   icon: mdi:radio
 
+radio_navtarang:
+  name: Navtarang
+  initial: off
+  icon: mdi:radio
+
 scheduled_vacuuming:
   name: Scheduled Vacuuming
   initial: off

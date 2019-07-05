@@ -63,80 +63,6 @@
   state_topic: "RadioStream/IoT Podcast/track"
   value_template: "{{ value }}"
 
-# - platform: scrape
-  # resource: https://www.6play.fr/rtl2/quel-est-ce-titre
-  # name: RTL2_Pic
-  # select: '.ecfper-2'
-  # attribute: src
-
-# - platform: scrape
-  # resource: https://www.6play.fr/rtl2/quel-est-ce-titre
-  # name: RTL2_Artist
-  # select: '.ecfper-6'
-  # value_template: '{{ value | title }}'
-
-# - platform: scrape
-  # resource: https://www.6play.fr/rtl2/quel-est-ce-titre
-  # name: RTL2_Track
-  # select: '.ecfper-5'
-  # value_template: '{{ value | title }}'
-
-# - platform: scrape
-  # resource: https://absoluteradio.co.uk/classic-rock/music/
-  # name: Absolute_Radio_CR_Pic
-  # select: '.song-artist-image img'
-  # attribute: src
-
-# - platform: scrape
-  # resource: https://absoluteradio.co.uk/classic-rock/music/
-  # name: Absolute_Radio_CR_Artist
-  # select: '.song-artist-image img'
-  # attribute: alt
-
-# - platform: scrape
-  # resource: https://absoluteradio.co.uk/classic-rock/music/
-  # name: Absolute_Radio_CR_Track
-  # select: '.song-title a'
-
-# - platform: scrape
-  # resource: https://absoluteradio.co.uk/absolute-radio/music/
-  # name: Absolute_Radio_Pic
-  # select: '.song-artist-image img'
-  # attribute: src
-
-# - platform: scrape
-  # resource: https://absoluteradio.co.uk/absolute-radio/music/
-  # name: Absolute_Radio_Artist
-  # select: '.song-artist-image img'
-  # attribute: alt
-
-# - platform: scrape
-  # resource: https://absoluteradio.co.uk/absolute-radio/music/
-  # name: Absolute_Radio_Track
-  # select: '.song-title a'
-
-# - platform: scrape
-  # resource: https://hasspodcast.io/feed/podcast
-  # name: ha_podcast
-  # select: 'enclosure:nth-of-type(1)'
-  # attribute: url
-
-# - platform: scrape
-  # resource: https://hasspodcast.io/feed/podcast
-  # name: ha_podcast_track
-  # select: 'item:nth-of-type(1) title'
-
-# - platform: scrape
-  # resource: https://iotpodcast.com/feed/
-  # name: internet_of_things_podcast
-  # select: 'enclosure:nth-of-type(1)'
-  # attribute: url
-
-# - platform: scrape
-  # resource: https://iotpodcast.com/feed/
-  # name: internet_of_things_podcast_track
-  # select: 'item:nth-of-type(1) title'
-
 
 - platform: template
   sensors:
@@ -162,6 +88,7 @@
         {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} Phil & Rohan
         {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} Stacey & Kevin
         {% elif is_state("input_select.chromecast_radio_station", "Chill") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
         {% endif %}
@@ -190,6 +117,7 @@
         {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} {{states("sensor.ha_podcast_track")}}
         {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} {{states("sensor.internet_of_things_podcast_track")}}
         {% elif is_state("input_select.chromecast_radio_station", "Chill") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
         {% endif %}

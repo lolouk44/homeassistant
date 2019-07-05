@@ -45,6 +45,7 @@
         {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://broadcast.infomaniak.ch/hitwest-high.mp3') %} Hit West
         {% elif is_state_attr(trigger.entity_id, 'media_content_id', states("sensor.ha_podcast")) %} HA Podcast
         {% elif is_state_attr(trigger.entity_id, 'media_content_id', states("sensor.internet_of_things_podcast")) %} IoT Podcast
+        {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://192.111.142.176:8000/NAVTARANG') %} Navtarang
         {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://peridot.streamguys.com:7150/RFTwo?play') %} Radio Fiji Two
         {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'http://streaming.radio.rtl2.fr:80/rtl2-1-44-96') %} RTL2
         {% elif is_state_attr(trigger.entity_id, 'media_content_id', 'states("input_text.custom_station")') %} Custom Station

@@ -27,6 +27,7 @@ play_chromecast_radio:
           {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} {{states("sensor.internet_of_things_podcast")}}
           {% elif is_state("input_select.chromecast_radio_station", "Chill") %} http://media-the.musicradio.com/ChillMP3
           {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} http://peridot.streamguys.com:7150/RFTwo?play
+          {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} http://192.111.142.176:8000/NAVTARANG
           {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} {{states("input_text.custom_station")}}
           {% endif %}
         media_content_type: 'audio/mp4'

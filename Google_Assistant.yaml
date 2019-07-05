@@ -35,6 +35,14 @@ entity_config:
     room: 'Living Room'
     expose: true
 
+  input_boolean.radio_navtarang:
+    name: "Navtarang"
+    aliases:
+      - "Radio Navtarang"
+      - "Navtarang Radio"
+    room: 'Living Room'
+    expose: true
+
   input_boolean.absolute_radio_cr_radio:
     name: "Absolute Radio Classic Rock"
     room: 'Living Room'
@@ -44,11 +52,6 @@ entity_config:
     name: "Absolute Radio"
     room: 'Living Room'
     expose: true
-
-  # input_boolean.vacuum:
-    # name: "Vacuum"
-    # room: 'Living Room'
-    # expose: true
 
   vacuum.mi_robot_vacuum:
     name: "Vacuum"
