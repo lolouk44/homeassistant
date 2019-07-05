@@ -118,6 +118,23 @@ http:
 ifttt:
   key: !secret ifttt_key
 
+
+life360:
+  accounts:
+    - username: !secret life360_username
+      password: !secret life360_password
+  driving_speed: 18
+  interval_seconds: 10
+  max_gps_accuracy: 200
+  max_update_wait:
+    minutes: 45
+  show_as_state:
+    - driving
+    - moving
+  warning_threshold: 2
+  error_threshold: 3
+  prefix: ''
+
 # View all events in a logbook
 logbook:
 
@@ -130,7 +147,7 @@ logger:
     # homeassistant.components.camera: error
     # requests.packages.urllib3: critical
     # requests.packages.urllib3.connectionpool: critical
-    # miio.device: critical
+    miio.device: critical
     # homeassistant.components.sensor.sky_hd_status: critical
     # homeassistant.components.switch.rest: critical
     # homeassistant.components.rfxtrx: debug
@@ -138,9 +155,12 @@ logger:
     homeassistant.components.scrape: critical
     homeassistant.components.rest: critical
     homeassistant.components.waze_travel_time: critical
-    homeassistant.components.xiaomi_miio.light: critical
     # Lolo bedside light
-    homeassistant.components.miio.device: critical
+    # homeassistant.components.xiaomi_miio.light: critical
+    # homeassistant.components.light.lolo_bedside_light: critical
+    # homeassistant.components.light: critical
+    # homeassistant.components.miio.device: critical
+    # homeassistant.components.miio: critical
 
 
 lovelace:
@@ -182,7 +202,9 @@ rfxtrx:
 recorder:
   db_url: !secret db_url
 
-stream:
+ssdp:
+
+# stream:
 
 sun:
 
@@ -219,3 +241,11 @@ xiaomi_aqara:
     - mac: !secret xiaomi_aqara_mac
       key: !secret xiaomi_aqara_password
       host: 192.168.0.5
+
+zeroconf:
+
+# zha:
+  # usb_path: /dev/ttyACM0
+  # usb_path: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE1963360-if00
+  # database_path: /config/zigbee.db
+  # radio_type: deconz
