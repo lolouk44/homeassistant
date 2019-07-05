@@ -8,6 +8,7 @@
     # - condition: template
       # value_template: '{{ states("device_tracker.220d") != "not_home"}}'
   action:
+    - service: bmw_connected_drive.update_state
     - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
       timeout: '00:06:00'
       continue_on_timeout: 'true'
@@ -53,6 +54,7 @@
       entity_id: lock.220d_lock
       to: 'unlocked'
   action:
+    - service: bmw_connected_drive.update_state
     - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
       timeout: '00:06:00'
       continue_on_timeout: 'true'
@@ -88,6 +90,33 @@
       event_type: ios.action_fired
       event_data:
         actionName: BMW_VENTILATE
+  action:
+    - service: bmw_connected_drive.activate_air_conditioning
+      data:
+        vin: !secret bmw_connected_drive_vin
+
+
+
+- alias: BMW - Ventilate When Temp Above 20
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      hours: 16
+      minutes: 0
+      seconds: 0
+    - platform: time_pattern
+      hours: 17
+      minutes: 25
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{states("sensor.dark_sky_temperature") | int >= 20}}'
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{now().hour == 17 and now().minute == 25 and states("device_tracker.220d") == "home" and (as_timestamp(now()) | timestamp_custom("%a") == "Fri" or as_timestamp(now()) | timestamp_custom("%a") == "Mon")}}'
+      - condition: template
+        value_template: '{{now().hour == 16 and now().minute == 0 and states("device_tracker.220d") == "verint" and (as_timestamp(now()) | timestamp_custom("%a") == "Tue" or as_timestamp(now()) | timestamp_custom("%a") == "Wed" or as_timestamp(now()) | timestamp_custom("%a") == "Thu")}}'
   action:
     - service: bmw_connected_drive.activate_air_conditioning
       data:
