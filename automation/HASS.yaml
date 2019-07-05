@@ -41,12 +41,8 @@
   action:
   - service: switch.turn_off
     entity_id: switch.dafang_living_room_status
-  # - service: switch.turn_on
-    # entity_id: switch.dafang_living_room_yellow_led
   - service: switch.turn_off
     entity_id: switch.dafang_kitchen_status
-  # - service: switch.turn_on
-    # entity_id: switch.dafang_kitchen_yellow_led
 
 - alias: HASS Nightly Restart
   initial_state: true

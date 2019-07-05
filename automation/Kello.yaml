@@ -22,6 +22,9 @@
     - platform: state
       entity_id: input_boolean.holidays
       to: 'on'
+  condition:
+    - condition: time
+      before: '21:30'
   action:
     - service: mqtt.publish
       data:
