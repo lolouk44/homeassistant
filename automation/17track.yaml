@@ -12,9 +12,9 @@
     - service: notify.gmaillolo
       data_template:
         message: |
-          {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","17track") | replace("_"," ") | title }}:
+          {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","seventeentrack") | replace("_"," ") | title }}:
           {% for state in states.sensor -%}
-          {% if (state.entity_id|replace("sensor.","")|replace("17track","seventeentrack")).split("_")[0] == "seventeentrack"  and state.state == ( trigger.entity_id | replace("sensor.packages_","") | replace("_"," ") | title )%}
+          {% if (state.entity_id|replace("sensor.","")|replace("seventeentrack","seventeentrack")).split("_")[0] == "seventeentrack"  and state.state == ( trigger.entity_id | replace("sensor.seventeentrack_packages_","") | replace("_"," ") | title )%}
           Sensor: {{state.attributes.friendly_name | replace("Seventeentrack Package: ","")}}
           State: {{state.state}}
           Tracking #: {{state.attributes.tracking_number}} (https://t.17track.net/en#nums={{state.attributes.tracking_number}})
