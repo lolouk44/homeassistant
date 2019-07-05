@@ -23,6 +23,10 @@ binary_sensor.bmw_220d_doordriverrear:
   icon: mdi:car-door
 binary_sensor.bmw_220d_doorpassengerrear:
   icon: mdi:car-door
+binary_sensor.conservatory_skylight_left:
+  device_class: window
+binary_sensor.conservatory_skylight_right:
+  device_class: window
 binary_sensor.conservatory_single_door:
   device_class: door
 binary_sensor.conservatory_double_door:
@@ -44,6 +48,10 @@ binary_sensor.kiaan_big_window:
 binary_sensor.kiaan_small_window:
   device_class: window
 binary_sensor.kitchen_window:
+  device_class: window
+binary_sensor.pooja_room_small_window:
+  device_class: window
+binary_sensor.pooja_room_big_window:
   device_class: window
 binary_sensor.blue_room_big_window:
   device_class: window
@@ -261,6 +269,10 @@ switch.syncthing:
 switch.watchtower:
   icon: mdi:docker
 switch.wordpress:
+  icon: mdi:docker
+switch.cctv2_ha:
+  icon: mdi:docker
+switch.cctv2_motion:
   icon: mdi:docker
 
 

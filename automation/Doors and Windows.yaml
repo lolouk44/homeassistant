@@ -18,11 +18,17 @@
         - binary_sensor.blue_room_small_window
         - binary_sensor.kitchen_window
         - binary_sensor.main_door
+        - binary_sensor.pooja_room_big_window
+        - binary_sensor.pooja_room_small_window
+        - binary_sensor.conservatory_skylight_right
       to: 'on'
   condition:
     - condition: state
       entity_id: alarm_control_panel.alarm
       state: disarmed
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
   action:
   - service: media_player.play_media
     data:
@@ -50,39 +56,23 @@
         - binary_sensor.blue_room_small_window
         - binary_sensor.kitchen_window
         - binary_sensor.main_door
+        - binary_sensor.pooja_room_big_window
+        - binary_sensor.pooja_room_small_window
+        - binary_sensor.conservatory_skylight_right
       to: 'off'
   condition:
     - condition: state
       entity_id: alarm_control_panel.alarm
       state: disarmed
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
   action:
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
       media_content_type: 'audio/mp3'
-
-- alias: Conservatory SkyLight Left Open When Leaving
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: person.laurent
-      from: "home"
-    - platform: state
-      entity_id: person.div
-      from: "home"
-  condition:
-    - condition: template
-      value_template: '{{ states("person.laurent") != "home"}}'
-    - condition: template
-      value_template: '{{ states("person.div") != "home"}}'
-    - condition: state
-      entity_id: binary_sensor.conservatory_skylight_left
-      state: 'on'
-  action:
-    - service: notify.gmaillolo
-      data_template:
-        message: 'Conservatory SkyLight Left Open!'
 
 - alias: Conservatory SkyLight Left Open At Night
   initial_state: true
@@ -100,21 +90,18 @@
     - condition: state
       entity_id: sun.sun
       state: 'below_horizon'
-    - condition: state
-      entity_id: binary_sensor.conservatory_skylight_left
-      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.conservatory_skylight_left
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.conservatory_skylight_right
+        state: 'on'
   action:
     - service: notify.gmaillolo
       data_template:
         message: 'Conservatory SkyLight Left Open!'
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.living_room_google_mini
-        volume_level: 1
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.kitchen_google_mini
-        volume_level: 1
     - service: media_player.volume_set
       data:
         entity_id: media_player.google_home_minis
@@ -123,14 +110,6 @@
       entity_id: media_player.google_home_minis
       data:
         message: 'Please note: The conservatory skylight windows are open'
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.living_room_google_mini
-        volume_level: 0.50
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.kitchen_google_mini
-        volume_level: 0.50
     - service: media_player.volume_set
       data:
         entity_id: media_player.google_home_minis

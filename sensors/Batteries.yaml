@@ -20,11 +20,6 @@
       unit_of_measurement: '%'
       value_template: '{{state_attr("binary_sensor.first_floor_smoke_detector", "battery_level") | int}}'
       device_class: battery
-    aqara_hygro_battery:
-      friendly_name: Aqara Hygro Battery
-      unit_of_measurement: '%'
-      value_template: '{{state_attr("sensor.pressure_158d0001f5218a", "battery_level") | int}}'
-      device_class: battery
     blue_room_big_window_battery:
       friendly_name: Blue Room Big Window Battery
       unit_of_measurement: '%'
@@ -34,6 +29,11 @@
       friendly_name: Blue Room Small Window Door
       unit_of_measurement: '%'
       value_template: '{{state_attr("binary_sensor.blue_room_small_window", "battery_level") | int}}'
+      device_class: battery
+    conservatory_sklylight_right:
+      friendly_name: Conservatory Skyghlight Right Battery
+      unit_of_measurement: '%'
+      value_template: '{{state_attr("binary_sensor.conservatory_skylight_right", "battery_level") | int}}'
       device_class: battery
     conservatory_single_door_battery:
       friendly_name: Conservatory Single Door Battery
@@ -75,10 +75,20 @@
       unit_of_measurement: '%'
       value_template: '{{state_attr("binary_sensor.living_room_right_big_window", "battery_level") | int}}'
       device_class: battery
+    kitchen_freezer_temperature_battery:
+      friendly_name: Kitchen Freezer Temperature Battery
+      unit_of_measurement: '%'
+      value_template: '{{state_attr("sensor.kitchen_freezer_humidity", "battery_level") | int}}'
+      device_class: battery
+    garage_freezer_temperature_battery:
+      friendly_name: Garage Freezer Temperature Battery
+      unit_of_measurement: '%'
+      value_template: '{{state_attr("sensor.garage_freezer_humidity", "battery_level") | int}}'
+      device_class: battery
     master_bedroom_temperature_battery:
       friendly_name: Master Bedroom Temperature Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("sensor.temperature_158d0001f5218a", "battery_level") | int}}'
+      value_template: '{{state_attr("sensor.master_bedroom_aqara_humidity", "battery_level") | int}}'
       device_class: battery
     master_bedroom_left_window_battery:
       friendly_name: Master Bedroom Left Window Battery
@@ -89,6 +99,16 @@
       friendly_name: Master Bedroom Right Window Battery
       unit_of_measurement: '%'
       value_template: '{{state_attr("binary_sensor.master_bedroom_right_window", "battery_level") | int}}'
+      device_class: battery
+    pooja_room_big_window_battery:
+      friendly_name: Pooja Room Big Window Battery
+      unit_of_measurement: '%'
+      value_template: '{{state_attr("binary_sensor.pooja_room_big_window", "battery_level") | int}}'
+      device_class: battery
+    pooja_room_small_window_battery:
+      friendly_name: Pooja Room Small Window Door
+      unit_of_measurement: '%'
+      value_template: '{{state_attr("binary_sensor.pooja_room_small_window", "battery_level") | int}}'
       device_class: battery
     bathroom_window_battery:
       friendly_name: Bathroom Window Battery
