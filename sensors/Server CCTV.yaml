@@ -1,0 +1,25 @@
+- platform: mqtt
+  state_topic: "Sensors/CCTV2/RootDisk"
+  name: "CCTV2 Root Disk Usage"
+  unit_of_measurement: '%'
+  icon: mdi:harddisk
+
+- platform: mqtt
+  state_topic: "Sensors/CCTV2/RAM"
+  name: "CCTV2 RAM Usage"
+  unit_of_measurement: '%'
+  icon: mdi:memory
+  force_update: true
+
+- platform: mqtt
+  state_topic: "Sensors/CCTV2/SDATemp"
+  name: "CCTV2 Disk Temp"
+  unit_of_measurement: '°C'
+  force_update: true
+
+- platform: mqtt
+  state_topic: 'Sensors/CCTV2/CPU'
+  name: 'CCTV2 CPU Usage'
+  icon: mdi:chip
+  unit_of_measurement: '%'
+  force_update: true

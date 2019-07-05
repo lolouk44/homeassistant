@@ -19,27 +19,34 @@
 
 - platform: mqtt
   name: "Dafang Living Room Blue LED"
-  state_topic: "LivingRoom/DaFang/Blue_LED"
+  state_topic: "LivingRoom/DaFang/leds/blue"
   # value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
-  command_topic: "LivingRoom/DaFang/Blue_LED/set"
-  payload_on: "on"
-  payload_off: "off"
+  command_topic: "LivingRoom/DaFang/leds/blue/set"
+  payload_on: "ON"
+  payload_off: "OFF"
   optimistic: false
 
 - platform: mqtt
   name: "Dafang Living Room Yellow LED"
-  state_topic: "LivingRoom/DaFang/Yellow_LED"
+  state_topic: "LivingRoom/DaFang/leds/yellow"
   # value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
-  command_topic: "LivingRoom/DaFang/Yellow_LED/set"
-  payload_on: "on"
-  payload_off: "off"
+  command_topic: "LivingRoom/DaFang/leds/yellow/set"
+  payload_on: "ON"
+  payload_off: "OFF"
   optimistic: false
 
 - platform: mqtt
   name: "Dafang Living Room Left Right"
-  command_topic: "LivingRoom/DaFang/set"
-  payload_off: "motor_left"
-  payload_on: "motor_right"
+  command_topic: "LivingRoom/DaFang/motors/horizontal/set"
+  payload_off: "left"
+  payload_on: "right"
+  optimistic: false
+
+- platform: mqtt
+  name: "Dafang Living Room Up Down"
+  command_topic: "LivingRoom/DaFang/motors/vertical/set"
+  payload_off: "down"
+  payload_on: "up"
   optimistic: false
 
 
@@ -85,6 +92,13 @@
   command_topic: "Kitchen/DaFang/motors/horizontal/set"
   payload_off: "left"
   payload_on: "right"
+  optimistic: false
+
+- platform: mqtt
+  name: "Dafang Kitchen Up Down"
+  command_topic: "Kitchen/DaFang/motors/vertical/set"
+  payload_off: "down"
+  payload_on: "up"
   optimistic: false
 
 
