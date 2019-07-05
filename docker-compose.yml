@@ -23,12 +23,11 @@
 
     homeassistant:
       container_name: ha
-      image: homeassistant/home-assistant:0.93.2
+      image: homeassistant/home-assistant:0.95.4
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
         - /home/cctv/docker_ha/shell_scripts:/shell_scripts:ro
-        # - /NAS/letsencrypt/config/etc/letsencrypt/live:/ssl_certs:ro
       devices:
         - /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0:/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
       depends_on:
