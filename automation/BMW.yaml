@@ -29,6 +29,7 @@
         {{ ((doors_on | length) | int ) >= 1}}
     - service: notify.gmaillolo
       data_template:
+        title: "HA - BMW"
         message: >
           The following BMW doors/windows are not closed: 
           {% set doors = [

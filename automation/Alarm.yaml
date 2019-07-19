@@ -122,7 +122,7 @@
         filename: '/config/www/CCTV_Snapshots/Garage.jpg'
     - service: notify.gmaillolo
       data_template:
-        title: "Alarm Triggered !"
+        title: "HA - Alarm Triggered !"
         message: >
           ALARM! The alarm has been triggered !(
           ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
@@ -386,6 +386,7 @@
         filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
     - service: notify.gmaillolo
       data_template:
+        title: "HA - Fire Alert"
         message: >
           FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.first_floor_smoke_detector' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
         data:

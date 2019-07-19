@@ -9,6 +9,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
+        title: "HA - Update Available"
         message: 'There is an update to Home-Assistant: {{states("sensor.ha_online_version")}} (https://hub.docker.com/r/homeassistant/home-assistant/builds/)'
 
 - alias: HASS Start Sound
@@ -63,6 +64,7 @@
   action:
     service: notify.gmaillolo
     data:
+      title: "HA - SSL Expiry"
       message: 'Warning - SSL certificate expires in <21 days and has not been automatically renewed'
 
 
@@ -114,6 +116,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
+        title: "HA - Login Alert"
         message: >
           Login Attempt Failed\n
           http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ state_attr("persistent_notification.httplogin", "message").split ("from ") [1]}}
@@ -127,6 +130,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
+        title: "HA - HassPodcast Update"
         message: >
           There is a new hass podcast: {{ states("sensor.ha_podcast_track")}}
 

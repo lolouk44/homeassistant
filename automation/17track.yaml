@@ -11,6 +11,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
+        title: "HA - Track17 Updates"
         message: |
           {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.","seventeentrack") | replace("_"," ") | title }}:
           {% for state in states.sensor -%}

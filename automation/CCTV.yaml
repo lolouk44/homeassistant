@@ -7,6 +7,7 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: Disk Error Detected on Front CCTV.
 
 - alias: CCTV - Email when Front CCTV SD Card Full
@@ -18,6 +19,7 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: SD Card on Front CCTV is full.
 
 
@@ -30,6 +32,7 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: Disk Error Detected on Back CCTV.
 
 - alias: CCTV - Email when Back CCTV SD Card Full
@@ -41,6 +44,7 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: SD Card on Back CCTV is full.
 
 
@@ -53,6 +57,7 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: Disk Error Detected on Side CCTV.
 
 - alias: CCTV - Email when Side CCTV SD Card Full
@@ -64,6 +69,7 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: SD Card on Side CCTV is full.
 
 - alias: CCTV - Activate motion we leave home
@@ -161,6 +167,7 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: Kitchen CCTV Motion Connection Lost!
 
 
@@ -175,6 +182,7 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: Living Room CCTV Motion Connection Lost!
 
 
@@ -189,5 +197,6 @@
   action:
   - service: notify.gmaillolo
     data_template:
+      title: "HA - CCTV Error"
       message: Garage CCTV Motion Connection Lost!
 

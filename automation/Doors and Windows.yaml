@@ -101,6 +101,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
+        title: "HA - Convervatory Skylights"
         message: 'Conservatory SkyLight Left Open!'
     - service: media_player.volume_set
       data:

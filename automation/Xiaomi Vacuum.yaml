@@ -47,9 +47,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
-        message: 'Mi Robot Started Vacuuming...'
-    - service: notify.gmaildiv
-      data_template:
+        title: "HA - Vacuum Started"
         message: 'Mi Robot Started Vacuuming...'
 
 
@@ -86,6 +84,7 @@
         message: 'Looks like something is wrong with the Vacuum...'
     - service: notify.gmaillolo
       data:
+        title: "HA - Vacuum Problem"
         message: 'Looks like something is wrong with the Vacuum...'
         data:
           images:
@@ -104,6 +103,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
+        title: "HA - Vacuum Finished"
         message: |
           Mi Robot finished Vacuuming...
           Cleaned {{ state_attr("vacuum.mi_robot_vacuum","cleaned_area") }} m² in {{ state_attr("vacuum.mi_robot_vacuum","cleaning_time") }} min.
@@ -112,6 +112,7 @@
             - /config/www/navmap.png
     - service: notify.gmaildiv
       data_template:
+        title: "HA - Vacuum Finished"
         message: |
           Mi Robot finished Vacuuming...
           Cleaned {{ state_attr("vacuum.mi_robot_vacuum","cleaned_area") }} m² in {{ state_attr("vacuum.mi_robot_vacuum","cleaning_time") }} min.
