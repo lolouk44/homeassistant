@@ -50,3 +50,4 @@ views:
   - !include /config/lovelace_views/server_stats.yaml
   - !include /config/lovelace_views/car.yaml
   - !include /config/lovelace_views/garage.yaml
+  # - !include /config/lovelace_views/test.yaml

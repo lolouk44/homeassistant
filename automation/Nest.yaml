@@ -33,12 +33,12 @@
     - service: climate.set_away_mode
       data:
         entity_id: climate.hallway
-        away_mode: 'off'
+        away_mode: 'home'
     - service: climate.set_temperature
       data_template:
         entity_id: climate.hallway
         temperature: '{% if states("sensor.season") == "summer" or states("sensor.season") == "spring" %}18{% else %}20{% endif %}'
-        operation_mode: Heat
+        hvac_mode: 'heat'
 
 
 - alias: Nest Set Away Mode
@@ -76,7 +76,7 @@
     - service: climate.set_away_mode
       data:
         entity_id: climate.hallway
-        away_mode: 'on'
+        away_mode: 'away'
     # - service: climate.set_temperature
       # data:
         # entity_id: climate.hallway

@@ -15,7 +15,7 @@
     - service: climate.set_away_mode
       data:
         entity_id: climate.hallway
-        away_mode: true
+        away_mode: 'away'
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
@@ -90,7 +90,7 @@
     - service: climate.set_away_mode
       data:
         entity_id: climate.hallway
-        away_mode: false
+        away_mode: 'home'
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
