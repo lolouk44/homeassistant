@@ -11,7 +11,7 @@
       data_type:
        - Humidity
        - Temperature
-    0716004500910560:
+    0716000300f50170:
       name: doorbell
       data_type:
        - Sound
