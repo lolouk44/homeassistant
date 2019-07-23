@@ -1,9 +1,6 @@
 - alias: Nest Remove Away Mode
   initial_state: true
   trigger:
-    # - platform: state
-      # entity_id: binary_sensor.hallway_thermostat_has_leaf
-      # to: 'on'
     - platform: state
       entity_id: group.pirs
       to: 'on'
@@ -30,9 +27,8 @@
       entity_id: group.door_and_window_sensors
       state: 'off'
   action:
-    - service: climate.set_away_mode
+    - service: nest.set_away_mode
       data:
-        entity_id: climate.hallway
         away_mode: 'home'
     - service: climate.set_temperature
       data_template:
@@ -73,16 +69,9 @@
         entity_id: group.door_and_window_sensors
         state: 'on'
   action:
-    - service: climate.set_away_mode
+    - service: nest.set_away_mode
       data:
-        entity_id: climate.hallway
         away_mode: 'away'
-    # - service: climate.set_temperature
-      # data:
-        # entity_id: climate.hallway
-        # temperature: 16
-        # operation_mode: Heat
-
 
 
 - alias: Nest Set ETA
