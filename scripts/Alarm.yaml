@@ -24,3 +24,67 @@ flash_loop:
     - service: script.turn_on
       data:
         entity_id: script.flash_aqara_light
+
+
+alarm_flash_ligthts:
+  alias: 'Alarm - Flash Ligthts'
+  sequence:
+    - condition: template
+      value_template: '{{ states("alarm_control_panel.alarm").split("_")[0] == "triggered"}}'
+    - service: light.turn_on
+      data:
+        entity_id: light.aqara_gateway_light
+        brightness: 255
+        rgb_color: [255,0,0]
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory_led_strip
+        brightness: 255
+        rgb_color: [255,0,0]
+    - service: light.turn_on
+      data:
+        entity_id: light.staircase_led_strip
+        brightness: 255
+        rgb_color: [255,0,0]
+    - service: light.turn_on
+      data:
+        entity_id: light.tv_cabinet_led_strip
+        brightness: 255
+        rgb_color: [255,0,0]
+    - service: light.turn_on
+      data:
+        entity_id: light.house_number_led_strip
+        brightness: 255
+        rgb_color: [255,0,0]
+    - service: light.turn_on
+      data:
+        entity_id: light.kiaan_lamp
+        brightness: 255
+        rgb_color: [255,0,0]
+    - delay:
+        seconds: 1
+    - service: light.turn_off
+      entity_id: light.aqara_gateway_light
+    - service: light.turn_off
+      entity_id: light.conservatory_led_strip
+    - service: light.turn_off
+      entity_id: light.staircase_led_strip
+    - service: light.turn_off
+      entity_id: light.tv_cabinet_led_strip
+    - service: light.turn_off
+      entity_id: light.house_number_led_strip
+    - service: light.turn_off
+      entity_id: light.kiaan_lamp
+    - service: script.turn_on
+      data:
+        entity_id: script.alarm_flash_ligthts_loop
+
+alarm_flash_ligthts_loop:
+  alias: 'Alarm - Flash Ligthts loop'
+  sequence:
+    - delay:
+        seconds: 1
+    - service: script.turn_on
+      data:
+        entity_id: script.alarm_flash_ligthts
+

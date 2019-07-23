@@ -81,11 +81,14 @@
         ringtone_id: 2
         ringtone_vol: 100
     # play alert, 0.9 on onkyo, 1 on conservatory, google minis
-    # - service: media_player.play_media
-      # data:
-        # entity_id: media_player.google_home_minis
-        # media_content_id: 'http://192.168.0.24/audio/Alarm-Intrusion.mp3'
-        # media_content_type: 'audio/mp3'
+    - service: media_player.volume_set
+      data_template:
+        volume_level: '0.9' 
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.0.24/audio/Alarm-Intrusion.mp3'
+        media_content_type: 'audio/mp3'
     - service: switch.turn_off
       data:
         entity_id: switch.kerui_alarm
@@ -182,6 +185,30 @@
             url: !secret url_cctv_living_room
           action_data:
             entity_id: '{{trigger.entity_id}}'
+    - service: script.turn_on
+      data:
+        entity_id: script.alarm_flash_ligthts
+    - wait_template: '{{ states("alarm_control_panel.alarm").split("_")[0] != "triggered"}}'
+      timeout: '00:15:00'
+    - service: media_player.media_stop
+    - service: switch.turn_on
+      data:
+        entity_id: switch.kerui_disarm
+    - service: switch.turn_on
+      data:
+        entity_id: switch.kerui_disarm
+    - service: light.turn_off
+      entity_id: light.aqara_gateway_light
+    - service: light.turn_off
+      entity_id: light.conservatory_led_strip
+    - service: light.turn_off
+      entity_id: light.staircase_led_strip
+    - service: light.turn_off
+      entity_id: light.tv_cabinet_led_strip
+    - service: light.turn_off
+      entity_id: light.house_number_led_strip
+    - service: light.turn_off
+      entity_id: light.kiaan_lamp
 
 
 - alias: 'Alarm - Stop arming when windows left open'
