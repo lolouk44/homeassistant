@@ -1,0 +1,31 @@
+type: entity-filter
+title: Alerts
+show_header_toggle: false
+entities:
+  - alert.outside_temp_sensor_lost
+  - alert.upstairs_temp_sensor_lost
+  - alert.cctv_front_lost
+  - alert.cctv_garage_lost
+  - alert.cctv_dafang_living_room_lost
+  - alert.currentcost_lost
+  - alert.dehumidifier_full
+  - alert.fire7_lost
+  - alert.rpi_lost
+  - alert.rpi_kitchen_lost
+  - alert.kello_lost
+  - alert.house_number_led_strip_lost
+  - alert.staircase_led_strip_lost
+  - alert.tv_cabinet_led_strip_lost
+  - alert.ram_too_high
+  - alert.ram_usage_lost
+  - alert.home_disk_usage_too_high
+  - alert.root_disk_usage_too_high
+  - alert.cctv_dafang_kitchen_lost
+  - alert.aloe_vera_humidity_too_low
+  - alert.aloe_vera_battery_too_low
+  - alert.kitchen_freezer_temp_too_high
+  - alert.garage_freezer_temp_too_high
+  - counter.iosbadgecount
+state_filter:
+  - "on"
+show_empty: false

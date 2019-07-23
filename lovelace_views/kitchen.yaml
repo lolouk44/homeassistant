@@ -2,17 +2,10 @@ title: Kitchen
 background: url("/local/bowl.png") fixed
 icon: mdi:bowl
 badges:
-    - device_tracker.lolo
-    - device_tracker.div
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_humidity
-    - sensor.precipitation
-    - sensor.dark_sky_overnight_low_temperature_0d
-    - sensor.dark_sky_daytime_high_temperature_0d
-    - sensor.home_to_work
-    - sensor.lolo_to_home
-    - sensor.sunset_time
+  !include /config/lovelace_views/badges.yaml
 cards:
+  - !include /config/lovelace_views/persistent_notifications.yaml
+  - !include /config/lovelace_views/alert_card.yaml
   - type: entities
     title: Sensors
     show_header_toggle: false

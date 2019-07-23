@@ -1,0 +1,9 @@
+type: entity-filter
+title: Persistent Notifications
+show_header_toggle: false
+entities:
+  - persistent_notification.http_login
+  - persistent_notification.ipban
+state_filter:
+  - "notifying"
+show_empty: false

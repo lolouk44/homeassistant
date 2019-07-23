@@ -2,18 +2,10 @@ title: Kiaan's Bedroom
 background: url("/local/baby.png") fixed
 icon: mdi:baby
 badges:
-    - device_tracker.lolo
-    - device_tracker.div
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_humidity
-    - sensor.precipitation
-
-    - sensor.dark_sky_overnight_low_temperature_0d
-    - sensor.dark_sky_daytime_high_temperature_0d
-    - sensor.home_to_work
-    - sensor.lolo_to_home
-    - sensor.sunset_time
+  !include /config/lovelace_views/badges.yaml
 cards:
+  - !include /config/lovelace_views/persistent_notifications.yaml
+  - !include /config/lovelace_views/alert_card.yaml
   - type: entities
     title: Kiaan's Bedroom Sensors
     show_header_toggle: false

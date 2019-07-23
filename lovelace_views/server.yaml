@@ -2,47 +2,10 @@ title: Server
 background: url("/local/home.png") fixed
 icon: mdi:desktop-classic
 badges:
-    - device_tracker.lolo
-    - device_tracker.div
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_humidity
-    - sensor.precipitation
-
-    - sensor.dark_sky_overnight_low_temperature_0d
-    - sensor.dark_sky_daytime_high_temperature_0d
-    - sensor.home_to_work
-    - sensor.lolo_to_home
-    - sensor.sunset_time
+  !include /config/lovelace_views/badges.yaml
 cards:
-  - type: entity-filter
-    title: Alerts
-    show_header_toggle: false
-    entities:
-      - alert.outside_temp_sensor_lost
-      - alert.upstairs_temp_sensor_lost
-      - alert.cctv_front_lost
-      - alert.cctv_garage_lost
-      - alert.cctv_dafang_living_room_lost
-      - alert.currentcost_lost
-      - alert.dehumidifier_full
-      - alert.fire7_lost
-      - alert.rpi_lost
-      - alert.rpi_kitchen_lost
-      - alert.kello_lost
-      - alert.house_number_led_strip_lost
-      - alert.staircase_led_strip_lost
-      - alert.tv_cabinet_led_strip_lost
-      - alert.ram_too_high
-      - alert.ram_usage_lost
-      - alert.home_disk_usage_too_high
-      - alert.root_disk_usage_too_high
-      - alert.cctv_dafang_kitchen_lost
-      - alert.aloe_vera_humidity_too_low
-      - alert.aloe_vera_battery_too_low
-      - counter.iosbadgecount
-    state_filter:
-      - "on"
-    show_empty: false
+  - !include /config/lovelace_views/persistent_notifications.yaml
+  - !include /config/lovelace_views/alert_card.yaml
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
