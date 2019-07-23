@@ -232,20 +232,20 @@ root_disk_usage_too_high:
   notifiers:
     - ios_lolos_iphone
 
-aloe_vera_humidity_too_low:
-  name: Aloe Vera Humidity below 10%
-  entity_id: binary_sensor.aloe_vera_humidity_too_low
+kitchen_freezer_temp_too_high:
+  name: Kitchen Temperature above -10
+  entity_id: binary_sensor.alert_kitchen_freezer_temp_too_high
   can_acknowledge: True
   skip_first: True
   repeat:
     - 5
     - 240
   notifiers:
-    - ios_lolos_iphone
+    - 
 
-aloe_vera_battery_too_low:
-  name: Aloe Vera Battery below 10%
-  entity_id: binary_sensor.aloe_vera_battery_too_low
+garage_freezer_temp_too_high:
+  name: Garage Temperature above -10
+  entity_id: binary_sensor.alert_garage_freezer_temp_too_high
   can_acknowledge: True
   skip_first: True
   repeat:

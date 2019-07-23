@@ -41,11 +41,23 @@
       entity_id: sensor.home_disk_usage
       value_template: >-
         {% if states("sensor.home_disk_usage") | default(0) | int > 90 %}on{% else %}off{%endif%}
-      friendly_name: Home Disk Usage Too High
+      friendly_name: Home Disk Usage Too 
 
     alert_root_disk_usage_too_high:
       entity_id: sensor.root_disk_usage
       value_template: >-
         {% if states("sensor.root_disk_usage") | default(0) | int > 90 %}on{% else %}off{%endif%}
       friendly_name: Root Disk Usage Too High
+
+    alert_kitchen_freezer_temp_too_high:
+      entity_id: sensor.kitchen_freezer_temperature
+      value_template: >-
+        {% if states("sensor.kitchen_freezer_temperature") | default(0) | int > -10 %}on{% else %}off{%endif%}
+      friendly_name: Kitchen Temperature Too High
+
+    alert_garage_freezer_temp_too_high:
+      entity_id: sensor.garage_freezer_temperature
+      value_template: >-
+        {% if states("sensor.garage_freezer_temperature") | default(0) | int > -10 %}on{% else %}off{%endif%}
+      friendly_name: Garage Temperature Too High
 
