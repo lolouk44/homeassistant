@@ -109,17 +109,15 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: persistent_notification.httplogin
-  condition:
-    - condition: template
-      value_template: "{{ trigger.to_state.state != off }}"
+      entity_id: persistent_notification.http_login
+      to: 'notifying'
   action:
     - service: notify.gmaillolo
       data_template:
         title: "HA - Login Alert"
         message: >
-          Login Attempt Failed\n
-          http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ state_attr("persistent_notification.httplogin", "message").split ("from ") [1]}}
+          Login Attempt Failed: 
+          http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ state_attr("persistent_notification.http_login", "message").split ("from ") [1]}}
 
 
 - alias: hasspodcast Update Available
