@@ -11,6 +11,7 @@ cards:
     elements:
       - type: state-icon
         entity: binary_sensor.220d_door_lock_state
+        icon: mdi:car-key
         style:
           top: 5%
           left: 7%
@@ -146,6 +147,12 @@ cards:
       - entity: binary_sensor.220d_door_lock_state
         secondary_info: last-changed
         icon: mdi:car-key
+      - entity: binary_sensor.220d_windows
+        secondary_info: last-changed
+        icon: mdi:window-closed
+      - entity: binary_sensor.220d_lids
+        secondary_info: last-changed
+        icon: mdi:car-door
       - entity: binary_sensor.220d_lights_parking
         secondary_info: last-changed
         icon: mdi:car-light-dimmed

@@ -43,7 +43,7 @@
                 states.binary_sensor.bmw_220d_doorpassengerrear,
                 states.binary_sensor.bmw_220d_hood,
                 states.binary_sensor.bmw_220d_trunk] -%}
-          {%- set doors_on = doors | selectattr('state','eq','off') | list -%}
+          {%- set doors_on = doors | selectattr('state','eq','on') | list -%}
           {% for door_names in doors_on -%}
           {{(door_names | string).split("friendly_name=")[1].split(",")[0]}}, 
           {%- endfor %}
@@ -110,12 +110,15 @@
       minutes: 25
       seconds: 0
   condition:
+    - condition: state
+      entity_id: 'input_boolean.holidays'
+      state: "off"
     - condition: template
       value_template: '{{states("sensor.dark_sky_temperature") | int >= 20}}'
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{now().hour == 17 and now().minute == 25 and states("device_tracker.220d") == "home" and (as_timestamp(now()) | timestamp_custom("%a") == "Fri" or as_timestamp(now()) | timestamp_custom("%a") == "Mon")}}'
+        value_template: '{{now().hour == 17 and now().minute == 25 and states("device_tracker.220d") == "home" and states("person.laurent") == "home" and states("person.div") != "home" and (as_timestamp(now()) | timestamp_custom("%a") == "Fri" or as_timestamp(now()) | timestamp_custom("%a") == "Mon")}}'
       - condition: template
         value_template: '{{now().hour == 16 and now().minute == 0 and states("device_tracker.220d") == "verint" and (as_timestamp(now()) | timestamp_custom("%a") == "Tue" or as_timestamp(now()) | timestamp_custom("%a") == "Wed" or as_timestamp(now()) | timestamp_custom("%a") == "Thu")}}'
   action:
