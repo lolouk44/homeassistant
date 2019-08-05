@@ -8,8 +8,8 @@
         - binary_sensor.conservatory_double_door
         - binary_sensor.living_room_right_big_window
         - binary_sensor.living_room_right_small_window
-        - binary_sensor.master_bedroom_right_window
-        - binary_sensor.master_bedroom_left_window
+        - binary_sensor.master_bedroom_right_big_window
+        - binary_sensor.master_bedroom_left_big_window
         - binary_sensor.cloakroom_window
         - binary_sensor.bathroom_window
         - binary_sensor.kiaan_big_window
@@ -32,8 +32,8 @@
           states.binary_sensor.conservatory_double_door,
           states.binary_sensor.living_room_right_big_window,
           states.binary_sensor.living_room_right_small_window,
-          states.binary_sensor.master_bedroom_right_window,
-          states.binary_sensor.master_bedroom_left_window,
+          states.binary_sensor.master_bedroom_right_big_window,
+          states.binary_sensor.master_bedroom_left_big_window,
           states.binary_sensor.cloakroom_window,
           states.binary_sensor.bathroom_window,
           states.binary_sensor.kiaan_big_window,
