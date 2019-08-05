@@ -3,25 +3,25 @@
     alert_aloe_vera_humidity_too_low:
       entity_id: sensor.aloe_vera_moisture
       value_template: >-
-        {% if (((states("sensor.aloe_vera_moisture") )| default(100)) | int < 10) and (states("sensor.uptime") | float > 0.1)%}on{% else %}off{%endif%}
+        {{ (((states("sensor.aloe_vera_moisture") )| default(100)) | int < 10) and (states("sensor.uptime") | float > 0.1)}}
       friendly_name: Aloe Vera Humidity below 15%
 
     alert_aloe_vera_battery_too_low:
       entity_id: sensor.aloe_vera_moisture
       value_template: >-
-        {% if (((states("sensor.aloe_vera_battery")) | default(100)) | int < 10) and (states("sensor.uptime") | float > 0.1)%}on{% else %}off{%endif%}
+        {{ (((states("sensor.aloe_vera_battery")) | default(100)) | int < 10) and (states("sensor.uptime") | float > 0.1)}}
       friendly_name: Aloe Vera Battery below 10%
 
     alert_outside_temp_sensor_lost:
       entity_id: sensor.loft_temperature
       value_template: >-
-        {% if (as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
+        {{ (as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated | default(0)) | int > 3600 )}}
       friendly_name: Outside Temp Sensor Lost
 
     alert_upstairs_temp_sensor_lost:
       entity_id: sensor.upstairs_temperature
       value_template: >-
-        {% if (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )%}on{% else %}off{%endif%}
+        {{ (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )}}
       friendly_name: Upstairs Temp Sensor Lost
 
     alert_currentcost_lost:
@@ -33,31 +33,31 @@
     alert_ram_too_high:
       entity_id: sensor.ram_usage
       value_template: >-
-        {% if states("sensor.ram_usage") | default(0) | int > 90 %}on{% else %}off{%endif%}
+        {{ states("sensor.ram_usage") | default(0) | int > 90 }}
       friendly_name: RAM Too High
 
 
     alert_home_disk_usage_too_high:
       entity_id: sensor.home_disk_usage
       value_template: >-
-        {% if states("sensor.home_disk_usage") | default(0) | int > 90 %}on{% else %}off{%endif%}
+        {{ states("sensor.home_disk_usage") | default(0) | int > 90 }}
       friendly_name: Home Disk Usage Too 
 
     alert_root_disk_usage_too_high:
       entity_id: sensor.root_disk_usage
       value_template: >-
-        {% if states("sensor.root_disk_usage") | default(0) | int > 90 %}on{% else %}off{%endif%}
+        {{ states("sensor.root_disk_usage") | default(0) | int > 90 }}
       friendly_name: Root Disk Usage Too High
 
     alert_kitchen_freezer_temp_too_high:
       entity_id: sensor.kitchen_freezer_temperature
       value_template: >-
-        {% if states("sensor.kitchen_freezer_temperature") | default(0) | int > -10 %}on{% else %}off{%endif%}
+        {{ states("sensor.kitchen_freezer_temperature") | default(0) | int > -5 }}
       friendly_name: Kitchen Temperature Too High
 
     alert_garage_freezer_temp_too_high:
       entity_id: sensor.garage_freezer_temperature
       value_template: >-
-        {% if states("sensor.garage_freezer_temperature") | default(0) | int > -10 %}on{% else %}off{%endif%}
+        {{ states("sensor.garage_freezer_temperature") | default(0) | int > -5 }}
       friendly_name: Garage Temperature Too High
 

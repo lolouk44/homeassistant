@@ -1,8 +1,0 @@
-div_birthday:
-  has_date: true
-  has_time: false
-  initial: !secret birthday_div
-lolo_birthday:
-  has_date: true
-  has_time: false
-  initial: !secret birthday_lolo

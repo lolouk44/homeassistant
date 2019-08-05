@@ -239,9 +239,11 @@ kitchen_freezer_temp_too_high:
   skip_first: True
   repeat:
     - 5
+    - 10
+    - 30
     - 240
   notifiers:
-    - 
+    - ios_lolos_iphone
 
 garage_freezer_temp_too_high:
   name: Garage Temperature above -10
@@ -250,6 +252,8 @@ garage_freezer_temp_too_high:
   skip_first: True
   repeat:
     - 5
+    - 10
+    - 30
     - 240
   notifiers:
     - ios_lolos_iphone
