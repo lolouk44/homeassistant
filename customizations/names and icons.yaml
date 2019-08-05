@@ -35,9 +35,9 @@ binary_sensor.living_room_right_big_window:
   device_class: window
 binary_sensor.living_room_right_small_window:
   device_class: window
-binary_sensor.master_bedroom_right_window:
+binary_sensor.master_bedroom_right_big_window:
   device_class: window
-binary_sensor.master_bedroom_left_window:
+binary_sensor.master_bedroom_left_big_window:
   device_class: window
 binary_sensor.cloakroom_window:
   device_class: window
@@ -108,7 +108,7 @@ device_tracker.divashni:
   entity_picture: /local/Div_Avatar2.jpg
 device_tracker.tile_50596aa49d611bee:
   friendly_name: 'Tile Wallet'
-device_tracker.tile_1dd2bf719e0233c1:
+device_tracker.tile_a46c24784e22461c:
   friendly_name: 'Tile Keys'
 
 #Date Time

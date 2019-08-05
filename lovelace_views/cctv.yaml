@@ -134,7 +134,7 @@ cards:
       - device_tracker.lolos_iphone
       - device_tracker.lolosiphone
       - device_tracker.laurent_mah_iphone_5s
-      - device_tracker.tile_1dd2bf719e0233c1
+      - device_tracker.tile_a46c24784e22461c
       - device_tracker.tile_50596aa49d611bee
       - entity: device_tracker.220d
       - zone.home
