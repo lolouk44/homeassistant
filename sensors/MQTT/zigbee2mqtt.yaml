@@ -1,0 +1,56 @@
+- platform: mqtt
+  name: "Kitchen Fridge Temperature"
+  state_topic: "zigbee2mqtt/kitchen_fridge"
+  value_template: "{{ value_json['temperature'] }}"
+  unit_of_measurement: '?C'
+  device_class: temperature
+
+- platform: mqtt
+  name: "Kitchen Fridge Humidity"
+  state_topic: "zigbee2mqtt/kitchen_fridge"
+  value_template: "{{ value_json['humidity'] | float (1) }}"
+  unit_of_measurement: "%"
+  device_class: humidity
+
+- platform: mqtt
+  name: "Kitchen Fridge Temperature Battery"
+  state_topic: "zigbee2mqtt/kitchen_fridge"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Master Bedroom Right Window Small Window Battery"
+  state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Master Bedroom Left Window Small Window Battery"
+  state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Conservatory Skylight Left Battery"
+  state_topic: "zigbee2mqtt/conservatory_skylight_left"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Pooja Room Small Window Battery"
+  state_topic: "zigbee2mqtt/pooja_room_small_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Pooja Room Big Window Battery"
+  state_topic: "zigbee2mqtt/pooja_room_big_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+

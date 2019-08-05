@@ -11,6 +11,19 @@ cards:
       type: custom:fold-entity-row
       head:
         type: section
+        label: All Low Batteries
+      open: true
+    filter:
+      include:
+        - entity_id: "sensor.*battery2"
+          state: "< 10%" # State is greater than 25
+        - entity_id: "sensor.*battery"
+          state: "< 10%" # State is greater than 25
+  - type: custom:auto-entities
+    card:
+      type: custom:fold-entity-row
+      head:
+        type: section
         label: Server Stats
       open: true
     entities:

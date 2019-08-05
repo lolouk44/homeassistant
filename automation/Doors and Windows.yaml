@@ -1,4 +1,4 @@
-- alias: Door or Window Opens
+- alias: Window - Door or Window Opens Closes
   initial_state: true
   trigger:
     - platform: state
@@ -8,8 +8,10 @@
         - binary_sensor.conservatory_double_door
         - binary_sensor.living_room_right_big_window
         - binary_sensor.living_room_right_small_window
-        - binary_sensor.master_bedroom_right_window
-        - binary_sensor.master_bedroom_left_window
+        - binary_sensor.master_bedroom_right_big_window
+        - binary_sensor.master_bedroom_left_big_window
+        - binary_sensor.master_bedroom_right_small_window
+        - binary_sensor.master_bedroom_left_small_window
         - binary_sensor.cloakroom_window
         - binary_sensor.bathroom_window
         - binary_sensor.kiaan_big_window
@@ -21,60 +23,31 @@
         - binary_sensor.pooja_room_big_window
         - binary_sensor.pooja_room_small_window
         - binary_sensor.conservatory_skylight_right
-      to: 'on'
   condition:
     - condition: state
       entity_id: alarm_control_panel.alarm
       state: disarmed
+    - condition: template
+      value_template: '{{ trigger.to_state.state in ["on", "off"] }}'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
   action:
   - service: media_player.play_media
-    data:
+    data_template:
       entity_id: media_player.google_home_minis
-      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+      media_content_id: >
+        {% if trigger.to_state.state == "on" %}
+          http://192.168.0.24/audio/RemoteOn.mp3
+        {% elif trigger.to_state.state == "off" %}
+          http://192.168.0.24/audio/RemoteOff.mp3
+        {% endif %}
       media_content_type: 'audio/mp3'
 
-- alias: Door or Window Closes
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id:
-        - binary_sensor.conservatory_skylight_left
-        - binary_sensor.conservatory_single_door
-        - binary_sensor.conservatory_double_door
-        - binary_sensor.living_room_right_big_window
-        - binary_sensor.living_room_right_small_window
-        - binary_sensor.master_bedroom_right_window
-        - binary_sensor.master_bedroom_left_window
-        - binary_sensor.cloakroom_window
-        - binary_sensor.bathroom_window
-        - binary_sensor.kiaan_big_window
-        - binary_sensor.kiaan_small_window
-        - binary_sensor.blue_room_big_window
-        - binary_sensor.blue_room_small_window
-        - binary_sensor.kitchen_window
-        - binary_sensor.main_door
-        - binary_sensor.pooja_room_big_window
-        - binary_sensor.pooja_room_small_window
-        - binary_sensor.conservatory_skylight_right
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: alarm_control_panel.alarm
-      state: disarmed
-    - condition: state
-      entity_id: input_boolean.silent
-      state: "off"
-  action:
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.google_home_minis
-      media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
-      media_content_type: 'audio/mp3'
 
-- alias: Conservatory SkyLight Left Open At Night
+- alias: Window - Downstairs Window Left Open At Night
   initial_state: true
   trigger:
     - platform: state
@@ -88,21 +61,31 @@
       entity_id: input_boolean.normal
       state: 'on'
     - condition: state
+      entity_id: group.downstairs_door_and_window_sensors
+      state: 'on'
+    - condition: state
       entity_id: sun.sun
       state: 'below_horizon'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.conservatory_skylight_left
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.conservatory_skylight_right
-        state: 'on'
   action:
     - service: notify.gmaillolo
       data_template:
-        title: "HA - Convervatory Skylights"
-        message: 'Conservatory SkyLight Left Open!'
+        title: "HA - Windows"
+        message: >
+          The following doors/windows are not closed: 
+          {% set doors = [
+          states.binary_sensor.conservatory_skylight_left,
+          states.binary_sensor.conservatory_skylight_right,
+          states.binary_sensor.conservatory_single_door,
+          states.binary_sensor.conservatory_double_door,
+          states.binary_sensor.living_room_right_big_window,
+          states.binary_sensor.living_room_right_small_window,
+          states.binary_sensor.cloakroom_window,
+          states.binary_sensor.kitchen_window,
+          states.binary_sensor.main_door] -%}
+          {%- set doors_on = doors | selectattr('state','eq','on') | list -%}
+          {% for door_names in doors_on -%}
+          {{(door_names | string).split("friendly_name=")[1].split(",")[0]}}, 
+          {%- endfor %}
     - service: media_player.volume_set
       data:
         entity_id: media_player.google_home_minis
@@ -110,7 +93,22 @@
     - service: tts.google_say
       entity_id: media_player.google_home_minis
       data:
-        message: 'Please note: The conservatory skylight windows are open'
+        message: >
+          The following doors/windows are not closed: 
+          {% set doors = [
+          states.binary_sensor.conservatory_skylight_left,
+          states.binary_sensor.conservatory_skylight_right,
+          states.binary_sensor.conservatory_single_door,
+          states.binary_sensor.conservatory_double_door,
+          states.binary_sensor.living_room_right_big_window,
+          states.binary_sensor.living_room_right_small_window,
+          states.binary_sensor.cloakroom_window,
+          states.binary_sensor.kitchen_window,
+          states.binary_sensor.main_door] -%}
+          {%- set doors_on = doors | selectattr('state','eq','on') | list -%}
+          {% for door_names in doors_on -%}
+          {{(door_names | string).split("friendly_name=")[1].split(",")[0]}}, 
+          {%- endfor %}
     - service: media_player.volume_set
       data:
         entity_id: media_player.google_home_minis

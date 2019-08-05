@@ -4,9 +4,9 @@
     0B11002B00018F3C0A010F60:
       name: Garage Back Door
       device_class: door
-    0B1100300001B0240A000050:
-      name: Conservatory Skylight Left
-      device_class: window
+    # 0B1100300001B0240A000050:
+      # name: Conservatory Skylight Left
+      # device_class: window
     # 09130007a68a42012970:
       # name: Kerui Remote Disarm
       # fire_event: true

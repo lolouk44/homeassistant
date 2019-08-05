@@ -1,0 +1,40 @@
+- platform: mqtt
+  name: "Conservatory Skylight Left"
+  state_topic: "zigbee2mqtt/conservatory_skylight_left"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: window
+
+- platform: mqtt
+  name: "Master Bedroom Right Small Window"
+  state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: window
+
+- platform: mqtt
+  name: "Master Bedroom Left Small Window"
+  state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: window
+
+- platform: mqtt
+  name: "Pooja Room Big Window"
+  state_topic: "zigbee2mqtt/pooja_room_big_window"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: window
+
+- platform: mqtt
+  name: "Pooja Room Small Window"
+  state_topic: "zigbee2mqtt/pooja_room_small_window"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: window
+

@@ -1,0 +1,12 @@
+downstairs_door_and_window_sensors:
+  name: Downstairs Door & Window Sensors
+  entities:
+    - binary_sensor.conservatory_skylight_left
+    - binary_sensor.conservatory_skylight_right
+    - binary_sensor.conservatory_single_door
+    - binary_sensor.conservatory_double_door
+    - binary_sensor.living_room_right_big_window
+    - binary_sensor.living_room_right_small_window
+    - binary_sensor.cloakroom_window
+    - binary_sensor.kitchen_window
+    - binary_sensor.main_door

@@ -93,22 +93,12 @@
     master_bedroom_left_window_battery:
       friendly_name: Master Bedroom Left Window Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.master_bedroom_left_window", "battery_level") | int}}'
+      value_template: '{{state_attr("binary_sensor.master_bedroom_left_big_window", "battery_level") | int}}'
       device_class: battery
     master_bedroom_right_window_battery:
       friendly_name: Master Bedroom Right Window Battery
       unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.master_bedroom_right_window", "battery_level") | int}}'
-      device_class: battery
-    pooja_room_big_window_battery:
-      friendly_name: Pooja Room Big Window Battery
-      unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.pooja_room_big_window", "battery_level") | int}}'
-      device_class: battery
-    pooja_room_small_window_battery:
-      friendly_name: Pooja Room Small Window Door
-      unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.pooja_room_small_window", "battery_level") | int}}'
+      value_template: '{{state_attr("binary_sensor.master_bedroom_right_big_window", "battery_level") | int}}'
       device_class: battery
     bathroom_window_battery:
       friendly_name: Bathroom Window Battery

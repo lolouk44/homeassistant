@@ -46,9 +46,15 @@ cards:
       - switch.edimax1
       - input_boolean.edimax_charging
   - type: entities
-    title: Freezer
+    title: Fridge Freezer
     show_header_toggle: false
     entities:
+      - entity: sensor.kitchen_fridge_temperature
+        secondary_info: last-changed
+      - entity: sensor.kitchen_fridge_humidity
+        secondary_info: last-changed
+      - entity: sensor.kitchen_fridge_temperature_battery
+        secondary_info: last-changed
       - entity: sensor.kitchen_freezer_temperature
         secondary_info: last-changed
       - entity: sensor.kitchen_freezer_humidity
