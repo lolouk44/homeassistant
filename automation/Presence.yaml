@@ -42,7 +42,7 @@
     - service: notify.gmaillolo
       data_template:
         title: "HA - Location Update"
-        message: 'Div left work. ETA: {{states("sensor.div_to_home")}} min.'
+        message: 'Div left work. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}})'
 
 
 - alias: Tell Lolo Div left yoga
@@ -61,7 +61,7 @@
     - service: notify.gmaillolo
       data_template:
         title: "HA - Location Update"
-        message: 'Div left yoga. ETA: {{states("sensor.div_to_home")}} min.'
+        message: 'Div left yoga. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}})'
 
 - alias: Switch everything off when we leave home
   initial_state: false
