@@ -3,8 +3,6 @@
   trigger:
     - platform: state
       entity_id: 
-        - alert.aloe_vera_battery_too_low
-        - alert.aloe_vera_humidity_too_low
         - alert.cctv_dafang_kitchen_lost
         - alert.cctv_dafang_living_room_lost
         - alert.cctv_front_lost
@@ -12,17 +10,19 @@
         - alert.currentcost_lost
         - alert.dehumidifier_full
         - alert.fire7_lost
+        - alert.garage_freezer_temp_too_high
         - alert.home_disk_usage_too_high
         - alert.house_number_led_strip_lost
+        - alert.kello_lost
+        - alert.kitchen_freezer_temp_too_high
         - alert.outside_temp_sensor_lost
         - alert.ram_too_high
         - alert.ram_usage_lost
         - alert.root_disk_usage_too_high
-        - alert.rpi_lost
         - alert.rpi_kitchen_lost
+        - alert.rpi_lost
         - alert.staircase_led_strip_lost
         - alert.tv_cabinet_led_strip_lost
-        - alert.upstairs_temp_sensor_lost
       from: 'idle'
       to: 'on'
   action:
@@ -49,14 +49,20 @@
     - service: alert.turn_off
       data_template:
         entity_id: '{{ trigger.event.data["action_data"]["entity_id"] }}'
+    - service: counter.decrement
+      entity_id: counter.iosbadgecount
+    - condition: state
+      entity_id: counter.iosbadgecount
+      state: '0'
+    - service: notify.ios_lolos_iphone
+      data:
+        message: clear_badge
 
 - alias: Decrease Counter with Alert to Idle
   initial_state: true
   trigger:
     - platform: state
       entity_id: 
-        - alert.aloe_vera_battery_too_low
-        - alert.aloe_vera_humidity_too_low
         - alert.cctv_dafang_kitchen_lost
         - alert.cctv_dafang_living_room_lost
         - alert.cctv_front_lost
@@ -64,17 +70,19 @@
         - alert.currentcost_lost
         - alert.dehumidifier_full
         - alert.fire7_lost
+        - alert.garage_freezer_temp_too_high
         - alert.home_disk_usage_too_high
         - alert.house_number_led_strip_lost
+        - alert.kello_lost
+        - alert.kitchen_freezer_temp_too_high
         - alert.outside_temp_sensor_lost
         - alert.ram_too_high
         - alert.ram_usage_lost
         - alert.root_disk_usage_too_high
-        - alert.rpi_lost
         - alert.rpi_kitchen_lost
+        - alert.rpi_lost
         - alert.staircase_led_strip_lost
         - alert.tv_cabinet_led_strip_lost
-        - alert.upstairs_temp_sensor_lost
       to: 'idle'
   action:
     - service: counter.decrement
