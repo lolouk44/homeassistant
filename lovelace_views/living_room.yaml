@@ -16,6 +16,12 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.photoresistor
         secondary_info: last-changed
+      - entity: sensor.dafang_living_room_brightness
+        secondary_info: last-changed
+      - entity: sensor.dafang_living_room_brightness_mean
+        secondary_info: last-changed
+      - entity: binary_sensor.dark
+        secondary_info: last-changed
       - entity: sensor.currentcost_temperature
         secondary_info: last-changed
       - entity: binary_sensor.living_room_right_small_window
