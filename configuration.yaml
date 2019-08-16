@@ -70,8 +70,7 @@ counter:
     name: iOS Badge Count
     icon: mdi:numeric-1-box
 
-# Custom Updater: https://github.com/custom-components/custom_updater
-#Life360 Device Tracker: https://github.com/pnbruckner/homeassistant-config/blob/master/docs/custom_updater.md
+
 custom_updater:
   track:
     - cards
@@ -88,19 +87,12 @@ discovery:
 
 ffmpeg:
 
-# Enables the front end
 frontend: 
 
 google:
   client_id: !secret GCal_ID
   client_secret: !secret GCal_Secret
 
-# googlehome:
-  # devices:
-    # - host: 192.168.0.9
-    # - host: 192.168.0.10
-
-# Enables support for tracking state changes over time.
 history:
   # exclude:
     # domains:
@@ -135,7 +127,7 @@ life360:
   error_threshold: 3
   prefix: ''
 
-# View all events in a logbook
+
 logbook:
 
 # Logging level
@@ -143,24 +135,12 @@ logbook:
 logger:
   default: error
   logs:
-    # homeassistant.components.http: warning
-    # homeassistant.components.camera: error
-    # requests.packages.urllib3: critical
-    # requests.packages.urllib3.connectionpool: critical
     miio.device: critical
-    # homeassistant.components.sensor.sky_hd_status: critical
-    # homeassistant.components.switch.rest: critical
     # homeassistant.components.rfxtrx: debug
-    homeassistant.helpers.entity: critical
+    # homeassistant.helpers.entity: critical
     homeassistant.components.scrape: critical
     homeassistant.components.rest: critical
     homeassistant.components.waze_travel_time: critical
-    # Lolo bedside light
-    # homeassistant.components.xiaomi_miio.light: critical
-    # homeassistant.components.light.lolo_bedside_light: critical
-    # homeassistant.components.light: critical
-    # homeassistant.components.miio.device: critical
-    # homeassistant.components.miio: critical
 
 
 lovelace:
@@ -220,7 +200,6 @@ tuya:
   password: !secret tuya_password
   country_code: 44
 
-# Checks for available dates
 updater:
   include_used_components: True
 
@@ -243,9 +222,3 @@ xiaomi_aqara:
       host: 192.168.0.5
 
 zeroconf:
-
-# zha:
-  # usb_path: /dev/ttyACM0
-  # usb_path: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE1963360-if00
-  # database_path: /config/zigbee.db
-  # radio_type: deconz

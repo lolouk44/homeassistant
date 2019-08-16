@@ -1,21 +1,4 @@
-# - platform: cast
-# # Google Home Mini Kitchen
-# - platform: cast
-  # host: 192.168.0.9
-# # Google Home Mini Living Room
-# - platform: cast
-  # host: 192.168.0.10
-# # Kitchen Cast
-# - platform: cast
-  # host: 192.168.0.12
-# # Conservatory Cast
-# - platform: cast
-  # host: 192.168.0.13
-# # Mi Box
-# - platform: cast
-  # host: 192.168.0.28
-# - platform: cast
-  # host: 192.168.0.26
+
 - platform: kodi
   host: 192.168.0.28
 - platform: onkyo
@@ -27,12 +10,10 @@
     video2: 'Sky'
     network: 'ChromeCast'
     tv: 'TV'
-    strm-box: 'Stream-Box'
-  # zone2: true
+    strm-box: 'Stream-Box/CC'
 - platform: panasonic_viera
   host: 192.168.0.27
   mac: D8:AF:F1:47:7A:16
-# - platform: plex
 - platform: mpd
   host: 192.168.0.21
   port: 6600
