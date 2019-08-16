@@ -26,8 +26,8 @@
       state: 'on'
     - condition: or
       conditions:
-      - condition: template
-        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
+      # - condition: template
+        # value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
@@ -136,8 +136,8 @@
       state: 'on'
     - condition: or
       conditions:
-      - condition: template
-        value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
+      # - condition: template
+        # value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
