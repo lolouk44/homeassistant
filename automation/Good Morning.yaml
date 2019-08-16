@@ -37,7 +37,7 @@
           highs: {{state_attr('weather.dark_sky', 'forecast')[0].temperature|round}},
           lows: {{state_attr('weather.dark_sky', 'forecast')[0].templow|round}}.
           Winds:
-          {% set winbearing = (state_attr('weather.dark_sky','forecast')[0].wind_bearing/90)|round +1 %}
+          {% set winbearing = (state_attr('weather.dark_sky','forecast')[0].wind_bearing/45)|round +1 %}
           {% set winddir = ['North', 'North East','East','South East','South','South West','West','North West']%}
           {{ winddir[winbearing]}}
           at {{(states('sensor.dark_sky_wind_speed_0')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0')|int*3.6)|round}} km/h.
