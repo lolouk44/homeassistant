@@ -53,8 +53,16 @@
     minutes: 0
     seconds: 0
   action:
-  - service: shell_command.reboot_dafang_kitchen
-  - service: shell_command.reboot_dafang_livingroom
+  - service: mqtt.publish
+    data:
+      topic: "Kitchen/DaFang/reboot/set"
+      payload_template: 'ON'
+      retain: false
+  - service: mqtt.publish
+    data:
+      topic: "LivingRoom/DaFang/reboot/set"
+      payload_template: 'ON'
+      retain: false
 
 - alias: 'SSL expiry notification'
   initial_state: true
