@@ -233,7 +233,7 @@ root_disk_usage_too_high:
     - ios_lolos_iphone
 
 kitchen_freezer_temp_too_high:
-  name: Kitchen Temperature above -10
+  name: Kitchen Freezer Temperature above 0
   entity_id: binary_sensor.alert_kitchen_freezer_temp_too_high
   can_acknowledge: True
   skip_first: True
@@ -246,7 +246,7 @@ kitchen_freezer_temp_too_high:
     - ios_lolos_iphone
 
 garage_freezer_temp_too_high:
-  name: Garage Temperature above -10
+  name: Garage Freezer Temperature above 0
   entity_id: binary_sensor.alert_garage_freezer_temp_too_high
   can_acknowledge: True
   skip_first: True
