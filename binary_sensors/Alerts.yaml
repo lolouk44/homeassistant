@@ -52,12 +52,12 @@
     alert_kitchen_freezer_temp_too_high:
       entity_id: sensor.kitchen_freezer_temperature
       value_template: >-
-        {{ states("sensor.kitchen_freezer_temperature") | default(0) | int > -5 }}
-      friendly_name: Kitchen Temperature Too High
+        {{ states("sensor.kitchen_freezer_temperature") | default(0) | int > 0 }}
+      friendly_name: Kitchen Freezer Temperature Too High
 
     alert_garage_freezer_temp_too_high:
       entity_id: sensor.garage_freezer_temperature
       value_template: >-
-        {{ states("sensor.garage_freezer_temperature") | default(0) | int > -5 }}
-      friendly_name: Garage Temperature Too High
+        {{ states("sensor.garage_freezer_temperature") | default(0) | int > 0 }}
+      friendly_name: Garage Freezer Temperature Too High
 
