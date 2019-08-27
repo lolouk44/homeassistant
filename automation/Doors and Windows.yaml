@@ -92,7 +92,7 @@
         volume_level: 1
     - service: tts.google_say
       entity_id: media_player.google_home_minis
-      data:
+      data_template:
         message: >
           The following doors/windows are not closed: 
           {% set doors = [
