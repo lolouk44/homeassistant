@@ -121,6 +121,10 @@
         filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
     - service: camera.snapshot
       data:
+        entity_id: camera.conservatory
+        filename: '/config/www/CCTV_Snapshots/Conservatory.jpg'
+    - service: camera.snapshot
+      data:
         entity_id: camera.garage
         filename: '/config/www/CCTV_Snapshots/Garage.jpg'
     - service: notify.gmaillolo
@@ -139,6 +143,7 @@
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
             - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Conservatory.jpg
             - /config/www/CCTV_Snapshots/Fire7.jpg
             - /config/www/CCTV_Snapshots/Front.jpg
             - /config/www/CCTV_Snapshots/Side.jpg
@@ -160,6 +165,7 @@
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
             - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Conservatory.jpg
             - /config/www/CCTV_Snapshots/Fire7.jpg
             - /config/www/CCTV_Snapshots/Front.jpg
             - /config/www/CCTV_Snapshots/Side.jpg
@@ -346,6 +352,13 @@
     - service: switch.turn_on
       data:
         entity_id: switch.kerui_disarm
+    - service: media_player.volume_set
+      data_template:
+        volume_level: '0.4' 
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.google_home_minis
+        volume_level: '0.75' 
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
@@ -411,6 +424,10 @@
       data:
         entity_id: camera.living_room
         filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
+    - service: camera.snapshot
+      data:
+        entity_id: camera.living_room
+        filename: '/config/www/CCTV_Snapshots/Conservatory.jpg'
     - service: notify.gmaillolo
       data_template:
         title: "HA - Fire Alert"
@@ -426,8 +443,9 @@
           FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.first_floor_smoke_detector' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
         data:
           images:
-            - /config/www/CCTV_Snapshots/LivingRoom.jpg
+            - /config/www/CCTV_Snapshots/LivingRoom.
             - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Conservatory.jpg
             - /config/www/CCTV_Snapshots/Fire7.jpg
     - service: notify.ios_lolos_iphone
       data_template:

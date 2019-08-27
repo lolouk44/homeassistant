@@ -222,6 +222,8 @@ switch.lwrf_socket_xmas:
   icon: mdi:pine-tree
 switch.dafang_living_room_status:
   icon: mdi:run-fast
+switch.cctv_conservatory_status:
+  icon: mdi:run-fast
 switch.dafang_living_room_rtsp:
   icon: mdi:video
 switch.dafang_living_room_blue_led:

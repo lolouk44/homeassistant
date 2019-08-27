@@ -1,7 +1,7 @@
 - platform: template
   switches:
     dafang_living_room_status:
-      friendly_name: Dafang Living Room motion Status
+      friendly_name: Dafang Living Room motion Recording
       value_template: "{{ is_state('sensor.dafang_living_room_status_scrape', 'ACTIVE') }}"
       turn_on:
         service: shell_command.dafang_living_room_active
@@ -53,7 +53,7 @@
 - platform: template
   switches:
     dafang_kitchen_status:
-      friendly_name: Dafang Kitchen motion Status
+      friendly_name: Dafang Kitchen motion Recording
       value_template: "{{ is_state('sensor.dafang_kitchen_status_scrape', 'ACTIVE') }}"
       turn_on:
         service: shell_command.dafang_kitchen_active
@@ -106,9 +106,21 @@
 - platform: template
   switches:
     cctv_garage_status:
-      friendly_name: CCTV Garage motion Status
+      friendly_name: CCTV Garage motion Recording
       value_template: "{{ is_state('sensor.cctv_garage_status_scrape', 'ACTIVE') }}"
       turn_on:
         service: shell_command.cctv_garage_active
       turn_off:
         service: shell_command.cctv_garage_pause
+
+
+
+- platform: template
+  switches:
+    cctv_conservatory_status:
+      friendly_name: CCTV Conservatory motion Recording
+      value_template: "{{ is_state('sensor.dafang_conservatory_status_scrape', 'ACTIVE') }}"
+      turn_on:
+        service: shell_command.cctv_conservatory_active
+      turn_off:
+        service: shell_command.cctv_conservatory_pause

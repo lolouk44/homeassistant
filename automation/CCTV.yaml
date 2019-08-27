@@ -94,6 +94,8 @@
     entity_id: switch.dafang_living_room_status
   - service: switch.turn_on
     entity_id: switch.dafang_kitchen_status
+  - service: switch.turn_on
+    entity_id: switch.cctv_conservatory_status
 
 - alias: CCTV - Deactivate motion we reach home
   initial_state: true
@@ -110,6 +112,9 @@
     - platform: state
       entity_id: switch.dafang_kitchen_status
       to: "on"
+    - platform: state
+      entity_id: switch.cctv_conservatory_status
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -125,6 +130,8 @@
     entity_id: switch.dafang_living_room_status
   - service: switch.turn_off
     entity_id: switch.dafang_kitchen_status
+  - service: switch.turn_off
+    entity_id: switch.dafang_conservatory_status
 
 
 - alias: CCTV - Set Dafang Blue LED On
@@ -199,4 +206,19 @@
     data_template:
       title: "HA - CCTV Error"
       message: Garage CCTV Motion Connection Lost!
+
+
+- alias: CCTV - Garage CCTV Conservatory Connection Lost
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.cctv_conservatory_connection_scrape
+      to: '	Lost connection'
+      for:
+        minutes: 3
+  action:
+  - service: notify.gmaillolo
+    data_template:
+      title: "HA - CCTV Error"
+      message: Conservatory CCTV Motion Connection Lost!
 

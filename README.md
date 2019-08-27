@@ -42,7 +42,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Verint S5003FD Camera
 - Wemos D1 Mini Pro
 - Xiaomi Aqara V3 Gateway
-- Xiaomi DaFang Camera
+- Xiaomi DaFang Cameras with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 - Xiaomi Aqara Sensors (Hygro, window/door)
 - Xiaomi Mi Bluetooth V4.0 Body Composition Smart Scale
 - Xiaomi Mi Box 3
@@ -52,6 +52,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Router R3P Pro
 - Xiaomi Mijia Zigbee Smart Socket
 - Xiaomi Philips Zhirui Candle Light
+- Xiaomi XiaoFang Camera with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 
 ## View of my Home Assistant UI
 ![My Home Assistant](http://www.lolorpi.com/wordpress/wp-content/uploads/2018/08/HA_UI_Example.png)

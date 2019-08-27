@@ -45,3 +45,7 @@
 - platform: ping
   host: 192.168.0.33
   name: Dafang Kitchen
+
+- platform: ping
+  host: 192.168.0.36
+  name: Dafang Conservatory

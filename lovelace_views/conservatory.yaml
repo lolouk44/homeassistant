@@ -12,6 +12,10 @@ cards:
     entities:
       - entity: binary_sensor.pir_conservatory
         secondary_info: last-changed
+      - entity: sensor.dafang_conservatory_brightness
+        secondary_info: last-changed
+      - entity: sensor.dafang_conservatory_brightness_mean
+        secondary_info: last-changed
       - entity: binary_sensor.conservatory_skylight_left
         secondary_info: last-changed
       - entity: binary_sensor.conservatory_skylight_right
@@ -20,6 +24,23 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.conservatory_double_door
         secondary_info: last-changed
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-glance
+      title: Conservatory
+      entities:
+        - binary_sensor.pir_conservatory
+        - light.conservatory
+        - light.conservatory_led_strip
+      camera_image: camera.conservatory
+    - type: entities
+      title: Conservatory Lights
+      show_header_toggle: true
+      entities:
+        - entity: light.conservatory
+          secondary_info: last-changed
+        - entity: light.conservatory_led_strip
+          secondary_info: last-changed
   - type: entities
     title: Aloe Vera
     show_header_toggle: false
@@ -34,16 +55,7 @@ cards:
         secondary_info: last-changed
       - entity: sensor.aloe_vera_battery2
         secondary_info: last-changed
-  - type: entities
-    title: Conservatory Lights
-    show_header_toggle: true
-    entities:
-      - entity: light.conservatory
-        secondary_info: last-changed
-      - entity: light.red_light
-        secondary_info: last-changed
-      - entity: light.conservatory_led_strip
-        secondary_info: last-changed
+
   - type: entities
     title: Rotary Clothes Airer
     show_header_toggle: false

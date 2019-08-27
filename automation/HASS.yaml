@@ -44,6 +44,8 @@
     entity_id: switch.dafang_living_room_status
   - service: switch.turn_off
     entity_id: switch.dafang_kitchen_status
+  - service: switch.turn_off
+    entity_id: switch.cctv_conservatory_status
 
 - alias: HASS Nightly Restart
   initial_state: true
@@ -61,6 +63,11 @@
   - service: mqtt.publish
     data:
       topic: "LivingRoom/DaFang/reboot/set"
+      payload_template: 'ON'
+      retain: false
+  - service: mqtt.publish
+    data:
+      topic: "Conservatory/DaFang/reboot/set"
       payload_template: 'ON'
       retain: false
 

@@ -102,16 +102,16 @@ cards:
   - type: custom:vertical-stack-in-card
     cards:
     - type: picture-entity
-      title: Garage
-      entity: camera.garage
-      camera_image: camera.garage
+      title: Conservatory
+      entity: camera.conservatory
+      camera_image: camera.conservatory
       show_name: false
       show_state: false
     - type: entities
-      title: Garage
+      title: Conservatory
       show_header_toggle: false
       entities:
-        - switch.cctv_garage_status
+        - switch.cctv_conservatory_status
   - type: custom:vertical-stack-in-card
     cards:
     - type: picture-entity
@@ -126,6 +126,19 @@ cards:
       entities:
         - entity: binary_sensor.fire7_motion
           secondary_info: last-changed
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: picture-entity
+      title: Garage
+      entity: camera.garage
+      camera_image: camera.garage
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Garage
+      show_header_toggle: false
+      entities:
+        - switch.cctv_garage_status
   - type: map
     entities:
       - device_tracker.div_iphone

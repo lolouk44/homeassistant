@@ -21,6 +21,13 @@
       friendly_name: Dafang Kitchen Connection Status
       device_class: connectivity
 
+    dafang_conservatory_connection_status:
+      entity_id: sensor.dafang_conservatory_connection_scrape
+      value_template: >
+        {{ states("sensor.dafang_conservatory_connection_scrape") == 'OK'}}
+      friendly_name: Dafang Conservatory Connection Status
+      device_class: connectivity
+
     garage_cctv_connection_status:
       entity_id: sensor.cctv_garage_connection_scrape
       value_template: >

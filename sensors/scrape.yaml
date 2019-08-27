@@ -1,5 +1,5 @@
 - platform: rest
-  resource: http://192.168.0.23:8080/3/detection/status
+  resource: http://192.168.0.23:8080/5/detection/status
   name: dafang_living_room_status_scrape
   value_template: '{{ value.split("Detection status ")[1] }}'
 
@@ -9,12 +9,17 @@
   value_template: '{{ value.split("Detection status ")[1] }}'
 
 - platform: rest
-  resource: http://192.168.0.23:8080/2/detection/status
+  resource: http://192.168.0.23:8080/6/detection/status
+  name: dafang_conservatory_status_scrape
+  value_template: '{{ value.split("Detection status ")[1] }}'
+
+- platform: rest
+  resource: http://192.168.0.23:8080/7/detection/status
   name: cctv_garage_status_scrape
   value_template: '{{ value.split("Detection status ")[1] }}'
 
 - platform: rest
-  resource: http://192.168.0.23:8080/3/detection/connection
+  resource: http://192.168.0.23:8080/5/detection/connection
   name: dafang_living_room_connection_scrape
   value_template: '{{ value.split("Camera 3 Connection ")[1] }}'
 
@@ -24,7 +29,12 @@
   value_template: '{{ value.split("Camera 4 Connection ")[1] }}'
 
 - platform: rest
-  resource: http://192.168.0.23:8080/2/detection/connection
+  resource: http://192.168.0.23:8080/6/detection/connection
+  name: dafang_conservatory_connection_scrape
+  value_template: '{{ value.split("Camera 6 Connection ")[1] }}'
+
+- platform: rest
+  resource: http://192.168.0.23:8080/7/detection/connection
   name: cctv_garage_connection_scrape
   value_template: '{{ value.split("Camera 2 Connection ")[1] }}'
 
