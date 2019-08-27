@@ -9,6 +9,20 @@
       prob_given_true: 0.9
       prob_given_false: 0.1
       to_state: 'below_horizon'
+      # sunset in <2h
+    - platform: template
+      prob_given_true: 0.8
+      prob_given_false: 0.1
+      value_template: >
+        {{ as_timestamp(state_attr("sun.sun","next_dusk")) - as_timestamp(now()) <7200}}
+      # sunset in <1h
+    - platform: template
+      prob_given_true: 0.8
+      prob_given_false: 0.1
+      value_template: >
+        {{ as_timestamp(state_attr("sun.sun","next_dusk")) - as_timestamp(now()) <3600}}
+      
+
     - platform: template
       prob_given_true: 0.9
       prob_given_false: 0.1
@@ -26,21 +40,21 @@
       value_template: >
         {{(states('sensor.dafang_living_room_brightness_mean') | int < 63) and is_state('light.living_room_main','off')}}
 
-    # - platform: 'state'
-      # entity_id: 'group.kitchen_lights'
-      # prob_given_true: 0.9
-      # prob_given_false: 0.1
-      # to_state: 'on'
-    # - platform: 'state'
-      # entity_id: 'light.living_room_main'
-      # prob_given_true: 0.9
-      # prob_given_false: 0.1
-      # to_state: 'on'
-    # - platform: 'state'
-      # entity_id: 'light.conservatory'
-      # prob_given_true: 0.9
-      # prob_given_false: 0.1
-      # to_state: 'on'
+    - platform: 'state'
+      entity_id: 'group.kitchen_lights'
+      prob_given_true: 0.9
+      prob_given_false: 0.1
+      to_state: 'on'
+    - platform: 'state'
+      entity_id: 'light.living_room_main'
+      prob_given_true: 0.9
+      prob_given_false: 0.1
+      to_state: 'on'
+    - platform: 'state'
+      entity_id: 'light.conservatory'
+      prob_given_true: 0.9
+      prob_given_false: 0.1
+      to_state: 'on'
 
   # - platform: bayesian
     # prior: 0.1
