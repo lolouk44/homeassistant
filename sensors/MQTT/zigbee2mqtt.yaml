@@ -2,7 +2,7 @@
   name: "Kitchen Fridge Temperature"
   state_topic: "zigbee2mqtt/kitchen_fridge"
   value_template: "{{ value_json['temperature'] }}"
-  unit_of_measurement: '?C'
+  unit_of_measurement: 'ºC'
   device_class: temperature
 
 - platform: mqtt
