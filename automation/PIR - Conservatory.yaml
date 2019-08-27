@@ -26,8 +26,6 @@
       state: 'on'
     - condition: or
       conditions:
-      # - condition: template
-        # value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
@@ -136,8 +134,6 @@
       state: 'on'
     - condition: or
       conditions:
-      # - condition: template
-        # value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
       - condition: state
         entity_id: binary_sensor.photoresistor
         state: 'off'
@@ -160,6 +156,7 @@
       effect: "solid"
       brightness: 128
       rgb_color: [255,255,255]
+  - delay: 00:00:01
   - service: light.turn_on
     data:
       entity_id: light.conservatory_led_strip
