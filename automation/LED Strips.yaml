@@ -211,6 +211,18 @@
     - platform: state
       entity_id: sun.sun
       to: 'below_horizon'
+    - platform: state
+      entity_id: binary_sensor.house_number_led_strip
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.porch_om_xmas_led_strip
+      state: 'off'
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: time
+      after: '16:00'
   action:
   - service: light.turn_on
     data:
@@ -226,6 +238,15 @@
       hours: 0
       minutes: 0
       seconds: 0
+    - platform: state
+      entity_id: binary_sensor.house_number_led_strip
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.porch_om_xmas_led_strip
+      state: 'on'
+    - condition: time
+      before: '02:00'
   action:
   - service: light.turn_off
     data:

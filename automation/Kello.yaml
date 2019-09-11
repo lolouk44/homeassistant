@@ -22,7 +22,12 @@
     - platform: state
       entity_id: input_boolean.holidays
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.kello
+      to: 'on'
   condition:
+    - condition: template
+      value_template: '{{ states("person.laurent") != "home"}}'
     - condition: time
       before: '21:30'
   action:
