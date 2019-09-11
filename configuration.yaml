@@ -138,6 +138,9 @@ logger:
     miio.device: critical
     # homeassistant.components.rfxtrx: debug
     # homeassistant.helpers.entity: critical
+    homeassistant.components.xiaomi_miio.light: critical
+    homeassistant.components.bmw_connected_drive: critical
+    homeassistant.components.shell_command: critical
     homeassistant.components.scrape: critical
     homeassistant.components.rest: critical
     homeassistant.components.waze_travel_time: critical
