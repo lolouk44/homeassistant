@@ -131,7 +131,7 @@
   - service: switch.turn_off
     entity_id: switch.dafang_kitchen_status
   - service: switch.turn_off
-    entity_id: switch.dafang_conservatory_status
+    entity_id: switch.cctv_conservatory_status
 
 
 - alias: CCTV - Set Dafang Blue LED On
