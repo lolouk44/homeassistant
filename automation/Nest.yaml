@@ -6,10 +6,10 @@
       to: 'on'
     - platform: state
       entity_id: person.div
-      to: "home"
+      to: 'home'
     - platform: state
       entity_id: person.laurent
-      to: "home"
+      to: 'home'
     - platform: state
       entity_id: group.door_and_window_sensors
       to: 'off'
@@ -29,7 +29,7 @@
   action:
     - service: nest.set_away_mode
       data:
-        away_mode: 'home'
+        away_mode: home
     - service: climate.set_temperature
       data_template:
         entity_id: climate.hallway
@@ -42,13 +42,13 @@
   trigger:
     - platform: state
       entity_id: person.laurent
-      from: "home"
+      from: 'home'
     - platform: state
       entity_id: person.div
-      from: "home"
+      from: 'home'
     - platform: state
       entity_id: climate.hallway
-      to: "heat"
+      to: 'heat'
     - platform: state
       entity_id: group.door_and_window_sensors
       to: 'on'
@@ -59,8 +59,11 @@
       entity_id: climate.hallway
       state: 'heat'
     - condition: state
-      entity_id: 'input_boolean.normal'
-      state: "on"
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.guests
+      state: 'off'
     - condition: or
       conditions:
       - condition: template
@@ -71,7 +74,7 @@
   action:
     - service: nest.set_away_mode
       data:
-        away_mode: 'away'
+        away_mode: away
 
 
 - alias: Nest Set ETA
@@ -79,10 +82,10 @@
   trigger:
     - platform: state
       entity_id: person.laurent
-      from: "Verint"
+      from: 'Verint'
     - platform: state
       entity_id: person.laurent
-      from: "Uncle P"
+      from: 'Uncle P'
   condition:
     - condition: time
       after: '15:30:00'
