@@ -1,0 +1,11 @@
+- platform: mqtt
+  name: "Xiaomi Garage Socket"
+  state_topic: "zigbee2mqtt/xiaomi_garage_socket"
+  value_template: "{{ value_json['state'] }}"
+  command_topic: "zigbee2mqtt/xiaomi_garage_socket/set"
+  payload_on: "ON"
+  payload_off: "OFF"
+  state_on: "ON"
+  state_off: "OFF"
+  optimistic: false
+  qos: 1

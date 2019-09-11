@@ -12,16 +12,9 @@
   unit_of_measurement: "%"
   device_class: illuminance
 
-- platform: mqtt
-  name: "Dafang Conservatory Brightness"
-  state_topic: "Conservatory/DaFang/brightness"
-  value_template: "{{ 100 - (value_json | int ) }}"
-  unit_of_measurement: "%"
-  device_class: illuminance
-
 - platform: statistics
   entity_id: sensor.dafang_kitchen_brightness
-  name: "DaFang Kitchen Brightness"
+  name: "DaFang Kitchen Brightness Mean"
   max_age:
     minutes: 30
   precision: 0
@@ -29,15 +22,7 @@
 
 - platform: statistics
   entity_id: sensor.dafang_living_room_brightness
-  name: "Dafang Living Room Brightness"
-  max_age:
-    minutes: 30
-  precision: 0
-  # < 65 = night ?
-  
-- platform: statistics
-  entity_id: sensor.dafang_conservatory_brightness
-  name: "Dafang Conservatory Brightness"
+  name: "Dafang Living Room Brightness Mean"
   max_age:
     minutes: 30
   precision: 0
