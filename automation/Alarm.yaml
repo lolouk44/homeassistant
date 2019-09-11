@@ -217,7 +217,7 @@
       entity_id: light.kiaan_lamp
 
 
-- alias: 'Alarm - Stop arming when windows left open'
+- alias: 'Alarm - Arming when windows left open'
   initial_state: true
   trigger:
     - platform: state
@@ -352,18 +352,18 @@
     - service: switch.turn_on
       data:
         entity_id: switch.kerui_disarm
-    - service: media_player.volume_set
-      data_template:
-        volume_level: '0.4' 
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.google_home_minis
-        volume_level: '0.75' 
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
         media_content_id: 'http://192.168.0.24/audio/Armed_Disarmed.mp3'
         media_content_type: 'audio/mp3'
+    - service: media_player.volume_set
+      data_template:
+        volume_level: '0.4' 
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.onkyo_tx_nr656_zone_2
+        volume_level: '0.6' 
     - service: light.turn_off
       data:
         entity_id: light.aqara_gateway_light
@@ -371,10 +371,10 @@
       data_template:
         entity_id: media_player.google_home_minis
         volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}'
-    # - service: media_player.turn_off
-      # entity_id: media_player.panasonic_viera_tv
-    # - service: media_player.turn_off
-      # entity_id: media_player.onkyo_tx_nr656
+    - service: media_player.turn_off
+      entity_id: media_player.panasonic_viera_tv
+    - service: media_player.turn_off
+      entity_id: media_player.onkyo_tx_nr656
 
 
 
