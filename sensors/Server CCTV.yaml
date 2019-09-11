@@ -23,3 +23,8 @@
   icon: mdi:chip
   unit_of_measurement: '%'
   force_update: true
+
+- platform: template
+  sensors:
+    fire7_password:
+      value_template: !secret fire7password

@@ -15,5 +15,7 @@ reboot_dafang_livingroom: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=reboot
 reboot_dafang_conservatory: wget http://192.168.0.36/cgi-bin/action.cgi?cmd=reboot &>/dev/null
 
 
-stop_radiostream_sensors: pkill -f HA_Scrape
+stop_radiostream_sensors: pkill -f HA_Scrape &>/dev/null
 start_radiostream_sensors: cd /config/shell_scripts/ && python HA_Scrape.py
+
+fire7_reload_url: wget http://192.168.0.11:2323/?cmd=loadStartURL&type=json&password={{states.sensor.fire7_password.state}}  &>/dev/null
