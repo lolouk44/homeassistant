@@ -16,6 +16,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
 - BME280 Temperature and Barometer Sensor
 - Byron SX-20T Doorbell
+- CC2531 flashed with [Zigbee2mqtt](https://www.zigbee2mqtt.io/)
 - [Cresta TS34C](https://www.conrad-electronic.co.uk/ce/en/product/672148/5-Channel-TS34C-Wireless-Thermo-Hygro-Sensor) Hygrometers
 - CurrentCost EnviR Energy Monitor & IAM Energy Monitors
 - [Edimax SP-2101W](https://www.amazon.co.uk/Edimax-Switch-Intelligent-Energy-Management/dp/B00T647F2C/)
