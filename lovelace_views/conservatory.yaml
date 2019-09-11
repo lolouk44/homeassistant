@@ -12,10 +12,6 @@ cards:
     entities:
       - entity: binary_sensor.pir_conservatory
         secondary_info: last-changed
-      - entity: sensor.dafang_conservatory_brightness
-        secondary_info: last-changed
-      - entity: sensor.dafang_conservatory_brightness_mean
-        secondary_info: last-changed
       - entity: binary_sensor.conservatory_skylight_left
         secondary_info: last-changed
       - entity: binary_sensor.conservatory_skylight_right

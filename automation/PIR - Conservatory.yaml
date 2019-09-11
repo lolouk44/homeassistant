@@ -120,8 +120,6 @@
     - platform: state
       entity_id: sun.sun
       to: 'below_horizon'
-    - platform: state
-      entity_id: sensor.aloe_vera_light_intensity
   condition:
     - condition: state
       entity_id: light.conservatory_led_strip
@@ -146,9 +144,6 @@
     - condition: state
       entity_id: input_boolean.xmas
       state: 'off'
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
   action:
   - service: light.turn_on
     data:

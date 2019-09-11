@@ -57,6 +57,7 @@
         effect: "solid"
         brightness: 128
         rgb_color: [0,0,255]
+    - delay: 00:00:01
     - service: light.turn_on
       data:
         entity_id: light.conservatory_led_strip
@@ -141,6 +142,7 @@
         effect: "solid"
         brightness: 128
         rgb_color: [255,255,255]
+    - delay: 00:00:01
     - service: light.turn_on
       data:
         entity_id: light.conservatory_led_strip
