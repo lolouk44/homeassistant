@@ -10,7 +10,7 @@
         # visible: '{{states("counter.iosbadgecount") | int > 0}}'
 
 
-- alias: Alert Lost Temperature Upstairs On
+- alias: Alert - Temperature Upstairs Lost On
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -28,7 +28,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.upstairs_temp_sensor_lost
 
-- alias: Alert Lost Temperature Upstairs Off
+- alias: Alert - Temperature Upstairs Lost Off
   initial_state: true
   trigger:
     - platform: state
@@ -45,7 +45,7 @@
 
 
 
-- alias: Alert Lost Temperature Outside On
+- alias: Alert - Temperature Loft Lost On
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -63,7 +63,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.outside_temp_sensor_lost
 
-- alias: Alert Lost Temperature Outside Off
+- alias: Alert - Temperature Loft Lost Off
   initial_state: true
   trigger:
     - platform: state
@@ -80,7 +80,7 @@
 
 
 
-- alias: Alert Lost CurrentCost On
+- alias: Alert - CurrentCost Lost On
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -88,7 +88,7 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated | default(0)) | int > 300 )}}'
     - condition: state
       entity_id: alert.currentcost_lost
       state: 'idle'
@@ -96,7 +96,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_lost_currentcost_power_at_300
 
-- alias: Alert Lost CurrentCost Off
+- alias: Alert - CurrentCost Lost Off
   initial_state: true
   trigger:
     - platform: state
@@ -111,7 +111,7 @@
 
 
 
-- alias: RAM Above 90% On
+- alias: Alert - RAM Above 90% On
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -127,7 +127,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_lost_ram_usage_at_300
 
-- alias: RAM Above 90% Off
+- alias: Alert - RAM Above 90% Off
   initial_state: true
   trigger:
     - platform: state
@@ -144,7 +144,7 @@
 
 
 
-- alias: Fire 7 Lost On
+- alias: Alert - Fire 7 Lost On
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -158,10 +158,13 @@
       state: 'idle'
   action:
     - service: shell_command.fire7_reload_url
+    - delay: "00:01:00"
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.fire7_battery.last_updated | default(0)) | int > 3600 )}}'
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_lost_fire7_at_300
 
-- alias: Fire 7 Lost Off
+- alias: Alert - Fire 7 Lost Off
   initial_state: true
   trigger:
     - platform: state
@@ -172,4 +175,35 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_fire7_at_300
+
+
+
+
+- alias: Alert - Pi Kitchen Lost On
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.rpi_kitchen_heartbeat.last_updated | default(0)) | int > 3600 )}}'
+    - condition: state
+      entity_id: alert.rpi_kitchen_lost
+      state: 'idle'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alert_lost_rpi_kitchen_at_300
+
+- alias: Alert - Pi Kitchen Lost Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.rpi_kitchen_heartbeat
+  condition:
+    - condition: template
+      value_template: '{{states("alert.rpi_kitchen_lost") != "idle"}}'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alert_lost_rpi_kitchen_at_300
 

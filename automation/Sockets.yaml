@@ -117,3 +117,24 @@
       data:
         entity_id: input_boolean.xiaomi_switch_charging
 
+
+- alias: Xiaomi Switch - Charge If No Rain 
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      hours: 2
+      minutes: 0
+      seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - tue
+        - wed
+        - thu
+    - condition: template
+      value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].precipitation|float|round ) < 1}}"
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.xiaomi_switch_charging
+

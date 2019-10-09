@@ -28,6 +28,7 @@ cards:
     entities:
       - entity: switch.xiaomi_garage_socket
         secondary_info: last-changed
+        icon: mdi:power-plug
       - entity: sensor.xiaomi_garage_socket_watts
         secondary_info: last-changed
       - entity: input_boolean.xiaomi_switch_charging

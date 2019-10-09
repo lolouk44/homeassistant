@@ -27,7 +27,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - HomeEasy HE305 Contact Sensors
 - HomeEasy HE830 Sockets
 - [Houzetek SWA1](https://www.houzetek.com/product-wifi-smart-plug-uk) socket controlled via Tuya
-- iPhone 6
+- iPhone 5S, 6, Xs
 - iPad Air 2
 - [Kello](https://www.getkello.com/) Smart Alarm
 - Kerui J008 Strobe Sirens in Yale Dummy Box
@@ -43,16 +43,16 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Verint S5003FD Camera
 - Wemos D1 Mini Pro
 - Xiaomi Aqara V3 Gateway
-- Xiaomi DaFang Cameras with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 - Xiaomi Aqara Sensors (Hygro, window/door)
+- Xiaomi DaFang Cameras with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 - Xiaomi Mi Bluetooth V4.0 Body Composition Smart Scale
 - Xiaomi Mi Box 3
 - Xiaomi Mi Flora Plant Sensor
 - Xiaomi Mi Robot Vacuum V1
 - Xiaomi Mijia Honeywell Fire Alarm Detector
-- Xiaomi Router R3P Pro
 - Xiaomi Mijia Zigbee Smart Socket
 - Xiaomi Philips Zhirui Candle Light
+- Xiaomi Router R3P Pro
 - Xiaomi XiaoFang Camera with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 
 ## View of my Home Assistant UI

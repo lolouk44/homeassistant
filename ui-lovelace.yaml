@@ -3,36 +3,43 @@ resources:
     #Kiosk mode for Alarm panel https://gist.github.com/ciotlosm/1f09b330aa5bd5ea87b59f33609cc931
   - url: /local/kiosk.js?v=1.1
     type: js
-    #https://github.com/thomasloven/lovelace-card-tools
+    # https://github.com/thomasloven/lovelace-card-tools
   - url: /local/card-tools.js?track=true
     type: js
     # fold-entity https://github.com/thomasloven/lovelace-fold-entity-row
-  - url: /local/fold-entity-row.js?track=true
+  - url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
     type: js
     #auto-entities  https://github.com/thomasloven/lovelace-auto-entities
   - url: /local/auto-entities.js?track=true
     type: js
-    #List entities in a group https://github.com/ciotlosm/custom-lovelace/tree/master/group-card
-  # - url: /local/group-card.js
-    # type: js
     #Mini media player https://github.com/kalkih/mini-media-player
-  - url: /local/mini-media-player-bundle.js
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
     type: module
     #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
-  - url: /local/vertical-stack-in-card.js
+  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
-    #Swiper Card https://community.home-assistant.io/t/lovelace-swiper-card/72447
-    # https://github.com/bramkragten/custom-ui/tree/master/swipe-card
-  # - url: /local/custom-lovelace/swipe-card/swipe-card.js?v=1.1.0
-    # type: module
-    # https://github.com/custom-cards/tracker-card
-  - url: /local/tracker-card.js?track=true
-    type: module
     # Fully Kiosk https://github.com/thomasloven/lovelace-fullykiosk
-  - url: /local/lovelace-fullykiosk.js
+  # - url: /local/lovelace-fullykiosk.js
+    # type: js
+  # - url: /local/kiosk-config.js
+    # type: js
+    # Animated Weather Card https://github.com/bramkragten/weather-card
+  - url: /community_plugin/weather-card/weather-card.js
+    type: module
+
+    # Compact Custom Header https://github.com/maykar/compact-custom-header
+  # - url: /community_plugin/compact-custom-header/compact-custom-header.js
+    # type: js
+  - url: /local/compact-custom-header.js?v=0.0.1
     type: js
-  - url: /local/kiosk-config.js
-    type: js
+cch:
+  exceptions:
+    - conditions:
+        user: Fire7
+      config:
+        show_tabs: 0
+        kiosk_mode: true
+
 views:
   - !include /config/lovelace_views/alarm.yaml
   - !include /config/lovelace_views/home.yaml

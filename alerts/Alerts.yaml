@@ -137,8 +137,7 @@ rpi_lost:
 
 rpi_kitchen_lost:
   name: RPi Kitchen Lost
-  entity_id: binary_sensor.rpi_kitchen
-  state: 'off'
+  entity_id: input_boolean.alert_lost_rpi_kitchen_at_300
   can_acknowledge: True
   skip_first: True
   repeat:

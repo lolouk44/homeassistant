@@ -1,4 +1,4 @@
-- alias: Holidays
+- alias: Scene - Holidays
   initial_state: true
   trigger:
     - platform: state
@@ -24,7 +24,7 @@
       data:
         message: 'Scene, holidays, activated'
 
-- alias: Movies
+- alias: Scene - Movies
   initial_state: true
   trigger:
     - platform: state
@@ -72,7 +72,7 @@
       data:
         message: 'Scene, movies, activated'
 
-- alias: Normal
+- alias: Scene - Normal
   initial_state: true
   trigger:
     - platform: state
@@ -102,7 +102,7 @@
 
 
 
-- alias: Normal from Movies
+- alias: Scene - Normal from Movies
   initial_state: true
   trigger:
     - platform: state
@@ -111,8 +111,6 @@
     - platform: state
       entity_id: media_player.panasonic_viera_tv
       to: 'off'
-      # for:
-        # seconds: 5
   condition:
     - condition: state
       entity_id: input_boolean.movies
@@ -150,7 +148,7 @@
         brightness: 128
         rgb_color: [255,255,255]
 
-- alias: Xmas On
+- alias: Scene - Xmas On
   initial_state: true
   trigger:
     - platform: state
@@ -159,10 +157,6 @@
   action:
     - service: scene.turn_on
       entity_id: scene.xmas
-    # - service: group.set_visibility
-      # entity_id: group.xmas
-      # data:
-        # visible: True
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
@@ -171,17 +165,13 @@
       data:
         message: 'Scene, christmas, activated'
 
-- alias: Xmas Off
+- alias: Scene - Xmas Off
   initial_state: true
   trigger:
     - platform: state
       entity_id: input_boolean.xmas
       to: 'off'
   action:
-    # - service: group.set_visibility
-      # entity_id: group.xmas
-      # data:
-        # visible: False
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
@@ -189,3 +179,26 @@
       entity_id: media_player.google_home_minis
       data:
         message: 'Scene, christmas, de-activated'
+
+
+- alias: Scene - Guests Mode On
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: device_tracker.venkat
+    to: "home"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.guests
+
+
+- alias: Scene - Guests Mode Off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: device_tracker.venkat
+    from: "home"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.guests
+

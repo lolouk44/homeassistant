@@ -23,7 +23,7 @@
 
     homeassistant:
       container_name: ha
-      image: homeassistant/home-assistant:0.98.4
+      image: homeassistant/home-assistant:0.99.3
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
@@ -41,7 +41,8 @@
       container_name: zigbee2mqtt
       image: koenkk/zigbee2mqtt
       volumes:
-        - /home/cctv/zigbee2mqtt:/app/data
+        - /home/cctv/zigbee2mqtt/data:/app/data
+        # - /home/cctv/zigbee2mqtt/zigbee-shepherd-converters:/app/node_modules/zigbee-shepherd-converters
       devices:
         - /dev/ttyACM0:/dev/ttyACM0
       restart: always

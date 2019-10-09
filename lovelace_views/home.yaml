@@ -34,7 +34,7 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.photoresistor
         secondary_info: last-changed
-  - type: weather-forecast
+  - type: custom:weather-card
     entity: weather.dark_sky
   - type: entities
     title: Dates

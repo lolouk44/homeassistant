@@ -1,0 +1,4 @@
+- platform: mqtt
+  name: "RPi Kitchen Heartbeat"
+  state_topic: "RPi_Kitchen/Heartbeat"
+  icon: mdi:heart-pulse

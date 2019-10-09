@@ -12,12 +12,6 @@ cards:
     entities:
       - entity: binary_sensor.pir_kitchen
         secondary_info: last-changed
-      - entity: sensor.dafang_kitchen_brightness
-        secondary_info: last-changed
-      - entity: sensor.dafang_kitchen_brightness_mean
-        secondary_info: last-changed
-      - entity: binary_sensor.dark
-        secondary_info: last-changed
       - entity: binary_sensor.kitchen_window
         secondary_info: last-changed
   - type: custom:vertical-stack-in-card

@@ -1,0 +1,6 @@
+- platform: mqtt
+  state_topic: "fully/event/onBatteryLevelChanged/a4bd3a9e-50590f1a"
+  name: "Fire7 Battery"
+  value_template: "{{ value_json['level'] }}"
+  unit_of_measurement: "%"
+  device_class: battery

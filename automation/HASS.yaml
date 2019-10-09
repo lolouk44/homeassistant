@@ -147,3 +147,12 @@
         message: >
           There is a new hass podcast: {{ states("sensor.ha_podcast_track")}}
 
+- id: update_networkmap
+  alias: 'Zigbee Network Map Update'  
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    minutes: '/10'
+    seconds: 00
+  action:
+    service: zigbee2mqtt_networkmap.update

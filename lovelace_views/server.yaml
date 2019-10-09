@@ -45,11 +45,6 @@ cards:
       - sensor.cctv2_ram_usage
       - sensor.cctv2_root_disk_usage
       - sensor.cctv2_disk_temp
-  - type: custom:tracker-card
-    title:
-    trackers:
-      - sensor.custom_card_tracker
-      - sensor.custom_component_tracker
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row

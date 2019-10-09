@@ -1,4 +1,8 @@
 - platform: mqtt
-  name: Fire7 Motion
-  state_topic: any/value
+  state_topic: "fully/deviceInfo/a4bd3a9e-50590f1a"
+  name: "Fire7 Motion"
+  value_template: "{{ value_json['screenBrightness'] }}"
+  payload_on: '255'
+  payload_off: '0'
   device_class: motion
+

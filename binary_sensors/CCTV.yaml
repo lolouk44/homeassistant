@@ -36,3 +36,27 @@
       device_class: connectivity
 
 
+- platform: hikvision
+  name: front_cctv
+  host: 192.168.0.31
+  port: 8031
+  ssl: False
+  username: !secret hikvision_username
+  password: !secret hikvision_password
+
+- platform: hikvision
+  name: side_cctv
+  host: 192.168.0.34
+  port: 8034
+  ssl: False
+  username: !secret hikvision_username
+  password: !secret hikvision_password
+
+- platform: hikvision
+  name: back_cctv
+  host: 192.168.0.35
+  port: 8035
+  ssl: False
+  username: !secret hikvision_username
+  password: !secret hikvision_password
+

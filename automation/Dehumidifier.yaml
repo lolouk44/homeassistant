@@ -78,7 +78,7 @@
     - platform: template
       value_template: '{{ states("sensor.upstairs_humidity") | int > 70}}'
     - platform: template
-      value_template: '{{ states("sensor.humidity_158d0001f5218a") | int > 70}}'
+      value_template: '{{ states("sensor.master_bedroom_aqara_humidity") | int > 70}}'
   condition:
     - condition: time
       after: '08:00'
@@ -94,7 +94,7 @@
     - condition: template
       value_template: '{{ states("sensor.upstairs_humidity") | default(0) | int >= 70 }}'
     - condition: template
-      value_template: '{{ states("sensor.sensor.humidity_158d0001f5218a") | default(0) | int >= 70 }}'
+      value_template: '{{ states("sensor.master_bedroom_aqara_humidity") | default(0) | int >= 70 }}'
   action:
   - service: switch.turn_on
     data:
@@ -111,7 +111,7 @@
     - platform: template
       value_template: '{{ states("sensor.upstairs_humidity") | int < 60}}'
     - platform: template
-      value_template: '{{ states("sensor.humidity_158d0001f5218a") | int < 60}}'
+      value_template: '{{ states("sensor.master_bedroom_aqara_humidity") | int < 60}}'
   condition:
     - condition: state
       entity_id: switch.dehumidifier

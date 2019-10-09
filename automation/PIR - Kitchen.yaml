@@ -161,4 +161,15 @@
     data:
       entity_id: switch.kitchen_tv
 
-
+- alias: Kitchen TV Off PIR
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'off'
+      for:
+        minutes: 2
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.kitchen_tv

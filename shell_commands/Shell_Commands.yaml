@@ -1,21 +1,21 @@
-dafang_living_room_active: wget http://192.168.0.23:8080/5/detection/start &>/dev/null
-dafang_living_room_pause: wget http://192.168.0.23:8080/5/detection/pause &>/dev/null
+dafang_living_room_active: /config/shell_scripts/dafang_living_room_active.sh
+dafang_living_room_pause: /config/shell_scripts/dafang_living_room_pause.sh
 
-dafang_kitchen_active: wget http://192.168.0.23:8080/4/detection/start &>/dev/null
-dafang_kitchen_pause: wget http://192.168.0.23:8080/4/detection/pause &>/dev/null
+dafang_kitchen_active: /config/shell_scripts/dafang_kitchen_active.sh
+dafang_kitchen_pause: /config/shell_scripts/dafang_kitchen_pause.sh
 
-cctv_garage_active: wget http://192.168.0.23:8080/7/detection/start &>/dev/null
-cctv_garage_pause: wget http://192.168.0.23:8080/7/detection/pause &>/dev/null
+cctv_garage_active: /config/shell_scripts/cctv_garage_active.sh
+cctv_garage_pause: /config/shell_scripts/cctv_garage_pause.sh
 
-cctv_conservatory_active: wget http://192.168.0.23:8080/6/detection/start &>/dev/null
-cctv_conservatory_pause: wget http://192.168.0.23:8080/6/detection/pause &>/dev/null
+cctv_conservatory_active: /config/shell_scripts/cctv_conservatory_active.sh
+cctv_conservatory_pause: /config/shell_scripts/cctv_conservatory_pause.sh
 
-reboot_dafang_kitchen: wget http://192.168.0.33/cgi-bin/action.cgi?cmd=reboot &>/dev/null
-reboot_dafang_livingroom: wget http://192.168.0.32/cgi-bin/action.cgi?cmd=reboot &>/dev/null
-reboot_dafang_conservatory: wget http://192.168.0.36/cgi-bin/action.cgi?cmd=reboot &>/dev/null
+reboot_dafang_kitchen: /config/shell_scripts/reboot_dafang_kitchen.sh
+reboot_dafang_livingroom: /config/shell_scripts/reboot_dafang_livingroom.sh
+reboot_dafang_conservatory: /config/shell_scripts/reboot_dafang_conservatory.sh
 
 
-stop_radiostream_sensors: pkill -f HA_Scrape &>/dev/null
-start_radiostream_sensors: cd /config/shell_scripts/ && python HA_Scrape.py
+stop_radiostream_sensors: /config/shell_scripts/stop_radiostream_sensors.sh
+start_radiostream_sensors: /config/shell_scripts/start_radiostream_sensors.sh
 
-fire7_reload_url: wget http://192.168.0.11:2323/?cmd=loadStartURL&type=json&password={{states.sensor.fire7_password.state}}  &>/dev/null
+fire7_reload_url: /config/shell_scripts/fire7_reload_url.sh

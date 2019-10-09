@@ -113,6 +113,9 @@
     - condition: state
       entity_id: 'input_boolean.holidays'
       state: "off"
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: "on"
     - condition: template
       value_template: '{{states("sensor.dark_sky_temperature") | int >= 20}}'
     - condition: or

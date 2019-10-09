@@ -10,7 +10,7 @@
   action:
     service: notify.gmaildiv
     data_template:
-      message: 'Lolo left work. Estimated arrival time: {{(as_timestamp(now()) + (states("sensor.lolo_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}}'
+      message: 'Lolo left work. Estimated arrival time: {%if states("device_tracker.220d") == "verint" %} {{(as_timestamp(now()) + (states("sensor.lolo_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}}  (by car) {% else %} {{(as_timestamp(now()) + 40 * 60) | timestamp_custom("%H:%M")}} (by bike){% endif %}'
 
 
 
