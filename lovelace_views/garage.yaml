@@ -1,5 +1,5 @@
 title: Garage
-background: url("/local/verified.png") fixed
+background: url("/local/garage.png") fixed
 icon: mdi:garage
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -11,6 +11,12 @@ cards:
     show_header_toggle: false
     entities:
       - entity: binary_sensor.garage_back_door
+        secondary_info: last-changed
+      - entity: sensor.garage_temperature
+        secondary_info: last-changed
+      - entity: sensor.garage_humidity
+        secondary_info: last-changed
+      - entity: sensor.garage_temperature_battery
         secondary_info: last-changed
   - type: entities
     title: Freezer
