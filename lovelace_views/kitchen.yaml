@@ -12,6 +12,9 @@ cards:
     entities:
       - entity: binary_sensor.pir_kitchen
         secondary_info: last-changed
+      - entity: binary_sensor.dark
+        secondary_info: last-changed
+        icon: mdi:weather-night
       - entity: binary_sensor.kitchen_window
         secondary_info: last-changed
   - type: custom:vertical-stack-in-card
@@ -60,4 +63,15 @@ cards:
       - entity: sensor.kitchen_freezer_humidity
         secondary_info: last-changed
       - entity: sensor.kitchen_freezer_temperature_battery
+        secondary_info: last-changed
+  - type: entities
+    title: Anova Sous-Vide
+    show_header_toggle: false
+    entities:
+      - entity: climate.anova
+        secondary_info: last-changed
+      - entity: sensor.anova_timer
+        secondary_info: last-changed
+      - entity: switch.anova
+        icon: mdi:bowl
         secondary_info: last-changed

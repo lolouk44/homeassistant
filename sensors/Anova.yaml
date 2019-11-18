@@ -1,0 +1,5 @@
+- platform: mqtt
+  name: Anova Timer
+  state_topic: anova/timer
+  value_template: "{{ (((value_json.timer | int) * 60) - 3600) | timestamp_custom('%H:%M') }}"
+  icon: 'mdi:timer'
