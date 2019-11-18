@@ -35,7 +35,7 @@ cards:
             icon: mdi:disc
   - type: entities
     title: ChromeCast Audio
-    icon: 'mdi:chromecast'
+    icon: 'mdi:google-chrome'
     show_header_toggle: false
     artwork_border: true
     power_color: true
@@ -58,6 +58,7 @@ cards:
       group: true
   - type: entities
     title: Video
+    icon: 'mdi:video-vintage'
     show_header_toggle: false
     entities:
     - entity: media_player.panasonic_viera_tv
