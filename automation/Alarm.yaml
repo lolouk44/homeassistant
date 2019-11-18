@@ -1,4 +1,5 @@
 - alias: 'Alarm - Trigger while armed away'
+  id: alarm_-_trigger_while_armed_away
   initial_state: true
   trigger:
     - platform: state
@@ -69,6 +70,7 @@
 
 
 - alias: 'Alarm - Alarm Triggered'
+  id: alarm_-_alarm_triggered
   initial_state: true
   trigger:
     - platform: state
@@ -218,6 +220,7 @@
 
 
 - alias: 'Alarm - Arming when windows left open'
+  id: alarm_-_arming_when_windows_left_open
   initial_state: true
   trigger:
     - platform: state
@@ -273,6 +276,7 @@
 
 
 - alias: 'Alarm - Pending Arming'
+  id: alarm_-_pending_arming
   initial_state: true
   trigger:
     - platform: state
@@ -311,6 +315,7 @@
 
 
 - alias: 'Alarm - Pending Siren'
+  id: alarm_-_pending_siren
   initial_state: true
   trigger:
     - platform: state
@@ -340,6 +345,7 @@
 
 
 - alias: 'Alarm - Disarming'
+  id: alarm_-_disarming
   initial_state: true
   trigger:
     - platform: state
@@ -379,6 +385,7 @@
 
 
 - alias: 'Alarm - Armed'
+  id: alarm_-_armed
   initial_state: true
   trigger:
     - platform: state
@@ -404,6 +411,7 @@
 
 
 - alias: 'Alarm - Fire Alarm'
+  id: alarm_-_fire_alarm
   initial_state: true
   trigger:
     - platform: state
@@ -463,6 +471,7 @@
 
 
 - alias: 'Alarm - Start Charging Fire 7'
+  id: alarm_-_start_charging_fire_7
   initial_state: true
   trigger:
     - platform: state
@@ -479,6 +488,7 @@
         entity_id: switch.0220016868c63aa168d9
 
 - alias: 'Alarm - Stop Charging Fire 7'
+  id: alarm_-_stop_charging_fire_7
   initial_state: true
   trigger:
     - platform: state
@@ -496,6 +506,7 @@
 
 
 - alias: 'Alarm - Switch everything off when we leave home'
+  id: alarm_-_switch_everything_off_when_we_leave_home
   initial_state: true
   trigger:
     - platform: state
@@ -533,6 +544,7 @@
 
 
 - alias: 'Alarm - Re-arm Alarm after unplanned reboot'
+  id: alarm_-_re-arm_alarm_after_unplanned_reboot
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -549,6 +561,7 @@
         code: !secret alarm_code
 
 - alias: Alarm - Remote Arm
+  id: alarm_-_remote_arm
   initial_state: true
   trigger:
     - platform: event
@@ -562,6 +575,7 @@
         code: !secret alarm_code
 
 - alias: Alarm - Remote Disarm
+  id: alarm_-_remote_disarm
   initial_state: true
   trigger:
     - platform: event
@@ -576,6 +590,7 @@
 
 
 - alias: Alarm - Notify to Arm when leaving home unarmed
+  id: alarm_-_notify_to_arm_when_leaving_home_unarmed
   initial_state: true
   trigger:
     - platform: state
@@ -617,6 +632,7 @@
             entity_id: alarm_control_panel.alarm
 
 - alias: Alarm - Arm Alarm from iOS Notification
+  id: alarm_-_arm_alarm_from_ios_notification
   initial_state: true
   trigger:
     # iOS 1.5 App Support
@@ -636,6 +652,7 @@
         code: !secret alarm_code
 
 - alias: Alarm - DisArm Alarm from iOS Notification
+  id: alarm_-_disarm_alarm_from_ios_notification
   initial_state: true
   trigger:
     # iOS 1.5 App Support
@@ -655,6 +672,7 @@
         code: !secret alarm_code
 
 - alias: Alarm - DisArm Alarm when reaching home from iOS Notification
+  id: alarm_-_disarm_alarm_when_reaching_home_from_ios_notification
   initial_state: true
   trigger:
     platform: state

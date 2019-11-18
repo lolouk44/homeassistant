@@ -12,6 +12,9 @@ cards:
     entities:
       - entity: binary_sensor.pir_conservatory
         secondary_info: last-changed
+      - entity: binary_sensor.dark
+        secondary_info: last-changed
+        icon: mdi:weather-night
       - entity: binary_sensor.conservatory_skylight_left
         secondary_info: last-changed
       - entity: binary_sensor.conservatory_skylight_right

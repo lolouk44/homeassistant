@@ -1,4 +1,5 @@
-- alias: 17Track Updates
+- alias: '17Track Updates'
+  id: 17track_updates
   initial_state: true
   trigger:
     - platform: state
