@@ -15,8 +15,6 @@
     - platform: state
       entity_id: binary_sensor.photoresistor
       to: 'off'
-    - platform: state
-      entity_id: sensor.aloe_vera_light_intensity
   condition:
     - condition: state
       entity_id: input_boolean.xmas
