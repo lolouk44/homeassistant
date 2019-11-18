@@ -1,0 +1,25 @@
+title: Bathroom
+background: url("/local/shower.png") fixed
+icon: mdi:shower
+badges:
+  !include /config/lovelace_views/badges.yaml
+cards:
+  - !include /config/lovelace_views/persistent_notifications.yaml
+  - !include /config/lovelace_views/alert_card.yaml
+  - type: entities
+    title: Bathroom Sensors
+    show_header_toggle: false
+    entities:
+      - entity: sensor.bathroom_temperature
+        secondary_info: last-changed
+      - entity: sensor.bathroom_humidity
+        secondary_info: last-changed
+      - entity: sensor.bathroom_temperature_battery
+        secondary_info: last-changed
+  - type: entities
+    title: Extraction Fan
+    show_header_toggle: false
+    entities:
+      - entity: switch.bathroom_fan
+        secondary_info: last-changed
+        icon: mdi:fan

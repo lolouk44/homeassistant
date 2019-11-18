@@ -1,4 +1,16 @@
 - platform: mqtt
+  name: "Zigbee2MQTT Permit Join"
+  state_topic: "zigbee2mqtt/bridge/config"
+  value_template: "{{ value_json['permit_join']}}"
+  command_topic: "zigbee2mqtt/bridge/config/permit_join"
+  payload_on: "true"
+  payload_off: "false"
+  state_on: true
+  state_off: false
+  optimistic: false
+  qos: 1
+
+- platform: mqtt
   name: "Xiaomi Garage Socket"
   state_topic: "zigbee2mqtt/xiaomi_garage_socket"
   value_template: "{{ value_json['state'] }}"
@@ -9,3 +21,28 @@
   state_off: "OFF"
   optimistic: false
   qos: 1
+
+- platform: mqtt
+  name: "Bathroom Fan"
+  state_topic: "stat/bathroom_fan/POWER"
+  command_topic: "cmnd/bathroom_fan/POWER"
+  availability_topic: "tele/bathroom_fan/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: Anova
+  state_topic: anova/timer
+  command_topic: anova/command/timer_run
+  payload_on: 'running'
+  payload_off: 'stopped'
+  state_on: 'running'
+  state_off: 'stopped'
+  optimistic: false
+  retain: true
+  value_template: "{{ value_json.timer_state }}"
+  icon: 'mdi:timer'
