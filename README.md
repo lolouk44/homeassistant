@@ -14,7 +14,8 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Raspberry Pi 3 Model B (Smart Calendar Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
 
 - Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
-- BME280 Temperature and Barometer Sensor
+- Anova Precision Spous-Vide Smart Cooker
+- ~~BME280 Temperature and Barometer Sensor~~
 - Byron SX-20T Doorbell
 - CC2531 flashed with [Zigbee2mqtt](https://www.zigbee2mqtt.io/)
 - [Cresta TS34C](https://www.conrad-electronic.co.uk/ce/en/product/672148/5-Channel-TS34C-Wireless-Thermo-Hygro-Sensor) Hygrometers
@@ -27,7 +28,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - HomeEasy HE305 Contact Sensors
 - HomeEasy HE830 Sockets
 - [Houzetek SWA1](https://www.houzetek.com/product-wifi-smart-plug-uk) socket controlled via Tuya
-- iPhone 5S, 6, Xs
+- iPhone 7, Xs, 11 Pro
 - iPad Air 2
 - [Kello](https://www.getkello.com/) Smart Alarm
 - Kerui J008 Strobe Sirens in Yale Dummy Box
@@ -50,6 +51,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Mi Flora Plant Sensor
 - Xiaomi Mi Robot Vacuum V1
 - Xiaomi Mijia Honeywell Fire Alarm Detector
+- Xiaomi Mijia Enhanced Version Dual USB Smart Socket
 - Xiaomi Mijia Zigbee Smart Socket
 - Xiaomi Philips Zhirui Candle Light
 - Xiaomi Router R3P Pro
