@@ -7,6 +7,14 @@
   device_class: window
 
 - platform: mqtt
+  name: "Master Bedroom Right Big Window"
+  state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: window
+
+- platform: mqtt
   name: "Master Bedroom Right Small Window"
   state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
   value_template: "{{ value_json['contact'] == true }}"

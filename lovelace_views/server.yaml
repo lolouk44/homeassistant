@@ -1,5 +1,5 @@
 title: Server
-background: url("/local/home.png") fixed
+background: url("/local/computer.png") fixed
 icon: mdi:desktop-classic
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -92,6 +92,10 @@ cards:
         name: SyncThing
       - entity: switch.watchtower
         name: WatchTower
+      - entity: switch.zigbee2mqtt
+        name: ZigBee2MQTT
+      - entity: switch.zigbee2mqtt_permit_join
+        name: ZigBee2MQTT Permit Join
       - entity: switch.cctv2_ha
         name: CCTV2 HA
       - entity: switch.cctv2_motion
