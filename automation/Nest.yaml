@@ -61,20 +61,22 @@
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
-    - condition: state
-      entity_id: input_boolean.guests
-      state: 'off'
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home"}}'
+        value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home" and states("input_boolean.guests") == "off"}}'
       - condition: state
         entity_id: group.door_and_window_sensors
         state: 'on'
   action:
     - service: nest.set_away_mode
       data:
-        away_mode: away
+        away_mode: home
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.hallway
+        temperature: '15'
+        hvac_mode: 'heat'
 
 
 - alias: Nest Set ETA
