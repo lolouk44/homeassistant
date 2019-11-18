@@ -270,6 +270,10 @@ switch.syncthing:
   icon: mdi:docker
 switch.watchtower:
   icon: mdi:docker
+switch.zigbee2mqtt:
+  icon: mdi:docker
+switch.zigbee2mqtt_permit_join:
+  icon: mdi:set-left-center
 switch.wordpress:
   icon: mdi:docker
 switch.cctv2_ha:
