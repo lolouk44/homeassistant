@@ -228,8 +228,16 @@
     data:
       entity_id: light.porch_om_xmas_led_strip
       brightness: 255
-      # effect: rainbow
+      effect: solid
       rgb_color: [0,0,255]
+  - condition: state
+    entity_id: input_boolean.xmas
+    state: 'on'
+  - service: light.turn_on
+    data:
+      entity_id: light.porch_om_xmas_led_strip
+      brightness: 255
+      effect: rainbow
 
 - alias: House Number Off
   initial_state: true
