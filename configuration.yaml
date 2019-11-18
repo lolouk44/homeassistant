@@ -65,6 +65,24 @@ bmw_connected_drive:
 
 breaking_changes:
 
+climate:
+  - platform: mqtt
+    name: Anova
+    modes:
+      - disconnected
+      - stopped
+      - running
+    qos: 1
+    initial: 19
+    current_temperature_topic: anova/status
+    current_temperature_template: "{{ value_json.current_temp }}"
+    temperature_state_topic: anova/status
+    temperature_state_template: "{{ value_json.target_temp }}"
+    mode_state_topic: anova/status
+    mode_state_template: "{{ value_json.state }}"
+    mode_command_topic: anova/command/run
+    temperature_command_topic: anova/command/temp
+
 counter:
   iosbadgecount:
     initial: 0
@@ -172,17 +190,17 @@ person:
     id: laurent
     user_id: !secret ha_lolo_user_id
     device_trackers:
-      - device_tracker.lolos_iphone
-      - device_tracker.laurent_mah_iphone_5s
-      - device_tracker.lolosiphone
       - device_tracker.laurent
+      # - device_tracker.lolos_iphone
+      # - device_tracker.laurent_mah_iphone_5s
+      # - device_tracker.lolosiphone
   - name: Div
     id: divashni
     user_id: !secret ha_div_user_id
     device_trackers:
       - device_tracker.divashni
-      - device_tracker.div_iphone
-      - device_tracker.diviphone
+      # - device_tracker.div_iphone
+      # - device_tracker.diviphone
 
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
