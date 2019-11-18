@@ -26,6 +26,9 @@ resources:
     # Animated Weather Card https://github.com/bramkragten/weather-card
   - url: /community_plugin/weather-card/weather-card.js
     type: module
+    # Home Feed Card Card https://github.com/gadgetchnnel/lovelace-home-feed-card
+  - url: /community_plugin/lovelace-home-feed-card/lovelace-home-feed-card.js
+    type: js
 
     # Compact Custom Header https://github.com/maykar/compact-custom-header
   # - url: /community_plugin/compact-custom-header/compact-custom-header.js
@@ -49,6 +52,7 @@ views:
   - !include /config/lovelace_views/entrance.yaml
   - !include /config/lovelace_views/conservatory.yaml
   - !include /config/lovelace_views/staircase.yaml
+  - !include /config/lovelace_views/bathroom.yaml
   - !include /config/lovelace_views/main_bedroom.yaml
   - !include /config/lovelace_views/kiaan_bedroom.yaml
   - !include /config/lovelace_views/cctv.yaml
