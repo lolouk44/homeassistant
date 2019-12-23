@@ -23,7 +23,7 @@
 
     homeassistant:
       container_name: ha
-      image: homeassistant/home-assistant:0.101.3
+      image: homeassistant/home-assistant:0.103.4
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
@@ -32,18 +32,5 @@
         - /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0:/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
       depends_on:
         - influxdb
-        - zigbee2mqtt
-      restart: always
-      network_mode: host
-
-
-    zigbee2mqtt:
-      container_name: zigbee2mqtt
-      image: koenkk/zigbee2mqtt
-      volumes:
-        - /home/cctv/zigbee2mqtt/data:/app/data
-        # - /home/cctv/zigbee2mqtt/zigbee-shepherd-converters:/app/node_modules/zigbee-shepherd-converters
-      devices:
-        - /dev/ttyACM0:/dev/ttyACM0
       restart: always
       network_mode: host
