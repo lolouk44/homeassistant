@@ -47,6 +47,9 @@ cards:
           secondary_info: last-changed
         - entity: light.tv_cabinet_led_strip
           secondary_info: last-changed
+        - entity: switch.lwrf_socket_3
+          secondary_info: last-changed
+          icon: mdi:hinduism
   - type: custom:vertical-stack-in-card
     cards:
     - type: entities
@@ -76,6 +79,23 @@ cards:
       entities:
         - entity: switch.skyhd
           secondary_info: last-changed
+  - type: entities
+    title: Mi Box
+    icon: 'mdi:google-chrome'
+    show_header_toggle: false
+    entities:
+    - entity: media_player.mi_box3_adtv
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+    - entity: media_player.mibox3
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+    - entity: media_player.kodi
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
   - type: picture-elements
     image: /local/blank2.png
     elements:

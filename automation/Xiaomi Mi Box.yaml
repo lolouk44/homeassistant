@@ -25,6 +25,25 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.movies
 
+- alias: Turn Movies on when Netflix or Prime is Playing
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: media_player.mi_box3_adtv
+    to: 'playing'
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: template
+      value_template: '{{state_attr("media_player.kodi","app_name") == "com.amazon.amazonvideo.livingroom" or state_attr("media_player.kodi","app_name") == "Netflix"}}'
+    - condition: state
+      entity_id: binary_sensor.dark
+      state: 'on'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.movies
+
 - alias: Set Onkyo to StreamBox When Kodi or MiBox CC is playing
   initial_state: false
   trigger:
