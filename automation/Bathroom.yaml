@@ -1,0 +1,35 @@
+- alias: Bathroom - Turn Fan On When R% > 75%
+  id: bathroom_-_turn_fan_on_when_r_over_75
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_humidity
+  condition:
+    - condition: template
+      value_template: '{{ states("sensor.bathroom_humidity") | int > 75 }}'
+    - condition: state
+      entity_id: switch.bathroom_fan
+      state: 'off'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.bathroom_fan
+
+- alias: Bathroom - Turn Fan Off When R% < 75%
+  id: bathroom_-_turn_fan_off_when_r_under_75
+  initial_state: true
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bathroom_humidity
+      below: 75
+      for:
+        minutes: 20
+  condition:
+    - condition: state
+      entity_id: switch.bathroom_fan
+      state: 'on'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.bathroom_fan
+
