@@ -139,6 +139,20 @@ cards:
       show_header_toggle: false
       entities:
         - switch.cctv_garage_status
+  - type: vertical-stack
+    cards:
+    - type: picture-entity
+      title: Doorbell
+      entity: camera.doorbell
+      camera_image: camera.doorbell
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Doorbell
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.doorbell_motion
+          secondary_info: last-changed
   - type: map
     entities:
       - device_tracker.div_iphone

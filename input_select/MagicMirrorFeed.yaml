@@ -2,6 +2,9 @@ mm_cam_feed:
   name: 'MagicMirror Camera Feed:'
   options:
     - front
+    - doorbell
     - living_room
+    - side
+    - back
   initial: front
   icon: mdi:cctv

@@ -45,11 +45,6 @@
       unit_of_measurement: '%'
       value_template: '{{state_attr("binary_sensor.conservatory_double_door", "battery_level") | int}}'
       device_class: battery
-    doorbell_battery:
-      friendly_name: Doorbell Battery
-      unit_of_measurement: '%'
-      value_template: '{% if state_attr("sensor.doorbell_sound", "Battery numeric")|int == 9 %}90{% else %}9{% endif %}'
-      device_class: battery
     kiaan_big_window_battery:
       friendly_name: Kiaan Big Window Battery
       unit_of_measurement: '%'

@@ -12,6 +12,8 @@ cards:
     entities:
       - entity: binary_sensor.fire7_motion
         secondary_info: last-changed
+      - entity: sensor.aqara_illumination
+        secondary_info: last-changed
       - entity: binary_sensor.dark
         secondary_info: last-changed
         icon: mdi:weather-night
@@ -20,8 +22,6 @@ cards:
       - entity: binary_sensor.cloakroom_window
         secondary_info: last-changed
       - entity: binary_sensor.main_door
-        secondary_info: last-changed
-      - entity: sensor.doorbell_last_rang
         secondary_info: last-changed
       - entity: binary_sensor.ground_floor_smoke_detector
         secondary_info: last-changed
@@ -65,8 +65,6 @@ cards:
       entities:
         - entity: light.hallway
           secondary_info: last-changed
-        - entity: light.house_number_led_strip
-          secondary_info: last-changed
         - entity: light.aqara_gateway_light
           secondary_info: last-changed
         - entity: light.porch_om_xmas_led_strip
@@ -83,3 +81,9 @@ cards:
         secondary_info: last-changed
       - entity: switch.0220016868c63aa168d9
         secondary_info: last-changed
+  - type: picture-entity
+    title: Doorbell
+    entity: camera.doorbell_pic
+    camera_image: camera.doorbell_pic
+    show_name: false
+    show_state: false

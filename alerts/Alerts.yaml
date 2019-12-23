@@ -258,6 +258,19 @@ garage_freezer_temp_too_high:
     - ios_lolos_iphone
 
 
+doorbell_lost:
+  name: Doorbell Lost
+  entity_id: binary_sensor.doorbell
+  state: 'off'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 60
+  notifiers:
+    - ios_lolos_iphone
+
+
 
 
 

@@ -1,13 +1,14 @@
 - alias: Doorbell Notification
   initial_state: true
   trigger:
-    - platform: event
-      event_type: signal_received
-      event_data:
-        entity_id: sensor.doorbell_sound
+    - platform: state
+      entity_id:
+        - binary_sensor.doorbell_ring
+      to: 'on'
   condition:
-    - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.doorbell_notification", "last_triggered") | default(0)) | int > 10 )}}'
+    - condition: state
+      entity_id: binary_sensor.doorbell_motion
+      state: 'on'
   action:
   - service: media_player.volume_set
     data_template:
@@ -18,6 +19,10 @@
       entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
+  - service: camera.snapshot
+    data:
+      entity_id: camera.doorbell
+      filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
   - delay: 00:00:10
   - service: media_player.volume_set
     data_template:
@@ -25,6 +30,6 @@
       volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}' 
   - service: mqtt.publish
     data:
-      topic: "Sensors/DoorBellEmail"
-      payload_template: 'ON'
-      retain: false
+      topic: "Sensors/CCTV2/Doorbell/Ring"
+      payload_template: 'OFF'
+      retain: true

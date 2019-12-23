@@ -16,14 +16,15 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
 - Anova Precision Spous-Vide Smart Cooker
 - ~~BME280 Temperature and Barometer Sensor~~
-- Byron SX-20T Doorbell
+- ~~Byron SX-20T Doorbell~~
 - CC2531 flashed with [Zigbee2mqtt](https://www.zigbee2mqtt.io/)
 - [Cresta TS34C](https://www.conrad-electronic.co.uk/ce/en/product/672148/5-Channel-TS34C-Wireless-Thermo-Hygro-Sensor) Hygrometers
 - CurrentCost EnviR Energy Monitor & IAM Energy Monitors
 - [Edimax SP-2101W](https://www.amazon.co.uk/Edimax-Switch-Intelligent-Energy-Management/dp/B00T647F2C/)
 - Google ChromeCast Audio
 - Google Home Mini
-- Hikvision [DS-2CD2142FWD-I](https://www.hikvision.com/en/Products/Network-Camera/EasyIP-2.0/4MP/DS-2CD2142FWD-I%28W%29%28S%29) and [DS-2CD2355FWD-I](https://www.hikvision.com/en/Products/Network-Camera/EasyIP-3.0/5MP/DS-2CD2355FWD-I) Cameras
+- Hikvision DS-2CD2142FWD-I and DS-2CD2355FWD-I Cameras
+- Hikvision DS-KB6403-WIP Doorbell
 - H801 LED Strip Controllers
 - HomeEasy HE305 Contact Sensors
 - HomeEasy HE830 Sockets

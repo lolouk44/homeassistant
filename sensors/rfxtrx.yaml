@@ -11,11 +11,11 @@
       data_type:
        - Humidity
        - Temperature
-    0716000300f50170:
-      name: doorbell
-      data_type:
-       - Sound
-      fire_event: true
+    # 0716000300f50170:
+      # name: doorbell
+      # data_type:
+       # - Sound
+      # fire_event: true
 
 - platform: mqtt
   state_topic: "Sensors/DoorBellLastFired"

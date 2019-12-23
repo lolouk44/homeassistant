@@ -22,7 +22,9 @@
 - platform: mjpeg
   mjpeg_url: http://192.168.0.23:8087
   name: 'Conservatory'
-
+- platform: mjpeg
+  mjpeg_url: http://192.168.0.23:8088
+  name: 'Doorbell'
 
 # - platform: ffmpeg
   # input: !secret cctv_url_front
@@ -83,3 +85,9 @@
   name: FrontHD
   still_image_url: !secret xiaomi_vacuum_map
   stream_source: !secret cctv_url_front
+  
+  
+
+- platform: generic
+  name: Doorbell_Pic
+  still_image_url: http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg
