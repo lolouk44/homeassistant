@@ -21,16 +21,16 @@
       entity_id: sensor.dehumidifier_power
   condition:
     - condition: state
-      entity_id: switch.Dehumidifier
+      entity_id: switch.dehumidifier
       state: 'off'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.switch.Dehumidifier.last_updated) | int > 60 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.switch.dehumidifier.last_updated) | int > 60 )}}'
     - condition: template
       value_template: '{{states("sensor.dehumidifier_power") | int > 10 }}'
   action:
   - service: switch.turn_on
     data:
-      entity_id: switch.Dehumidifier
+      entity_id: switch.dehumidifier
 
 
 

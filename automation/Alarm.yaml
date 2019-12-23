@@ -656,10 +656,10 @@
   initial_state: true
   trigger:
     # iOS 1.5 App Support
-    - platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: DISARM_ALARM
+    # - platform: event
+      # event_type: ios.notification_action_fired
+      # event_data:
+        # actionName: DISARM_ALARM
     # iOS 2.0 App Support
     - platform: event
       event_type: ios.action_fired

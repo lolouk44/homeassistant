@@ -11,6 +11,17 @@ cards:
       type: custom:fold-entity-row
       head:
         type: section
+        label: Unavailable Devices
+      open: true
+    filter:
+      include:
+        - entity_id: "*.*"
+          state: "unavailable" 
+  - type: custom:auto-entities
+    card:
+      type: custom:fold-entity-row
+      head:
+        type: section
         label: All Low Batteries
       open: true
     filter:

@@ -42,13 +42,6 @@ cards:
         secondary_info: last-changed
       - input_select.mm_cam_feed
   - type: entities
-    title: Edimax
-    show_header_toggle: false
-    entities:
-      - sensor.edimax1_watts
-      - switch.edimax1
-      - input_boolean.edimax_charging
-  - type: entities
     title: Fridge Freezer
     show_header_toggle: false
     entities:

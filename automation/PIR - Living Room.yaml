@@ -58,7 +58,10 @@
   - service: light.turn_on
     data:
       entity_id: light.living_room_main
-      brightness: 255
+      brightness: 100
+  - service: switch.turn_on
+    data:
+      entity_id: switch.lwrf_socket_3
 
 
 - alias: Living Room Main Light Dimmed Off PIR
@@ -130,6 +133,9 @@
   - service: light.turn_off
     data:
       entity_id: light.living_room_main
+  - service: switch.turn_off
+    data:
+      entity_id: switch.lwrf_socket_3
 
 
 
