@@ -11,6 +11,7 @@
 
 
 - alias: Alert - Temperature Upstairs Lost On
+  id: alert_-_temperature_upstairs_lost_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -29,6 +30,7 @@
       entity_id: input_boolean.upstairs_temp_sensor_lost
 
 - alias: Alert - Temperature Upstairs Lost Off
+  id: alert_-_temperature_upstairs_lost_off
   initial_state: true
   trigger:
     - platform: state
@@ -46,6 +48,7 @@
 
 
 - alias: Alert - Temperature Loft Lost On
+  id: alert_-_temperature_loft_lost_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -64,6 +67,7 @@
       entity_id: input_boolean.outside_temp_sensor_lost
 
 - alias: Alert - Temperature Loft Lost Off
+  id: alert_-_temperature_loft_lost_off
   initial_state: true
   trigger:
     - platform: state
@@ -81,6 +85,7 @@
 
 
 - alias: Alert - CurrentCost Lost On
+  id: alert_-_currentcost_lost_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -97,6 +102,7 @@
       entity_id: input_boolean.alert_lost_currentcost_power_at_300
 
 - alias: Alert - CurrentCost Lost Off
+  id: alert_-_currentcost_lost_off
   initial_state: true
   trigger:
     - platform: state
@@ -112,6 +118,7 @@
 
 
 - alias: Alert - RAM Above 90% On
+  id: alert_-_ram_above_90%_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -128,6 +135,7 @@
       entity_id: input_boolean.alert_lost_ram_usage_at_300
 
 - alias: Alert - RAM Above 90% Off
+  id: alert_-_ram_above_90%_off
   initial_state: true
   trigger:
     - platform: state
@@ -145,6 +153,7 @@
 
 
 - alias: Alert - Fire 7 Lost On
+  id: alert_-_fire_7_lost_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -165,6 +174,7 @@
       entity_id: input_boolean.alert_lost_fire7_at_300
 
 - alias: Alert - Fire 7 Lost Off
+  id: alert_-_fire_7_lost_off
   initial_state: true
   trigger:
     - platform: state
@@ -180,6 +190,7 @@
 
 
 - alias: Alert - Pi Kitchen Lost On
+  id: alert_-_pi_kitchen_lost_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -196,6 +207,7 @@
       entity_id: input_boolean.alert_lost_rpi_kitchen_at_300
 
 - alias: Alert - Pi Kitchen Lost Off
+  id: alert_-_pi_kitchen_lost_off
   initial_state: true
   trigger:
     - platform: state

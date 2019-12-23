@@ -1,32 +1,12 @@
 - platform: workday
   country: UK
 
-- platform: 'bayesian'
-  name: 'Dark'
-  prior: 0.25
-  probability_threshold: 0.95
-  observations:
-     # sunset in <2h
-    - platform: template
-      prob_given_true: 0.8
-      prob_given_false: 0.1
+- platform: template
+  sensors:
+    dark:
+      entity_id:
+        - sensor.aqara_illumination
+        - binary_sensor.photoresistor
       value_template: >
-        {{ as_timestamp(state_attr("sun.sun","next_dusk")) - as_timestamp(now()) <7200}}
-      # sunset in <1h
-    - platform: template
-      prob_given_true: 0.8
-      prob_given_false: 0.1
-      value_template: >
-        {{ as_timestamp(state_attr("sun.sun","next_dusk")) - as_timestamp(now()) <3600}}
-      # Aqara  < 250 lx
-    - platform: template
-      prob_given_true: 0.9
-      prob_given_false: 0.1
-      value_template: >
-        {{states('sensor.aqara_illumination') | int < 250}}
-      # Photoresistor off
-    - platform: template
-      prob_given_true: 0.9
-      prob_given_false: 0.1
-      value_template: >
-        {{states('binary_sensor.photoresistor') == 'off' or states('light.living_room_main') == 'on' }}
+        {{states('binary_sensor.photoresistor') == 'off' or states('light.living_room_main') == 'on' or states('sensor.aqara_illumination') | int < 200 or states('light.hallway') == 'on'}}
+      friendly_name: Dark
