@@ -13,6 +13,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Raspberry Pi 3 Model B (Kodi)
 - Raspberry Pi 3 Model B (Smart Calendar Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
 
+- Aeotec Z-Stick Gen5
 - Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
 - Anova Precision Spous-Vide Smart Cooker
 - ~~BME280 Temperature and Barometer Sensor~~
@@ -57,6 +58,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Philips Zhirui Candle Light
 - Xiaomi Router R3P Pro
 - Xiaomi XiaoFang Camera with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
+- Yale Conexis L1 Smart Lock
 
 ## View of my Home Assistant UI
 ![My Home Assistant](http://www.lolorpi.com/wordpress/wp-content/uploads/2018/08/HA_UI_Example.png)
