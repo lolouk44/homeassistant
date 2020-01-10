@@ -85,7 +85,8 @@
     # play alert, 0.9 on onkyo, 1 on conservatory, google minis
     - service: media_player.volume_set
       data_template:
-        volume_level: '0.9' 
+        entity_id: media_player.google_home_minis
+        volume_level: 0.9
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
@@ -173,7 +174,7 @@
             - /config/www/CCTV_Snapshots/Side.jpg
             - /config/www/CCTV_Snapshots/Back.jpg
             - /config/www/CCTV_Snapshots/Garage.jpg
-    - service: notify.ios_lolos_iphone
+    - service: notify.mobile_app_lolo_s_iphone
       data_template:
         title: "Alarm Triggered !"
         message: >
@@ -245,7 +246,7 @@
           {%- endfor -%}
           {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
           The alarm has not been armed
-    - service: notify.ios_lolos_iphone
+    - service: notify.mobile_app_lolo_s_iphone
       data_template:
         message: |
           The {% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
@@ -254,7 +255,7 @@
           {%- if is_state('binary_sensor.main_door','on') -%}Main Door,{%- endif -%}
            are not closed.
            The alarm has not been armed !
-    - service: notify.ios_diviphone
+    - service: notify.mobile_app_div_iphone
       data_template:
         message: |
           The {% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
@@ -290,7 +291,7 @@
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.google_home_minis
-        volume_level: '1' 
+        volume_level: 1
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
@@ -365,11 +366,8 @@
         media_content_type: 'audio/mp3'
     - service: media_player.volume_set
       data_template:
-        volume_level: '0.4' 
-    - service: media_player.volume_set
-      data_template:
         entity_id: media_player.onkyo_tx_nr656_zone_2
-        volume_level: '0.6' 
+        volume_level: 0.6
     - service: light.turn_off
       data:
         entity_id: light.aqara_gateway_light
@@ -381,6 +379,10 @@
       entity_id: media_player.panasonic_viera_tv
     - service: media_player.turn_off
       entity_id: media_player.onkyo_tx_nr656
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.google_home_minis
+        volume_level: 0.4
 
 
 
@@ -455,7 +457,7 @@
             - /config/www/CCTV_Snapshots/Kitchen.jpg
             - /config/www/CCTV_Snapshots/Conservatory.jpg
             - /config/www/CCTV_Snapshots/Fire7.jpg
-    - service: notify.ios_lolos_iphone
+    - service: notify.mobile_app_lolo_s_iphone
       data_template:
         message: >
           FIRE ALARM!({% if trigger.entity_id == 'binary_sensor.ground_floor_smoke_detector' %}Gnd Floor Smoke Detector{% else %}1st Floor Smoke Detector{% endif %})
@@ -609,10 +611,8 @@
     - delay:
         minutes: 2
     - condition: template
-      value_template: '{{ states("person.laurent") != "home"}}'
-    - condition: template
-      value_template: '{{ states("person.div") != "home"}}'
-    - service: notify.ios_lolos_iphone
+      value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home"}}'
+    - service: notify.mobile_app_lolo_s_iphone
       data_template:
         message: 'The alarm has not been armed !'
         data:
@@ -621,7 +621,7 @@
             category: "armalarm"
           action_data:
             entity_id: alarm_control_panel.alarm
-    - service: notify.ios_diviphone
+    - service: notify.mobile_app_div_iphone
       data_template:
         message: 'The alarm has not been armed !'
         data:
@@ -635,12 +635,6 @@
   id: alarm_-_arm_alarm_from_ios_notification
   initial_state: true
   trigger:
-    # iOS 1.5 App Support
-    - platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: ARM_ALARM
-    # iOS 2.0 App Support
     - platform: event
       event_type: ios.action_fired
       event_data:
@@ -655,12 +649,6 @@
   id: alarm_-_disarm_alarm_from_ios_notification
   initial_state: true
   trigger:
-    # iOS 1.5 App Support
-    # - platform: event
-      # event_type: ios.notification_action_fired
-      # event_data:
-        # actionName: DISARM_ALARM
-    # iOS 2.0 App Support
     - platform: event
       event_type: ios.action_fired
       event_data:
@@ -671,20 +659,25 @@
       data:
         code: !secret alarm_code
 
-- alias: Alarm - DisArm Alarm when reaching home from iOS Notification
+- alias: Alarm - DisArm Alarm when reaching home from iOS Notification (Yale Unlocked)
   id: alarm_-_disarm_alarm_when_reaching_home_from_ios_notification
   initial_state: true
   trigger:
-    platform: state
-    entity_id: device_tracker.laurent
-    to: "home"
+    - platform: state
+      entity_id: device_tracker.laurent
+      to: "home"
+    - platform: state
+      entity_id: device_tracker.divashni
+      to: "home"
   condition:
     - condition: template
-      value_template: "{{ states('alarm_control_panel.alarm') != 'disarmed' }}"
+      value_template: '{{ states("alarm_control_panel.alarm") != "disarmed" }}'
+    - condition: template
+      value_template: '{{states("lock.yale_conexis_l1_lock") == "unlocked"}}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_-_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
-    - service: notify.ios_lolos_iphone
+    - service_template: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data_template:
         message: 'Disarm alarm ?'
         data:

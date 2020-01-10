@@ -30,6 +30,7 @@
         - /home/cctv/docker_ha/shell_scripts:/shell_scripts:ro
       devices:
         - /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0:/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
+        - /dev/ZWaveStick:/dev/ttyACM0
       depends_on:
         - influxdb
       restart: always

@@ -185,7 +185,6 @@ cards:
         - sensor.dafang_kitchen_status_scrape
         - sensor.dafang_living_room_connection_scrape
         - sensor.dafang_living_room_status_scrape
-        - sensor.doorbell_battery
         - sensor.ha_online_version
         - sensor.hacs
         - sensor.hallway_thermostat_hvac_state

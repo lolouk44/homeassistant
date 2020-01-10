@@ -25,6 +25,15 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.ground_floor_smoke_detector
         secondary_info: last-changed
+  - type: entities
+    title: Yale Lock
+    show_header_toggle: false
+    entities:
+      - entity: sensor.yale_conexis_l1_battery_level
+        secondary_info: last-changed
+      - entity: lock.yale_conexis_l1_lock
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "[[ lock.yale_conexis_l1_lock.attributes.lock_status ]]"
   - type: conditional
     conditions:
       - entity: input_boolean.xmas
