@@ -14,6 +14,21 @@
   value_template: "{{ value }}"
 
 - platform: mqtt
+  name: "Chill_Pic"
+  state_topic: "RadioStream/Chill/pic_url"
+  value_template: "{{ value }}"
+
+- platform: mqtt
+  name: "Chill_Artist"
+  state_topic: "RadioStream/Chill/artist"
+  value_template: "{{ value }}"
+
+- platform: mqtt
+  name: "Chill_Track"
+  state_topic: "RadioStream/Chill/track"
+  value_template: "{{ value }}"
+
+- platform: mqtt
   name: "Absolute_Radio_Pic"
   state_topic: "RadioStream/Absolute_Radio/pic_url"
   value_template: "{{ value }}"
@@ -87,7 +102,7 @@
         {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} Phil & Rohan
         {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} Stacey & Kevin
-        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} {{states("sensor.chill_artist")}}
         {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
@@ -116,7 +131,7 @@
         {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} {{states("sensor.ha_podcast_track")}}
         {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} {{states("sensor.internet_of_things_podcast_track")}}
-        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} {{states("sensor.chill_track")}}
         {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} N/A
         {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A

@@ -68,9 +68,9 @@
     {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} https://upload.wikimedia.org/wikipedia/fr/b/bd/HitWestLogo.jpg
     {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} https://secureimg.stitcher.com/feedimageswide/480x270_176113.jpg
     {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} https://is1-ssl.mzstatic.com/image/thumb/Music62/v4/b3/d6/64/b3d664ab-0560-f24d-2379-d01142267f94/source/1200x630bb.jpg
-    {% elif is_state("input_select.chromecast_radio_station", "Chill") %} http://images.radio.orange.com/radios/large_helpmechill.png
+    {% elif is_state("input_select.chromecast_radio_station", "Chill") %} {{states("sensor.chill_pic")}}
     {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} https://static-media.streema.com/media/cache/61/a2/61a237fb6851e34614c55420b3e11a62.jpg
-    {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} https://cdn-radiotime-logos.tunein.com/s9945d.png
+    {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} http://player.streamguys.com/fbc/sgplayer/include/assets/img/RF2.png
     {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} https://www.holyscripturesandisrael.com/images/radio/radio-icon.png
     {% endif %}
     {%else%}http://192.168.0.24/Select_Radio.png
