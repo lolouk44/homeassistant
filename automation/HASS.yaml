@@ -83,6 +83,21 @@
       message: 'Warning - SSL certificate expires in <21 days and has not been automatically renewed'
 
 
+- alias: ZigBee2MQTT Docker Down
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: switch.zigbee2mqtt
+      to: 'off'
+      for:
+        minutes: 2
+  action:
+    service: notify.gmaillolo
+    data:
+      title: "HA - ZigBee2MQTT Docker Down"
+      message: 'Warning - ZigBee2MQTT Docker Container Is Down'
+
+
 
 - alias: HASS Start Xmas Setup
   initial_state: true
