@@ -57,11 +57,11 @@
     - platform: state
       entity_id: climate.hallway
       to: 'heat'
-    - platform: state
-      entity_id: group.door_and_window_sensors
-      to: 'on'
-      for:
-        minutes: 2
+    # - platform: state
+      # entity_id: group.door_and_window_sensors
+      # to: 'on'
+      # for:
+        # minutes: 2
   condition:
     - condition: state
       entity_id: climate.hallway
