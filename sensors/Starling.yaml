@@ -1,0 +1,3 @@
+- platform: starlingbank
+  accounts:
+    - access_token: !secret starling_token
