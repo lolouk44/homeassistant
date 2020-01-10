@@ -33,3 +33,14 @@
     data:
       entity_id: switch.bathroom_fan
 
+- alias: Bathroom - Toggle Fan From Hygro Sensor
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.bathroom_fan_switch_toggle
+  action:
+  - condition: template
+    value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.bathroom_toggle_fan_from_hygro_sensor", "last_triggered") | default(0)) | int <= 5)}}'
+  - service: switch.toggle
+    data:
+      entity_id: switch.bathroom_fan

@@ -110,4 +110,8 @@
   unit_of_measurement: "%"
   device_class: battery
 
+- platform: mqtt
+  name: "bathroom Fan Switch Toggle"
+  state_topic: "zigbee2mqtt/bathroom_hygro"
+
 
