@@ -1,0 +1,11 @@
+- alias: Starling - Balance Below £20
+  initial_state: true
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.starling_effective_balance
+      below: 20
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Starling"
+        message: 'Starling Balance below £20: £{{states("sensor.starling_effective_balance")}}'
