@@ -45,3 +45,22 @@ push:
           authenticationRequired: yes
           destructive: yes
           behavior: 'default'
+
+    - name: Unlock_Yale_Disarm_Alarm
+      identifier: 'unlockyaledisarmalarm'
+      actions:
+        - identifier: 'UNLOCK_YALE_DISARM_ALARM'
+          title: 'Disarm Alarm & Unlock Yale'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Unlock_Yale
+      identifier: 'unlockyale'
+      actions:
+        - identifier: 'UNLOCK_YALE'
+          title: 'Unlock Yale'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
