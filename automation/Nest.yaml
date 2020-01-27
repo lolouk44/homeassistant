@@ -8,6 +8,9 @@
       entity_id: person.div
       to: 'home'
     - platform: state
+      entity_id: person.div
+      from: 'cbc'
+    - platform: state
       entity_id: person.laurent
       to: 'home'
     - platform: state
@@ -20,13 +23,11 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states("person.laurent") == "home"}}'
-      - condition: template
-        value_template: '{{ states("person.div") == "home"}}'
+        value_template: '{{ trigger.to_state.state  == "home"}}'
       - condition: template
         value_template: '{{ states("person.laurent") == "verint" and (as_timestamp(now()) | timestamp_custom("%a") == "Tue" or as_timestamp(now()) | timestamp_custom("%a") == "Thu") and now().hour >= 2 and trigger.from_state.state == "cbc"}}'
       - condition: template
-        value_template: '{{ trigger.from_state.state == "verint"}}'
+        value_template: '{{ trigger.from_state.state == "verint" and (as_timestamp(now()) | timestamp_custom("%a") == "Tue" or as_timestamp(now()) | timestamp_custom("%a") == "Thu") and now().hour >= 3}}'
     - condition: state
       entity_id: group.door_and_window_sensors
       state: 'off'
@@ -39,7 +40,7 @@
         entity_id: climate.hallway
         temperature: >-
           {% if states("sensor.season") == "summer" or states("sensor.season") == "spring" %}18
-          {% elif now().hour |int < 23%}20
+          {% elif now().hour |int < 22 and now().hour |int > 5 %}20
           {% else  %} 18
           {% endif %}
         hvac_mode: 'heat'
@@ -66,6 +67,9 @@
     - condition: state
       entity_id: climate.hallway
       state: 'heat'
+    - condition: state
+      entity_id: input_boolean.guests
+      state: 'off'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'

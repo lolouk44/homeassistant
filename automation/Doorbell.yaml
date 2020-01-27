@@ -7,7 +7,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: binary_sensor.doorbell_motion
+      entity_id: input_boolean.normal
       state: 'on'
   action:
   - service: media_player.volume_set
@@ -17,7 +17,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis
-      media_content_id: '/config/www/audio/Doorbell_Tubular_2.mp3'
+      media_content_id: 'http://192.168.0.24/audio/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
   - service: camera.snapshot
     data:

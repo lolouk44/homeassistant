@@ -1,5 +1,5 @@
 - alias: Yale - Unlock when reaching home from iOS Notification (W/O Alarm)
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id: device_tracker.laurent
@@ -15,7 +15,7 @@
   action:
     - service_template: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data_template:
-        message: 'Unlock Yale ?'
+        message: 'Unlock Porch ?'
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
@@ -24,7 +24,7 @@
             entity_id: lock.yale_conexis_l1_lock
 
 - alias: Yale - Unlock when reaching home from iOS Notification (W Alarm)
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id: device_tracker.laurent
@@ -34,13 +34,13 @@
       to: "home"
   condition:
     - condition: template
-      value_template: "{{ states('alarm_control_panel.alarm') == 'disarmed' }}"
+      value_template: "{{ states('alarm_control_panel.alarm') != 'disarmed' }}"
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_-_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
     - service_template: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data_template:
-        message: 'Unlock Yale & Disarm Alarm ?'
+        message: 'Unlock Porch & Disarm Alarm ?'
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
@@ -85,10 +85,23 @@
       to: "unlocked"
       for:
         minutes: 5
+  # condition:
+    # - condition: template
+      # value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.yale_door_unlocked_or_jammed", "last_triggered") | default(0)) | int > 90)}}'
   action:
+    - service: lock.unlock
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+    - delay: 00:00:10
+    - service: lock.lock
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+    - delay: 00:00:10
+    - condition: template
+      value_template: '{{ states("sensor.porch_door_lock_status") == "Deadbolt Jammed" or states("lock.yale_conexis_l1_lock") == "unlocked" }}'
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
-        message: '{% if state_attr("lock.yale_conexis_l1_lock", "lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
+        message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
@@ -97,14 +110,17 @@
             entity_id: '{{trigger.entity_id}}'
     - service: notify.mobile_app_div_iphone
       data_template:
-        message: '{% if state_attr("lock.yale_conexis_l1_lock", "lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
+        message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
             category: "alert"
           action_data:
             entity_id: '{{trigger.entity_id}}'
-
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data_template:
+        message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Please note: the porch door lock is jammed{% else %}Please note: the porch door has been left unlocked{% endif %}'
 
 - alias: Yale - Battery below 10%
   initial_state: true

@@ -88,10 +88,9 @@
     - service: light.turn_off
       data:
         entity_id: light.living_room_wall
-    - service: climate.set_away_mode
+    - service: nest.set_away_mode
       data:
-        entity_id: climate.hallway
-        away_mode: 'home'
+        away_mode: home
     - condition: state
       entity_id: input_boolean.silent
       state: "off"
