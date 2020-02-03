@@ -161,15 +161,23 @@
     data:
       entity_id: switch.kitchen_tv
 
-# - alias: Kitchen TV Off PIR
-  # initial_state: true
-  # trigger:
-    # - platform: state
-      # entity_id: binary_sensor.pir_kitchen
-      # to: 'off'
-      # for:
-        # minutes: 2
-  # action:
-  # - service: switch.turn_off
-    # data:
-      # entity_id: switch.kitchen_tv
+- alias: Kitchen TV Off PIR
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_kitchen
+      to: 'off'
+      for:
+        minutes: 2
+    - platform: state
+      entity_id: binary_sensor.pir_conservatory
+      to: 'off'
+      for:
+        minutes: 2
+  condition:
+    - condition: template
+      value_template: '{{ states("binary_sensor.pir_kitchen") == "off" and states("binary_sensor.pir_conservatory") == "off"}}'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.kitchen_tv

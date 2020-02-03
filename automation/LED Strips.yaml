@@ -248,9 +248,6 @@
       entity_id: light.porch_om_xmas_led_strip
       brightness: 160
       effect: rainbow
-  - service: switch.turn_on
-    data:
-      entity_id: switch.xiaomi_dual_usb_socket
 
 - alias: House Number Off
   initial_state: true
@@ -273,7 +270,3 @@
   - service: light.turn_off
     data:
       entity_id: light.porch_om_xmas_led_strip
-    # Xmas Blue Iciles
-  - service: switch.turn_off
-    data:
-      entity_id: switch.xiaomi_dual_usb_socket
