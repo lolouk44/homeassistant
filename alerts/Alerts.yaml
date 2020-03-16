@@ -8,7 +8,7 @@ outside_temp_sensor_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 upstairs_temp_sensor_lost:
   name: Outside Temp Sensor Lost
@@ -20,7 +20,7 @@ upstairs_temp_sensor_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 ram_usage_lost:
   name: RAM Usage Sensor Lost
@@ -32,7 +32,7 @@ ram_usage_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 fire7_lost:
   name: Fire 7 Lost
@@ -44,7 +44,7 @@ fire7_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 cctv_front_lost:
   name: CCTV Front Lost
@@ -58,7 +58,7 @@ cctv_front_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 cctv_garage_lost:
   name: CCTV Garage Lost
@@ -71,7 +71,7 @@ cctv_garage_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 cctv_dafang_living_room_lost:
   name: CCTV Dafang Living Room Lost
@@ -84,7 +84,7 @@ cctv_dafang_living_room_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 cctv_dafang_kitchen_lost:
   name: CCTV Dafang Kitchen Lost
@@ -97,7 +97,7 @@ cctv_dafang_kitchen_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 currentcost_lost:
   name: CurrentCost Lost
@@ -109,7 +109,7 @@ currentcost_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 dehumidifier_full:
   name: Dehumidifier Full
@@ -120,7 +120,7 @@ dehumidifier_full:
     - 1
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 rpi_lost:
   name: RPi Lost
@@ -133,7 +133,7 @@ rpi_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 rpi_kitchen_lost:
   name: RPi Kitchen Lost
@@ -145,7 +145,7 @@ rpi_kitchen_lost:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 kello_lost:
   name: Kello Lost
@@ -157,7 +157,7 @@ kello_lost:
     - 5
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 house_number_led_strip_lost:
   name: House Number LED Strip Lost
@@ -169,7 +169,7 @@ house_number_led_strip_lost:
     - 5
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 
 staircase_led_strip_lost:
@@ -182,7 +182,7 @@ staircase_led_strip_lost:
     - 5
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 
 tv_cabinet_led_strip_lost:
@@ -195,7 +195,7 @@ tv_cabinet_led_strip_lost:
     - 5
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 
 ram_too_high:
@@ -207,7 +207,7 @@ ram_too_high:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 home_disk_usage_too_high:
   name: Home Disk Usage > 75%
@@ -218,7 +218,7 @@ home_disk_usage_too_high:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 root_disk_usage_too_high:
   name: Root Disk Usage > 75%
@@ -229,7 +229,7 @@ root_disk_usage_too_high:
     - 30
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 kitchen_freezer_temp_too_high:
   name: Kitchen Freezer Temperature above 0
@@ -242,7 +242,7 @@ kitchen_freezer_temp_too_high:
     - 30
     - 240
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 garage_freezer_temp_too_high:
   name: Garage Freezer Temperature above 0
@@ -255,7 +255,7 @@ garage_freezer_temp_too_high:
     - 30
     - 240
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
 
 
 doorbell_lost:
@@ -268,7 +268,24 @@ doorbell_lost:
     - 5
     - 60
   notifiers:
-    - ios_lolos_iphone
+    - mobile_app_lolo_s_iphone
+
+
+bmw_unlocked:
+  name: BMW Left Unlocked
+  entity_id: lock.220d_lock
+  state: 'unlocked'
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 5
+    - 10
+    - 15
+    - 30
+    - 60
+  notifiers:
+    - mobile_app_lolo_s_iphone
+    - gmaillolo
 
 
 
