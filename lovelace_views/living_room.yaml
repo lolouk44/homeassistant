@@ -8,6 +8,7 @@ cards:
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
     title: Living Room Sensors
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: binary_sensor.pir_living_room_front
@@ -39,6 +40,7 @@ cards:
       camera_image: camera.living_room
     - type: entities
       title: Living Room Lights
+      state_color: true
       show_header_toggle: false
       entities:
         - entity: light.living_room_main

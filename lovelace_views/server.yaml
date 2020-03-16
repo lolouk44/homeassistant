@@ -20,6 +20,7 @@ cards:
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
+      state_color: true
       head:
         type: section
         label: All Low Batteries
@@ -44,6 +45,7 @@ cards:
       - sensor.ram_usage
       - sensor.hass_db_size_formatted
       - sensor.ssl_cert_expiry
+      - sensor.docker_hub_pulls
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -70,6 +72,7 @@ cards:
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
+      state_color: true
       head:
         type: section
         label: RPI Sensors
@@ -86,6 +89,7 @@ cards:
         type: section
         label: Docker Containers
       open: false
+    state_color: true
     entities:
       - entity: switch.grafana
         name: Grafana

@@ -8,6 +8,7 @@ cards:
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
     title: Conservatory Sensors
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: binary_sensor.pir_conservatory
@@ -56,6 +57,7 @@ cards:
         secondary_info: last-changed
   - type: entities
     title: Edimax
+    state_color: true
     show_header_toggle: false
     entities:
       - sensor.edimax1_watts
@@ -64,6 +66,7 @@ cards:
 
   - type: entities
     title: Rotary Clothes Airer
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: input_boolean.clothes_drying_outside
@@ -78,6 +81,7 @@ cards:
     card:
       type: entities
       title: Xmas Lights
+      state_color: true
       entities:
         - entity: switch.lwrf_socket_xmas
           secondary_info: last-changed

@@ -6,6 +6,7 @@ cards:
     show_empty: false
     card:
       type: entities
+      state_color: true
     filter:
       include:
         - group: group.door_and_window_sensors

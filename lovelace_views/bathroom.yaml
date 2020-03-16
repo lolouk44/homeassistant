@@ -8,6 +8,7 @@ cards:
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
     title: Bathroom Sensors
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: sensor.bathroom_temperature
@@ -20,6 +21,7 @@ cards:
         secondary_info: last-changed
   - type: entities
     title: Extraction Fan
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: switch.bathroom_fan

@@ -8,6 +8,7 @@ cards:
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
     title: Entrance Sensors
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: binary_sensor.fire7_motion
@@ -42,6 +43,7 @@ cards:
     card:
       type: entities
       title: Entrance Lights
+      state_color: true
       entities:
         - entity: light.hallway
           secondary_info: last-changed
@@ -53,6 +55,7 @@ cards:
           icon: mdi:numeric-4-box-multiple-outline
   - type: entities
     title: Nest Thermostat
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: climate.hallway
@@ -70,6 +73,7 @@ cards:
         show_empty: false
     card:
       type: entities
+      state_color: true
       title: Entrance Lights
       entities:
         - entity: light.hallway
@@ -82,17 +86,28 @@ cards:
           name: Snowman LED Strip
   - type: entities
     title: Fire 7
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: binary_sensor.fire7_motion
         secondary_info: last-changed
       - entity: sensor.fire7_battery
         secondary_info: last-changed
-      - entity: switch.0220016868c63aa168d9
+      - entity: switch.fire7_charger
         secondary_info: last-changed
-  - type: picture-entity
-    title: Doorbell
-    entity: camera.doorbell_pic
-    camera_image: camera.doorbell_pic
-    show_name: false
-    show_state: false
+
+  - type: custom:vertical-stack-in-card
+    cards:
+    - type: entities
+      title: Doorbell
+      state_color: true
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.doorbell_ring
+          secondary_info: last-changed
+    - type: picture-entity
+      title: Doorbell
+      entity: camera.doorbell_pic
+      camera_image: camera.doorbell_pic
+      show_name: false
+      show_state: false

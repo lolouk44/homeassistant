@@ -26,6 +26,7 @@ entities:
   - alert.kitchen_freezer_temp_too_high
   - alert.garage_freezer_temp_too_high
   - counter.iosbadgecount
+state_color: true
 state_filter:
   - "on"
 show_empty: false

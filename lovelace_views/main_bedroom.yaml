@@ -15,6 +15,7 @@ cards:
       icon: mdi:lamp
   - type: entities
     title: Main Bedroom Sensors
+    state_color: true
     show_header_toggle: false
     entities:
     - entity: sensor.master_bedroom_aqara_temperature
@@ -33,6 +34,7 @@ cards:
       secondary_info: last-changed
   - type: entities
     title: Kello
+    state_color: true
     show_header_toggle: false
     entities:
       - binary_sensor.kello
@@ -40,6 +42,19 @@ cards:
       - input_number.volume_kello
       - input_boolean.kello_play_stop
       - input_boolean.kello_mute_alarms
+  - type: entities
+    title: Xiaomi Dual USB Socket
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: switch.xiaomi_dual_usb_socket
+        secondary_info: last-changed
+        icon: mdi:power-plug
+      - entity: switch.xiaomi_dual_usb_socket_usb
+        secondary_info: last-changed
+        icon: mdi:usb
+      - entity: sensor.xiaomi_dual_usb_socket_watts
+        secondary_info: last-changed
   - type: entities
     title: Mi Scale
     show_header_toggle: false

@@ -8,6 +8,7 @@ cards:
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
     title: Garage Sensors
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: binary_sensor.garage_back_door
@@ -30,6 +31,7 @@ cards:
         secondary_info: last-changed
   - type: entities
     title: Xiaomi Garage Socket
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: switch.xiaomi_garage_socket
@@ -38,17 +40,4 @@ cards:
       - entity: sensor.xiaomi_garage_socket_watts
         secondary_info: last-changed
       - entity: input_boolean.xiaomi_switch_charging
-        secondary_info: last-changed
-
-  - type: entities
-    title: Xiaomi Dual USB Socket
-    show_header_toggle: false
-    entities:
-      - entity: switch.xiaomi_dual_usb_socket
-        secondary_info: last-changed
-        icon: mdi:power-plug
-      - entity: switch.xiaomi_dual_usb_socket_usb
-        secondary_info: last-changed
-        icon: mdi:usb
-      - entity: sensor.xiaomi_dual_usb_socket_watts
         secondary_info: last-changed

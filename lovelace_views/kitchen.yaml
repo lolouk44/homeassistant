@@ -7,6 +7,7 @@ cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
+    state_color: true
     title: Sensors
     show_header_toggle: false
     entities:
@@ -36,6 +37,7 @@ cards:
           secondary_info: last-changed
   - type: entities
     title: Kitchen TV
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: switch.kitchen_tv
@@ -59,6 +61,7 @@ cards:
         secondary_info: last-changed
   - type: entities
     title: Anova Sous-Vide
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: climate.anova

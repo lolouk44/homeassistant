@@ -18,6 +18,7 @@ cards:
       - input_boolean.silent
   - type: entities
     title: RPi Sensors
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: binary_sensor.door_lock
@@ -194,7 +195,6 @@ cards:
         - sensor.horseshoe_close_eta
         - sensor.kello_mqtt
         - sensor.plex
-        - sensor.potential_breaking_changes
         - sensor.seventeentrack_packages_delivered
         - sensor.seventeentrack_packages_expired
         - sensor.seventeentrack_packages_in_transit
@@ -212,3 +212,21 @@ cards:
         - sensor.xiaomi_sensor_dirty_left
         - sensor.xiaomi_side_brush_left
         - sensor.xiaomi_status
+  - type: entities
+    title: Coronavirus
+    icon: 'mdi:skull'
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: sensor.united_kingdom_coronavirus_confirmed
+        secondary_info: last-changed
+        icon: mdi:emoticon-neutral-outline
+      - entity: sensor.united_kingdom_coronavirus_current
+        secondary_info: last-changed
+        icon: mdi:emoticon-sad-outline
+      - entity: sensor.united_kingdom_coronavirus_deaths
+        secondary_info: last-changed
+        icon: mdi:emoticon-dead-outline
+      - entity: sensor.united_kingdom_coronavirus_recovered
+        secondary_info: last-changed
+        icon: mdi:emoticon-happy-outline

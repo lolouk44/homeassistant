@@ -7,6 +7,7 @@ cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
   - type: picture-elements
+    state_color: true
     image: /local/BMW_220d_GT_Top_View.png
     elements:
       - type: state-icon
@@ -135,6 +136,7 @@ cards:
     
   - type: entities
     title: BMW 220d Gran Tourer
+    state_color: true
     show_header_toggle: false
     entities:
       - entity: device_tracker.220d
