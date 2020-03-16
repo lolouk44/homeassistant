@@ -25,6 +25,9 @@
 - platform: mjpeg
   mjpeg_url: http://192.168.0.23:8088
   name: 'Doorbell'
+- platform: mjpeg
+  mjpeg_url: http://192.168.0.23:8089
+  name: 'Fire7'
 
 # - platform: ffmpeg
   # input: !secret cctv_url_front
@@ -76,9 +79,9 @@
     {%else%}http://192.168.0.24/Select_Radio.png
     {%endif%}
     
-- name: Fire7
-  platform: generic
-  still_image_url: !secret fire7camshot
+# - name: Fire7
+  # platform: generic
+  # still_image_url: !secret fire7camshot
   
   
 - platform: generic
