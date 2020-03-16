@@ -23,7 +23,7 @@
 
     homeassistant:
       container_name: ha
-      image: homeassistant/home-assistant:0.104.2
+      image: homeassistant/home-assistant:0.106.6
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
@@ -31,6 +31,7 @@
       devices:
         - /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0:/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
         - /dev/ZWaveStick:/dev/ttyACM0
+        - /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0:/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0
       depends_on:
         - influxdb
       restart: always

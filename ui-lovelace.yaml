@@ -4,19 +4,19 @@ resources:
   - url: /local/kiosk.js?v=1.1
     type: js
     # https://github.com/thomasloven/lovelace-card-tools
-  - url: /local/card-tools.js?track=true
-    type: js
+  - url: /hacsfiles/lovelace-card-tools/card-tools.js
+    type: module
     # fold-entity https://github.com/thomasloven/lovelace-fold-entity-row
-  - url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
+  - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
     type: js
     #auto-entities  https://github.com/thomasloven/lovelace-auto-entities
-  - url: /local/auto-entities.js?track=true
-    type: js
+  - url: /local/auto-entities.js
+    type: module
     #Mini media player https://github.com/kalkih/mini-media-player
-  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+  - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
     type: module
     #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
-  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+  - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
     # Fully Kiosk https://github.com/thomasloven/lovelace-fullykiosk
   # - url: /local/lovelace-fullykiosk.js
@@ -24,19 +24,19 @@ resources:
   # - url: /local/kiosk-config.js
     # type: js
     # Animated Weather Card https://github.com/bramkragten/weather-card
-  - url: /community_plugin/weather-card/weather-card.js
+  - url: /hacsfiles/weather-card/weather-card.js
     type: module
     # Home Feed Card Card https://github.com/gadgetchnnel/lovelace-home-feed-card
-  - url: /community_plugin/lovelace-home-feed-card/lovelace-home-feed-card.js
+  - url: /hacsfiles/lovelace-home-feed-card/lovelace-home-feed-card.js
     type: js
 
     # Compact Custom Header https://github.com/maykar/custom-header
-  - url: /community_plugin/custom-header/custom-header.js
+  - url: /hacsfiles/custom-header/custom-header.js
     type: module
   # - url: /local/compact-custom-header.js?v=0.0.1
     # type: js
 
-  - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
+  - url: /hacsfiles/secondaryinfo-entity-row/secondaryinfo-entity-row.js
     type: js
 
 custom_header:
