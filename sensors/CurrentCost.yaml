@@ -1,0 +1,41 @@
+- platform: currentcost
+  serial_port: /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0
+  devices:
+    - 0
+    - 2
+    - 9
+
+# - platform: template
+  # name: "CurrentCost_Temperature"
+  # unit_of_measurement: '°C'
+  # value_template: '{{ state_attr("sensor.current_cost", "Temperature")[:-3]  }}'
+
+# - platform: template
+  # name: "CurrentCost_Power"
+  # unit_of_measurement: "W"
+  # value_template: '{{ state_attr("sensor.current_cost", "Appliance 0")[:-2]  }}'
+
+# - platform: template
+  # name: "Dehumidifier_Power"
+  # unit_of_measurement: "W"
+  # value_template: '{{ state_attr("sensor.current_cost", "Appliance 2")[:-2]  }}'
+  
+  
+  
+- platform: template
+  sensors:
+    currentcost_temperature:
+      entity_id: sensor.current_cost
+      unit_of_measurement: '°C'
+      value_template: '{{ state_attr("sensor.current_cost", "Temperature")[:-3]  }}'
+      friendly_name: CurrentCost Temperature
+    currentcost_power:
+      entity_id: sensor.current_cost
+      unit_of_measurement: 'W'
+      value_template: '{{ state_attr("sensor.current_cost", "Appliance 0")[:-2]  }}'
+      friendly_name: CurrentCost Power
+    dehumidifier_power:
+      entity_id: sensor.current_cost
+      unit_of_measurement: 'W'
+      value_template: '{{ state_attr("sensor.current_cost", "Appliance 2")[:-2]  }}'
+      friendly_name: Dehumidifier Power
