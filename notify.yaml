@@ -23,5 +23,5 @@
 - platform: group
   name: divandlolo
   services:
-    - service: ios_lolos_iphone
-    - service: ios_div_iphone
+    - service: mobile_app_lolo_s_iphone
+    - service: mobile_app_div_iphone
