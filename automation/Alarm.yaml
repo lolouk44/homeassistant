@@ -130,6 +130,10 @@
       data:
         entity_id: camera.garage
         filename: '/config/www/CCTV_Snapshots/Garage.jpg'
+    - service: camera.snapshot
+      data:
+        entity_id: camera.doorbell
+        filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
     - service: notify.gmaillolo
       data_template:
         title: "HA - Alarm Triggered !"
@@ -152,6 +156,7 @@
             - /config/www/CCTV_Snapshots/Side.jpg
             - /config/www/CCTV_Snapshots/Back.jpg
             - /config/www/CCTV_Snapshots/Garage.jpg
+            - /config/www/CCTV_Snapshots/Doorbell.jpg
     - service: notify.gmaildiv
       data_template:
         title: "Alarm Triggered !"
@@ -174,6 +179,7 @@
             - /config/www/CCTV_Snapshots/Side.jpg
             - /config/www/CCTV_Snapshots/Back.jpg
             - /config/www/CCTV_Snapshots/Garage.jpg
+            - /config/www/CCTV_Snapshots/Doorbell.jpg
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
         title: "Alarm Triggered !"
@@ -254,7 +260,7 @@
           {%- endfor -%}
           {%- if is_state('binary_sensor.main_door','on') -%}Main Door,{%- endif -%}
            are not closed.
-           The alarm has not been armed !
+           The alarm is still being armed !
     - service: notify.mobile_app_div_iphone
       data_template:
         message: |
@@ -478,16 +484,19 @@
   trigger:
     - platform: state
       entity_id: sensor.fire7_battery
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
   condition:
     - condition: template
       value_template: "{{ states('sensor.fire7_battery')|int < 45 }}"
     - condition: state
-      entity_id: switch.0220016868c63aa168d9
+      entity_id: switch.fire7_charger
       state: 'off'
   action:
     - service: switch.turn_on
       data:
-        entity_id: switch.0220016868c63aa168d9
+        entity_id: switch.fire7_charger
 
 - alias: 'Alarm - Stop Charging Fire 7'
   id: alarm_-_stop_charging_fire_7
@@ -495,16 +504,19 @@
   trigger:
     - platform: state
       entity_id: sensor.fire7_battery
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
   condition:
     - condition: template
       value_template: "{{ states('sensor.fire7_battery')|int > 85 }}"
     - condition: state
-      entity_id: switch.0220016868c63aa168d9
+      entity_id: switch.fire7_charger
       state: 'on'
   action:
     - service: switch.turn_off
       data:
-        entity_id: switch.0220016868c63aa168d9
+        entity_id: switch.fire7_charger
 
 
 - alias: 'Alarm - Switch everything off when we leave home'
@@ -686,7 +698,3 @@
             category: "disarmalarm"
           action_data:
             entity_id: alarm_control_panel.alarm
-
-# {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}
-  # {% if is_state(state,"on")%}{{state_attr(state,"friendly_name")}}, {%else%}{% endif %} 
-# {%- endfor %}
