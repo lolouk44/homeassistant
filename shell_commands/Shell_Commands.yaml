@@ -19,3 +19,4 @@ stop_radiostream_sensors: /config/shell_scripts/stop_radiostream_sensors.sh
 start_radiostream_sensors: /config/shell_scripts/start_radiostream_sensors.sh
 
 fire7_reload_url: /config/shell_scripts/fire7_reload_url.sh
+restart_magic_mirror: ssh -o "StrictHostKeyChecking no" -i /config/shell_scripts/id_rsa pi@192.168.0.21 'pm2 restart mm'
