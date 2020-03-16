@@ -151,13 +151,8 @@
       entity_id: binary_sensor.pir_staircase
       to: 'on'
     - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-    - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
-    - platform: state
-      entity_id: sensor.aloe_vera_light_intensity
+      entity_id: binary_sensor.dark
+      to: 'on'
   condition:
     - condition: state
       entity_id: light.Staircase_LED_Strip
@@ -171,17 +166,9 @@
     - condition: state
       entity_id: input_boolean.xmas
       state: 'off'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
+    - condition: state
+      entity_id: binary_sensor.dark
+      state: 'on'
   action:
   - service: light.turn_on
     data:

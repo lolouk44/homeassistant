@@ -13,9 +13,14 @@
     - platform: state
       entity_id: sensor.aloe_vera_light_intensity
   condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.movies
+        state: 'on'
     - condition: or
       conditions:
       - condition: state

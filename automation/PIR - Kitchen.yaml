@@ -10,13 +10,8 @@
       entity_id: binary_sensor.pir_kitchen
       to: 'on'
     - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-    - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
-    - platform: state
-      entity_id: sensor.aloe_vera_light_intensity
+      entity_id: binary_sensor.dark
+      to: 'on'
   condition:
     - condition: state
       entity_id: binary_sensor.pir_kitchen
@@ -36,22 +31,9 @@
       - condition: state
         entity_id: input_boolean.movies
         state: 'on'
-    - condition: or
-      conditions:
-      # - condition: template
-        # value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
-      - condition: state
-        entity_id: light.conservatory
-        state: 'on'
+    - condition: state
+      entity_id: binary_sensor.dark
+      state: 'on'
   action:
   - service: light.turn_on
     data:
@@ -123,6 +105,11 @@
         entity_id: light.Kitchen_Window
         state: 'on'
   action:
+  - service: light.turn_on
+    data:
+      entity_id: group.kitchen_lights
+      brightness: 255
+  - delay: 00:00:04
   - service: light.turn_off
     data:
       entity_id: group.kitchen_lights
@@ -181,3 +168,4 @@
   - service: switch.turn_off
     data:
       entity_id: switch.kitchen_tv
+  - service: shell_command.restart_magic_mirror

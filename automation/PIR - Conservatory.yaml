@@ -5,13 +5,8 @@
       entity_id: binary_sensor.pir_conservatory
       to: 'on'
     - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-    - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
-    - platform: state
-      entity_id: sensor.aloe_vera_light_intensity
+      entity_id: binary_sensor.dark
+      to: 'on'
   condition:
     - condition: or
       conditions:
@@ -24,18 +19,15 @@
     - condition: state
       entity_id: binary_sensor.pir_conservatory
       state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
+    - condition: state
+      entity_id: binary_sensor.dark
+      state: 'on'
   action:
+  - service: light.turn_on
+    data:
+      entity_id: light.conservatory
+      brightness: 255
+  - delay: 00:00:02
   - service: light.turn_on
     data:
       entity_id: light.conservatory
@@ -115,11 +107,8 @@
       entity_id: binary_sensor.pir_living_room_back
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
+      entity_id: binary_sensor.dark
+      to: 'on'
   condition:
     - condition: state
       entity_id: light.conservatory_led_strip
@@ -130,17 +119,9 @@
     - condition: state
       entity_id: group.pirs
       state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
+    - condition: state
+      entity_id: binary_sensor.dark
+      state: 'on'
     - condition: state
       entity_id: input_boolean.xmas
       state: 'off'
