@@ -15,7 +15,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/ha_dockermon
+  resource: http://192.168.0.24:8126/container/dockermon
   name: ha_dockermon
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'

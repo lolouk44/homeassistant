@@ -63,7 +63,6 @@ bmw_connected_drive:
     password: !secret bmw_connected_drive_password
     region: "rest_of_world"
 
-breaking_changes:
 
 climate:
   - platform: mqtt
@@ -197,6 +196,8 @@ rfxtrx:
 recorder:
   db_url: !secret db_url
 
+shopping_list:
+
 ssdp:
 
 # stream:
@@ -209,11 +210,6 @@ tts:
   - platform: google_translate
     service_name: google_say
     language: 'en-uk'
-
-tuya:
-  username: !secret tuya_user
-  password: !secret tuya_password
-  country_code: 44
 
 updater:
   include_used_components: True

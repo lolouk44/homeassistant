@@ -105,21 +105,10 @@
     - platform: homeassistant
       event: start
   action:
-    # - service: group.set_visibility
-      # entity_id: group.xmas
-      # data:
-        # visible: False
     - condition: template
       value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.xmas_start", "timestamp") | default(0)) | int > 0)}}'
     - condition: template
       value_template: '{{ ((state_attr("input_datetime.xmas_end", "timestamp") | default(0)) | int ) - as_timestamp(now()) >0 }}'
-    # - service: group.set_visibility
-      # entity_id: group.xmas
-      # data_template:
-        # visible: >
-          # {% if is_state("input_boolean.xmas", "on") %}True
-          # {% else %}False
-          # {% endif %}
     - condition: state
       entity_id: input_boolean.xmas
       state: 'off'

@@ -9,7 +9,7 @@
       to: 'home'
     - platform: state
       entity_id: person.div
-      from: 'cbc'
+      to: 'phia'
     - platform: state
       entity_id: person.laurent
       to: 'home'
@@ -25,9 +25,9 @@
       - condition: template
         value_template: '{{ trigger.to_state.state  == "home"}}'
       - condition: template
-        value_template: '{{ states("person.laurent") == "verint" and (as_timestamp(now()) | timestamp_custom("%a") == "Tue" or as_timestamp(now()) | timestamp_custom("%a") == "Thu") and now().hour >= 2 and trigger.from_state.state == "cbc"}}'
+        value_template: '{{ trigger.to_state.state == "phia" and now().hour >= 2}}'
       - condition: template
-        value_template: '{{ trigger.from_state.state == "verint" and (as_timestamp(now()) | timestamp_custom("%a") == "Tue" or as_timestamp(now()) | timestamp_custom("%a") == "Thu") and now().hour >= 3}}'
+        value_template: '{{ trigger.from_state.state == "verint" and now().hour >= 3}}'
     - condition: state
       entity_id: group.door_and_window_sensors
       state: 'off'
@@ -41,7 +41,7 @@
         temperature: >-
           {% if states("sensor.season") == "summer" or states("sensor.season") == "spring" %}18
           {% elif now().hour |int < 22 and now().hour |int > 5 %}20
-          {% else  %} 18
+          {% else  %} 19
           {% endif %}
         hvac_mode: 'heat'
 
@@ -58,11 +58,6 @@
     - platform: state
       entity_id: climate.hallway
       to: 'heat'
-    # - platform: state
-      # entity_id: group.door_and_window_sensors
-      # to: 'on'
-      # for:
-        # minutes: 2
   condition:
     - condition: state
       entity_id: climate.hallway

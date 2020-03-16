@@ -140,7 +140,3 @@
             category: "alert"
           action_data:
             entity_id: '{{trigger.entity_id}}'
-
-# {% for state in states.group.door_and_window_sensors.attributes['entity_id']  -%}
-  # {% if is_state(state,"on")%}{{state_attr(state,"friendly_name")}}, {%else%}{% endif %} 
-# {%- endfor %}

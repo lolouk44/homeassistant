@@ -39,12 +39,6 @@
     - condition: state
       entity_id: media_player.kitchen
       state: 'off'
-    - condition: state
-      entity_id: media_player.onkyo
-      state: 'off'
-    - condition: state
-      entity_id: media_player.onkyo_tx_nr656
-      state: 'off'
   action:
   - service: media_player.turn_off
     entity_id: media_player.onkyo_tx_nr656
