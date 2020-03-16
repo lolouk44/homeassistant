@@ -10,6 +10,29 @@
       entity_id: input_boolean.normal
       state: 'on'
   action:
+  - service: scene.create
+    data_template:
+      scene_id: pre_doorbell_state
+      entities:
+        media_player.google_home_minis:
+          volume_level:>
+            {{state_attr("media_player.google_home_minis","volume_level")}}
+        media_player.panasonic_viera_tv:
+          state:>
+            {{states("media_player.panasonic_viera_tv")}}
+        media_player.onkyo_tx_nr656:
+          state:>
+            {{states("media_player.onkyo_tx_nr656")}}
+          volume_level:>
+            {{state_attr("media_player.onkyo_tx_nr656","volume_level")}}
+          source:>
+            {{state_attr("media_player.onkyo_tx_nr656","source")}}
+
+  # - service: media_player.play_media
+    # data:
+      # entity_id: media_player.mibox3
+      # media_content_id: http://192.168.0.23:8088
+      # media_content_type: 'image/jpeg'
   - service: media_player.volume_set
     data_template:
       entity_id: media_player.google_home_minis
@@ -19,11 +42,31 @@
       entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
+  - service: media_player.volume_mute
+    data_template:
+      entity_id: media_player.house
+      is_volume_muted: true
   - service: camera.snapshot
     data:
       entity_id: camera.doorbell
       filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
-  - delay: 00:00:10
+  # - service_template: '{% if states("light.living_room_main") == "on" %}light.turn_on{% else %}light.turn_off{% endif %}'
+    # data_template:
+      # entity_id: light.living_room_main
+      # brightness: '{% if states("light.living_room_main") == "on" %}255{% else %}0{% endif %}'
+  # - service: media_player.play_media
+    # data:
+      # entity_id: media_player.mibox3
+      # media_content_id: http://192.168.0.23:8088
+      # media_content_type: 'image/jpeg'
+      
+  - delay: 00:00:30
+  # - service: scene.turn_on
+    # data:
+      # entity_id: scene.pre_doorbell_state
+  # - service: media_player.turn_off
+    # data:
+      # entity_id: media_player.mibox3
   - service: media_player.volume_set
     data_template:
       entity_id: media_player.google_home_minis
