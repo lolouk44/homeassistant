@@ -58,3 +58,9 @@
   icon: mdi:chip
   unit_of_measurement: '%'
   force_update: true
+
+- platform: rest
+  name: docker_hub_pulls
+  resource: https://hub.docker.com/v2/repositories/lolouk44/xiaomi-mi-scale/
+  value_template: '{{ value_json.pull_count | int }}'
+  unit_of_measurement: 'Pulls'
