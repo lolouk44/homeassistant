@@ -1,4 +1,4 @@
-- alias: Turn Movies on when Kodi is Playing
+- alias: MiBox - Turn Movies on when Kodi is Playing
   initial_state: true
   trigger:
     platform: state
@@ -10,33 +10,6 @@
       state: 'on'
     - condition: template
       value_template: '{{state_attr("media_player.kodi","media_title").split(" ")[0] != "Pups"}}'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.movies
-
-- alias: Turn Movies on when Netflix or Prime is Playing
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: media_player.mi_box3_adtv
-    to: 'playing'
-  condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
-    - condition: template
-      value_template: '{{state_attr("media_player.kodi","app_name") == "com.amazon.amazonvideo.livingroom" or state_attr("media_player.kodi","app_name") == "Netflix"}}'
     - condition: state
       entity_id: binary_sensor.dark
       state: 'on'
@@ -44,17 +17,62 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.movies
 
-- alias: Set Onkyo to StreamBox When Kodi or MiBox CC is playing
-  initial_state: false
+- alias: MiBox - Turn Movies on when Netflix or Prime is Playing
+  initial_state: true
   trigger:
+    platform: state
+    entity_id: media_player.mi_box3_adtv
+    to: 'playing'
+    for:
+      minutes: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: template
+      value_template: '{{state_attr("media_player.mi_box3_adtv","app_name") == "com.amazon.amazonvideo.livingroom" or state_attr("media_player.mi_box3_adtv","app_name") == "Netflix"}}'
+    - condition: state
+      entity_id: binary_sensor.dark
+      state: 'on'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.movies
+
+- alias: MiBox - Dim Lights when Kodi, Netflix or Prime is Paused
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: media_player.mi_box3_adtv
+      to: 'paused'
+    - platform: state
+      entity_id: media_player.kodi
+      to: 'paused'
+  condition:
+    - condition: state
+      entity_id: input_boolean.movies
+      state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room_main
+      brightness: 11
+
+- alias: MiBox - Turn Lights Off when Kodi, Netflix or Prime is Unpaused
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: media_player.mi_box3_adtv
+      to: 'playing'
+      from: 'paused'
     - platform: state
       entity_id: media_player.kodi
       to: 'playing'
-    - platform: state
-      entity_id: media_player.mibox3
-      to: 'playing'
+      from: 'paused'
+  condition:
+    - condition: state
+      entity_id: input_boolean.movies
+      state: 'on'
   action:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.onkyo_tx_nr656
-        source: 'Stream-Box'
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_main
