@@ -41,6 +41,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Panasonic TX58DX700 TV
 - RFXCOM RFXtrx433 433MHz transceiver
 - Sky+HD Box
+- Smart Blinds (Electric Tubular Motor with 433MHz receiver)
 - Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
 - Tile Mate, Slim trackers
 - Verint S5003FD Camera

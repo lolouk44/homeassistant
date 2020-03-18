@@ -60,6 +60,14 @@ cards:
       - entity: sensor.kitchen_freezer_temperature_battery
         secondary_info: last-changed
   - type: entities
+    title: Blinds
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: cover.kitchen_blinds
+        secondary_info: last-changed
+        icon: mdi:blinds
+  - type: entities
     title: Anova Sous-Vide
     state_color: true
     show_header_toggle: false

@@ -1,0 +1,5 @@
+- platform: rfxtrx
+  automatic_add: false
+  devices:
+    091903076C911A000070:
+      name: Kitchen Blinds
