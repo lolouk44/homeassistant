@@ -140,3 +140,19 @@
             category: "alert"
           action_data:
             entity_id: '{{trigger.entity_id}}'
+
+- alias: Yale - Unlock when Opening Main Door From Inside
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.main_door
+      to: "on"
+  condition:
+    - condition: template
+      value_template: '{{ states("group.pirs") == "on" }}'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.lock.yale_conexis_l1_lock.last_changed) | int > 120)}}'
+  action:
+    - service: lock.unlock
+      data:
+        entity_id: lock.yale_conexis_l1_lock
