@@ -34,3 +34,28 @@
 {{ bigCarList().split(',') | reject('eq','False') | list | count}}
 
 This makes a macro that returns a string of true/falses. I.E. 'True,False,True,False,False'. Then it splits the string on the comma to get a list of strings. I.E. ['True','False','True','False','False']. After that, it rejects any string in the list that is equal to false. So we end up with a shorter list of just trues. I.E. ['True','True']. Lastly, we count the number of items in the list, which will be the number of times that this statement returned true (car.box[3] - car.box[1]) > 0.4
+
+
+
+{% set last_triggered = states.sensor.wfc_thermo.attributes.last_triggered %}
+{% set time_since = as_timestamp(now()) - as_timestamp(last_triggered) %}
+{% macro phrase(value, name) %}
+  {%- set value = value | int %}
+  {%- set end = 's' if value > 1 else '' %}
+  {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+{%- endmacro %}
+{%- if (as_timestamp(now()) | timestamp_custom('%m',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%m',false) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%m',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%m',false) | int) , 'month')}}, 
+{%- endif -%}
+{%- if (as_timestamp(now()) | timestamp_custom('%d',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%d',false) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%d',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%d',false) | int) , 'day')}}, 
+{%- endif -%}
+{%- if (as_timestamp(now()) | timestamp_custom('%H',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%H',false) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%H',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%H',false) | int) , 'hour')}}, 
+{%- endif -%}
+{%- if (as_timestamp(now()) | timestamp_custom('%M',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%M',false) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%M',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%M',false) | int) , 'minute')}}, 
+{%- endif -%}
+{%- if (as_timestamp(now()) | timestamp_custom('%S',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%S',false) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%S',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%S',false) | int) , 'second')}} ago
+{%- endif -%}
