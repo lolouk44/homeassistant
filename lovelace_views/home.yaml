@@ -220,13 +220,13 @@ cards:
     entities:
       - entity: sensor.united_kingdom_coronavirus_confirmed
         secondary_info: last-changed
-        icon: mdi:emoticon-neutral-outline
+        # icon: mdi:emoticon-neutral-outline
       - entity: sensor.united_kingdom_coronavirus_current
         secondary_info: last-changed
-        icon: mdi:emoticon-sad-outline
+        # icon: mdi:emoticon-sad-outline
       - entity: sensor.united_kingdom_coronavirus_deaths
         secondary_info: last-changed
-        icon: mdi:emoticon-dead-outline
+        # icon: mdi:emoticon-dead-outline
       - entity: sensor.united_kingdom_coronavirus_recovered
         secondary_info: last-changed
-        icon: mdi:emoticon-happy-outline
+        # icon: mdi:emoticon-happy-outline

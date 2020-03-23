@@ -38,14 +38,15 @@ cards:
         type: section
         label: Server Stats
       open: true
-    entities:
-      - sensor.uptime
-      - sensor.currentcost_power
-      - sensor.cpu_usage
-      - sensor.ram_usage
-      - sensor.hass_db_size_formatted
-      - sensor.ssl_cert_expiry
-      - sensor.docker_hub_pulls
+    filter:
+      include:
+        - entity_id: sensor.uptime
+        - entity_id: sensor.currentcost_power
+        - entity_id: sensor.cpu_usage
+        - entity_id: sensor.ram_usage
+        - entity_id: sensor.hass_db_size_formatted
+        - entity_id: sensor.ssl_cert_expiry
+        - entity_id: sensor.docker_hub_pulls
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -53,11 +54,12 @@ cards:
         type: section
         label: CCTV2 Server Stats
       open: true
-    entities:
-      - sensor.cctv2_cpu_usage
-      - sensor.cctv2_ram_usage
-      - sensor.cctv2_root_disk_usage
-      - sensor.cctv2_disk_temp
+    filter:
+      include:
+        - entity_id: sensor.cctv2_cpu_usage
+        - entity_id: sensor.cctv2_ram_usage
+        - entity_id: sensor.cctv2_root_disk_usage
+        - entity_id: sensor.cctv2_disk_temp
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -90,31 +92,32 @@ cards:
         label: Docker Containers
       open: false
     state_color: true
-    entities:
-      - entity: switch.grafana
-        name: Grafana
-      - entity: switch.ha_dockermon
-        name: Dockermon
-      - entity: switch.influxdb
-        name: InfluxDB
-      - entity: switch.letsencrypt
-        name: LetsEncrypt
-      - entity: switch.plex
-        name: Plex
-      - entity: switch.portainer
-        name: Portainer
-      - entity: switch.syncthing
-        name: SyncThing
-      - entity: switch.watchtower
-        name: WatchTower
-      - entity: switch.zigbee2mqtt
-        name: ZigBee2MQTT
-      - entity: switch.zigbee2mqtt_permit_join
-        name: ZigBee2MQTT Permit Join
-      - entity: switch.cctv2_ha
-        name: CCTV2 HA
-      - entity: switch.cctv2_motion
-        name: CCTV2 Motion
+    filter:
+      include:
+      - entity_id: switch.grafana
+        # name: Grafana
+      - entity_id: switch.ha_dockermon
+        # name: Dockermon
+      - entity_id: switch.influxdb
+        # name: InfluxDB
+      - entity_id: switch.letsencrypt
+        # name: LetsEncrypt
+      - entity_id: switch.plex
+        # name: Plex
+      - entity_id: switch.portainer
+        # name: Portainer
+      - entity_id: switch.syncthing
+        # name: SyncThing
+      - entity_id: switch.watchtower
+        # name: WatchTower
+      - entity_id: switch.zigbee2mqtt
+        # name: ZigBee2MQTT
+      - entity_id: switch.zigbee2mqtt_permit_join
+        # name: ZigBee2MQTT Permit Join
+      - entity_id: switch.cctv2_ha
+        # name: CCTV2 HA
+      - entity_id: switch.cctv2_motion
+        # name: CCTV2 Motion
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -122,22 +125,23 @@ cards:
         type: section
         label: Hygro Sensors
       open: false
-    entities:
-      - sensor.aloe_vera_temperature
-      - sensor.currentcost_temperature
-      - sensor.hallway_thermostat_temperature
-      - sensor.loft_temperature
-      - sensor.master_bedroom_aqara_temperature
-      - sensor.kitchen_freezer_temperature
-      - sensor.garage_freezer_temperature
-      - sensor.upstairs_temperature
-      - sensor.aloe_vera_moisture
-      - sensor.hallway_thermostat_humidity
-      - sensor.loft_humidity
-      - sensor.master_bedroom_aqara_humidity
-      - sensor.kitchen_freezer_humidity
-      - sensor.garage_freezer_humidity
-      - sensor.upstairs_humidity
+    filter:
+      include:
+       - entity_id: sensor.aloe_vera_temperature
+       - entity_id: sensor.currentcost_temperature
+       - entity_id: sensor.hallway_thermostat_temperature
+       - entity_id: sensor.loft_temperature
+       - entity_id: sensor.master_bedroom_aqara_temperature
+       - entity_id: sensor.kitchen_freezer_temperature
+       - entity_id: sensor.garage_freezer_temperature
+       - entity_id: sensor.upstairs_temperature
+       - entity_id: sensor.aloe_vera_moisture
+       - entity_id: sensor.hallway_thermostat_humidity
+       - entity_id: sensor.loft_humidity
+       - entity_id: sensor.master_bedroom_aqara_humidity
+       - entity_id: sensor.kitchen_freezer_humidity
+       - entity_id: sensor.garage_freezer_humidity
+       - entity_id: sensor.upstairs_humidity
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -145,13 +149,14 @@ cards:
         type: section
         label: Server Disk Stats
       open: false
-    entities:
-      - sensor.home_disk_usage
-      - sensor.root_disk_usage
-      - sensor.zfs_disk_usage
-      - sensor.sda_disk_temp
-      - sensor.zfs1_disk_temp
-      - sensor.zfs2_disk_temp
+    filter:
+      include:
+      - entity_id: sensor.home_disk_usage
+      - entity_id: sensor.root_disk_usage
+      - entity_id: sensor.zfs_disk_usage
+      - entity_id: sensor.sda_disk_temp
+      - entity_id: sensor.zfs1_disk_temp
+      - entity_id: sensor.zfs2_disk_temp
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -159,18 +164,19 @@ cards:
         type: section
         label: Goggle Assistant
       open: false
-    entities:
-      - input_boolean.normal
-      - input_boolean.movies
-      - input_boolean.xmas
-      - input_boolean.scheduled_vacuuming
-      - input_boolean.absolute_radio_radio
-      - input_boolean.absolute_radio_cr_radio
-      - input_boolean.chill_radio
-      - input_boolean.radio_fiji_two_radio
-      - input_boolean.radio_navtarang
-      - input_boolean.rtl2_radio
-      - input_boolean.multimedia
+    filter:
+      include:
+      - entity_id: input_boolean.normal
+      - entity_id: input_boolean.movies
+      - entity_id: input_boolean.xmas
+      - entity_id: input_boolean.scheduled_vacuuming
+      - entity_id: input_boolean.absolute_radio_radio
+      - entity_id: input_boolean.absolute_radio_cr_radio
+      - entity_id: input_boolean.chill_radio
+      - entity_id: input_boolean.radio_fiji_two_radio
+      - entity_id: input_boolean.radio_navtarang
+      - entity_id: input_boolean.rtl2_radio
+      - entity_id: input_boolean.multimedia
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -198,14 +204,15 @@ cards:
         type: section
         label: Connected Devices
       open: false
-    entities:
-      - binary_sensor.dafang_kitchen
-      - binary_sensor.dafang_living_room
-      - binary_sensor.kello
-      - binary_sensor.main
-      - binary_sensor.rpi_kitchen
-      - binary_sensor.rpi
-      - binary_sensor.house_number_led_strip
-      - binary_sensor.staircase_led_strip
-      - binary_sensor.tv_cabinet_led_strip
-      - binary_sensor.conservatory_led_strip
+    filter:
+      include:
+      - entity_id: binary_sensor.dafang_kitchen
+      - entity_id: binary_sensor.dafang_living_room
+      - entity_id: binary_sensor.kello
+      - entity_id: binary_sensor.main
+      - entity_id: binary_sensor.rpi_kitchen
+      - entity_id: binary_sensor.rpi
+      - entity_id: binary_sensor.house_number_led_strip
+      - entity_id: binary_sensor.staircase_led_strip
+      - entity_id: binary_sensor.tv_cabinet_led_strip
+      - entity_id: binary_sensor.conservatory_led_strip

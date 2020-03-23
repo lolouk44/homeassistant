@@ -1,53 +1,23 @@
 title: Home
-resources:
-    #Kiosk mode for Alarm panel https://gist.github.com/ciotlosm/1f09b330aa5bd5ea87b59f33609cc931
-  - url: /local/kiosk.js?v=1.1
-    type: js
-    # https://github.com/thomasloven/lovelace-card-tools
-  - url: /hacsfiles/lovelace-card-tools/card-tools.js
-    type: module
-    # fold-entity https://github.com/thomasloven/lovelace-fold-entity-row
-  - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
-    type: js
-    #auto-entities  https://github.com/thomasloven/lovelace-auto-entities
-  - url: /local/auto-entities.js
-    type: module
-    #Mini media player https://github.com/kalkih/mini-media-player
-  - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
-    type: module
-    #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
-  - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
-    type: js
-    # Fully Kiosk https://github.com/thomasloven/lovelace-fullykiosk
-  # - url: /local/lovelace-fullykiosk.js
-    # type: js
-  # - url: /local/kiosk-config.js
-    # type: js
-    # Animated Weather Card https://github.com/bramkragten/weather-card
-  - url: /hacsfiles/weather-card/weather-card.js
-    type: module
-    # Home Feed Card Card https://github.com/gadgetchnnel/lovelace-home-feed-card
-  - url: /hacsfiles/lovelace-home-feed-card/lovelace-home-feed-card.js
-    type: js
 
-    # Compact Custom Header https://github.com/maykar/custom-header
-  - url: /hacsfiles/custom-header/custom-header.js
-    type: module
-  # - url: /local/compact-custom-header.js?v=0.0.1
-    # type: js
 
-  - url: /hacsfiles/secondaryinfo-entity-row/secondaryinfo-entity-row.js
-    type: js
 
 custom_header:
   compact_mode: true
+  show_tabs: 0
+  kiosk_mode: true
   exceptions:
     - conditions:
-        user: Fire7
+        user: Laurent, Divashni
       config:
-        show_tabs: 0
-        kiosk_mode: true
+        show_tabs: '0 to 16'
+        kiosk_mode: false
 
+preload:
+  - gauge
+  - picture-glance
+  - conditional
+  - picture-entity
 views:
   - !include /config/lovelace_views/alarm.yaml
   - !include /config/lovelace_views/home.yaml
