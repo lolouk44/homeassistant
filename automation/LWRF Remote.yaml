@@ -91,7 +91,7 @@
   action:
   - service: media_player.volume_mute
     data:
-      entity_id: media_player.house
+      entity_id: media_player.conservatory, media_player.house, media_player.kitchen, media_player.onkyo_tx_nr656_2
       is_volume_muted: false
 
 - alias: LWRF Remote 3 Off
@@ -111,5 +111,5 @@
   action:
   - service: media_player.volume_mute
     data:
-      entity_id: media_player.house
+      entity_id: media_player.conservatory, media_player.house, media_player.kitchen, media_player.onkyo_tx_nr656_2
       is_volume_muted: true

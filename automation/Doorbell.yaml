@@ -42,14 +42,15 @@
       entity_id: media_player.google_home_minis
       media_content_id: 'http://192.168.0.24/audio/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
-  - service: media_player.volume_mute
-    data_template:
-      entity_id: media_player.house
-      is_volume_muted: true
   - service: camera.snapshot
     data:
       entity_id: camera.doorbell
       filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
+  - service: media_player.volume_mute
+    data_template:
+      entity_id: media_player.conservatory, media_player.house, media_player.kitchen, media_player.onkyo_tx_nr656_2
+      is_volume_muted: true
+
   # - service_template: '{% if states("light.living_room_main") == "on" %}light.turn_on{% else %}light.turn_off{% endif %}'
     # data_template:
       # entity_id: light.living_room_main
