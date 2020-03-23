@@ -278,7 +278,6 @@ bmw_unlocked:
   can_acknowledge: True
   skip_first: True
   repeat:
-    - 5
     - 10
     - 15
     - 30

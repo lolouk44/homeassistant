@@ -63,6 +63,7 @@
       value_template: '{{ states("device_tracker.laurent") != "driving"}}'
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
+        title: "HA - BMW"
         message: 'BMW 220d Not Locked !'
         data:
           push:
