@@ -6,11 +6,11 @@
         - media_player.house
         - media_player.kitchen
         - media_player.onkyo
-        - media_player.onkyo_tx_nr656
+        - media_player.onkyo_tx_nr656_2
       value_template: >
         {% set myval = namespace(found=0) %}
         {%- for state in states.media_player -%}
-        {%- if state.entity_id in ["media_player.conservatory", "media_player.house", "media_player.kitchen",  "media_player.onkyo", "media_player.onkyo_tx_nr656"] -%}
+        {%- if state.entity_id in ["media_player.conservatory", "media_player.house", "media_player.kitchen", "media_player.onkyo", "media_player.onkyo_tx_nr656_2"] -%}
         {% if state_attr(state.entity_id, "media_content_id") in ["http://streaming.radio.rtl2.fr:80/rtl2-1-44-96", "http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3", "http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3", "http://broadcast.infomaniak.ch/hitwest-high.mp3", states("sensor.ha_podcast"), states("sensor.internet_of_things_podcast"), "http://media-the.musicradio.com/ChillMP3", "http://peridot.streamguys.com:7150/RFTwo?play", states("input_text.custom_station")] -%}{% set myval.found = myval.found + 1%}{%- endif -%}
         {%- endif -%}  
         {%- endfor %}
