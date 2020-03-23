@@ -1,5 +1,5 @@
 - platform: rfxtrx
-  automatic_add: True
+  automatic_add: true
   devices:
     0A520700240E00E4360179:
       name: Upstairs

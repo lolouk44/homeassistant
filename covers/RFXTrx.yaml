@@ -3,3 +3,4 @@
   devices:
     091903076C911A000070:
       name: Kitchen Blinds
+      fire_event: true

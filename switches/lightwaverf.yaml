@@ -1,5 +1,5 @@
 - platform: rfxtrx
-  # automatic_add: True
+  automatic_add: false
   signal_repetitions: 2
   devices:
     0A14001E01010404000070:
