@@ -6,7 +6,7 @@ play_chromecast_radio:
         entity_id: >
           {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-          {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656_2
+          {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo_TX_NR656_2") %} media_player.onkyo_tx_nr656_2
           {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
           {% endif %}
         volume_level: '{{  states("input_number.volume_radio")  }}' 
@@ -14,7 +14,7 @@ play_chromecast_radio:
       data_template:
         entity_id: >
           {% if is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-          {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656_2
+          {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo_TX_NR656_2") %} media_player.onkyo_tx_nr656_2
           {% elif is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
           {% endif %}
@@ -40,7 +40,7 @@ stop_chromecast_radio:
         entity_id: >
           {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-          {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656_2
+          {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo_TX_NR656_2") %} media_player.onkyo_tx_nr656_2
           {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
           {% endif %}
 
