@@ -128,22 +128,22 @@ light.bauble_2:
   icon: mdi:google-circles-communities
 light.bauble_3:
   icon: mdi:google-circles-communities
-light.conservatory_led_strip:
-  icon: mdi:vector-polyline
+light.wled_conservatory:
+  icon: mdi:led-strip-variant
 light.garage_led_strip:
-  icon: mdi:vector-polyline
+  icon: mdi:led-strip-variant
 light.aqara_gateway_light:
   icon: mdi:circle-slice-8
-light.house_number_led_strip:
+light.wled_house_number:
   icon: mdi:numeric-4-box-multiple-outline
 light.kiaan_lamp:
   icon: mdi:lamp
 light.porch_om_xmas_led_strip:
   icon: mdi:hinduism
 light.Staircase_LED_Strip:
-  icon: mdi:vector-polyline
+  icon: mdi:led-strip-variant
 light.TV_Cabinet_LED_Strip:
-  icon: mdi:vector-polyline
+  icon: mdi:led-strip-variant
 
 #Media_Players
 media_player.mibox3:

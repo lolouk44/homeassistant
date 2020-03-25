@@ -73,7 +73,7 @@ entity_config:
     room: 'Conservatory'
     expose: true
 
-  light.conservatory_led_strip:
+  light.wled_conservatory:
     name: "Conservatory LED Strip"
     room: 'Conservatory'
     expose: true

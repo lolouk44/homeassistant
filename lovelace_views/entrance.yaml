@@ -49,9 +49,8 @@ cards:
           secondary_info: last-changed
         - entity: light.aqara_gateway_light
           secondary_info: last-changed
-        - entity: light.porch_om_xmas_led_strip
+        - entity: light.wled_house_number
           secondary_info: last-changed
-          name: Om LED Strip
           icon: mdi:numeric-4-box-multiple-outline
   - type: entities
     title: Nest Thermostat

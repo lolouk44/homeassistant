@@ -38,7 +38,7 @@ alarm_flash_ligthts:
         rgb_color: [255,0,0]
     - service: light.turn_on
       data:
-        entity_id: light.conservatory_led_strip
+        entity_id: light.wled_conservatory
         brightness: 255
         rgb_color: [255,0,0]
     - service: light.turn_on
@@ -53,7 +53,7 @@ alarm_flash_ligthts:
         rgb_color: [255,0,0]
     - service: light.turn_on
       data:
-        entity_id: light.house_number_led_strip
+        entity_id: light.wled_house_number
         brightness: 255
         rgb_color: [255,0,0]
     - service: light.turn_on
@@ -66,13 +66,13 @@ alarm_flash_ligthts:
     - service: light.turn_off
       entity_id: light.aqara_gateway_light
     - service: light.turn_off
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
     - service: light.turn_off
       entity_id: light.staircase_led_strip
     - service: light.turn_off
       entity_id: light.tv_cabinet_led_strip
     - service: light.turn_off
-      entity_id: light.house_number_led_strip
+      entity_id: light.wled_house_number
     - service: light.turn_off
       entity_id: light.kiaan_lamp
     - service: script.turn_on

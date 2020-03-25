@@ -227,7 +227,7 @@
   action:
   - service: light.turn_on
     data:
-      entity_id: light.porch_om_xmas_led_strip
+      entity_id: light.wled_house_number
       brightness: 255
       effect: solid
       rgb_color: [0,0,255]
@@ -236,7 +236,7 @@
     state: 'on'
   - service: light.turn_on
     data:
-      entity_id: light.porch_om_xmas_led_strip
+      entity_id: light.wled_house_number
       brightness: 160
       effect: rainbow
 
@@ -260,4 +260,4 @@
   action:
   - service: light.turn_off
     data:
-      entity_id: light.porch_om_xmas_led_strip
+      entity_id: light.wled_house_number

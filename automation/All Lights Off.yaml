@@ -27,11 +27,11 @@
   - delay: 00:00:01
   - service: light.turn_off
     data:
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
   - delay: 00:00:01
   - service: light.turn_off
     data:
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
 
 
 - alias: All Lights Off - Sunrise
@@ -58,9 +58,9 @@
   - delay: 00:00:01
   - service: light.turn_off
     data:
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
   - delay: 00:00:01
   - service: light.turn_off
     data:
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
 

@@ -215,13 +215,13 @@
     - service: light.turn_off
       entity_id: light.aqara_gateway_light
     - service: light.turn_off
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
     - service: light.turn_off
       entity_id: light.staircase_led_strip
     - service: light.turn_off
       entity_id: light.tv_cabinet_led_strip
     - service: light.turn_off
-      entity_id: light.house_number_led_strip
+      entity_id: light.wled_house_number
     - service: light.turn_off
       entity_id: light.kiaan_lamp
 

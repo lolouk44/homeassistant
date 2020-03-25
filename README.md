@@ -22,6 +22,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - [Cresta TS34C](https://www.conrad-electronic.co.uk/ce/en/product/672148/5-Channel-TS34C-Wireless-Thermo-Hygro-Sensor) Hygrometers
 - CurrentCost EnviR Energy Monitor & IAM Energy Monitors
 - [Edimax SP-2101W](https://www.amazon.co.uk/Edimax-Switch-Intelligent-Energy-Management/dp/B00T647F2C/)
+- ESP32 with [WLED](https://github.com/Aircoookie/WLED)
 - Google ChromeCast Audio
 - Google Home Mini
 - Hikvision DS-2CD2142FWD-I and DS-2CD2355FWD-I Cameras

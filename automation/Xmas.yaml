@@ -41,12 +41,12 @@
       effect: colorfade_fast
   - service: light.turn_on
     data:
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
       effect: "rainbow"
       brightness: 255
   - service: light.turn_on
     data:
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
       effect: "rainbow"
       brightness: 255
   - service: switch.turn_on
@@ -89,7 +89,7 @@
       entity_id: switch.lwrf_socket_xmas
   - service: light.turn_off
     data:
-      entity_id: light.conservatory_led_strip
+      entity_id: light.wled_conservatory
   - service: switch.turn_off
     data:
       entity_id: switch.edimax1
