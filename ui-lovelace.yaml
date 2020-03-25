@@ -13,11 +13,11 @@ custom_header:
         show_tabs: '0 to 16'
         kiosk_mode: false
 
-preload:
-  - gauge
-  - picture-glance
-  - conditional
-  - picture-entity
+# preload:
+  # - gauge
+  # - picture-glance
+  # - conditional
+  # - picture-entity
 views:
   - !include /config/lovelace_views/alarm.yaml
   - !include /config/lovelace_views/home.yaml
