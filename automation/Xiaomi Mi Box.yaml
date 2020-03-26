@@ -30,7 +30,7 @@
       entity_id: input_boolean.normal
       state: 'on'
     - condition: template
-      value_template: '{{state_attr("media_player.mi_box3_adtv","app_name") == "com.amazon.amazonvideo.livingroom" or state_attr("media_player.mi_box3_adtv","app_name") == "Netflix"}}'
+      value_template: '{{state_attr("media_player.mi_box3_adtv","app_name") == "com.amazon.amazonvideo.livingroom" or state_attr("media_player.mi_box3_adtv","app_name") == "Netflix" or state_attr("media_player.mi_box3_adtv","app_name") ==  "com.disney.disneyplus" }}'
     - condition: state
       entity_id: binary_sensor.dark
       state: 'on'
