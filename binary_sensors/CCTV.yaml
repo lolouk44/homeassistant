@@ -11,28 +11,42 @@
       entity_id: sensor.dafang_living_room_connection_scrape
       value_template: >
         {{ states("sensor.dafang_living_room_connection_scrape") == 'OK'}}
-      friendly_name: Dafang Living Room Connection Status
+      friendly_name: Dafang Living Room Video Feed Status
       device_class: connectivity
 
     dafang_kitchen_connection_status:
       entity_id: sensor.dafang_kitchen_connection_scrape
       value_template: >
         {{ states("sensor.dafang_kitchen_connection_scrape") == 'OK'}}
-      friendly_name: Dafang Kitchen Connection Status
+      friendly_name: Dafang Kitchen Video Feed Status
       device_class: connectivity
 
     dafang_conservatory_connection_status:
       entity_id: sensor.dafang_conservatory_connection_scrape
       value_template: >
         {{ states("sensor.dafang_conservatory_connection_scrape") == 'OK'}}
-      friendly_name: Dafang Conservatory Connection Status
+      friendly_name: Dafang Conservatory Video Feed Status
       device_class: connectivity
 
     garage_cctv_connection_status:
       entity_id: sensor.cctv_garage_connection_scrape
       value_template: >
         {{ states("sensor.cctv_garage_connection_scrape") == 'OK'}}
-      friendly_name: Garage CCTV Connection Status
+      friendly_name: Garage CCTV Video Feed Status
+      device_class: connectivity
+
+    doorbell_cctv_connection_status:
+      entity_id: sensor.cctv_doorbell_connection_scrape
+      value_template: >
+        {{ states("sensor.cctv_doorbell_connection_scrape") == 'OK'}}
+      friendly_name: Doorbell CCTV Video Feed Status
+      device_class: connectivity
+
+    staircase_cctv_connection_status:
+      entity_id: sensor.cctv_staircase_connection_scrape
+      value_template: >
+        {{ states("sensor.cctv_staircase_connection_scrape") == 'OK'}}
+      friendly_name: Staircase CCTV Video Feed Status
       device_class: connectivity
 
 

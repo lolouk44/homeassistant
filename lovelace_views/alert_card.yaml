@@ -9,6 +9,8 @@ entities:
   - alert.cctv_dafang_living_room_lost
   - alert.currentcost_lost
   - alert.dehumidifier_full
+  - alert.cctv_doorbell_video_feed_lost
+  - alert.cctv_staircase_video_feed_lost
   - alert.fire7_lost
   - alert.rpi_lost
   - alert.rpi_kitchen_lost
