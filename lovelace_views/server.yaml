@@ -71,6 +71,23 @@ cards:
       include:
         - entity_id: "sensor.*battery2"
         - entity_id: "sensor.*battery"
+    sort:
+      method: 'state'
+      numeric: true
+  - type: custom:auto-entities
+    state_color: true
+    card:
+      type: custom:fold-entity-row
+      head:
+        type: section
+        label: All Openings
+      open: false
+    filter:
+      include:
+        - entity_id: "binary_sensor.*window"
+        - entity_id: "binary_sensor.*door"
+    sort:
+      method: 'name'
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -84,6 +101,8 @@ cards:
         - entity_id: binary_sensor.door_lock
         - entity_id: "binary_sensor.pir*"
         - entity_id: binary_sensor.photoresistor
+    sort:
+      method: 'name'
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -187,6 +206,8 @@ cards:
     filter:
       include:
         - entity_id: "light.*"
+    sort:
+      method: 'name'
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -197,8 +218,11 @@ cards:
     filter:
       include:
         - entity_id: "switch.*"
+    sort:
+      method: 'name'
   - type: custom:auto-entities
     card:
+      state_color: true
       type: custom:fold-entity-row
       head:
         type: section
