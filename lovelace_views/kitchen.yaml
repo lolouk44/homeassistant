@@ -43,6 +43,7 @@ cards:
       - entity: switch.kitchen_tv
         secondary_info: last-changed
       - input_select.mm_cam_feed
+      - script.restart_mm
   - type: entities
     title: Fridge Freezer
     show_header_toggle: false
