@@ -1,4 +1,4 @@
-- alias: Conservatory Lights On PIR
+- alias: Lights - Conservatory Lights On PIR
   initial_state: true
   trigger:
     - platform: state
@@ -35,7 +35,7 @@
 
 
 
-- alias: Conservatory Lights Dimmed Off PIR
+- alias: Lights - Conservatory Lights Dimmed Off PIR
   initial_state: true
   trigger:
     - platform: state
@@ -60,7 +60,7 @@
       brightness: 11
 
 
-- alias: Conservatory Lights Off PIR
+- alias: Lights - Conservatory Lights Off PIR
   initial_state: true
   trigger:
     - platform: state
@@ -78,7 +78,7 @@
         entity_id: input_boolean.movies
         state: 'on'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.conservatory_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_conservatory_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
     - condition: state
       entity_id: binary_sensor.pir_conservatory
       state: 'off'
@@ -91,7 +91,7 @@
       entity_id: light.conservatory
 
 
-- alias: Conservatory LED Lights On PIR
+- alias: Lights - Conservatory LED Lights On PIR
   initial_state: true
   trigger:
     - platform: state

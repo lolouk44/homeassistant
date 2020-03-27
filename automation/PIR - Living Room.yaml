@@ -1,4 +1,4 @@
-- alias: Living Room Main Light On PIR
+- alias: Lights - Living Room Main Light On PIR
   initial_state: true
   trigger:
     - platform: state
@@ -19,7 +19,7 @@
       - condition: template
         value_template: '{{ state_attr("light.living_room_main","brightness") | int < 250 }}'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.living_room_main_light_on_pir","last_triggered") | default(0)) | int > 10 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_on_pir","last_triggered") | default(0)) | int > 10 )}}'
     - condition: and
       conditions:
         - condition: state
@@ -49,7 +49,7 @@
       entity_id: switch.lwrf_socket_3
 
 
-- alias: Living Room Main Light Dimmed Off PIR
+- alias: Lights - Living Room Main Light Dimmed Off PIR
   initial_state: true
   trigger:
     - platform: state
@@ -82,7 +82,7 @@
 
 
 
-- alias: Living Room Main Light Off PIR
+- alias: Lights - Living Room Main Light Off PIR
   initial_state: true
   trigger:
     - platform: state
@@ -95,7 +95,7 @@
         minutes: 2
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.living_room_main_light_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
@@ -129,7 +129,7 @@
 
 
 
-- alias: Living Room Main Light Dimmed
+- alias: Lights - Living Room Main Light Dimmed
   initial_state: true
   trigger:
     - platform: state
@@ -143,7 +143,7 @@
       to: 'on'
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.living_room_main_light_dimmed", "last_triggered") | default(0)) | int > 10 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_dimmed", "last_triggered") | default(0)) | int > 10 )}}'
     - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'on'
@@ -162,7 +162,7 @@
 
 
 
-- alias: Living Room Main Light UnDimmed
+- alias: Lights - Living Room Main Light UnDimmed
   initial_state: true
   trigger:
     - platform: state

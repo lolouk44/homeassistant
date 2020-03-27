@@ -3,7 +3,7 @@
 #{{(as_timestamp(now()) - as_timestamp(states.binary_sensor.pir_kitchen.last_updated) < 1800)}}
 
 
-- alias: Kitchen Lights On PIR
+- alias: Lights - Kitchen Lights On PIR
   initial_state: true
   trigger:
     - platform: state
@@ -44,7 +44,7 @@
       entity_id: light.hallway
 
 
-- alias: Kitchen Lights Dimmed Off PIR
+- alias: Lights - Kitchen Lights Dimmed Off PIR
   initial_state: true
   trigger:
     - platform: state
@@ -74,7 +74,7 @@
       brightness: 11
 
 
-- alias: Kitchen Lights Off PIR
+- alias: Lights - Kitchen Lights Off PIR
   initial_state: true
   trigger:
     - platform: state
@@ -92,7 +92,7 @@
         entity_id: input_boolean.movies
         state: 'on'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.kitchen_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_kitchen_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
     - condition: state
       entity_id: binary_sensor.pir_kitchen
       state: 'off'
@@ -128,7 +128,7 @@
 
 
 
-- alias: Kitchen TV On PIR
+- alias: Lights - Kitchen TV On PIR
   initial_state: true
   trigger:
     - platform: state
@@ -148,7 +148,7 @@
     data:
       entity_id: switch.kitchen_tv
 
-- alias: Kitchen TV Off PIR
+- alias: Lights - Kitchen TV Off PIR
   initial_state: true
   trigger:
     - platform: state

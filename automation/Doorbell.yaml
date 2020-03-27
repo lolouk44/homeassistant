@@ -1,4 +1,4 @@
-- alias: Doorbell Notification
+- alias: Doorbell - Doorbell Notification
   initial_state: true
   trigger:
     - platform: state

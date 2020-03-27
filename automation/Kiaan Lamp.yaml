@@ -1,4 +1,4 @@
-- alias: Kiaan Night Light Sleep
+- alias: Kiaan Night Light - Sleep
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -28,7 +28,7 @@
 
 
 
-- alias: Kiaan Night Light Wake Phase1 weekdays
+- alias: Kiaan Night Light - Wake Phase1 weekdays
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -59,7 +59,7 @@
 
 
 
-- alias: Kiaan Night Light Wake Phase1 weekend
+- alias: Kiaan Night Light - Wake Phase1 weekend
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -87,7 +87,7 @@
 
 
 
-- alias: Kiaan Night Light Wake Phase2 
+- alias: Kiaan Night Light - Wake Phase2 
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -111,7 +111,7 @@
 
 
 
-- alias: Kiaan Night Light Off weedays
+- alias: Kiaan Night Light - Off weedays
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -141,7 +141,7 @@
 
 
 
-- alias: Kiaan Night Light Off weekend
+- alias: Kiaan Night Light - Off weekend
   initial_state: true
   trigger:
     - platform: time_pattern

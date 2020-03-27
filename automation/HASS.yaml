@@ -1,4 +1,4 @@
-- alias: HASS Update Available Notification
+- alias: HASS - Update Available Notification
   initial_state: true
   trigger:
     platform: state
@@ -12,7 +12,7 @@
         title: "HA - Update Available"
         message: 'There is an update to Home-Assistant: {{states("sensor.ha_online_version")}} (https://hub.docker.com/r/homeassistant/home-assistant/builds/)'
 
-- alias: HASS Start Sound
+- alias: HASS - Start Sound
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -24,7 +24,7 @@
       media_content_id: 'http://192.168.0.24/audio/Click.mp3'
       media_content_type: 'audio/mp4'
 
-- alias: HASS Start RadioStream Scrape
+- alias: HASS - Start RadioStream Scrape
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -34,7 +34,7 @@
   - delay: 00:00:02
   - service: shell_command.start_radiostream_sensors
 
-- alias: HASS Stop Motion Detection
+- alias: HASS - Stop Motion Detection
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -47,7 +47,7 @@
   - service: switch.turn_off
     entity_id: switch.cctv_conservatory_status
 
-- alias: HASS Nightly Restart
+- alias: HASS - Nightly Restart
   initial_state: true
   trigger:
     platform: time_pattern
@@ -71,7 +71,7 @@
       payload_template: 'ON'
       retain: false
 
-- alias: 'SSL expiry notification'
+- alias: HASS - SSL expiry notification
   initial_state: true
   trigger:
     platform: template
@@ -83,7 +83,7 @@
       message: 'Warning - SSL certificate expires in <21 days and has not been automatically renewed'
 
 
-- alias: ZigBee2MQTT Docker Down
+- alias: HASS - ZigBee2MQTT Docker Down
   initial_state: true
   trigger:
     - platform: state
@@ -99,7 +99,7 @@
 
 
 
-- alias: HASS Start Xmas Setup
+- alias: HASS - Start Xmas Setup
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -124,7 +124,7 @@
         entity_id: input_boolean.silent
 
 
-- alias: "Failed Login Attempt Notification"
+- alias: HASS - Failed Login Attempt Notification
   initial_state: true
   trigger:
     - platform: state
@@ -139,7 +139,7 @@
           http://www.ip-tracker.org/locator/ip-lookup.php?ip={{ state_attr("persistent_notification.http_login", "message").split ("from ") [1]}}
 
 
-- alias: hasspodcast Update Available
+- alias: HASS - hasspodcast Update Available
   initial_state: true
   trigger:
     platform: state
@@ -151,7 +151,7 @@
         message: >
           There is a new hass podcast: {{ states("sensor.ha_podcast_track")}}
 
-- id: update_networkmap
+- id: HASS - update_networkmap
   alias: 'Zigbee Network Map Update'  
   initial_state: true
   trigger:
@@ -161,7 +161,7 @@
   action:
     service: zigbee2mqtt_networkmap.update
 
-- alias: HACS - Notification Of Pending updates
+- alias: HASS - HACS Notification Of Pending updates
   trigger:
     platform: state
     entity_id: sensor.hacs

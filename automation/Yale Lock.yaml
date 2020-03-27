@@ -1,17 +1,17 @@
 - alias: Yale - Unlock when reaching home from iOS Notification (W/O Alarm)
-  initial_state: false
+  initial_state: true
   trigger:
     - platform: state
       entity_id: device_tracker.laurent
       to: "home"
-    - platform: state
-      entity_id: device_tracker.divashni
-      to: "home"
+    # - platform: state
+      # entity_id: device_tracker.divashni
+      # to: "home"
   condition:
     - condition: template
       value_template: "{{ states('alarm_control_panel.alarm') == 'disarmed' }}"
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_-_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
     - service_template: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data_template:
@@ -24,19 +24,19 @@
             entity_id: lock.yale_conexis_l1_lock
 
 - alias: Yale - Unlock when reaching home from iOS Notification (W Alarm)
-  initial_state: false
+  initial_state: true
   trigger:
     - platform: state
       entity_id: device_tracker.laurent
       to: "home"
-    - platform: state
-      entity_id: device_tracker.divashni
-      to: "home"
+    # - platform: state
+      # entity_id: device_tracker.divashni
+      # to: "home"
   condition:
     - condition: template
       value_template: "{{ states('alarm_control_panel.alarm') != 'disarmed' }}"
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_-_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
     - service_template: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data_template:
@@ -85,9 +85,6 @@
       to: "unlocked"
       for:
         minutes: 5
-  # condition:
-    # - condition: template
-      # value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.yale_door_unlocked_or_jammed", "last_triggered") | default(0)) | int > 90)}}'
   action:
     - service: lock.unlock
       data:

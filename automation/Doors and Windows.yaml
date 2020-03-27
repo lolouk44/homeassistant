@@ -1,4 +1,4 @@
-- alias: Window - Door or Window Opens Closes
+- alias: Openings - Door or Window Opens Closes
   initial_state: true
   trigger:
     - platform: state
@@ -47,7 +47,7 @@
       media_content_type: 'audio/mp3'
 
 
-- alias: Window - Downstairs Window Left Open At Night
+- alias: Openings - Downstairs Window Left Open At Night
   initial_state: true
   trigger:
     - platform: state
@@ -115,7 +115,7 @@
         volume_level: 0.50
 
 
-- alias: 'Hallway Light On When Opening Main Door'
+- alias: Openings -  Hallway Light On When Opening Main Door
   initial_state: true
   trigger:
     - platform: state
@@ -143,7 +143,7 @@
       brightness: 255
 
 
-- alias: Hallway Light Off 2 min after Opening Main Door
+- alias: Openings - Hallway Light Off 2 min after Opening Main Door
   initial_state: true
   trigger:
     - platform: state

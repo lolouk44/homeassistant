@@ -1,4 +1,4 @@
-- alias: TV Cabinet LED Strip On PIR
+- alias: LED Strip - TV Cabinet LED Strip On PIR
   initial_state: true
   trigger:
     - platform: state
@@ -36,7 +36,7 @@
 
 
 
-- alias: Flash Alert
+- alias: LED Strip - Flash Alert
   initial_state: true
   trigger:
     - platform: state
@@ -53,9 +53,6 @@
       to: 'on'
     - platform: state
       entity_id: alert.home_disk_usage_too_high
-      to: 'on'
-    - platform: state
-      entity_id: alert.kello_lost
       to: 'on'
     - platform: state
       entity_id: alert.outside_temp_sensor_lost
@@ -108,7 +105,7 @@
 
 
 
-- alias: TV Cabinet LED Strip Off by PIR
+- alias: LED Strip - TV Cabinet LED Strip Off by PIR
   initial_state: true
   trigger:
     - platform: state
@@ -148,7 +145,7 @@
 
 
 
-- alias: Staircase LED Strip On by PIR
+- alias: LED Strip - Staircase LED Strip On by PIR
   initial_state: true
   trigger:
     - platform: state
@@ -164,9 +161,14 @@
     - condition: state
       entity_id: binary_sensor.pir_staircase
       state: 'on'
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.movies
+        state: 'on'
     - condition: state
       entity_id: input_boolean.xmas
       state: 'off'
@@ -182,7 +184,7 @@
       transition: 1
 
 
-- alias: Staircase LED Strip Off by PIR
+- alias: LED Strip - Staircase LED Strip Off by PIR
   initial_state: true
   trigger:
     - platform: state
@@ -205,7 +207,7 @@
 
 
 
-- alias: House Number On
+- alias: LED Strip - House Number On
   initial_state: true
   trigger:
     - platform: state
@@ -240,7 +242,7 @@
       brightness: 160
       effect: rainbow
 
-- alias: House Number Off
+- alias: LED Strip - House Number Off
   initial_state: true
   trigger:
     - platform: time_pattern

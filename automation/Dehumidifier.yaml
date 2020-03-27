@@ -1,4 +1,4 @@
-- alias: Mark Dehumidifier Tank as not full
+- alias: Dehumidifier - Mark Dehumidifier Tank as not full
   initial_state: true
   trigger:
     - platform: state
@@ -14,7 +14,7 @@
 
 
 
-- alias: Mark LWRF Socket as On if CurrentCost On
+- alias: Dehumidifier - Mark LWRF Socket as On if CurrentCost On
   initial_state: true
   trigger:
     - platform: state
@@ -34,7 +34,7 @@
 
 
 
-- alias: Dehumidifier Tank is full
+- alias: Dehumidifier - Dehumidifier Tank is full
   initial_state: true
   trigger:
     - platform: state
@@ -68,7 +68,7 @@
         message: 'Please note: The dehumidifier tank is full'
 
 
-- alias: Start Dehumidifier
+- alias: Dehumidifier - Start Dehumidifier
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -101,7 +101,7 @@
       entity_id: switch.dehumidifier
 
 
-- alias: Stop Dehumidifier
+- alias: Dehumidifier - Stop Dehumidifier
   initial_state: true
   trigger:
     - platform: time_pattern

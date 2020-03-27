@@ -1,4 +1,4 @@
-- alias: All Lights Off
+- alias: Lights - All Lights Off
   initial_state: true
   trigger:
     - platform: state
@@ -34,7 +34,7 @@
       entity_id: light.wled_conservatory
 
 
-- alias: All Lights Off - Sunrise
+- alias: Lights - All Lights Off - Sunrise
   initial_state: true
   trigger:
     - platform: state

@@ -1,4 +1,4 @@
-- alias: Staircase Light On by PIR
+- alias: Lighhts - Staircase Light On by PIR
   initial_state: true
   trigger:
     - platform: state
@@ -21,36 +21,18 @@
       - condition: state
         entity_id: input_boolean.movies
         state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: light.Staircase_LED_Strip
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.xmas
-        state: 'on'
+    - condition: state
+      entity_id: light.staircase
+      state: 'off'
     - condition: state
       entity_id: binary_sensor.pir_staircase
       state: 'on'
     - condition: time
       after: '06:00'
       before: '23:00'
-    - condition: or
-      conditions:
-      # - condition: template
-        # value_template: '{{ states("sensor.aloe_vera_light_intensity") != "unknown" and  states("sensor.aloe_vera_light_intensity") | int < 250 }}'
-      - condition: state
-        entity_id: binary_sensor.photoresistor
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
-      - condition: state
-        entity_id: light.conservatory
-        state: 'on'
+    - condition: state
+      entity_id: binary_sensor.dark
+      state: 'on'
   action:
   - service: light.turn_on
     data:
@@ -58,7 +40,7 @@
       brightness: 255
 
 
-- alias: Staircase Light Off by PIR
+- alias: Lighhts - Staircase Light Off by PIR
   initial_state: true
   trigger:
     - platform: state

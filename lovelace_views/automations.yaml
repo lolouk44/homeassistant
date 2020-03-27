@@ -12,6 +12,8 @@ cards:
     filter:
       include:
         - entity_id: "automation.*"
+    sort:
+      method: 'name'
 
   - type: 'custom:auto-entities'
     card:

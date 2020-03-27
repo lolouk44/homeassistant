@@ -1,4 +1,4 @@
-- alias: Edimax - Battery Is Charged, Turning Edimax Off
+- alias: Socket - Edimax - Battery Is Charged, Turning Edimax Off
   initial_state: true
   trigger:
     - platform: state
@@ -30,7 +30,7 @@
         message: 'Please note: The battery on the Edimax switch is charged'
 
 
-- alias: Edimax - Start Charging Battery
+- alias: Socket - Edimax - Start Charging Battery
   initial_state: true
   trigger:
     - platform: state
@@ -50,7 +50,7 @@
 
 
 
-- alias: Xiaomi Switch - Battery Is Charged, Turning Xiaomi Switch Off
+- alias: Socket - Xiaomi - Battery Is Charged, Turning Xiaomi Switch Off
   initial_state: true
   trigger:
     - platform: state
@@ -84,7 +84,7 @@
       state: "off"
 
 
-- alias: Xiaomi Switch - Start Charging Battery
+- alias: Socket - Xiaomi - Start Charging Battery
   initial_state: true
   trigger:
     - platform: state
@@ -100,7 +100,7 @@
         entity_id: switch.xiaomi_garage_socket
 
 
-- alias: Xiaomi Switch - Automatic Battery Charging 
+- alias: Socket - Xiaomi - Automatic Battery Charging 
   initial_state: true
   trigger:
     - platform: state
@@ -111,14 +111,14 @@
       entity_id: input_boolean.xiaomi_switch_charging
       state: 'off'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.xiaomi_switch_automatic_battery_charging.attributes.last_triggered | default(0)) | int  > 300)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.socket_xiaomi_automatic_battery_charging.attributes.last_triggered | default(0)) | int  > 300)}}'
   action:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.xiaomi_switch_charging
 
 
-- alias: Xiaomi Switch - Charge If No Rain 
+- alias: Socket - Xiaomi - Charge If No Rain 
   initial_state: true
   trigger:
     - platform: time_pattern

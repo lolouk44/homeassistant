@@ -1,4 +1,4 @@
-- alias: Tell Div Lolo left work
+- alias: Presence - Tell Div Lolo left work
   initial_state: true
   trigger:
     platform: state
@@ -14,7 +14,7 @@
 
 
 
-- alias: Tell Div Lolo reached work
+- alias: Presence - Tell Div Lolo reached work
   initial_state: true
   trigger:
     platform: state
@@ -29,7 +29,7 @@
       message: 'Lolo reached work.'
 
 
-- alias: Tell Lolo Div left work
+- alias: Presence - Tell Lolo Div left work
   initial_state: true
   trigger:
     platform: state
@@ -45,7 +45,7 @@
         message: 'Div left work. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}})'
 
 
-- alias: Tell Lolo Div left yoga
+- alias: Presence - Tell Lolo Div left yoga
   initial_state: true
   trigger:
     - platform: state
@@ -63,7 +63,7 @@
         title: "HA - Location Update"
         message: 'Div left yoga. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}})'
 
-- alias: Switch everything off when we leave home
+- alias: Presence - Switch everything off when we leave home
   initial_state: false
   trigger:
     - platform: state
@@ -105,7 +105,7 @@
 
 
 
-- alias: Tell Lolo of a long drive home
+- alias: Presence - Tell Lolo of a long drive home
   initial_state: true
   trigger:
     - platform: state
@@ -121,7 +121,7 @@
     - condition: template
       value_template: '{{ states("sensor.lolo_to_home") |int(0) >= 65 }}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.tell_lolo_of_a_long_drive_home", "last_triggered") | default(0)) | int > 3600)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.presence_tell_lolo_of_a_long_drive_home", "last_triggered") | default(0)) | int > 3600)}}'
     - condition: template
       value_template: '{{ states("person.laurent") == "Verint"}}'
   action:
@@ -136,7 +136,7 @@
 
 
 
-- alias: location_lolo
+- alias: Presence - location_lolo
   initial_state: true
   trigger:
       - platform: state
@@ -148,7 +148,7 @@
       payload_template: '{{ trigger.to_state.state }}'
       retain: true
 
-- alias: location_div
+- alias: Presence - location_div
   initial_state: true
   trigger:
       - platform: state

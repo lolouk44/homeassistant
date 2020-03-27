@@ -1,4 +1,4 @@
-- alias: Set GA Volume To Low At Night
+- alias: GA - Set GA Volume To Low At Night
   initial_state: true
   trigger:
     platform: time_pattern
@@ -20,7 +20,7 @@
       volume_level: 0.50
 
 
-- alias: Set GA Volume To High Daytime
+- alias: GA - Set GA Volume To High Daytime
   initial_state: true
   trigger:
     platform: time_pattern
@@ -42,7 +42,7 @@
       volume_level: 0.75
 
 
-- alias: GA Play RTL2 Radio
+- alias: GA - Play RTL2 Radio
   initial_state: true
   trigger:
     - platform: state
@@ -64,7 +64,7 @@
 
 
 
-- alias: GA Play Chill Radio
+- alias: GA - Play Chill Radio
   initial_state: true
   trigger:
     - platform: state
@@ -85,7 +85,7 @@
       entity_id: input_boolean.chill_radio
 
 
-- alias: GA Play Absolute Radio
+- alias: GA - Play Absolute Radio
   initial_state: true
   trigger:
     - platform: state
@@ -106,7 +106,7 @@
       entity_id: input_boolean.absolute_radio_radio
 
 
-- alias: GA Play Absolute CR Radio
+- alias: GA - Play Absolute CR Radio
   initial_state: true
   trigger:
     - platform: state
@@ -127,7 +127,7 @@
       entity_id: input_boolean.absolute_radio_cr_radio
 
 
-- alias: GA Play Radio Fiji Two Radio
+- alias: GA - Play Radio Fiji Two Radio
   initial_state: true
   trigger:
     - platform: state
@@ -148,7 +148,7 @@
       entity_id: input_boolean.radio_fiji_two_radio
 
 
-- alias: GA Play Radio Navtarang
+- alias: GA - Play Radio Navtarang
   initial_state: true
   trigger:
     - platform: state
@@ -169,7 +169,7 @@
       entity_id: input_boolean.radio_navtarang
 
 
-- alias: Keep Google Home Alive
+- alias: GA - Keep Google Home Alive
   initial_state: true
   trigger:
     platform: time_pattern
@@ -197,7 +197,7 @@
         media_content_type: music
 
 
-- alias: Turn Multimedia Switch on if Sky, TV or Onkyo is on
+- alias: GA - Turn Multimedia Switch on if Sky, TV or Onkyo is on
   initial_state: true
   trigger:
     - platform: state
@@ -214,7 +214,7 @@
       entity_id: input_boolean.multimedia
 
 
-- alias: Turn Multimedia off if multimedia switch goes off
+- alias: GA - Turn Multimedia off if multimedia switch goes off
   initial_state: true
   trigger:
     - platform: state
@@ -237,7 +237,7 @@
     entity_id: script.multimedia_off
 
 
-- alias: Turn Multimedia off if all multimedia is off
+- alias: GA - Turn Multimedia off if all multimedia is off
   initial_state: true
   trigger:
     - platform: state

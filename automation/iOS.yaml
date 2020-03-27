@@ -1,4 +1,4 @@
-- alias: Notify iOS app
+- alias: iOS - Notify iOS app
   initial_state: true
   trigger:
     - platform: state
@@ -38,7 +38,7 @@
           action_data:
             entity_id: '{{trigger.entity_id}}'
 
-- alias: Turn Alert Off
+- alias: iOS - Turn Alert Off
   initial_state: true
   trigger:
     - platform: event
@@ -58,7 +58,7 @@
       data:
         message: clear_badge
 
-- alias: Decrease Counter with Alert to Idle
+- alias: iOS - Decrease Counter with Alert to Idle
   initial_state: true
   trigger:
     - platform: state

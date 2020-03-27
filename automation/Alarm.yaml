@@ -687,7 +687,7 @@
     - condition: template
       value_template: '{{states("lock.yale_conexis_l1_lock") == "unlocked"}}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_-_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
     - service_template: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data_template:

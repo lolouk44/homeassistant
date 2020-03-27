@@ -1,4 +1,4 @@
-- alias: Turn Onkyo Off When Stop Playing On ChromeCast
+- alias: Onkyo - Turn Off When Stop Playing On ChromeCast
   initial_state: true
   trigger:
   - platform: state
@@ -43,7 +43,7 @@
   - service: media_player.turn_off
     entity_id: media_player.onkyo_tx_nr656
 
-- alias: Turn Onkyo On When TV Goes On
+- alias: Onkyo - Turn On When TV Goes On
   initial_state: true
   trigger:
   - platform: state

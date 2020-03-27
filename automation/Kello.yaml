@@ -1,4 +1,4 @@
-- alias: Set Kello Volume
+- alias: Kello - Set Volume
   initial_state: true
   trigger:
     - platform: state
@@ -10,7 +10,7 @@
       payload_template: '{{ states("input_number.volume_kello") | int(value,16) }}'
       retain: false
 
-- alias: Mute Kello Alarms
+- alias: Kello - Mute Alarms
   initial_state: true
   trigger:
     - platform: state
@@ -44,7 +44,7 @@
       data:
         entity_id: input_boolean.kello_mute_alarms
 
-- alias: Unmute Kello Alarms
+- alias: Kello - Unmute Alarms
   initial_state: true
   trigger:
     - platform: state
@@ -76,7 +76,7 @@
       data:
         entity_id: input_boolean.kello_mute_alarms
 
-- alias: Stop Radio on Kello
+- alias: Kello - Stop Radio
   initial_state: true
   trigger:
     - platform: state
@@ -89,7 +89,7 @@
         payload_template: 'OFF'
         retain: false
 
-- alias: Play Radio on Kello
+- alias: Kello - Play Radio
   initial_state: true
   trigger:
     - platform: state
@@ -121,7 +121,7 @@
         {{ states("input_select.kello_radio_station").replace(" ","") }}
       retain: false
 
-- alias: Build Weather Greeting IFTTT
+- alias: Kello - Build Weather Greeting IFTTT
   initial_state: true
   trigger:
     - platform: event
@@ -130,7 +130,7 @@
         action: build_greeting
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.build_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_build_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'
   action:
   - service: tts.google_say
     data_template:
@@ -154,7 +154,7 @@
         at {{(states('sensor.dark_sky_wind_speed_0d')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0d')|int*3.6)|round}} km/h.
         Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|float|round}} millimeters.
         {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states('sensor.home_to_work')}} minutes.{% endif %}
-        {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.start_vacuuming", "last_triggered") | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
+        {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_start_vacuuming", "last_triggered") | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") != True %} Your next appointment is: {{state_attr("calendar.birthdays_events", "message")}} at {{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[0]}} {%if (state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1] != '00'%}{{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") == True %} Today is : {{state_attr("calendar.birthdays_events", "message")|replace("/","and")}}{%endif%}
   - delay: 00:00:05
@@ -164,7 +164,7 @@
       payload_template: 'build_greeting'
       retain: false
 
-- alias: Play Weather Greeting IFTTT
+- alias: Kello - Play Weather Greeting IFTTT
   initial_state: true
   trigger:
     platform: event
@@ -173,7 +173,7 @@
       action: play_greeting
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.play_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_play_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'
   action:
   - service: mqtt.publish
     data:
@@ -191,7 +191,7 @@
       payload_template: 'WeatherForecast'
       retain: false
       
-- alias: Reboot Kello When Unavailable
+- alias: Kello - Reboot When Unavailable
   initial_state: true
   trigger:
     - platform: state

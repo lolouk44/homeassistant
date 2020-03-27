@@ -1,4 +1,4 @@
-- alias: Holiday Start
+- alias: Holiday - Start
   initial_state: true
   trigger:
     - platform: state
@@ -21,7 +21,7 @@
       data:
         entity_id: input_boolean.holidays
 
-- alias: Holiday End
+- alias: Holiday - End
   initial_state: true
   trigger:
     - platform: state
@@ -51,7 +51,7 @@
 
 
 
-- alias: Holiday Living Room
+- alias: Holiday - Living Room On
   initial_state: true
   trigger:
     - platform: state
@@ -74,7 +74,7 @@
 
 
 
-- alias: Holiday Upstairs on
+- alias: Holiday - Upstairs on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -107,7 +107,7 @@
       entity_id: light.kitchen_window
 
 
-- alias: Holiday Upstairs off
+- alias: Holiday - Upstairs off
   initial_state: true
   trigger:
     - platform: time_pattern

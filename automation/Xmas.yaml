@@ -100,7 +100,7 @@
 
 
 
-- alias: Turn Baubles On 1
+- alias: Xmas Turn Baubles On 1
   initial_state: true
   trigger:
     - platform: template
@@ -134,7 +134,7 @@
       entity_id: light.bauble_3
       effect: "uniglow"
 
-- alias: Turn Baubles On 2
+- alias: Xmas Turn Baubles On 2
   initial_state: true
   trigger:
     - platform: template
@@ -168,7 +168,7 @@
       entity_id: light.bauble_1
       effect: "uniglow"
 
-- alias: Turn Baubles On 3
+- alias: Xmas Turn Baubles On 3
   initial_state: true
   trigger:
     - platform: template
