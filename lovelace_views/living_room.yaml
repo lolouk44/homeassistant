@@ -98,6 +98,14 @@ cards:
       type: "custom:mini-media-player"
       power_color: true
       group: true
+  - type: entities
+    title: Blinds
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: cover.livingroom_blinds
+        secondary_info: last-changed
+        icon: mdi:blinds
   - type: picture-elements
     image: /local/blank2.png
     elements:
@@ -122,6 +130,8 @@ cards:
         tap_action: call-service
         entity: vacuum.mi_robot_vacuum
         service: vacuum.start
+        service_data:
+          - entity: vacuum.mi_robot_vacuum
         style:
           top: 95%
           left: 20%

@@ -16,6 +16,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Aeotec Z-Stick Gen5
 - Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
 - Anova Precision Spous-Vide Smart Cooker
+- AOK Smart Blinds Motor
 - ~~BME280 Temperature and Barometer Sensor~~
 - ~~Byron SX-20T Doorbell~~
 - CC2531 flashed with [Zigbee2mqtt](https://www.zigbee2mqtt.io/)
@@ -41,8 +42,8 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Onkyo TX-NR656 AV Amplifier
 - Panasonic TX58DX700 TV
 - RFXCOM RFXtrx433 433MHz transceiver
+- Rollerhouse Smart Blinds Motor
 - Sky+HD Box
-- Smart Blinds (Electric Tubular Motor with 433MHz receiver)
 - Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
 - Tile Mate, Slim trackers
 - Verint S5003FD Camera

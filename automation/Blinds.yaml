@@ -11,7 +11,9 @@
   action:
   - service: cover.open_cover
     data:
-      entity_id: cover.kitchen_blinds
+      entity_id:
+        - cover.kitchen_blinds
+        - cover.livingroom_blinds
 
 - alias: Blinds - Close When Dark
   initial_state: true
@@ -26,4 +28,6 @@
   action:
   - service: cover.close_cover
     data:
-      entity_id: cover.kitchen_blinds
+      entity_id:
+        - cover.kitchen_blinds
+        - cover.livingroom_blinds
