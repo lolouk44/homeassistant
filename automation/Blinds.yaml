@@ -31,3 +31,46 @@
       entity_id:
         - cover.kitchen_blinds
         - cover.livingroom_blinds
+
+
+- alias: Blinds - Close When Movies On
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.movies
+      to: 'on'
+  action:
+  - service: cover.close_cover
+    data:
+      entity_id:
+        - cover.livingroom_blinds
+
+- alias: Blinds - Open When Movies Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.movies
+      to: 'off'
+  condition:
+    - condition: template
+      value_template: "states('sensor.aqara_illumination') | int < 200"
+  action:
+  - service: cover.open_cover
+    data:
+      entity_id:
+        - cover.livingroom_blinds
+
+
+# - alias: Blinds - Close if too hot outside
+  # initial_state: true
+  # trigger:
+    # - platform: state
+      # entity_id: sun.sun
+  # condition:
+    # - condition: template
+      # value_template: "states('sensor.aqara_illumination') | int < 200"
+  # action:
+  # - service: cover.close_cover
+    # data:
+      # entity_id:
+        # - cover.livingroom_blinds
