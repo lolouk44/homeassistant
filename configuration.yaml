@@ -149,6 +149,7 @@ logger:
     miio.device: critical
     # homeassistant.components.rfxtrx: debug
     # homeassistant.helpers.entity: critical
+    # custom_components.currentcost: debug
     homeassistant.components.xiaomi_miio.light: critical
     homeassistant.components.xiaomi_miio.switch: critical
     homeassistant.components.bmw_connected_drive: critical
