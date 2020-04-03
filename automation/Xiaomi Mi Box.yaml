@@ -1,5 +1,5 @@
 - alias: MiBox - Turn Movies on when Kodi is Playing
-  initial_state: true
+  initial_state: false
   trigger:
     platform: state
     entity_id: media_player.kodi
@@ -18,7 +18,7 @@
       entity_id: input_boolean.movies
 
 - alias: MiBox - Turn Movies on when Netflix or Prime is Playing
-  initial_state: true
+  initial_state: false
   trigger:
     platform: state
     entity_id: media_player.mi_box3_adtv
@@ -39,7 +39,7 @@
       entity_id: input_boolean.movies
 
 - alias: MiBox - Dim Lights when Kodi, Netflix or Prime is Paused
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id: media_player.mi_box3_adtv
@@ -58,16 +58,14 @@
       brightness: 11
 
 - alias: MiBox - Turn Lights Off when Kodi, Netflix or Prime is Unpaused
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id: media_player.mi_box3_adtv
       to: 'playing'
-      from: 'paused'
     - platform: state
       entity_id: media_player.kodi
       to: 'playing'
-      from: 'paused'
   condition:
     - condition: state
       entity_id: input_boolean.movies

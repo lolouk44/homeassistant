@@ -58,13 +58,17 @@ cards:
       group: true
   - type: entities
     title: Video
-    icon: 'mdi:video-vintage'
+    icon: 'mdi:television-classic'
     show_header_toggle: false
     entities:
     - entity: media_player.panasonic_viera_tv
       type: "custom:mini-media-player"
       power_color: true
       group: true
+    - entity: media_player.fire_stick_4k
+      power_color: true
+      group: true
+      type: "custom:mini-media-player"
     - entity: media_player.mibox3
       type: "custom:mini-media-player"
       power_color: true
@@ -73,6 +77,10 @@ cards:
       type: "custom:mini-media-player"
       power_color: true
       group: true
+    - entity: media_player.mi_box3_adtv
+      power_color: true
+      group: true
+      type: "custom:mini-media-player"
   - type: entities
     title: Onkyo
     icon: 'mdi:audio-video'

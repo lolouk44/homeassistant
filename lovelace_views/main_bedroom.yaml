@@ -67,3 +67,20 @@ cards:
         secondary_info: last-changed
       - entity: sensor.div_bmi
         secondary_info: last-changed
+  - type: entities
+    title: Mi Box
+    icon: 'mdi:google-chrome'
+    show_header_toggle: false
+    entities:
+    - entity: media_player.mi_box3_adtv
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+    - entity: media_player.mibox3
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+    - entity: media_player.kodi
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true

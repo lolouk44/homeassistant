@@ -15,6 +15,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 
 - Aeotec Z-Stick Gen5
 - Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
+- Amazon Fire Stick 4K
 - Anova Precision Spous-Vide Smart Cooker
 - AOK Smart Blinds Motor
 - ~~BME280 Temperature and Barometer Sensor~~
