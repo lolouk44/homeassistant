@@ -11,7 +11,6 @@ chromecast_radio_station:
     - Radio Fiji Two
     - RTL2
     - Custom Station
-  initial: RTL2
   icon: mdi:radio
 
 chromecast_radio_speakers:
@@ -21,5 +20,4 @@ chromecast_radio_speakers:
     - House
     - Kitchen
     - Onkyo_TX_NR656_2
-  initial: House
   icon: mdi:speaker-wireless
