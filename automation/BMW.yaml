@@ -89,7 +89,7 @@
   trigger:
     # iOS 2.0 App Support
     - platform: event
-      event_type: ios.action_fired
+      event_type: ios.notification_action_fired
       event_data:
         actionName: BMW_VENTILATE
   action:

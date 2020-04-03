@@ -648,7 +648,7 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.action_fired
+      event_type: ios.notification_action_fired
       event_data:
         actionName: ARM_ALARM
   action:
@@ -662,7 +662,7 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.action_fired
+      event_type: ios.notification_action_fired
       event_data:
         actionName: DISARM_ALARM
   action:
