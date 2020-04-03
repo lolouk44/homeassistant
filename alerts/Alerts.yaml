@@ -78,7 +78,6 @@ cctv_doorbell_video_feed_lost:
   name: Doorbell Video Feed Lost
   state: 'off'
   entity_id: binary_sensor.doorbell_cctv_connection_status
-  state: 'off'
   can_acknowledge: True
   skip_first: True
   repeat:
@@ -93,7 +92,6 @@ cctv_staircase_video_feed_lost:
   name: Stairase Video Feed Lost
   state: 'off'
   entity_id: binary_sensor.staircase_cctv_connection_status
-  state: 'off'
   can_acknowledge: True
   skip_first: True
   repeat:
