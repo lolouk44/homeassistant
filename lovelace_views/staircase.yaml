@@ -23,14 +23,3 @@ cards:
       secondary_info: last-changed
     - entity: binary_sensor.first_floor_smoke_detector
       secondary_info: last-changed
-  - type: entities
-    title: Dehumidifier
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - entity: switch.dehumidifier
-        secondary_info: last-changed
-      - entity: sensor.dehumidifier_power
-        secondary_info: last-changed
-      - entity: input_boolean.dehumidifier_tank_full
-        secondary_info: last-changed

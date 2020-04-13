@@ -106,6 +106,7 @@ cards:
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
+      state_color: true
       head:
         type: section
         label: Docker Containers

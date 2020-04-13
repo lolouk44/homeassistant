@@ -11,6 +11,8 @@ cards:
       include:
         - group: group.door_and_window_sensors
           state: "on"
+    sort:
+      method: 'name'
   - type: alarm-panel
     entity: alarm_control_panel.alarm
     show_keypad: true

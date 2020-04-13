@@ -10,7 +10,7 @@ custom_header:
     - conditions:
         user: Laurent, Divashni
       config:
-        show_tabs: '0 to 16'
+        show_tabs: '0 to 50'
         kiosk_mode: false
 
 # preload:
@@ -27,6 +27,7 @@ views:
   - !include /config/lovelace_views/entrance.yaml
   - !include /config/lovelace_views/conservatory.yaml
   - !include /config/lovelace_views/staircase.yaml
+  - !include /config/lovelace_views/pooja.yaml
   - !include /config/lovelace_views/bathroom.yaml
   - !include /config/lovelace_views/main_bedroom.yaml
   - !include /config/lovelace_views/kiaan_bedroom.yaml
