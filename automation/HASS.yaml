@@ -70,6 +70,7 @@
       topic: "Conservatory/DaFang/reboot/set"
       payload_template: 'ON'
       retain: false
+  - service: shell_command.reboot_doorbell
 
 - alias: HASS - SSL expiry notification
   initial_state: true
