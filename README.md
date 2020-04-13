@@ -9,9 +9,10 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 ## Devices
 
 - HP ProLiant N54L MicroServer (Main server with Home-Assistant)
-- Raspberry Pi Model B (for motion sensors, photoresistor sensor, BME280 Temperature and Barometer Sensor)
+- Desktop Computer with 2nd instance of Home-Assistant running (motion)[https://github.com/Motion-Project/motion] for CCTV and (TensorFlow)[https://www.home-assistant.io/integrations/tensorflow/] video processing
+- Raspberry Pi Model B (for motion sensors, photoresistor sensor)
 - Raspberry Pi 3 Model B (Kodi)
-- Raspberry Pi 3 Model B (Smart Calendar Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
+- Raspberry Pi 3 Model B (Smart Calendar / CCTV Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
 
 - Aeotec Z-Stick Gen5
 - Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
@@ -44,6 +45,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Panasonic TX58DX700 TV
 - RFXCOM RFXtrx433 433MHz transceiver
 - Rollerhouse Smart Blinds Motor
+- Samsung Galaxy Tab 5 running (tasker){https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_GB} and HikConnect to capture doorbell button press
 - Sky+HD Box
 - Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
 - Tile Mate, Slim trackers
