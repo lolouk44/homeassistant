@@ -69,22 +69,22 @@
   device_class: power
 
 - platform: mqtt
-  name: "Garage Temperature"
-  state_topic: "zigbee2mqtt/garage_hygro"
+  name: "Pooja Temperature"
+  state_topic: "zigbee2mqtt/pooja_hygro"
   value_template: "{{ value_json['temperature'] }}"
   unit_of_measurement: 'ºC'
   device_class: temperature
 
 - platform: mqtt
-  name: "Garage Humidity"
-  state_topic: "zigbee2mqtt/garage_hygro"
+  name: "Pooja Humidity"
+  state_topic: "zigbee2mqtt/pooja_hygro"
   value_template: "{{ value_json['humidity'] | float (1) }}"
   unit_of_measurement: "%"
   device_class: humidity
 
 - platform: mqtt
-  name: "Garage Temperature Battery"
-  state_topic: "zigbee2mqtt/garage_hygro"
+  name: "Pooja Temperature Battery"
+  state_topic: "zigbee2mqtt/pooja_hygro"
   value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
   device_class: battery

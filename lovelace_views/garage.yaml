@@ -15,10 +15,6 @@ cards:
         secondary_info: last-changed
       - entity: sensor.garage_temperature
         secondary_info: last-changed
-      - entity: sensor.garage_humidity
-        secondary_info: last-changed
-      - entity: sensor.garage_temperature_battery
-        secondary_info: last-changed
   - type: entities
     title: Freezer
     show_header_toggle: false
