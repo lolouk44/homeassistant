@@ -25,8 +25,6 @@
       - media_player.onkyo_tx_nr656
       - media_player.house
     to: 'playing'
-  - platform: homeassistant
-    event: start
   action:
   - service: input_select.select_option
     data_template:
