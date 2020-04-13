@@ -83,6 +83,16 @@ entity_config:
     room: 'Kitchen'
     expose: true
 
+  cover.kitchen_blinds:
+    name: "Kitchen Blinds"
+    room: 'Kitchen'
+    expose: true
+
+  cover.livingroom_blinds:
+    name: "Living Room Blinds"
+    room: 'Living Room'
+    expose: true
+
   input_boolean.multimedia:
     name: "Multimedia"
     room: 'Living Room'

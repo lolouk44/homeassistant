@@ -5,9 +5,14 @@
       entity_id: binary_sensor.dark
       to: 'off'
   condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.holidays
+        state: 'on'
   action:
   - service: cover.open_cover
     data:
@@ -22,9 +27,14 @@
       entity_id: binary_sensor.dark
       to: 'on'
   condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.holidays
+        state: 'on'
   action:
   - service: cover.close_cover
     data:
