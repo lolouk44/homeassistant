@@ -14,7 +14,7 @@
 
 
 
-- alias: Dehumidifier - Mark LWRF Socket as On if CurrentCost On
+- alias: Dehumidifier - Turn LWRF Socket if Power but LWRF is Off
   initial_state: true
   trigger:
     - platform: state
@@ -28,7 +28,7 @@
     - condition: template
       value_template: '{{states("sensor.dehumidifier_power") | int > 10 }}'
   action:
-  - service: switch.turn_on
+  - service: switch.turn_off
     data:
       entity_id: switch.dehumidifier
 

@@ -1,14 +1,14 @@
-- platform: mqtt
-  name: House Number LED Strip
-  schema: json
-  state_topic: "led_strip/housenumber"
-  command_topic: "led_strip/housenumber/set"
-  brightness: true
-  rgb: true
-  effect: true
-  effect_list: [colorfade_slow, colorfade_fast, flash]
-  optimistic: false
-  qos: 1
+# - platform: mqtt
+  # name: House Number LED Strip
+  # schema: json
+  # state_topic: "led_strip/housenumber"
+  # command_topic: "led_strip/housenumber/set"
+  # brightness: true
+  # rgb: true
+  # effect: true
+  # effect_list: [colorfade_slow, colorfade_fast, flash]
+  # optimistic: false
+  # qos: 1
 
 - platform: mqtt
   name: Staircase LED Strip
@@ -76,35 +76,35 @@
 
 
 
-- platform: mqtt
-  name: "Conservatory LED Strip"
-  schema: json
-  state_topic: "Conservatory/LED_Strip"
-  command_topic: "Conservatory/LED_Strip/set"
-  effect: true
-  effect_list:
-    - bpm
-    - candy cane  
-    - confetti  
-    - cyclon rainbow  
-    - dots  
-    - fire  
-    - glitter  
-    - juggle  
-    - lightning
-    - noise  
-    - police all  
-    - police one  
-    - rainbow  
-    - rainbow with glitter  
-    - ripple  
-    - sinelon  
-    - solid  
-    - twinkle  
-  brightness: true
-  rgb: true
-  optimistic: false
-  qos: 1
+# - platform: mqtt
+  # name: "Conservatory LED Strip"
+  # schema: json
+  # state_topic: "Conservatory/LED_Strip"
+  # command_topic: "Conservatory/LED_Strip/set"
+  # effect: true
+  # effect_list:
+    # - bpm
+    # - candy cane  
+    # - confetti  
+    # - cyclon rainbow  
+    # - dots  
+    # - fire  
+    # - glitter  
+    # - juggle  
+    # - lightning
+    # - noise  
+    # - police all  
+    # - police one  
+    # - rainbow  
+    # - rainbow with glitter  
+    # - ripple  
+    # - sinelon  
+    # - solid  
+    # - twinkle  
+  # brightness: true
+  # rgb: true
+  # optimistic: false
+  # qos: 1
 
 
 - platform: mqtt

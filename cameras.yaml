@@ -94,3 +94,17 @@
 - platform: generic
   name: Doorbell_Pic
   still_image_url: http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg
+
+
+
+- platform: generic
+  name: Grafana Lolo Weight
+  still_image_url: http://192.168.0.24:3000/render/d-solo/ItrU5gHik/ha-dashboard?orgId=1&from=1554620648597&to=1586243048597&panelId=6&width=1000&height=500&tz=Europe%2FLondon
+  username: !secret grafana_user
+  password: !secret grafana_password
+
+- platform: generic
+  name: Grafana CPU RAM
+  still_image_url: http://192.168.0.24:3000/render/d-solo/ItrU5gHik/ha-dashboard?orgId=1&from=1554620964268&to=1586243364268&panelId=12&width=1000&height=500&tz=Europe%2FLondon
+  username: !secret grafana_user
+  password: !secret grafana_password

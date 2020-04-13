@@ -49,7 +49,7 @@ cards:
           secondary_info: last-changed
         - entity: light.aqara_gateway_light
           secondary_info: last-changed
-        - entity: light.wled_house_number
+        - entity: light.house_number
           secondary_info: last-changed
           icon: mdi:numeric-4-box-multiple-outline
   - type: entities
