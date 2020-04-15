@@ -56,6 +56,12 @@
 
 
 - platform: version
+  name: Current Version
+
+- platform: version
+  name: Docker Version
+  source: docker
+
 - platform: uptime
   unit_of_measurement: hours
 

@@ -17,6 +17,8 @@ cards:
       include:
         - entity_id: "*.*"
           state: "unavailable" 
+    sort:
+      method: 'name'
   - type: custom:auto-entities
     card:
       type: custom:fold-entity-row
@@ -36,15 +38,27 @@ cards:
       type: custom:fold-entity-row
       head:
         type: section
-        label: Server Stats
+        label: Home Assistant
       open: true
     filter:
       include:
         - entity_id: sensor.uptime
+        - entity_id: sensor.hass_db_size_formatted
+        - entity_id: sensor.current_version
+        - entity_id: sensor.online_version
+        - entity_id: sensor.docker_version
+  - type: custom:auto-entities
+    card:
+      type: custom:fold-entity-row
+      head:
+        type: section
+        label: Server Stats
+      open: true
+    filter:
+      include:
         - entity_id: sensor.currentcost_power
         - entity_id: sensor.cpu_usage
         - entity_id: sensor.ram_usage
-        - entity_id: sensor.hass_db_size_formatted
         - entity_id: sensor.ssl_cert_expiry
         - entity_id: sensor.docker_hub_pulls
   - type: custom:auto-entities

@@ -65,7 +65,7 @@
 
 - platform: scrape
   resource: https://www.home-assistant.io
-  name: ha_online_version
+  name: Online Version
   select: ".current-version h1"
   value_template: '{{ value.split(":")[1] }}'
 

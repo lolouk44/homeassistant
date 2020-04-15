@@ -213,7 +213,12 @@ sensor.humidity_158d0001f5218a:
   friendly_name: Aqara Humidity
 sensor.temperature_158d0001f5218a:
   friendly_name: Aqara Temperature
-
+sensor.current_version:
+  icon: mdi:home-assistant
+sensor.online_version:
+  icon: mdi:web
+sensor.docker_version:
+  icon: mdi:docker
 
 #Switches
 switch.cctv_garage_status:

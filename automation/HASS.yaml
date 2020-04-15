@@ -2,15 +2,29 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.ha_online_version
+    entity_id: sensor.online_version
   condition:
     - condition: template
-      value_template: '{{states("sensor.ha_online_version") != states("sensor.current_version") }}'
+      value_template: '{{states("sensor.online_version") != states("sensor.current_version") }}'
   action:
     - service: notify.gmaillolo
       data_template:
         title: "HA - Update Available"
-        message: 'There is an update to Home-Assistant: {{states("sensor.ha_online_version")}} (https://hub.docker.com/r/homeassistant/home-assistant/builds/)'
+        message: 'There is an update to Home-Assistant: {{states("sensor.online_version")}} (https://www.home-assistant.io/latest-release-notes/)'
+
+- alias: HASS - New Docker Available Notification
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.docker_version
+  condition:
+    - condition: template
+      value_template: '{{states("sensor.docker_version") != states("sensor.current_version") }}'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Docker Update Available"
+        message: 'The {{states("sensor.docker_version")}} Docker Image is now available'
 
 - alias: HASS - Start Sound
   initial_state: true
