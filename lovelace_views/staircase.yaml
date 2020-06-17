@@ -1,5 +1,5 @@
 title: Staircase
-background: url("/local/stairs.png") fixed
+#background: url("/local/stairs.png") fixed
 icon: mdi:stairs
 badges:
   !include /config/lovelace_views/badges.yaml

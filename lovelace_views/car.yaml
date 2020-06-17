@@ -1,5 +1,5 @@
 title: Car
-background: url("/local/BMW_220d_GT.png") center / contain no-repeat
+#background: url("/local/BMW_220d_GT.png") center / contain no-repeat
 icon: mdi:car-connected
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -166,13 +166,28 @@ cards:
         secondary_info: last-changed
       - entity: sensor.bmw_220d_mpg
         secondary_info: last-changed
+
   - type: map
     entities:
-      - device_tracker.div_iphone
-      - device_tracker.diviphone
       - device_tracker.laurent
       - device_tracker.divashni
-      - device_tracker.lolos_iphone
-      - device_tracker.lolosiphone
-      - device_tracker.laurent_mah_iphone_5s
       - device_tracker.220d
+    hours_to_show: 24
+
+  # - type: conditional
+    # conditions:
+      # - entity: input_boolean.theme_dark
+        # state: "on"
+    # card:
+      # type: map
+      # entities:
+        # - device_tracker.div_iphone
+        # - device_tracker.diviphone
+        # - device_tracker.laurent
+        # - device_tracker.divashni
+        # - device_tracker.lolos_iphone
+        # - device_tracker.lolosiphone
+        # - device_tracker.laurent_mah_iphone_5s
+        # - device_tracker.220d
+      # hours_to_show: 48
+      # dark_mode: true

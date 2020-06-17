@@ -1,12 +1,13 @@
 title: cctv
-background: url("/local/cctv.png") fixed
+#background: url("/local/cctv.png") fixed
 icon: mdi:cctv
 badges:
   !include /config/lovelace_views/badges.yaml
 cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: picture-entity
       title: Front
@@ -27,7 +28,46 @@ cards:
           secondary_info: last-changed
         - entity: binary_sensor.front_cctv_disk_error
           secondary_info: last-changed
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: picture-entity
+      title: Living Room
+      entity: camera.living_room
+      camera_image: camera.living_room
+      show_name: false
+      show_state: false
+    - type: entities
+      state_color: true
+      title: Dafang Living Room
+      show_header_toggle: false
+      entities:
+        - switch.dafang_living_room_status
+        - switch.dafang_living_room_rtsp
+        - switch.dafang_living_room_blue_led
+        - switch.dafang_living_room_yellow_led
+        - switch.dafang_living_room_left_right
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: picture-entity
+      title: Kitchen
+      entity: camera.kitchen
+      camera_image: camera.kitchen
+      show_name: false
+      show_state: false
+    - type: entities
+      state_color: true
+      title: Dafang Kitchen
+      show_header_toggle: false
+      entities:
+        - switch.dafang_kitchen_status
+        - switch.dafang_kitchen_rtsp
+        - switch.dafang_kitchen_blue_led
+        - switch.dafang_kitchen_yellow_led
+        - switch.dafang_kitchen_left_right
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: picture-entity
       title: Side
@@ -48,7 +88,70 @@ cards:
           secondary_info: last-changed
         - entity: binary_sensor.side_cctv_disk_error
           secondary_info: last-changed
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: picture-entity
+      title: Conservatory
+      entity: camera.conservatory
+      camera_image: camera.conservatory
+      show_name: false
+      show_state: false
+    - type: entities
+      state_color: true
+      title: Conservatory
+      show_header_toggle: false
+      entities:
+        - switch.cctv_conservatory_status
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: picture-entity
+      title: Hallway
+      entity: camera.fire7
+      camera_image: camera.fire7
+      show_name: false
+      show_state: false
+    - type: entities
+      state_color: true
+      title: Hallway
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.fire7_motion
+          secondary_info: last-changed
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: picture-entity
+      title: Garage
+      entity: camera.garage
+      camera_image: camera.garage
+      show_name: false
+      show_state: false
+    - type: entities
+      state_color: true
+      title: Garage
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.pir_garage
+          secondary_info: last-changed
+        - entity: switch.cctv_garage_status
+  - type: custom:stack-in-card
+    cards:
+    - type: picture-entity
+      title: Doorbell
+      entity: camera.doorbell
+      camera_image: camera.doorbell
+      show_name: false
+      show_state: false
+    - type: entities
+      title: Doorbell
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.doorbell_motion
+          secondary_info: last-changed
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: picture-entity
       entity: camera.back
@@ -67,97 +170,4 @@ cards:
         - entity: binary_sensor.back_cctv_disk_full
           secondary_info: last-changed
         - entity: binary_sensor.back_cctv_disk_error
-          secondary_info: last-changed
-  - type: custom:vertical-stack-in-card
-    cards:
-    - type: picture-entity
-      title: Living Room
-      entity: camera.living_room
-      camera_image: camera.living_room
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Dafang Living Room
-      show_header_toggle: false
-      entities:
-        - switch.dafang_living_room_status
-        - switch.dafang_living_room_rtsp
-        - switch.dafang_living_room_blue_led
-        - switch.dafang_living_room_yellow_led
-        - switch.dafang_living_room_left_right
-  - type: custom:vertical-stack-in-card
-    cards:
-    - type: picture-entity
-      title: Kitchen
-      entity: camera.kitchen
-      camera_image: camera.kitchen
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Dafang Kitchen
-      show_header_toggle: false
-      entities:
-        - switch.dafang_kitchen_status
-        - switch.dafang_kitchen_rtsp
-        - switch.dafang_kitchen_blue_led
-        - switch.dafang_kitchen_yellow_led
-        - switch.dafang_kitchen_left_right
-  - type: custom:vertical-stack-in-card
-    cards:
-    - type: picture-entity
-      title: Conservatory
-      entity: camera.conservatory
-      camera_image: camera.conservatory
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Conservatory
-      show_header_toggle: false
-      entities:
-        - switch.cctv_conservatory_status
-  - type: custom:vertical-stack-in-card
-    cards:
-    - type: picture-entity
-      title: Hallway
-      entity: camera.fire7
-      camera_image: camera.fire7
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Hallway
-      show_header_toggle: false
-      entities:
-        - entity: binary_sensor.fire7_motion
-          secondary_info: last-changed
-  - type: custom:vertical-stack-in-card
-    cards:
-    - type: picture-entity
-      title: Garage
-      entity: camera.garage
-      camera_image: camera.garage
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Garage
-      show_header_toggle: false
-      entities:
-        - switch.cctv_garage_status
-  - type: vertical-stack
-    cards:
-    - type: picture-entity
-      title: Doorbell
-      entity: camera.doorbell
-      camera_image: camera.doorbell
-      show_name: false
-      show_state: false
-    - type: entities
-      title: Doorbell
-      show_header_toggle: false
-      entities:
-        - entity: binary_sensor.doorbell_motion
           secondary_info: last-changed

@@ -1,5 +1,5 @@
 title: Garage
-background: url("/local/garage.png") fixed
+#background: url("/local/garage.png") fixed
 icon: mdi:garage
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -11,6 +11,8 @@ cards:
     state_color: true
     show_header_toggle: false
     entities:
+      - entity: binary_sensor.pir_garage
+        secondary_info: last-changed
       - entity: binary_sensor.garage_back_door
         secondary_info: last-changed
       - entity: sensor.garage_temperature

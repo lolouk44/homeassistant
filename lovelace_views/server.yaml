@@ -1,257 +1,398 @@
 title: Server
-background: url("/local/computer.png") fixed
+#background: url("/local/computer.png") fixed
 icon: mdi:desktop-classic
 badges:
   !include /config/lovelace_views/badges.yaml
 cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: Unavailable Devices
-      open: true
-    filter:
-      include:
-        - entity_id: "*.*"
-          state: "unavailable" 
-    sort:
-      method: 'name'
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      state_color: true
-      head:
-        type: section
-        label: All Low Batteries
-      open: true
-    filter:
-      include:
-        - entity_id: "sensor.*battery2"
-          state: "< 10%" # State is greater than 25
-        - entity_id: "sensor.*battery"
-          state: "< 10%" # State is greater than 25
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: Home Assistant
-      open: true
-    filter:
-      include:
-        - entity_id: sensor.uptime
-        - entity_id: sensor.hass_db_size_formatted
-        - entity_id: sensor.current_version
-        - entity_id: sensor.online_version
-        - entity_id: sensor.docker_version
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: Server Stats
-      open: true
-    filter:
-      include:
-        - entity_id: sensor.currentcost_power
-        - entity_id: sensor.cpu_usage
-        - entity_id: sensor.ram_usage
-        - entity_id: sensor.ssl_cert_expiry
-        - entity_id: sensor.docker_hub_pulls
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: CCTV2 Server Stats
-      open: true
-    filter:
-      include:
-        - entity_id: sensor.cctv2_cpu_usage
-        - entity_id: sensor.cctv2_ram_usage
-        - entity_id: sensor.cctv2_root_disk_usage
-        - entity_id: sensor.cctv2_disk_temp
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: All Batteries
-      open: false
-    filter:
-      include:
-        - entity_id: "sensor.*battery2"
-        - entity_id: "sensor.*battery"
-    sort:
-      method: 'state'
-      numeric: true
-  - type: custom:auto-entities
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Unavailable Devices
+          open: true
+        filter:
+          include:
+            - entity_id: "*.*"
+              state: "unavailable" 
+        sort:
+          method: 'name'
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Low Batteries
+          open: true
+        filter:
+          include:
+            - entity_id: "sensor.*battery2"
+              state: "< 10%" # State is greater than 25
+            - entity_id: "sensor.*battery"
+              state: "< 10%" # State is greater than 25
+  - type: entities
+    entities:
+      - type: custom:fold-entity-row
+        head:
+          type: section
+          label: Home Assistant
+        open: true
+        entities:
+          - sensor.uptime
+          - sensor.hass_db_size_formatted
+          - sensor.current_version
+          - sensor.online_version
+          - sensor.docker_version
+  - type: entities
+    entities:
+      - type: custom:fold-entity-row
+        head:
+          type: section
+          label: Pi-hole
+        group_config:
+          state_color: true
+        open: false
+        entities:
+          - entity: binary_sensor.pi_hole
+          - entity: script.pi_hole_disable_10_min
+            icon: mdi:shield-off
+          - entity: script.pi_hole_enable
+            icon: mdi:shield-check
+          - entity: sensor.pi_hole_ads_blocked_today
+          - entity: sensor.pi_hole_ads_percentage_blocked_today
+          - entity: sensor.pi_hole_dns_queries_cached
+          - entity: sensor.pi_hole_dns_queries_forwarded
+          - entity: sensor.pi_hole_dns_queries_today
+          - entity: sensor.pi_hole_dns_unique_clients
+          - entity: sensor.pi_hole_dns_unique_domains
+          - entity: sensor.pi_hole_domains_blocked
+          - entity: sensor.pi_hole_seen_clients
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Server Stats
+          open: true
+        filter:
+          include:
+            - entity_id: sensor.current_cost
+            - entity_id: sensor.cpu_usage
+            - entity_id: sensor.ram_usage
+            - entity_id: sensor.ssl_cert_expiry
+            - entity_id: sensor.docker_hub_pulls
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: CCTV2 Server Stats
+          open: true
+        filter:
+          include:
+            - entity_id: sensor.cctv2_cpu_usage
+            - entity_id: sensor.cctv2_ram_usage
+            - entity_id: sensor.cctv2_root_disk_usage
+            - entity_id: sensor.cctv2_disk_temp
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Batteries
+          open: false
+        filter:
+          include:
+            - entity_id: "sensor.*battery2"
+            - entity_id: "sensor.*battery"
+        sort:
+          method: 'state'
+          numeric: true
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Openings
+          group_config:
+            state_color: true
+          open: false
+        filter:
+          include:
+            - entity_id: "binary_sensor.*window"
+            - entity_id: "binary_sensor.*door"
+        sort:
+          method: 'name'
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: RPI Sensors
+          group_config:
+            state_color: true
+          open: false
+        filter:
+          include:
+            - entity_id: binary_sensor.door_lock
+            - entity_id: "binary_sensor.pir*"
+            - entity_id: binary_sensor.photoresistor
+        sort:
+          method: 'name'
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:fold-entity-row
+        head:
+          type: section
+          label: Docker Containers
+        group_config:
+          state_color: true
+        open: false
+        entities:
+        - entity: switch.grafana
+          name: Grafana
+        - entity: switch.ha_dockermon
+          name: Dockermon
+        - entity: switch.influxdb
+          name: InfluxDB
+        - entity: switch.letsencrypt
+          name: LetsEncrypt
+        - entity: switch.plex
+          name: Plex
+        - entity: switch.portainer
+          name: Portainer
+        - entity: switch.syncthing
+          name: SyncThing
+        - entity: switch.watchtower
+          name: WatchTower
+        - entity: switch.zigbee2mqtt
+          name: ZigBee2MQTT
+        - entity: switch.zigbee2mqtt_permit_join
+          name: ZigBee2MQTT Permit Join
+        - entity: switch.cctv2_ha
+          name: CCTV2 HA
+        - entity: switch.cctv2_motion
+          name: CCTV2 Motion
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Hygro Sensors
+          open: false
+        filter:
+          include:
+           - entity_id: sensor.aloe_vera_temperature
+           - entity_id: sensor.currentcost_temperature
+           - entity_id: sensor.hallway_thermostat_temperature
+           - entity_id: sensor.loft_temperature
+           - entity_id: sensor.master_bedroom_aqara_temperature
+           - entity_id: sensor.kitchen_freezer_temperature
+           - entity_id: sensor.garage_freezer_temperature
+           - entity_id: sensor.upstairs_temperature
+           - entity_id: sensor.aloe_vera_moisture
+           - entity_id: sensor.hallway_thermostat_humidity
+           - entity_id: sensor.loft_humidity
+           - entity_id: sensor.master_bedroom_aqara_humidity
+           - entity_id: sensor.kitchen_freezer_humidity
+           - entity_id: sensor.garage_freezer_humidity
+           - entity_id: sensor.upstairs_humidity
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Server Disk Stats
+          open: false
+        filter:
+          include:
+          - entity_id: sensor.home_disk_usage
+          - entity_id: sensor.root_disk_usage
+          - entity_id: sensor.zfs_disk_usage
+          - entity_id: sensor.sda_disk_temp
+          - entity_id: sensor.zfs1_disk_temp
+          - entity_id: sensor.zfs2_disk_temp
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Goggle Assistant
+          group_config:
+            state_color: true
+          open: false
+        filter:
+          include:
+          - entity_id: input_boolean.normal
+          - entity_id: input_boolean.movies
+          - entity_id: input_boolean.xmas
+          - entity_id: input_boolean.scheduled_vacuuming
+          - entity_id: input_boolean.absolute_radio_radio
+          - entity_id: input_boolean.absolute_radio_cr_radio
+          - entity_id: input_boolean.chill_radio
+          - entity_id: input_boolean.radio_fiji_two_radio
+          - entity_id: input_boolean.radio_navtarang
+          - entity_id: input_boolean.rtl2_radio
+          - entity_id: input_boolean.multimedia
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Lights
+          open: false
+        filter:
+          include:
+            - entity_id: "light.*"
+        sort:
+          method: 'name'
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Switches
+          group_config:
+            state_color: true
+          open: false
+        filter:
+          include:
+            - entity_id: "switch.*"
+        sort:
+          method: 'name'
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Connected Devices
+          open: false
+          group_config:
+            state_color: true
+        filter:
+          include:
+          - entity_id: binary_sensor.dafang_kitchen
+          - entity_id: binary_sensor.dafang_living_room
+          - entity_id: binary_sensor.kello
+          - entity_id: binary_sensor.main
+          - entity_id: binary_sensor.rpi_kitchen
+          - entity_id: binary_sensor.rpi
+          - entity_id: binary_sensor.house_number_led_strip
+          - entity_id: binary_sensor.staircase_led_strip
+          - entity_id: binary_sensor.tv_cabinet_led_strip
+          - entity_id: binary_sensor.conservatory_led_strip
+
+
+  - type: picture-elements
     state_color: true
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: All Openings
-      open: false
-    filter:
-      include:
-        - entity_id: "binary_sensor.*window"
-        - entity_id: "binary_sensor.*door"
-    sort:
-      method: 'name'
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      state_color: true
-      head:
-        type: section
-        label: RPI Sensors
-      open: false
-    filter:
-      include:
-        - entity_id: binary_sensor.door_lock
-        - entity_id: "binary_sensor.pir*"
-        - entity_id: binary_sensor.photoresistor
-    sort:
-      method: 'name'
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      state_color: true
-      head:
-        type: section
-        label: Docker Containers
-      open: false
-    state_color: true
-    filter:
-      include:
-      - entity_id: switch.grafana
-        # name: Grafana
-      - entity_id: switch.ha_dockermon
-        # name: Dockermon
-      - entity_id: switch.influxdb
-        # name: InfluxDB
-      - entity_id: switch.letsencrypt
-        # name: LetsEncrypt
-      - entity_id: switch.plex
-        # name: Plex
-      - entity_id: switch.portainer
-        # name: Portainer
-      - entity_id: switch.syncthing
-        # name: SyncThing
-      - entity_id: switch.watchtower
-        # name: WatchTower
-      - entity_id: switch.zigbee2mqtt
-        # name: ZigBee2MQTT
-      - entity_id: switch.zigbee2mqtt_permit_join
-        # name: ZigBee2MQTT Permit Join
-      - entity_id: switch.cctv2_ha
-        # name: CCTV2 HA
-      - entity_id: switch.cctv2_motion
-        # name: CCTV2 Motion
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: Hygro Sensors
-      open: false
-    filter:
-      include:
-       - entity_id: sensor.aloe_vera_temperature
-       - entity_id: sensor.currentcost_temperature
-       - entity_id: sensor.hallway_thermostat_temperature
-       - entity_id: sensor.loft_temperature
-       - entity_id: sensor.master_bedroom_aqara_temperature
-       - entity_id: sensor.kitchen_freezer_temperature
-       - entity_id: sensor.garage_freezer_temperature
-       - entity_id: sensor.upstairs_temperature
-       - entity_id: sensor.aloe_vera_moisture
-       - entity_id: sensor.hallway_thermostat_humidity
-       - entity_id: sensor.loft_humidity
-       - entity_id: sensor.master_bedroom_aqara_humidity
-       - entity_id: sensor.kitchen_freezer_humidity
-       - entity_id: sensor.garage_freezer_humidity
-       - entity_id: sensor.upstairs_humidity
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: Server Disk Stats
-      open: false
-    filter:
-      include:
-      - entity_id: sensor.home_disk_usage
-      - entity_id: sensor.root_disk_usage
-      - entity_id: sensor.zfs_disk_usage
-      - entity_id: sensor.sda_disk_temp
-      - entity_id: sensor.zfs1_disk_temp
-      - entity_id: sensor.zfs2_disk_temp
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: Goggle Assistant
-      open: false
-    filter:
-      include:
-      - entity_id: input_boolean.normal
-      - entity_id: input_boolean.movies
-      - entity_id: input_boolean.xmas
-      - entity_id: input_boolean.scheduled_vacuuming
-      - entity_id: input_boolean.absolute_radio_radio
-      - entity_id: input_boolean.absolute_radio_cr_radio
-      - entity_id: input_boolean.chill_radio
-      - entity_id: input_boolean.radio_fiji_two_radio
-      - entity_id: input_boolean.radio_navtarang
-      - entity_id: input_boolean.rtl2_radio
-      - entity_id: input_boolean.multimedia
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: All Lights
-      open: false
-    filter:
-      include:
-        - entity_id: "light.*"
-    sort:
-      method: 'name'
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: All Switches
-      open: false
-    filter:
-      include:
-        - entity_id: "switch.*"
-    sort:
-      method: 'name'
-  - type: custom:auto-entities
-    card:
-      state_color: true
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: Connected Devices
-      open: false
-    filter:
-      include:
-      - entity_id: binary_sensor.dafang_kitchen
-      - entity_id: binary_sensor.dafang_living_room
-      - entity_id: binary_sensor.kello
-      - entity_id: binary_sensor.main
-      - entity_id: binary_sensor.rpi_kitchen
-      - entity_id: binary_sensor.rpi
-      - entity_id: binary_sensor.house_number_led_strip
-      - entity_id: binary_sensor.staircase_led_strip
-      - entity_id: binary_sensor.tv_cabinet_led_strip
-      - entity_id: binary_sensor.conservatory_led_strip
+    image: /local/HP-OfficeJet-Pro-8025.png
+    elements:
+      - type: icon
+        icon: mdi:printer
+        style:
+          top: 10%
+          left: 70%
+          color: rgb(68, 115, 158)
+      - type: icon
+        icon: mdi:water
+        style:
+          top: 25%
+          left: 70%
+          color: black
+      - type: icon
+        icon: mdi:water
+        style:
+          top: 40%
+          left: 70%
+          color: Cyan
+      - type: icon
+        icon: mdi:water
+        style:
+          top: 55%
+          left: 70%
+          color: Magenta
+      - type: icon
+        icon: mdi:water
+        style:
+          top: 70%
+          left: 70%
+          color: Yellow
+      - type: icon
+        icon: mdi:file-document
+        style:
+          top: 85%
+          left: 70%
+          color: rgb(68, 115, 158)
+          
+      - type: state-label
+        entity: sensor.hp_printer_status
+        style:
+          top: 10%
+          left: 80%
+      - type: state-label
+        entity: sensor.hp_printer_ink_black
+        style:
+          top: 25%
+          left: 80%
+      - type: state-label
+        entity: sensor.hp_printer_ink_cyan
+        style:
+          top: 40%
+          left: 80%
+      - type: state-label
+        entity: sensor.hp_printer_ink_magenta
+        style:
+          top: 55%
+          left: 80%
+      - type: state-label
+        entity: sensor.hp_printer_ink_yellow
+        style:
+          top: 70%
+          left: 80%
+      - type: state-label
+        entity: sensor.pages_left
+        style:
+          top: 85%
+          left: 80%

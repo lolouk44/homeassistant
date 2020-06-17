@@ -186,7 +186,7 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.rpi_kitchen_heartbeat.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.rpi_kitchen_heartbeat.last_updated | default(0)) | int > 300 )}}'
     - condition: state
       entity_id: alert.rpi_kitchen_lost
       state: 'idle'
@@ -206,4 +206,35 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_rpi_kitchen_at_300
+
+
+
+
+- alias: Alert - Pi-hole Lost On
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.pi_hole_heartbeat.last_updated | default(0)) | int > 300 )}}'
+    - condition: state
+      entity_id: alert.pi_hole_lost
+      state: 'idle'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alert_lost_pi_hole_at_300
+
+- alias: Alert - Pi-hole Lost Off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.pi_hole_heartbeat
+  condition:
+    - condition: template
+      value_template: '{{states("alert.pi_hole_lost") != "idle"}}'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alert_lost_pi_hole_at_300
 

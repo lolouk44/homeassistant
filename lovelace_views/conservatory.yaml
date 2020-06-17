@@ -1,5 +1,5 @@
 title: Conservatory
-background: url("/local/home-outline.png") fixed
+#background: url("/local/home-outline.png") fixed
 icon: mdi:home-outline
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -24,7 +24,8 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.conservatory_double_door
         secondary_info: last-changed
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: picture-glance
       title: Conservatory

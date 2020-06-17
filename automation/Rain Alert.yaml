@@ -4,6 +4,12 @@
     - platform: state
       entity_id: sensor.dark_sky_icon
       to: 'rain'
+    - platform: state
+      entity_id: weather.dark_sky
+      to: 'rain'
+    - platform: state
+      entity_id: sensor.dark_sky_summary
+      to: 'Rain'
   condition:
     - condition: state
       entity_id: input_boolean.clothes_drying_outside
@@ -39,6 +45,12 @@
   trigger:
     - platform: state
       entity_id: sensor.dark_sky_icon
+      to: 'rain'
+    - platform: state
+      entity_id: weather.dark_sky
+      to: 'rain'
+    - platform: state
+      entity_id: sensor.dark_sky_summary
       to: 'rain'
   condition:
     - condition: or

@@ -1,0 +1,4 @@
+anova_timer:
+  name: Anova Recipe Timer
+  has_date: false
+  has_time: true

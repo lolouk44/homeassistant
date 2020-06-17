@@ -1,0 +1,11 @@
+- alias: Anova - Set Recipe Timer
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id:
+        - input_select.anova_recipe
+  action:
+  - service: input_datetime.set_datetime
+    entity_id: input_datetime.anova_timer
+    data_template:
+      time: '{{states("input_select.anova_recipe").split("(")[1].split(")")[0]}}:00'

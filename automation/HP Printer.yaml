@@ -1,0 +1,13 @@
+- alias: HP Printer - Instant Ink per Month Counter Reset
+  trigger:
+    - platform: time
+      at: '06:00:00'
+  condition:
+    - condition: template
+      # Change the number here to get whatever day of the month you want.
+      value_template: "{{ now().day == 13 }}"
+  action:
+  - service: var.set
+    data:
+      entity_id: var.printer_pages_at_month_start
+      value: "{{ states('sensor.hp_printer_printer')|int }}"

@@ -49,31 +49,3 @@ stop_chromecast_radio:
 # Christmas Radio: http://144.217.180.30:8016/stream
 # Sounds of Christmas: http://198.27.66.225:8360/1
 # ChristmasHits.FM: http://46.105.118.14:24000
-
-# Deezer
-# volume_level: 0.4000000059604645
-# is_volume_muted: false
-# media_content_id: 0.14299590
-# media_content_type: music
-# media_duration: 285.204898
-# media_position: 0.599822
-# media_position_updated_at: 2018-09-13T16:26:23.749302+00:00
-# media_title: Charlie Brown
-# media_artist: Coldplay
-# app_id: 8A8746E7
-# app_name: Deezer
-# friendly_name: House
-# entity_picture: /api/media_player_proxy/media_player.house?token=52241b6a6779514ad1818b7364b48ae647ded6eb312f1511703e24c92dc08590&cache=d8f07c08620d3f50
-# supported_features: 21437
-
-
-# RTL2
-# volume_level: 0.4000000059604645
-# is_volume_muted: false
-# media_content_id: http://streaming.radio.rtl2.fr:80/rtl2-1-44-96
-# media_position: 1.245292
-# media_position_updated_at: 2018-09-13T16:35:35.272616+00:00
-# app_id: CC1AD845
-# app_name: Default Media Receiver
-# friendly_name: House
-# supported_features: 21437

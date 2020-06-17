@@ -1,19 +1,22 @@
 title: Automation
-background: url("/local/calendar-check.png") fixed
+#background: url("/local/calendar-check.png") fixed
 icon: mdi:calendar-check
 cards:
-  - type: custom:auto-entities
-    card:
-      type: custom:fold-entity-row
-      head:
-        type: section
-        label: All Automations
-      open: false
-    filter:
-      include:
-        - entity_id: "automation.*"
-    sort:
-      method: 'name'
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Automations
+          open: false
+        filter:
+          include:
+            - entity_id: "automation.*"
+        sort:
+          method: 'name'
 
   - type: 'custom:auto-entities'
     card:

@@ -1,5 +1,5 @@
 title: Living Room
-background: url("/local/sofa.png") fixed
+#background: url("/local/sofa.png") fixed
 icon: mdi:sofa
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -26,7 +26,8 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.living_room_right_big_window
         secondary_info: last-changed
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: picture-glance
       title: Living Room
@@ -52,7 +53,8 @@ cards:
         - entity: switch.lwrf_socket_3
           secondary_info: last-changed
           icon: mdi:hinduism
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: entities
       title: AV

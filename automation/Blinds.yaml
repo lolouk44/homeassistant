@@ -13,6 +13,8 @@
       - condition: state
         entity_id: input_boolean.holidays
         state: 'on'
+    - condition: template
+      value_template: "{{states('sensor.dark_sky_temperature') | int < 20}}"
   action:
   - service: cover.open_cover
     data:
@@ -71,16 +73,29 @@
         - cover.livingroom_blinds
 
 
-# - alias: Blinds - Close if too hot outside
-  # initial_state: true
-  # trigger:
-    # - platform: state
-      # entity_id: sun.sun
-  # condition:
-    # - condition: template
-      # value_template: "states('sensor.aqara_illumination') | int < 200"
-  # action:
-  # - service: cover.close_cover
-    # data:
-      # entity_id:
-        # - cover.livingroom_blinds
+- alias: Blinds - Close Living Room if too hot outside
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: cover.livingroom_blinds
+      state: 'open'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_close_living_room_if_too_hot_outside", "last_triggered") | default(0)) | int > 7200)}}'
+    - condition: state
+      entity_id: weather.dark_sky
+      state: 'sunny'
+    - condition: template
+      value_template: "{{states('sensor.dark_sky_temperature') | int >= 20}}"
+    - condition: template
+      value_template: "{{not (state_attr('sun.sun', 'rising'))}}"
+    - condition: template
+      value_template: "{{state_attr('sun.sun', 'elevation') | int >= 20}}"
+  action:
+  - service: cover.close_cover
+    data:
+      entity_id:
+        - cover.livingroom_blinds

@@ -1,5 +1,5 @@
 title: Home
-background: url("/local/home.png") fixed
+#background: url("/local/home.png") fixed
 icon: mdi:home
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -8,6 +8,7 @@ cards:
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
     title: Scenes
+    state_color: true
     show_header_toggle: false
     entities:
       - input_boolean.normal
@@ -16,6 +17,7 @@ cards:
       - input_boolean.xmas
       - input_boolean.guests
       - input_boolean.silent
+      - input_boolean.theme_dark
   - type: entities
     title: RPi Sensors
     state_color: true
@@ -170,6 +172,11 @@ cards:
         - binary_sensor.workday_sensor
         - device_tracker.laurent
         - device_tracker.divashni
+        - media_player.mi_box3_adtv
+        - media_player.onkyo_tx_nr656
+        - media_player.onkyo_tx_nr656_2
+        - media_player.onkyo_tx_nr656_zone_2
+        - media_player.panasonic_viera_tv
         - person.laurent
         - person.div
         - sensor.aloe_vera_light_intensity

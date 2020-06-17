@@ -69,8 +69,20 @@
   select: ".current-version h1"
   value_template: '{{ value.split(":")[1] }}'
 
+# Tasmota
 - platform: scrape
   resource: https://github.com/arendst/Tasmota/releases
   name: tasmota_online_version
   select: "span.css-truncate-target"
-#  value_template: '{{ value.split(":")[1] }}'
+
+
+# Pi-hole
+- platform: rest
+  resource: http://192.168.0.4/admin/api.php?versions
+  name: 'Pi-hole Current Version'
+  value_template: '{{ value.core_current }}'
+
+- platform: scrape
+  resource: https://github.com/pi-hole/pi-hole/releases
+  name: 'Pi-hole Online Version'
+  select: "span.css-truncate-target"

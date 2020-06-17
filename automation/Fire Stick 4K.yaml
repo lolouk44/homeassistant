@@ -1,22 +1,26 @@
 - alias: Fire Stick 4K - Turn Movies on when Netflix or Prime is Playing
   initial_state: true
   trigger:
-    platform: state
-    entity_id: media_player.fire_stick_4k
-    to: 'playing'
-    for:
-      minutes: 1
+    - platform: state
+      entity_id: media_player.fire_stick_4k
+      to: 'playing'
+      for:
+        seconds: 5
+    - platform: state
+      entity_id: media_player.fire_stick_4k
   condition:
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
     - condition: template
       value_template: >-
-        {{state_attr("media_player.fire_stick_4k","app_name") == "Amazon Video"
+        {{
+        state_attr("media_player.fire_stick_4k","app_name") == "Netflix"
         or state_attr("media_player.fire_stick_4k","app_name") == "com.apple.atve.amazon.appletv"
-        or state_attr("media_player.fire_stick_4k","app_name") == "Netflix"
         or state_attr("media_player.fire_stick_4k","app_name") == "Plex"
-        or state_attr("media_player.fire_stick_4k","app_name") ==  "com.disney.disneyplus" }}
+        or state_attr("media_player.fire_stick_4k","app_name") ==  "com.disney.disneyplus"
+        or state_attr("media_player.fire_stick_4k","app_name") == "Amazon Video"
+        }}
     - condition: state
       entity_id: binary_sensor.dark
       state: 'on'
@@ -29,9 +33,6 @@
   trigger:
     - platform: state
       entity_id: media_player.fire_stick_4k
-      to: 'paused'
-    - platform: state
-      entity_id: media_player.kodi
       to: 'paused'
   condition:
     - condition: state
@@ -48,9 +49,6 @@
   trigger:
     - platform: state
       entity_id: media_player.fire_stick_4k
-      to: 'playing'
-    - platform: state
-      entity_id: media_player.kodi
       to: 'playing'
   condition:
     - condition: state

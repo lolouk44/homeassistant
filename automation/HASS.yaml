@@ -60,12 +60,14 @@
     entity_id: switch.dafang_kitchen_status
   - service: switch.turn_off
     entity_id: switch.cctv_conservatory_status
+  - service: switch.turn_off
+    entity_id: switch.cctv_staircase_status
 
 - alias: HASS - Nightly Restart
   initial_state: true
   trigger:
     platform: time_pattern
-    hours: 2
+    hours: 4
     minutes: 0
     seconds: 0
   action:
@@ -85,6 +87,10 @@
       payload_template: 'ON'
       retain: false
   - service: shell_command.reboot_doorbell
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.normal
+  - service: automation.trigger
+    entity_id: automation.lights_all_lights_off
 
 - alias: HASS - SSL expiry notification
   initial_state: true
@@ -191,5 +197,32 @@
       title: Updates pending in HACS
       message: >-
         {% for repo in state_attr(trigger.entity_id, 'repositories') %}
-          **{{ repo.display_name }}** _{{ repo["installed version"] }}_ -> _{{ repo["available version"] }}_
+          **{{ repo.display_name }}** _{{ repo["installed_version"] }}_ -> _{{ repo["available_version"] }}_
         {% endfor %}
+
+- alias: HASS - Set Theme
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      to:
+        - "above_horizon"
+        - "below_horizon"
+    - platform: homeassistant
+      event: start
+  action:
+    - entity_id: input_boolean.theme_dark
+      service_template: >
+        {% if states("sun.sun") == "above_horizon" %}
+          input_boolean.turn_off
+        {% else %}
+          input_boolean.turn_on
+        {% endif %}
+    - service: frontend.set_theme
+      data_template:
+        name: >
+          {% if states("sun.sun") == "above_horizon" %}
+            day
+          {% else %}
+            dark
+          {% endif %}

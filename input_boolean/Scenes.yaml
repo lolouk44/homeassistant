@@ -27,6 +27,10 @@ silent:
   initial: off
   icon: mdi:volume-off
 
+theme_dark:
+  name: Theme Dark
+  icon: mdi:theme-light-dark
+
 clothes_drying_outside:
   name: Clothes Drying Outside
   icon: mdi:tshirt-crew-outline

@@ -1,4 +1,4 @@
 restart_mm:
-  alias: 'Rstart Magic Mirror'
+  alias: 'Restart Magic Mirror'
   sequence:
     - service: shell_command.restart_magic_mirror

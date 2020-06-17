@@ -1,12 +1,13 @@
 title: Media
-background: url("/local/library-music.png") fixed
+#background: url("/local/library-music.png") fixed
 icon: mdi:library-music
 badges:
   !include /config/lovelace_views/badges.yaml
 cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: picture-glance
       camera_image: camera.chromecast_radio_pic
@@ -39,6 +40,9 @@ cards:
     show_header_toggle: false
     artwork_border: true
     power_color: true
+    header:
+      type: picture
+      image: '/local/Chromecast-Audio.png'
     entities:
     - entity: media_player.house
       type: "custom:mini-media-player"
@@ -60,6 +64,9 @@ cards:
     title: Video
     icon: 'mdi:television-classic'
     show_header_toggle: false
+    header:
+      type: picture
+      image: '/local/Video.png'
     entities:
     - entity: media_player.panasonic_viera_tv
       type: "custom:mini-media-player"
@@ -87,6 +94,9 @@ cards:
     show_header_toggle: false
     artwork_border: true
     power_color: true
+    header:
+      type: picture
+      image: '/local/Onkyo.png'
     entities:
     - entity: media_player.onkyo_tx_nr656
       type: "custom:mini-media-player"
@@ -102,13 +112,13 @@ cards:
     title: Google Home Minis
     icon: 'mdi:google-home'
     show_header_toggle: false
-    artwork_border: true
-    artwork: 'https://cdn.images.express.co.uk/img/dynamic/59/590x/Google-Home-Mini-862385.jpg'
     power_color: true
+    header:
+      type: picture
+      image: '/local/Google-Home-Mini-cut.png'
     entities:
     - entity: media_player.google_home_minis
       type: "custom:mini-media-player"
-      artwork: 'https://ksassets.timeincuk.net/wp/uploads/sites/56/2017/10/Google-Home-Mini-side.jpg'
       group: true
       power_color: true
     - entity: media_player.kitchen_google_mini

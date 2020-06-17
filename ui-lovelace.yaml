@@ -1,9 +1,40 @@
 title: Home
 
+resources:
+
+animated_background:
+  default_url: /hacsfiles/lovelace-animated-backgroundBackup/background-animations/sunny.html
+  # debug: true
+  # display_user_agent: true
+  excluded_users:
+    - Fire7
+  entity: "input_boolean.theme_dark"
+  state_url:
+    'off':
+      - "/local/community/lovelace-animated-backgroundBackup/Autumn_Lake.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Grand_Canyon.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Mountain.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Mountains_Lake.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/River.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Tropical_Beach.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Volcano.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Waterfall.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Waterfall2.mp4"
+    'on':
+      - "/local/community/lovelace-animated-backgroundBackup/Night_Grand_Canyon.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Night_Moon.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Night_Moon2.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Night_Skies.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Night_Space.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Night_Sunset.mp4"
+      - "/local/community/lovelace-animated-backgroundBackup/Night_Sunset2.mp4"
+
+
 
 
 custom_header:
   compact_mode: true
+  background: 'rgba(155, 155, 155, 0.25)'
   show_tabs: 0
   kiosk_mode: true
   exceptions:
@@ -12,12 +43,13 @@ custom_header:
       config:
         show_tabs: '0 to 50'
         kiosk_mode: false
+        # button_text:
+          # options: '{{ hours24 }}:{{ minutesLZ }}  ⁞'
 
-# preload:
-  # - gauge
-  # - picture-glance
-  # - conditional
-  # - picture-entity
+preload_cards:
+  - 'custom:canvas-gauge-card'
+
+
 views:
   - !include /config/lovelace_views/alarm.yaml
   - !include /config/lovelace_views/home.yaml

@@ -1,5 +1,5 @@
 title: Bathroom
-background: url("/local/shower.png") fixed
+#background: url("/local/shower.png") fixed
 icon: mdi:shower
 badges:
   !include /config/lovelace_views/badges.yaml

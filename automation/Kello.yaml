@@ -198,7 +198,7 @@
       entity_id: binary_sensor.kello
       to: 'off'
       for:
-        minutes: 5
+        minutes: 4
   action:
   - service: switch.turn_off
     data:

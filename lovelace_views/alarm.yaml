@@ -1,5 +1,5 @@
 title: Alarm
-background: url("/local/verified.png") fixed
+#background: url("/local/verified.png") fixed
 icon: mdi:shield-check
 cards:
   - type: custom:auto-entities

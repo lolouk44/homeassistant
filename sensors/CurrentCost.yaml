@@ -15,10 +15,10 @@
     currentcost_power:
       entity_id: sensor.current_cost
       unit_of_measurement: 'W'
-      value_template: '{{ state_attr("sensor.current_cost", "Appliance 0")[:-2] | int }}'
+      value_template: '{{ state_attr("sensor.current_cost", "Appliance 0")[:-1] | int }}'
       friendly_name: CurrentCost Power
     dehumidifier_power:
       entity_id: sensor.current_cost
       unit_of_measurement: 'W'
-      value_template: '{{ state_attr("sensor.current_cost", "Appliance 2")[:-2] | int }}'
+      value_template: '{{ state_attr("sensor.current_cost", "Appliance 2")[:-1] | int }}'
       friendly_name: Dehumidifier Power

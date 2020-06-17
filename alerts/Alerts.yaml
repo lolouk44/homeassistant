@@ -179,6 +179,18 @@ rpi_kitchen_lost:
   notifiers:
     - mobile_app_lolo_s_iphone
 
+pi_hole_lost:
+  name: Pi-hole Lost
+  entity_id: input_boolean.alert_lost_pi_hole_at_300
+  can_acknowledge: True
+  skip_first: True
+  repeat:
+    - 10
+    - 30
+    - 60
+  notifiers:
+    - mobile_app_lolo_s_iphone
+
 kello_lost:
   name: Kello Lost
   entity_id: binary_sensor.kello
@@ -309,6 +321,7 @@ bmw_unlocked:
   state: 'unlocked'
   can_acknowledge: True
   skip_first: True
+  title: "HA - BMW"
   repeat:
     - 10
     - 15

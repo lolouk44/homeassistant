@@ -4,9 +4,9 @@
     - platform: state
       entity_id: device_tracker.laurent
       to: "home"
-    # - platform: state
-      # entity_id: device_tracker.divashni
-      # to: "home"
+    - platform: state
+      entity_id: device_tracker.divashni
+      to: "home"
   condition:
     - condition: template
       value_template: "{{ states('alarm_control_panel.alarm') == 'disarmed' }}"
@@ -52,9 +52,22 @@
   initial_state: true
   trigger:
     - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: UNLOCK_YALE_DISARM_ALARM
+    - platform: event
       event_type: ios.notification_action_fired
       event_data:
         actionName: UNLOCK_YALE_DISARM_ALARM
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.holidays
+        state: 'on'
   action:
     - service: lock.unlock
       data:
@@ -68,9 +81,22 @@
   initial_state: true
   trigger:
     - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: UNLOCK_YALE
+    - platform: event
       event_type: ios.notification_action_fired
       event_data:
         actionName: UNLOCK_YALE
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.holidays
+        state: 'on'
   action:
     - service: lock.unlock
       data:
@@ -85,15 +111,19 @@
       to: "unlocked"
       for:
         minutes: 5
+    - platform: state
+      entity_id: binary_sensor.main_door
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.main_door
+      state: 'off'
   action:
-    - service: lock.unlock
-      data:
-        entity_id: lock.yale_conexis_l1_lock
-    - delay: 00:00:10
-    - service: lock.lock
-      data:
-        entity_id: lock.yale_conexis_l1_lock
-    - delay: 00:00:10
+    - condition: template
+      value_template: '{{ as_timestamp(now()) - as_timestamp(states.lock.yale_conexis_l1_lock.last_changed) | int >= 290}}'
     - condition: template
       value_template: '{{ states("sensor.porch_door_lock_status") == "Deadbolt Jammed" or states("lock.yale_conexis_l1_lock") == "unlocked" }}'
     - service: notify.mobile_app_lolo_s_iphone
@@ -149,6 +179,14 @@
       value_template: '{{ states("group.pirs") == "on" }}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.lock.yale_conexis_l1_lock.last_changed) | int > 120)}}'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.holidays
+        state: 'on'
   action:
     - service: lock.unlock
       data:

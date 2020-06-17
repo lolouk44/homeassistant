@@ -1,5 +1,5 @@
 title: Entrance
-background: url("/local/home-modern.png") fixed
+#background: url("/local/home-modern.png") fixed
 icon: mdi:home-modern
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -52,19 +52,25 @@ cards:
         - entity: light.house_number
           secondary_info: last-changed
           icon: mdi:numeric-4-box-multiple-outline
-  - type: entities
-    title: Nest Thermostat
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - entity: climate.hallway
-        secondary_info: last-changed
-      - entity: sensor.hallway_thermostat_humidity
-        secondary_info: last-changed
-      - entity: binary_sensor.hallway_heating
-        secondary_info: last-changed
-      - entity: binary_sensor.hallway_thermostat_has_leaf
-        secondary_info: last-changed
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: entities
+      title: Nest Thermostat
+      state_color: true
+      show_header_toggle: false
+      entities:
+        # - entity: climate.hallway
+          # secondary_info: last-changed
+        # - entity: sensor.hallway_thermostat_humidity
+          # secondary_info: last-changed
+        # - entity: binary_sensor.hallway_heating
+          # secondary_info: last-changed
+        - entity: binary_sensor.hallway_thermostat_has_leaf
+          secondary_info: last-changed
+    - type: thermostat
+      entity: climate.hallway
+      name: " "
   - type: conditional
     conditions:
       - entity: input_boolean.xmas
@@ -95,7 +101,8 @@ cards:
       - entity: switch.fire7_charger
         secondary_info: last-changed
 
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: entities
       title: Doorbell

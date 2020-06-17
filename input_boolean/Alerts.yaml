@@ -15,3 +15,6 @@ alert_lost_fire7_at_300:
 
 alert_lost_rpi_kitchen_at_300:
   initial: off
+
+alert_lost_pi_hole_at_300:
+  initial: off

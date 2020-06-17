@@ -199,6 +199,14 @@ sensor.lolo_to_home:
   icon: mdi:car
 sensor.home_to_work:
   icon: mdi:car
+sensor.hp_officejet_pro_8020_series_black_cartridge:
+  rgb_color: '[0, 0, 0]'
+sensor.hp_officejet_pro_8020_series_cyan_cartridge:
+  rgb_color: '[0, 255, 255]'
+sensor.hp_officejet_pro_8020_series_magenta_cartridge:
+  rgb_color: '[255, 0, 255]'
+sensor.hp_officejet_pro_8020_series_yellow_cartridge:
+  rgb_color: '[255, 255, 0]'
 sensor.pws_precip_1d:
   friendly_name: Rain (%)
 sensor.pws_precip_today_metric:
@@ -221,14 +229,8 @@ sensor.docker_version:
   icon: mdi:docker
 
 #Switches
-switch.cctv_garage_status:
-  icon: mdi:run-fast
 switch.lwrf_socket_xmas:
   icon: mdi:pine-tree
-switch.dafang_living_room_status:
-  icon: mdi:run-fast
-switch.cctv_conservatory_status:
-  icon: mdi:run-fast
 switch.dafang_living_room_rtsp:
   icon: mdi:video
 switch.dafang_living_room_blue_led:
@@ -237,8 +239,6 @@ switch.dafang_living_room_yellow_led:
   icon: mdi:lightbulb
 switch.dafang_living_room_left_right:
   icon: mdi:arrow-expand-horizontal
-switch.dafang_kitchen_status:
-  icon: mdi:run-fast
 switch.dafang_kitchen_rtsp:
   icon: mdi:video
 switch.dafang_kitchen_blue_led:

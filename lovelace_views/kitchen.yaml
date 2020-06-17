@@ -1,5 +1,5 @@
 title: Kitchen
-background: url("/local/bowl.png") fixed
+#background: url("/local/bowl.png") fixed
 icon: mdi:bowl
 badges:
   !include /config/lovelace_views/badges.yaml
@@ -18,7 +18,8 @@ cards:
         icon: mdi:weather-night
       - entity: binary_sensor.kitchen_window
         secondary_info: last-changed
-  - type: custom:vertical-stack-in-card
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
     - type: picture-glance
       title: Kitchen
@@ -72,11 +73,15 @@ cards:
     title: Anova Sous-Vide
     state_color: true
     show_header_toggle: false
+    header:
+      type: picture
+      image: '/local/Anova.png'
     entities:
       - entity: climate.anova
-        secondary_info: last-changed
       - entity: sensor.anova_timer
         secondary_info: last-changed
-      - entity: switch.anova
-        icon: mdi:bowl
+      - entity: switch.anova_timer
         secondary_info: last-changed
+      - entity: input_select.anova_recipe
+      - entity: input_datetime.anova_timer
+      - entity: script.anova_cook_recipe

@@ -1,0 +1,28 @@
+anova_cook_recipe:
+  alias: Anova - Cook Recipe
+  sequence:
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.anova
+        temperature: >-
+          {% if is_state("input_select.anova_recipe", "Egg - Soft Boiled (00:45)") %} 63.3
+          {% elif is_state("input_select.anova_recipe", "Lamb Steak (03:00)") %} 55
+          {% elif is_state("input_select.anova_recipe", "Pork Tenderloin (02:00)") %} 57.2
+          {% elif is_state("input_select.anova_recipe", "Steak (00:30)") %} 54
+          {% elif is_state("input_select.anova_recipe", "Tuna Steak (00:45)") %} 43.3
+          {% elif is_state("input_select.anova_recipe", "Venison Steak (01:30)") %} 54
+          {% endif %}
+        hvac_mode: 'heat'
+    - delay:
+        seconds: 15
+    - wait_template: "{{ is_state('climate.anova', 'heat') }}"
+      timeout: '00:00:15'
+    - service: mqtt.publish
+      data:
+        topic: anova/command/timer
+        payload_template: '{{(states("input_select.anova_recipe").split("(")[1].split(")")[0].split(":")[0] | int * 60) + (
+states("input_select.anova_recipe").split("(")[1].split(")")[0].split(":")[1] | int)}}'
+    - wait_template: '{{ state_attr("climate.anova","temperature") | int -  state_attr("climate.anova","current_temperature") | int < 1}}'
+      timeout: '00:00:15'
+    - service: switch.turn_on
+      entity_id: switch.anova_timer

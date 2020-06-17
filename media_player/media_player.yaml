@@ -12,6 +12,7 @@
     tv: 'TV'
     strm-box: 'Stream-Box/CC'
 - platform: panasonic_viera
+  name: Panasonic Viera TV
   host: 192.168.0.27
   mac: D8:AF:F1:47:7A:16
 - platform: mpd
@@ -24,3 +25,12 @@
 - platform: androidtv
   host: 192.168.0.29
   name: Fire Stick 4K
+  # adb_server_ip: 127.0.0.1
+  # adb_server_port: 5037
+  state_detection_rules:
+    'Amazon Video':
+      - 'playing':
+          'media_session_state': 3
+      - 'paused':
+          'media_session_state': 2
+      - 'idle'

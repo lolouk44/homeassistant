@@ -91,11 +91,11 @@
       state: 'off'
   action:
   - service: switch.turn_on
-    entity_id: switch.dafang_living_room_status
-  - service: switch.turn_on
-    entity_id: switch.dafang_kitchen_status
-  - service: switch.turn_on
-    entity_id: switch.cctv_conservatory_status
+    entity_id:
+      - switch.dafang_living_room_status
+      - switch.dafang_kitchen_status
+      - switch.cctv_conservatory_status
+      - switch.cctv_staircase_status
 
 - alias: CCTV - Deactivate motion we reach home
   initial_state: true
@@ -127,11 +127,11 @@
         state: 'on'
   action:
   - service: switch.turn_off
-    entity_id: switch.dafang_living_room_status
-  - service: switch.turn_off
-    entity_id: switch.dafang_kitchen_status
-  - service: switch.turn_off
-    entity_id: switch.cctv_conservatory_status
+    entity_id:
+      - switch.dafang_living_room_status
+      - switch.dafang_kitchen_status
+      - switch.cctv_conservatory_status
+      - switch.cctv_staircase_status
 
 
 - alias: CCTV - Set Dafang Blue LED On

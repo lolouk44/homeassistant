@@ -36,10 +36,10 @@
 
     - service: input_boolean.turn_off
       entity_id: input_boolean.normal
-    - service: light.turn_on
-      data:
-        entity_id: light.living_room_wall
-        brightness: 255
+    # - service: light.turn_on
+      # data:
+        # entity_id: light.living_room_wall
+        # brightness: 255
     - service: light.turn_off
       data:
         entity_id: light.living_room_main
@@ -198,4 +198,16 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.guests
+
+
+- alias: Scene - Theme Dark
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.theme_dark
+  action:
+    - service: frontend.set_theme
+      data_template:
+        name: >
+          {% if states("input_boolean.theme_dark") == "on" %}dark{% else %}day{% endif %}
 

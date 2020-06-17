@@ -76,3 +76,8 @@
   username: !secret seventeentrack_email
   password: !secret seventeentrack_passwqord
   show_delivered: true
+
+- platform: template
+  sensors:
+    pages_left:
+      value_template: "{{ states('var.printer_pages_at_month_start')|int - states('sensor.hp_printer_printer')|int + 50}} Pages"

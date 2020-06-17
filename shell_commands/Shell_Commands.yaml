@@ -10,6 +10,9 @@ cctv_garage_pause: /config/shell_scripts/cctv_garage_pause.sh
 cctv_conservatory_active: /config/shell_scripts/cctv_conservatory_active.sh
 cctv_conservatory_pause: /config/shell_scripts/cctv_conservatory_pause.sh
 
+cctv_staircase_active: /config/shell_scripts/cctv_staircase_active.sh
+cctv_staircase_pause: /config/shell_scripts/cctv_staircase_pause.sh
+
 reboot_dafang_kitchen: /config/shell_scripts/reboot_dafang_kitchen.sh
 reboot_dafang_livingroom: /config/shell_scripts/reboot_dafang_livingroom.sh
 reboot_dafang_conservatory: /config/shell_scripts/reboot_dafang_conservatory.sh
