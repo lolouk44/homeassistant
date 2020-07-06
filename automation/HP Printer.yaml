@@ -8,6 +8,6 @@
       value_template: "{{ now().day == 13 }}"
   action:
   - service: var.set
-    data:
+    data_template:
       entity_id: var.printer_pages_at_month_start
       value: "{{ states('sensor.hp_printer_printer')|int }}"
