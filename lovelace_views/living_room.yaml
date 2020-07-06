@@ -124,14 +124,14 @@ cards:
         style:
           top: 95%
           left: 20%
-          "--paper-item-icon-color": rgb(115, 122, 130)
+          "--paper-item-icon-color": rgb(50, 50, 50)
       - type: icon
         icon: mdi:robot-vacuum
         entity: vacuum.mi_robot_vacuum
         style:
           top: 95%
           left: 10%
-          "--paper-item-icon-color": rgb(115, 122, 130)
+          "--paper-item-icon-color": rgb(50, 50, 50)
       - type: state-icon
         entity: sensor.xiaomi_battery_level
         service: vacuum.start_pause
