@@ -42,20 +42,20 @@ cards:
           secondary_info: last-changed
         - entity: light.wled_conservatory
           secondary_info: last-changed
-  - type: entities
-    title: Aloe Vera
-    show_header_toggle: false
-    entities:
-      - entity: sensor.aloe_vera_temperature
-        secondary_info: last-changed
-      - entity: sensor.aloe_vera_moisture
-        secondary_info: last-changed
-      - entity: sensor.aloe_vera_light_intensity
-        secondary_info: last-changed
-      - entity: sensor.aloe_vera_conductivity
-        secondary_info: last-changed
-      - entity: sensor.aloe_vera_battery2
-        secondary_info: last-changed
+  # - type: entities
+    # title: Aloe Vera
+    # show_header_toggle: false
+    # entities:
+      # - entity: sensor.aloe_vera_temperature
+        # secondary_info: last-changed
+      # - entity: sensor.aloe_vera_moisture
+        # secondary_info: last-changed
+      # - entity: sensor.aloe_vera_light_intensity
+        # secondary_info: last-changed
+      # - entity: sensor.aloe_vera_conductivity
+        # secondary_info: last-changed
+      # - entity: sensor.aloe_vera_battery2
+        # secondary_info: last-changed
   - type: entities
     title: Edimax
     state_color: true
