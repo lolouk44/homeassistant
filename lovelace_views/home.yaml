@@ -117,6 +117,7 @@ cards:
         - binary_sensor.dafang_living_room
         - binary_sensor.dafang_living_room_connection_status
         - binary_sensor.dafang_living_room_status
+        - binary_sensor.dark
         - binary_sensor.door_lock
         - binary_sensor.fire7_motion
         - binary_sensor.first_floor_smoke_detector
@@ -179,7 +180,6 @@ cards:
         - media_player.panasonic_viera_tv
         - person.laurent
         - person.div
-        - sensor.aloe_vera_light_intensity
         - sensor.aqara_illumination
         - sensor.bmw_220d_mileage
         - sensor.bmw_220d_mpg
@@ -219,21 +219,3 @@ cards:
         - sensor.xiaomi_sensor_dirty_left
         - sensor.xiaomi_side_brush_left
         - sensor.xiaomi_status
-  - type: entities
-    title: Coronavirus
-    icon: 'mdi:skull'
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - entity: sensor.united_kingdom_coronavirus_confirmed
-        secondary_info: last-changed
-        # icon: mdi:emoticon-neutral-outline
-      - entity: sensor.united_kingdom_coronavirus_current
-        secondary_info: last-changed
-        # icon: mdi:emoticon-sad-outline
-      - entity: sensor.united_kingdom_coronavirus_deaths
-        secondary_info: last-changed
-        # icon: mdi:emoticon-dead-outline
-      - entity: sensor.united_kingdom_coronavirus_recovered
-        secondary_info: last-changed
-        # icon: mdi:emoticon-happy-outline
