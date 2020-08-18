@@ -51,6 +51,10 @@
     - platform: state
       entity_id: input_boolean.movies
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: cover.livingroom_blinds
+      state: 'open'
   action:
   - service: cover.close_cover
     data:
