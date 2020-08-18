@@ -14,6 +14,10 @@
         - media_player.google_home_minis
         - media_player.panasonic_viera_tv
         - media_player.onkyo_tx_nr656
+        - media_player.onkyo_tx_nr656_2
+        - media_player.house
+        - media_player.conservatory
+        - media_player.kitchen
   - service: media_player.volume_set
     data_template:
       entity_id: media_player.google_home_minis
