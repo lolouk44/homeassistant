@@ -52,7 +52,7 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.action_fired
+      event_type: ios.notification_action_fired
       event_data:
         actionName: UNLOCK_YALE_DISARM_ALARM
   condition:
@@ -77,7 +77,7 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.action_fired
+      event_type: ios.notification_action_fired
       event_data:
         actionName: UNLOCK_YALE
   condition:
