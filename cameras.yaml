@@ -67,6 +67,7 @@
     {% if is_state(my_speaker,"playing") and is_state("binary_sensor.radio_is_streaming", "on")%}
     {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states("sensor.rtl2_pic")}}
     {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states("sensor.absolute_radio_pic")}}
+    {% elif is_state("input_select.chromecast_radio_station", "Scala") %} {{states("sensor.scala_pic")}}
     {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states("sensor.absolute_radio_CR_pic")}}
     {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} https://upload.wikimedia.org/wikipedia/fr/b/bd/HitWestLogo.jpg
     {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} https://secureimg.stitcher.com/feedimageswide/480x270_176113.jpg

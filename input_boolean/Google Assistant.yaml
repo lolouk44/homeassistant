@@ -28,6 +28,11 @@ radio_navtarang:
   initial: off
   icon: mdi:radio
 
+scala_radio:
+  name: Scala
+  initial: off
+  icon: mdi:radio
+
 scheduled_vacuuming:
   name: Scheduled Vacuuming
   initial: off

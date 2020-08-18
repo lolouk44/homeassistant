@@ -63,6 +63,27 @@
       entity_id: input_boolean.rtl2_radio
 
 
+- alias: GA - Play Scala Radio
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.scala_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: Scala
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: House
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.scala_radio
+
+
 
 - alias: GA - Play Chill Radio
   initial_state: true

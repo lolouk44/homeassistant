@@ -30,8 +30,16 @@ entity_config:
     room: 'Living Room'
     expose: true
 
+  input_boolean.scala_radio:
+    name: "Scala"
+    room: 'Living Room'
+    expose: true
+
   input_boolean.radio_fiji_two_radio:
     name: "Radio Fiji Two"
+    aliases:
+      - "Fiji Two"
+      - "Radio Fiji Two"
     room: 'Living Room'
     expose: true
 
