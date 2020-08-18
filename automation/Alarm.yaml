@@ -196,6 +196,34 @@
           push:
             badge: '{{states("counter.iosbadgecount")}}'
             category: "alarm"
+            sound:
+              name: default
+              critical: 1
+              volume: 1.0
+          attachment:
+            url: !secret url_cctv_living_room
+          action_data:
+            entity_id: '{{trigger.entity_id}}'
+    - service: notify.mobile_app_div_iphone
+      data_template:
+        title: "Alarm Triggered !"
+        message: >
+          ALARM! The alarm has been triggered !(
+          ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
+          {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+          {%- endfor -%}
+          {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
+          {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
+          {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
+          {%- endfor %})
+        data:
+          push:
+            badge: '{{states("counter.iosbadgecount")}}'
+            category: "alarm"
+            sound:
+              name: default
+              critical: 1
+              volume: 1.0
           attachment:
             url: !secret url_cctv_living_room
           action_data:
@@ -648,7 +676,7 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.action_fired
+      event_type: ios.notification_action_fired
       event_data:
         actionName: ARM_ALARM
   action:
@@ -662,7 +690,7 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.action_fired
+      event_type: ios.notification_action_fired
       event_data:
         actionName: DISARM_ALARM
   action:

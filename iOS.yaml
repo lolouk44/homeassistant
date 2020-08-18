@@ -45,7 +45,6 @@ push:
           authenticationRequired: yes
           destructive: yes
           behavior: 'default'
-
     - name: Unlock_Yale_Disarm_Alarm
       identifier: 'unlockyaledisarmalarm'
       actions:
