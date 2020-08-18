@@ -36,9 +36,6 @@
     - platform: state
       entity_id: input_boolean.edimax_charging
       to: 'on'
-    - platform: state
-      entity_id: switch.xiaomi_garage_socket
-      from: 'unavailable'
   condition:
     - condition: state
       entity_id: switch.edimax1
@@ -49,6 +46,31 @@
         entity_id: switch.edimax1
 
 
+- alias: Socket - Edimax - Timer
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_select.edimax_timer
+  condition:
+    - condition: state
+      entity_id: switch.edimax1
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.edimax1
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_select.edimax_timer
+              state: "No Timer"
+          sequence:
+            - service: switch.turn_off
+              entity_id: switch.edimax1
+      default:
+        - service: switch.turn_on
+          data:
+            entity_id: switch.edimax1
 
 - alias: Socket - Xiaomi - Battery Is Charged, Turning Xiaomi Switch Off
   initial_state: true
