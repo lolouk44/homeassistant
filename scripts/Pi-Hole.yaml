@@ -3,12 +3,12 @@ pi_hole_disable_10_min:
   sequence:
     - service: pi_hole.disable
       data:
+        entity_id: switch.pi_hole
         duration: '00:10:00'
-        name: Pi-Hole
 
-pi_hole_enable:
-  alias: 'Pi-Hole - Enable'
-  sequence:
-    - service: pi_hole.enable
-      data:
-        name: Pi-Hole
+# pi_hole_enable:
+  # alias: 'Pi-Hole - Enable'
+  # sequence:
+    # - service: pi_hole.enable
+      # data:
+        # name: Pi-Hole
