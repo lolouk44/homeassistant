@@ -1,3 +1,4 @@
 - platform: starlingbank
   accounts:
     - access_token: !secret starling_token
+  scan_interval: 900
