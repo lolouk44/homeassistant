@@ -1,0 +1,41 @@
+anova_recipe:
+  name: 'Anova Recipe'
+  options:
+    - "Egg - Soft Boiled (00:45)"
+    - "Lamb Steak (03:00)"
+    - "Pork Tenderloin (02:00)"
+    - "Steak (00:30)"
+    - "Tuna Steak (00:45)"
+    - "Venison Steak (01:40)"
+  icon: mdi:book-information-variant
+
+mm_cam_feed:
+  name: 'MagicMirror Camera Feed:'
+  options:
+    - front
+    - doorbell
+    - living_room
+    - side
+    - back
+  initial: front
+  icon: mdi:cctv
+
+edimax_timer:
+  name: 'Edimax Timer'
+  options:
+    - No Timer
+    - 15 min
+    - 30 min
+    - 45 min
+    - 1h
+    - 2h
+    - 4h
+  initial: No Timer
+  icon: mdi:timer-outline
+
+edimax_mode:
+  name: 'Edimax Mode'
+  options:
+    - Switch
+    - Air Con
+  icon: mdi:form-select
