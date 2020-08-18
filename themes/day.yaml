@@ -7,17 +7,17 @@ day:
   primary-color: "#03A9F4"  # blue
   primary-background-color: rgba(255, 255, 255, 0.8)
   secondary-background-color: var(--primary-background-color)
+  accent-color: rgba(3, 169, 244, 1)
 
   # Cards
-
   card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)
-  ha-card-border-radius: 20px
+  ha-card-border-radius: 10px
   ha-card-background: var(--primary-background-color)
   label-badge-red: rgba(3, 169, 244, 0.8)  # from Apple systemOrange dark mode
   state-icon-active-color: rgba(3, 169, 244, 1)
   paper-card-background-color: var(--ha-card-background)
-  ha-slider-background: none !important
+  ha-slider-background: none #!important
   # table-row-background-color: var(--primary-background-color)
   # paper-dialog-background-color: var(--primary-background-color)
   
@@ -25,4 +25,3 @@ day:
   # card-header-footer-background: rgba(255, 255, 255, 0.8)
   # ha-card-header-footer-background-color: rgba(255, 255, 255, 0.8)
   # ha-card-header-footer-background: rgba(255, 255, 255, 0.8)
-
