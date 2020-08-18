@@ -151,14 +151,9 @@ logger:
   default: error
   logs:
     # homeassistant.components.rfxtrx: debug
-    # homeassistant.helpers.entity: critical
     # custom_components.currentcost: debug
-    miio.miioprotocol: critical
-    # homeassistant.components.bmw_connected_drive: critical
-    # homeassistant.components.shell_command: critical
-    # homeassistant.components.scrape: critical
-    # homeassistant.components.rest: critical
-    # homeassistant.components.waze_travel_time: critical
+    homeassistant.components.xiaomi_miio: critical
+    xiaomi_gateway: critical
 
 
 lovelace:
@@ -265,6 +260,88 @@ recorder:
 
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
+  devices:
+    # Binary Sensors
+    0B11002B00018F3C0A010F60:
+      #name: Garage Back Door
+      device_class: door
+
+    # Covers
+    091903076C911A000070:
+      # name: Kitchen Blinds
+      fire_event: true
+    09190002002527010070:
+      # name: Livingroom Blinds
+      fire_event: true
+
+    # Lights
+    0a14000801010102100070:
+      # name: Kitchen Door
+    0a14000b01010101100070:
+      # name: Kitchen Window
+    0a14000b01010104100070:
+      # name: Conservatory
+    0a14000d01010302100070:
+      # name: Staircase
+    0a14001101010301100070:
+      # name: Hallway
+    0a14001701010202100070:
+      # name: Living Room Main
+    0a14001b01010201100070:
+      # name: Living Room Wall
+
+    # Sensors
+    0A520700240E00E4360179:
+      #name: Upstairs
+      # data_type:
+       # - Humidity
+       # - Temperature
+    0A520700420E0104260269:
+      #name: Loft
+      # data_type:
+       # - Humidity
+       # - Temperature
+
+    # Switches
+    0A14001E01010404000070:
+      #name: Dehumidifier
+    0A14002201010402000070:
+      #name: Kitchen TV
+    0A14002301010403000070:
+      #name: LWRF Socket 3
+    0B1101020000000102000070:
+      #name: LWRF Socket Xmas
+    0a1400bef4ff6201010070:
+      #name: LWRF Remote 1
+      fire_event: true
+    0a1400c0f4ff6202010070:
+      #name: LWRF Remote 2
+      fire_event: true
+    0a1400c1f4ff6203010070:
+      #name: LWRF Remote 3
+      fire_event: true
+
+    09130007a68a42012970:
+      #name: Kerui Remote Unlock
+      fire_event: true
+    09130008a68a44012b70:
+      #name: Kerui Remote Lock
+      fire_event: true
+
+    09130006131408015e70:
+      # name: Kerui Panic
+      #name: Kerui Alarm
+      fire_event: true
+    09130008131402016070:
+      # name: Kerui Arm Home
+      #name: Kerui Disarm
+      fire_event: true
+    # 09130009a68a48012b70:
+      # name: Kerui Remote Panic
+      # fire_event: true
+    # 0913000aa68a41012970:
+      # name: Kerui Remote Arm Home
+      # fire_event: true
 
 shopping_list:
 

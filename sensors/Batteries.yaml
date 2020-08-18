@@ -100,18 +100,18 @@
       unit_of_measurement: '%'
       value_template: '{{state_attr("binary_sensor.cloakroom_window", "battery_level") | int}}'
       device_class: battery
-    loft_temperature_battery:
-      friendly_name: Loft Temperature Battery
-      unit_of_measurement: '%'
-      value_template: '{% if state_attr("sensor.loft_temperature", "Battery numeric")|int == 9 %}90{% else %}9{% endif %}'
-      device_class: battery
+    # loft_temperature_battery:
+      # friendly_name: Loft Temperature Battery
+      # unit_of_measurement: '%'
+      # value_template: '{% if state_attr("sensor.loft_temperature", "Battery numeric")|int == 9 %}90{% else %}9{% endif %}'
+      # device_class: battery
     main_door_battery:
       friendly_name: Main Door Battery
       unit_of_measurement: '%'
       value_template: '{{state_attr("binary_sensor.main_door", "battery_level") | int}}'
       device_class: battery
-    upstairs_temperature_battery:
-      friendly_name: Upstairs Temperature Battery
-      unit_of_measurement: '%'
-      value_template: '{% if state_attr("sensor.upstairs_temperature", "Battery numeric")|int == 9 %}90{% else %}9{% endif %}'
-      device_class: battery
+    # upstairs_temperature_battery:
+      # friendly_name: Upstairs Temperature Battery
+      # unit_of_measurement: '%'
+      # value_template: '{% if state_attr("sensor.upstairs_temperature", "Battery numeric")|int == 9 %}90{% else %}9{% endif %}'
+      # device_class: battery

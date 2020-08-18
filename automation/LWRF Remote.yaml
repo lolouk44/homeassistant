@@ -80,14 +80,17 @@
   trigger:
     - platform: event
       event_type: button_pressed
-      event_data:
-        entity_id: switch.lwrf_remote_3
+      event_data: {"state": "on", "entity_id": "switch.lwrf_remote_3"}
+        #entity_id: switch.lwrf_remote_3
+    - platform: state
+      entity_id: binary_sensor.lwrf_remote_3
+      to: "on"
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_on", "last_triggered") ) | int > 1 )}}'
-    - condition: state
-      entity_id: switch.lwrf_remote_3
-      state: 'on'
+    # - condition: state
+      # entity_id: switch.lwrf_remote_3
+      # state: 'on'
   action:
   - service: media_player.volume_mute
     data:
@@ -100,14 +103,17 @@
   trigger:
     - platform: event
       event_type: button_pressed
-      event_data:
-        entity_id: switch.lwrf_remote_3
+      event_data: {"state": "off", "entity_id": "switch.lwrf_remote_3"}
+        #entity_id: switch.lwrf_remote_3
+    - platform: state
+      entity_id: binary_sensor.lwrf_remote_3
+      to: "off"
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_off", "last_triggered") ) | int > 1 )}}'
-    - condition: state
-      entity_id: switch.lwrf_remote_3
-      state: 'off'
+    # - condition: state
+      # entity_id: switch.lwrf_remote_3
+      # state: 'off'
   action:
   - service: media_player.volume_mute
     data:
