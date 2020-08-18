@@ -84,3 +84,15 @@ cards:
       type: "custom:mini-media-player"
       power_color: true
       group: true
+  - type: entities
+    title: Edimax
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: input_select.edimax_mode
+      - entity: switch.edimax1
+        secondary_info: last-changed
+      - entity: sensor.edimax1_watts
+        secondary_info: last-changed
+      - entity: input_boolean.edimax_charging
+      - entity: input_select.edimax_timer

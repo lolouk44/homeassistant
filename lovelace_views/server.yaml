@@ -62,10 +62,9 @@ cards:
         open: false
         entities:
           - entity: binary_sensor.pi_hole
+          - entity: switch.pi_hole
           - entity: script.pi_hole_disable_10_min
             icon: mdi:shield-off
-          - entity: script.pi_hole_enable
-            icon: mdi:shield-check
           - entity: sensor.pi_hole_ads_blocked_today
           - entity: sensor.pi_hole_ads_percentage_blocked_today
           - entity: sensor.pi_hole_dns_queries_cached
@@ -272,6 +271,7 @@ cards:
           - entity_id: input_boolean.radio_fiji_two_radio
           - entity_id: input_boolean.radio_navtarang
           - entity_id: input_boolean.rtl2_radio
+          - entity_id: input_boolean.scala_radio
           - entity_id: input_boolean.multimedia
   - type: entities
     show_header_toggle: false

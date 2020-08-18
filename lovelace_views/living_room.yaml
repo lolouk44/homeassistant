@@ -114,19 +114,9 @@ cards:
           left: 50%
           width: 100%
           height: 100%
-      - type: icon
-        icon: mdi:play
-        tap_action: call-service
-        entity: vacuum.mi_robot_vacuum
-        service: vacuum.start
-        service_data:
-          - entity: vacuum.mi_robot_vacuum
-        style:
-          top: 95%
-          left: 20%
-          "--paper-item-icon-color": rgb(50, 50, 50)
-      - type: icon
-        icon: mdi:robot-vacuum
+      # - type: icon
+        # icon: mdi:robot-vacuum
+      - type: state-icon
         entity: vacuum.mi_robot_vacuum
         style:
           top: 95%
@@ -137,7 +127,7 @@ cards:
         service: vacuum.start_pause
         style:
           top: 95%
-          left: 30%
+          left: 20%
           "--paper-item-icon-color": rgb(50, 50, 50)
       - type: state-label
         entity: sensor.xiaomi_status

@@ -57,15 +57,6 @@ cards:
       # - entity: sensor.aloe_vera_battery2
         # secondary_info: last-changed
   - type: entities
-    title: Edimax
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - sensor.edimax1_watts
-      - switch.edimax1
-      - input_boolean.edimax_charging
-
-  - type: entities
     title: Rotary Clothes Airer
     state_color: true
     show_header_toggle: false

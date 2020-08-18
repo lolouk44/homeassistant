@@ -119,6 +119,10 @@ cards:
         - binary_sensor.dafang_living_room_status
         - binary_sensor.dark
         - binary_sensor.door_lock
+        - binary_sensor.doorbell
+        - binary_sensor.doorbell_cctv_connection_status
+        - binary_sensor.doorbell_motion
+        - binary_sensor.doorbell_ring
         - binary_sensor.fire7_motion
         - binary_sensor.first_floor_smoke_detector
         - binary_sensor.front_cctv_disk_error
@@ -130,6 +134,7 @@ cards:
         - binary_sensor.front_cctv_tamper_detection
         - binary_sensor.garage_back_door
         - binary_sensor.garage_cctv_connection_status
+        - binary_sensor.garage_motion
         - binary_sensor.ground_floor_smoke_detector
         - binary_sensor.hallway_heating
         - binary_sensor.hallway_thermostat_fan
@@ -139,6 +144,7 @@ cards:
         - binary_sensor.hallway_thermostat_online
         - binary_sensor.hikvision_cctv
         - binary_sensor.house_number_led_strip
+        - binary_sensor.hp_printer_connectivity
         - binary_sensor.kello
         - binary_sensor.kiaan_big_window
         - binary_sensor.kiaan_small_window
@@ -148,16 +154,19 @@ cards:
         - binary_sensor.main
         - binary_sensor.main_door
         - binary_sensor.master_bedroom_left_big_window
+        - binary_sensor.master_bedroom_right_big_window
         - binary_sensor.master_bedroom_left_small_window
         - binary_sensor.master_bedroom_right_small_window
         - binary_sensor.photoresistor
         - binary_sensor.pir_conservatory
+        - binary_sensor.pir_garage
         - binary_sensor.pir_kitchen
         - binary_sensor.pir_living_room_back
         - binary_sensor.pir_living_room_front
         - binary_sensor.pir_staircase
         - binary_sensor.pooja_room_big_window
         - binary_sensor.pooja_room_small_window
+        - binary_sensor.radio_is_streaming
         - binary_sensor.rpi
         - binary_sensor.rpi_kitchen
         - binary_sensor.side_cctv_disk_error
@@ -166,6 +175,7 @@ cards:
         - binary_sensor.side_cctv_illegal_access
         - binary_sensor.side_cctv_line_crossing
         - binary_sensor.side_cctv_motion
+        - binary_sensor.staircase_cctv_connection_status
         - binary_sensor.staircase_led_strip
         - binary_sensor.tv_cabinet_led_strip
         - binary_sensor.updater
@@ -201,7 +211,6 @@ cards:
         - sensor.hallway_thermostat_temperature
         - sensor.horseshoe_close_eta
         - sensor.kello_mqtt
-        - sensor.plex
         - sensor.seventeentrack_packages_delivered
         - sensor.seventeentrack_packages_expired
         - sensor.seventeentrack_packages_in_transit
