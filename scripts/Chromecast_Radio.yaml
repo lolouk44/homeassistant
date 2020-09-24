@@ -4,7 +4,8 @@ play_chromecast_radio:
     - service: media_player.volume_set
       data_template:
         entity_id: >
-          {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
+          {% if is_state("input_select.chromecast_radio_speakers", "Master Bedroom") %} media_player.master_bedroom_display
+          {% elif is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
           {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo_TX_NR656_2") %} media_player.onkyo_tx_nr656_2
           {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
@@ -13,9 +14,10 @@ play_chromecast_radio:
     - service: media_player.play_media
       data_template:
         entity_id: >
-          {% if is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-          {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo_TX_NR656_2") %} media_player.onkyo_tx_nr656_2
+          {% if is_state("input_select.chromecast_radio_speakers", "Master Bedroom") %} media_player.master_bedroom_display
           {% elif is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
+          {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
+          {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo_TX_NR656_2") %} media_player.onkyo_tx_nr656_2
           {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
           {% endif %}
         media_content_id: >
@@ -28,7 +30,7 @@ play_chromecast_radio:
           {% elif is_state("input_select.chromecast_radio_station", "Chill") %} http://media-the.musicradio.com/ChillMP3
           {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} http://peridot.streamguys.com:7150/RFTwo?play
           {% elif is_state("input_select.chromecast_radio_station", "Scala") %}  https://stream-mz.planetradio.co.uk/scalahigh.aac
-          {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} http://192.111.142.176:8000/NAVTARANG
+          {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} https://stream.fijivillage.com/navtarang
           {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} {{states("input_text.custom_station")}}
           {% endif %}
         media_content_type: 'audio/mp4'
@@ -39,7 +41,8 @@ stop_chromecast_radio:
     - service: media_player.turn_off
       data_template:
         entity_id: >
-          {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
+          {% if is_state("input_select.chromecast_radio_speakers", "Master Bedroom") %} media_player.master_bedroom_display
+          {% elif is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
           {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo_TX_NR656_2") %} media_player.onkyo_tx_nr656_2
           {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house

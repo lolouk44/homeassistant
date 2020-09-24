@@ -203,6 +203,13 @@ lovelace:
     # Bar Card https://github.com/custom-cards/bar-card
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
+    # Bar Card https://github.com/custom-cards/bar-card
+    - url: /local/community/button-card/button-card.js
+      type: module
+    # Custom iframe: https://github.com/lukevink/home-assistant-custom-iframe
+    - url: /local/custom-iframe-card.js
+      type: js
+
 
   # dashboards:
     # lovelace-alarm-panel: # Needs to contain a hyphen (-)

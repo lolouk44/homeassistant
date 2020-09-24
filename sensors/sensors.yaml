@@ -65,6 +65,19 @@
 - platform: uptime
   unit_of_measurement: hours
 
+- platform: time_date
+  display_options:
+    - 'time'
+
+- platform: template
+  sensors:
+    week_day:
+      entity_id: sensor.time
+      value_template: "{{ now().strftime('%A')}}"
+    current_date:
+      entity_id: sensor.time
+      value_template: "{{ now().strftime('%d')}} {{ now().strftime('%B')}} {{ now().strftime('%Y')}}"
+
 - platform: random
   name: bauble_random_effect
   minimum: 1

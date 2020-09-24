@@ -53,6 +53,9 @@
     - platform: state
       entity_id: group.pirs
       to: 'off'
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
   condition:
     - condition: state
       entity_id: media_player.panasonic_viera_tv
@@ -66,6 +69,9 @@
     - condition: state
       entity_id: sun.sun
       state: 'below_horizon'
+    - condition: state
+      entity_id: group.pirs
+      state: 'off'
   action:
     - service: notify.gmaillolo
       data_template:
@@ -90,8 +96,12 @@
       data:
         entity_id: media_player.google_home_minis
         volume_level: 1
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.master_bedroom_display
+        volume_level: 0.5
     - service: tts.google_say
-      entity_id: media_player.google_home_minis
+      entity_id: media_player.google_home_minis, media_player.master_bedroom_display
       data_template:
         message: >
           The following doors/windows are not closed: 

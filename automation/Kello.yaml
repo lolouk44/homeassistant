@@ -17,7 +17,7 @@
       entity_id: input_boolean.kello_mute_alarms
       to: 'on'
     - platform: state
-      entity_id: person.laurent
+      entity_id: person.div
       from: 'home'
     - platform: state
       entity_id: input_boolean.holidays
@@ -27,7 +27,7 @@
       to: 'on'
   condition:
     - condition: template
-      value_template: '{{ states("person.laurent") != "home"}}'
+      value_template: '{{ states("person.div") != "home"}}'
     - condition: time
       before: '21:30'
   action:
@@ -51,7 +51,7 @@
       entity_id: input_boolean.kello_mute_alarms
       to: 'off'
     - platform: state
-      entity_id: person.laurent
+      entity_id: person.div
       to: 'home'
     - platform: state
       entity_id: input_boolean.holidays
@@ -61,7 +61,7 @@
       to: 'on'
   condition:
     - condition: template
-      value_template: '{{ states("person.laurent") == "home"}}'
+      value_template: '{{ states("person.div") == "home"}}'
   action:
     - service: mqtt.publish
       data:
@@ -190,20 +190,3 @@
       topic: "Kello/Radio"
       payload_template: 'WeatherForecast'
       retain: false
-      
-- alias: Kello - Reboot When Unavailable
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.kello
-      to: 'off'
-      for:
-        minutes: 4
-  action:
-  - service: switch.turn_off
-    data:
-      entity_id: switch.xiaomi_dual_usb_socket
-  - delay: 00:00:5
-  - service: switch.turn_on
-    data:
-      entity_id: switch.xiaomi_dual_usb_socket

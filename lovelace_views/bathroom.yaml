@@ -27,3 +27,19 @@ cards:
       - entity: switch.bathroom_fan
         secondary_info: last-changed
         icon: mdi:fan
+  - type: entities
+    title: Mi Scale
+    show_header_toggle: false
+    entities:
+      - entity: sensor.lolo_weight
+        secondary_info: last-changed
+      - entity: sensor.lolo_bmi
+        secondary_info: last-changed
+      - entity: sensor.div_weight
+        secondary_info: last-changed
+      - entity: sensor.div_bmi
+        secondary_info: last-changed
+      - entity: sensor.kiaan_weight
+        secondary_info: last-changed
+      - entity: sensor.kiaan_bmi
+        secondary_info: last-changed

@@ -1,0 +1,4 @@
+set_tv_audio_to_home_cinema:
+  alias: 'Set TV Audio To Home Cinema'
+  sequence:
+    - service: shell_command.viera_audio_home_cinema

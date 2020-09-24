@@ -191,17 +191,17 @@ pi_hole_lost:
   notifiers:
     - mobile_app_lolo_s_iphone
 
-kello_lost:
-  name: Kello Lost
-  entity_id: binary_sensor.kello
-  state: 'off'
-  can_acknowledge: True
-  skip_first: True
-  repeat:
-    - 5
-    - 60
-  notifiers:
-    - mobile_app_lolo_s_iphone
+# kello_lost:
+  # name: Kello Lost
+  # entity_id: binary_sensor.kello
+  # state: 'off'
+  # can_acknowledge: True
+  # skip_first: True
+  # repeat:
+    # - 5
+    # - 60
+  # notifiers:
+    # - mobile_app_lolo_s_iphone
 
 house_number_led_strip_lost:
   name: House Number LED Strip Lost

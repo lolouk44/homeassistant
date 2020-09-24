@@ -267,9 +267,6 @@
       entity_id: group.door_and_window_sensors
       state: 'on'
   action:
-    - service: light.turn_off
-      data:
-        entity_id: light.aqara_gateway_light
     - service: tts.google_say
       data_template:
         entity_id: media_player.google_home_minis
@@ -279,7 +276,7 @@
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
           {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
-          The alarm has not been armed
+           The alarm is still being armed !
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
         message: |
@@ -297,17 +294,29 @@
           {%- endfor -%}
           {%- if is_state('binary_sensor.main_door','on') -%}Main Door,{%- endif -%}
            are not closed.
-           The alarm has not been armed !
-    - service: alarm_control_panel.alarm_disarm
-      entity_id: alarm_control_panel.alarm
-      data:
-        code: !secret alarm_code
+           The alarm is still being armed !
     - delay:
-        seconds: 2
-    - service: media_player.volume_set
-      data_template:
+        seconds: 5
+    - service: media_player.play_media
+      data:
         entity_id: media_player.google_home_minis
-        volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}' 
+        media_content_id: 'http://192.168.0.24/audio/Alarm-CountDown.mp3'
+    - wait_template: "{{ is_state('binary_sensor.main_door', 'on') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: 'true'
+    - wait_template: "{{ is_state('binary_sensor.main_door', 'off') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: 'true'
+    - condition: template
+      value_template: '{{ states("alarm_control_panel.alarm")=="pending" }}'
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.0.24/audio/1sec.mp3'
+        media_content_type: 'audio/mp3'
+    - service: script.turn_on
+      data:
+        entity_id: script.flash_aqara_light
 
 
 - alias: 'Alarm - Pending Arming'
@@ -416,7 +425,7 @@
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.google_home_minis
-        volume_level: 0.4
+        volume_level: 0.5
 
 
 
@@ -679,6 +688,10 @@
       event_type: ios.notification_action_fired
       event_data:
         actionName: ARM_ALARM
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: ARM_ALARM
   action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.alarm
@@ -691,6 +704,10 @@
   trigger:
     - platform: event
       event_type: ios.notification_action_fired
+      event_data:
+        actionName: DISARM_ALARM
+    - platform: event
+      event_type: ios.action_fired
       event_data:
         actionName: DISARM_ALARM
   action:

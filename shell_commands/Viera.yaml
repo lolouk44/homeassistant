@@ -1,0 +1,3 @@
+viera_on: python3 /config/shell_scripts/viera_on.py
+viera_input_hdmi2: python3 /config/shell_scripts/viera_input_hdmi2.py
+viera_audio_home_cinema: python3 /config/shell_scripts/viera_audio_home_cinema.py

@@ -55,6 +55,10 @@
       event_type: ios.notification_action_fired
       event_data:
         actionName: UNLOCK_YALE_DISARM_ALARM
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: UNLOCK_YALE_DISARM_ALARM
   condition:
     - condition: or
       conditions:
@@ -78,6 +82,10 @@
   trigger:
     - platform: event
       event_type: ios.notification_action_fired
+      event_data:
+        actionName: UNLOCK_YALE
+    - platform: event
+      event_type: ios.action_fired
       event_data:
         actionName: UNLOCK_YALE
   condition:

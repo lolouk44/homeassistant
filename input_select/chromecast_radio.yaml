@@ -20,5 +20,6 @@ chromecast_radio_speakers:
     - Conservatory
     - House
     - Kitchen
+    - Master Bedroom
     - Onkyo_TX_NR656_2
   icon: mdi:speaker-wireless

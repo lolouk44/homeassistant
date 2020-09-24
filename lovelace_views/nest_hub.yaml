@@ -1,0 +1,94 @@
+title: Nest Hub
+background: center / cover no-repeat url("http://192.168.0.23:8082") 
+icon: mdi:monitor-dashboard
+path: nest_hub
+view_path: nest_hub
+
+# badges:
+  # !include /config/lovelace_views/badges.yaml
+cards:
+  # - !include /config/lovelace_views/persistent_notifications.yaml
+  # - !include /config/lovelace_views/alert_card.yaml
+  - type: picture-elements
+    elements:
+      - entity: sensor.time
+        style:
+          font-family: Arial
+          color: '#03A9F4'
+          # WAIT WHAT? OPACITY? COOL!
+          filter: opacity(100%)
+          font-family: Candara
+          font-size: 1000%
+          left: 50%
+          top: 56%
+          pointer-events: none
+          text-shadow: 5px 5px 10px grey;
+          # USE THIS TO BRING THE ITEM FRONT OR MOVE IT BACK IN LAYERS.
+          z-index: 0
+        type: state-label
+      - entity: sensor.week_day
+        style:
+          filter: opacity(50%)
+          font-family: Brush Script MT
+          font-size: 500%
+          left: 43%
+          pointer-events: none
+          text-shadow: 0px 0px 80px black
+          top: 20%
+          z-index: 1
+        type: state-label
+      - entity: sensor.current_date
+        style:
+          filter: opacity(100%)
+          font-family: Cambria
+          font-size: 280%
+          left: 50%
+          top: 33%
+          pointer-events: none
+          z-index: 2
+        type: state-label
+    image: '/local/blank.png'
+
+  - type: entities
+    title: Div Bedside
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - input_select.kello_radio_station
+      - input_number.volume_kello
+      - input_boolean.kello_play_stop
+      - input_boolean.kello_mute_alarms
+
+  # - type: entities
+    # title: Lolo Bedside
+    # show_header_toggle: false
+    # entities:
+    # - entity: light.lolo_bedside_light
+      # secondary_info: last-changed
+      # icon: mdi:lamp
+    # - entity: media_player.master_bedroom_display
+  - type: custom:button-card
+    show_header_toggle: false
+    entity: light.lolo_bedside_light
+    icon: mdi:lamp
+
+  - type: entities
+    title: Main Bedroom Sensors
+    state_color: true
+    show_header_toggle: false
+    entities:
+    - entity: sensor.master_bedroom_temperature
+      secondary_info: last-changed
+    - entity: sensor.master_bedroom_humidity
+      secondary_info: last-changed
+
+
+
+  - type: entities
+    title: Edimax
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: switch.edimax1
+        name: Air Cond
+        icon: mdi:air-conditioner

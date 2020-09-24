@@ -56,18 +56,6 @@ cards:
       - entity: sensor.xiaomi_dual_usb_socket_watts
         secondary_info: last-changed
   - type: entities
-    title: Mi Scale
-    show_header_toggle: false
-    entities:
-      - entity: sensor.lolo_weight
-        secondary_info: last-changed
-      - entity: sensor.lolo_bmi
-        secondary_info: last-changed
-      - entity: sensor.div_weight
-        secondary_info: last-changed
-      - entity: sensor.div_bmi
-        secondary_info: last-changed
-  - type: entities
     title: Mi Box
     icon: 'mdi:google-chrome'
     show_header_toggle: false
@@ -96,3 +84,42 @@ cards:
         secondary_info: last-changed
       - entity: input_boolean.edimax_charging
       - entity: input_select.edimax_timer
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: picture-glance
+      camera_image: camera.chromecast_radio_pic
+      entities:
+        - entity: input_select.chromecast_radio_station
+        - entity: input_text.custom_station
+        - entity: input_select.chromecast_radio_speakers
+        - entity: switch.chromecast_radio_vol_down
+        - entity: switch.chromecast_radio_mute
+        - entity: switch.chromecast_radio_vol_up
+        - entity: switch.chromecast_radio_stop
+        - entity: switch.chromecast_radio_play
+    - type: conditional
+      conditions:
+        - entity: binary_sensor.radio_is_streaming
+          state: "on"
+      card:
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.stream_artist
+            name: Artist
+            icon: mdi:account
+          - entity: sensor.stream_track
+            name: Track
+            icon: mdi:disc
+  - type: entities
+    title: Nest Hub
+    show_header_toggle: false
+    artwork_border: true
+    power_color: true
+
+    entities:
+    - entity: media_player.master_bedroom_display
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true

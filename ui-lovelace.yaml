@@ -28,6 +28,10 @@ animated_background:
       - "/local/community/lovelace-animated-backgroundBackup/Night_Space.mp4"
       - "/local/community/lovelace-animated-backgroundBackup/Night_Sunset.mp4"
       - "/local/community/lovelace-animated-backgroundBackup/Night_Sunset2.mp4"
+  views:
+    - path: nest_hub
+      config:
+        enabled: false
 
 
 
@@ -69,4 +73,5 @@ views:
   - !include /config/lovelace_views/server_stats.yaml
   - !include /config/lovelace_views/car.yaml
   - !include /config/lovelace_views/garage.yaml
+  - !include /config/lovelace_views/nest_hub.yaml
   # - !include /config/lovelace_views/test.yaml

@@ -25,14 +25,6 @@ cards:
     entities:
       - entity: light.kiaan_lamp
         secondary_info: last-changed
-  - type: entities
-    title: Mi Scale
-    show_header_toggle: false
-    entities:
-      - entity: sensor.kiaan_weight
-        secondary_info: last-changed
-      - entity: sensor.kiaan_bmi
-        secondary_info: last-changed
   - type: 'custom:canvas-gauge-card'
     entity: sensor.upstairs_temperature
     font_size: 1em

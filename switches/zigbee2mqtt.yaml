@@ -34,3 +34,15 @@
   retain: true
   value_template: "{{ value_json.timer_state }}"
   icon: 'mdi:timer'
+
+- platform: mqtt
+  name: "ZigBee Round Socket"
+  state_topic: "zigbee2mqtt/zigbee_round_socket"
+  value_template: "{{ value_json['state'] }}"
+  command_topic: "zigbee2mqtt/zigbee_round_socket/set"
+  payload_on: "ON"
+  payload_off: "OFF"
+  state_on: "ON"
+  state_off: "OFF"
+  optimistic: false
+  qos: 1

@@ -6,6 +6,10 @@
     minutes: 30
     seconds: 0
   action:
+  # - service: media_player.volume_set
+    # data:
+      # entity_id: media_player.master_bedroom_display
+      # volume_level: 0.50
   - service: media_player.volume_set
     data:
       entity_id: media_player.living_room_google_mini
@@ -28,6 +32,10 @@
     minutes: 30
     seconds: 0
   action:
+  # - service: media_player.volume_set
+    # data:
+      # entity_id: media_player.master_bedroom_display
+      # volume_level: 0.75
   - service: media_player.volume_set
     data:
       entity_id: media_player.living_room_google_mini

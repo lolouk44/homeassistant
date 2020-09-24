@@ -61,17 +61,12 @@ entity_config:
     room: 'Living Room'
     expose: true
 
-  vacuum.mi_robot_vacuum:
-    name: "Vacuum"
-    room: 'Living Room'
-    expose: true
-
   input_boolean.scheduled_vacuuming:
     name: "Scheduled vacuuming"
     room: 'Living Room'
     expose: true
 
-  light.Living_Room_Main:
+  light.living_room_main:
     name: "Living Room Lights"
     room: 'Living Room'
     expose: true
@@ -81,9 +76,19 @@ entity_config:
     room: 'Conservatory'
     expose: true
 
-  light.wled_conservatory:
-    name: "Conservatory LED Strip"
-    room: 'Conservatory'
+  light.staircase:
+    name: "Staircase Light"
+    room: 'Staircase'
+    expose: true
+
+  light.staircase_led_strip:
+    name: "Staircase Ramp Light"
+    room: 'Staircase'
+    expose: true
+
+  light.lolo_bedside_light:
+    name: "Lolo bedside Light"
+    room: 'Master Bedroom'
     expose: true
 
   group.kitchen_lights:
@@ -103,6 +108,19 @@ entity_config:
 
   input_boolean.multimedia:
     name: "Multimedia"
+    room: 'Living Room'
+    expose: true
+
+  script.set_tv_audio_to_home_cinema:
+    name: "Set TV Audio To Home Cinema"
+    aliases:
+      - "echo"
+      - "double sound"
+    room: 'Living Room'
+    expose: true
+
+  vacuum.mi_robot_vacuum:
+    name: "Vacuum"
     room: 'Living Room'
     expose: true
   
