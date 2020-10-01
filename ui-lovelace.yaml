@@ -43,7 +43,14 @@ custom_header:
   kiosk_mode: true
   exceptions:
     - conditions:
-        user: Laurent, Divashni
+        user: Laurent
+      config:
+        show_tabs: '0 to 50'
+        kiosk_mode: false
+        # button_text:
+          # options: '{{ hours24 }}:{{ minutesLZ }}  ⁞'
+    - conditions:
+        user: Divashni
       config:
         show_tabs: '0 to 50'
         kiosk_mode: false
