@@ -215,14 +215,14 @@
     - service: media_player.play_media
       entity_id: media_player.google_home_minis
       data:
-        media_content_id: http://192.168.0.24/audio1sec.mp3
+        media_content_id: http://192.168.0.24/audio/1sec.mp3
         media_content_type: music
     - delay:
         seconds: 0.1
     - service: media_player.play_media
       entity_id: media_player.google_home_minis
       data:
-        media_content_id: http://192.168.0.24/audio1sec.mp3
+        media_content_id: http://192.168.0.24/audio/1sec.mp3
         media_content_type: music
 
 
