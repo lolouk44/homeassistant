@@ -22,9 +22,9 @@ include:
     - sensor.lolo_bmi
     - sensor.div_weight
     - sensor.div_bmi
-    - sensor.master_bedroom_aqara_pressure
-    - sensor.master_bedroom_aqara_humidity
-    - sensor.master_bedroom_aqara_temperature
+    - sensor.master_bedroom_pressure
+    - sensor.master_bedroom_humidity
+    - sensor.master_bedroom_temperature
     - sensor.bathroom_humidity
     - sensor.bathroom_temperature
     - sensor.pooja_humidity
