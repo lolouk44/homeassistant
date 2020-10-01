@@ -1,6 +1,6 @@
 title: Main Bedroom
 #background: url("/local/hotel.png") fixed
-icon: mdi:hotel
+icon: mdi:bed
 badges:
   !include /config/lovelace_views/badges.yaml
 cards:

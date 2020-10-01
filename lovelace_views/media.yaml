@@ -1,6 +1,6 @@
 title: Media
 #background: url("/local/library-music.png") fixed
-icon: mdi:library-music
+icon: mdi:music-box-multiple
 badges:
   !include /config/lovelace_views/badges.yaml
 cards:

@@ -1,6 +1,6 @@
 title: Kitchen
 #background: url("/local/bowl.png") fixed
-icon: mdi:bowl
+icon: mdi:stove #bowl-mix
 badges:
   !include /config/lovelace_views/badges.yaml
 cards:
