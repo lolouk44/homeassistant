@@ -28,10 +28,6 @@
   - service: light.turn_off
     data:
       entity_id: light.wled_conservatory
-  - delay: 00:00:01
-  - service: light.turn_off
-    data:
-      entity_id: light.wled_conservatory
 
 
 - alias: Lights - All Lights Off - Sunrise
@@ -52,13 +48,14 @@
       entity_id: input_boolean.normal
       state: 'on'
   action:
+  - service: cover.open_cover
+    data:
+      entity_id:
+        - cover.kitchen_blinds
+        - cover.livingroom_blinds
   - service: light.turn_off
     data:
       entity_id: group.Interior_Lights
-  - delay: 00:00:01
-  - service: light.turn_off
-    data:
-      entity_id: light.wled_conservatory
   - delay: 00:00:01
   - service: light.turn_off
     data:
