@@ -3,9 +3,13 @@
   # Kitchen lights on
   trigger:
     - platform: event
-      event_type: button_pressed
+      event_type: rfxtrx_event
       event_data:
-        entity_id: switch.lwrf_remote_1
+        packet_type: 20
+        sub_type: 0
+        id_string: "f4ff62:1"
+        values:
+          Command: 'On'
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_1_on", "last_triggered") ) | int > 1 )}}'
@@ -29,9 +33,13 @@
   # Kitchen lights on
   trigger:
     - platform: event
-      event_type: button_pressed
+      event_type: rfxtrx_event
       event_data:
-        entity_id: switch.lwrf_remote_1
+        packet_type: 20
+        sub_type: 0
+        id_string: "f4ff62:1"
+        values:
+          Command: 'Off'
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_1_off", "last_triggered") ) | int > 1 )}}'
@@ -55,14 +63,43 @@
   # Go through CCTV feeds on TV
   trigger:
     - platform: event
-      event_type: button_pressed
+      event_type: rfxtrx_event
       event_data:
-        entity_id: switch.lwrf_remote_2
+        packet_type: 20
+        sub_type: 0
+        id_string: "f4ff62:2"
+        values:
+          Command: 'On'
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_2_on", "last_triggered") ) | int > 1 )}}'
   action:
   - service: input_select.select_next
+    data:
+      entity_id: input_select.mm_cam_feed
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.living_room_google_minis
+      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+      media_content_type: 'audio/mp3'
+
+- alias: LWRF Remote 2 Off
+  initial_state: true
+  # Go through CCTV feeds on TV
+  trigger:
+    - platform: event
+      event_type: rfxtrx_event
+      event_data:
+        packet_type: 20
+        sub_type: 0
+        id_string: "f4ff62:2"
+        values:
+          Command: 'Off'
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_2_off", "last_triggered") ) | int > 1 )}}'
+  action:
+  - service: input_select.select_previous
     data:
       entity_id: input_select.mm_cam_feed
   - service: media_player.play_media
@@ -79,18 +116,16 @@
   # Unmute ChromeCasts
   trigger:
     - platform: event
-      event_type: button_pressed
-      event_data: {"state": "on", "entity_id": "switch.lwrf_remote_3"}
-        #entity_id: switch.lwrf_remote_3
-    - platform: state
-      entity_id: binary_sensor.lwrf_remote_3
-      to: "on"
+      event_type: rfxtrx_event
+      event_data:
+        packet_type: 20
+        sub_type: 0
+        id_string: "f4ff62:3"
+        values:
+          Command: 'On'
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_on", "last_triggered") ) | int > 1 )}}'
-    # - condition: state
-      # entity_id: switch.lwrf_remote_3
-      # state: 'on'
   action:
   - service: media_player.volume_mute
     data:
@@ -102,18 +137,16 @@
   # Mute ChromeCasts
   trigger:
     - platform: event
-      event_type: button_pressed
-      event_data: {"state": "off", "entity_id": "switch.lwrf_remote_3"}
-        #entity_id: switch.lwrf_remote_3
-    - platform: state
-      entity_id: binary_sensor.lwrf_remote_3
-      to: "off"
+      event_type: rfxtrx_event
+      event_data:
+        packet_type: 20
+        sub_type: 0
+        id_string: "f4ff62:3"
+        values:
+          Command: 'Off'
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_off", "last_triggered") ) | int > 1 )}}'
-    # - condition: state
-      # entity_id: switch.lwrf_remote_3
-      # state: 'off'
   action:
   - service: media_player.volume_mute
     data:
