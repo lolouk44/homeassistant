@@ -56,6 +56,10 @@ cards:
       type: "custom:mini-media-player"
       power_color: true
       group: true
+    - entity: media_player.living_room
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
     - entity: media_player.onkyo_tx_nr656_2
       type: "custom:mini-media-player"
       power_color: true

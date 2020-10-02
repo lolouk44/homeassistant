@@ -8,9 +8,10 @@
     video6: 'Main PC'
     bluray: 'Blu-Ray'
     video2: 'Sky'
+    cd:  'ChromeCast1'
     network: 'ChromeCast'
     tv: 'TV'
-    strm-box: 'Stream-Box/CC'
+    strm-box: 'ChromeCast2'
 - platform: panasonic_viera
   name: Panasonic Viera TV
   host: 192.168.0.27

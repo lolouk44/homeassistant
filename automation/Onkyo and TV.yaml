@@ -17,12 +17,7 @@
     for:
       minutes: 2
   - platform: state
-    entity_id: media_player.onkyo
-    to: 'off'
-    for:
-      minutes: 2
-  - platform: state
-    entity_id: media_player.onkyo_tx_nr656
+    entity_id: media_player.living_room
     to: 'off'
     for:
       minutes: 2
@@ -38,6 +33,9 @@
       state: 'off'
     - condition: state
       entity_id: media_player.kitchen
+      state: 'off'
+    - condition: state
+      entity_id: media_player.living_room
       state: 'off'
   action:
   - service: media_player.turn_off
@@ -58,9 +56,5 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.hass_start_sound", "last_triggered") | default(0)) | int > 30)}}'
   action:
-  # - service: media_player.volume_set
-    # data_template:
-      # entity_id: media_player.panasonic_viera_tv
-      # volume_level: '0' 
   - service: media_player.turn_on
     entity_id: media_player.onkyo_tx_nr656
