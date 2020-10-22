@@ -47,6 +47,19 @@ cards:
       - input_datetime.holiday_end
       - input_datetime.xmas_start
       - input_datetime.xmas_end
+  - type: custom:auto-entities
+    card:
+      type: entities
+      title: Bin Collection
+    filter:
+      include:
+        - entity_id: "sensor.*_bin"
+          options:
+            type: "custom:secondaryinfo-entity-row"
+            secondary_info: "In [[ this.entity_id.attributes.days_remaining ]] days"
+    sort:
+      method: attribute
+      attribute: days_remaining
   - type: vertical-stack
     cards:
     - type: picture-entity

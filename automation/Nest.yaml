@@ -103,5 +103,5 @@
   action:
     - service: nest.set_eta
       data_template:
-        eta: '{{ ((states("sensor.lolo_to_home") | int) * 60) | timestamp_custom("%H:%M:00", false)}}'
+        eta: '{{ ((states("sensor.lolo_to_home") | int) * 60) | timestamp_custom("%H:%M:00", true)}}'
         trip_id: Lolo Going Home

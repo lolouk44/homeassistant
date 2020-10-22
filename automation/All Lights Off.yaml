@@ -43,10 +43,6 @@
       to: 'above_horizon'
       for:
         hours: 3
-  condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
   action:
   - service: cover.open_cover
     data:

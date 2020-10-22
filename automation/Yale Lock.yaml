@@ -122,6 +122,8 @@
       entity_id: binary_sensor.main_door
       state: 'off'
   action:
+    - service: zwave.refresh_entity
+      entity_id: zwave.aeon_labs_zw090_z_stick_gen5_eu, zwave.assa_abloy_yale_conexis_l1_sd_l1000_ch
     - condition: template
       value_template: '{{ as_timestamp(now()) - as_timestamp(states.lock.yale_conexis_l1_lock.last_changed) | int >= 290}}'
     - condition: template

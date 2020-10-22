@@ -1,4 +1,28 @@
-set_tv_audio_to_home_cinema:
-  alias: 'Set TV Audio To Home Cinema'
+nest_hub_start_cast:
+  alias: 'Nest Hub - Start Cast'
   sequence:
-    - service: shell_command.viera_audio_home_cinema
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.master_bedroom_display
+        volume_level: 0
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.master_bedroom_display
+    - wait_template: '{{ states("media_player.master_bedroom_display") != "off"}}'
+      timeout: '00:00:05'
+    - service: cast.show_lovelace_view
+      data:
+        entity_id: media_player.master_bedroom_display
+        view_path: nesthub
+    - delay: '00:00:05'
+    - service: cast.show_lovelace_view
+      data:
+        dashboard_path: lovelace-nesthub
+        entity_id: media_player.master_bedroom_display
+        view_path: nesthub
+    - delay: '00:00:05'
+    - service: cast.show_lovelace_view
+      data:
+        dashboard_path: lovelace-nesthub
+        entity_id: media_player.master_bedroom_display
+        view_path: nesthub

@@ -113,9 +113,9 @@ device_tracker.tile_a46c24784e22461c:
 
 #Date Time
 input_datetime.holiday_start:
-  icon: mdi:calendar-clock
+  icon: mdi:airplane
 input_datetime.holiday_end:
-  icon: mdi:calendar
+  icon: mdi:airplane-off
 input_datetime.xmas_start:
   icon: mdi:calendar
 input_datetime.xmas_end:

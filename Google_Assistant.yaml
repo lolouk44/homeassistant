@@ -111,11 +111,8 @@ entity_config:
     room: 'Living Room'
     expose: true
 
-  script.set_tv_audio_to_home_cinema:
+  input_boolean.set_tv_audio_to_home_cinema:
     name: "Set TV Audio To Home Cinema"
-    aliases:
-      - "echo"
-      - "double sound"
     room: 'Living Room'
     expose: true
 

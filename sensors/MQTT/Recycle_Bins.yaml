@@ -1,0 +1,21 @@
+- platform: mqtt
+  name: "Black Bin"
+  state_topic: "Sensors/Bins/Black"
+  value_template: "{{ value_json['date'] }}"
+  json_attributes_topic: "Sensors/Bins/Black"
+  icon: mdi:trash-can-outline
+
+- platform: mqtt
+  name: "Red Bin"
+  state_topic: "Sensors/Bins/Red"
+  value_template: "{{ value_json['date'] }}"
+  json_attributes_topic: "Sensors/Bins/Red"
+  icon: mdi:recycle
+
+- platform: mqtt
+  name: "Green Bin"
+  state_topic: "Sensors/Bins/Green"
+  value_template: "{{ value_json['date'] }}"
+  json_attributes_topic: "Sensors/Bins/Green"
+  icon: mdi:sprout
+

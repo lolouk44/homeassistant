@@ -7,12 +7,21 @@ cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
-    title: Main Bedroom Lights
+    title: Lolo Bedside
     show_header_toggle: false
     entities:
+    - entity: binary_sensor.bed_lolo
+      secondary_info: last-changed
+      icon: mdi:bed
     - entity: light.lolo_bedside_light
       secondary_info: last-changed
       icon: mdi:lamp
+    - entity: media_player.master_bedroom_display
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+    - entity: script.nest_hub_start_cast
+      secondary_info: last_triggered
   - type: entities
     title: Main Bedroom Sensors
     state_color: true
@@ -68,10 +77,6 @@ cards:
       type: "custom:mini-media-player"
       power_color: true
       group: true
-    - entity: media_player.kodi
-      type: "custom:mini-media-player"
-      power_color: true
-      group: true
   - type: entities
     title: Edimax
     state_color: true
@@ -112,14 +117,3 @@ cards:
           - entity: sensor.stream_track
             name: Track
             icon: mdi:disc
-  - type: entities
-    title: Nest Hub
-    show_header_toggle: false
-    artwork_border: true
-    power_color: true
-
-    entities:
-    - entity: media_player.master_bedroom_display
-      type: "custom:mini-media-player"
-      power_color: true
-      group: true

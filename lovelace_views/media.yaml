@@ -84,10 +84,6 @@ cards:
       type: "custom:mini-media-player"
       power_color: true
       group: true
-    - entity: media_player.kodi
-      type: "custom:mini-media-player"
-      power_color: true
-      group: true
     - entity: media_player.mi_box3_adtv
       power_color: true
       group: true

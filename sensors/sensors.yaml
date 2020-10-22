@@ -73,10 +73,14 @@
   sensors:
     week_day:
       entity_id: sensor.time
-      value_template: "{{ now().strftime('%A')}}"
+      value_template: >-
+        {% set dummy = states("sensor.time") %}
+        {{ now().strftime('%A')}}
     current_date:
       entity_id: sensor.time
-      value_template: "{{ now().strftime('%d')}} {{ now().strftime('%B')}} {{ now().strftime('%Y')}}"
+      value_template: >-
+        {% set dummy = states("sensor.time") %}
+        {{ now().strftime('%d')}} {{ now().strftime('%B')}} {{ now().strftime('%Y')}}
 
 - platform: random
   name: bauble_random_effect

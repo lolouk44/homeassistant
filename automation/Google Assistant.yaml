@@ -291,3 +291,17 @@
   action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.multimedia
+
+
+- alias: GA - Set TV Audio To Home Cinema
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.set_tv_audio_to_home_cinema
+      to: 'on'
+  action:
+    - service: script.turn_on
+      data:
+        entity_id: script.set_tv_audio_to_home_cinema
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.set_tv_audio_to_home_cinema

@@ -147,6 +147,9 @@
   - service: switch.turn_on
     data:
       entity_id: switch.kitchen_tv
+  - service: switch.turn_on
+    data:
+      entity_id: switch.zigbee_round_socket
 
 - alias: Lights - Kitchen TV Off PIR
   initial_state: true
@@ -169,3 +172,6 @@
     data:
       entity_id: switch.kitchen_tv
   - service: shell_command.restart_magic_mirror
+  - service: switch.turn_off
+    data:
+      entity_id: switch.zigbee_round_socket

@@ -44,18 +44,18 @@ This makes a macro that returns a string of true/falses. I.E. 'True,False,True,F
   {%- set end = 's' if value > 1 else '' %}
   {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
 {%- endmacro %}
-{%- if (as_timestamp(now()) | timestamp_custom('%m',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%m',false) | int) > 0 -%}
-{{ phrase((as_timestamp(now()) | timestamp_custom('%m',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%m',false) | int) , 'month')}}, 
+{%- if (as_timestamp(now()) | timestamp_custom('%m',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%m',true) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%m',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%m',true) | int) , 'month')}}, 
 {%- endif -%}
-{%- if (as_timestamp(now()) | timestamp_custom('%d',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%d',false) | int) > 0 -%}
-{{ phrase((as_timestamp(now()) | timestamp_custom('%d',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%d',false) | int) , 'day')}}, 
+{%- if (as_timestamp(now()) | timestamp_custom('%d',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%d',true) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%d',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%d',true) | int) , 'day')}}, 
 {%- endif -%}
-{%- if (as_timestamp(now()) | timestamp_custom('%H',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%H',false) | int) > 0 -%}
-{{ phrase((as_timestamp(now()) | timestamp_custom('%H',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%H',false) | int) , 'hour')}}, 
+{%- if (as_timestamp(now()) | timestamp_custom('%H',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%H',true) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%H',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%H',true) | int) , 'hour')}}, 
 {%- endif -%}
-{%- if (as_timestamp(now()) | timestamp_custom('%M',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%M',false) | int) > 0 -%}
-{{ phrase((as_timestamp(now()) | timestamp_custom('%M',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%M',false) | int) , 'minute')}}, 
+{%- if (as_timestamp(now()) | timestamp_custom('%M',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%M',true) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%M',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%M',true) | int) , 'minute')}}, 
 {%- endif -%}
-{%- if (as_timestamp(now()) | timestamp_custom('%S',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%S',false) | int) > 0 -%}
-{{ phrase((as_timestamp(now()) | timestamp_custom('%S',false) | int) - (as_timestamp(last_triggered) | timestamp_custom('%S',false) | int) , 'second')}} ago
+{%- if (as_timestamp(now()) | timestamp_custom('%S',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%S',true) | int) > 0 -%}
+{{ phrase((as_timestamp(now()) | timestamp_custom('%S',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%S',true) | int) , 'second')}} ago
 {%- endif -%}

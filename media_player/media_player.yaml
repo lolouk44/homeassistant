@@ -1,6 +1,3 @@
-
-- platform: kodi
-  host: 192.168.0.28
 - platform: onkyo
   host: 192.168.0.26
   name: Onkyo TX-NR656

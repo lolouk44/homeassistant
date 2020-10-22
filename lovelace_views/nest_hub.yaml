@@ -13,23 +13,20 @@ cards:
     elements:
       - entity: sensor.time
         style:
-          font-family: Arial
           color: '#03A9F4'
-          # WAIT WHAT? OPACITY? COOL!
           filter: opacity(100%)
-          font-family: Candara
+          font-family: Kaushan Script
           font-size: 1000%
           left: 50%
-          top: 56%
           pointer-events: none
           text-shadow: 5px 5px 10px grey;
-          # USE THIS TO BRING THE ITEM FRONT OR MOVE IT BACK IN LAYERS.
+          top: 56%
           z-index: 0
         type: state-label
       - entity: sensor.week_day
         style:
           filter: opacity(50%)
-          font-family: Brush Script MT
+          font-family: Kaushan Script
           font-size: 500%
           left: 43%
           pointer-events: none
@@ -40,47 +37,46 @@ cards:
       - entity: sensor.current_date
         style:
           filter: opacity(100%)
-          font-family: Cambria
+          font-family: Orbitron
           font-size: 280%
           left: 50%
-          top: 33%
           pointer-events: none
+          top: 33%
           z-index: 2
         type: state-label
-    image: '/local/blank.png'
-
+    image: /local/blank.png
+    type: picture-elements
   - type: entities
-    title: Div Bedside
-    state_color: true
-    show_header_toggle: false
     entities:
-      - input_select.kello_radio_station
-      - input_number.volume_kello
-      - input_boolean.kello_play_stop
-      - input_boolean.kello_mute_alarms
-
-  # - type: entities
-    # title: Lolo Bedside
-    # show_header_toggle: false
-    # entities:
-    # - entity: light.lolo_bedside_light
-      # secondary_info: last-changed
-      # icon: mdi:lamp
-    # - entity: media_player.master_bedroom_display
-  - type: custom:button-card
+      - entity: sensor.master_bedroom_temperature
+        secondary_info: last-changed
+      - entity: sensor.master_bedroom_humidity
+        secondary_info: last-changed
     show_header_toggle: false
+    state_color: true
+  - type: light
     entity: light.lolo_bedside_light
-    icon: mdi:lamp
-
-  - type: entities
-    title: Main Bedroom Sensors
-    state_color: true
-    show_header_toggle: false
-    entities:
-    - entity: sensor.master_bedroom_temperature
-      secondary_info: last-changed
-    - entity: sensor.master_bedroom_humidity
-      secondary_info: last-changed
+    icon: 'mdi:lamp'
+  - type: gauge
+    entity: sensor.master_bedroom_temperature
+    name: Temperature
+    min: 0
+    max: 30
+    severity:
+      green: 18
+      yellow: 21
+      red: 23
+  - type: entity
+    entity: switch.edimax1
+  - type: gauge
+    entity: sensor.master_bedroom_humidity
+    name: Humidity
+    min: 0
+    max: 100
+    severity:
+      green: 40
+      yellow: 60
+      red: 70
 
 
 

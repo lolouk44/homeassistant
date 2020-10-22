@@ -209,7 +209,11 @@ lovelace:
     # Custom iframe: https://github.com/lukevink/home-assistant-custom-iframe
     - url: /local/custom-iframe-card.js
       type: js
-
+    # Fonts !
+    - type: css
+      url: 'https://fonts.googleapis.com/css?family=Orbitron'
+    - type: css
+      url: 'https://fonts.googleapis.com/css?family=Kaushan%20Script'
 
   # dashboards:
     # lovelace-alarm-panel: # Needs to contain a hyphen (-)
@@ -303,7 +307,7 @@ rfxtrx:
       # data_type:
        # - Humidity
        # - Temperature
-    0A520700420E0104260269:
+    #0A520700420E0104260269:
       #name: Loft
       # data_type:
        # - Humidity

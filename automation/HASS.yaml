@@ -91,12 +91,13 @@
     entity_id: input_boolean.normal
   - service: automation.trigger
     entity_id: automation.lights_all_lights_off
+  - service: shell_command.refresh_bin_collection
 
 - alias: HASS - SSL expiry notification
   initial_state: true
   trigger:
     platform: template
-    value_template: '{{ states("sensor.ssl_cert_expiry") | int < 21 }}'
+    value_template: '{{ states("sensor.ssl_cert_expiry") | int < 21 and states("sensor.ssl_cert_expiry") != "unknown"}}'
   action:
     service: notify.gmaillolo
     data:
@@ -165,6 +166,9 @@
   trigger:
     platform: state
     entity_id: sensor.ha_podcast_track
+  condition:
+    - condition: template
+      value_template: '{{states("sensor.ha_podcast_track") != "unknown" }}'
   action:
     - service: notify.gmaillolo
       data_template:

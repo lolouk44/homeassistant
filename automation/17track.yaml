@@ -22,6 +22,6 @@
           Tracking #: {{state.attributes.tracking_number}} (https://t.17track.net/en#nums={{state.attributes.tracking_number}})
           Location: {{state.attributes.location}}
           info_text: {{state.attributes.info_text}}
-          Last Updated: {{as_timestamp(state.last_updated)|timestamp_custom('%X on %d %h %Y',false)}}
+          Last Updated: {{as_timestamp(state.last_updated)|timestamp_custom('%X on %d %h %Y',true)}}
           {% endif %}
           {%- endfor %}

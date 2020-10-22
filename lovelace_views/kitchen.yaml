@@ -1,6 +1,6 @@
 title: Kitchen
 #background: url("/local/bowl.png") fixed
-icon: mdi:stove #bowl-mix
+icon: mdi:bowl-mix #stove
 badges:
   !include /config/lovelace_views/badges.yaml
 cards:
@@ -36,6 +36,14 @@ cards:
           secondary_info: last-changed
         - entity: light.kitchen_window
           secondary_info: last-changed
+  - type: entities
+    title: ZigBee Round Socket
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: switch.zigbee_round_socket
+        secondary_info: last-changed
+        icon: mdi:zigbee
   - type: entities
     title: Kitchen TV
     state_color: true

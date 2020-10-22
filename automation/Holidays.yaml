@@ -62,7 +62,7 @@
       entity_id: 'input_boolean.holidays'
       state: "on"
   action:
-  - delay: "{{range(0,300+1)|random|timestamp_custom('%X',false)}}"
+  - delay: "{{range(0,300+1)|random|timestamp_custom('%X',true)}}"
   - service: light.turn_on
     data:
       entity_id: light.living_room_main
@@ -86,7 +86,7 @@
       entity_id: 'input_boolean.holidays'
       state: "on"
   action:
-  - delay: "{{range(0,1200+1)|random|timestamp_custom('%X',false)}}"
+  - delay: "{{range(0,1200+1)|random|timestamp_custom('%X',true)}}"
   - service: light.turn_on
     data:
       entity_id: light.lolo_bedside_light
@@ -97,11 +97,11 @@
       brightness: 255
       effect: "solid"
       rgb_color: [255,255,255]
-  - delay: "{{range(0,300+1)|random|timestamp_custom('%X',false)}}"
+  - delay: "{{range(0,300+1)|random|timestamp_custom('%X',true)}}"
   - service: light.turn_off
     data:
       entity_id: light.living_room_main
-  - delay: "{{range(0,300+1)|random|timestamp_custom('%X',false)}}"
+  - delay: "{{range(0,300+1)|random|timestamp_custom('%X',true)}}"
   - service: light.turn_off
     data:
       entity_id: light.kitchen_window
@@ -119,7 +119,7 @@
       entity_id: 'input_boolean.holidays'
       state: "on"
   action:
-  - delay: "{{range(0,1200+1)|random|timestamp_custom('%X',false)}}"
+  - delay: "{{range(0,1200+1)|random|timestamp_custom('%X',true)}}"
   - service: light.turn_off
     data:
       entity_id: light.lolo_bedside_light

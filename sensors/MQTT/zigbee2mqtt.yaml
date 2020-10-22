@@ -139,6 +139,27 @@
   device_class: battery
 
 - platform: mqtt
+  name: "Loft Temperature"
+  state_topic: "zigbee2mqtt/loft_hygro"
+  value_template: "{{ value_json['temperature'] }}"
+  unit_of_measurement: 'ºC'
+  device_class: temperature
+
+- platform: mqtt
+  name: "Loft Humidity"
+  state_topic: "zigbee2mqtt/loft_hygro"
+  value_template: "{{ value_json['humidity'] | float (1) }}"
+  unit_of_measurement: "%"
+  device_class: humidity
+
+- platform: mqtt
+  name: "Loft Temperature Battery"
+  state_topic: "zigbee2mqtt/loft_hygro"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
   name: "Bathroom Fan Switch Toggle"
   state_topic: "zigbee2mqtt/bathroom_hygro"
 

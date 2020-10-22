@@ -46,3 +46,11 @@
   payload_off: true
   device_class: window
 
+- platform: mqtt
+  name: "Bed lolo"
+  state_topic: "zigbee2mqtt/bed_lolo"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_off: false
+  payload_on: true
+  device_class: occupancy
+

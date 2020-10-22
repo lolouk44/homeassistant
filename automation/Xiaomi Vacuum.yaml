@@ -79,7 +79,7 @@
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_error_continue", "last_triggered") | default(0)) | int < 1800)}}'
   action:
     - delay:
-        seconds: 15
+        seconds: 59
     - condition: template
       value_template: '{{states("sensor.xiaomi_status") == "Status: Error"}}'
     - service: tts.google_say

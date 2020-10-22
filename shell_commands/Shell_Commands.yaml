@@ -25,3 +25,4 @@ fire7_reload_url: /config/shell_scripts/fire7_reload_url.sh
 restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa pi@192.168.0.21 pm2 restart mm
 
 reboot_doorbell: !secret doorbell_reboot_url
+refresh_bin_collection: python3 /config/shell_scripts/HA_Scrape_Crawley_Bins.py

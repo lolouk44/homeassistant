@@ -5,12 +5,8 @@
       minutes: '/10'
       seconds: 0
   condition:
-    - condition: or
-      conditions:
-      # - condition: template
-        # value_template: '{{now().hour >= 6 and now().hour < 10 and states("sensor.lolo_s_iphone_battery_state") == "Charging"}}'
-      - condition: template
-        value_template: '{{now().hour >= 19 and now().hour < 24 and states("sensor.lolo_s_iphone_battery_state") == "Not Charging"}}'
+    - condition: template
+      value_template: '{{now().hour >= 19 and now().hour < 24 }}'
     - condition: template
       value_template: '{{ states("person.laurent") == "home"}}'
     - condition: template

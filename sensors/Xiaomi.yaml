@@ -73,7 +73,7 @@
     xiaomi_last_clean:
       entity_id: vacuum.mi_robot_vacuum
       value_template: >
-        Last Clean: {{ as_timestamp(state_attr("vacuum.mi_robot_vacuum","clean_stop"))|timestamp_custom('%d %h %y, %H:%M',false)}}
+        Last Clean: {{ as_timestamp(state_attr("vacuum.mi_robot_vacuum","clean_stop"))|timestamp_custom('%d %h %y, %H:%M',true)}}
       friendly_name: Last Clean
 
 
