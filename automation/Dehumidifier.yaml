@@ -75,10 +75,8 @@
       hours: 8
       minutes: 0
       seconds: 0
-    - platform: template
-      value_template: '{{ states("sensor.upstairs_humidity") | int > 70}}'
-    - platform: template
-      value_template: '{{ states("sensor.master_bedroom_aqara_humidity") | int > 70}}'
+    - platform: state
+      entity_id: sensor.upstairs_humidity, sensor.master_bedroom_humidity, sensor.pooja_humidity
   condition:
     - condition: time
       after: '08:00'
@@ -91,10 +89,14 @@
     - condition: state
       entity_id: switch.dehumidifier
       state: 'off'
-    - condition: template
-      value_template: '{{ states("sensor.upstairs_humidity") | int >= 70 }}'
-    - condition: template
-      value_template: '{{ states("sensor.master_bedroom_aqara_humidity") | int >= 70 }}'
+    - condition: or
+      conditions:
+        - condition: template
+          value_template: '{{ states("sensor.upstairs_humidity") | int >= 70 }}'
+        - condition: template
+          value_template: '{{ states("sensor.master_bedroom_humidity") | int >= 70 }}'
+        - condition: template
+          value_template: '{{ states("sensor.pooja_humidity") | int >= 70 }}'
   action:
   - service: switch.turn_on
     data:
@@ -108,14 +110,18 @@
       hours: 16
       minutes: 0
       seconds: 0
-    - platform: template
-      value_template: '{{ states("sensor.upstairs_humidity") | int < 60}}'
-    - platform: template
-      value_template: '{{ states("sensor.master_bedroom_aqara_humidity") | int < 60}}'
+    - platform: state
+      entity_id: sensor.upstairs_humidity, sensor.master_bedroom_humidity, sensor.pooja_humidity
   condition:
     - condition: state
       entity_id: switch.dehumidifier
       state: 'on'
+    - condition: template
+      value_template: '{{ states("sensor.upstairs_humidity") | int <= 65 or now().hour >= 16}}'
+    - condition: template
+      value_template: '{{ states("sensor.master_bedroom_humidity") | int <= 65 or now().hour >= 16 }}'
+    - condition: template
+      value_template: '{{ states("sensor.pooja_humidity") | int <= 65 or now().hour >= 16 }}'
   action:
   - service: switch.turn_off
     data:

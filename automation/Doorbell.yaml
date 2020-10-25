@@ -16,6 +16,7 @@
         - media_player.onkyo_tx_nr656
         - media_player.onkyo_tx_nr656_2
         - media_player.house
+        - media_player.living_room
         - media_player.conservatory
         - media_player.kitchen
   - service: media_player.volume_set
@@ -43,7 +44,7 @@
       media_content_type: url
   - service: media_player.volume_mute
     data_template:
-      entity_id: media_player.conservatory, media_player.house, media_player.kitchen, media_player.onkyo_tx_nr656_2
+      entity_id: media_player.conservatory, media_player.house, media_player.living_room, media_player.kitchen, media_player.onkyo_tx_nr656, media_player.onkyo_tx_nr656_2
       is_volume_muted: true
   - delay: 00:00:30
   - service: shell_command.viera_input_hdmi2
