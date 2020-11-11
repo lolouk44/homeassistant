@@ -79,6 +79,10 @@
       event_type: ios.notification_action_fired
       event_data:
         actionName: LOCK_BMW
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: LOCK_BMW
   action:
     - service: lock.lock
       data:

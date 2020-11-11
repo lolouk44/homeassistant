@@ -33,30 +33,6 @@ animated_background:
       config:
         enabled: false
 
-
-
-
-custom_header:
-  compact_mode: true
-  background: 'rgba(155, 155, 155, 0.25)'
-  show_tabs: 0
-  kiosk_mode: true
-  exceptions:
-    - conditions:
-        user: Laurent
-      config:
-        show_tabs: '0 to 50'
-        kiosk_mode: false
-        # button_text:
-          # options: '{{ hours24 }}:{{ minutesLZ }}  ⁞'
-    - conditions:
-        user: Divashni
-      config:
-        show_tabs: '0 to 50'
-        kiosk_mode: false
-        # button_text:
-          # options: '{{ hours24 }}:{{ minutesLZ }}  ⁞'
-
 preload_cards:
   - 'custom:canvas-gauge-card'
 
@@ -80,5 +56,5 @@ views:
   - !include /config/lovelace_views/server_stats.yaml
   - !include /config/lovelace_views/car.yaml
   - !include /config/lovelace_views/garage.yaml
-  - !include /config/lovelace_views/nest_hub.yaml
+  # - !include /config/lovelace_views/nest_hub.yaml
   # - !include /config/lovelace_views/test.yaml

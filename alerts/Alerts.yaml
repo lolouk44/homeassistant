@@ -244,7 +244,19 @@ tv_cabinet_led_strip_lost:
 
 ram_too_high:
   name: Ram Usage > 90%
-  entity_id: binary_sensor.ram_too_high
+  entity_id: binary_sensor.alert_ram_too_high
+  can_acknowledge: True
+  repeat:
+    - 5
+    - 30
+    - 60
+  notifiers:
+    - mobile_app_lolo_s_iphone
+
+
+ram_lost:
+  name: Ram Usage Lost
+  entity_id: input_boolean.alert_lost_ram_usage_at_300
   can_acknowledge: True
   repeat:
     - 5

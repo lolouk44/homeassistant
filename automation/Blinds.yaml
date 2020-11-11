@@ -33,6 +33,8 @@
       entity_id: binary_sensor.dark
       to: 'on'
   condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_open_when_not_dark", "last_triggered") | default(0)) | int > 300)}}'
     - condition: or
       conditions:
       - condition: state

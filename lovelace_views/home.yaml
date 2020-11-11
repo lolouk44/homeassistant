@@ -88,8 +88,6 @@ cards:
     more_info_on_tap: true
     max_item_count: 99
     entities:
-        - binary_sensor.alert_aloe_vera_battery_too_low
-        - binary_sensor.alert_aloe_vera_humidity_too_low
         - binary_sensor.alert_currentcost_lost
         - binary_sensor.alert_garage_freezer_temp_too_high
         - binary_sensor.alert_home_disk_usage_too_high

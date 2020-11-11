@@ -26,3 +26,33 @@ nest_hub_start_cast:
         dashboard_path: lovelace-nesthub
         entity_id: media_player.master_bedroom_display
         view_path: nesthub
+
+
+nest_hub_start_cast2:
+  alias: 'Nest Hub - Start Cast2'
+  sequence:
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.master_bedroom_display
+        volume_level: 0
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.master_bedroom_display
+    - wait_template: '{{ states("media_player.master_bedroom_display") != "off"}}'
+      timeout: '00:00:05'
+    - service: cast.show_lovelace_view
+      data:
+        entity_id: media_player.master_bedroom_display
+        view_path: nesthub
+    - delay: '00:00:05'
+    - service: cast.show_lovelace_view
+      data:
+        dashboard_path: lovelace-test
+        entity_id: media_player.master_bedroom_display
+        view_path: nesthub
+    - delay: '00:00:05'
+    - service: cast.show_lovelace_view
+      data:
+        dashboard_path: lovelace-test
+        entity_id: media_player.master_bedroom_display
+        view_path: nesthub

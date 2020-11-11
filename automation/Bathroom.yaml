@@ -8,9 +8,9 @@
     - condition: or
       conditions:
         - condition: template
-          value_template: '{{ states("sensor.bathroom_humidity") | int > 75 and states("sensor.season") != "autumn"}}'
+          value_template: '{{ states("sensor.bathroom_humidity") | int >= 75 and states("sensor.season") != "autumn"}}'
         - condition: template
-          value_template: '{{ states("sensor.bathroom_humidity") | int > 80 and states("sensor.season") == "autumn"}}'
+          value_template: '{{ states("sensor.bathroom_humidity") | int >= 80 and states("sensor.season") == "autumn"}}'
     - condition: state
       entity_id: switch.bathroom_fan
       state: 'off'

@@ -183,9 +183,6 @@ lovelace:
       # Home Feed Card Card https://github.com/gadgetchnnel/lovelace-home-feed-card
     - url: /hacsfiles/lovelace-home-feed-card/lovelace-home-feed-card.js
       type: module
-    # Compact Custom Header https://github.com/maykar/custom-header
-    - url: /hacsfiles/custom-header/custom-header.js
-      type: module
     - url: /hacsfiles/secondaryinfo-entity-row/secondaryinfo-entity-row.js
       type: module
     #Lovelace Card Preloader

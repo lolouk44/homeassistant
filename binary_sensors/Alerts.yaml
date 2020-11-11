@@ -1,17 +1,5 @@
 - platform: template
   sensors:
-    alert_aloe_vera_humidity_too_low:
-      entity_id: sensor.aloe_vera_moisture
-      value_template: >-
-        {{ (((states("sensor.aloe_vera_moisture") )| default(100)) | int < 10) and (states("sensor.uptime") | float > 0.1)}}
-      friendly_name: Aloe Vera Humidity below 15%
-
-    alert_aloe_vera_battery_too_low:
-      entity_id: sensor.aloe_vera_moisture
-      value_template: >-
-        {{ (((states("sensor.aloe_vera_battery")) | default(100)) | int < 10) and (states("sensor.uptime") | float > 0.1)}}
-      friendly_name: Aloe Vera Battery below 10%
-
     alert_outside_temp_sensor_lost:
       entity_id: sensor.loft_temperature
       value_template: >-

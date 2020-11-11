@@ -9,6 +9,10 @@ day:
   secondary-background-color: var(--primary-background-color)
   accent-color: rgba(3, 169, 244, 1)
 
+  # Header
+  app-header-background-color: rgba(155, 155, 155, 0.25)
+  header-height: 48px
+
   # Cards
   card-background-color: var(--primary-background-color)
   paper-listbox-background-color: var(--primary-background-color)

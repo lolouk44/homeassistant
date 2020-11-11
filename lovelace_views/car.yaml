@@ -22,7 +22,7 @@ cards:
           action: call-service
           service: lock.lock
           service_data:
-          entity: lock.220d_lock
+            entity_id: lock.220d_lock
         style:
           top: 12%
           left: 7%
@@ -33,7 +33,7 @@ cards:
           action: call-service
           service: lock.unlock
           service_data:
-          entity: lock.220d_lock
+            entity_id: lock.220d_lock
         style:
           top: 19%
           left: 7%

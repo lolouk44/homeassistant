@@ -1,46 +1,3 @@
-- alias: Onkyo - Turn Off When Stop Playing On ChromeCast
-  initial_state: true
-  trigger:
-  - platform: state
-    entity_id: media_player.house
-    to: 'off'
-    for:
-      minutes: 2
-  - platform: state
-    entity_id: media_player.conservatory
-    to: 'off'
-    for:
-      minutes: 2
-  - platform: state
-    entity_id: media_player.kitchen
-    to: 'off'
-    for:
-      minutes: 2
-  - platform: state
-    entity_id: media_player.living_room
-    to: 'off'
-    for:
-      minutes: 2
-  condition:
-    - condition: state
-      entity_id: media_player.panasonic_viera_tv
-      state: 'off'
-    - condition: state
-      entity_id: media_player.house
-      state: 'off'
-    - condition: state
-      entity_id: media_player.conservatory
-      state: 'off'
-    - condition: state
-      entity_id: media_player.kitchen
-      state: 'off'
-    - condition: state
-      entity_id: media_player.living_room
-      state: 'off'
-  action:
-  - service: media_player.turn_off
-    entity_id: media_player.onkyo_tx_nr656
-
 - alias: Onkyo - Turn On When TV Goes On
   initial_state: true
   trigger:
@@ -58,3 +15,4 @@
   action:
   - service: media_player.turn_on
     entity_id: media_player.onkyo_tx_nr656
+

@@ -28,11 +28,20 @@
   - service: light.turn_off
     data:
       entity_id: light.wled_conservatory
+  - delay: 00:00:01
+  - service: light.turn_off
+    data:
+      entity_id: light.wled_conservatory
 
 
 - alias: Lights - All Lights Off - Sunrise
   initial_state: true
   trigger:
+    - platform: state
+      entity_id: sun.sun
+      to: 'above_horizon'
+      for:
+        hours: 1
     - platform: state
       entity_id: sun.sun
       to: 'above_horizon'
@@ -52,6 +61,10 @@
   - service: light.turn_off
     data:
       entity_id: group.Interior_Lights
+  - delay: 00:00:01
+  - service: light.turn_off
+    data:
+      entity_id: light.wled_conservatory
   - delay: 00:00:01
   - service: light.turn_off
     data:

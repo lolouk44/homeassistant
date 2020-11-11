@@ -231,7 +231,7 @@
     data:
       entity_id: light.house_number
       brightness: 255
-      effect: solid
+      effect: None
       rgb_color: [0,0,255]
   - condition: state
     entity_id: input_boolean.xmas
@@ -240,7 +240,7 @@
     data:
       entity_id: light.house_number
       brightness: 160
-      effect: rainbow
+      effect: Rainbow
 
 - alias: LED Strip - House Number Off
   initial_state: true
@@ -263,3 +263,17 @@
   - service: light.turn_off
     data:
       entity_id: light.house_number
+
+- alias: LED Strip - Turn Pooja Frame Off after 3h
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: light.pooja_frame
+      to: 'on'
+      for:
+        hours: 3
+  condition:
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.pooja_frame

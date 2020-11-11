@@ -22,6 +22,8 @@ cards:
       group: true
     - entity: script.nest_hub_start_cast
       secondary_info: last_triggered
+    - entity: script.nest_hub_start_cast2
+      secondary_info: last_triggered
   - type: entities
     title: Main Bedroom Sensors
     state_color: true

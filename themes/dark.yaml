@@ -10,6 +10,11 @@ dark:
   secondary-background-color: var(--primary-background-color) #rgba(25, 25, 25, 0.7)
   divider-color: "#98989d"  # from Apple systemGray dark mode
   accent-color: rgba(3, 169, 244, 1)
+
+  # Header
+  app-header-background-color: rgba(155, 155, 155, 0.25)
+  header-height: 48px
+  
   # Text
   primary-font-family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
   paper-font-common-base_-_font-family: "var(--primary-font-family)"

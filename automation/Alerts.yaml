@@ -105,8 +105,8 @@
 
 
 
-- alias: Alert - RAM Above 90% On
-  id: alert_-_ram_above_90%_on
+- alias: Alert - RAM Lost On
+  id: alert_-_ram_lost_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -114,25 +114,23 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{states("sensor.ram_usage") | default(0) | int >= 90 }}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.ram_usage.last_updated | default(0)) | int > 300 )}}'
     - condition: state
-      entity_id: alert.ram_usage_lost
+      entity_id: alert.ram_too_high
       state: 'idle'
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_lost_ram_usage_at_300
 
-- alias: Alert - RAM Above 90% Off
-  id: alert_-_ram_above_90%_off
+- alias: Alert - RAM Lost Off
+  id: alert_-_ram_lost_off
   initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.ram_usage
   condition:
     - condition: template
-      value_template: '{{states("alert.ram_usage_lost") != "idle"}}'
-    - condition: template
-      value_template: '{{states("sensor.ram_usage") | default(0) | int < 90 }}'
+      value_template: '{{states("alert.ram_too_high") != "idle"}}'
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_ram_usage_at_300

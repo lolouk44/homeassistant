@@ -107,7 +107,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: lock.yale_conexis_l1_lock
+      entity_id: sensor.porch_door_lock_status
       to: "unlocked"
       for:
         minutes: 5
@@ -131,7 +131,7 @@
     - condition: template
       value_template: '{{ as_timestamp(now()) - as_timestamp(states.lock.yale_conexis_l1_lock.last_changed) | int >= 290}}'
     - condition: template
-      value_template: '{{ states("sensor.porch_door_lock_status") == "Deadbolt Jammed" or states("lock.yale_conexis_l1_lock") == "unlocked" }}'
+      value_template: '{{ states("sensor.porch_door_lock_status") == "Deadbolt Jammed" or states("sensor.porch_door_lock_status") == "unlocked" }}'
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
         message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
