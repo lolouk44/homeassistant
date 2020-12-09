@@ -39,3 +39,22 @@ edimax_mode:
     - Switch
     - Air Con
   icon: mdi:form-select
+
+wled_effects:
+  name: 'WLED Effects'
+  options:
+    - Blink Rainbow
+    - Colorloop
+    - Colortwinkles
+    - Dissolve Rnd
+    - Fireworks Starburst
+    - Flow
+    - Glitter
+    - Juggle
+    - Merry Christmas
+    - Palette
+    - Pride 2015
+    - Rainbow
+    - Rainbow Runner
+    - Sinelon Rainbow
+  icon: mdi:palette
