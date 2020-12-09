@@ -91,6 +91,7 @@ cards:
             - entity_id: sensor.ram_usage
             - entity_id: sensor.ssl_cert_expiry
             - entity_id: sensor.docker_hub_pulls
+            - entity_id: sensor.docker_hub_pulls_add_on
   - type: entities
     show_header_toggle: false
     entities:
