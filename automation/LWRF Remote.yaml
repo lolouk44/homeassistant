@@ -12,7 +12,7 @@
           Command: 'On'
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_1_on", "last_triggered") ) | int > 1 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_1_on", "last_triggered") ) | int > 5 )}}'
     - condition: state
       entity_id: switch.lwrf_remote_1
       state: 'on'
@@ -24,7 +24,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis
-      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+      media_content_id: 'http://192.168.0.24:8123/local/sounds/RemoteOn.mp3'
       media_content_type: 'audio/mp3'
 
 
@@ -53,7 +53,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis
-      media_content_id: 'http://192.168.0.24/audio/RemoteOff.mp3'
+      media_content_id: 'http://192.168.0.24:8123/local/sounds/RemoteOff.mp3'
       media_content_type: 'audio/mp3'
 
 
@@ -74,14 +74,12 @@
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_2_on", "last_triggered") ) | int > 1 )}}'
   action:
-  - service: input_select.select_next
-    data:
-      entity_id: input_select.mm_cam_feed
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis
-      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
-      media_content_type: 'audio/mp3'
+      media_content_id: 'http://192.168.0.24:8123/local/sounds/RemoteOn.mp3'
+      media_content_type: 'music'
+  - service: shell_command.viera_audio_home_cinema
 
 - alias: LWRF Remote 2 Off
   initial_state: true
@@ -105,7 +103,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis
-      media_content_id: 'http://192.168.0.24/audio/RemoteOn.mp3'
+      media_content_id: 'http://192.168.0.24:8123/local/sounds/RemoteOn.mp3'
       media_content_type: 'audio/mp3'
 
 

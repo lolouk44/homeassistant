@@ -25,8 +25,8 @@
       volume_level: 1
   - service: media_player.play_media
     data:
-      entity_id: media_player.google_home_minis
-      media_content_id: 'http://192.168.0.24/audio/Doorbell_Tubular_2.mp3'
+      entity_id: media_player.google_home_minis, media_player.master_bedroom_display
+      media_content_id: 'http://192.168.0.24:8123/local/sounds/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
   - service: camera.snapshot
     data:

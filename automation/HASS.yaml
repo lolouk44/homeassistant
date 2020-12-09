@@ -35,7 +35,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis
-      media_content_id: 'http://192.168.0.24/audio/Click.mp3'
+      media_content_id: 'http://192.168.0.24:8123/local/sounds/Click.mp3'
       media_content_type: 'audio/mp4'
 
 - alias: HASS - Start RadioStream Scrape
@@ -97,7 +97,7 @@
   initial_state: true
   trigger:
     platform: template
-    value_template: '{{ states("sensor.ssl_cert_expiry") | int < 21 and states("sensor.ssl_cert_expiry") != "unknown"}}'
+    value_template: '{{ states("sensor.ssl_cert_expiry") | int < 21 and states("sensor.ssl_cert_expiry") != "unavailable"}}'
   action:
     service: notify.gmaillolo
     data:
@@ -168,7 +168,7 @@
     entity_id: sensor.ha_podcast_track
   condition:
     - condition: template
-      value_template: '{{states("sensor.ha_podcast_track") != "unknown" }}'
+      value_template: '{{states("sensor.ha_podcast_track") != "unavailable" }}'
   action:
     - service: notify.gmaillolo
       data_template:
