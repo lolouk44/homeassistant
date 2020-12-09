@@ -32,9 +32,20 @@
     - platform: state
       entity_id: binary_sensor.dark
       to: 'on'
+    - platform: state
+      entity_id: light.living_room_main
+      to: 'on'
+    - platform: state
+      entity_id: group.kitchen_lights
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dark
+      to: 'on'
+      for:
+        seconds: 30
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_open_when_not_dark", "last_triggered") | default(0)) | int > 300)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_open_when_not_dark", "last_triggered") | default(0)) | int > 5)}}'
     - condition: or
       conditions:
       - condition: state
