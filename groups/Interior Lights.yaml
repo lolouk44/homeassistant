@@ -1,4 +1,4 @@
-Interior_Lights:
+interior_lights:
   name: Interior Lights
   entities:
     - light.living_room_main
@@ -11,7 +11,3 @@ Interior_Lights:
     - light.Hallway
     - light.TV_Cabinet_LED_Strip
     - light.Staircase_LED_Strip
-    - switch.lwrf_socket_xmas
-    - light.bauble_1
-    - light.bauble_2
-    - light.bauble_3

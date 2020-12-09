@@ -92,7 +92,7 @@
     entity_id: input_boolean.normal
   - service: light.turn_off
     data:
-      entity_id: group.Interior_Lights
+      entity_id: group.interior_lights
   - service: light.turn_off
     data:
       entity_id: light.living_room_main

@@ -16,7 +16,7 @@
   action:
   - service: light.turn_off
     data:
-      entity_id: group.Interior_Lights
+      entity_id: group.interior_lights
   - service: switch.turn_off
     data:
       entity_id: switch.kitchen_tv
@@ -32,6 +32,9 @@
   - service: light.turn_off
     data:
       entity_id: light.wled_conservatory
+  - service: light.turn_off
+    data:
+      entity_id: group.xmas
 
 
 - alias: Lights - All Lights Off - Sunrise
@@ -60,7 +63,7 @@
         - cover.livingroom_blinds
   - service: light.turn_off
     data:
-      entity_id: group.Interior_Lights
+      entity_id: group.interior_lights
   - delay: 00:00:01
   - service: light.turn_off
     data:
