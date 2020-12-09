@@ -7,6 +7,10 @@
     - platform: state
       entity_id: device_tracker.divashni
       to: "home"
+    - platform: template
+      value_template: '{{ states("sensor.lolo_s_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
+    - platform: template
+      value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
     - condition: template
       value_template: "{{ states('alarm_control_panel.alarm') == 'disarmed' }}"
@@ -29,9 +33,13 @@
     - platform: state
       entity_id: device_tracker.laurent
       to: "home"
-    # - platform: state
-      # entity_id: device_tracker.divashni
-      # to: "home"
+    - platform: state
+      entity_id: device_tracker.divashni
+      to: "home"
+    - platform: template
+      value_template: '{{ states("sensor.lolo_s_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
+    - platform: template
+      value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
     - condition: template
       value_template: "{{ states('alarm_control_panel.alarm') != 'disarmed' }}"

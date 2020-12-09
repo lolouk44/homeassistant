@@ -19,6 +19,10 @@
     - platform: state
       entity_id: group.door_and_window_sensors
       to: 'off'
+    - platform: template
+      value_template: '{{ states("sensor.lolo_s_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
+    - platform: template
+      value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
     - condition: or
       conditions:
@@ -28,6 +32,8 @@
         value_template: '{{ trigger.to_state.state == "phia" and now().hour >= 2}}'
       - condition: template
         value_template: '{{ trigger.from_state.state == "verint" and now().hour >= 3}}'
+      - condition: template
+        value_template: '{{ trigger.entity_id  == "group.door_and_window_sensors" }}'
     - condition: state
       entity_id: group.door_and_window_sensors
       state: 'off'
@@ -41,7 +47,7 @@
         temperature: >-
           {% if states("sensor.season") == "summer" or states("sensor.season") == "spring" %}18
           {% elif now().hour |int < 22 and now().hour |int > 5 %}20
-          {% else  %} 19
+          {% else  %} 18
           {% endif %}
         hvac_mode: 'heat'
 

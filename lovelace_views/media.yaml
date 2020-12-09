@@ -30,10 +30,12 @@ cards:
         entities:
           - entity: sensor.stream_artist
             name: Artist
-            icon: mdi:account
+            secondary_info: last-changed
+            icon: mdi:account-music
           - entity: sensor.stream_track
             name: Track
-            icon: mdi:disc
+            secondary_info: last-changed
+            icon: mdi:music-circle
   - type: entities
     title: ChromeCast Audio
     icon: 'mdi:google-chrome'

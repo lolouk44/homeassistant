@@ -82,160 +82,223 @@ cards:
         icon: mdi:truck-fast
       - entity: sensor.seventeentrack_packages_delivered
         icon: mdi:package-variant
-  - type: custom:home-feed-card
-    title: Sensors Activity Feed
-    show_empty: true
-    more_info_on_tap: true
-    max_item_count: 99
-    entities:
-        - binary_sensor.alert_currentcost_lost
-        - binary_sensor.alert_garage_freezer_temp_too_high
-        - binary_sensor.alert_home_disk_usage_too_high
-        - binary_sensor.alert_kitchen_freezer_temp_too_high
-        - binary_sensor.alert_outside_temp_sensor_lost
-        - binary_sensor.alert_ram_too_high
-        - binary_sensor.alert_root_disk_usage_too_high
-        - binary_sensor.alert_upstairs_temp_sensor_lost
-        - binary_sensor.back_cctv_disk_error
-        - binary_sensor.back_cctv_disk_full
-        - binary_sensor.back_cctv_field_detection
-        - binary_sensor.back_cctv_illegal_access
-        - binary_sensor.back_cctv_line_crossing
-        - binary_sensor.back_cctv_motion
-        - binary_sensor.bathroom_window
-        - binary_sensor.blue_room_big_window
-        - binary_sensor.blue_room_small_window
-        - binary_sensor.bmw_220d_doordriverdront
-        - binary_sensor.bmw_220d_doordriverrear
-        - binary_sensor.bmw_220d_doorpassengerfront
-        - binary_sensor.bmw_220d_doorpassengerrear
-        - binary_sensor.bmw_220d_hood
-        - binary_sensor.bmw_220d_trunk
-        - binary_sensor.bmw_220d_windowdriverdront
-        - binary_sensor.bmw_220d_windowdriverrear
-        - binary_sensor.bmw_220d_windowpassengerfront
-        - binary_sensor.bmw_220d_windowpassengerrear
-        - binary_sensor.cloakroom_window
-        - binary_sensor.conservatory_double_door
-        - binary_sensor.conservatory_led_strip
-        - binary_sensor.conservatory_single_door
-        - binary_sensor.conservatory_skylight_left
-        - binary_sensor.conservatory_skylight_right
-        - binary_sensor.dafang_conservatory
-        - binary_sensor.dafang_conservatory_connection_status
-        - binary_sensor.dafang_kitchen
-        - binary_sensor.dafang_kitchen_connection_status
-        - binary_sensor.dafang_living_room
-        - binary_sensor.dafang_living_room_connection_status
-        - binary_sensor.dafang_living_room_status
-        - binary_sensor.dark
-        - binary_sensor.door_lock
-        - binary_sensor.doorbell
-        - binary_sensor.doorbell_cctv_connection_status
-        - binary_sensor.doorbell_motion
-        - binary_sensor.doorbell_ring
-        - binary_sensor.fire7_motion
-        - binary_sensor.first_floor_smoke_detector
-        - binary_sensor.front_cctv_disk_error
-        - binary_sensor.front_cctv_disk_full
-        - binary_sensor.front_cctv_field_detection
-        - binary_sensor.front_cctv_illegal_access
-        - binary_sensor.front_cctv_line_crossing
-        - binary_sensor.front_cctv_motion
-        - binary_sensor.front_cctv_tamper_detection
-        - binary_sensor.garage_back_door
-        - binary_sensor.garage_cctv_connection_status
-        - binary_sensor.garage_motion
-        - binary_sensor.ground_floor_smoke_detector
-        - binary_sensor.hallway_heating
-        - binary_sensor.hallway_thermostat_fan
-        - binary_sensor.hallway_thermostat_has_leaf
-        - binary_sensor.hallway_thermostat_is_locked
-        - binary_sensor.hallway_thermostat_is_using_emergency_heat
-        - binary_sensor.hallway_thermostat_online
-        - binary_sensor.hikvision_cctv
-        - binary_sensor.house_number_led_strip
-        - binary_sensor.hp_printer_connectivity
-        - binary_sensor.kello
-        - binary_sensor.kiaan_big_window
-        - binary_sensor.kiaan_small_window
-        - binary_sensor.kitchen_window
-        - binary_sensor.living_room_right_big_window
-        - binary_sensor.living_room_right_small_window
-        - binary_sensor.main
-        - binary_sensor.main_door
-        - binary_sensor.master_bedroom_left_big_window
-        - binary_sensor.master_bedroom_right_big_window
-        - binary_sensor.master_bedroom_left_small_window
-        - binary_sensor.master_bedroom_right_small_window
-        - binary_sensor.photoresistor
-        - binary_sensor.pir_conservatory
-        - binary_sensor.pir_garage
-        - binary_sensor.pir_kitchen
-        - binary_sensor.pir_living_room_back
-        - binary_sensor.pir_living_room_front
-        - binary_sensor.pir_staircase
-        - binary_sensor.pooja_room_big_window
-        - binary_sensor.pooja_room_small_window
-        - binary_sensor.radio_is_streaming
-        - binary_sensor.rpi
-        - binary_sensor.rpi_kitchen
-        - binary_sensor.side_cctv_disk_error
-        - binary_sensor.side_cctv_disk_full
-        - binary_sensor.side_cctv_field_detection
-        - binary_sensor.side_cctv_illegal_access
-        - binary_sensor.side_cctv_line_crossing
-        - binary_sensor.side_cctv_motion
-        - binary_sensor.staircase_cctv_connection_status
-        - binary_sensor.staircase_led_strip
-        - binary_sensor.tv_cabinet_led_strip
-        - binary_sensor.updater
-        - binary_sensor.verint_cctv
-        - binary_sensor.workday_sensor
-        - device_tracker.laurent
-        - device_tracker.divashni
-        - media_player.mi_box3_adtv
-        - media_player.onkyo_tx_nr656
-        - media_player.onkyo_tx_nr656_2
-        - media_player.onkyo_tx_nr656_zone_2
-        - media_player.panasonic_viera_tv
-        - person.laurent
-        - person.div
-        - sensor.aqara_illumination
-        - sensor.bmw_220d_mileage
-        - sensor.bmw_220d_mpg
-        - sensor.bmw_220d_remaining_fuel
-        - sensor.cctv_garage_connection_scrape
-        - sensor.cctv_garage_status_scrape
-        - sensor.current_version
-        - sensor.dafang_conservatory_connection_scrape
-        - sensor.dafang_conservatory_status_scrape
-        - sensor.dafang_kitchen_connection_scrape
-        - sensor.dafang_kitchen_status_scrape
-        - sensor.dafang_living_room_connection_scrape
-        - sensor.dafang_living_room_status_scrape
-        - sensor.online_version
-        - sensor.hacs
-        - sensor.hallway_thermostat_hvac_state
-        - sensor.hallway_thermostat_operation_mode
-        - sensor.hallway_thermostat_target
-        - sensor.hallway_thermostat_temperature
-        - sensor.horseshoe_close_eta
-        - sensor.kello_mqtt
-        - sensor.seventeentrack_packages_delivered
-        - sensor.seventeentrack_packages_expired
-        - sensor.seventeentrack_packages_in_transit
-        - sensor.seventeentrack_packages_not_found
-        - sensor.seventeentrack_packages_ready_to_be_picked_up
-        - sensor.seventeentrack_packages_returned
-        - sensor.seventeentrack_packages_undelivered
-        - sensor.ssl_cert_expiry
-        - sensor.xiaomi_cleaned_area
-        - sensor.xiaomi_cleaning_time
-        - sensor.xiaomi_filter_left
-        - sensor.xiaomi_garage_socket_watts
-        - sensor.xiaomi_last_clean
-        - sensor.xiaomi_main_brush_left
-        - sensor.xiaomi_sensor_dirty_left
-        - sensor.xiaomi_side_brush_left
-        - sensor.xiaomi_status
+
+  - type: 'custom:auto-entities'
+    card:
+      type: 'custom:home-feed-card'
+      title: Sensors Log
+      show_empty: true
+      exact_durations: true
+      more_info_on_tap: true
+      state_color: true
+      max_item_count: 499
+      format: "datetime"
+    filter:
+      include:
+        - domain: binary_sensor
+        - domain: sensor
+        - entity_id: device_tracker.lolo
+        - entity_id: device_tracker.divashni
+        - entity_id: device_tracker.venkat
+      exclude:
+        - entity_id: sensor.220d_mileage
+        - entity_id: sensor.220d_remaining_fuel
+        - entity_id: sensor.220d_remaining_range_fuel
+        - entity_id: sensor.220d_remaining_range_total
+        - entity_id: sensor.absolute_radio_artist
+        - entity_id: sensor.absolute_radio_cr_artist
+        - entity_id: sensor.absolute_radio_cr_pic
+        - entity_id: sensor.absolute_radio_cr_track
+        - entity_id: sensor.absolute_radio_pic
+        - entity_id: sensor.absolute_radio_track
+        - entity_id: sensor.bathroom_fan_switch_toggle
+        - entity_id: sensor.battery_158d0001e642ae
+        - entity_id: sensor.battery_158d000205ac9c
+        - entity_id: sensor.battery_158d00022d2c49
+        - entity_id: sensor.battery_158d00022d2d3d
+        - entity_id: sensor.battery_158d000232dcd3
+        - entity_id: sensor.battery_158d000232ddf8
+        - entity_id: sensor.battery_158d0002434385
+        - entity_id: sensor.battery_158d0002435612
+        - entity_id: sensor.battery_158d0002ecf11c
+        - entity_id: sensor.battery_158d0002f92482
+        - entity_id: sensor.battery_158d0002f92557
+        - entity_id: sensor.battery_158d00030993a9
+        - entity_id: sensor.battery_158d000312f91a
+        - entity_id: sensor.battery_158d000312f9b1
+        - entity_id: sensor.battery_158d000313c69f
+        - entity_id: sensor.battery_158d000321d956
+        - entity_id: sensor.battery_158d0003498f6a
+        - entity_id: sensor.battery_158d0003498fcc
+        - entity_id: sensor.bauble_random_effect
+        - entity_id: sensor.bmw_220d_mileage
+        - entity_id: sensor.bmw_220d_mpg
+        - entity_id: sensor.bmw_220d_remaining_fuel
+        - entity_id: sensor.cctv2_cpu_usage
+        - entity_id: sensor.cctv2_disk_temp
+        - entity_id: sensor.cctv2_ram_usage
+        - entity_id: sensor.cctv2_root_disk_usage
+        - entity_id: sensor.chill_artist
+        - entity_id: sensor.chill_pic
+        - entity_id: sensor.chill_track
+        - entity_id: sensor.conservatory_rssi_numeric
+        - entity_id: sensor.cpu_usage
+        - entity_id: sensor.current_date
+        - entity_id: sensor.current_cost
+        - entity_id: sensor.currentcost_power
+        - entity_id: sensor.dark_sky_daily_max_precip_intensity_0d
+        - entity_id: sensor.dark_sky_daily_summary
+        - entity_id: sensor.dark_sky_daytime_high_temperature_0d
+        - entity_id: sensor.dark_sky_hourly_summary
+        - entity_id: sensor.dark_sky_humidity
+        - entity_id: sensor.dark_sky_humidity_0d
+        - entity_id: sensor.dark_sky_icon
+        - entity_id: sensor.dark_sky_icon_0d
+        - entity_id: sensor.dark_sky_minutely_summary
+        - entity_id: sensor.dark_sky_overnight_low_temperature_0d
+        - entity_id: sensor.dark_sky_summary
+        - entity_id: sensor.dark_sky_summary_0d
+        - entity_id: sensor.dark_sky_temperature
+        - entity_id: sensor.dark_sky_wind_gust
+        - entity_id: sensor.dark_sky_wind_gust_0d
+        - entity_id: sensor.dark_sky_wind_speed
+        - entity_id: sensor.dark_sky_wind_speed_0d
+        - entity_id: sensor.dehumidifier_rssi_numeric
+        - entity_id: sensor.dehumidifier_power
+        - entity_id: sensor.div_iphone_activity
+        - entity_id: sensor.div_iphone_average_active_pace
+        - entity_id: sensor.div_iphone_battery_level
+        - entity_id: sensor.div_iphone_battery_level_2
+        - entity_id: sensor.div_iphone_battery_state
+        - entity_id: sensor.div_iphone_battery_state_2
+        - entity_id: sensor.div_iphone_bssid
+        - entity_id: sensor.div_iphone_distance
+        - entity_id: sensor.div_iphone_floors_ascended
+        - entity_id: sensor.div_iphone_floors_descended
+        - entity_id: sensor.div_iphone_geocoded_location
+        - entity_id: sensor.div_iphone_last_update_trigger
+        - entity_id: sensor.div_iphone_sim_1
+        - entity_id: sensor.div_iphone_sim_2
+        - entity_id: sensor.div_iphone_ssid
+        - entity_id: sensor.div_iphone_steps
+        - entity_id: sensor.div_iphone_storage
+        - entity_id: sensor.div_to_home
+        - entity_id: sensor.div_weight_2
+        - entity_id: sensor.fire7_password
+        - entity_id: sensor.garage_back_door_rssi_numeric
+        - entity_id: sensor.garage_freezer_pressure
+        - entity_id: sensor.ha_podcast
+        - entity_id: sensor.ha_podcast_track
+        - entity_id: sensor.hacs
+        - entity_id: sensor.hallway_rssi_numeric
+        - entity_id: sensor.hass_db_size_formatted
+        - entity_id: sensor.home_disk_usage
+        - entity_id: sensor.home_to_work
+        - entity_id: sensor.horseshoe_close_eta
+        - entity_id: sensor.internet_of_things_podcast
+        - entity_id: sensor.internet_of_things_podcast_track
+        - entity_id: sensor.kerui_alarm_rssi_numeric
+        - entity_id: sensor.kerui_disarm_rssi_numeric
+        - entity_id: sensor.kerui_remote_lock_rssi_numeric
+        - entity_id: sensor.kerui_remote_unlock_rssi_numeric
+        - entity_id: sensor.kiaan_weight_2
+        - entity_id: sensor.kitchen_blinds_rssi_numeric
+        - entity_id: sensor.kitchen_door_rssi_numeric
+        - entity_id: sensor.kitchen_freezer_pressure
+        - entity_id: sensor.kitchen_tv_rssi_numeric
+        - entity_id: sensor.kitchen_window_rssi_numeric
+        - entity_id: sensor.laurent_mahe_iphone_7_battery_level
+        - entity_id: sensor.laurent_mahe_iphone_7_battery_level_2
+        - entity_id: sensor.laurent_mahe_iphone_7_battery_state
+        - entity_id: sensor.laurent_mahe_iphone_7_battery_state_2
+        - entity_id: sensor.laurent_mahe_iphone_7_bssid
+        - entity_id: sensor.laurent_mahe_iphone_7_geocoded_location
+        - entity_id: sensor.laurent_mahe_iphone_7_last_update_trigger
+        - entity_id: sensor.laurent_mahe_iphone_7_sim_1
+        - entity_id: sensor.laurent_mahe_iphone_7_ssid
+        - entity_id: sensor.laurent_mahe_iphone_7_storage
+        - entity_id: sensor.laurent_s_ipad_activity
+        - entity_id: sensor.laurent_s_ipad_battery_level
+        - entity_id: sensor.laurent_s_ipad_battery_level_2
+        - entity_id: sensor.laurent_s_ipad_battery_state
+        - entity_id: sensor.laurent_s_ipad_battery_state_2
+        - entity_id: sensor.laurent_s_ipad_bssid
+        - entity_id: sensor.laurent_s_ipad_connection_type
+        - entity_id: sensor.laurent_s_ipad_geocoded_location
+        - entity_id: sensor.laurent_s_ipad_last_update_trigger
+        - entity_id: sensor.laurent_s_ipad_ssid
+        - entity_id: sensor.laurent_s_ipad_storage
+        - entity_id: sensor.living_room_main_rssi_numeric
+        - entity_id: sensor.living_room_wall_rssi_numeric
+        - entity_id: sensor.livingroom_blinds_rssi_numeric
+        - entity_id: sensor.lolo_s_iphone_activity
+        - entity_id: sensor.lolo_s_iphone_average_active_pace
+        - entity_id: sensor.lolo_s_iphone_battery_level
+        - entity_id: sensor.lolo_s_iphone_battery_state
+        - entity_id: sensor.lolo_s_iphone_bssid
+        - entity_id: sensor.lolo_s_iphone_distance
+        - entity_id: sensor.lolo_s_iphone_floors_ascended
+        - entity_id: sensor.lolo_s_iphone_floors_descended
+        - entity_id: sensor.lolo_s_iphone_geocoded_location
+        - entity_id: sensor.lolo_s_iphone_last_update_trigger
+        - entity_id: sensor.lolo_s_iphone_sim_1
+        - entity_id: sensor.lolo_s_iphone_sim_2
+        - entity_id: sensor.lolo_s_iphone_ssid
+        - entity_id: sensor.lolo_s_iphone_steps
+        - entity_id: sensor.lolo_s_iphone_storage
+        - entity_id: sensor.lolo_to_home
+        - entity_id: sensor.lolo_weight_2
+        - entity_id: sensor.lwrf_remote_1_rssi_numeric
+        - entity_id: sensor.lwrf_remote_2_rssi_numeric
+        - entity_id: sensor.lwrf_remote_3_rssi_numeric
+        - entity_id: sensor.lwrf_socket_3_rssi_numeric
+        - entity_id: sensor.lwrf_socket_xmas_rssi_numeric
+        - entity_id: sensor.master_bedroom_pressure
+        - entity_id: sensor.pi_hole_ads_blocked_today
+        - entity_id: sensor.pi_hole_ads_percentage_blocked_today
+        - entity_id: sensor.pi_hole_current_version
+        - entity_id: sensor.pi_hole_dns_queries_cached
+        - entity_id: sensor.pi_hole_dns_queries_forwarded
+        - entity_id: sensor.pi_hole_dns_queries_today
+        - entity_id: sensor.pi_hole_dns_unique_clients
+        - entity_id: sensor.pi_hole_dns_unique_domains
+        - entity_id: sensor.pi_hole_domains_blocked
+        - entity_id: sensor.pi_hole_heartbeat
+        - entity_id: sensor.pi_hole_online_version
+        - entity_id: sensor.pi_hole_seen_clients
+        - entity_id: sensor.radio_fiji_two_artist
+        - entity_id: sensor.radio_fiji_two_track
+        - entity_id: sensor.ram_usage
+        - entity_id: sensor.root_disk_usage
+        - entity_id: sensor.rpi_kitchen_heartbeat
+        - entity_id: sensor.rtl2_artist
+        - entity_id: sensor.rtl2_pic
+        - entity_id: sensor.rtl2_track
+        - entity_id: sensor.scala_artist
+        - entity_id: sensor.scala_pic
+        - entity_id: sensor.scala_track
+        - entity_id: sensor.sda_disk_temp
+        - entity_id: sensor.seventeentrack_package_3347804979087081
+        - entity_id: sensor.seventeentrack_package_rv423008581cn
+        - entity_id: sensor.staircase_rssi_numeric
+        - entity_id: sensor.stream_artist
+        - entity_id: sensor.stream_track
+        - entity_id: sensor.testuser1_weight
+        - entity_id: sensor.time
+        - entity_id: sensor.upstairs_humidity_status
+        - entity_id: sensor.upstairs_rssi_numeric
+        - entity_id: sensor.uptime
+        - entity_id: sensor.week_day
+        - entity_id: sensor.wled_conservatory_estimated_current
+        - entity_id: sensor.wled_garage_estimated_current
+        - entity_id: sensor.xiaomi_battery_level
+        - entity_id: sensor.xiaomi_cleaned_area
+        - entity_id: sensor.xiaomi_cleaning_time
+        - entity_id: sensor.xiaomi_filter_left
+        - entity_id: sensor.xiaomi_last_clean
+        - entity_id: sensor.xiaomi_main_brush_left
+        - entity_id: sensor.xiaomi_sensor_dirty_left
+        - entity_id: sensor.xiaomi_side_brush_left
+        - entity_id: sensor.zfs1_disk_temp
+        - entity_id: sensor.zfs2_disk_temp
+        - entity_id: sensor.zfs_disk_usage

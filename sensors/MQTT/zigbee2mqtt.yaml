@@ -163,4 +163,25 @@
   name: "Bathroom Fan Switch Toggle"
   state_topic: "zigbee2mqtt/bathroom_hygro"
 
+- platform: mqtt
+  name: "Garage Freezer Temperature"
+  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  value_template: "{{ value_json['temperature'] }}"
+  unit_of_measurement: 'ºC'
+  device_class: temperature
+
+- platform: mqtt
+  name: "Garage Freezer Humidity"
+  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  value_template: "{{ value_json['humidity'] | float (1) }}"
+  unit_of_measurement: "%"
+  device_class: humidity
+
+- platform: mqtt
+  name: "Garage Freezer Temperature Battery"
+  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
 

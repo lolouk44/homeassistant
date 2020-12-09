@@ -42,6 +42,10 @@
   - service: light.turn_off
     data:
       entity_id: light.hallway
+  - service: light.turn_on
+    data:
+      entity_id: group.kitchen_lights
+      brightness: 255
 
 
 - alias: Lights - Kitchen Lights Dimmed Off PIR

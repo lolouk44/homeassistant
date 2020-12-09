@@ -27,7 +27,7 @@
 
     homeassistant:
       container_name: ha
-      image: homeassistant/home-assistant:0.117.5
+      image: homeassistant/home-assistant:0.118.4
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
@@ -35,7 +35,7 @@
         - ./shell_scripts/panasonic_viera_old:/usr/src/homeassistant/homeassistant/components/panasonic_viera:ro
       devices:
         - /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0:/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
-        - /dev/ZWaveStick:/dev/ttyACM0
+        - /dev/serial/by-id/usb-0658_0200-if00:/dev/ttyACM0
         - /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0:/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0
       depends_on:
         - influxdb

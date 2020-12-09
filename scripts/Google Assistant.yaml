@@ -12,14 +12,9 @@ nest_hub_start_cast:
       timeout: '00:00:05'
     - service: cast.show_lovelace_view
       data:
+        dashboard_path: lovelace-test
         entity_id: media_player.master_bedroom_display
-        view_path: nesthub
-    - delay: '00:00:05'
-    - service: cast.show_lovelace_view
-      data:
-        dashboard_path: lovelace-nesthub
-        entity_id: media_player.master_bedroom_display
-        view_path: nesthub
+        view_path: '0'
     - delay: '00:00:05'
     - service: cast.show_lovelace_view
       data:
@@ -42,14 +37,9 @@ nest_hub_start_cast2:
       timeout: '00:00:05'
     - service: cast.show_lovelace_view
       data:
-        entity_id: media_player.master_bedroom_display
-        view_path: nesthub
-    - delay: '00:00:05'
-    - service: cast.show_lovelace_view
-      data:
         dashboard_path: lovelace-test
         entity_id: media_player.master_bedroom_display
-        view_path: nesthub
+        view_path: '0'
     - delay: '00:00:05'
     - service: cast.show_lovelace_view
       data:

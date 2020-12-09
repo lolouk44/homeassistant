@@ -3,9 +3,9 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.starling_effective_balance
-      below: 20
+      below: 10
   action:
     - service: notify.gmaillolo
       data_template:
         title: "HA - Starling"
-        message: 'Starling Balance below £20: £{{states("sensor.starling_effective_balance")}}'
+        message: 'Starling Balance below £10: £{{states("sensor.starling_effective_balance")}}'
