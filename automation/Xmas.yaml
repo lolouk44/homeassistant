@@ -8,6 +8,7 @@
         - binary_sensor.pir_living_room_front
         - binary_sensor.pir_living_room_back
         - binary_sensor.pir_staircase
+        - input_boolean.xmas
       to: 'on'
     - platform: state
       entity_id: sun.sun
@@ -34,27 +35,21 @@
       entity_id: light.TV_Cabinet_LED_Strip
       brightness: 255
       effect: colorfade_fast
-  - service: light.turn_on
-    data:
-      entity_id: light.Staircase_LED_Strip
-      brightness: 255
-      effect: colorfade_fast
-  - service: light.turn_on
-    data:
-      entity_id: light.wled_conservatory
-      effect: "rainbow"
-      brightness: 255
-  - service: light.turn_on
-    data:
-      entity_id: light.wled_conservatory
-      effect: "rainbow"
-      brightness: 255
   - service: switch.turn_on
     data:
       entity_id: switch.edimax1
   - service: light.turn_on
     data:
       entity_id: group.xmas
+
+  - condition: state
+    entity_id: light.wled_conservatory
+    state: 'off'
+  - service: light.turn_on
+    data:
+      entity_id: light.wled_conservatory
+      effect: "rainbow"
+      brightness: 255
 
 
 
@@ -80,9 +75,6 @@
       entity_id: group.xmas
   - service: light.turn_off
     data:
-      entity_id: light.Staircase_LED_Strip
-  - service: light.turn_off
-    data:
       entity_id: light.TV_Cabinet_LED_Strip
   - service: switch.turn_off
     data:
@@ -93,9 +85,6 @@
   - service: switch.turn_off
     data:
       entity_id: switch.edimax1
-  - service: light.turn_off
-    data:
-      entity_id: group.xmas
 
 
 
@@ -202,3 +191,52 @@
       entity_id: light.bauble_2
       effect: "uniglow"
 
+- alias: Xmas - Change Conservatory WLED Effect
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: group.pirs
+        state: 'on'
+      - condition: state
+        entity_id: media_player.panasonic_viera_tv
+        state: 'on'
+    - condition: state
+      entity_id: light.wled_conservatory
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.wled_conservatory
+      brightness: 128
+      effect: '{{states.input_select.wled_effects.attributes.options[range(0, 14) | random]}}'
+
+- alias: Xmas - Change Garage WLED Effect
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: time
+      after: '15:00'
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.wled_garage
+      brightness: 128
+      effect: '{{states.input_select.wled_effects.attributes.options[range(0, 14) | random]}}'

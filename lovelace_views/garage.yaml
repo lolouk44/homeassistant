@@ -39,3 +39,10 @@ cards:
         secondary_info: last-changed
       - entity: input_boolean.xiaomi_switch_charging
         secondary_info: last-changed
+  - type: entities
+    title: Garage WLED
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: light.wled_garage
+        secondary_info: last-changed

@@ -214,11 +214,10 @@
       entity_id: sun.sun
       to: 'below_horizon'
     - platform: state
-      entity_id: binary_sensor.house_number_led_strip
-      to: 'on'
-    # Xmas Blue Iciles
+      entity_id: light.house_number
+      from: 'unavailable'
     - platform: state
-      entity_id: switch.xiaomi_dual_usb_socket
+      entity_id: light.porch_om_xmas_led_strip
       from: 'unavailable'
   condition:
     - condition: state
@@ -233,14 +232,20 @@
       brightness: 255
       effect: None
       rgb_color: [0,0,255]
+  - service: light.turn_on
+    data:
+      entity_id: light.wled_garage
+      brightness: 1
+      effect: None
+      rgb_color: [0,0,255]
   - condition: state
     entity_id: input_boolean.xmas
     state: 'on'
   - service: light.turn_on
     data:
-      entity_id: light.house_number
-      brightness: 160
-      effect: Rainbow
+      entity_id: light.porch_om_xmas_led_strip
+      brightness: 50
+      effect: rainbow
 
 - alias: LED Strip - House Number Off
   initial_state: true
@@ -250,11 +255,10 @@
       minutes: 0
       seconds: 0
     - platform: state
-      entity_id: binary_sensor.house_number_led_strip
-      to: 'on'
-    # Xmas Blue Iciles
+      entity_id: light.house_number
+      from: 'unavailable'
     - platform: state
-      entity_id: switch.xiaomi_dual_usb_socket
+      entity_id: light.porch_om_xmas_led_strip
       from: 'unavailable'
   condition:
     - condition: time
@@ -263,6 +267,12 @@
   - service: light.turn_off
     data:
       entity_id: light.house_number
+  - service: light.turn_off
+    data:
+      entity_id: light.wled_garage
+  - service: light.turn_off
+    data:
+      entity_id: light.porch_om_xmas_led_strip
 
 - alias: LED Strip - Turn Pooja Frame Off after 3h
   initial_state: true
@@ -273,6 +283,9 @@
       for:
         hours: 3
   condition:
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'off'
   action:
   - service: light.turn_off
     data:

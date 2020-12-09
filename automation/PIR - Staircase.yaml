@@ -1,4 +1,4 @@
-- alias: Lighhts - Staircase Light On by PIR
+- alias: Lights - Staircase Light On by PIR
   initial_state: true
   trigger:
     - platform: state
@@ -38,9 +38,22 @@
     data:
       entity_id: light.staircase
       brightness: 255
+  - service: light.turn_on
+    data:
+      entity_id: light.staircase_led_strip
+      brightness: 255
+      rgb_color: [0,128,255]
+  - condition: state
+    entity_id: input_boolean.xmas
+    state: 'on'
+  - service: light.turn_on
+    data:
+      entity_id: light.staircase_led_strip
+      brightness: 255
+      effect: rainbow
 
 
-- alias: Lighhts - Staircase Light Off by PIR
+- alias: Lights - Staircase Light Off by PIR
   initial_state: true
   trigger:
     - platform: state
@@ -54,3 +67,6 @@
   - service: light.turn_off
     data:
       entity_id: light.staircase
+  - service: light.turn_off
+    data:
+      entity_id: light.staircase_led_strip

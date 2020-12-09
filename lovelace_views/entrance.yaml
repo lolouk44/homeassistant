@@ -85,6 +85,9 @@ cards:
           secondary_info: last-changed
         - entity: light.aqara_gateway_light
           secondary_info: last-changed
+        - entity: light.house_number
+          secondary_info: last-changed
+          icon: mdi:numeric-4-box-multiple-outline
         - entity: light.porch_om_xmas_led_strip
           secondary_info: last-changed
           icon: mdi:snowman
