@@ -50,6 +50,8 @@
 - platform: mqtt
   state_topic: 'Sensors/HASQL'
   name: 'Hass DB Size Formatted'
+  value_template: '{{ value[:-1] | float }}'
+  unit_of_measurement: 'Gb'
   icon: mdi:database
 
 - platform: mqtt

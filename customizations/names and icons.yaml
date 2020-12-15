@@ -265,8 +265,6 @@ switch.onkyo_zone2_muting:
   icon: mdi:volume-off
 switch.onkyo_zone2_power:
   icon: mdi:power
-switch.plex:
-  icon: mdi:docker
 switch.portainer:
   icon: mdi:docker
 switch.skyhd:
@@ -284,6 +282,16 @@ switch.wordpress:
 switch.cctv2_ha:
   icon: mdi:docker
 switch.cctv2_motion:
+  icon: mdi:docker
+switch.ddclient:
+  icon: mdi:docker
+switch.dropbox:
+  icon: mdi:docker
+switch.miscale:
+  icon: mdi:docker
+switch.mqtt:
+  icon: mdi:docker
+switch.mysql:
   icon: mdi:docker
 
 

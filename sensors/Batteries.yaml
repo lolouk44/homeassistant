@@ -35,11 +35,6 @@
       unit_of_measurement: '%'
       value_template: '{{state_attr("binary_sensor.conservatory_double_door", "battery_level") | int}}'
       device_class: battery
-    kiaan_big_window_battery:
-      friendly_name: Kiaan Big Window Battery
-      unit_of_measurement: '%'
-      value_template: '{{state_attr("binary_sensor.kiaan_big_window", "battery_level") | int}}'
-      device_class: battery
     kiaan_small_window_battery:
       friendly_name: Kiaan Small Window Door
       unit_of_measurement: '%'

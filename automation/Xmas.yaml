@@ -240,3 +240,10 @@
       entity_id: light.wled_garage
       brightness: 128
       effect: '{{states.input_select.wled_effects.attributes.options[range(0, 14) | random]}}'
+  - delay: 00:00:01
+  - service: light.turn_on
+    data:
+      entity_id: light.house_number
+      brightness: 255
+      effect: None
+      rgb_color: [0,0,255]
