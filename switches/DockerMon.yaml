@@ -1,4 +1,20 @@
 - platform: rest
+  resource: http://192.168.0.24:8126/container/ddclient
+  name: ddclient
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
+  resource: http://192.168.0.24:8126/container/dropbox
+  name: dropbox
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
   resource: http://192.168.0.24:8126/container/influxdb
   name: influxdb
   body_on: '{"state": "start"}'
@@ -15,7 +31,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/dockermon
+  resource: http://192.168.0.24:8126/container/ha_dockermon
   name: ha_dockermon
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -23,7 +39,31 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/letsencrypt
+  resource: http://192.168.0.24:8126/container/miscale
+  name: miscale
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
+  resource: http://192.168.0.24:8126/container/mqtt
+  name: mqtt
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
+  resource: http://192.168.0.24:8126/container/mysql
+  name: mysql
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
+  resource: http://192.168.0.24:8126/container/swag
   name: letsencrypt
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -63,8 +103,8 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/plex
-  name: plex
+  resource: http://192.168.0.24:8126/container/wordpress
+  name: wordpress
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

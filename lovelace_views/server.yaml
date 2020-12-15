@@ -173,22 +173,32 @@ cards:
           state_color: true
         open: false
         entities:
-        - entity: switch.grafana
-          name: Grafana
+        - entity: switch.ddclient
+          name: ddclient
+        - entity: switch.dropbox
+          name: DropBox
         - entity: switch.ha_dockermon
           name: Dockermon
+        - entity: switch.grafana
+          name: Grafana
         - entity: switch.influxdb
           name: InfluxDB
-        - entity: switch.letsencrypt
-          name: LetsEncrypt
-        - entity: switch.plex
-          name: Plex
+        - entity: switch.miscale
+          name: MiScale
+        - entity: switch.mqtt
+          name: MQTT
+        - entity: switch.mysql
+          name: MySQL
         - entity: switch.portainer
           name: Portainer
+        - entity: switch.letsencrypt
+          name: Swag
         - entity: switch.syncthing
           name: SyncThing
         - entity: switch.watchtower
           name: WatchTower
+        - entity: switch.wordpress
+          name: Wordpress
         - entity: switch.zigbee2mqtt
           name: ZigBee2MQTT
         - entity: switch.zigbee2mqtt_permit_join
