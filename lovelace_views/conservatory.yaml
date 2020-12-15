@@ -13,6 +13,9 @@ cards:
     entities:
       - entity: binary_sensor.pir_conservatory
         secondary_info: last-changed
+      - entity: binary_sensor.conservatory_door_lock
+        secondary_info: last-changed
+        icon: mdi:door-closed-lock
       - entity: binary_sensor.dark
         secondary_info: last-changed
         icon: mdi:weather-night

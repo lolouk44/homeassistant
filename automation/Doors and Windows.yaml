@@ -75,7 +75,7 @@
   action:
     - service: notify.gmaillolo
       data_template:
-        title: "HA - Windows"
+        title: "HA - Windows Left Open"
         message: >
           The following doors/windows are not closed: 
           {% set doors = [
@@ -94,14 +94,10 @@
           {%- endfor %}
     - service: media_player.volume_set
       data:
-        entity_id: media_player.google_home_minis
-        volume_level: 1
-    - service: media_player.volume_set
-      data:
         entity_id: media_player.master_bedroom_display
         volume_level: 0.5
     - service: tts.google_say
-      entity_id: media_player.google_home_minis, media_player.master_bedroom_display
+      entity_id: media_player.master_bedroom_display
       data_template:
         message: >
           The following doors/windows are not closed: 
@@ -121,8 +117,52 @@
           {%- endfor %}
     - service: media_player.volume_set
       data:
-        entity_id: media_player.google_home_minis
-        volume_level: 0.50
+        entity_id: media_player.master_bedroom_display
+        volume_level: 0
+
+
+- alias: Openings - Conservatory Door Left Unlocked At Night
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: group.pirs
+      to: 'off'
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.conservatory_door_lock
+      state: 'on'
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: state
+      entity_id: group.pirs
+      state: 'off'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Conservatory Door Left Unlocked At Night"
+        message: "The Conservatory Door Has Been Left Unlocked"
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.master_bedroom_display
+        volume_level: 0.5
+    - service: tts.google_say
+      entity_id: media_player.master_bedroom_display
+      data_template:
+        message: "Please Note: The Conservatory Door Has Been Left Unlocked"
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.master_bedroom_display
+        volume_level: 0
 
 
 - alias: Openings -  Hallway Light On When Opening Main Door

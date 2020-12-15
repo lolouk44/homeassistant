@@ -184,4 +184,18 @@
   unit_of_measurement: "%"
   device_class: battery
 
+- platform: mqtt
+  name: "Kiaan Big Window Battery"
+  state_topic: "zigbee2mqtt/kiaan_big_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Conservatory Door Lock Battery"
+  state_topic: "zigbee2mqtt/conservatory_door_lock"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
 

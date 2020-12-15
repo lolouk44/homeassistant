@@ -47,10 +47,18 @@
   device_class: window
 
 - platform: mqtt
-  name: "Bed lolo"
-  state_topic: "zigbee2mqtt/bed_lolo"
+  name: "Kiaan Big Window"
+  state_topic: "zigbee2mqtt/kiaan_big_window"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: window
+
+- platform: mqtt
+  name: "Conservatory Door Lock"
+  state_topic: "zigbee2mqtt/conservatory_door_lock"
   value_template: "{{ value_json['contact'] == true }}"
   payload_off: false
   payload_on: true
-  device_class: occupancy
+  device_class: safety
 

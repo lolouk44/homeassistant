@@ -10,9 +10,6 @@ cards:
     title: Lolo Bedside
     show_header_toggle: false
     entities:
-    - entity: binary_sensor.bed_lolo
-      secondary_info: last-changed
-      icon: mdi:bed
     - entity: light.lolo_bedside_light
       secondary_info: last-changed
       icon: mdi:lamp
