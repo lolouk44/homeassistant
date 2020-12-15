@@ -15,10 +15,6 @@
   name: StairCase LED Strip
 
 - platform: ping
-  host: 192.168.0.60
-  name: House Number LED Strip
-
-- platform: ping
   host: 192.168.0.53
   name: Conservatory LED Strip
 
