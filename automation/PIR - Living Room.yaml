@@ -10,6 +10,8 @@
     - platform: state
       entity_id: binary_sensor.dark
       to: 'on'
+    - platform: homeassistant
+      event: start
   condition:
     - condition: or
       conditions:
@@ -93,6 +95,8 @@
       to: 'off'
       for:
         minutes: 2
+    - platform: homeassistant
+      event: start
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'

@@ -198,4 +198,32 @@
   unit_of_measurement: "%"
   device_class: battery
 
+- platform: mqtt
+  name: "Aqara Toggle Pooja"
+  state_topic: "zigbee2mqtt/aqara_toggle_pooja"
+  value_template: "{{ value_json['click'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Aqara Toggle Pooja Battery"
+  state_topic: "zigbee2mqtt/aqara_toggle_pooja"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Aqara Toggle Bathroom"
+  state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
+  value_template: "{{ value_json['click'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Aqara Toggle Bathroom Battery"
+  state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
 

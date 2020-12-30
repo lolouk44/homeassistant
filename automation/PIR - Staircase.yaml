@@ -10,8 +10,8 @@
     - platform: state
       entity_id: binary_sensor.photoresistor
       to: 'off'
-    - platform: state
-      entity_id: sensor.aloe_vera_light_intensity
+    - platform: homeassistant
+      event: start
   condition:
     - condition: or
       conditions:
@@ -59,7 +59,12 @@
     - platform: state
       entity_id: binary_sensor.pir_staircase
       to: 'off'
+    - platform: homeassistant
+      event: start
   condition:
+    - condition: state
+      entity_id: binary_sensor.pir_staircase
+      state: 'off'
     - condition: state
       entity_id: light.staircase
       state: 'on'

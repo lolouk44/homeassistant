@@ -1,0 +1,36 @@
+- alias: Pooja - Turn Pooja Frame Off after 3h
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: light.pooja_frame
+      to: 'on'
+      for:
+        hours: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.xmas
+      state: 'off'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.pooja_frame
+
+- alias: Pooja - Toggle Turn Pooja Frame From Aqara Button
+  initial_state: true
+  trigger:
+    - platform: mqtt
+      topic: 'zigbee2mqtt/aqara_toggle_pooja'
+  action:
+  - condition: template
+    value_template: '{{ trigger.payload_json.click == "single" }}'
+  - service: light.toggle
+    data:
+      entity_id: light.pooja_frame
+  - delay: '00:00:02'
+  - wait_template: "{{ is_state('light.pooja_frame', 'on') }}"
+    timeout: '00:00:05'
+    continue_on_timeout: 'false'
+  - service: light.turn_on
+    data:
+      entity_id: light.pooja_frame
+      effect: 'Rainbow'

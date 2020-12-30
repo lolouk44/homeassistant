@@ -1,7 +1,7 @@
 outside_temp_sensor_lost:
   name: Outside Temp Sensor Lost
   entity_id: input_boolean.alert_lost_outside_temperature_at_3600
-  skip_first: True
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -13,7 +13,7 @@ outside_temp_sensor_lost:
 upstairs_temp_sensor_lost:
   name: Outside Temp Sensor Lost
   entity_id: input_boolean.alert_lost_upstairs_temperature_at_3600
-  skip_first: True
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -25,7 +25,7 @@ upstairs_temp_sensor_lost:
 ram_usage_lost:
   name: RAM Usage Sensor Lost
   entity_id: input_boolean.alert_lost_ram_usage_at_300
-  skip_first: True
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -37,7 +37,7 @@ ram_usage_lost:
 fire7_lost:
   name: Fire 7 Lost
   entity_id: input_boolean.alert_lost_Fire7_at_300
-  skip_first: True
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -50,8 +50,8 @@ cctv_front_lost:
   name: CCTV Front Lost
   state: 'off'
   entity_id: binary_sensor.hikvision_cctv
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -64,8 +64,8 @@ cctv_garage_lost:
   name: CCTV Garage Lost
   state: 'off'
   entity_id: binary_sensor.verint_cctv
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -78,8 +78,8 @@ cctv_doorbell_video_feed_lost:
   name: Doorbell Video Feed Lost
   state: 'off'
   entity_id: binary_sensor.doorbell_cctv_connection_status
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -92,8 +92,8 @@ cctv_staircase_video_feed_lost:
   name: Stairase Video Feed Lost
   state: 'off'
   entity_id: binary_sensor.staircase_cctv_connection_status
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -106,8 +106,8 @@ cctv_dafang_living_room_lost:
   name: CCTV Dafang Living Room Lost
   state: 'off'
   entity_id: binary_sensor.dafang_living_room
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -120,8 +120,8 @@ cctv_dafang_kitchen_lost:
   name: CCTV Dafang Kitchen Lost
   state: 'off'
   entity_id: binary_sensor.dafang_kitchen
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -133,8 +133,8 @@ cctv_dafang_kitchen_lost:
 currentcost_lost:
   name: CurrentCost Lost
   entity_id: input_boolean.alert_lost_currentcost_power_at_300
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 15
@@ -146,8 +146,8 @@ currentcost_lost:
 dehumidifier_full:
   name: Dehumidifier Full
   entity_id: input_boolean.dehumidifier_tank_full
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 1
     - 60
@@ -158,8 +158,8 @@ rpi_lost:
   name: RPi Lost
   entity_id: binary_sensor.rpi
   state: 'off'
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 1
     - 30
@@ -170,8 +170,8 @@ rpi_lost:
 rpi_kitchen_lost:
   name: RPi Kitchen Lost
   entity_id: input_boolean.alert_lost_rpi_kitchen_at_300
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 10
     - 30
@@ -182,8 +182,8 @@ rpi_kitchen_lost:
 pi_hole_lost:
   name: Pi-hole Lost
   entity_id: input_boolean.alert_lost_pi_hole_at_300
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 10
     - 30
@@ -195,8 +195,8 @@ pi_hole_lost:
   # name: Kello Lost
   # entity_id: binary_sensor.kello
   # state: 'off'
-  # can_acknowledge: True
-  # skip_first: True
+  # can_acknowledge: true
+  # skip_first: true
   # repeat:
     # - 5
     # - 60
@@ -205,10 +205,10 @@ pi_hole_lost:
 
 house_number_led_strip_lost:
   name: House Number LED Strip Lost
-  entity_id: binary_sensor.House_Number_LED_Strip
-  state: 'off'
-  can_acknowledge: True
-  skip_first: True
+  entity_id: light.house_number
+  state: '{{states("light.house_number") = "unavailable" and (as_timestamp(now()) - as_timestamp(states.light.house_number.last_updated)) | int > 290 }}'
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 60
@@ -220,8 +220,8 @@ staircase_led_strip_lost:
   name: StairCase LED Strip Lost
   entity_id: binary_sensor.StairCase_LED_Strip
   state: 'off'
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 60
@@ -233,8 +233,8 @@ tv_cabinet_led_strip_lost:
   name: TV Cabinet LED Strip Lost
   entity_id: binary_sensor.TV_Cabinet_LED_Strip
   state: 'off'
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 60
@@ -245,7 +245,7 @@ tv_cabinet_led_strip_lost:
 ram_too_high:
   name: Ram Usage > 90%
   entity_id: binary_sensor.alert_ram_too_high
-  can_acknowledge: True
+  can_acknowledge: true
   repeat:
     - 5
     - 30
@@ -257,7 +257,7 @@ ram_too_high:
 ram_lost:
   name: Ram Usage Lost
   entity_id: input_boolean.alert_lost_ram_usage_at_300
-  can_acknowledge: True
+  can_acknowledge: true
   repeat:
     - 5
     - 30
@@ -268,7 +268,7 @@ ram_lost:
 home_disk_usage_too_high:
   name: Home Disk Usage > 75%
   entity_id: binary_sensor.home_disk_usage_too_high
-  can_acknowledge: True
+  can_acknowledge: true
   repeat:
     - 5
     - 30
@@ -279,7 +279,7 @@ home_disk_usage_too_high:
 root_disk_usage_too_high:
   name: Root Disk Usage > 75%
   entity_id: binary_sensor.root_disk_usage_too_high
-  can_acknowledge: True
+  can_acknowledge: true
   repeat:
     - 5
     - 30
@@ -290,8 +290,8 @@ root_disk_usage_too_high:
 kitchen_freezer_temp_too_high:
   name: Kitchen Freezer Temperature above 0
   entity_id: binary_sensor.alert_kitchen_freezer_temp_too_high
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 10
@@ -303,8 +303,8 @@ kitchen_freezer_temp_too_high:
 garage_freezer_temp_too_high:
   name: Garage Freezer Temperature above 0
   entity_id: binary_sensor.alert_garage_freezer_temp_too_high
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 10
@@ -318,8 +318,8 @@ doorbell_lost:
   name: Doorbell Lost
   entity_id: binary_sensor.doorbell
   state: 'off'
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   repeat:
     - 5
     - 60
@@ -331,8 +331,8 @@ bmw_unlocked:
   name: BMW Left Unlocked
   entity_id: lock.220d_lock
   state: 'unlocked'
-  can_acknowledge: True
-  skip_first: True
+  can_acknowledge: true
+  skip_first: true
   title: "HA - BMW"
   repeat:
     - 10

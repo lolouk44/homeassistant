@@ -1,33 +1,9 @@
   version: '3'
   services:
 
-    influxdb:
-      image: index.docker.io/influxdb:latest
-      container_name: influxdb
-      ports:
-        - "8086:8086"
-      volumes:
-        - /NAS/influxdb:/var/lib/influxdb
-      restart: always
-
-    grafana:
-      image: index.docker.io/grafana/grafana:latest
-      container_name: grafana
-      ports:
-        - "3000:3000"
-      environment:
-        GF_RENDERING_SERVER_URL: http://192.168.0.23:8100/render
-        GF_RENDERING_CALLBACK_URL: http://192.168.0.24:3000/
-        GF_LOG_FILTERS: rendering:debug
-      volumes:
-        - /NAS/grafana:/var/lib/grafana
-      links:
-        - influxdb
-      restart: always
-
     homeassistant:
       container_name: ha
-      image: homeassistant/home-assistant:2020.12.0
+      image: homeassistant/home-assistant:2020.12.2
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
@@ -37,7 +13,7 @@
         - /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0:/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
         - /dev/serial/by-id/usb-0658_0200-if00:/dev/ttyACM0
         - /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0:/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0
-      depends_on:
-        - influxdb
+      # depends_on:
+        # - influxdb
       restart: always
       network_mode: host

@@ -59,3 +59,48 @@ This makes a macro that returns a string of true/falses. I.E. 'True,False,True,F
 {%- if (as_timestamp(now()) | timestamp_custom('%S',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%S',true) | int) > 0 -%}
 {{ phrase((as_timestamp(now()) | timestamp_custom('%S',true) | int) - (as_timestamp(last_triggered) | timestamp_custom('%S',true) | int) , 'second')}} ago
 {%- endif -%}
+
+
+
+apple_watch_people_at_home:
+  friendly_name: Apple Watch People At Home
+  value_template: >-
+    {% if states.sensor.gigz_smart_location.state == "Home" and states.sensor.iryna_smart_location.state == "Home" %}
+      👫
+    {% elif states.sensor.gigz_smart_location.state == "Home" %}
+      🧍‍♂️
+    {% elif states.sensor.iryna_smart_location.state == "Home" %}
+      🧍‍♀️
+    {% else %}      
+      🔒
+    {% endif %}
+ 
+apple_watch_home_mode:
+  friendly_name: Apple Watch Home Mode
+  value_template: >-
+    {% if states.sensor.home_mode.state == "Morning" or states.sensor.home_mode.state == "Away Morning" %}
+      ☕️
+    {% elif states.sensor.home_mode.state == "Home" or states.sensor.home_mode.state == "Away" %}
+      ☀️
+    {% elif states.sensor.home_mode.state == "Evening" or states.sensor.home_mode.state == "Away Evening" %}
+      🌙
+    {% else %}      
+      💤
+    {% endif %}
+ 
+apple_watch_home_health_alert:
+  friendly_name: Apple Watch Home Health Alert
+  value_template: >-
+    {% if states.sensor.smart_home_health.state == "Attention Needed" %}
+      ⚠️
+    {% endif %}
+ 
+apple_watch_packages_progress:
+  friendly_name: Apple Watch Packages Progress
+  icon_template: "mdi:package-variant-closed"
+  value_template: >- 
+    {% if states.sensor.mail_amazon_packages.state | int == 0 %}
+      1.0
+    {% else %}
+      {{ (states.sensor.mail_amazon_packages_delivered.state | float) / (states.sensor.mail_amazon_packages.state | float) }}
+    {% endif %}

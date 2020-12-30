@@ -42,14 +42,14 @@
     data:
       entity_id: switch.bathroom_fan
 
-- alias: Bathroom - Toggle Fan From Hygro Sensor
-  initial_state: false
+- alias: Bathroom - Toggle Fan From Aqara Button
+  initial_state: true
   trigger:
-    - platform: state
-      entity_id: sensor.bathroom_fan_switch_toggle
+    - platform: mqtt
+      topic: 'zigbee2mqtt/aqara_toggle_bathroom'
   action:
   - condition: template
-    value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.bathroom_toggle_fan_from_hygro_sensor", "last_triggered") | default(0)) | int <= 5)}}'
+    value_template: '{{ trigger.payload_json.click == "single" }}'
   - service: switch.toggle
     data:
       entity_id: switch.bathroom_fan

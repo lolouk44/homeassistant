@@ -159,9 +159,9 @@ logger:
 lovelace:
   mode: yaml
   resources:
-      #Kiosk mode for Alarm panel https://gist.github.com/ciotlosm/1f09b330aa5bd5ea87b59f33609cc931
-    - url: /local/kiosk.js?v=1.1
-      type: js
+      #Kiosk mode for Alarm panel https://github.com/maykar/kiosk-mode
+    - url: /hacsfiles/kiosk-mode/kiosk-mode.js
+      type: module
       # https://github.com/thomasloven/lovelace-card-tools
     - url: /hacsfiles/lovelace-card-tools/card-tools.js
       type: module

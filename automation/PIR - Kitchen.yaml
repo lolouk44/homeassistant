@@ -12,6 +12,8 @@
     - platform: state
       entity_id: binary_sensor.dark
       to: 'on'
+    - platform: homeassistant
+      event: start
   condition:
     - condition: state
       entity_id: binary_sensor.pir_kitchen
@@ -86,6 +88,8 @@
       to: 'off'
       for:
         minutes: 2
+    - platform: homeassistant
+      event: start
   condition:
     - condition: or
       conditions:
@@ -138,6 +142,8 @@
     - platform: state
       entity_id: binary_sensor.pir_kitchen
       to: 'on'
+    - platform: homeassistant
+      event: start
   condition:
     - condition: or
       conditions:
@@ -168,6 +174,8 @@
       to: 'off'
       for:
         minutes: 2
+    - platform: homeassistant
+      event: start
   condition:
     - condition: template
       value_template: '{{ states("binary_sensor.pir_kitchen") == "off" and states("binary_sensor.pir_conservatory") == "off"}}'

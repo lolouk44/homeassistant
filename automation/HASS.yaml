@@ -48,6 +48,14 @@
   - delay: 00:00:02
   - service: shell_command.start_radiostream_sensors
 
+- alias: HASS - Start Install Catt
+  initial_state: true
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+  - service: shell_command.catt_install
+
 - alias: HASS - Stop Motion Detection
   initial_state: true
   trigger:

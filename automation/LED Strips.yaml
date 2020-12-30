@@ -170,9 +170,6 @@
         entity_id: input_boolean.movies
         state: 'on'
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'off'
-    - condition: state
       entity_id: binary_sensor.dark
       state: 'on'
   action:
