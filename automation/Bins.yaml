@@ -2,7 +2,7 @@
   initial_state: true
   trigger:
     platform: time_pattern
-    hours: 4
+    hours: "4"
     minutes: 0
     seconds: 0
   action:
