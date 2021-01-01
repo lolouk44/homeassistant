@@ -53,12 +53,6 @@
       entity_id: scene.pre_doorbell_state
 
 
-
-
-
-
-
-
 - alias: Doorbell - Reboot When Video Feed Lost
   initial_state: true
   trigger:
@@ -66,6 +60,26 @@
       entity_id:
         - alert.cctv_doorbell_video_feed_lost
       to: 'on'
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.doorbell_reboot_when_video_feed_lost", "last_triggered") | default(0)) | int > 300)}}'
+  action:
+    - service: shell_command.reboot_doorbell
+
+
+- alias: Doorbell - Set Daylight Colour
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+      for:
+        minutes:
+          - 1
+          - 15
+          - 30
+          - 45
+          - 60
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.doorbell_reboot_when_video_feed_lost", "last_triggered") | default(0)) | int > 300)}}'

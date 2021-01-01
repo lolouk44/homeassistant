@@ -1,0 +1,116 @@
+title: Master Bedroom
+#background: url("/local/hotel.png") fixed
+icon: mdi:bed
+badges:
+  !include /config/lovelace_views/badges.yaml
+cards:
+  - !include /config/lovelace_views/persistent_notifications.yaml
+  - !include /config/lovelace_views/alert_card.yaml
+  - type: entities
+    title: Lolo Bedside
+    show_header_toggle: false
+    entities:
+    - entity: light.lolo_bedside_light
+      secondary_info: last-changed
+      icon: mdi:lamp
+    - entity: media_player.master_bedroom_display
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+    - entity: script.nest_hub_start_cast
+      secondary_info: last_triggered
+  - type: entities
+    title: Main Bedroom Sensors
+    state_color: true
+    show_header_toggle: false
+    entities:
+    - entity: sensor.master_bedroom_temperature
+      secondary_info: last-changed
+    - entity: sensor.master_bedroom_humidity
+      secondary_info: last-changed
+    - entity: sensor.master_bedroom_pressure
+      secondary_info: last-changed
+    - entity: binary_sensor.master_bedroom_left_small_window
+      secondary_info: last-changed
+    - entity: binary_sensor.master_bedroom_left_big_window
+      secondary_info: last-changed
+    - entity: binary_sensor.master_bedroom_right_small_window
+      secondary_info: last-changed
+    - entity: binary_sensor.master_bedroom_right_big_window
+      secondary_info: last-changed
+  - type: entities
+    title: Kello
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - binary_sensor.kello
+      - input_select.kello_radio_station
+      - input_number.volume_kello
+      - input_boolean.kello_play_stop
+      - input_boolean.kello_mute_alarms
+  - type: entities
+    title: Xiaomi Dual USB Socket
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: switch.xiaomi_dual_usb_socket
+        secondary_info: last-changed
+        icon: mdi:power-plug
+      - entity: switch.xiaomi_dual_usb_socket_usb
+        secondary_info: last-changed
+        icon: mdi:usb
+      - entity: sensor.xiaomi_dual_usb_socket_watts
+        secondary_info: last-changed
+  - type: entities
+    title: Mi Box
+    icon: 'mdi:google-chrome'
+    show_header_toggle: false
+    entities:
+    - entity: media_player.mi_box3_adtv
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+    - entity: media_player.mibox3
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+  - type: entities
+    title: Edimax
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: input_select.edimax_mode
+      - entity: switch.edimax1
+        secondary_info: last-changed
+      - entity: sensor.edimax1_watts
+        secondary_info: last-changed
+      - entity: input_boolean.edimax_charging
+      - entity: input_select.edimax_timer
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: picture-glance
+      camera_image: camera.chromecast_radio_pic
+      entities:
+        - entity: input_select.chromecast_radio_station
+        - entity: input_text.custom_station
+        - entity: input_select.chromecast_radio_speakers
+        - entity: switch.chromecast_radio_vol_down
+        - entity: switch.chromecast_radio_mute
+        - entity: switch.chromecast_radio_vol_up
+        - entity: switch.chromecast_radio_stop
+        - entity: switch.chromecast_radio_play
+    - type: conditional
+      conditions:
+        - entity: binary_sensor.radio_is_streaming
+          state: "on"
+      card:
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.stream_artist
+            name: Artist
+            icon: mdi:account
+          - entity: sensor.stream_track
+            name: Track
+            icon: mdi:disc

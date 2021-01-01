@@ -1,0 +1,28 @@
+- alias: Bins - Nightly Refresh
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    hours: 4
+    minutes: 0
+    seconds: 0
+  action:
+  - service: shell_command.refresh_bin_collection
+
+
+
+- alias: Bins - Nightly Refresh
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.black_bin, sensor.green_bin, sensor.red_bin
+  condition:
+    - condition: template
+      value_template: '{{ trigger.to_state.state != trigger.to_state.state }}'
+  action:
+  - service: google.add_event
+    data:
+      calendar_id: e1r49v6c9fma3cr4f2fpq7fsec@group.calendar.google.com
+      summary: '{{ trigger.entity_id | replace("sensor.","") | replace("_bin","") | title }} Bin Collection'
+      description: '{{ trigger.entity_id | replace("sensor.","") | replace("_bin","") | title }} Bin Collection'
+      start_date_time: '{{ strptime(trigger.to_state.state + " " + now().year | string,"%a %d %b %Y") }} 07:00:00'
+      end_date_time: '{{ strptime(trigger.to_state.state + " " + now().year | string,"%a %d %b %Y") }} 16:00:00'
