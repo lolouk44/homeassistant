@@ -6,7 +6,7 @@ homeassistant:
         - 127.0.0.1
         - ::1
         - 192.168.0.0/24
- # Name of the location where Home Assistant is running
+# Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude
@@ -202,9 +202,6 @@ lovelace:
     # Bar Card https://github.com/custom-cards/bar-card
     - url: /local/community/button-card/button-card.js
       type: module
-    # Custom iframe: https://github.com/lukevink/home-assistant-custom-iframe
-    - url: /local/custom-iframe-card.js
-      type: js
     # Fonts !
     - type: css
       url: 'https://fonts.googleapis.com/css?family=Orbitron'
@@ -247,16 +244,11 @@ person:
     user_id: !secret ha_lolo_user_id
     device_trackers:
       - device_tracker.laurent
-      # - device_tracker.lolos_iphone
-      # - device_tracker.laurent_mah_iphone_5s
-      # - device_tracker.lolosiphone
   - name: Div
     id: divashni
     user_id: !secret ha_div_user_id
     device_trackers:
       - device_tracker.divashni
-      # - device_tracker.div_iphone
-      # - device_tracker.diviphone
 
 pi_hole:
   - host: 192.168.0.4
@@ -301,13 +293,13 @@ rfxtrx:
     0A520700240E00E4360179:
       #name: Upstairs
       # data_type:
-       # - Humidity
-       # - Temperature
+      # - Humidity
+      # - Temperature
     #0A520700420E0104260269:
       #name: Loft
       # data_type:
-       # - Humidity
-       # - Temperature
+      # - Humidity
+      # - Temperature
 
     # Switches
     0A14001E01010404000070:
@@ -383,7 +375,7 @@ weather:
   - platform: darksky
     api_key: !secret darksky_api_key
     mode: daily
- 
+
 webhook:
 
 xiaomi_aqara:

@@ -131,3 +131,12 @@ cards:
       type: "custom:mini-media-player"
       group: true
       power_color: true
+  - type: entities
+    title: YouTube Music
+    show_header_toggle: false
+    power_color: true
+    entities:
+    - entity: media_player.ytube_music_player
+      type: "custom:mini-media-player"
+      group: true
+      power_color: true
