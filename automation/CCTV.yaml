@@ -194,7 +194,7 @@
 
 
 - alias: CCTV - Garage CCTV Motion Connection Lost
-  initial_state: false
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.cctv_garage_connection_scrape
@@ -209,7 +209,7 @@
 
 
 - alias: CCTV - Garage CCTV Conservatory Connection Lost
-  initial_state: false
+  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.cctv_conservatory_connection_scrape

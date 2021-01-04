@@ -144,7 +144,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 2
+      hours: "2"
       minutes: 0
       seconds: 0
   condition:

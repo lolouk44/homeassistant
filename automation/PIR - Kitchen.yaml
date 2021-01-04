@@ -68,10 +68,10 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: light.Kitchen_Door
+        entity_id: light.kitchen_door
         state: 'on'
       - condition: state
-        entity_id: light.Kitchen_Window
+        entity_id: light.kitchen_window
         state: 'on'
   action:
   - service: light.turn_on
@@ -107,10 +107,10 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: light.Kitchen_Door
+        entity_id: light.kitchen_door
         state: 'on'
       - condition: state
-        entity_id: light.Kitchen_Window
+        entity_id: light.kitchen_window
         state: 'on'
   action:
   - service: light.turn_on

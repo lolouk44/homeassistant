@@ -2,7 +2,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 19
+      hours: "19"
       minutes: 00
       seconds: 0
   condition:
@@ -32,7 +32,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 5
+      hours: "5"
       minutes: 30
       seconds: 0
   condition:
@@ -63,7 +63,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 6
+      hours: "6"
       minutes: 30
       seconds: 0
   condition:
@@ -91,7 +91,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 7
+      hours: "7"
       minutes: 00
       seconds: 0
   condition:
@@ -115,7 +115,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 7
+      hours: "7"
       minutes: 30
       seconds: 0
   condition:
@@ -145,7 +145,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 8
+      hours: "8"
       minutes: 0
       seconds: 0
   condition:

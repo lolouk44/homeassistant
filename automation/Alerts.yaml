@@ -94,7 +94,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.CurrentCost_Power
+      entity_id: sensor.currentcost_power
   condition:
     - condition: template
       value_template: '{{states("alert.currentcost_lost") != "idle"}}'

@@ -98,7 +98,7 @@
     - platform: state
       entity_id: input_select.kello_radio_station
     - platform: state
-      entity_id: sensor.Kello_MQTT
+      entity_id: sensor.kello_mqtt
       to: 'play_greeting'
   action:
   - service: input_boolean.turn_on

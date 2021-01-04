@@ -276,7 +276,7 @@
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
           {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
-           The alarm is still being armed !
+          The alarm is still being armed !
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
         message: |
@@ -284,8 +284,8 @@
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
           {%- if is_state('binary_sensor.main_door','on') -%}Main Door,{%- endif -%}
-           are not closed.
-           The alarm is still being armed !
+          are not closed.
+          The alarm is still being armed !
     - service: notify.mobile_app_div_iphone
       data_template:
         message: |
@@ -293,8 +293,8 @@
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
           {%- endfor -%}
           {%- if is_state('binary_sensor.main_door','on') -%}Main Door,{%- endif -%}
-           are not closed.
-           The alarm is still being armed !
+          are not closed.
+          The alarm is still being armed !
     - delay:
         seconds: 5
     - service: media_player.play_media
@@ -303,10 +303,10 @@
         media_content_id: 'http://192.168.0.24:8123/local/sounds/Alarm-CountDown.mp3'
     - wait_template: "{{ is_state('binary_sensor.main_door', 'on') }}"
       timeout: '00:00:30'
-      continue_on_timeout: 'true'
+      continue_on_timeout: true
     - wait_template: "{{ is_state('binary_sensor.main_door', 'off') }}"
       timeout: '00:00:30'
-      continue_on_timeout: 'true'
+      continue_on_timeout: true
     - condition: template
       value_template: '{{ states("alarm_control_panel.alarm")=="pending" }}'
     - service: media_player.play_media
@@ -342,10 +342,10 @@
         media_content_type: 'audio/mp3'
     - wait_template: "{{ is_state('binary_sensor.main_door', 'on') }}"
       timeout: '00:00:30'
-      continue_on_timeout: 'true'
+      continue_on_timeout: true
     - wait_template: "{{ is_state('binary_sensor.main_door', 'off') }}"
       timeout: '00:00:30'
-      continue_on_timeout: 'true'
+      continue_on_timeout: true
     - condition: template
       value_template: '{{ states("alarm_control_panel.alarm")=="pending" }}'
     - service: media_player.play_media
@@ -734,7 +734,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
-    - service_template: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
+    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data_template:
         message: 'Disarm alarm ?'
         data:

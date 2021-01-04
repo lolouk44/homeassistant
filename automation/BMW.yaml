@@ -4,14 +4,14 @@
     - platform: state
       entity_id: lock.220d_lock
       to: 'locked'
-  condition:
+  # condition:
     # - condition: template
       # value_template: '{{ states("device_tracker.220d") != "not_home"}}'
   action:
     - service: bmw_connected_drive.update_state
     - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
       timeout: '00:06:00'
-      continue_on_timeout: 'true'
+      continue_on_timeout: true
     - condition: template
       value_template: >
         {%- set doors = [
@@ -58,7 +58,7 @@
     - service: bmw_connected_drive.update_state
     - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
       timeout: '00:06:00'
-      continue_on_timeout: 'true'
+      continue_on_timeout: true
     - condition: template
       value_template: '{{ states("device_tracker.laurent") != "driving"}}'
     - service: notify.mobile_app_lolo_s_iphone
@@ -107,11 +107,11 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 16
+      hours: "16"
       minutes: 0
       seconds: 0
     - platform: time_pattern
-      hours: 17
+      hours: "17"
       minutes: 25
       seconds: 0
   condition:

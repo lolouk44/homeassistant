@@ -17,7 +17,7 @@
   action:
   - service: light.turn_on
     data:
-      entity_id: light.TV_Cabinet_LED_Strip
+      entity_id: light.tv_cabinet_led_strip
       brightness: 255
       rgb_color: [0,255,0]
   - service: switch.turn_on
@@ -25,7 +25,7 @@
       entity_id: switch.lwrf_socket_3
   - service: light.turn_on
     data:
-      entity_id: light.TV_Cabinet_LED_Strip
+      entity_id: light.tv_cabinet_led_strip
       brightness: 255
       rgb_color: [0,255,0]
   - service: switch.turn_on
@@ -97,7 +97,7 @@
   action:
   - service: light.turn_on
     data:
-      entity_id: light.TV_Cabinet_LED_Strip
+      entity_id: light.tv_cabinet_led_strip
       brightness: 255
       rgb_color: [255,0,0]
       effect: flash
@@ -128,12 +128,12 @@
       entity_id: binary_sensor.pir_living_room_back
       state: 'off'
     - condition: state
-      entity_id: light.TV_Cabinet_LED_Strip
+      entity_id: light.tv_cabinet_led_strip
       state: 'on'
   action:
   - service: light.turn_off
     data:
-      entity_id: light.TV_Cabinet_LED_Strip
+      entity_id: light.tv_cabinet_led_strip
   - service: switch.turn_off
     data:
       entity_id: switch.lwrf_socket_3
@@ -156,7 +156,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: light.Staircase_LED_Strip
+      entity_id: light.staircase_led_strip
       state: 'off'
     - condition: state
       entity_id: binary_sensor.pir_staircase
@@ -175,7 +175,7 @@
   action:
   - service: light.turn_on
     data:
-      entity_id: light.Staircase_LED_Strip
+      entity_id: light.staircase_led_strip
       brightness: 255
       rgb_color: [0,128,255]
       transition: 1
@@ -192,12 +192,12 @@
       entity_id: input_boolean.xmas
       state: 'off'
     - condition: state
-      entity_id: light.Staircase_LED_Strip
+      entity_id: light.staircase_led_strip
       state: 'on'
   action:
   - service: light.turn_off
     data:
-      entity_id: light.Staircase_LED_Strip
+      entity_id: light.staircase_led_strip
 
 
 
@@ -229,12 +229,12 @@
       brightness: 255
       effect: None
       rgb_color: [0,0,255]
-  - service: light.turn_on
-    data:
-      entity_id: light.wled_garage
-      brightness: 1
-      effect: None
-      rgb_color: [0,0,255]
+  # - service: light.turn_on
+  #   data:
+  #     entity_id: light.wled_garage
+  #     brightness: 10
+  #     effect: None
+  #     rgb_color: [0,0,255]
   - condition: state
     entity_id: input_boolean.xmas
     state: 'on'
@@ -248,7 +248,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 0
+      hours: "0"
       minutes: 0
       seconds: 0
     - platform: state

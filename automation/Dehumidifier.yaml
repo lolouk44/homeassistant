@@ -71,7 +71,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 8
+      hours: "8"
       minutes: 0
       seconds: 0
     - platform: state
@@ -100,7 +100,7 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      hours: 16
+      hours: "16"
       minutes: 0
       seconds: 0
     - platform: state

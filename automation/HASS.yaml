@@ -75,7 +75,7 @@
   initial_state: true
   trigger:
     platform: time_pattern
-    hours: 4
+    hours: "4"
     minutes: 0
     seconds: 0
   action:
@@ -94,7 +94,6 @@
       topic: "Conservatory/DaFang/reboot/set"
       payload_template: 'ON'
       retain: false
-  # - service: shell_command.reboot_doorbell
   - service: input_boolean.turn_on
     entity_id: input_boolean.normal
   - service: automation.trigger
@@ -224,7 +223,7 @@
       event: start
   action:
     - entity_id: input_boolean.theme_dark
-      service_template: >
+      service: >
         {% if states("sun.sun") == "above_horizon" %}
           input_boolean.turn_off
         {% else %}
