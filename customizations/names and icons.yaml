@@ -293,6 +293,8 @@ switch.mqtt:
   icon: mdi:docker
 switch.mysql:
   icon: mdi:docker
+switch.vscode:
+  icon: mdi:docker
 
 
 

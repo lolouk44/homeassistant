@@ -20,6 +20,10 @@ cards:
           include:
             - entity_id: "*.*"
               state: "unavailable" 
+          exclude:
+            - entity_id: media_player.as_aftmm_cast
+            - entity_id: media_player.mibox3
+            - entity_id: light.red_light
         sort:
           method: 'name'
   - type: entities
@@ -195,6 +199,9 @@ cards:
           name: Swag
         - entity: switch.syncthing
           name: SyncThing
+        - entity: switch.vs_code
+          name: VS Code
+          icon: mdi:docker
         - entity: switch.watchtower
           name: WatchTower
         - entity: switch.wordpress
@@ -221,21 +228,6 @@ cards:
           include:
            - entity_id: sensor.*temperature*
            - entity_id: sensor.*humidity*
-           # - entity_id: sensor.aloe_vera_temperature
-           # - entity_id: sensor.currentcost_temperature
-           # - entity_id: sensor.hallway_thermostat_temperature
-           # - entity_id: sensor.loft_temperature
-           # - entity_id: sensor.master_bedroom_aqara_temperature
-           # - entity_id: sensor.kitchen_freezer_temperature
-           # - entity_id: sensor.garage_freezer_temperature
-           # - entity_id: sensor.upstairs_temperature
-           # - entity_id: sensor.aloe_vera_moisture
-           # - entity_id: sensor.hallway_thermostat_humidity
-           # - entity_id: sensor.loft_humidity
-           # - entity_id: sensor.master_bedroom_aqara_humidity
-           # - entity_id: sensor.kitchen_freezer_humidity
-           # - entity_id: sensor.garage_freezer_humidity
-           # - entity_id: sensor.upstairs_humidity
           exclude:
            - entity_id: sensor.*battery*
         sort:
