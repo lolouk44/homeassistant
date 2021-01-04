@@ -20,8 +20,7 @@ anova_cook_recipe:
     - service: mqtt.publish
       data:
         topic: anova/command/timer
-        payload_template: '{{(states("input_select.anova_recipe").split("(")[1].split(")")[0].split(":")[0] | int * 60) + (
-states("input_select.anova_recipe").split("(")[1].split(")")[0].split(":")[1] | int)}}'
+        payload_template: '{{(states("input_select.anova_recipe").split("(")[1].split(")")[0].split(":")[0] | int * 60) + (states("input_select.anova_recipe").split("(")[1].split(")")[0].split(":")[1] | int)}}'
     - wait_template: '{{ state_attr("climate.anova","temperature") | int -  state_attr("climate.anova","current_temperature") | int < 1}}'
       timeout: '00:00:15'
     - service: switch.turn_on
