@@ -1,7 +1,6 @@
 - platform: template
   sensors:
     xiaomi_battery_level:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         {{ state_attr("vacuum.mi_robot_vacuum","battery_level") }}
       friendly_name: Battery Level
@@ -10,7 +9,6 @@
 
 
     xiaomi_cleaned_area:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         Area Cleaned: {{ state_attr("vacuum.mi_robot_vacuum","cleaned_area") }}
       friendly_name: Cleaned Area
@@ -19,7 +17,6 @@
 
 
     xiaomi_status:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         Status: {{ states("vacuum.mi_robot_vacuum") | title }}
       friendly_name: Status
@@ -27,7 +24,6 @@
 
 
     xiaomi_cleaning_time:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         Cleaning Time: {{ state_attr("vacuum.mi_robot_vacuum","cleaning_time") }}
       friendly_name: Cleaning Time
@@ -36,7 +32,6 @@
 
 
     xiaomi_main_brush_left:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         Main Brush: {{ state_attr("vacuum.mi_robot_vacuum","main_brush_left") }}
       friendly_name: Main Brush Left
@@ -45,7 +40,6 @@
 
 
     xiaomi_side_brush_left:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         Side Brush: {{ state_attr("vacuum.mi_robot_vacuum","side_brush_left") }}
       friendly_name: Side Brush Left
@@ -54,7 +48,6 @@
 
 
     xiaomi_filter_left:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         Filter: {{ state_attr("vacuum.mi_robot_vacuum","filter_left") }}
       friendly_name: Filter Left
@@ -63,7 +56,6 @@
 
 
     xiaomi_sensor_dirty_left:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         Sensor: {{ state_attr("vacuum.mi_robot_vacuum","sensor_dirty_left") }}
       friendly_name: Filter Left
@@ -71,22 +63,6 @@
 
 
     xiaomi_last_clean:
-      entity_id: vacuum.mi_robot_vacuum
       value_template: >
         Last Clean: {{ as_timestamp(state_attr("vacuum.mi_robot_vacuum","clean_stop"))|timestamp_custom('%d %h %y, %H:%M',true)}}
       friendly_name: Last Clean
-
-
-
-
-
-# - platform: miflora
-  # mac: 'C4:7C:8D:65:C6:B9'
-  # name: Aloe Vera
-  # monitored_conditions:
-    # - temperature
-    # - moisture
-    # - light
-    # - conductivity
-    # - battery
-  # median: 3

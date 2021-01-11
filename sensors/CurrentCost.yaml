@@ -8,17 +8,14 @@
 - platform: template
   sensors:
     currentcost_temperature:
-      entity_id: sensor.current_cost
       unit_of_measurement: '°C'
       value_template: '{{ state_attr("sensor.current_cost", "Temperature")[:-3] | float -3 }}'
       friendly_name: CurrentCost Temperature
     currentcost_power:
-      entity_id: sensor.current_cost
       unit_of_measurement: 'W'
       value_template: '{{ state_attr("sensor.current_cost", "Appliance 0")[:-1] | int }}'
       friendly_name: CurrentCost Power
     dehumidifier_power:
-      entity_id: sensor.current_cost
       unit_of_measurement: 'W'
       value_template: '{{ state_attr("sensor.current_cost", "Appliance 2")[:-1] | int }}'
       friendly_name: Dehumidifier Power

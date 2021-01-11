@@ -1,51 +1,42 @@
 - platform: template
   sensors:
     alert_outside_temp_sensor_lost:
-      entity_id: sensor.loft_temperature
       value_template: >-
         {{ (as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated | default(0)) | int > 3600 )}}
       friendly_name: Outside Temp Sensor Lost
 
     alert_upstairs_temp_sensor_lost:
-      entity_id: sensor.upstairs_temperature
       value_template: >-
         {{ (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )}}
       friendly_name: Upstairs Temp Sensor Lost
 
     alert_currentcost_lost:
-      entity_id: sensor.currentcost_power
       value_template: >-
         {%- if (as_timestamp(now()) - (as_timestamp(states.sensor.currentcost_power.last_updated) | int)) < 300 -%}off{%- else -%}on{% endif %}
       friendly_name: CurrentCost Lost
 
     alert_ram_too_high:
-      entity_id: sensor.ram_usage
       value_template: >-
         {{ states("sensor.ram_usage") | default(0) | int > 90 }}
       friendly_name: RAM Too High
 
 
     alert_home_disk_usage_too_high:
-      entity_id: sensor.home_disk_usage
       value_template: >-
         {{ states("sensor.home_disk_usage") | default(0) | int > 90 }}
       friendly_name: Home Disk Usage Too 
 
     alert_root_disk_usage_too_high:
-      entity_id: sensor.root_disk_usage
       value_template: >-
         {{ states("sensor.root_disk_usage") | default(0) | int > 90 }}
       friendly_name: Root Disk Usage Too High
 
     alert_kitchen_freezer_temp_too_high:
-      entity_id: sensor.kitchen_freezer_temperature
       value_template: >-
         {{ states("sensor.kitchen_freezer_temperature") | default(0) | int > 0 }}
       friendly_name: Kitchen Freezer Temperature Too High
 
     alert_garage_freezer_temp_too_high:
-      entity_id: sensor.garage_freezer_temperature
       value_template: >-
         {{ states("sensor.garage_freezer_temperature") | default(0) | int > 0 }}
       friendly_name: Garage Freezer Temperature Too High
-

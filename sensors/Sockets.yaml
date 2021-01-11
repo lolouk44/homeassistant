@@ -1,7 +1,6 @@
 - platform: template
   sensors:
     edimax1_watts:
-      entity_id: switch.edimax1
       value_template: '{{state_attr("switch.edimax1","current_power_w")|float}}'
       unit_of_measurement: 'W'
       friendly_name: Edimax1 Watts
@@ -9,7 +8,6 @@
       device_class: power
 
     xiaomi_dual_usb_socket_watts:
-      entity_id: switch.xiaomi_dual_usb_socket
       value_template: '{{state_attr("switch.xiaomi_dual_usb_socket","load_power")|float}}'
       unit_of_measurement: 'W'
       friendly_name: Xiaomi Dual USB Socket Watts

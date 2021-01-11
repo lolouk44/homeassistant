@@ -1,7 +1,6 @@
 - platform: template
   sensors:
     hallway_heating:
-      entity_id: sensor.hallway_thermostat_hvac_state
       value_template: >
         {{ states.sensor.hallway_thermostat_hvac_state.state == 'heating'}}
       friendly_name: Hallway Heating

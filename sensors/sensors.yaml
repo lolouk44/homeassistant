@@ -39,7 +39,6 @@
 - platform: template
   sensors:
     sunset_time:
-      entity_id: sun.sun
       value_template: >
         {{ as_timestamp(state_attr("sun.sun","next_setting")) | timestamp_custom("%H:%M") }}
       friendly_name: Sunset
@@ -48,7 +47,6 @@
 - platform: template
   sensors:
     precipitation:
-      entity_id: weather.dark_sky
       value_template: >
         {{state_attr('weather.dark_sky', 'forecast')[0].precipitation}}
       friendly_name: Precipitation
@@ -63,7 +61,6 @@
   source: docker
 
 - platform: uptime
-  unit_of_measurement: hours
 
 - platform: time_date
   display_options:
@@ -72,12 +69,10 @@
 - platform: template
   sensors:
     week_day:
-      entity_id: sensor.time
       value_template: >-
         {% set dummy = states("sensor.time") %}
         {{ now().strftime('%A')}}
     current_date:
-      entity_id: sensor.time
       value_template: >-
         {% set dummy = states("sensor.time") %}
         {{ now().strftime('%d')}} {{ now().strftime('%B')}} {{ now().strftime('%Y')}}

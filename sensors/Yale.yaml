@@ -1,7 +1,6 @@
 - platform: template
   sensors:
     porch_door_lock_status:
-      entity_id: lock.yale_conexis_l1_lock
       value_template: >
         {{ state_attr("lock.yale_conexis_l1_lock","lock_status") }}
       friendly_name: Porch Door Lock Status
