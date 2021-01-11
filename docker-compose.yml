@@ -3,7 +3,7 @@
 
     homeassistant:
       container_name: ha
-      image: homeassistant/home-assistant:2020.12.2
+      image: homeassistant/home-assistant:2021.1.0
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
