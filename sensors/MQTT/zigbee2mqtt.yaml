@@ -199,9 +199,9 @@
   device_class: battery
 
 - platform: mqtt
-  name: "Aqara Toggle Pooja"
+  name: "Aqara Toggle Pooja Battery"
   state_topic: "zigbee2mqtt/aqara_toggle_pooja"
-  value_template: "{{ value_json['click'] }}"
+  value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
   device_class: battery
 
@@ -213,15 +213,120 @@
   device_class: battery
 
 - platform: mqtt
-  name: "Aqara Toggle Bathroom"
+  name: "Aqara Toggle Bathroom Battery"
   state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
-  value_template: "{{ value_json['click'] }}"
+  value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
   device_class: battery
 
 - platform: mqtt
   name: "Aqara Toggle Bathroom Battery"
   state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Master Bedroom Left Window Big Window Battery"
+  state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Conservatory Single Door Battery"
+  state_topic: "zigbee2mqtt/conservatory_single_door"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Conservatory Double Door Battery"
+  state_topic: "zigbee2mqtt/conservatory_double_door"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Kitchen Window Battery"
+  state_topic: "zigbee2mqtt/kitchen_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Kiaan Small Window Battery"
+  state_topic: "zigbee2mqtt/kiaan_small_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Blue Room Big Window Battery"
+  state_topic: "zigbee2mqtt/blue_room_big_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Blue Room Small Window Battery"
+  state_topic: "zigbee2mqtt/blue_room_small_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Bathroom Window Battery"
+  state_topic: "zigbee2mqtt/bathroom_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Cloakroom Window Battery"
+  state_topic: "zigbee2mqtt/cloakroom_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Living Room Right Small Window Battery"
+  state_topic: "zigbee2mqtt/living_room_right_small_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Living Room Right Big Window Battery"
+  state_topic: "zigbee2mqtt/living_room_right_big_window"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Main Door Battery"
+  state_topic: "zigbee2mqtt/main_door"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Conservatory Skylight Right Battery"
+  state_topic: "zigbee2mqtt/conservatory_skylight_right"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Ground Floor Smoke Detector Battery"
+  state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "First Floor Smoke Detector Battery"
+  state_topic: "zigbee2mqtt/first_floor_smoke_detector"
   value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
   device_class: battery
