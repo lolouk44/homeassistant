@@ -1,7 +1,4 @@
 project_id: !secret GAproject_id
-# client_id: !secret GAclient_id
-# access_token: !secret GAaccess_token
-# api_key: !secret GAHomeGraph_key
 expose_by_default: false
 entity_config:
 
@@ -72,7 +69,12 @@ entity_config:
     expose: true
 
   light.conservatory:
-    name: "Conservatory Lights"
+    name: "Conservatory Light"
+    room: 'Conservatory'
+    expose: true
+
+  light.wled_conservatory:
+    name: "Conservatory LED Strip"
     room: 'Conservatory'
     expose: true
 
