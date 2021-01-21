@@ -78,6 +78,28 @@ cards:
         secondary_info: last-changed
         icon: mdi:blinds
   - type: entities
+    title: Washing Machine
+    state_color: true
+    show_header_toggle: false
+    header:
+      type: picture
+      image: '/local/Samsung_Washing_Machine.png'
+    entities:
+      - entity: switch.washing_machine
+        secondary_info: last-changed
+        icon: mdi:washing-machine
+      - entity: sensor.washing_machine_washer_machine_state
+        secondary_info: last-changed
+        name: Machine State
+        icon: mdi:state-machine
+      - entity: sensor.washing_machine_washer_job_state
+        secondary_info: last-changed
+        name: Job State
+        icon: mdi:state-machine
+      - entity: sensor.washing_machine_washer_completion_time
+        secondary_info: last-changed
+        name: Completion Time
+  - type: entities
     title: Anova Sous-Vide
     state_color: true
     show_header_toggle: false
