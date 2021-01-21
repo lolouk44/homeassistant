@@ -2,183 +2,183 @@
   name: "Conservatory Skylight Right"
   state_topic: "zigbee2mqtt/conservatory_skylight_right"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Conservatory Skylight Left"
   state_topic: "zigbee2mqtt/conservatory_skylight_left"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Master Bedroom Right Big Window"
   state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Master Bedroom Right Small Window"
   state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Master Bedroom Left Big Window"
   state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Master Bedroom Left Small Window"
   state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Pooja Room Big Window"
   state_topic: "zigbee2mqtt/pooja_room_big_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Pooja Room Small Window"
   state_topic: "zigbee2mqtt/pooja_room_small_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Kiaan Big Window"
   state_topic: "zigbee2mqtt/kiaan_big_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Kiaan Small Window"
   state_topic: "zigbee2mqtt/kiaan_small_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Conservatory Door Lock"
   state_topic: "zigbee2mqtt/conservatory_door_lock"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_off: "false"
-  payload_on: "true"
+  payload_off: false
+  payload_on: true
   device_class: safety
 
 - platform: mqtt
   name: "Conservatory Single Door"
   state_topic: "zigbee2mqtt/conservatory_single_door"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: door
 
 - platform: mqtt
   name: "Conservatory Double Door"
   state_topic: "zigbee2mqtt/conservatory_double_door"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: door
 
 - platform: mqtt
   name: "Main Door"
   state_topic: "zigbee2mqtt/main_door"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: door
 
 - platform: mqtt
   name: "Kitchen Window"
   state_topic: "zigbee2mqtt/kitchen_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Blue Room Big Window"
   state_topic: "zigbee2mqtt/blue_room_big_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Blue Room Small Window"
   state_topic: "zigbee2mqtt/blue_room_small_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Bathroom Window"
   state_topic: "zigbee2mqtt/bathroom_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Cloakroom Window"
   state_topic: "zigbee2mqtt/cloakroom_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Living Room Right Small Window"
   state_topic: "zigbee2mqtt/living_room_right_small_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Living Room Right Big Window"
   state_topic: "zigbee2mqtt/living_room_right_big_window"
   value_template: "{{ value_json['contact'] == true }}"
-  payload_on: "false"
-  payload_off: "true"
+  payload_on: false
+  payload_off: true
   device_class: window
 
 - platform: mqtt
   name: "Ground Floor Smoke Detector"
   state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
   value_template: "{{ value_json['smoke'] == true }}"
-  payload_on: "true"
-  payload_off: "false"
+  payload_on: true
+  payload_off: false
   device_class: smoke
 
 - platform: mqtt
   name: "First Floor Smoke Detector"
   state_topic: "zigbee2mqtt/first_floor_smoke_detector"
   value_template: "{{ value_json['smoke'] == true }}"
-  payload_on: "true"
-  payload_off: "false"
+  payload_on: true
+  payload_off: false
   device_class: smoke
 
