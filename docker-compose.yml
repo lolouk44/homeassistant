@@ -3,11 +3,12 @@
 
     homeassistant:
       container_name: ha
-      image: homeassistant/home-assistant:2021.1.0
+      image: homeassistant/home-assistant:2021.1.4
       volumes:
         - /home/cctv/docker_ha:/config
         - /etc/localtime:/etc/localtime:ro
         - /home/cctv/docker_ha/shell_scripts:/shell_scripts:ro
+        - /myzfs/FTP/cctv/:/media:ro
         - ./shell_scripts/panasonic_viera_old:/usr/src/homeassistant/homeassistant/components/panasonic_viera:ro
       devices:
         - /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0:/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
