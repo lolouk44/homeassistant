@@ -26,6 +26,8 @@
   - service: light.toggle
     data:
       entity_id: light.pooja_frame
+  - delay:
+      milliseconds: 500
   - wait_template: "{{ (as_timestamp(now()) - as_timestamp(states.light.pooja_frame.last_updated)) | int < 5 and is_state('light.pooja_frame', 'on') }}"
     timeout: '00:00:05'
     continue_on_timeout: false
