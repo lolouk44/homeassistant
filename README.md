@@ -46,6 +46,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - RFXCOM RFXtrx433 433MHz transceiver
 - Rollerhouse Smart Blinds Motor
 - Samsung Galaxy Tab 5 running (tasker){https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_GB} and HikConnect to capture doorbell button press
+- Samsung WW90T684DLH/S1 Washing Machine 
 - Sky+HD Box
 - Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
 - Tile Mate, Slim trackers
