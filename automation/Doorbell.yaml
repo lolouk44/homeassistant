@@ -72,7 +72,7 @@
 
 
 - alias: Doorbell - Set Daylight Colour
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id: sun.sun
