@@ -1,7 +1,0 @@
-- platform: template
-  lights:
-    fire7_screen:
-      turn_on:
-      turn_off:
-      set_level:
-      friendly_name: Fire7 Screen
