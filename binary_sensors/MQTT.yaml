@@ -182,3 +182,11 @@
   payload_off: false
   device_class: smoke
 
+- platform: mqtt
+  name: "Garage Back Door"
+  state_topic: "zigbee2mqtt/garage_back_door"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: door
+

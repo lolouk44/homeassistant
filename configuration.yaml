@@ -261,9 +261,9 @@ rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
   devices:
     # Binary Sensors
-    0B11002B00018F3C0A010F60:
+    #0B11002B00018F3C0A010F60:
       #name: Garage Back Door
-      device_class: door
+      #device_class: door
 
     # Covers
     091903076C911A000070:
