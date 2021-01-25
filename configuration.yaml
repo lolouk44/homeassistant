@@ -266,9 +266,12 @@ rfxtrx:
       #device_class: door
 
     # Covers
-    091903076C911A000070:
+    #091903076C911A000070:
+      # name: Old Kitchen Blinds Remote
+      #fire_event: true
+    #0919000000057C010070, may be 0919000200057C010070:
       # name: Kitchen Blinds
-      fire_event: true
+      #fire_event: true
     09190002002527010070:
       # name: Livingroom Blinds
       fire_event: true
