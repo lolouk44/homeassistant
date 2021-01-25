@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ResponseStatus version="1.0" xmlns="urn:psialliance-org">
-<requestURL>/ISAPI/Image/channels/1/sharpness</requestURL>
-<statusCode>3</statusCode>
-<statusString>Device Error</statusString>
-<subStatusCode>NULLpoint</subStatusCode>
-</ResponseStatus>
