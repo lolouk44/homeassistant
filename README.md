@@ -17,29 +17,31 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Aeotec Z-Stick Gen5
 - Amazon Fire7 (used as an alarm keypad with [Fully Kiosk](https://fully-kiosk.com), and used as motion detection, CCTV)
 - Amazon Fire Stick 4K
-- Anova Precision Spous-Vide Smart Cooker
-- AOK Smart Blinds Motor
+- Anova Precision Sous-Vide Smart Cooker
+- ~~AOK Smart Blinds Motor (replaced with RollerHouse motor after failure)~~
 - ~~BME280 Temperature and Barometer Sensor~~
-- ~~Byron SX-20T Doorbell~~
+- ~~Byron SX-20T Doorbell (replaced with Hikvision DS-KB6403-WIP Doorbell)~~
 - CC2531 flashed with [Zigbee2mqtt](https://www.zigbee2mqtt.io/)
 - [Cresta TS34C](https://www.conrad-electronic.co.uk/ce/en/product/672148/5-Channel-TS34C-Wireless-Thermo-Hygro-Sensor) Hygrometers
 - CurrentCost EnviR Energy Monitor & IAM Energy Monitors
-- [Edimax SP-2101W](https://www.amazon.co.uk/Edimax-Switch-Intelligent-Energy-Management/dp/B00T647F2C/)
+- Edimax SP-2101W Smart Socket
 - ESP32 with [WLED](https://github.com/Aircoookie/WLED)
+- eWelink ZigBee Smart Socket 
 - Google ChromeCast Audio
 - Google Home Mini
+- Google Nest Hub
 - Hikvision DS-2CD2142FWD-I and DS-2CD2355FWD-I Cameras
 - Hikvision DS-KB6403-WIP Doorbell
 - H801 LED Strip Controllers
 - HomeEasy HE305 Contact Sensors
 - HomeEasy HE830 Sockets
-- [Houzetek SWA1](https://www.houzetek.com/product-wifi-smart-plug-uk) socket controlled via Tuya
-- iPhone 7, Xs, 11 Pro
+- Houzetek SWA1 socket with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
 - iPad Air 2
+- iPhone 7, Xs, 11 Pro
 - [Kello](https://www.getkello.com/) Smart Alarm
 - Kerui J008 Strobe Sirens in Yale Dummy Box
 - Kerui RC531 Remote Control
-- LightWaveRF [Switches](https://lightwaverf.com/products/smart-dimmer-2-gang?variant=16341551480921) & [Sockets](https://lightwaverf.com/products/basic-remote-on-off-socket-kit)
+- LightWaveRF Light Switches & Sockets
 - Nest V3 Thermostat
 - Onkyo TX-NR656 AV Amplifier
 - Panasonic TX58DX700 TV
@@ -51,16 +53,16 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
 - Tile Mate, Slim trackers
 - Verint S5003FD Camera
-- Wemos D1 Mini Pro
-- Xiaomi Aqara V3 Gateway
+- Wemos D1 Mini Pros running [WLED](https://github.com/Aircoookie/WLED) or [ESP Home](https://esphome.io/)
+- Xiaomi Aqara V3 Gateway (now only used as sensor / light, all zigbee devices connected via [zigbee2mqtt](https://www.zigbee2mqtt.io/))
 - Xiaomi Aqara Sensors (Hygro, window/door)
 - Xiaomi DaFang Cameras with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
-- Xiaomi Mi Bluetooth V4.0 Body Composition Smart Scale
+- Xiaomi Mi Bluetooth V4.0 Body Composition Smart Scale with [my own code](https://github.com/lolouk44/xiaomi_mi_scale), also available as an [hass.io add-on](https://github.com/lolouk44/hassio-addons)
 - Xiaomi Mi Box 3
-- Xiaomi Mi Flora Plant Sensor
+- ~~Xiaomi Mi Flora Plant Sensor~~
 - Xiaomi Mi Robot Vacuum V1
 - Xiaomi Mijia Honeywell Fire Alarm Detector
-- Xiaomi Mijia Enhanced Version Dual USB Smart Socket
+- Xiaomi Mijia Enhanced Version Dual USB WiFi Smart Socket
 - Xiaomi Mijia Zigbee Smart Socket
 - Xiaomi Philips Zhirui Candle Light
 - Xiaomi Router R3P Pro
