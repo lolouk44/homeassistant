@@ -1,20 +1,41 @@
 - platform: mqtt
   name: "Kitchen Fridge Temperature"
-  state_topic: "zigbee2mqtt/kitchen_fridge"
+  state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
   value_template: "{{ value_json['temperature'] }}"
   unit_of_measurement: 'ºC'
   device_class: temperature
 
 - platform: mqtt
   name: "Kitchen Fridge Humidity"
-  state_topic: "zigbee2mqtt/kitchen_fridge"
+  state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
   value_template: "{{ value_json['humidity'] | float (1) }}"
   unit_of_measurement: "%"
   device_class: humidity
 
 - platform: mqtt
   name: "Kitchen Fridge Temperature Battery"
-  state_topic: "zigbee2mqtt/kitchen_fridge"
+  state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Kitchen Freezer Temperature"
+  state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
+  value_template: "{{ value_json['temperature'] }}"
+  unit_of_measurement: 'ºC'
+  device_class: temperature
+
+- platform: mqtt
+  name: "Kitchen Freezer Humidity"
+  state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
+  value_template: "{{ value_json['humidity'] | float (1) }}"
+  unit_of_measurement: "%"
+  device_class: humidity
+
+- platform: mqtt
+  name: "Kitchen Freezer Temperature Battery"
+  state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
   value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
   device_class: battery
