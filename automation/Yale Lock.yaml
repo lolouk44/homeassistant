@@ -111,34 +111,26 @@
         entity_id: lock.yale_conexis_l1_lock
 
 
-- alias: Yale - Door Unlocked or Jammed
+- alias: Yale - Door Left Unlocked
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.porch_door_lock_status
-      to: "unlocked"
+      entity_id: lock.yale_conexis_l1_lock
+      to: 'unlocked'
       for:
         minutes: 5
     - platform: state
       entity_id: binary_sensor.main_door
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.main_door
-      state: 'off'
+      to: 'off'
   action:
-    # - service: zwave.refresh_node
-    #   data:
-    #     node_id: 5
     - delay: '00:01:00'
     - condition: template
       value_template: '{{ states("lock.yale_conexis_l1_lock") != "locked" }}'
+    - condition: state
+      entity_id: binary_sensor.main_door
+      state: 'off'
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
-        # message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
         message: 'Porch Door Left Unlocked'
         data:
           push:
@@ -148,7 +140,6 @@
             entity_id: '{{trigger.entity_id}}'
     - service: notify.mobile_app_div_iphone
       data_template:
-        # message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
         message: 'Porch Door Left Unlocked'
         data:
           push:
@@ -158,25 +149,63 @@
             entity_id: '{{trigger.entity_id}}'
     - condition: state
       entity_id: input_boolean.silent
-      state: "off"
+      state: 'off'
     - service: tts.google_say
       entity_id: media_player.google_home_minis
       data_template:
-        # message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Please note: the porch door lock is jammed{% else %}Please note: the porch door has been left unlocked{% endif %}'
         message: 'Please note: the porch door has been left unlocked'
+
+
+- alias: Yale - Lock Jammed
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.porch_door_lock_status
+      to: 'Jammed'
+      for:
+        minutes: 1
+  action:
+    - service: notify.mobile_app_lolo_s_iphone
+      data_template:
+        message: 'Porch Door Lock Jammed'
+        data:
+          push:
+            badge: '{{states("counter.iosbadgecount")}}'
+            category: 'alert'
+          action_data:
+            entity_id: '{{trigger.entity_id}}'
+    - service: notify.mobile_app_div_iphone
+      data_template:
+        message: 'Porch Door Lock Jammed'
+        data:
+          push:
+            badge: '{{states("counter.iosbadgecount")}}'
+            category: 'alert'
+          action_data:
+            entity_id: '{{trigger.entity_id}}'
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Porch Door Lock Jammed"
+        message: >
+          Please note: the porch door lock is jammed
+    - condition: state
+      entity_id: input_boolean.silent
+      state: 'off'
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data_template:
+        message: 'Please note: the porch door lock is jammed'
 
 - alias: Yale - Battery below 10%
   initial_state: true
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.yale_conexis_l1_battery_level
-      below: 10
-      for:
-        minutes: 5
+    - platform: state
+      entity_id: binary_sensor.yale_conexis_l1_low_battery_level
+      to: 'on'
   action:
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
-        message: 'Yale Lock Battery Below 10% !'
+        message: 'Yale Lock Battery Low !'
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
@@ -193,7 +222,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.main_door
-      to: "on"
+      to: 'on'
   condition:
     - condition: template
       value_template: '{{ states("group.pirs") == "on" }}'
