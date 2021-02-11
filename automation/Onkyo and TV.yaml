@@ -21,7 +21,7 @@
   trigger:
   - platform: numeric_state
     entity_id: media_player.panasonic_viera_tv
-    value_template: '{{ state_attr("media_player.panasonic_viera_tv", "volume_level") | int }}'
+    value_template: '{{ state_attr("media_player.panasonic_viera_tv", "volume_level") | float * 100 }}'
     above: 1
   condition:
     - condition: state
