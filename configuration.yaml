@@ -398,6 +398,6 @@ panel_iframe:
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
 
-zwave:
-  usb_path: /dev/ttyACM0
-  network_key: !secret zwave_network_key
+# zwave:
+#   usb_path: /dev/ttyACM0
+#   network_key: !secret zwave_network_key

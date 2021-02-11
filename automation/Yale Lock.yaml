@@ -13,7 +13,7 @@
       value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
     - condition: template
-      value_template: "{{ states('alarm_control_panel.alarm') == 'disarmed' }}"
+      value_template: '{{ states("alarm_control_panel.alarm") == "disarmed" }}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
@@ -23,7 +23,7 @@
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
-            category: "unlockyale"
+            category: 'unlockyale'
           action_data:
             entity_id: lock.yale_conexis_l1_lock
 
@@ -42,7 +42,7 @@
       value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
     - condition: template
-      value_template: "{{ states('alarm_control_panel.alarm') != 'disarmed' }}"
+      value_template: '{{ states("alarm_control_panel.alarm") != "disarmed" }}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
@@ -52,7 +52,7 @@
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
-            category: "unlockyaledisarmalarm"
+            category: 'unlockyaledisarmalarm'
           action_data:
             entity_id: alarm_control_panel.alarm
 
@@ -130,44 +130,46 @@
       entity_id: binary_sensor.main_door
       state: 'off'
   action:
-    - service: zwave.refresh_entity
-      data:
-        entity_id: zwave.aeon_labs_zw090_z_stick_gen5_eu
-    - service: zwave.refresh_entity
-      data:
-        entity_id: zwave.assa_abloy_yale_conexis_l1_sd_l1000_ch
+    # - service: zwave.refresh_node
+    #   data:
+    #     node_id: 5
+    - delay: '00:01:00'
     - condition: template
-      value_template: '{{ as_timestamp(now()) - as_timestamp(states.lock.yale_conexis_l1_lock.last_changed) | int >= 290}}'
-    - condition: template
-      value_template: '{{ states("sensor.porch_door_lock_status") == "Deadbolt Jammed" or states("sensor.porch_door_lock_status") == "unlocked" }}'
+      value_template: '{{ states("lock.yale_conexis_l1_lock") != "locked" }}'
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
-        message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
+        # message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
+        message: 'Porch Door Left Unlocked'
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
-            category: "alert"
+            category: 'alert'
           action_data:
             entity_id: '{{trigger.entity_id}}'
     - service: notify.mobile_app_div_iphone
       data_template:
-        message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
+        # message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Porch Door Lock Jammed & Unlocked{% else %}Porch Door Left Unlocked{% endif %}'
+        message: 'Porch Door Left Unlocked'
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
-            category: "alert"
+            category: 'alert'
           action_data:
             entity_id: '{{trigger.entity_id}}'
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
     - service: tts.google_say
       entity_id: media_player.google_home_minis
       data_template:
-        message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Please note: the porch door lock is jammed{% else %}Please note: the porch door has been left unlocked{% endif %}'
+        # message: '{% if states("sensor.porch_door_lock_status") == "Deadbolt Jammed" %}Please note: the porch door lock is jammed{% else %}Please note: the porch door has been left unlocked{% endif %}'
+        message: 'Please note: the porch door has been left unlocked'
 
 - alias: Yale - Battery below 10%
   initial_state: true
   trigger:
     - platform: numeric_state
-      entity_id: lock.yale_conexis_l1_battery
+      entity_id: sensor.yale_conexis_l1_battery_level
       below: 10
       for:
         minutes: 5
@@ -178,9 +180,13 @@
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
-            category: "alert"
+            category: 'alert'
           action_data:
             entity_id: '{{trigger.entity_id}}'
+    - service: notify.gmaillolo
+      data_template:
+        title: 'HA - Yale Lock Battery Low'
+        message: 'The Battery on the Yale Lock is low ({{ states("sensor.yale_conexis_l1_battery_level") | int}}%)'
 
 - alias: Yale - Unlock when Opening Main Door From Inside
   initial_state: true

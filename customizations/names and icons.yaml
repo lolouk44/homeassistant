@@ -227,6 +227,10 @@ sensor.online_version:
   icon: mdi:web
 sensor.docker_version:
   icon: mdi:docker
+sensor.docker_hub_pulls:
+  icon: mdi:cloud-download
+sensor.docker_hub_pulls_add_on:
+  icon: mdi:cloud-download
 
 #Switches
 switch.lwrf_socket_xmas:
