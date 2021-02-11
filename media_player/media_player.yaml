@@ -32,6 +32,3 @@
       - 'paused':
           'media_session_state': 2
       - 'idle'
-- platform: ytube_music_player
-  speakers:
-    - house
