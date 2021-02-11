@@ -155,6 +155,8 @@
         - thu
     - condition: template
       value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].precipitation|float|round ) < 1}}"
+    - condition: template
+      value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].templow | float > 4 ) }}"
   action:
     - service: input_boolean.turn_on
       data:
