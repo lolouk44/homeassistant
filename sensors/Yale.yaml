@@ -2,15 +2,16 @@
   sensors:
     porch_door_lock_status:
       value_template: >
-        {% if states("sensor.yale_conexis_l1_alarmtype_none") == "9"  %}Jammed
-        {% elif states("sensor.yale_conexis_l1_alarmtype_none") == "16"  %}Unlocked by Yale App
-        {% elif states("sensor.yale_conexis_l1_alarmtype_none") == "21"  %}Locked manually
-        {% elif states("sensor.yale_conexis_l1_alarmtype_none") == "22"  %}Unlocked manually
-        {% elif states("sensor.yale_conexis_l1_alarmtype_none") == "24"  %}Locked by zwave
-        {% elif states("sensor.yale_conexis_l1_alarmtype_none") == "25"  %}Unlocked by zwave
-        {% elif states("sensor.yale_conexis_l1_alarmtype_none") == "27"  %}Auto relock
-        {% elif states("sensor.yale_conexis_l1_alarmtype_none") == "144"  %}Unlocked by RFID tag
-        {% else %}Unknown ({{("sensor.yale_conexis_l1_alarmtype_none")}})
+        {% if states("sensor.yale_conexis_l1_alarmtype") == "9"  %}Jammed
+        {% elif states("sensor.yale_conexis_l1_alarmtype") == "16"  %}Unlocked by Yale App
+        {% elif states("sensor.yale_conexis_l1_alarmtype") == "21"  %}Locked manually
+        {% elif states("sensor.yale_conexis_l1_alarmtype") == "22"  %}Unlocked manually
+        {% elif states("sensor.yale_conexis_l1_alarmtype") == "24"  %}Locked by zwave
+        {% elif states("sensor.yale_conexis_l1_alarmtype") == "25"  %}Unlocked by zwave
+        {% elif states("sensor.yale_conexis_l1_alarmtype") == "27"  %}Auto relock
+        {% elif states("sensor.yale_conexis_l1_alarmtype") == "144" and states("sensor.yale_conexis_l1_alarmlevel") == "2" %}Unlocked by RFID tag (Div)
+        {% elif states("sensor.yale_conexis_l1_alarmtype") == "144" and states("sensor.yale_conexis_l1_alarmlevel") == "3" %}Unlocked by RFID tag (Lolo)
+        {% else %}Unknown ({{states("sensor.yale_conexis_l1_alarmtype")}}, {{states("sensor.yale_conexis_l1_alarmlevel")}})
         {% endif %}
       friendly_name: Porch Door Lock Status
       icon_template: 'mdi:lock-clock'
