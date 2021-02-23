@@ -21,3 +21,28 @@
   payload_available: "Online"
   payload_not_available: "Offline"
   retain: false
+
+- platform: mqtt
+  name: Anova Timer
+  state_topic: anova/timer
+  command_topic: anova/command/timer_run
+  payload_on: heat
+  payload_off: "off"
+  state_on: heat
+  state_off: "off"
+  optimistic: false
+  retain: true
+  value_template: "{{ value_json.timer_state }}"
+  icon: 'mdi:timer'
+
+- platform: mqtt
+  name: Astra Car Battery Deep Sleep Wake
+  state_topic: deep_sleep/ota_mode
+  command_topic: deep_sleep/ota_mode
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  state_on: 'ON'
+  state_off: 'OFF'
+  optimistic: false
+  retain: true
+  icon: 'mdi:sleep-off'

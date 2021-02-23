@@ -15,3 +15,18 @@
       unit_of_measurement: 'mpg'
       friendly_name: 220d mpg
       icon_template: 'mdi:ray-start-arrow'
+
+- platform: mqtt
+  unit_of_measurement: "V"
+  icon: "mdi:flash"
+  name: "Astra Car Battery Voltage"
+  state_topic: "astra_car_battery/sensor/astra_car_battery_voltage/state"
+  device_class: voltage
+  # availability_topic: "astra_car_battery/status"
+
+- platform: mqtt
+  unit_of_measurement: "dB"
+  icon: "mdi:wifi"
+  name: "Astra Car Battery WiFi Signal"
+  state_topic: "astra_car_battery/sensor/astra_car_battery_wifi_signal/state"
+  # availability_topic: "astra_car_battery/status"

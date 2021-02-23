@@ -11,13 +11,20 @@ cards:
     state_color: true
     show_header_toggle: false
     entities:
-      - input_boolean.normal
-      - input_boolean.movies
-      - input_boolean.holidays
-      - input_boolean.xmas
-      - input_boolean.guests
-      - input_boolean.silent
-      - input_boolean.theme_dark
+      - entity: input_boolean.normal
+        secondary_info: last-changed
+      - entity: input_boolean.movies
+        secondary_info: last-changed
+      - entity: input_boolean.holidays
+        secondary_info: last-changed
+      - entity: input_boolean.xmas
+        secondary_info: last-changed
+      - entity: input_boolean.guests
+        secondary_info: last-changed
+      - entity: input_boolean.silent
+        secondary_info: last-changed
+      - entity: input_boolean.theme_dark
+        secondary_info: last-changed
   - type: entities
     title: RPi Sensors
     state_color: true
@@ -37,6 +44,9 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.photoresistor
         secondary_info: last-changed
+      - entity: binary_sensor.dark
+        secondary_info: last-changed
+        icon: mdi:weather-night
   - type: custom:weather-card
     entity: weather.dark_sky
   - type: entities

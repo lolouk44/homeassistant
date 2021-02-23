@@ -23,19 +23,6 @@
   qos: 1
 
 - platform: mqtt
-  name: Anova Timer
-  state_topic: anova/timer
-  command_topic: anova/command/timer_run
-  payload_on: heat
-  payload_off: "off"
-  state_on: heat
-  state_off: "off"
-  optimistic: false
-  retain: true
-  value_template: "{{ value_json.timer_state }}"
-  icon: 'mdi:timer'
-
-- platform: mqtt
   name: "ZigBee Round Socket"
   state_topic: "zigbee2mqtt/zigbee_round_socket"
   value_template: "{{ value_json['state'] }}"

@@ -167,27 +167,36 @@ cards:
       - entity: sensor.bmw_220d_mpg
         secondary_info: last-changed
 
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: entities
+      title: Astra Battery
+      state_color: true
+      show_header_toggle: false
+      entities:
+        - entity: sensor.astra_car_battery_voltage
+          secondary_info: last-changed
+        - entity: sensor.astra_car_battery_wifi_signal
+          secondary_info: last-changed
+        - entity: binary_sensor.astra_car_battery_network_status
+          secondary_info: last-changed
+        - entity: switch.astra_car_battery_deep_sleep_wake
+          secondary_info: last-changed
+    - type: gauge
+      max: 15
+      entity: sensor.astra_car_battery_voltage
+      name: Astra Battery Voltage
+      min: 0
+      severity:
+        green: 12.35
+        yellow: 12.65
+        red: 15
+      theme: reverse_gauge_th
+
   - type: map
     entities:
       - device_tracker.laurent
       - device_tracker.divashni
       - device_tracker.220d
     hours_to_show: 24
-
-  # - type: conditional
-    # conditions:
-      # - entity: input_boolean.theme_dark
-        # state: "on"
-    # card:
-      # type: map
-      # entities:
-        # - device_tracker.div_iphone
-        # - device_tracker.diviphone
-        # - device_tracker.laurent
-        # - device_tracker.divashni
-        # - device_tracker.lolos_iphone
-        # - device_tracker.lolosiphone
-        # - device_tracker.laurent_mah_iphone_5s
-        # - device_tracker.220d
-      # hours_to_show: 48
-      # dark_mode: true

@@ -40,3 +40,11 @@
       value_template: '{{ state_attr("binary_sensor.220d_windows","windowPassengerRear") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
       friendly_name: Window Passenger Rear
       device_class: window
+
+- platform: mqtt
+  name: "Astra Car Battery network status"
+  state_topic: "astra_car_battery/status"
+  payload_on: "online"
+  payload_off: "offline"
+  # availability_topic: "astra_car_battery/status"
+  device_class: "connectivity"

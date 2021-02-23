@@ -1,0 +1,11 @@
+gauge_th:
+  label-badge-blue: "#03A9F4"
+  label-badge-green: "#0DA035"
+  label-badge-yellow: "#F4B400"
+  label-badge-red: "#DF4C1E"
+
+reverse_gauge_th:
+  label-badge-blue: "#DF4C1E"
+  label-badge-green: "#F4B400"
+  label-badge-yellow: "#0DA035"
+  label-badge-red: "#03A9F4"

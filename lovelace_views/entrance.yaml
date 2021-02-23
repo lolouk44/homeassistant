@@ -35,6 +35,7 @@ cards:
       - entity: lock.yale_conexis_l1_lock
         type: "custom:secondaryinfo-entity-row"
         secondary_info: "[[ sensor.porch_door_lock_status ]]"
+        icon: mdi:door-closed-lock
   - type: conditional
     conditions:
       - entity: input_boolean.xmas

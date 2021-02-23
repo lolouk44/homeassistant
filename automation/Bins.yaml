@@ -10,11 +10,11 @@
 
 
 
-- alias: Bins - Update Calendar
+- alias: Bins - Update Calendar (black, green)
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.black_bin, sensor.green_bin, sensor.red_bin
+      entity_id: sensor.black_bin, sensor.green_bin
   condition:
     - condition: template
       value_template: '{{ trigger.to_state.state != trigger.from_state.state and trigger.from_state.state != "unknown"}} '
@@ -24,5 +24,24 @@
       calendar_id: !secret google_family_calendar
       summary: '{{ trigger.entity_id | replace("sensor.","") | replace("_bin","") | title }} Bin Collection'
       description: '{{ trigger.entity_id | replace("sensor.","") | replace("_bin","") | title }} Bin Collection'
+      start_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 7 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
+      end_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 12 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
+
+
+
+- alias: Bins - Update Calendar (red)
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.red_bin
+  condition:
+    - condition: template
+      value_template: '{{ trigger.to_state.state != trigger.from_state.state and trigger.from_state.state != "unknown"}} '
+  action:
+  - service: google.add_event
+    data:
+      calendar_id: !secret google_family_calendar
+      summary: 'Red Bin Collection'
+      description: 'Red Bin Collection'
       start_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 7 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
       end_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 12 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
