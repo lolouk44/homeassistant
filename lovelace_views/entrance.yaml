@@ -30,12 +30,12 @@ cards:
     title: Yale Lock
     show_header_toggle: false
     entities:
-      - entity: sensor.yale_conexis_l1_battery_level
-        secondary_info: last-changed
       - entity: lock.yale_conexis_l1_lock
         type: "custom:secondaryinfo-entity-row"
         secondary_info: "[[ sensor.porch_door_lock_status ]]"
         icon: mdi:door-closed-lock
+      - entity: sensor.yale_conexis_l1_battery_level
+        secondary_info: last-changed
   - type: conditional
     conditions:
       - entity: input_boolean.xmas
