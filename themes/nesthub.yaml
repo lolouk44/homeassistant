@@ -2,7 +2,7 @@
 #
 # iOS Dark Mode Theme
 #
-dark:
+nesthub:
   # Global
   primary-color: "#03A9F4"  # blue
   light-primary-color: "#B6B6C1"  # light gray (icons on left menu)
@@ -56,7 +56,7 @@ dark:
   # card-background-color: var(--secondary-background-color)  # Unused entities table background
   paper-listbox-background-color: var(--primary-background-color)
   ha-card-border-radius: 10px
-  ha-card-background: rgba(10, 10, 10, 0.6)
+  ha-card-background: rgba(10, 10, 10, 0)
   card-background-color: var(--ha-card-background)
   state-icon-active-color: rgba(3, 169, 244, 1)
   # Toggles
