@@ -1,0 +1,408 @@
+# {% for state in states.sensor -%}
+# {%- if "lqi" in state.name | lower %}states.{{state.entity_id | replace(" lqi","")}},
+# {% endif -%}
+# {%- endfor %}cc2531_router 
+
+###########################################################
+# LQI (Link Quality)
+###########################################################
+
+- platform: mqtt
+  name: "Kitchen Fridge Temperature LQI"
+  state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Kitchen Freezer Temperature LQI"
+  state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Master Bedroom Right Window Big Window LQI"
+  state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Master Bedroom Right Window Small Window LQI"
+  state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Master Bedroom Left Window Small Window LQI"
+  state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Conservatory Skylight Left LQI"
+  state_topic: "zigbee2mqtt/conservatory_skylight_left"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Pooja Room Small Window LQI"
+  state_topic: "zigbee2mqtt/pooja_room_small_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Pooja Room Big Window LQI"
+  state_topic: "zigbee2mqtt/pooja_room_big_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Xiaomi Garage Socket LQI"
+  state_topic: "zigbee2mqtt/xiaomi_garage_socket"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Pooja Temperature LQI"
+  state_topic: "zigbee2mqtt/pooja_hygro"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Master Bedroom Temperature LQI"
+  state_topic: "zigbee2mqtt/master_bedroom_hygro"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Bathroom Temperature LQI"
+  state_topic: "zigbee2mqtt/bathroom_hygro"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Loft Temperature LQI"
+  state_topic: "zigbee2mqtt/loft_hygro"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Garage Freezer Temperature LQI"
+  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Kiaan Big Window LQI"
+  state_topic: "zigbee2mqtt/kiaan_big_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Conservatory Door Lock LQI"
+  state_topic: "zigbee2mqtt/conservatory_door_lock"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Aqara Toggle Pooja LQI"
+  state_topic: "zigbee2mqtt/aqara_toggle_pooja"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Aqara Toggle Bathroom LQI"
+  state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Master Bedroom Left Window Big Window LQI"
+  state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Conservatory Single Door LQI"
+  state_topic: "zigbee2mqtt/conservatory_single_door"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Conservatory Double Door LQI"
+  state_topic: "zigbee2mqtt/conservatory_double_door"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Kitchen Window LQI"
+  state_topic: "zigbee2mqtt/kitchen_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Kiaan Small Window LQI"
+  state_topic: "zigbee2mqtt/kiaan_small_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Blue Room Big Window LQI"
+  state_topic: "zigbee2mqtt/blue_room_big_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Blue Room Small Window LQI"
+  state_topic: "zigbee2mqtt/blue_room_small_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Bathroom Window LQI"
+  state_topic: "zigbee2mqtt/bathroom_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Cloakroom Window LQI"
+  state_topic: "zigbee2mqtt/cloakroom_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Living Room Right Small Window LQI"
+  state_topic: "zigbee2mqtt/living_room_right_small_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Living Room Right Big Window LQI"
+  state_topic: "zigbee2mqtt/living_room_right_big_window"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Main Door LQI"
+  state_topic: "zigbee2mqtt/main_door"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Conservatory Skylight Right LQI"
+  state_topic: "zigbee2mqtt/conservatory_skylight_right"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "Ground Floor Smoke Detector LQI"
+  state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+- platform: mqtt
+  name: "First Floor Smoke Detector LQI"
+  state_topic: "zigbee2mqtt/first_floor_smoke_detector"
+  value_template: "{{ value_json['linkquality'] | int }}"
+  unit_of_measurement: ' '
+
+###########################################################
+# Last Seen
+###########################################################
+
+- platform: mqtt
+  name: "Kitchen Fridge Temperature Last Seen"
+  state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Kitchen Freezer Temperature Last Seen"
+  state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Master Bedroom Right Window Big Window Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Master Bedroom Right Window Small Window Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Master Bedroom Left Window Small Window Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Conservatory Skylight Left Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_skylight_left"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Pooja Room Small Window Last Seen"
+  state_topic: "zigbee2mqtt/pooja_room_small_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Pooja Room Big Window Last Seen"
+  state_topic: "zigbee2mqtt/pooja_room_big_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Xiaomi Garage Socket Last Seen"
+  state_topic: "zigbee2mqtt/xiaomi_garage_socket"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Pooja Temperature Last Seen"
+  state_topic: "zigbee2mqtt/pooja_hygro"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Master Bedroom Temperature Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_hygro"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Bathroom Temperature Last Seen"
+  state_topic: "zigbee2mqtt/bathroom_hygro"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Loft Temperature Last Seen"
+  state_topic: "zigbee2mqtt/loft_hygro"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Garage Freezer Temperature Last Seen"
+  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Kiaan Big Window Last Seen"
+  state_topic: "zigbee2mqtt/kiaan_big_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Conservatory Door Lock Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_door_lock"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Aqara Toggle Pooja Last Seen"
+  state_topic: "zigbee2mqtt/aqara_toggle_pooja"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Aqara Toggle Bathroom Last Seen"
+  state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Master Bedroom Left Window Big Window Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Conservatory Single Door Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_single_door"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Conservatory Double Door Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_double_door"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Kitchen Window Last Seen"
+  state_topic: "zigbee2mqtt/kitchen_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Kiaan Small Window Last Seen"
+  state_topic: "zigbee2mqtt/kiaan_small_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Blue Room Big Window Last Seen"
+  state_topic: "zigbee2mqtt/blue_room_big_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Blue Room Small Window Last Seen"
+  state_topic: "zigbee2mqtt/blue_room_small_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Bathroom Window Last Seen"
+  state_topic: "zigbee2mqtt/bathroom_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Cloakroom Window Last Seen"
+  state_topic: "zigbee2mqtt/cloakroom_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Living Room Right Small Window Last Seen"
+  state_topic: "zigbee2mqtt/living_room_right_small_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Living Room Right Big Window Last Seen"
+  state_topic: "zigbee2mqtt/living_room_right_big_window"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Main Door Last Seen"
+  state_topic: "zigbee2mqtt/main_door"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Conservatory Skylight Right Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_skylight_right"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "Ground Floor Smoke Detector Last Seen"
+  state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
+- platform: mqtt
+  name: "First Floor Smoke Detector Last Seen"
+  state_topic: "zigbee2mqtt/first_floor_smoke_detector"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
