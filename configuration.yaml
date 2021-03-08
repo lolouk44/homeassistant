@@ -118,7 +118,7 @@ http:
   trusted_proxies:
     - 127.0.0.1
     - ::1
-  ip_ban_enabled: false
+  ip_ban_enabled: true
   login_attempts_threshold: 3
 
 ifttt:
@@ -363,11 +363,11 @@ tts:
 updater:
   include_used_components: True
 
-vacuum:
-- platform: xiaomi_miio
-  name: 'Mi Robot Vacuum'
-  host: 192.168.0.18
-  token: !secret xiaomi_token_vacuum
+# vacuum:
+# - platform: xiaomi_miio
+#   name: 'Mi Robot Vacuum'
+#   host: 192.168.0.18
+#   token: !secret xiaomi_token_vacuum
 
 var:
   printer_pages_at_month_start:

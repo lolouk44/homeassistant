@@ -117,7 +117,7 @@ cards:
       # - type: icon
         # icon: mdi:robot-vacuum
       - type: state-icon
-        entity: vacuum.mi_robot_vacuum
+        entity: vacuum.roborock_vacuum
         style:
           top: 95%
           left: 10%

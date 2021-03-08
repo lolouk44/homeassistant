@@ -2,15 +2,15 @@
   sensors:
     xiaomi_battery_level:
       value_template: >
-        {{ state_attr("vacuum.mi_robot_vacuum","battery_level") }}
+        {{ state_attr("vacuum.roborock_vacuum","battery_level") }}
       friendly_name: Battery Level
       unit_of_measurement: '%'
-      icon_template: '{{ state_attr("vacuum.mi_robot_vacuum","battery_icon") }}'
+      icon_template: '{{ state_attr("vacuum.roborock_vacuum","battery_icon") }}'
 
 
     xiaomi_cleaned_area:
       value_template: >
-        Area Cleaned: {{ state_attr("vacuum.mi_robot_vacuum","cleaned_area") }}
+        Area Cleaned: {{ state_attr("vacuum.roborock_vacuum","cleaned_area") }}
       friendly_name: Cleaned Area
       unit_of_measurement: 'm²'
       icon_template: 'mdi:chart-areaspline'
@@ -18,14 +18,14 @@
 
     xiaomi_status:
       value_template: >
-        Status: {{ states("vacuum.mi_robot_vacuum") | title }}
+        Status: {{ states("vacuum.roborock_vacuum") | title }}
       friendly_name: Status
       icon_template: 'mdi:checkbox-marked-circle-outline'
 
 
     xiaomi_cleaning_time:
       value_template: >
-        Cleaning Time: {{ state_attr("vacuum.mi_robot_vacuum","cleaning_time") }}
+        Cleaning Time: {{ state_attr("vacuum.roborock_vacuum","cleaning_time") }}
       friendly_name: Cleaning Time
       unit_of_measurement: 'min'
       icon_template: 'mdi:timer'
@@ -33,7 +33,7 @@
 
     xiaomi_main_brush_left:
       value_template: >
-        Main Brush: {{ state_attr("vacuum.mi_robot_vacuum","main_brush_left") }}
+        Main Brush: {{ state_attr("vacuum.roborock_vacuum","main_brush_left") }}
       friendly_name: Main Brush Left
       unit_of_measurement: 'Hrs'
       icon_template: 'mdi:settings-box'
@@ -41,7 +41,7 @@
 
     xiaomi_side_brush_left:
       value_template: >
-        Side Brush: {{ state_attr("vacuum.mi_robot_vacuum","side_brush_left") }}
+        Side Brush: {{ state_attr("vacuum.roborock_vacuum","side_brush_left") }}
       friendly_name: Side Brush Left
       unit_of_measurement: 'Hrs'
       icon_template: 'mdi:fan'
@@ -49,7 +49,7 @@
 
     xiaomi_filter_left:
       value_template: >
-        Filter: {{ state_attr("vacuum.mi_robot_vacuum","filter_left") }}
+        Filter: {{ state_attr("vacuum.roborock_vacuum","filter_left") }}
       friendly_name: Filter Left
       unit_of_measurement: 'Hrs'
       icon_template: 'mdi:image-filter-tilt-shift'
@@ -57,12 +57,12 @@
 
     xiaomi_sensor_dirty_left:
       value_template: >
-        Sensor: {{ state_attr("vacuum.mi_robot_vacuum","sensor_dirty_left") }}
+        Sensor: {{ state_attr("vacuum.roborock_vacuum","sensor_dirty_left") }}
       friendly_name: Filter Left
       unit_of_measurement: 'Hrs'
 
 
     xiaomi_last_clean:
       value_template: >
-        Last Clean: {{ as_timestamp(state_attr("vacuum.mi_robot_vacuum","clean_stop"))|timestamp_custom('%d %h %y, %H:%M',true)}}
+        Last Clean: {{ as_timestamp(state_attr("vacuum.roborock_vacuum","clean_stop"))|timestamp_custom('%d %h %y, %H:%M',true)}}
       friendly_name: Last Clean
