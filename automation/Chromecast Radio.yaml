@@ -54,6 +54,13 @@
         {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'http://streaming.radio.rtl2.fr:80/rtl2-1-44-96') or is_state_attr("media_player.house", 'media_content_id', 'http://streaming.radio.rtl2.fr:80/rtl2-1-44-96')) %} RTL2
         {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'states("input_text.custom_station")') or is_state_attr("media_player.house", 'media_content_id', 'states("input_text.custom_station")')) %} Custom Station
         {% endif %}
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.onkyo_tx_nr656_zone_2
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.onkyo_tx_nr656_zone_2
+      source: 'ChromeCast2'
   - condition: template
     value_template: '{{ states("media_player.onkyo_tx_nr656")=="off" }}'
   - service: media_player.turn_on
@@ -106,6 +113,8 @@
   action:
   - service: media_player.turn_off
     entity_id: media_player.onkyo_tx_nr656
+  - service: media_player.turn_off
+    entity_id: media_player.onkyo_tx_nr656_zone_2
     
 - alias: ChromeCast - Stop ChromeCast When Turning Onkyo Off or Sky On
   initial_state: true
