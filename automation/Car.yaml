@@ -133,3 +133,35 @@
     - service: bmw_connected_drive.activate_air_conditioning
       data:
         vin: !secret bmw_connected_drive_vin
+
+
+
+- alias: Astra - Toggle Deep Sleep
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.astra_car_battery_network_status
+  action:
+    # - wait_template: "{{ is_state('binary_sensor.main_door', 'on') }}"
+    #   timeout: '00:00:30'
+    #   continue_on_timeout: true
+    - delay:
+        seconds: 30
+    - service: '{% if states("binary_sensor.astra_car_battery_network_status") == "on" %}switch.turn_off{% else %}switch.turn_on{% endif %}'
+      data:
+        entity_id: switch.astra_car_battery_deep_sleep_wake
+
+- alias: Astra - Battery Low
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.astra_car_battery_voltage
+  condition:
+    - condition: template
+      value_template: '{{states("sensor.astra_car_battery_voltage") | float < 12}}'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Astra"
+        message: >
+          The Astra car battery is low! ({{states("sensor.astra_car_battery_voltage")}} V)

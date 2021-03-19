@@ -183,13 +183,15 @@ cards:
           secondary_info: last-changed
         - entity: switch.astra_car_battery_deep_sleep_wake
           secondary_info: last-changed
+        - entity: automation.astra_toggle_deep_sleep
+          secondary_info: last-changed
     - type: gauge
       max: 15
       entity: sensor.astra_car_battery_voltage
       name: Astra Battery Voltage
       min: 0
       severity:
-        green: 12.35
+        green: 12
         yellow: 12.65
         red: 15
       theme: reverse_gauge_th

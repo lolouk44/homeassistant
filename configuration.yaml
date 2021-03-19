@@ -65,6 +65,19 @@ bmw_connected_drive:
     password: !secret bmw_connected_drive_password
     region: "rest_of_world"
 
+browser_mod:
+  prefix: "browser_mod_"
+  devices:
+    a4bd3a9e_50590f1a:
+      name: fire7
+    88a5500a-02bf914a:
+      name: vrnt_laptop_chrome
+      disable:
+        - light
+    43e9e4ea-045ecee2:
+      name: lolo_iphone
+    89e19687-8d2d0288:
+      name: div_iphone
 
 climate:
   - platform: mqtt
@@ -202,11 +215,15 @@ lovelace:
     # Bar Card https://github.com/custom-cards/bar-card
     - url: /local/community/button-card/button-card.js
       type: module
-    # Fonts !
+    # Fonts
     - type: css
       url: 'https://fonts.googleapis.com/css?family=Orbitron'
     - type: css
       url: 'https://fonts.googleapis.com/css?family=Kaushan%20Script'
+
+    # Browser Mod https://github.com/thomasloven/hass-browser_mod
+    - url: /browser_mod.js
+      type: module
 
   # dashboards:
     # lovelace-alarm-panel: # Needs to contain a hyphen (-)

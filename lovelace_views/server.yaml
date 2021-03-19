@@ -24,6 +24,8 @@ cards:
             - entity_id: media_player.as_aftmm_cast
             - entity_id: media_player.mibox3
             - entity_id: light.red_light
+            - entity_id: "*browser_mod*"
+            - entity_id: "*astra_car*"
         sort:
           method: 'name'
   - type: entities
