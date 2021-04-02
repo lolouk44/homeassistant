@@ -27,6 +27,7 @@ entities:
   - alert.aloe_vera_battery_too_low
   - alert.kitchen_freezer_temp_too_high
   - alert.garage_freezer_temp_too_high
+  - alert.zigbee_devices_lost
   - counter.iosbadgecount
 state_color: true
 state_filter:

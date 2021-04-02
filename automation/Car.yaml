@@ -142,11 +142,9 @@
     - platform: state
       entity_id: binary_sensor.astra_car_battery_network_status
   action:
-    # - wait_template: "{{ is_state('binary_sensor.main_door', 'on') }}"
-    #   timeout: '00:00:30'
-    #   continue_on_timeout: true
-    - delay:
-        seconds: 30
+    - wait_template: '{{ states("sensor.astra_car_battery_voltage") | float >= 14 }}'
+      timeout: '00:00:30'
+      continue_on_timeout: true
     - service: '{% if states("binary_sensor.astra_car_battery_network_status") == "on" %}switch.turn_off{% else %}switch.turn_on{% endif %}'
       data:
         entity_id: switch.astra_car_battery_deep_sleep_wake
@@ -158,7 +156,7 @@
       entity_id: sensor.astra_car_battery_voltage
   condition:
     - condition: template
-      value_template: '{{states("sensor.astra_car_battery_voltage") | float < 12}}'
+      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") | float < 11.9}}'
   action:
     - service: notify.gmaillolo
       data_template:

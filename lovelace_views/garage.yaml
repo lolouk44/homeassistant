@@ -21,6 +21,10 @@ cards:
     title: Freezer
     show_header_toggle: false
     entities:
+      - entity: binary_sensor.garage_freezer_door
+        secondary_info: last-changed
+      - entity: sensor.garage_freezer_door_battery
+        secondary_info: last-changed
       - entity: sensor.garage_freezer_temperature
         secondary_info: last-changed
       - entity: sensor.garage_freezer_humidity

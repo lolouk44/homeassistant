@@ -26,6 +26,9 @@ cards:
             - entity_id: light.red_light
             - entity_id: "*browser_mod*"
             - entity_id: "*astra_car*"
+            - entity_id: "*google*alarms"
+            - entity_id: "*google*timers"
+            - entity_id: "*nest*timers"
         sort:
           method: 'name'
   - type: entities

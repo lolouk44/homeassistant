@@ -111,23 +111,6 @@
       title: "HA - SSL Expiry"
       message: 'Warning - SSL certificate expires in <21 days and has not been automatically renewed'
 
-
-- alias: HASS - ZigBee2MQTT Docker Down
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: switch.zigbee2mqtt
-      to: 'off'
-      for:
-        minutes: 2
-  action:
-    service: notify.gmaillolo
-    data:
-      title: "HA - ZigBee2MQTT Docker Down"
-      message: 'Warning - ZigBee2MQTT Docker Container Is Down'
-
-
-
 - alias: HASS - Start Xmas Setup
   initial_state: true
   trigger:
@@ -182,16 +165,6 @@
         title: "HA - HassPodcast Update"
         message: >
           There is a new hass podcast: {{ states("sensor.ha_podcast_track")}}
-
-- id: HASS - update_networkmap
-  alias: 'Zigbee Network Map Update'  
-  initial_state: true
-  trigger:
-    platform: time_pattern
-    minutes: '/10'
-    seconds: 00
-  action:
-    service: zigbee2mqtt_networkmap.update
 
 - alias: HASS - HACS Notification Of Pending updates
   trigger:

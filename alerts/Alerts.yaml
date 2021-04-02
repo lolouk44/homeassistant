@@ -22,18 +22,6 @@ upstairs_temp_sensor_lost:
   notifiers:
     - mobile_app_lolo_s_iphone
 
-ram_usage_lost:
-  name: RAM Usage Sensor Lost
-  entity_id: input_boolean.alert_lost_ram_usage_at_300
-  skip_first: true
-  repeat:
-    - 5
-    - 15
-    - 30
-    - 60
-  notifiers:
-    - mobile_app_lolo_s_iphone
-
 fire7_lost:
   name: Fire 7 Lost
   entity_id: input_boolean.alert_lost_Fire7_at_300
@@ -243,8 +231,9 @@ tv_cabinet_led_strip_lost:
 
 
 ram_too_high:
-  name: Ram Usage > 90%
+  name: Ram Usage > 75%
   entity_id: binary_sensor.alert_ram_too_high
+  skip_first: true
   can_acknowledge: true
   repeat:
     - 5
@@ -339,6 +328,24 @@ bmw_unlocked:
     - 15
     - 30
     - 60
+  notifiers:
+    - mobile_app_lolo_s_iphone
+    - gmaillolo
+
+
+zigbee_devices_lost:
+  name: Zigbee Devices Lost
+  entity_id: binary_sensor.lost_zigbee_devices
+  title: 'Z2M - Lost devices ({{ states("sensor.lost_zigbee_devices") }})'
+  message: 'The following Z2M devices appear to be lost: {{ states("sensor.lost_zigbee_devices") }}'
+  state: 'on'
+  can_acknowledge: true
+  skip_first: true
+  repeat:
+    - 5
+    - 30
+    - 60
+    - 120
   notifiers:
     - mobile_app_lolo_s_iphone
     - gmaillolo

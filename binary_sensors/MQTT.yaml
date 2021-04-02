@@ -1,3 +1,10 @@
+- platform: template
+  sensors:
+    lost_zigbee_devices:
+      value_template: '{{ states("sensor.lost_zigbee_devices_count") | int  > 0 }}'
+      friendly_name: Lost ZigBee devices
+      icon_template: 'mdi:zigbee'
+
 - platform: mqtt
   name: "Conservatory Skylight Right"
   state_topic: "zigbee2mqtt/conservatory_skylight_right"
@@ -185,6 +192,14 @@
 - platform: mqtt
   name: "Garage Back Door"
   state_topic: "zigbee2mqtt/garage_back_door"
+  value_template: "{{ value_json['contact'] == true }}"
+  payload_on: false
+  payload_off: true
+  device_class: door
+
+- platform: mqtt
+  name: "Garage Freezer Door"
+  state_topic: "zigbee2mqtt/garage_freezer_door"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true

@@ -260,7 +260,7 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm
-      to: 'pending'
+      to: 'arming'
       from: 'disarmed'
   condition:
     - condition: state
@@ -295,20 +295,20 @@
           {%- if is_state('binary_sensor.main_door','on') -%}Main Door,{%- endif -%}
           are not closed.
           The alarm is still being armed !
-    - delay:
-        seconds: 5
+    - wait_template: "{{ states('media_player.google_home_minis') != 'playing' }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
+    # - delay:
+    #     seconds: 5
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
         media_content_id: 'http://192.168.0.24:8123/local/sounds/Alarm-CountDown.mp3'
-    - wait_template: "{{ is_state('binary_sensor.main_door', 'on') }}"
-      timeout: '00:00:30'
-      continue_on_timeout: true
-    - wait_template: "{{ is_state('binary_sensor.main_door', 'off') }}"
-      timeout: '00:00:30'
-      continue_on_timeout: true
+    # - wait_template: "{{ is_state('binary_sensor.main_door', 'off') }}"
+    #   timeout: '00:00:30'
+    #   continue_on_timeout: true
     - condition: template
-      value_template: '{{ states("alarm_control_panel.alarm")=="pending" }}'
+      value_template: '{{ states("alarm_control_panel.alarm")=="arming" }}'
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
@@ -319,13 +319,13 @@
         entity_id: script.flash_aqara_light
 
 
-- alias: 'Alarm - Pending Arming'
+- alias: 'Alarm - Arming'
   id: alarm_-_pending_arming
   initial_state: true
   trigger:
     - platform: state
       entity_id: alarm_control_panel.alarm
-      to: 'pending'
+      to: 'arming'
       from: 'disarmed'
   action:
     - service: switch.turn_on
@@ -347,7 +347,7 @@
       timeout: '00:00:30'
       continue_on_timeout: true
     - condition: template
-      value_template: '{{ states("alarm_control_panel.alarm")=="pending" }}'
+      value_template: '{{ states("alarm_control_panel.alarm")=="arming" }}'
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis

@@ -202,6 +202,13 @@
   device_class: battery
 
 - platform: mqtt
+  name: "Garage Freezer Door Battery"
+  state_topic: "zigbee2mqtt/garage_freezer_door"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: '%'
+  device_class: battery
+
+- platform: mqtt
   name: "Kiaan Big Window Battery"
   state_topic: "zigbee2mqtt/kiaan_big_window"
   value_template: "{{ value_json['battery'] }}"

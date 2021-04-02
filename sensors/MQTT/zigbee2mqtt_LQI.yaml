@@ -406,3 +406,24 @@
   state_topic: "zigbee2mqtt/first_floor_smoke_detector"
   value_template: "{{ value_json['last_seen'] }}"
   device_class: timestamp
+
+- platform: template
+  sensors:
+    lost_zigbee_devices:
+      value_template: >-
+        {% for state in states.sensor %}
+        {%- if "last_seen" in state.entity_id %} {% if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 7200 %}{{state.entity_id | replace ("binary_","") | replace ("sensor.","")}}{% endif %} {% endif -%}
+        {% endfor %}
+      friendly_name: Lost ZigBee devices
+      icon_template: 'mdi:zigbee'
+    lost_zigbee_devices_ticker:
+      value_template: >-
+        {%- for state in states.sensor %}
+        {%- if "last_seen" in state.entity_id %} {%- if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 7200 %}1{% endif -%} {% endif -%}
+        {%- endfor %}
+      friendly_name: Lost ZigBee devices
+      icon_template: 'mdi:zigbee'
+    lost_zigbee_devices_count:
+      value_template: '{{ states("sensor.lost_zigbee_devices_ticker") | length }}'
+      friendly_name: Lost ZigBee devices
+      icon_template: 'mdi:zigbee'

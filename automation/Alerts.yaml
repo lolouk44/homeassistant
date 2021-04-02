@@ -116,7 +116,7 @@
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.ram_usage.last_updated | default(0)) | int > 300 )}}'
     - condition: state
-      entity_id: alert.ram_too_high
+      entity_id: alert.ram_lost_on
       state: 'idle'
   action:
     - service: input_boolean.turn_on
@@ -130,7 +130,7 @@
       entity_id: sensor.ram_usage
   condition:
     - condition: template
-      value_template: '{{states("alert.ram_too_high") != "idle"}}'
+      value_template: '{{states("alert.ram_lost_on") != "idle"}}'
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_ram_usage_at_300
