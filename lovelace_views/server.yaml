@@ -39,23 +39,6 @@ cards:
           type: custom:fold-entity-row
           head:
             type: section
-            label: All ZB2MQTT Lost LQI
-          open: true
-        filter:
-          include:
-            - entity_id: "sensor.*_lqi"
-              state: "unknown"
-        sort:
-          method: 'state'
-          numeric: true
-  - type: entities
-    show_header_toggle: false
-    entities:
-      - type: custom:auto-entities
-        card:
-          type: custom:fold-entity-row
-          head:
-            type: section
             label: All Low Batteries
           open: true
         filter:
