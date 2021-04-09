@@ -1,4 +1,5 @@
 - alias: Vacuum - Start Vacuuming
+  id: vacuum_start_vacuuming
   initial_state: false
   trigger:
     - platform: time_pattern
@@ -34,6 +35,7 @@
 
 
 - alias: Vacuum - Started Vacuuming
+  id: vacuum_started_vacuuming
   initial_state: true
   trigger:
     - platform: state
@@ -53,6 +55,7 @@
 
 
 - alias: Vacuum Error - continue
+  id: vacuum_error_continue
   initial_state: true
   trigger:
     - platform: state
@@ -69,6 +72,7 @@
 
 
 - alias: Vacuum Error - stop
+  id: vacuum_error_stop
   initial_state: true
   trigger:
     - platform: state
@@ -96,6 +100,7 @@
 
 
 - alias: Vacuum - Finished Vacuuming
+  id: vacuum_finished_vacuuming
   initial_state: true
   trigger:
     - platform: state
@@ -127,6 +132,7 @@
       entity_id: input_boolean.vacuum
 
 - alias: Vacuum - Scheduled Vacuuming
+  id: vacuum_scheduled_vacuuming
   initial_state: true
   trigger:
     - platform: state

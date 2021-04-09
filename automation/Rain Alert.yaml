@@ -1,4 +1,5 @@
 - alias: Rain - Clothes Drying Outside
+  id: rain_clothes_drying_outside
   initial_state: true
   trigger:
     - platform: state
@@ -23,6 +24,7 @@
 
 
 - alias: Rain - Reset Clothes Drying Outside Input Boolean
+  id: rain_reset_clothes_drying_outside_input_boolean
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -41,6 +43,7 @@
 
 
 - alias: Rain - Skylights left open
+  id: rain_skylights_left_open
   initial_state: true
   trigger:
     - platform: state

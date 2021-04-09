@@ -1,4 +1,5 @@
 - alias: Socket - Edimax - Battery Is Charged, Turning Edimax Off
+  id: socket_edimax_battery_is_charged_turning_edimax_off
   initial_state: true
   trigger:
     - platform: state
@@ -31,6 +32,7 @@
 
 
 - alias: Socket - Edimax - Start Charging Battery
+  id: socket_edimax_start_charging_battery
   initial_state: true
   trigger:
     - platform: state
@@ -47,6 +49,7 @@
 
 
 - alias: Socket - Edimax - Timer
+  id: socket_edimax_timer
   initial_state: true
   trigger:
     - platform: state
@@ -73,6 +76,7 @@
             entity_id: switch.edimax1
 
 - alias: Socket - Xiaomi - Battery Is Charged, Turning Xiaomi Switch Off
+  id: socket_xiaomi_battery_is_charged_turning_xiaomi_switch_off
   initial_state: true
   trigger:
     - platform: state
@@ -107,6 +111,7 @@
 
 
 - alias: Socket - Xiaomi - Start Charging Battery
+  id: socket_xiaomi_start_charging_battery
   initial_state: true
   trigger:
     - platform: state
@@ -123,6 +128,7 @@
 
 
 - alias: Socket - Xiaomi - Automatic Battery Charging 
+  id: socket_xiaomi_automatic_battery_charging
   initial_state: true
   trigger:
     - platform: state
@@ -141,6 +147,7 @@
 
 
 - alias: Socket - Xiaomi - Charge If No Rain 
+  id: socket_xiaomi_charge_if_no_rain
   initial_state: true
   trigger:
     - platform: time_pattern

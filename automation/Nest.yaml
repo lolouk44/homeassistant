@@ -1,4 +1,5 @@
 - alias: Nest Remove Away Mode
+  id: nest_remove_away_mode
   initial_state: true
   trigger:
     - platform: state
@@ -53,6 +54,7 @@
 
 
 - alias: Nest Set Away Mode
+  id: nest_set_away_mode
   initial_state: true
   trigger:
     - platform: state
@@ -93,6 +95,7 @@
 
 
 - alias: Nest Set ETA
+  id: nest_set_eta
   initial_state: true
   trigger:
     - platform: state

@@ -1,4 +1,5 @@
 - alias: Lights - Living Room Main Light On PIR
+  id: lights_living_room_main_light_on_pir
   initial_state: true
   trigger:
     - platform: state
@@ -52,6 +53,7 @@
 
 
 - alias: Lights - Living Room Main Light Dimmed Off PIR
+  id: lights_living_room_main_light_dimmed_off_pir
   initial_state: true
   trigger:
     - platform: state
@@ -85,6 +87,7 @@
 
 
 - alias: Lights - Living Room Main Light Off PIR
+  id: lights_living_room_main_light_off_pir
   initial_state: true
   trigger:
     - platform: state
@@ -134,6 +137,7 @@
 
 
 - alias: Lights - Living Room Main Light Dimmed
+  id: lights_living_room_main_light_dimmed
   initial_state: true
   trigger:
     - platform: state
@@ -167,6 +171,7 @@
 
 
 - alias: Lights - Living Room Main Light UnDimmed
+  id: lights_living_room_main_light_undimmed
   initial_state: true
   trigger:
     - platform: state

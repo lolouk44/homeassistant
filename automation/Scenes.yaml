@@ -1,4 +1,5 @@
 - alias: Scene - Holidays
+  id: scene_holidays
   initial_state: true
   trigger:
     - platform: state
@@ -25,6 +26,7 @@
         message: 'Scene, holidays, activated'
 
 - alias: Scene - Movies
+  id: scene_movies
   initial_state: true
   trigger:
     - platform: state
@@ -36,10 +38,9 @@
 
     - service: input_boolean.turn_off
       entity_id: input_boolean.normal
-    # - service: light.turn_on
-      # data:
-        # entity_id: light.living_room_wall
-        # brightness: 255
+    - service: switch.turn_on
+      data:
+        entity_id: light.red_light
     - service: light.turn_off
       data:
         entity_id: light.living_room_main
@@ -62,15 +63,10 @@
         effect: "solid"
         brightness: 128
         rgb_color: [0,0,255]
-    - condition: state
-      entity_id: input_boolean.silent
-      state: "off"
-    # - service: tts.google_say
-      # entity_id: media_player.google_home_minis
-      # data:
-        # message: 'Scene, movies, activated'
+
 
 - alias: Scene - Normal
+  id: scene_normal
   initial_state: true
   trigger:
     - platform: state
@@ -85,21 +81,16 @@
       entity_id: input_boolean.holidays
     - service: light.turn_off
       data:
-        entity_id: light.living_room_wall
+        entity_id: light.living_room_wall, light.red_light
     - service: nest.set_away_mode
       data:
         away_mode: home
-    - condition: state
-      entity_id: input_boolean.silent
-      state: "off"
-    # - service: tts.google_say
-      # entity_id: media_player.google_home_minis
-      # data:
-        # message: 'Scene, normal, activated'
+
 
 
 
 - alias: Scene - Normal from Movies
+  id: scene_normal_from_movies
   initial_state: true
   trigger:
     - platform: state
@@ -122,7 +113,7 @@
         brightness: 255
     - service: light.turn_off
       data:
-        entity_id: light.living_room_wall
+        entity_id: light.living_room_wall, light.red_light
     - service: input_boolean.turn_on
       entity_id: input_boolean.normal
     - service: light.turn_on
@@ -146,6 +137,7 @@
         rgb_color: [255,255,255]
 
 - alias: Scene - Xmas On
+  id: scene_xmas_on
   initial_state: true
   trigger:
     - platform: state
@@ -163,6 +155,7 @@
         message: 'Scene, christmas, activated'
 
 - alias: Scene - Xmas Off
+  id: scene_xmas_off
   initial_state: true
   trigger:
     - platform: state
@@ -179,6 +172,7 @@
 
 
 - alias: Scene - Guests Mode On
+  id: scene_guests_mode_on
   initial_state: true
   trigger:
     platform: state
@@ -190,6 +184,7 @@
 
 
 - alias: Scene - Guests Mode Off
+  id: scene_guests_mode_off
   initial_state: true
   trigger:
     platform: state
@@ -200,7 +195,8 @@
       entity_id: input_boolean.guests
 
 
-- alias: Scene - Theme Dark
+- alias: Scene - Theme
+  id: scene_theme
   initial_state: true
   trigger:
     platform: state

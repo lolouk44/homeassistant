@@ -1,4 +1,5 @@
 - alias: Bins - Nightly Refresh
+  id: bins_nightly_refresh
   initial_state: true
   trigger:
     platform: time_pattern
@@ -11,6 +12,7 @@
 
 
 - alias: Bins - Update Calendar (black, green)
+  id: bins_update_calendar_black_green
   initial_state: true
   trigger:
     - platform: state
@@ -30,6 +32,7 @@
 
 
 - alias: Bins - Update Calendar (red)
+  id: bins_update_calendar_red
   initial_state: true
   trigger:
     - platform: state

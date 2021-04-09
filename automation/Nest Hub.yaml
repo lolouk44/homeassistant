@@ -1,4 +1,5 @@
 - alias: Nest Hub - Start Cast
+  id: nest_hub_start_cast
   initial_state: true
   trigger:
     - platform: time_pattern

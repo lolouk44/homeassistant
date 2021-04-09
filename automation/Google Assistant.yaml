@@ -1,4 +1,5 @@
 - alias: GA - Set GA Volume To Low At Night
+  id: ga_set_ga_volume_to_low_at_night
   initial_state: true
   trigger:
     platform: time_pattern
@@ -25,6 +26,7 @@
 
 
 - alias: GA - Set GA Volume To High Daytime
+  id: ga_set_ga_volume_to_high_daytime
   initial_state: true
   trigger:
     platform: time_pattern
@@ -51,6 +53,7 @@
 
 
 - alias: GA - Play RTL2 Radio
+  id: ga_play_rtl2_radio
   initial_state: true
   trigger:
     - platform: state
@@ -72,6 +75,7 @@
 
 
 - alias: GA - Play Scala Radio
+  id: ga_play_scala_radio
   initial_state: true
   trigger:
     - platform: state
@@ -94,6 +98,7 @@
 
 
 - alias: GA - Play Chill Radio
+  id: ga_play_chill_radio
   initial_state: true
   trigger:
     - platform: state
@@ -115,6 +120,7 @@
 
 
 - alias: GA - Play Absolute Radio
+  id: ga_play_absolute_radio
   initial_state: true
   trigger:
     - platform: state
@@ -136,6 +142,7 @@
 
 
 - alias: GA - Play Absolute CR Radio
+  id: ga_play_absolute_cr_radio
   initial_state: true
   trigger:
     - platform: state
@@ -157,6 +164,7 @@
 
 
 - alias: GA - Play Radio Fiji Two Radio
+  id: ga_play_radio_fiji_two_radio
   initial_state: true
   trigger:
     - platform: state
@@ -178,6 +186,7 @@
 
 
 - alias: GA - Play Radio Navtarang
+  id: ga_play_radio_navtarang
   initial_state: true
   trigger:
     - platform: state
@@ -199,6 +208,7 @@
 
 
 - alias: GA - Keep Google Home Alive
+  id: ga_keep_google_home_alive
   initial_state: true
   trigger:
     platform: time_pattern
@@ -227,6 +237,7 @@
 
 
 - alias: GA - Turn Multimedia Switch on if Sky, TV or Onkyo is on
+  id: ga_turn_multimedia_switch_on_if_sky_tv_or_onkyo_is_on
   initial_state: true
   trigger:
     - platform: state
@@ -244,6 +255,7 @@
 
 
 - alias: GA - Turn Multimedia off if multimedia switch goes off
+  id: ga_turn_multimedia_off_if_multimedia_switch_goes_off
   initial_state: true
   trigger:
     - platform: state
@@ -267,6 +279,7 @@
 
 
 - alias: GA - Turn Multimedia off if all multimedia is off
+  id: ga_turn_multimedia_off_if_all_multimedia_is_off
   initial_state: true
   trigger:
     - platform: state
@@ -294,6 +307,7 @@
 
 
 - alias: GA - Set TV Audio To Home Cinema
+  id: ga_set_tv_audio_to_home_cinema
   initial_state: true
   trigger:
     - platform: state

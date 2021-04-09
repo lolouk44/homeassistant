@@ -1,4 +1,5 @@
 - alias: Starling - Balance Below £20
+  id: starling_balance_below_ps20
   initial_state: true
   trigger:
     - platform: numeric_state

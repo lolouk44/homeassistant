@@ -1,4 +1,5 @@
 - alias: MiBox - Turn Movies on when Kodi is Playing
+  id: mibox_turn_movies_on_when_kodi_is_playing
   initial_state: false
   trigger:
     platform: state
@@ -18,6 +19,7 @@
       entity_id: input_boolean.movies
 
 - alias: MiBox - Turn Movies on when Netflix or Prime is Playing
+  id: mibox_turn_movies_on_when_netflix_or_prime_is_playing
   initial_state: false
   trigger:
     platform: state

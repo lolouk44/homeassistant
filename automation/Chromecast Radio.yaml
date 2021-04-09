@@ -1,4 +1,5 @@
 - alias: Chromecast - Set Radio Volume
+  id: chromecast_set_radio_volume
   initial_state: true
   trigger:
     platform: state
@@ -16,6 +17,7 @@
 
 
 - alias: Chromecast - Set Speakers & Station
+  id: chromecast_set_speakers_station
   initial_state: true
   trigger:
   - platform: state
@@ -72,6 +74,7 @@
       source: 'ChromeCast1'
 
 - alias: Onkyo - Turn Off When Stop Playing On ChromeCast
+  id: onkyo_turn_off_when_stop_playing_on_chromecast
   initial_state: true
   trigger:
   - platform: state
@@ -117,6 +120,7 @@
     entity_id: media_player.onkyo_tx_nr656_zone_2
     
 - alias: ChromeCast - Stop ChromeCast When Turning Onkyo Off or Sky On
+  id: chromecast_stop_chromecast_when_turning_onkyo_off_or_sky_on
   initial_state: true
   trigger:
   - platform: state

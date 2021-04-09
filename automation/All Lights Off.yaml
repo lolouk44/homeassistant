@@ -1,4 +1,5 @@
 - alias: Lights - All Lights Off
+  id: lights_all_lights_off
   initial_state: true
   trigger:
     - platform: state
@@ -45,6 +46,7 @@
 
 
 - alias: Lights - All Lights Off - Sunrise
+  id: lights_all_lights_off_sunrise
   initial_state: true
   trigger:
     - platform: state

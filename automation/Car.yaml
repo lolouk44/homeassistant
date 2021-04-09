@@ -1,4 +1,5 @@
 - alias: BMW - Windows/Doors left open
+  id: bmw_windows_doors_left_open
   initial_state: true
   trigger:
     - platform: state
@@ -49,6 +50,7 @@
           {%- endfor %}
 
 - alias: BMW - iOS Notification Car Unlocked
+  id: bmw_ios_notification_car_unlocked
   initial_state: true
   trigger:
     - platform: state
@@ -73,6 +75,7 @@
             entity_id: lock.220d_lock
 
 - alias: BMW - iOS Notification Lock Car
+  id: bmw_ios_notification_lock_car
   initial_state: true
   trigger:
     - platform: event
@@ -89,6 +92,7 @@
         entity_id: lock.220d_lock
 
 - alias: BMW - Ventilate the car from iOS Notification
+  id: bmw_ventilate_the_car_from_ios_notification
   initial_state: true
   trigger:
     # iOS 2.0 App Support
@@ -104,6 +108,7 @@
 
 
 - alias: BMW - Ventilate When Temp Above 20
+  id: bmw_ventilate_when_temp_above_20
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -137,6 +142,7 @@
 
 
 - alias: Astra - Toggle Deep Sleep
+  id: astra_toggle_deep_sleep
   initial_state: true
   trigger:
     - platform: state
@@ -150,13 +156,14 @@
         entity_id: switch.astra_car_battery_deep_sleep_wake
 
 - alias: Astra - Battery Low
+  id: astra_battery_low
   initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.astra_car_battery_voltage
   condition:
     - condition: template
-      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") | float < 11.9}}'
+      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") != "unknown" and states("sensor.astra_car_battery_voltage") | float < 11.9}}'
   action:
     - service: notify.gmaillolo
       data_template:

@@ -1,4 +1,5 @@
-- alias: HASS - ZigBee2MQTT Docker Down
+- alias: Zigbee - ZigBee2MQTT Docker Down
+  id: zigbee_zigbee2mqtt_docker_down
   initial_state: true
   trigger:
     - platform: state
@@ -12,8 +13,8 @@
       title: "HA - ZigBee2MQTT Docker Down"
       message: 'Warning - ZigBee2MQTT Docker Container Is Down'
 
-- id: HASS - update_networkmap
-  alias: 'Zigbee Network Map Update'  
+- alias: 'Zigbee - Network Map Update'  
+  id: zigbee_network_map_update
   initial_state: true
   trigger:
     platform: time_pattern

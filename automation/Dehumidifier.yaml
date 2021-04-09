@@ -1,4 +1,5 @@
 - alias: Dehumidifier - Mark Dehumidifier Tank as not full
+  id: dehumidifier_mark_dehumidifier_tank_as_not_full
   initial_state: true
   trigger:
     - platform: state
@@ -15,6 +16,7 @@
 
 
 - alias: Dehumidifier - Turn LWRF Socket if Power but LWRF is Off
+  id: dehumidifier_turn_lwrf_socket_if_power_but_lwrf_is_off
   initial_state: true
   trigger:
     - platform: state
@@ -35,6 +37,7 @@
 
 
 - alias: Dehumidifier - Dehumidifier Tank is full
+  id: dehumidifier_dehumidifier_tank_is_full
   initial_state: true
   trigger:
     - platform: numeric_state
@@ -68,6 +71,7 @@
 
 
 - alias: Dehumidifier - Start Dehumidifier
+  id: dehumidifier_start_dehumidifier
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -97,6 +101,7 @@
 
 
 - alias: Dehumidifier - Stop Dehumidifier
+  id: dehumidifier_stop_dehumidifier
   initial_state: true
   trigger:
     - platform: time_pattern

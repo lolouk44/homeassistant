@@ -24,7 +24,6 @@ cards:
             - entity_id: media_player.as_aftmm_cast
             - entity_id: media_player.mibox3
             - entity_id: light.red_light
-            - entity_id: "*browser_mod*"
             - entity_id: "*astra_car*"
             - entity_id: "*google*alarms"
             - entity_id: "*google*timers"
@@ -47,6 +46,39 @@ cards:
               state: "< 10%"
             - entity_id: "sensor.*battery"
               state: "< 10%"
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All Batteries
+          open: false
+        filter:
+          include:
+            - entity_id: "sensor.*battery2"
+            - entity_id: "sensor.*battery"
+        sort:
+          method: 'state'
+          numeric: true
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: All ZB2MQTT Last Seen
+          open: false
+        filter:
+          include:
+            - entity_id: "sensor.*last_seen"
+        sort:
+          method: 'state'
+          numeric: false
   - type: entities
     entities:
       - type: custom:fold-entity-row
@@ -117,55 +149,6 @@ cards:
             - entity_id: sensor.cctv2_ram_usage
             - entity_id: sensor.cctv2_root_disk_usage
             - entity_id: sensor.cctv2_disk_temp
-  - type: entities
-    show_header_toggle: false
-    entities:
-      - type: custom:auto-entities
-        card:
-          type: custom:fold-entity-row
-          head:
-            type: section
-            label: All Batteries
-          open: false
-        filter:
-          include:
-            - entity_id: "sensor.*battery2"
-            - entity_id: "sensor.*battery"
-        sort:
-          method: 'state'
-          numeric: true
-  - type: entities
-    show_header_toggle: false
-    entities:
-      - type: custom:auto-entities
-        card:
-          type: custom:fold-entity-row
-          head:
-            type: section
-            label: All ZB2MQTT Last Seen
-          open: false
-        filter:
-          include:
-            - entity_id: "sensor.*last_seen"
-        sort:
-          method: 'state'
-          numeric: false
-  - type: entities
-    show_header_toggle: false
-    entities:
-      - type: custom:auto-entities
-        card:
-          type: custom:fold-entity-row
-          head:
-            type: section
-            label: All ZB2MQTT LQI
-          open: false
-        filter:
-          include:
-            - entity_id: "sensor.*_lqi"
-        sort:
-          method: 'state'
-          numeric: true
   - type: entities
     show_header_toggle: false
     entities:

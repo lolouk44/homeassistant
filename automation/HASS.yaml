@@ -1,4 +1,5 @@
 - alias: HASS - Update Available Notification
+  id: hass_update_available_notification
   initial_state: true
   trigger:
     platform: state
@@ -13,6 +14,7 @@
         message: 'There is an update to Home-Assistant: {{states("sensor.online_version")}} (https://www.home-assistant.io/latest-release-notes/)'
 
 - alias: HASS - New Docker Available Notification
+  id: hass_new_docker_available_notification
   initial_state: true
   trigger:
     platform: state
@@ -27,6 +29,7 @@
         message: 'The {{states("sensor.docker_version")}} Docker Image is now available'
 
 - alias: HASS - Start Sound
+  id: hass_start_sound
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -39,6 +42,7 @@
       media_content_type: 'audio/mp4'
 
 - alias: HASS - Start RadioStream Scrape
+  id: hass_start_radiostream_scrape
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -49,6 +53,7 @@
   - service: shell_command.start_radiostream_sensors
 
 - alias: HASS - Start Install Catt
+  id: hass_start_install_catt
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -57,6 +62,7 @@
   - service: shell_command.catt_install
 
 - alias: HASS - Stop Motion Detection
+  id: hass_stop_motion_detection
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -72,6 +78,7 @@
     entity_id: switch.cctv_staircase_status
 
 - alias: HASS - Nightly Restart
+  id: hass_nightly_restart
   initial_state: true
   trigger:
     platform: time_pattern
@@ -101,10 +108,11 @@
   - service: shell_command.refresh_bin_collection
 
 - alias: HASS - SSL expiry notification
+  id: hass_ssl_expiry_notification
   initial_state: true
   trigger:
     platform: template
-    value_template: '{{ states("sensor.ssl_cert_expiry") | int < 21 and states("sensor.ssl_cert_expiry") != "unavailable"}}'
+    value_template: '{{ states("sensor.ssl_cert_expiry") | int < 21 and states("sensor.ssl_cert_expiry") != "unavailable" and states("sensor.ssl_cert_expiry") != "unknown"}}'
   action:
     service: notify.gmaillolo
     data:
@@ -112,6 +120,7 @@
       message: 'Warning - SSL certificate expires in <21 days and has not been automatically renewed'
 
 - alias: HASS - Start Xmas Setup
+  id: hass_start_xmas_setup
   initial_state: true
   trigger:
     - platform: homeassistant
@@ -137,6 +146,7 @@
 
 
 - alias: HASS - Failed Login Attempt Notification
+  id: hass_failed_login_attempt_notification
   initial_state: true
   trigger:
     - platform: state
@@ -152,13 +162,16 @@
 
 
 - alias: HASS - hasspodcast Update Available
+  id: hass_hasspodcast_update_available
   initial_state: true
   trigger:
     platform: state
     entity_id: sensor.ha_podcast_track
   condition:
     - condition: template
-      value_template: '{{states("sensor.ha_podcast_track") != "unavailable" }}'
+      value_template: '{{states("sensor.ha_podcast_track") != "unavailable" and states("sensor.ha_podcast_track") != "unknown" }}'
+    - condition: template
+      value_template: '{{trigger.from_state.state != "unavailable" and trigger.from_state.state != "unknown" and trigger.from_state.state != trigger.to_state.state}}'
   action:
     - service: notify.gmaillolo
       data_template:
@@ -167,6 +180,7 @@
           There is a new hass podcast: {{ states("sensor.ha_podcast_track")}}
 
 - alias: HASS - HACS Notification Of Pending updates
+  id: hass_hacs_notification_of_pending_updates
   trigger:
     platform: state
     entity_id: sensor.hacs
@@ -185,6 +199,7 @@
         {% endfor %}
 
 - alias: HASS - Set Theme
+  id: hass_set_theme
   initial_state: true
   trigger:
     - platform: state

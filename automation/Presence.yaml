@@ -1,4 +1,5 @@
 - alias: Presence - Tell Div Lolo left work
+  id: presence_tell_div_lolo_left_work
   initial_state: true
   trigger:
     platform: state
@@ -15,6 +16,7 @@
 
 
 - alias: Presence - Tell Div Lolo reached work
+  id: presence_tell_div_lolo_reached_work
   initial_state: true
   trigger:
     platform: state
@@ -30,6 +32,7 @@
 
 
 - alias: Presence - Tell Lolo Div left work
+  id: presence_tell_lolo_div_left_work
   initial_state: true
   trigger:
     platform: state
@@ -46,6 +49,7 @@
 
 
 - alias: Presence - Tell Lolo Div left yoga
+  id: presence_tell_lolo_div_left_yoga
   initial_state: true
   trigger:
     - platform: state
@@ -64,6 +68,7 @@
         message: 'Div left yoga. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}})'
 
 - alias: Presence - Switch everything off when we leave home
+  id: presence_switch_everything_off_when_we_leave_home
   initial_state: false
   trigger:
     - platform: state
@@ -106,6 +111,7 @@
 
 
 - alias: Presence - Tell Lolo of a long drive home
+  id: presence_tell_lolo_of_a_long_drive_home
   initial_state: true
   trigger:
     - platform: state
@@ -137,6 +143,7 @@
 
 
 - alias: Presence - location_lolo
+  id: presence_location_lolo
   initial_state: true
   trigger:
       - platform: state
@@ -149,6 +156,7 @@
       retain: true
 
 - alias: Presence - location_div
+  id: presence_location_div
   initial_state: true
   trigger:
       - platform: state

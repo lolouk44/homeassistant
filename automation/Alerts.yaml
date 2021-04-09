@@ -209,6 +209,7 @@
 
 
 - alias: Alert - Pi-hole Lost On
+  id: alert_pi_hole_lost_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -225,6 +226,7 @@
       entity_id: input_boolean.alert_lost_pi_hole_at_300
 
 - alias: Alert - Pi-hole Lost Off
+  id: alert_pi_hole_lost_off
   initial_state: true
   trigger:
     - platform: state

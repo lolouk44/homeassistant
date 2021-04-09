@@ -1,4 +1,5 @@
 - alias: Kello - Set Volume
+  id: kello_set_volume
   initial_state: true
   trigger:
     - platform: state
@@ -11,6 +12,7 @@
       retain: false
 
 - alias: Kello - Mute Alarms
+  id: kello_mute_alarms
   initial_state: true
   trigger:
     - platform: state
@@ -45,6 +47,7 @@
         entity_id: input_boolean.kello_mute_alarms
 
 - alias: Kello - Unmute Alarms
+  id: kello_unmute_alarms
   initial_state: true
   trigger:
     - platform: state
@@ -77,6 +80,7 @@
         entity_id: input_boolean.kello_mute_alarms
 
 - alias: Kello - Stop Radio
+  id: kello_stop_radio
   initial_state: true
   trigger:
     - platform: state
@@ -90,6 +94,7 @@
         retain: false
 
 - alias: Kello - Play Radio
+  id: kello_play_radio
   initial_state: true
   trigger:
     - platform: state
@@ -122,6 +127,7 @@
       retain: false
 
 - alias: Kello - Build Weather Greeting IFTTT
+  id: kello_build_weather_greeting_ifttt
   initial_state: true
   trigger:
     - platform: event
@@ -165,6 +171,7 @@
       retain: false
 
 - alias: Kello - Play Weather Greeting IFTTT
+  id: kello_play_weather_greeting_ifttt
   initial_state: true
   trigger:
     platform: event

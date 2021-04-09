@@ -1,4 +1,5 @@
 - alias: Onkyo - Turn On When TV Goes On
+  id: onkyo_turn_on_when_tv_goes_on
   initial_state: true
   trigger:
   - platform: state
@@ -17,6 +18,7 @@
     entity_id: media_player.onkyo_tx_nr656
 
 - alias: TV - Set TV To Home cinema when Vol TV changes
+  id: tv_set_tv_to_home_cinema_when_vol_tv_changes
   initial_state: true
   trigger:
   - platform: numeric_state

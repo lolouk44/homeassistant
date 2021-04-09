@@ -1,4 +1,5 @@
 - alias: HP Printer - Instant Ink per Month Counter Reset
+  id: hp_printer_instant_ink_per_month_counter_reset
   trigger:
     - platform: time
       at: '06:00:00'

@@ -1,4 +1,5 @@
 - alias: Play Good Morning
+  id: play_good_morning
   initial_state: false
   trigger:
     - platform: state

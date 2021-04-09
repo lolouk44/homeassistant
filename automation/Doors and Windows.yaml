@@ -1,4 +1,5 @@
 - alias: Openings - Door or Window Opens Closes
+  id: openings_door_or_window_opens_closes
   initial_state: true
   trigger:
     - platform: state
@@ -48,6 +49,7 @@
 
 
 - alias: Openings - Downstairs Window Left Open At Night
+  id: openings_downstairs_window_left_open_at_night
   initial_state: true
   trigger:
     - platform: state
@@ -121,6 +123,7 @@
 
 
 - alias: Openings - Conservatory Door Left Unlocked At Night
+  id: openings_conservatory_door_left_unlocked_at_night
   initial_state: true
   trigger:
     - platform: state
@@ -164,6 +167,7 @@
 
 
 - alias: Openings -  Hallway Light On When Opening Main Door
+  id: openings_hallway_light_on_when_opening_main_door
   initial_state: true
   trigger:
     - platform: state
@@ -192,6 +196,7 @@
 
 
 - alias: Openings - Hallway Light Off 2 min after Opening Main Door
+  id: openings_hallway_light_off_2_min_after_opening_main_door
   initial_state: true
   trigger:
     - platform: state

@@ -1,4 +1,5 @@
 - alias: LWRF Remote 1 On
+  id: lwrf_remote_1_on
   initial_state: true
   # Kitchen lights on
   trigger:
@@ -29,6 +30,7 @@
 
 
 - alias: LWRF Remote 1 Off
+  id: lwrf_remote_1_off
   initial_state: true
   # Kitchen lights on
   trigger:
@@ -59,6 +61,7 @@
 
 
 - alias: LWRF Remote 2 On
+  id: lwrf_remote_2_on
   initial_state: true
   # Go through CCTV feeds on TV
   trigger:
@@ -82,6 +85,7 @@
   - service: shell_command.viera_audio_home_cinema
 
 - alias: LWRF Remote 2 Off
+  id: lwrf_remote_2_off
   initial_state: true
   # Go through CCTV feeds on TV
   trigger:
@@ -110,6 +114,7 @@
 
 
 - alias: LWRF Remote 3 On
+  id: lwrf_remote_3_on
   initial_state: true
   # Unmute ChromeCasts
   trigger:
@@ -131,6 +136,7 @@
       is_volume_muted: false
 
 - alias: LWRF Remote 3 Off
+  id: lwrf_remote_3_off
   initial_state: true
   # Mute ChromeCasts
   trigger:

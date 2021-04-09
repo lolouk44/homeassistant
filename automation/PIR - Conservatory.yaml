@@ -1,4 +1,5 @@
 - alias: Lights - Conservatory Lights On PIR
+  id: lights_conservatory_lights_on_pir
   initial_state: true
   trigger:
     - platform: state
@@ -38,6 +39,7 @@
 
 
 - alias: Lights - Conservatory Lights Dimmed Off PIR
+  id: lights_conservatory_lights_dimmed_off_pir
   initial_state: true
   trigger:
     - platform: state
@@ -63,6 +65,7 @@
 
 
 - alias: Lights - Conservatory Lights Off PIR
+  id: lights_conservatory_lights_off_pir
   initial_state: true
   trigger:
     - platform: state
@@ -96,6 +99,7 @@
 
 
 - alias: Lights - Conservatory LED Lights On PIR
+  id: lights_conservatory_led_lights_on_pir
   initial_state: true
   trigger:
     - platform: state

@@ -1,4 +1,5 @@
 - alias: Fire Stick 4K - Turn Movies on when Netflix or Prime is Playing
+  id: fire_stick_4k_turn_movies_on_when_netflix_or_prime_is_playing
   initial_state: true
   trigger:
     - platform: state
@@ -29,6 +30,7 @@
       entity_id: input_boolean.movies
 
 - alias: Fire Stick 4K - Dim Lights when Kodi, Netflix or Prime is Paused
+  id: fire_stick_4k_dim_lights_when_kodi_netflix_or_prime_is_paused
   initial_state: true
   trigger:
     - platform: state
@@ -45,6 +47,7 @@
       brightness: 11
 
 - alias: Fire Stick 4K - Turn Lights Off when Kodi, Netflix or Prime is Unpaused
+  id: fire_stick_4k_turn_lights_off_when_kodi_netflix_or_prime_is_unpaused
   initial_state: true
   trigger:
     - platform: state

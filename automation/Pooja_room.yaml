@@ -1,4 +1,5 @@
 - alias: Pooja - Turn Pooja Frame Off after 3h
+  id: pooja_turn_pooja_frame_off_after_3h
   initial_state: true
   trigger:
     - platform: state
@@ -16,6 +17,7 @@
       entity_id: light.pooja_frame
 
 - alias: Pooja - Toggle Turn Pooja Frame From Aqara Button
+  id: pooja_toggle_turn_pooja_frame_from_aqara_button
   initial_state: true
   trigger:
     - platform: mqtt

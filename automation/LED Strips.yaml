@@ -1,4 +1,5 @@
 - alias: LED Strip - TV Cabinet LED Strip On PIR
+  id: led_strip_tv_cabinet_led_strip_on_pir
   initial_state: true
   trigger:
     - platform: state
@@ -37,6 +38,7 @@
 
 
 - alias: LED Strip - Flash Alert
+  id: led_strip_flash_alert
   initial_state: true
   trigger:
     - platform: state
@@ -106,6 +108,7 @@
 
 
 - alias: LED Strip - TV Cabinet LED Strip Off by PIR
+  id: led_strip_tv_cabinet_led_strip_off_by_pir
   initial_state: true
   trigger:
     - platform: state
@@ -146,6 +149,7 @@
 
 
 - alias: LED Strip - Staircase LED Strip On by PIR
+  id: led_strip_staircase_led_strip_on_by_pir
   initial_state: true
   trigger:
     - platform: state
@@ -182,6 +186,7 @@
 
 
 - alias: LED Strip - Staircase LED Strip Off by PIR
+  id: led_strip_staircase_led_strip_off_by_pir
   initial_state: true
   trigger:
     - platform: state
@@ -205,6 +210,7 @@
 
 
 - alias: LED Strip - House Number On
+  id: led_strip_house_number_on
   initial_state: true
   trigger:
     - platform: state
@@ -245,6 +251,7 @@
       effect: rainbow
 
 - alias: LED Strip - House Number Off
+  id: led_strip_house_number_off
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -272,6 +279,7 @@
       entity_id: light.porch_om_xmas_led_strip
 
 - alias: LED Strip - Turn Pooja Frame Off after 3h
+  id: led_strip_turn_pooja_frame_off_after_3h
   initial_state: true
   trigger:
     - platform: state

@@ -20,6 +20,7 @@ cards:
   - type: entities
     title: Freezer
     show_header_toggle: false
+    state_color: true
     entities:
       - entity: binary_sensor.garage_freezer_door
         secondary_info: last-changed

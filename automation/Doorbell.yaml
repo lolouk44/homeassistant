@@ -1,4 +1,5 @@
 - alias: Doorbell - Doorbell Notification
+  id: doorbell_doorbell_notification
   initial_state: true
   trigger:
     - platform: state
@@ -54,6 +55,7 @@
 
 
 - alias: Doorbell - Reboot When Video Feed Lost
+  id: doorbell_reboot_when_video_feed_lost
   initial_state: true
   trigger:
     - platform: state
@@ -72,6 +74,7 @@
 
 
 - alias: Doorbell - Set Daylight Colour
+  id: doorbell_set_daylight_colour
   initial_state: false
   trigger:
     - platform: state

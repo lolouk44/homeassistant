@@ -1,4 +1,5 @@
 - alias: Xmas Lights On
+  id: xmas_lights_on
   initial_state: true
   trigger:
     - platform: state
@@ -55,6 +56,7 @@
 
 
 - alias: Xmas Lights Off
+  id: xmas_lights_off
   initial_state: true
   trigger:
     - platform: state
@@ -90,6 +92,7 @@
 
 
 - alias: Xmas Turn Baubles On 1
+  id: xmas_turn_baubles_on_1
   initial_state: true
   trigger:
     - platform: template
@@ -124,6 +127,7 @@
       effect: "uniglow"
 
 - alias: Xmas Turn Baubles On 2
+  id: xmas_turn_baubles_on_2
   initial_state: true
   trigger:
     - platform: template
@@ -158,6 +162,7 @@
       effect: "uniglow"
 
 - alias: Xmas Turn Baubles On 3
+  id: xmas_turn_baubles_on_3
   initial_state: true
   trigger:
     - platform: template
@@ -192,6 +197,7 @@
       effect: "uniglow"
 
 - alias: Xmas - Change Conservatory WLED Effect
+  id: xmas_change_conservatory_wled_effect
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -220,6 +226,7 @@
       effect: '{{states.input_select.wled_effects.attributes.options[range(0, 14) | random]}}'
 
 - alias: Xmas - Change Garage WLED Effect
+  id: xmas_change_garage_wled_effect
   initial_state: true
   trigger:
     - platform: time_pattern

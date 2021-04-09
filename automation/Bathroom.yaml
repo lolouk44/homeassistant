@@ -1,5 +1,5 @@
-- alias: Bathroom - Turn Fan On When R% > 75%
-  id: bathroom_-_turn_fan_on_when_r_over_75
+- alias: Bathroom - Turn Fan On When R% too high
+  id: bathroom_turn_fan_on_when_r_too_high
   initial_state: true
   trigger:
     - platform: state
@@ -8,9 +8,7 @@
     - condition: or
       conditions:
         - condition: template
-          value_template: '{{ states("sensor.bathroom_humidity") | int >= 75 and states("sensor.season") != "autumn"}}'
-        - condition: template
-          value_template: '{{ states("sensor.bathroom_humidity") | int >= 80 and states("sensor.season") == "autumn"}}'
+          value_template: '{{ states("sensor.bathroom_humidity") | int >= 70}}'
     - condition: state
       entity_id: switch.bathroom_fan
       state: 'off'
@@ -19,13 +17,13 @@
     data:
       entity_id: switch.bathroom_fan
 
-- alias: Bathroom - Turn Fan Off When R% < 75%
-  id: bathroom_-_turn_fan_off_when_r_under_75
+- alias: Bathroom - Turn Fan Off When R% normal
+  id: bathroom_turn_fan_on_when_r_normal
   initial_state: true
   trigger:
     - platform: numeric_state
       entity_id: sensor.bathroom_humidity
-      below: 75
+      below: 70
       for:
         minutes: 20
     - platform: state
@@ -43,6 +41,7 @@
       entity_id: switch.bathroom_fan
 
 - alias: Bathroom - Toggle Fan From Aqara Button
+  id: bathroom_toggle_fan_from_aqara_button
   initial_state: true
   trigger:
     - platform: mqtt

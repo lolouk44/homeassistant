@@ -4,6 +4,7 @@
 
 
 - alias: Lights - Kitchen Lights On PIR
+  id: lights_kitchen_lights_on_pir
   initial_state: true
   trigger:
     - platform: state
@@ -51,6 +52,7 @@
 
 
 - alias: Lights - Kitchen Lights Dimmed Off PIR
+  id: lights_kitchen_lights_dimmed_off_pir
   initial_state: true
   trigger:
     - platform: state
@@ -81,6 +83,7 @@
 
 
 - alias: Lights - Kitchen Lights Off PIR
+  id: lights_kitchen_lights_off_pir
   initial_state: true
   trigger:
     - platform: state
@@ -137,6 +140,7 @@
 
 
 - alias: Lights - Kitchen TV On PIR
+  id: lights_kitchen_tv_on_pir
   initial_state: true
   trigger:
     - platform: state
@@ -162,6 +166,7 @@
       entity_id: switch.zigbee_round_socket
 
 - alias: Lights - Kitchen TV Off PIR
+  id: lights_kitchen_tv_off_pir
   initial_state: true
   trigger:
     - platform: state

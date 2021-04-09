@@ -196,6 +196,12 @@
   value_template: "{{ value_json['last_seen'] }}"
   device_class: timestamp
 
+- platform: mqtt
+  name: "Garage Freezer Door Last Seen"
+  state_topic: "zigbee2mqtt/garage_freezer_door"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
 - platform: template
   sensors:
     lost_zigbee_devices:

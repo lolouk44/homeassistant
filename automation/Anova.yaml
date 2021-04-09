@@ -1,4 +1,5 @@
 - alias: Anova - Set Recipe Timer
+  id: anova_set_recipe_timer
   initial_state: true
   trigger:
     - platform: state

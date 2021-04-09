@@ -1,4 +1,5 @@
 - alias: Lights - Staircase Light On by PIR
+  id: lights_staircase_light_on_by_pir
   initial_state: true
   trigger:
     - platform: state
@@ -54,6 +55,7 @@
 
 
 - alias: Lights - Staircase Light Off by PIR
+  id: lights_staircase_light_off_by_pir
   initial_state: true
   trigger:
     - platform: state

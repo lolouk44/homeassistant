@@ -1,4 +1,5 @@
 - alias: Yale - Unlock when reaching home from iOS Notification (W/O Alarm)
+  id: yale_unlock_when_reaching_home_from_ios_notification_w_o_alarm
   initial_state: true
   trigger:
     - platform: state
@@ -28,6 +29,7 @@
             entity_id: lock.yale_conexis_l1_lock
 
 - alias: Yale - Unlock when reaching home from iOS Notification (W Alarm)
+  id: yale_unlock_when_reaching_home_from_ios_notification_w_alarm
   initial_state: true
   trigger:
     - platform: state
@@ -57,6 +59,7 @@
             entity_id: alarm_control_panel.alarm
 
 - alias: Yale - Unlock & Disarm Alarm from iOS Notification
+  id: yale_unlock_disarm_alarm_from_ios_notification
   initial_state: true
   trigger:
     - platform: event
@@ -86,6 +89,7 @@
         code: !secret alarm_code
 
 - alias: Yale - Unlock Lock from iOS Notification
+  id: yale_unlock_lock_from_ios_notification
   initial_state: true
   trigger:
     - platform: event
@@ -112,6 +116,7 @@
 
 
 - alias: Yale - Door Left Unlocked
+  id: yale_door_left_unlocked
   initial_state: true
   trigger:
     - platform: state
@@ -157,6 +162,7 @@
 
 
 - alias: Yale - Lock Jammed
+  id: yale_lock_jammed
   initial_state: true
   trigger:
     - platform: state
@@ -197,6 +203,7 @@
         message: 'Please note: the porch door lock is jammed'
 
 - alias: Yale - Battery below 10%
+  id: yale_battery_below_10
   initial_state: true
   trigger:
     - platform: state
@@ -218,6 +225,7 @@
         message: 'The Battery on the Yale Lock is low ({{ states("sensor.yale_conexis_l1_battery_level") | int}}%)'
 
 - alias: Yale - Unlock when Opening Main Door From Inside
+  id: yale_unlock_when_opening_main_door_from_inside
   initial_state: true
   trigger:
     - platform: state
