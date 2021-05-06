@@ -248,3 +248,13 @@
     - service: lock.unlock
       data:
         entity_id: lock.yale_conexis_l1_lock
+
+# - alias: Yale - Event
+#   trigger:
+#     platform: event
+#     event_type: zwave_js_notification
+#   action:
+#     - service: notify.gmaillolo
+#       data_template:
+#         title: 'HA - Yale Event'
+#         message: 'Event:  {{ trigger.event.data}}'
