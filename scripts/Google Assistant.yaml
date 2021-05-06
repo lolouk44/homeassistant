@@ -3,6 +3,6 @@ nest_hub_start_cast:
   sequence:
     - service: media_player.volume_set
       data:
-        entity_id: media_player.master_bedroom_display
+        entity_id: media_player.master_bedroom_nest_hub
         volume_level: 0
     - service: shell_command.catt_cast_ha_to_bedroom

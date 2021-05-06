@@ -20,6 +20,7 @@ chromecast_radio_speakers:
     - Conservatory
     - House
     - Kitchen
-    - Master Bedroom
     - Living Room
+    - Master Bedroom Nest Hub
+    - Office Nest Hub
   icon: mdi:speaker-wireless

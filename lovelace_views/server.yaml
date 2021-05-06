@@ -28,6 +28,8 @@ cards:
             - entity_id: "*google*alarms"
             - entity_id: "*google*timers"
             - entity_id: "*nest*timers"
+            - entity_id: "*office*alarms"
+            - entity_id: "*office*timers"
         sort:
           method: 'name'
   - type: entities
@@ -92,29 +94,6 @@ cards:
           - sensor.current_version
           - sensor.online_version
           - sensor.docker_version
-  - type: entities
-    entities:
-      - type: custom:fold-entity-row
-        head:
-          type: section
-          label: Pi-hole
-        group_config:
-          state_color: true
-        open: false
-        entities:
-          - entity: binary_sensor.pi_hole
-          - entity: switch.pi_hole
-          - entity: script.pi_hole_disable_10_min
-            icon: mdi:shield-off
-          - entity: sensor.pi_hole_ads_blocked_today
-          - entity: sensor.pi_hole_ads_percentage_blocked_today
-          - entity: sensor.pi_hole_dns_queries_cached
-          - entity: sensor.pi_hole_dns_queries_forwarded
-          - entity: sensor.pi_hole_dns_queries_today
-          - entity: sensor.pi_hole_dns_unique_clients
-          - entity: sensor.pi_hole_dns_unique_domains
-          - entity: sensor.pi_hole_domains_blocked
-          - entity: sensor.pi_hole_seen_clients
   - type: entities
     show_header_toggle: false
     entities:

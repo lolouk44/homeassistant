@@ -22,15 +22,17 @@
   trigger:
   - platform: state
     entity_id:
+      - media_player.master_bedroom_nest_hub
       - media_player.conservatory
       - media_player.kitchen
       - media_player.living_room
+      - media_player.office_nest_hub
       - media_player.house
     to: 'playing'
   action:
   - service: media_player.volume_mute
     data:
-      entity_id: media_player.conservatory, media_player.house, media_player.kitchen, media_player.living_room, media_player.onkyo_tx_nr656
+      entity_id: '{{trigger.entity_id}}'
       is_volume_muted: false
   - service: input_select.select_option
     data_template:
@@ -39,6 +41,8 @@
         {% if is_state(trigger.entity_id, "media_player.conservatory") %} Conservatory
         {% elif is_state(trigger.entity_id, "media_player.kitchen") %} Kitchen
         {% elif is_state(trigger.entity_id, "media_player.living_room") %} Living Room
+        {% elif is_state(trigger.entity_id, "media_player.master_bedroom_nest_hub") %} Master Bedroom Nest Hub
+        {% elif is_state(trigger.entity_id, "media_player.office_nest_hub") %} Office Nest Hub
         {% elif is_state(trigger.entity_id, "media_player.house") %} House
         {% endif %}
   - service: input_select.select_option
@@ -53,7 +57,7 @@
         {% elif (is_state_attr(trigger.entity_id, 'media_content_id', states("sensor.internet_of_things_podcast")) or is_state_attr("media_player.house", 'media_content_id', states("sensor.internet_of_things_podcast"))) %} IoT Podcast
         {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'http://192.111.142.176:8000/NAVTARANG') or is_state_attr("media_player.house", 'media_content_id', 'http://192.111.142.176:8000/NAVTARANG')) %} Navtarang
         {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'http://peridot.streamguys.com:7150/RFTwo?play') or is_state_attr("media_player.house", 'media_content_id', 'http://peridot.streamguys.com:7150/RFTwo?play')) %} Radio Fiji Two
-        {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'http://streaming.radio.rtl2.fr:80/rtl2-1-44-96') or is_state_attr("media_player.house", 'media_content_id', 'http://streaming.radio.rtl2.fr:80/rtl2-1-44-96')) %} RTL2
+        {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'http://icecast.rtl2.fr/rtl2-1-44-128') or is_state_attr("media_player.house", 'media_content_id', 'http://icecast.rtl2.fr/rtl2-1-44-128')) %} RTL2
         {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'states("input_text.custom_station")') or is_state_attr("media_player.house", 'media_content_id', 'states("input_text.custom_station")')) %} Custom Station
         {% endif %}
   - service: media_player.turn_on
@@ -64,7 +68,7 @@
       entity_id: media_player.onkyo_tx_nr656_zone_2
       source: 'ChromeCast2'
   - condition: template
-    value_template: '{{ states("media_player.onkyo_tx_nr656")=="off" }}'
+    value_template: '{{ states("media_player.onkyo_tx_nr656")=="off" and (states("media_player.house")=="playing" or states("media_player.living_room")=="playing" )}}'
   - service: media_player.turn_on
     data:
       entity_id: media_player.onkyo_tx_nr656
