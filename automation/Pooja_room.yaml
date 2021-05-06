@@ -37,3 +37,38 @@
     data:
       entity_id: light.pooja_frame
       effect: 'Rainbow'
+
+
+- alias: Pooja - Office Nest Hub UnMute
+  id: pooja_office_nest_hub_unmute
+  initial_state: true
+  # Unmute ChromeCasts
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pooja_door
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_on", "last_triggered") ) | int > 1 )}}'
+  action:
+  - service: media_player.volume_mute
+    data:
+      entity_id: media_player.office_nest_hub #conservatory, media_player.house, media_player.kitchen, media_player.living_room, media_player.onkyo_tx_nr656
+      is_volume_muted: false
+
+- alias: Pooja - Office Nest Hub Mute
+  id: pooja_office_nest_hub_mute
+  initial_state: true
+  # Mute ChromeCasts
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pooja_door
+      to: 'off'
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_off", "last_triggered") ) | int > 1 )}}'
+  action:
+  - service: media_player.volume_mute
+    data:
+      entity_id: media_player.office_nest_hub #conservatory, media_player.house, media_player.kitchen, media_player.living_room, media_player.onkyo_tx_nr656
+      is_volume_muted: true

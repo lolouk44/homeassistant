@@ -11,6 +11,8 @@ cards:
     state_color: true
     show_header_toggle: false
     entities:
+    - entity: binary_sensor.pooja_door
+      secondary_info: last-changed
     - entity: binary_sensor.pooja_room_small_window
       secondary_info: last-changed
     - entity: binary_sensor.pooja_room_big_window
