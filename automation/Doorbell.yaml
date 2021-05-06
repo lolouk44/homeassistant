@@ -56,7 +56,7 @@
 
 - alias: Doorbell - Reboot When Video Feed Lost
   id: doorbell_reboot_when_video_feed_lost
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id:
