@@ -50,6 +50,10 @@ cards:
       type: "custom:mini-media-player"
       power_color: true
       group: true
+    - entity: media_player.master_bedroom_nest_hub
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
     - entity: media_player.conservatory
       type: "custom:mini-media-player"
       power_color: true
@@ -59,6 +63,10 @@ cards:
       power_color: true
       group: true
     - entity: media_player.living_room
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+    - entity: media_player.office_nest_hub
       type: "custom:mini-media-player"
       power_color: true
       group: true

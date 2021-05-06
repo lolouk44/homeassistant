@@ -11,19 +11,19 @@
   device_class: timestamp
 
 - platform: mqtt
-  name: "Master Bedroom Right Window Big Window Last Seen"
+  name: "Master Bedroom Right Big Window Last Seen"
   state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
   value_template: "{{ value_json['last_seen'] }}"
   device_class: timestamp
 
 - platform: mqtt
-  name: "Master Bedroom Right Window Small Window Last Seen"
+  name: "Master Bedroom Right Small Window Last Seen"
   state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
   value_template: "{{ value_json['last_seen'] }}"
   device_class: timestamp
 
 - platform: mqtt
-  name: "Master Bedroom Left Window Small Window Last Seen"
+  name: "Master Bedroom Left Small Window Last Seen"
   state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
   value_template: "{{ value_json['last_seen'] }}"
   device_class: timestamp
@@ -107,7 +107,7 @@
   device_class: timestamp
 
 - platform: mqtt
-  name: "Master Bedroom Left Window Big Window Last Seen"
+  name: "Master Bedroom Left Big Window Last Seen"
   state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
   value_template: "{{ value_json['last_seen'] }}"
   device_class: timestamp
@@ -202,12 +202,18 @@
   value_template: "{{ value_json['last_seen'] }}"
   device_class: timestamp
 
+- platform: mqtt
+  name: "Pooja Door Last Seen"
+  state_topic: "zigbee2mqtt/pooja_door"
+  value_template: "{{ value_json['last_seen'] }}"
+  device_class: timestamp
+
 - platform: template
   sensors:
     lost_zigbee_devices:
       value_template: >-
         {% for state in states.sensor %}
-        {%- if "last_seen" in state.entity_id %} {% if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 7200 %}{{state.entity_id | replace ("binary_","") | replace ("sensor.","")}}{% endif %} {% endif -%}
+        {%- if "last_seen" in state.entity_id %} {% if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 7200 %}{{state.entity_id | replace ("binary_","") | replace ("sensor.","") | replace ("_last_seen","")  | replace ("_"," ") | title}}{% endif %} {% endif -%}
         {% endfor %}
       friendly_name: Lost ZigBee devices
       icon_template: 'mdi:zigbee'

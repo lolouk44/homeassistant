@@ -174,10 +174,10 @@
   id: kello_play_weather_greeting_ifttt
   initial_state: true
   trigger:
-    platform: event
-    event_type: ifttt_webhook_received
-    event_data:
-      action: play_greeting
+    - platform: event
+      event_type: ifttt_webhook_received
+      event_data:
+        action: play_greeting
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_play_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'

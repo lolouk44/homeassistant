@@ -3,8 +3,3 @@
   state_topic: "RPi_Kitchen/Heartbeat"
   icon: mdi:heart-pulse
 
-- platform: mqtt
-  name: "pi-hole Heartbeat"
-  state_topic: "pi-hole/Heartbeat"
-  icon: mdi:heart-pulse
-

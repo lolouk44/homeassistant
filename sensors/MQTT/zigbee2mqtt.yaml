@@ -41,21 +41,21 @@
   device_class: battery
 
 - platform: mqtt
-  name: "Master Bedroom Right Window Big Window Battery"
+  name: "Master Bedroom Right Big Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
   value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
   device_class: battery
 
 - platform: mqtt
-  name: "Master Bedroom Right Window Small Window Battery"
+  name: "Master Bedroom Right Small Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
   value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
   device_class: battery
 
 - platform: mqtt
-  name: "Master Bedroom Left Window Small Window Battery"
+  name: "Master Bedroom Left Small Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
   value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
@@ -237,7 +237,7 @@
   device_class: battery
 
 - platform: mqtt
-  name: "Master Bedroom Left Window Big Window Battery"
+  name: "Master Bedroom Left Big Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
   value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
@@ -337,6 +337,13 @@
 - platform: mqtt
   name: "First Floor Smoke Detector Battery"
   state_topic: "zigbee2mqtt/first_floor_smoke_detector"
+  value_template: "{{ value_json['battery'] }}"
+  unit_of_measurement: "%"
+  device_class: battery
+
+- platform: mqtt
+  name: "Pooja Door Battery"
+  state_topic: "zigbee2mqtt/pooja_door"
   value_template: "{{ value_json['battery'] }}"
   unit_of_measurement: "%"
   device_class: battery

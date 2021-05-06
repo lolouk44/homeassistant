@@ -52,4 +52,4 @@
 
 - platform: ping
   host: 192.168.0.4
-  name: Pi-hole
+  name: Pi-Zero

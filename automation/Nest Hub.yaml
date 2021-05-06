@@ -11,11 +11,11 @@
     - condition: template
       value_template: '{{ states("person.laurent") == "home"}}'
     - condition: template
-      value_template: '{{ states("media_player.master_bedroom_display") != "playing"}}'
+      value_template: '{{ states("media_player.master_bedroom_nest_hub") != "playing"}}'
   action:
     - service: media_player.volume_set
       data:
-        entity_id: media_player.master_bedroom_display
+        entity_id: media_player.master_bedroom_nest_hub
         volume_level: 0
     - service: script.turn_on
       data:

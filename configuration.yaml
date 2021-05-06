@@ -249,10 +249,6 @@ person:
     device_trackers:
       - device_tracker.divashni
 
-pi_hole:
-  - host: 192.168.0.4
-    api_key: !secret pi_hole_api_key
-
 recorder:
   db_url: !secret db_url
 
@@ -292,7 +288,8 @@ rfxtrx:
       # name: Living Room Wall
 
     # Sensors
-    0A520700240E00E4360179:
+    #0A520700240E00E4360179:
+    0a520700210e00e1310169:
       #name: Upstairs
       # data_type:
       # - Humidity
@@ -345,6 +342,7 @@ rfxtrx:
       # fire_event: true
 
 shopping_list:
+  title: To Do List
 
 ssdp:
 
@@ -353,6 +351,23 @@ ssdp:
 sun:
 
 system_health:
+
+template:
+  - trigger:
+      - platform: event
+        event_type: zwave_js_notification
+    sensor:
+      - name: "Yale Notification Status"
+        state: "{{ trigger.event.data.event_label }}"
+  - trigger:
+    - platform: state
+      entity_id:
+      - sensor.yale_notification_status
+      - sensor.yale_alarmtype_status
+      - lock.yale_conexis_l1_lock
+    sensor:
+      - name: "Porch Door Lock Status"
+        state: "{{ trigger.to_state.state | title}}"
 
 tts:
   - platform: google_translate

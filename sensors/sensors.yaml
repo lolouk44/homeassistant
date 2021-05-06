@@ -1,20 +1,21 @@
-- platform: waze_travel_time
-  name: Home to Work
-  origin: zone.home
-  destination: zone.verint
-  region: 'EU'
+# No longer required as moved to UI since 2021.5.0
+# - platform: waze_travel_time
+#   name: Home to Work
+#   origin: zone.home
+#   destination: zone.verint
+#   region: 'EU'
 
-- platform: waze_travel_time
-  name: Lolo to Home
-  origin: person.laurent
-  destination: zone.home
-  region: 'EU'
+# - platform: waze_travel_time
+#   name: Lolo to Home
+#   origin: person.laurent
+#   destination: zone.home
+#   region: 'EU'
 
-- platform: waze_travel_time
-  name: Div to Home
-  origin: person.div
-  destination: zone.home
-  region: 'EU'
+# - platform: waze_travel_time
+#   name: Div to Home
+#   origin: person.div
+#   destination: zone.home
+#   region: 'EU'
 
 
 
