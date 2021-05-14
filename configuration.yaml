@@ -172,9 +172,9 @@ lovelace:
       #Mini media player https://github.com/kalkih/mini-media-player
     - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
-      #Vertical Stack https://github.com/custom-cards/vertical-stack-in-card
-    # - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
-      # type: module
+      #Zigbee Network Map https://github.com/azuwis/zigbee2mqtt-networkmap
+    - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
+      type: module
       # Animated Weather Card https://github.com/bramkragten/weather-card
     - url: /hacsfiles/weather-card/weather-card.js
       type: module
@@ -243,11 +243,13 @@ person:
     user_id: !secret ha_lolo_user_id
     device_trackers:
       - device_tracker.laurent
+      - device_tracker.lolo_s_iphone
   - name: Div
     id: divashni
     user_id: !secret ha_div_user_id
     device_trackers:
       - device_tracker.divashni
+      - device_tracker.div_iphone_2
 
 recorder:
   db_url: !secret db_url
