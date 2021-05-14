@@ -106,7 +106,7 @@
   - service: shell_command.refresh_bin_collection
   - service: zwave_js.refresh_value
     data:
-      entity_id: binary_sensor.yale_conexis_l1_low_battery_level
+      entity_id: sensor.yale_conexis_l1_battery_level
       refresh_all_values: true
 
 - alias: HASS - SSL expiry notification

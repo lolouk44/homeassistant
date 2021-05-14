@@ -60,15 +60,8 @@
         {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'http://icecast.rtl2.fr/rtl2-1-44-128') or is_state_attr("media_player.house", 'media_content_id', 'http://icecast.rtl2.fr/rtl2-1-44-128')) %} RTL2
         {% elif (is_state_attr(trigger.entity_id, 'media_content_id', 'states("input_text.custom_station")') or is_state_attr("media_player.house", 'media_content_id', 'states("input_text.custom_station")')) %} Custom Station
         {% endif %}
-  - service: media_player.turn_on
-    data:
-      entity_id: media_player.onkyo_tx_nr656_zone_2
-  - service: media_player.select_source
-    data:
-      entity_id: media_player.onkyo_tx_nr656_zone_2
-      source: 'ChromeCast2'
   - condition: template
-    value_template: '{{ states("media_player.onkyo_tx_nr656")=="off" and (states("media_player.house")=="playing" or states("media_player.living_room")=="playing" )}}'
+    value_template: '{{ ( states("media_player.onkyo_tx_nr656")=="off" or states("media_player.onkyo_tx_nr656_zone_2")=="off" ) and (states("media_player.house")=="playing" or states("media_player.living_room")=="playing" or states("media_player.conservatory")=="playing" )}}'
   - service: media_player.turn_on
     data:
       entity_id: media_player.onkyo_tx_nr656
@@ -76,6 +69,13 @@
     data:
       entity_id: media_player.onkyo_tx_nr656
       source: 'ChromeCast1'
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.onkyo_tx_nr656_zone_2
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.onkyo_tx_nr656_zone_2
+      source: 'ChromeCast2'
 
 - alias: Onkyo - Turn Off When Stop Playing On ChromeCast
   id: onkyo_turn_off_when_stop_playing_on_chromecast

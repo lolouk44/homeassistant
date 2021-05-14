@@ -51,3 +51,10 @@ cards:
     entities:
       - entity: light.wled_garage
         secondary_info: last-changed
+  - type: button
+    name: Freezer Contents
+    icon: mdi:fridge-bottom
+    show_state: false
+    tap_action:
+      action: url
+      url_path: http://192.168.0.24/html_test/Freezer.php

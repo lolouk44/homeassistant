@@ -343,7 +343,7 @@ zigbee_devices_lost:
     - 120
   notifiers:
     - mobile_app_lolo_s_iphone
-    - gmaillolo
+    # - gmaillolo
 
 
 
