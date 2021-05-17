@@ -50,6 +50,8 @@ cards:
           secondary_info: last-changed
         - entity: light.tv_cabinet_led_strip
           secondary_info: last-changed
+        - entity: light.red_light
+          secondary_info: last-changed
         - entity: switch.lwrf_socket_3
           secondary_info: last-changed
           icon: mdi:hinduism

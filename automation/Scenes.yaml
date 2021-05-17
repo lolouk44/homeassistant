@@ -38,7 +38,7 @@
 
     - service: input_boolean.turn_off
       entity_id: input_boolean.normal
-    - service: switch.turn_on
+    - service: light.turn_on
       data:
         entity_id: light.red_light
     - service: light.turn_off
