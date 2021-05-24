@@ -1,4 +1,7 @@
 project_id: !secret GAproject_id
+service_account:
+  private_key: !secret GAPrivateKey
+  client_email: !secret GAClientEmail
 expose_by_default: false
 entity_config:
 
