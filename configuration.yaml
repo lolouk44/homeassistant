@@ -92,7 +92,7 @@ counter:
     name: iOS Badge Count
     icon: mdi:numeric-1-box
 
-
+  
 discovery:
 
 ffmpeg:
@@ -243,7 +243,7 @@ person:
     user_id: !secret ha_lolo_user_id
     device_trackers:
       - device_tracker.laurent
-      - device_tracker.lolo_s_iphone
+      - device_tracker.lolo_s_iphone_2
   - name: Div
     id: divashni
     user_id: !secret ha_div_user_id
@@ -348,7 +348,7 @@ shopping_list:
 
 ssdp:
 
-# stream:
+stream:
 
 sun:
 
