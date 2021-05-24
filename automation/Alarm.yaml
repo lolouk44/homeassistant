@@ -496,7 +496,7 @@
           FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.first_floor_smoke_detector' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
         data:
           images:
-            - /config/www/CCTV_Snapshots/LivingRoom.
+            - /config/www/CCTV_Snapshots/LivingRoom.jpg
             - /config/www/CCTV_Snapshots/Kitchen.jpg
             - /config/www/CCTV_Snapshots/Conservatory.jpg
             - /config/www/CCTV_Snapshots/Fire7.jpg
