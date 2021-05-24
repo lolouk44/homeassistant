@@ -129,6 +129,13 @@
       to: 'off'
   action:
     - delay: '00:05:00'
+    - service: zwave_js.refresh_value
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
+    - wait_template: "{{ states('lock.yale_conexis_l1_lock') == 'locked' }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
     - condition: template
       value_template: '{{ states("lock.yale_conexis_l1_lock") != "locked" }}'
     - condition: state
