@@ -213,14 +213,14 @@
     lost_zigbee_devices:
       value_template: >-
         {% for state in states.sensor %}
-        {%- if "last_seen" in state.entity_id %} {% if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 7200 %}{{state.entity_id | replace ("binary_","") | replace ("sensor.","") | replace ("_last_seen","")  | replace ("_"," ") | title}}{% endif %} {% endif -%}
+        {%- if "last_seen" in state.entity_id %} {% if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 86400 %}{{state.entity_id | replace ("binary_","") | replace ("sensor.","") | replace ("_last_seen","")  | replace ("_"," ") | title}}{% endif %} {% endif -%}
         {% endfor %}
       friendly_name: Lost ZigBee devices
       icon_template: 'mdi:zigbee'
     lost_zigbee_devices_ticker:
       value_template: >-
         {%- for state in states.sensor %}
-        {%- if "last_seen" in state.entity_id %} {%- if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 7200 %}1{% endif -%} {% endif -%}
+        {%- if "last_seen" in state.entity_id %} {%- if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 86400 %}1{% endif -%} {% endif -%}
         {%- endfor %}
       friendly_name: Lost ZigBee devices
       icon_template: 'mdi:zigbee'
