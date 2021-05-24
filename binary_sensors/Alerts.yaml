@@ -40,3 +40,8 @@
       value_template: >-
         {{ states("sensor.garage_freezer_temperature") | default(0) | int > 0 }}
       friendly_name: Garage Freezer Temperature Too High
+
+    lolo_bedside_cabinet_lost:
+      value_template: >-
+        {{ states("light.lolo_bedside_light") == "unavailable" }}
+      friendly_name: Lolo Bedside Cabinet Lost

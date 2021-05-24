@@ -346,6 +346,17 @@ zigbee_devices_lost:
     # - gmaillolo
 
 
-
-
-
+lolo_bedside_cabinet_lost:
+  name: Zigbee Devices Lost
+  entity_id: binary_sensor.lolo_bedside_cabinet_lost
+  message: 'Lolo Bedside Cabinet Lost'
+  state: 'on'
+  can_acknowledge: true
+  skip_first: true
+  repeat:
+    - 5
+    - 30
+    - 60
+    - 120
+  notifiers:
+    - mobile_app_lolo_s_iphone

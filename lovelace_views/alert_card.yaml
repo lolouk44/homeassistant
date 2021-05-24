@@ -29,6 +29,7 @@ entities:
   - alert.garage_freezer_temp_too_high
   - alert.zigbee_devices_lost
   - counter.iosbadgecount
+  - alert.lolo_bedside_cabinet_lost
 state_color: true
 state_filter:
   - "on"
