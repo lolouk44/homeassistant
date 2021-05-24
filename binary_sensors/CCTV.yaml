@@ -36,11 +36,23 @@
       friendly_name: Doorbell CCTV Video Feed Status
       device_class: connectivity
 
-    staircase_cctv_connection_status:
-      value_template: >
-        {{ states("sensor.cctv_staircase_connection_scrape") == 'OK'}}
-      friendly_name: Staircase CCTV Video Feed Status
-      device_class: connectivity
+    # doorbell_motion :
+    #   value_template: >
+    #     {{ states("binary_sensor.doorbell_motion") == 'on'}}
+    #   friendly_name: Doorbell Motion
+    #   device_class: motion
+
+    # doorbell_person :
+    #   value_template: >
+    #     {{ states("binary_sensor.doorbell_person") == 'on'}}
+    #   friendly_name: Doorbell Person
+    #   device_class: motion
+
+    # doorbell_ring :
+    #   value_template: >
+    #     {{ states("binary_sensor.doorbell_ring") == 'on'}}
+    #   friendly_name: Doorbell Ring
+    #   device_class: motion
 
 
 - platform: hikvision
@@ -74,17 +86,21 @@
   payload_off: "OFF"
   device_class: motion
 
-- platform: mqtt
-  name: "Doorbell Motion"
-  state_topic: "Sensors/CCTV2/Doorbell/Motion"
-  payload_on: "ON"
-  payload_off: "OFF"
-  device_class: motion
+# - platform: rest
+#   name: "Doorbell Motion ioBroker"
+#   resource: http://192.168.0.24:8087/get/eufy-security.0.T8200N02204208EC.cameras.T8200N02204208EC.motion_detected
+#   value_template: '{{ value_json.val }}'
+#   scan_interval: 5
 
-- platform: mqtt
-  name: "Doorbell Ring"
-  state_topic: "Sensors/CCTV2/Doorbell/Ring"
-  payload_on: "ON"
-  payload_off: "OFF"
-  device_class: motion
+# - platform: rest
+#   name: "Doorbell Person ioBroker"
+#   resource: http://192.168.0.24:8087/get/eufy-security.0.T8200N02204208EC.cameras.T8200N02204208EC.person_detected
+#   value_template: '{{ value_json.val }}'
+#   scan_interval: 5
+
+# - platform: rest
+#   name: "Doorbell Ring ioBroker"
+#   resource: http://192.168.0.24:8087/get/eufy-security.0.T8200N02204208EC.cameras.T8200N02204208EC.ringing
+#   value_template: '{{ value_json.val }}'
+#   scan_interval: 5
 

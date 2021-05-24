@@ -39,6 +39,14 @@
   timeout: 30
 
 - platform: rest
+  resource: http://192.168.0.24:8126/container/eufy-bridge
+  name: eufy_bridge
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
   resource: http://192.168.0.24:8126/container/miscale
   name: miscale
   body_on: '{"state": "start"}'
@@ -89,6 +97,14 @@
 - platform: rest
   resource: http://192.168.0.24:8126/container/zigbee2mqtt
   name: zigbee2mqtt
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+  timeout: 30
+
+- platform: rest
+  resource: http://192.168.0.24:8126/container/zwavejs
+  name: zwavejs
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

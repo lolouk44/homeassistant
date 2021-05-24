@@ -180,6 +180,8 @@ cards:
           name: ddclient
         - entity: switch.dropbox
           name: DropBox
+        - entity: switch.eufy_bridge
+          name: eufy-Bridge
         - entity: switch.ha_dockermon
           name: Dockermon
         - entity: switch.grafana
@@ -209,6 +211,8 @@ cards:
           name: ZigBee2MQTT
         - entity: switch.zigbee2mqtt_permit_join
           name: ZigBee2MQTT Permit Join
+        - entity: switch.zwavejs
+          name: Zwave JS
         - entity: switch.cctv2_ha
           name: CCTV2 HA
         - entity: switch.cctv2_motion

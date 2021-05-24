@@ -53,25 +53,29 @@ cards:
         - entity: light.house_number
           secondary_info: last-changed
           icon: mdi:numeric-4-box-multiple-outline
+
   - type: custom:stack-in-card
     mode: vertical
     cards:
     - type: entities
-      title: Nest Thermostat
+      title: Doorbell
       state_color: true
       show_header_toggle: false
       entities:
-        # - entity: climate.hallway
-          # secondary_info: last-changed
-        # - entity: sensor.hallway_thermostat_humidity
-          # secondary_info: last-changed
-        # - entity: binary_sensor.hallway_heating
-          # secondary_info: last-changed
-        - entity: binary_sensor.hallway_thermostat_has_leaf
+        - entity: binary_sensor.doorbell_person_detected
           secondary_info: last-changed
-    - type: thermostat
-      entity: climate.hallway
-      name: " "
+          icon: mdi:face-recognition
+        - entity: binary_sensor.doorbell_doorbell_pressed
+          secondary_info: last-changed
+          icon: mdi:bell-circle-outline
+    - type: picture-entity
+      title: Doorbell
+      entity: camera.doorbell_last_event
+      camera_image: camera.doorbell_last_event
+      show_name: false
+      show_state: false
+
+
   - type: conditional
     conditions:
       - entity: input_boolean.xmas
@@ -93,6 +97,27 @@ cards:
           secondary_info: last-changed
           icon: mdi:snowman
           name: Snowman LED Strip
+
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: entities
+      title: Nest Thermostat
+      state_color: true
+      show_header_toggle: false
+      entities:
+        # - entity: climate.hallway
+          # secondary_info: last-changed
+        # - entity: sensor.hallway_thermostat_humidity
+          # secondary_info: last-changed
+        # - entity: binary_sensor.hallway_heating
+          # secondary_info: last-changed
+        - entity: binary_sensor.hallway_thermostat_has_leaf
+          secondary_info: last-changed
+    - type: thermostat
+      entity: climate.hallway
+      name: " "
+
   - type: entities
     title: Fire 7
     state_color: true
@@ -104,20 +129,3 @@ cards:
         secondary_info: last-changed
       - entity: switch.fire7_charger
         secondary_info: last-changed
-
-  - type: custom:stack-in-card
-    mode: vertical
-    cards:
-    - type: entities
-      title: Doorbell
-      state_color: true
-      show_header_toggle: false
-      entities:
-        - entity: binary_sensor.doorbell_ring
-          secondary_info: last-changed
-    - type: picture-entity
-      title: Doorbell
-      entity: camera.doorbell_pic
-      camera_image: camera.doorbell_pic
-      show_name: false
-      show_state: false

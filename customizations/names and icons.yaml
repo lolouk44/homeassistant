@@ -255,6 +255,8 @@ switch.dehumidifier:
   icon: mdi:power-plug
 switch.edimax1:
   icon: mdi:power-plug
+switch.eufy_bridge:
+  icon: mdi:docker
 switch.grafana:
   icon: mdi:docker
 switch.ha_dockermon:
@@ -281,6 +283,8 @@ switch.zigbee2mqtt:
   icon: mdi:docker
 switch.zigbee2mqtt_permit_join:
   icon: mdi:set-left-center
+switch.zwavejs:
+  icon: mdi:docker
 switch.wordpress:
   icon: mdi:docker
 switch.cctv2_ha:

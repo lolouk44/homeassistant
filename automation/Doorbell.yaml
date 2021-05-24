@@ -4,7 +4,7 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.doorbell_ring
+        - binary_sensor.doorbell_doorbell_pressed
       to: 'on'
   action:
   - service: scene.create
@@ -20,19 +20,26 @@
         - media_player.living_room
         - media_player.conservatory
         - media_player.kitchen
+        - media_player.master_bedroom_nest_hub
+        - media_player.office_nest_hub
   - service: media_player.volume_set
     data_template:
       entity_id: media_player.google_home_minis
       volume_level: 1
+  - service: camera.snapshot
+    data:
+      entity_id: camera.doorbell_last_event
+      filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis, media_player.master_bedroom_display
       media_content_id: 'http://192.168.0.24:8123/local/sounds/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
-  - service: camera.snapshot
+  - service: media_player.play_media
     data:
-      entity_id: camera.doorbell
-      filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
+      entity_id: media_player.master_bedroom_nest_hub, media_player.office_nest_hub
+      media_content_id: 'http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg'
+      media_content_type: 'image/jpg'
   - condition: template
     value_template: '{{ states("binary_sensor.pir_living_room_front")== "on" or states("binary_sensor.pir_living_room_back")== "on" or states("media_player.panasonic_viera_tv")== "on" }}'
   - service: shell_command.viera_on
@@ -41,7 +48,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.panasonic_viera_tv
-      media_content_id: 'http://192.168.0.23:8088/'
+      media_content_id: 'http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg}}'
       media_content_type: url
   - service: media_player.volume_mute
     data_template:
@@ -52,58 +59,3 @@
   - service: scene.turn_on
     data:
       entity_id: scene.pre_doorbell_state
-
-
-- alias: Doorbell - Reboot When Video Feed Lost
-  id: doorbell_reboot_when_video_feed_lost
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id:
-        - alert.cctv_doorbell_video_feed_lost
-      to: 'on'
-    - platform: time_pattern
-      hours: "4"
-      minutes: 0
-      seconds: 0
-  condition:
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.doorbell_reboot_when_video_feed_lost", "last_triggered") | default(0)) | int > 300)}}'
-  action:
-    - service: shell_command.reboot_doorbell
-
-
-- alias: Doorbell - Set Daylight Colour
-  id: doorbell_set_daylight_colour
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-      for:
-        minutes: 1
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-      for:
-        minutes: 15
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-      for:
-        minutes: 30
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-      for:
-        minutes: 45
-    - platform: state
-      entity_id: sun.sun
-      to: 'below_horizon'
-      for:
-        minutes: 60
-  condition:
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.doorbell_reboot_when_video_feed_lost", "last_triggered") | default(0)) | int > 300)}}'
-  action:
-    - service: shell_command.set_doorbell_daylight
