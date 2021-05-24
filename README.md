@@ -26,12 +26,13 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - CurrentCost EnviR Energy Monitor & IAM Energy Monitors
 - Edimax SP-2101W Smart Socket
 - ESP32 with [WLED](https://github.com/Aircoookie/WLED)
+- [eufy Doorbell 2K (Wired)](https://uk.eufylife.com/products/t8200) with [eufy-ha-mqtt-bridge](https://github.com/matijse/eufy-ha-mqtt-bridge)
 - eWelink ZigBee Smart Socket 
 - Google ChromeCast Audio
 - Google Home Mini
 - Google Nest Hub
 - Hikvision DS-2CD2142FWD-I and DS-2CD2355FWD-I Cameras
-- Hikvision DS-KB6403-WIP Doorbell
+- ~~Hikvision DS-KB6403-WIP Doorbell (returned due to water ingress and poor lens design / integration)~~
 - H801 LED Strip Controllers
 - HomeEasy HE305 Contact Sensors
 - HomeEasy HE830 Sockets
