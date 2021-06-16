@@ -20,3 +20,18 @@
     - service: script.turn_on
       data:
         entity_id: script.nest_hub_start_cast
+
+
+- alias: Lights - Lolo Bedside Cabinet - off from Unavailable
+  id: lights_lolo_bedside_cabinet_off_from_unavailable
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: light.lolo_bedside_light
+      from: 'unavailable'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.lolo_bedside_light
+
+

@@ -11,7 +11,6 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - HP ProLiant N54L MicroServer (Main server with Home-Assistant)
 - Desktop Computer with 2nd instance of Home-Assistant running (motion)[https://github.com/Motion-Project/motion] for CCTV and (TensorFlow)[https://www.home-assistant.io/integrations/tensorflow/] video processing
 - Raspberry Pi Model B (for motion sensors, photoresistor sensor)
-- Raspberry Pi 3 Model B (Kodi)
 - Raspberry Pi 3 Model B (Smart Calendar / CCTV Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
 
 - Aeotec Z-Stick Gen5

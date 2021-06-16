@@ -46,11 +46,11 @@
   value_template: "{{ value_json['last_seen'] }}"
   device_class: timestamp
 
-- platform: mqtt
-  name: "Xiaomi Garage Socket Last Seen"
-  state_topic: "zigbee2mqtt/xiaomi_garage_socket"
-  value_template: "{{ value_json['last_seen'] }}"
-  device_class: timestamp
+# - platform: mqtt
+#   name: "Xiaomi Garage Socket Last Seen"
+#   state_topic: "zigbee2mqtt/xiaomi_garage_socket"
+#   value_template: "{{ value_json['last_seen'] }}"
+#   device_class: timestamp
 
 - platform: mqtt
   name: "Pooja Temperature Last Seen"

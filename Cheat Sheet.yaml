@@ -22,7 +22,13 @@
 {{ lights_on | length }} of {{ lights | length }} lights are on.
 
 
+Markdown Collapsible Logs:
+<details>
+  <summary>Logs</summary>
 
+```  
+```
+</details>
 
 
 {%- macro bigCarList() %}
