@@ -40,8 +40,6 @@
       entity_id: media_player.master_bedroom_nest_hub, media_player.office_nest_hub
       media_content_id: 'http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg'
       media_content_type: 'image/jpg'
-  - condition: template
-    value_template: '{{ states("binary_sensor.pir_living_room_front")== "on" or states("binary_sensor.pir_living_room_back")== "on" or states("media_player.panasonic_viera_tv")== "on" }}'
   - service: shell_command.viera_on
   - wait_template: '{{ states("media_player.panasonic_viera_tv")== "on" }}'
     timeout: '00:00:05'

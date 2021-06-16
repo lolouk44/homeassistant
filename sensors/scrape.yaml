@@ -19,10 +19,10 @@
   name: cctv_garage_status_scrape
   value_template: '{{ value.split("Detection status ")[1] }}'
 
-- platform: rest
-  resource: http://192.168.0.23:8080/8/detection/status
-  name: cctv_doorbell_status_scrape
-  value_template: '{{ value.split("Detection status ")[1] }}'
+# - platform: rest
+#   resource: http://192.168.0.23:8080/8/detection/status
+#   name: cctv_doorbell_status_scrape
+#   value_template: '{{ value.split("Detection status ")[1] }}'
 
 - platform: rest
   resource: http://192.168.0.23:8080/9/detection/status
@@ -51,10 +51,10 @@
   name: cctv_garage_connection_scrape
   value_template: '{{ value.split("Camera 7 Connection ")[1] }}'
 
-- platform: rest
-  resource: http://192.168.0.23:8080/8/detection/connection
-  name: cctv_doorbell_connection_scrape
-  value_template: '{{ value.split("Camera 8 Connection ")[1] }}'
+# - platform: rest
+#   resource: http://192.168.0.23:8080/8/detection/connection
+#   name: cctv_doorbell_connection_scrape
+#   value_template: '{{ value.split("Camera 8 Connection ")[1] }}'
 
 - platform: rest
   resource: http://192.168.0.23:8080/9/detection/connection

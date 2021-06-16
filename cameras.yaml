@@ -29,6 +29,11 @@
   content_type: image/png
 
 - platform: generic
+  still_image_url: '{{ state_attr("binary_sensor.doorbell_doorbell_pressed", "thumbnail")}}'
+  name: Doorbell Last Ring
+  content_type: image/png
+
+- platform: generic
   name: 'Lolo'
   still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ state_attr("device_tracker.ha_lolos_iphone","latitude") }},{{ state_attr("device_tracker.ha_lolos_iphone","longitude") }}&zoom=15&size=500x500&maptype=roadmap&markers=color:blue%7Clabel:L%7C{{ state_attr("device_tracker.ha_lolos_iphone","latitude") }},{{ state_attr("device_tracker.ha_lolos_iphone","longitude") }}&markers=color:red%7Clabel:D%7C{{ state_attr("device_tracker.ha_div_iphone","latitude") }},{{ state_attr("device_tracker.ha_div_iphone","longitude") }}
   limit_refetch_to_url_change: true
