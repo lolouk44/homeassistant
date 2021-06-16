@@ -1,8 +1,10 @@
 project_id: !secret GAproject_id
-service_account:
-  private_key: !secret GAPrivateKey
-  client_email: !secret GAClientEmail
+# service_account:
+#   private_key: !secret GAPrivateKey
+#   client_email: !secret GAClientEmail
+service_account: !include shell_scripts/home-assistant-Google-Assistant.json
 expose_by_default: false
+report_state: true
 entity_config:
 
   input_boolean.movies:
