@@ -53,6 +53,7 @@ views:
   - !include /config/lovelace_views/cctv.yaml
   - !include /config/lovelace_views/automations.yaml
   - !include /config/lovelace_views/server.yaml
+  - !include /config/lovelace_views/zigbee.yaml
   - !include /config/lovelace_views/server_stats.yaml
   - !include /config/lovelace_views/car.yaml
   - !include /config/lovelace_views/garage.yaml
