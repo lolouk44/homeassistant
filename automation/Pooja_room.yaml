@@ -47,6 +47,7 @@
     - platform: state
       entity_id: binary_sensor.pooja_door
       to: 'on'
+      from: 'off'
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_on", "last_triggered") ) | int > 1 )}}'
@@ -64,6 +65,7 @@
     - platform: state
       entity_id: binary_sensor.pooja_door
       to: 'off'
+      from: 'on'
   condition:
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_off", "last_triggered") ) | int > 1 )}}'
