@@ -37,5 +37,7 @@
       state: 'on'
     - condition: template
       value_template: '{{ (as_timestamp(states.media_player.panasonic_viera_tv.last_changed) | int) - (as_timestamp(state_attr("automation.tv_set_tv_to_home_cinema_when_vol_tv_changes", "last_triggered")) | int )  > 0 }}'
+    - condition: template
+      value_template: '{{ (as_timestamp(states("sensor.uptime")) - (as_timestamp(states("sensor.uptime")))) > 120 }}'
   action:
     - service: shell_command.viera_audio_home_cinema
