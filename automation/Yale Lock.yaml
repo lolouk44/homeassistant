@@ -117,7 +117,7 @@
 
 - alias: Yale - Door Left Unlocked
   id: yale_door_left_unlocked
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id: lock.yale_conexis_l1_lock
@@ -129,6 +129,12 @@
       to: 'off'
   action:
     - delay: '00:05:00'
+    - condition: state
+      entity_id: binary_sensor.main_door
+      state: 'off'
+    - service: lock.lock
+      data:
+        entity_id: lock.yale_conexis_l1_lock
     - service: zwave_js.refresh_value
       data:
         entity_id: lock.yale_conexis_l1_lock
@@ -150,22 +156,22 @@
             category: 'alert'
           action_data:
             entity_id: '{{trigger.entity_id}}'
-    - service: notify.mobile_app_div_iphone
-      data_template:
-        message: 'Porch Door Left Unlocked'
-        data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: 'alert'
-          action_data:
-            entity_id: '{{trigger.entity_id}}'
-    - condition: state
-      entity_id: input_boolean.silent
-      state: 'off'
-    - service: tts.google_say
-      entity_id: media_player.google_home_minis
-      data_template:
-        message: 'Please note: the porch door has been left unlocked'
+    # - service: notify.mobile_app_div_iphone
+    #   data_template:
+    #     message: 'Porch Door Left Unlocked'
+    #     data:
+    #       push:
+    #         badge: '{{states("counter.iosbadgecount")}}'
+    #         category: 'alert'
+    #       action_data:
+    #         entity_id: '{{trigger.entity_id}}'
+    # - condition: state
+    #   entity_id: input_boolean.silent
+    #   state: 'off'
+    # - service: tts.google_say
+    #   entity_id: media_player.google_home_minis
+    #   data_template:
+    #     message: 'Please note: the porch door has been left unlocked'
 
 
 - alias: Yale - Lock Jammed

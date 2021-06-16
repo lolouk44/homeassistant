@@ -32,7 +32,7 @@ cards:
     entities:
       - entity: lock.yale_conexis_l1_lock
         type: "custom:secondaryinfo-entity-row"
-        secondary_info: "[[ sensor.porch_door_lock_status ]]"
+        secondary_info: "[[ sensor.yale_alarmtype_status ]]"
         icon: mdi:door-closed-lock
       - entity: sensor.yale_conexis_l1_battery_level
         secondary_info: last-changed
@@ -70,8 +70,8 @@ cards:
           icon: mdi:bell-circle-outline
     - type: picture-entity
       title: Doorbell
-      entity: camera.doorbell_last_event
-      camera_image: camera.doorbell_last_event
+      entity: camera.doorbell_last_ring
+      camera_image: camera.doorbell_last_ring
       show_name: false
       show_state: false
 
