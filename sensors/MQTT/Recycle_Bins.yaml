@@ -4,6 +4,8 @@
   value_template: "{{ value_json['date'] }}"
   json_attributes_topic: "Sensors/Bins/Black"
   icon: mdi:trash-can-outline
+  device_class: timestamp
+
 
 - platform: mqtt
   name: "Red Bin"
@@ -11,6 +13,7 @@
   value_template: "{{ value_json['date'] }}"
   json_attributes_topic: "Sensors/Bins/Red"
   icon: mdi:recycle
+  device_class: timestamp
 
 - platform: mqtt
   name: "Green Bin"
@@ -18,4 +21,5 @@
   value_template: "{{ value_json['date'] }}"
   json_attributes_topic: "Sensors/Bins/Green"
   icon: mdi:sprout
+  device_class: timestamp
 

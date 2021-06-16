@@ -48,3 +48,43 @@
       description: 'Red Bin Collection'
       start_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 7 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
       end_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 12 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
+
+- alias: Bins - Announcement
+  id: bins_announcement
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    hours: "19"
+    minutes: 0
+    seconds: 0
+  condition:
+    - condition: template
+      value_template: >-
+        {{
+        ((as_timestamp(states("sensor.black_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.black_bin")) - as_timestamp(now())) > 0)
+        or
+        ((as_timestamp(states("sensor.red_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.red_bin")) - as_timestamp(now())) > 0)
+        or
+        ((as_timestamp(states("sensor.green_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.green_bin")) - as_timestamp(now())) > 0)
+        }}
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Bins"
+        message: |
+          Remember to put {%- if ((as_timestamp(states("sensor.black_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.black_bin")) - as_timestamp(now())) > 0) %} the black bin {% endif -%}
+          {%- if ((as_timestamp(states("sensor.red_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.red_bin")) - as_timestamp(now())) > 0) %}and the red bin {% endif -%}
+          {%- if ((as_timestamp(states("sensor.green_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.green_bin")) - as_timestamp(now())) > 0) %} the green bin {% endif -%}
+          out
+    - condition: state
+      entity_id: input_boolean.silent
+      state: "off"
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data:
+        message: >
+          Remember to put {%- if ((as_timestamp(states("sensor.black_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.black_bin")) - as_timestamp(now())) > 0) %} the black bin {% endif -%}
+          {%- if ((as_timestamp(states("sensor.red_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.red_bin")) - as_timestamp(now())) > 0) %}and the red bin {% endif -%}
+          {%- if ((as_timestamp(states("sensor.green_bin")) - as_timestamp(now())) < 20000 and (as_timestamp(states("sensor.green_bin")) - as_timestamp(now())) > 0) %} the green bin {% endif -%}
+          out
+  

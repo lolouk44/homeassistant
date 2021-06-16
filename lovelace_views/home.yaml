@@ -66,7 +66,7 @@ cards:
         - entity_id: "sensor.*_bin"
           options:
             type: "custom:secondaryinfo-entity-row"
-            secondary_info: "In [[ this.entity_id.attributes.days_remaining ]] days"
+            secondary_info: "[[ this.entity_id.state ]] "
     sort:
       method: attribute
       attribute: days_remaining
