@@ -117,7 +117,7 @@
 
 - alias: Yale - Door Left Unlocked
   id: yale_door_left_unlocked
-  initial_state: false
+  initial_state: true
   trigger:
     - platform: state
       entity_id: lock.yale_conexis_l1_lock
@@ -132,9 +132,9 @@
     - condition: state
       entity_id: binary_sensor.main_door
       state: 'off'
-    - service: lock.lock
-      data:
-        entity_id: lock.yale_conexis_l1_lock
+    # - service: lock.lock
+    #   data:
+    #     entity_id: lock.yale_conexis_l1_lock
     - service: zwave_js.refresh_value
       data:
         entity_id: lock.yale_conexis_l1_lock
