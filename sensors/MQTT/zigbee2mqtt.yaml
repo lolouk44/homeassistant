@@ -82,12 +82,12 @@
   unit_of_measurement: "%"
   device_class: battery
 
-- platform: mqtt
-  name: "Xiaomi Garage Socket Watts"
-  state_topic: "zigbee2mqtt/xiaomi_garage_socket"
-  value_template: "{{ value_json['power'] }}"
-  unit_of_measurement: "W"
-  device_class: power
+# - platform: mqtt
+#   name: "Xiaomi Garage Socket Watts"
+#   state_topic: "zigbee2mqtt/xiaomi_garage_socket"
+#   value_template: "{{ value_json['power'] }}"
+#   unit_of_measurement: "W"
+#   device_class: power
 
 - platform: mqtt
   name: "Pooja Temperature"

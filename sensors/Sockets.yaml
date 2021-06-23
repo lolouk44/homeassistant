@@ -13,3 +13,10 @@
       friendly_name: Xiaomi Dual USB Socket Watts
       icon_template: '{% if is_state("switch.xiaomi_dual_usb_socket","on") %}mdi:speedometer{% else %}mdi:speedometer-slow{% endif %}'
       device_class: power
+
+    xiaomi_garage_socket_watts:
+      value_template: '{{state_attr("switch.xiaomi_garage_socket","load_power")|float}}'
+      unit_of_measurement: 'W'
+      friendly_name: Xiaomi Garage Socket Watts
+      icon_template: '{% if is_state("switch.xiaomi_garage_socket","on") %}mdi:speedometer{% else %}mdi:speedometer-slow{% endif %}'
+      device_class: power
