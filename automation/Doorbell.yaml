@@ -46,7 +46,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.panasonic_viera_tv
-      media_content_id: 'http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg}}'
+      media_content_id: 'http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg'
       media_content_type: url
   - service: media_player.volume_mute
     data_template:
