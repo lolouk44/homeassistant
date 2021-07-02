@@ -26,8 +26,8 @@
       calendar_id: !secret google_family_calendar
       summary: '{{ trigger.entity_id | replace("sensor.","") | replace("_bin","") | title }} Bin Collection'
       description: '{{ trigger.entity_id | replace("sensor.","") | replace("_bin","") | title }} Bin Collection'
-      start_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 7 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
-      end_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 12 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
+      start_date_time: '{{ (as_timestamp(trigger.to_state.state) + 7 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
+      end_date_time: '{{ (as_timestamp(trigger.to_state.state) + 12 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
 
 
 
@@ -46,8 +46,8 @@
       calendar_id: !secret google_family_calendar
       summary: 'Red Bin Collection'
       description: 'Red Bin Collection'
-      start_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 7 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
-      end_date_time: '{{ (as_timestamp(strptime(trigger.to_state.state + " " + now().year | string ,"%a %d %b %Y")) + 12 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
+      start_date_time: '{{ (as_timestamp(trigger.to_state.state) + 7 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
+      end_date_time: '{{ (as_timestamp(trigger.to_state.state) + 12 * 60 * 60) | timestamp_custom ("%Y-%m-%d %H:%M:%S")}}'
 
 - alias: Bins - Announcement
   id: bins_announcement
