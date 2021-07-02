@@ -63,6 +63,9 @@
         effect: "solid"
         brightness: 128
         rgb_color: [0,0,255]
+    - service: switch.turn_off
+      data:
+        entity_id: switch.lwrf_socket_3
 
 
 - alias: Scene - Normal
