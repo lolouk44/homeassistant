@@ -8,6 +8,8 @@ animated_background:
   # display_user_agent: true
   excluded_users:
     - Fire7
+  excluded_devices:
+    - iphone
   entity: "input_boolean.theme_dark"
   state_url:
     'off':
