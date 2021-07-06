@@ -19,7 +19,7 @@ reboot_dafang_conservatory: /config/shell_scripts/reboot_dafang_conservatory.sh
 
 
 stop_radiostream_sensors: /config/shell_scripts/stop_radiostream_sensors.sh
-start_radiostream_sensors: /config/shell_scripts/start_radiostream_sensors.sh
+start_radiostream_sensors: /config/shell_scripts/start_radiostream_sensors.sh $1 > /dev/null 2>&1 &
 
 fire7_reload_url: /config/shell_scripts/fire7_reload_url.sh
 restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa pi@192.168.0.21 docker restart mm
