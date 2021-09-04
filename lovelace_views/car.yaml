@@ -155,9 +155,6 @@ cards:
       - entity: binary_sensor.220d_lids
         secondary_info: last-changed
         icon: mdi:car-door
-      - entity: binary_sensor.220d_lights_parking
-        secondary_info: last-changed
-        icon: mdi:car-light-dimmed
       - entity: sensor.bmw_220d_mileage
         secondary_info: last-changed
       - entity: sensor.220d_remaining_fuel

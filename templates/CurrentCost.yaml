@@ -1,0 +1,18 @@
+- sensor:
+    - name: "CurrentCost Temperature"
+      unit_of_measurement: '°C'
+      state: '{{ state_attr("sensor.current_cost", "Temperature") |float -3 }}'
+      device_class: temperature
+      #state_class: measurement
+- sensor:
+    - name: "CurrentCost Power"
+      unit_of_measurement: 'W'
+      state: '{{ state_attr("sensor.current_cost", "Appliance 0") }}'
+      device_class: power
+      state_class: measurement
+- sensor:
+    - name: "Dehumidifier Power"
+      unit_of_measurement: 'W'
+      state: '{{state_attr("sensor.lolo_weight", "weight")}}'
+      device_class: power
+      state_class: measurement

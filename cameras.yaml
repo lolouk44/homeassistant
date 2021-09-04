@@ -60,14 +60,14 @@
   still_image_url: !secret xiaomi_vacuum_map
   stream_source: !secret cctv_url_front
 
-- platform: generic
-  name: Grafana Lolo Weight
-  still_image_url: http://192.168.0.24:3000/render/d-solo/ItrU5gHik/ha-dashboard?orgId=1&panelId=6&width=1000&height=500&tz=Europe%2FLondon
-  username: !secret grafana_user
-  password: !secret grafana_password
+# - platform: generic
+#   name: Grafana Lolo Weight
+#   still_image_url: http://192.168.0.24:3000/render/d-solo/ItrU5gHik/ha-dashboard?orgId=1&panelId=6&width=1000&height=500&tz=Europe%2FLondon
+#   username: !secret grafana_user
+#   password: !secret grafana_password
 
-- platform: generic
-  name: Grafana CPU RAM
-  still_image_url: http://192.168.0.24:3000/render/d-solo/ItrU5gHik/ha-dashboard?orgId=1&panelId=8&width=1000&height=500&tz=Europe%2FLondon
-  username: !secret grafana_user
-  password: !secret grafana_password
+# - platform: generic
+#   name: Grafana CPU RAM
+#   still_image_url: http://192.168.0.24:3000/render/d-solo/ItrU5gHik/ha-dashboard?orgId=1&panelId=8&width=1000&height=500&tz=Europe%2FLondon
+#   username: !secret grafana_user
+#   password: !secret grafana_password

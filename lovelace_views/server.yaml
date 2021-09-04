@@ -106,7 +106,9 @@ cards:
           open: true
         filter:
           include:
+            - entity_id: sensor.house_power_consumption
             - entity_id: sensor.current_cost
+            - entity_id: sensor.house_total_energy
             - entity_id: sensor.cpu_usage
             - entity_id: sensor.ram_usage
             - entity_id: sensor.ssl_cert_expiry
@@ -444,3 +446,18 @@ cards:
                 secondary_info: "Error: [[ this.entity_id.attributes.errors ]] "
         sort:
             method: 'name'
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Power BI Outages
+          open: false
+        filter:
+          include:
+            - entity_id: "*sensor.power_bi.*"
+        sort:
+          method: 'name'

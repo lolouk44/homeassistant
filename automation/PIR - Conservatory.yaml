@@ -141,12 +141,12 @@
       entity_id: light.wled_conservatory
       effect: "solid"
       brightness: 128
-      rgb_color: [255,255,255]
+      rgb_color: [191,191,255]
   - delay: 00:00:01
   - service: light.turn_on
     data:
       entity_id: light.wled_conservatory
       effect: "solid"
       brightness: 128
-      rgb_color: [255,255,255]
+      rgb_color: [191,191,255]
 

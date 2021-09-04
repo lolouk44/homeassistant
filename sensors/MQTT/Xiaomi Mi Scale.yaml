@@ -2,9 +2,11 @@
   name: "Lolo Weight"
   state_topic: "miScale/Lolo/weight"
   value_template: "{{ value_json['weight'] }}"
-  unit_of_measurement: "kg"
+  unit_of_measurement: kg
   json_attributes_topic: "miScale/Lolo/weight"
+  device_class: power
   icon: mdi:scale-bathroom
+  state_class: measurement
 
 - platform: mqtt
   name: "Lolo BMI"

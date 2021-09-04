@@ -89,7 +89,7 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.chromecast_radio_speakers
-        option: House
+        option: Office Nest Hub
     - service: script.turn_on
       entity_id: script.play_chromecast_radio
     - service: input_boolean.turn_off

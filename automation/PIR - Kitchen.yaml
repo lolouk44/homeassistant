@@ -188,7 +188,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.kitchen_tv
-  - service: shell_command.restart_magic_mirror
+  # - service: shell_command.restart_magic_mirror
   - service: switch.turn_off
     data:
       entity_id: switch.zigbee_round_socket

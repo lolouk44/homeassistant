@@ -174,4 +174,4 @@ cards:
         - entity: binary_sensor.back_cctv_disk_full
           secondary_info: last-changed
         - entity: binary_sensor.back_cctv_disk_error
-          secondary_info: last-changed
+          secondary_info: last-changed     

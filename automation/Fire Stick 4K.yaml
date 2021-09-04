@@ -17,8 +17,6 @@
       value_template: >-
         {{
         state_attr("media_player.fire_stick_4k","app_name") == "Netflix"
-        or state_attr("media_player.fire_stick_4k","app_name") == "com.apple.atve.amazon.appletv"
-        or state_attr("media_player.fire_stick_4k","app_name") == "Plex"
         or state_attr("media_player.fire_stick_4k","app_name") ==  "com.disney.disneyplus"
         or state_attr("media_player.fire_stick_4k","app_name") == "Amazon Video"
         }}
@@ -29,8 +27,8 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.movies
 
-- alias: Fire Stick 4K - Dim Lights when Kodi, Netflix or Prime is Paused
-  id: fire_stick_4k_dim_lights_when_kodi_netflix_or_prime_is_paused
+- alias: Fire Stick 4K - Dim Lights On when Paused
+  id: fire_stick_4k_dim_lights_on_when_paused
   initial_state: true
   trigger:
     - platform: state
@@ -46,8 +44,8 @@
       entity_id: light.living_room_main
       brightness: 11
 
-- alias: Fire Stick 4K - Turn Lights Off when Kodi, Netflix or Prime is Unpaused
-  id: fire_stick_4k_turn_lights_off_when_kodi_netflix_or_prime_is_unpaused
+- alias: Fire Stick 4K - Turn Lights Off when Unpaused
+  id: fire_stick_4k_turn_lights_off_when_unpaused
   initial_state: true
   trigger:
     - platform: state

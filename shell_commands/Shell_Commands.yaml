@@ -22,12 +22,14 @@ stop_radiostream_sensors: /config/shell_scripts/stop_radiostream_sensors.sh
 start_radiostream_sensors: /config/shell_scripts/start_radiostream_sensors.sh $1 > /dev/null 2>&1 &
 
 fire7_reload_url: /config/shell_scripts/fire7_reload_url.sh
-restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa pi@192.168.0.21 docker restart mm
+#restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa pi@192.168.0.21 docker restart mm
+restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa pi@192.168.0.21 sudo reboot
 
 reboot_doorbell: !secret doorbell_reboot_url
 set_doorbell_daylight: /config/shell_scripts/Doorbell_ISAPI_Sharpness.sh
 
 refresh_bin_collection: python3 /config/shell_scripts/HA_Scrape_Crawley_Bins.py
+refresh_power_bi: python3 /config/shell_scripts/Power_BI_Status_Scrape.py
 
 
 catt_install: pip3 install catt

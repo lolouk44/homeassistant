@@ -39,3 +39,34 @@ cards:
     entities:
       - entity: light.pooja_frame
         secondary_info: last-changed
+
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: picture-glance
+      camera_image: camera.chromecast_radio_pic
+      entities:
+        - entity: input_select.chromecast_radio_station
+        - entity: input_text.custom_station
+        - entity: input_select.chromecast_radio_speakers
+        - entity: switch.chromecast_radio_vol_down
+        - entity: switch.chromecast_radio_mute
+        - entity: switch.chromecast_radio_vol_up
+        - entity: switch.chromecast_radio_stop
+        - entity: switch.chromecast_radio_play
+    - type: conditional
+      conditions:
+        - entity: binary_sensor.radio_is_streaming
+          state: "on"
+      card:
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.stream_artist
+            name: Artist
+            secondary_info: last-changed
+            icon: mdi:account-music
+          - entity: sensor.stream_track
+            name: Track
+            secondary_info: last-changed
+            icon: mdi:music-circle

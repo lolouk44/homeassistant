@@ -9,7 +9,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 ## Devices
 
 - HP ProLiant N54L MicroServer (Main server with Home-Assistant)
-- Desktop Computer with 2nd instance of Home-Assistant running (motion)[https://github.com/Motion-Project/motion] for CCTV and (TensorFlow)[https://www.home-assistant.io/integrations/tensorflow/] video processing
+- Desktop Computer with 2nd instance of Home-Assistant running [motion](https://github.com/Motion-Project/motion) for CCTV and [TensorFlow](https://www.home-assistant.io/integrations/tensorflow/) video processing
 - Raspberry Pi Model B (for motion sensors, photoresistor sensor)
 - Raspberry Pi 3 Model B (Smart Calendar / CCTV Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
 
@@ -22,14 +22,14 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - ~~Byron SX-20T Doorbell (replaced with Hikvision DS-KB6403-WIP Doorbell)~~
 - CC2531 flashed with [Zigbee2mqtt](https://www.zigbee2mqtt.io/)
 - [Cresta TS34C](https://www.conrad-electronic.co.uk/ce/en/product/672148/5-Channel-TS34C-Wireless-Thermo-Hygro-Sensor) Hygrometers
-- CurrentCost EnviR Energy Monitor & IAM Energy Monitors
+- CurrentCost EnviR Energy Monitor & IAM Energy Monitors running my own [custom_component](https://github.com/lolouk44/CurrentCost_HA_CC)
 - Edimax SP-2101W Smart Socket
 - ESP32 with [WLED](https://github.com/Aircoookie/WLED)
 - [eufy Doorbell 2K (Wired)](https://uk.eufylife.com/products/t8200) with [eufy-ha-mqtt-bridge](https://github.com/matijse/eufy-ha-mqtt-bridge)
 - eWelink ZigBee Smart Socket 
-- Google ChromeCast Audio
-- Google Home Mini
-- Google Nest Hub
+- Google ChromeCast Audios
+- Google Home Minis
+- Google Nest Hubs
 - Hikvision DS-2CD2142FWD-I and DS-2CD2355FWD-I Cameras
 - ~~Hikvision DS-KB6403-WIP Doorbell (returned due to water ingress and poor lens design / integration)~~
 - H801 LED Strip Controllers
@@ -47,11 +47,12 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Panasonic TX58DX700 TV
 - RFXCOM RFXtrx433 433MHz transceiver
 - Rollerhouse Smart Blinds Motor
-- Samsung Galaxy Tab 5 running (tasker){https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_GB} and HikConnect to capture doorbell button press
+- ~~Samsung Galaxy Tab 5 running (tasker){https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_GB} and HikConnect to capture doorbell button press~~
 - Samsung WW90T684DLH/S1 Washing Machine 
 - Sky+HD Box
 - Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
 - Tile Mate, Slim trackers
+- TKB Home TZ68 Zwave Socket
 - Verint S5003FD Camera
 - Wemos D1 Mini Pros running [WLED](https://github.com/Aircoookie/WLED) or [ESP Home](https://esphome.io/)
 - Xiaomi Aqara V3 Gateway (now only used as sensor / light, all zigbee devices connected via [zigbee2mqtt](https://www.zigbee2mqtt.io/))

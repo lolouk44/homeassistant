@@ -6,3 +6,15 @@ nest_hub_start_cast:
         entity_id: media_player.master_bedroom_nest_hub
         volume_level: 0
     - service: shell_command.catt_cast_ha_to_bedroom
+
+    # - service: cast.show_lovelace_view
+    #   data:
+    #     dashboard_path: lovelace-nesthub2
+    #     view_path: nesthub
+    #     entity_id: media_player.master_bedroom_nest_hub
+    # - delay: 00:00:05
+    # - service: cast.show_lovelace_view
+    #   data:
+    #     dashboard_path: lovelace-nesthub
+    #     view_path: nesthub
+    #     entity_id: media_player.master_bedroom_nest_hub

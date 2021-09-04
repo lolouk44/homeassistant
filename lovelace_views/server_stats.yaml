@@ -441,15 +441,17 @@ cards:
 
 
 
-  - type: picture-entity
-    title: CPU & RAM
-    entity: camera.grafana_cpu_ram
-    camera_image: camera.grafana_cpu_ram
-    show_name: false
-    show_state: false
-  - type: picture-entity
-    title: Lolo Weight
-    entity: camera.grafana_lolo_weight
-    camera_image: camera.grafana_lolo_weight
-    show_name: false
-    show_state: false
+  - type: statistics-graph
+    title: 'CurrentCost Consumption'
+    days_to_show: 7
+    entities:
+      - entity: sensor.currentcost_power
+        name: Total
+
+  - type: statistics-graph
+    title: 'Power Consumption'
+    days_to_show: 7
+    stat_types: mean
+    entities:
+      - entity: sensor.house_power_consumption
+        name: Total

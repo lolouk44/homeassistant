@@ -1,0 +1,77 @@
+- alias: PBI - Status Refresh
+  id: pbi_status_refresh
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/2'
+      seconds: 0
+  action:
+    - service: shell_command.refresh_power_bi
+
+
+
+- alias: PBI - Service Outage
+  id: pbi_service_outage
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.power_bi_emea_status
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.power_bi_service_status
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.power_bi_awareness_status
+      from: 'off'
+      to: 'on'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Power BI Service Outage"
+        message: |
+          The EMEA Service Status is: {{ state_attr("binary_sensor.power_bi_emea_status","emeaservicestatus").title()}}
+
+          The Power BI Service Outage/Degradation Status is: {{ state_attr("binary_sensor.power_bi_service_status","serviceoutagestatus").title()}}
+          Details: "{{ state_attr("binary_sensor.power_bi_service_status","serviceoutagetext")}}"
+
+          The Power BI Awareness Status is: {{ state_attr("binary_sensor.power_bi_awareness_status","awarenessstatus").title()}}
+          Details: "{{ state_attr("binary_sensor.power_bi_awareness_status","awarenesstext")}}"
+
+          https://powerbi.microsoft.com/en-us/support/
+
+
+
+- alias: PBI - Service Restored
+  id: pbi_service_restored
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.power_bi_emea_status
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.power_bi_service_status
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.power_bi_awareness_status
+      from: 'on'
+      to: 'off'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Power BI Service Restored"
+        message: |
+          The Power BI Service is {% if states("binary_sensor.power_bi_emea_status") == "off" and states("binary_sensor.power_bi_emea_status") == "off" and states("binary_sensor.power_bi_emea_status") == "off" %}FULLY{% else %}PARTIALLY{% endif %} restored:
+          
+          EMEA Service Status: {{ state_attr("binary_sensor.power_bi_emea_status","emeaservicestatus").title()}}
+
+          Service Outage/Degradation: {{ state_attr("binary_sensor.power_bi_service_status","serviceoutagestatus").title()}}
+          Details: "{{ state_attr("binary_sensor.power_bi_service_status","serviceoutagetext")}}"
+
+          Awareness: {{ state_attr("binary_sensor.power_bi_awareness_status","awarenessstatus").title()}}
+          Details: "{{ state_attr("binary_sensor.power_bi_awareness_status","awarenesstext")}}"
+
+          https://powerbi.microsoft.com/en-us/support/

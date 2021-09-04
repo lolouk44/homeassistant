@@ -147,6 +147,8 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.astra_car_battery_network_status
+    - platform: homeassistant
+      event: start
   action:
     - wait_template: '{{ states("sensor.astra_car_battery_voltage") | float >= 14 }}'
       timeout: '00:00:30'

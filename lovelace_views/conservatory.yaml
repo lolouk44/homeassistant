@@ -30,13 +30,6 @@ cards:
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-glance
-      title: Conservatory
-      entities:
-        - binary_sensor.pir_conservatory
-        - light.conservatory
-        - light.wled_conservatory
-      camera_image: camera.conservatory
     - type: entities
       title: Conservatory Lights
       show_header_toggle: true
@@ -45,6 +38,13 @@ cards:
           secondary_info: last-changed
         - entity: light.wled_conservatory
           secondary_info: last-changed
+    - type: picture-glance
+      title: Conservatory
+      entities:
+        - binary_sensor.pir_conservatory
+        - light.conservatory
+        - light.wled_conservatory
+      camera_image: camera.conservatory
   # - type: entities
     # title: Aloe Vera
     # show_header_toggle: false

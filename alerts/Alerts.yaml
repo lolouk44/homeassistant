@@ -360,3 +360,19 @@ lolo_bedside_cabinet_lost:
     - 120
   notifiers:
     - mobile_app_lolo_s_iphone
+
+
+wled_garage_lost:
+  name: WLED Garage Lost
+  entity_id: light.wled_garage
+  message: 'WLED Garage Lost'
+  state: 'unavailable'
+  can_acknowledge: true
+  skip_first: true
+  repeat:
+    - 5
+    - 30
+    - 60
+    - 120
+  notifiers:
+    - mobile_app_lolo_s_iphone

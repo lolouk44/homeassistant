@@ -29,16 +29,6 @@ cards:
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-glance
-      title: Living Room
-      entities:
-        - binary_sensor.pir_living_room_front
-        - binary_sensor.pir_living_room_back
-        - binary_sensor.photoresistor
-        - light.living_room_main
-        - light.living_room_wall
-        - light.tv_cabinet_led_strip
-      camera_image: camera.living_room
     - type: entities
       title: Living Room Lights
       state_color: true
@@ -52,9 +42,20 @@ cards:
           secondary_info: last-changed
         - entity: light.red_light
           secondary_info: last-changed
+          icon: mdi:floor-lamp
         - entity: switch.lwrf_socket_3
           secondary_info: last-changed
           icon: mdi:hinduism
+    - type: picture-glance
+      title: Living Room
+      entities:
+        - binary_sensor.pir_living_room_front
+        - binary_sensor.pir_living_room_back
+        - binary_sensor.photoresistor
+        - light.living_room_main
+        - light.living_room_wall
+        - light.tv_cabinet_led_strip
+      camera_image: camera.living_room
   - type: custom:stack-in-card
     mode: vertical
     cards:

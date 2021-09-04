@@ -87,6 +87,19 @@
       entity_id: alarm_control_panel.alarm
       data:
         code: !secret alarm_code
+    - condition: state
+      entity_id: sensor.conexis_l1_node_status
+      state: 'dead'
+    - service: zwave_js.refresh_value
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
+    - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
+    - service: lock.unlock
+      data:
+        entity_id: lock.yale_conexis_l1_lock
 
 - alias: Yale - Unlock Lock from iOS Notification
   id: yale_unlock_lock_from_ios_notification
@@ -113,6 +126,19 @@
     - service: lock.unlock
       data:
         entity_id: lock.yale_conexis_l1_lock
+    - condition: state
+      entity_id: sensor.conexis_l1_node_status
+      state: 'dead'
+    - service: zwave_js.refresh_value
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
+    - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
+    - service: lock.unlock
+      data:
+        entity_id: lock.yale_conexis_l1_lock
 
 
 - alias: Yale - Door Left Unlocked
@@ -132,13 +158,13 @@
     - condition: state
       entity_id: binary_sensor.main_door
       state: 'off'
-    # - service: lock.lock
-    #   data:
-    #     entity_id: lock.yale_conexis_l1_lock
     - service: zwave_js.refresh_value
       data:
         entity_id: lock.yale_conexis_l1_lock
         refresh_all_values: true
+    - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
     - wait_template: "{{ states('lock.yale_conexis_l1_lock') == 'locked' }}"
       timeout: '00:00:30'
       continue_on_timeout: true
@@ -184,6 +210,16 @@
       for:
         minutes: 1
   action:
+    - service: zwave_js.refresh_value
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
+    - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
+    - wait_template: '{{ states("sensor.porch_door_lock_status") != "Jammed" }}'
+      timeout: '00:00:30'
+      continue_on_timeout: true
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
         message: 'Porch Door Lock Jammed'
@@ -261,6 +297,36 @@
     - service: lock.unlock
       data:
         entity_id: lock.yale_conexis_l1_lock
+    - condition: state
+      entity_id: sensor.conexis_l1_node_status
+      state: 'dead'
+    - service: zwave_js.refresh_value
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
+    - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
+    - service: lock.unlock
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+
+
+- alias: Yale - Refresh Values on Becoming Dead
+  id: yale_refresh_values_on_becoming_dead
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.conexis_l1_node_status
+      to: 'dead'
+  condition:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 30)}}'
+  action:
+    - service: zwave_js.refresh_value
+      data:
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
 
 # - alias: Yale - Event
 #   trigger:

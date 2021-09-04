@@ -17,6 +17,7 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
+  currency: GBP
   customize: !include_dir_merge_named customizations
   internal_url: http://192.168.0.24:8123
   external_url : !secret base_url
@@ -50,6 +51,7 @@ script: !include_dir_merge_named scripts
 shell_command: !include_dir_merge_named shell_commands
 sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_list switches
+template: !include_dir_merge_list templates
 zone: !include zones.yaml
 
 
@@ -117,6 +119,7 @@ http:
   trusted_proxies:
     - 127.0.0.1
     - ::1
+    - 172.19.0.0/24
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
@@ -152,6 +155,8 @@ logger:
     # custom_components.currentcost: debug
     homeassistant.components.xiaomi_miio: critical
     xiaomi_gateway: critical
+    pychromecast.socket_client: critical
+    homeassistant.components.androidtv.media_player: critical
 
 
 lovelace:
@@ -198,9 +203,6 @@ lovelace:
     # Bar Card https://github.com/custom-cards/bar-card
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
-    # Bar Card https://github.com/custom-cards/bar-card
-    - url: /local/community/button-card/button-card.js
-      type: module
     # Fonts
     - type: css
       url: 'https://fonts.googleapis.com/css?family=Orbitron'
@@ -225,6 +227,8 @@ lovelace:
 
 
 map:
+
+media_source:
 
 mqtt:
   client_id: home-assistant-1
@@ -354,22 +358,6 @@ sun:
 
 system_health:
 
-template:
-  - trigger:
-      - platform: event
-        event_type: zwave_js_notification
-    sensor:
-      - name: "Yale Notification Status"
-        state: "{{ trigger.event.data.event_label }}"
-  - trigger:
-    - platform: state
-      entity_id:
-      - sensor.yale_notification_status
-      - sensor.yale_alarmtype_status
-      - lock.yale_conexis_l1_lock
-    sensor:
-      - name: "Porch Door Lock Status"
-        state: "{{ trigger.to_state.state | title}}"
 
 tts:
   - platform: google_translate

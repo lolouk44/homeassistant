@@ -21,13 +21,6 @@ cards:
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-glance
-      title: Kitchen
-      entities:
-        - binary_sensor.pir_kitchen
-        - light.kitchen_lights
-        - switch.kitchen_tv
-      camera_image: camera.kitchen
     - type: entities
       title: Kitchen Lights
       show_header_toggle: true
@@ -36,6 +29,13 @@ cards:
           secondary_info: last-changed
         - entity: light.kitchen_window
           secondary_info: last-changed
+    - type: picture-glance
+      title: Kitchen
+      entities:
+        - binary_sensor.pir_kitchen
+        - light.kitchen_lights
+        - switch.kitchen_tv
+      camera_image: camera.kitchen
   - type: entities
     title: ZigBee Round Socket
     state_color: true

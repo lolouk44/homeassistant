@@ -300,3 +300,8 @@ cards:
         - entity_id: sensor.zfs1_disk_temp
         - entity_id: sensor.zfs2_disk_temp
         - entity_id: sensor.zfs_disk_usage
+        - entity_id: sensor.idkrgzd*        
+        - entity_id: sensor.xsbf3i3* 
+        - entity_id: sensor.*rssi*
+        - entity_id: sensor.*last_seen*        
+        - entity_id: sensor.*current*cost*
