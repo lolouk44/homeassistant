@@ -68,9 +68,11 @@
   name: Online Version
   select: ".current-version h1"
   value_template: '{{ value.split(":")[1] }}'
+  scan_interval: 3600
 
 # Tasmota
 - platform: scrape
   resource: https://github.com/arendst/Tasmota/releases
   name: tasmota_online_version
   select: "span.css-truncate-target"
+  scan_interval: 3600
