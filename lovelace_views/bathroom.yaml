@@ -24,6 +24,8 @@ cards:
     state_color: true
     show_header_toggle: false
     entities:
+      - entity: input_number.bathroom_humidity_target
+        secondary_info: last-changed
       - entity: switch.bathroom_fan
         secondary_info: last-changed
         icon: mdi:fan
