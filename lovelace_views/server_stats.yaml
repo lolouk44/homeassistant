@@ -441,12 +441,12 @@ cards:
 
 
 
-  - type: statistics-graph
-    title: 'CurrentCost Consumption'
-    days_to_show: 7
-    entities:
-      - entity: sensor.currentcost_power
-        name: Total
+  # - type: statistics-graph
+  #   title: 'CurrentCost Consumption'
+  #   days_to_show: 7
+  #   entities:
+  #     - entity: sensor.currentcost_power
+  #       name: Total
 
   - type: statistics-graph
     title: 'Power Consumption'
@@ -455,3 +455,11 @@ cards:
     entities:
       - entity: sensor.house_power_consumption
         name: Total
+
+  - type: statistics-graph
+    title: 'Lolo Weight'
+    days_to_show: 30
+    stat_types: mean
+    entities:
+      - entity: sensor.lolo_weight
+        name: Weight
