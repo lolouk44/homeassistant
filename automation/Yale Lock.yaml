@@ -162,14 +162,14 @@
       data:
         entity_id: lock.yale_conexis_l1_lock
         refresh_all_values: true
-    - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
+    - wait_template: "{{ is_state('sensor.conexis_l1_node_status', 'alive') }}"
       timeout: '00:00:30'
       continue_on_timeout: true
     - wait_template: "{{ states('lock.yale_conexis_l1_lock') == 'locked' }}"
       timeout: '00:00:30'
       continue_on_timeout: true
     - condition: template
-      value_template: '{{ states("lock.yale_conexis_l1_lock") != "locked" }}'
+      value_template: '{{ states("lock.yale_conexis_l1_lock") != "locked" and states("lock.yale_conexis_l1_lock") != "unavailable" }}'
     - condition: state
       entity_id: binary_sensor.main_door
       state: 'off'
@@ -214,10 +214,10 @@
       data:
         entity_id: lock.yale_conexis_l1_lock
         refresh_all_values: true
-    - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
+    - wait_template: "{{ is_state('sensor.conexis_l1_node_status', 'alive') }}"
       timeout: '00:00:30'
       continue_on_timeout: true
-    - wait_template: '{{ states("sensor.porch_door_lock_status") != "Jammed" }}'
+    - wait_template: '{{ states("sensor.porch_door_lock_status") != "Jammed" and states("lock.yale_conexis_l1_lock") != "unavailable"}}'
       timeout: '00:00:30'
       continue_on_timeout: true
     - service: notify.mobile_app_lolo_s_iphone
@@ -327,6 +327,14 @@
       data:
         entity_id: lock.yale_conexis_l1_lock
         refresh_all_values: true
+    - delay: '00:00:30'
+    - condition: template
+      value_template: '{{ states("lock.yale_conexis_l1_lock") != "unavailable" }}' 
+    - service: notify.gmaillolo
+      data_template:
+        title: 'HA - Yale Lock Dead'
+        message: 'Yale Lock Dead since {{ as_timestamp(states.lock.yale_conexis_l1_lock.last_updated) | timestamp_custom("%H:%M")}}'
+
 
 # - alias: Yale - Event
 #   trigger:
