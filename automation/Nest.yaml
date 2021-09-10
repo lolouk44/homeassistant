@@ -9,34 +9,24 @@
       entity_id: person.div
       to: 'home'
     - platform: state
-      entity_id: person.div
-      to: 'phia'
-    - platform: state
       entity_id: person.laurent
       to: 'home'
     - platform: state
-      entity_id: person.laurent
-      from: 'verint'
+      entity_id: input_boolean.holidays
+      to: 'off'
     - platform: state
       entity_id: group.door_and_window_sensors
       to: 'off'
     - platform: template
-      value_template: '{{ states("sensor.lolo_s_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
+      value_template: '{{ states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
     - platform: template
-      value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
+      value_template: '{{ states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
-    - condition: or
-      conditions:
-      - condition: template
-        value_template: '{{ trigger.to_state.state  == "home"}}'
-      - condition: template
-        value_template: '{{ trigger.to_state.state == "phia" and now().hour >= 2}}'
-      - condition: template
-        value_template: '{{ trigger.from_state.state == "verint" and now().hour >= 3}}'
-      - condition: template
-        value_template: '{{ trigger.entity_id  == "group.door_and_window_sensors" }}'
     - condition: state
       entity_id: group.door_and_window_sensors
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.holidays
       state: 'off'
   action:
     - service: nest.set_away_mode
@@ -64,8 +54,16 @@
       entity_id: person.div
       from: 'home'
     - platform: state
+      entity_id: input_boolean.holidays
+      to: 'on'
+    - platform: state
       entity_id: climate.hallway
       to: 'heat'
+    - platform: state
+      entity_id: group.door_and_window_sensors
+      to: 'on'
+      for:
+        minutes: 2
   condition:
     - condition: state
       entity_id: climate.hallway
@@ -79,7 +77,7 @@
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home" and states("input_boolean.guests") == "off"}}'
+        value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home"}}'
       - condition: state
         entity_id: group.door_and_window_sensors
         state: 'on'
