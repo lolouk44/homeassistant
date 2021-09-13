@@ -27,9 +27,9 @@
       from: 'off'
       to: 'on'
   action:
-    - service: notify.gmaillolo
+    - service: notify.lolowork
       data_template:
-        title: "HA - Power BI Service Outage"
+        title: "Power BI - Service Outage Notification"
         message: |
           The EMEA Service Status is: {{ state_attr("binary_sensor.power_bi_emea_status","emeaservicestatus").title()}}
 
@@ -40,6 +40,121 @@
           Details: "{{ state_attr("binary_sensor.power_bi_awareness_status","awarenesstext")}}"
 
           https://powerbi.microsoft.com/en-us/support/
+        data:
+          html: >
+            {% set good = '<img src="https://lolorpi.com/html_test/good.png">' %}
+            {% set info = '<img src="https://lolorpi.com/html_test/info.png">' %}
+            {% set degraded = '<img src="https://lolorpi.com/html_test/degraded.png">' %}
+            {% set outage = '<img src="https://lolorpi.com/html_test/outage.png">' %}
+
+
+            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+              <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Power BI Service Status Update</title>
+                <style type="text/css">
+                .outter-table {
+                  width: 75%;
+                  border-collapse: collapse;
+                  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                }
+                .inner-table {
+                  font-size: 1em;
+                  font-family: sans-serif;
+                }
+                .inner-table th {
+                  text-align: left;
+                  font-family: Segoe UI;
+                }
+                </style>
+              </head>
+              <body>
+              <div style="background-color: #F2C811; color: black; text-align: center; font-family: Segoe UI">
+                <h1><br>Power BI Service Status Update<br>&nbsp;</h1>
+              </div>
+              <center>
+              <table class="outter-table">
+              <tr>
+              <td rowspan=2 valign="top" width=30%>
+                <table class="inner-table" width=100%>
+                  <th colspan=2 valign="top">Service Status</th>
+                  <tr><td>&nbsp;</td></tr>
+                  <tr>
+                    <td width=30px  valign="top">
+            {% if state_attr("sensor.power_bi_emea_status","emeaservicestatus") == "good" %}{{good}}
+            {% elif state_attr("sensor.power_bi_emea_status","emeaservicestatus") == "information" %}{{info}}
+            {% elif state_attr("sensor.power_bi_emea_status","emeaservicestatus") == "degraded" %}{{degraded}}
+            {% else %}{{outage}}
+            {% endif %}
+
+                    </td>
+                    <td>Europe</td></tr>
+                    <tr><td></td><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                  <tr>
+                    <td valign="top"> {{good}}
+                    </td>
+                    <td>Good</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">{{info}}
+                    </td>
+                    <td>Information</td>
+                  </tr>
+                  <tr>
+                    <td width=30px  valign="top">{{degraded}}
+                    </td>
+                    <td>Degraded</td>
+                  </tr>
+                  <tr>
+                    <td width=30px  valign="top">{{outage}}
+                    </td>
+                    <td>Outage</td>
+                  </tr>
+                  </td></tr>
+                </table>
+              </td>
+              <td>
+                <table class="inner-table"  width=100%>
+                  <th colspan=2 valign="top">Service Outage/Degradation</th>
+                  <tr><td width=30px>&nbsp;</td><td>&nbsp;</td></tr>
+                  <tr>
+                    <td valign="top">
+            {% if state_attr("sensor.power_bi_emea_status","serviceoutagestatus") == "good" %}{{good}}
+            {% elif state_attr("sensor.power_bi_emea_status","serviceoutagestatus") == "information" %}{{info}}
+            {% elif state_attr("sensor.power_bi_emea_status","serviceoutagestatus") == "degraded" %}{{degraded}}
+            {% else %}{{outage}}
+            {% endif %}
+                    </td>
+                    <td>{{state_attr("sensor.power_bi_emea_status","serviceoutagetext")}}<br>&nbsp;</td></tr>
+                    <tr><td colspan=2><hr></td></tr>
+                </table>
+              </td>
+              </tr>
+              <tr>
+              <td>
+                <table class="inner-table"  width=100%>
+                  <th colspan=2 valign="top">Awareness</th>
+                  <tr><td width=30px>&nbsp;</td></tr>
+                  <tr><td valign="top">
+            {% if state_attr("sensor.power_bi_emea_status","awarenessstatus") == "good" %}{{good}}
+            {% elif state_attr("sensor.power_bi_emea_status","awarenessstatus") == "information" %}{{info}}
+            {% elif state_attr("sensor.power_bi_emea_status","awarenessstatus") == "degraded" %}{{degraded}}
+            {% else %}{{outage}}
+            {% endif %}
+                    </td>
+                    <td>{{state_attr("sensor.power_bi_emea_status","awarenesstext")}}</td></tr>
+                </table>
+              </td>
+              </tr>
+              </table>
+              <br><a href="https://powerbi.microsoft.com/en-us/support/">https://powerbi.microsoft.com/en-us/support/</a>
+              </body>
+            </html>
 
 
 
@@ -60,18 +175,131 @@
       from: 'on'
       to: 'off'
   action:
-    - service: notify.gmaillolo
+    - service: notify.lolowork
       data_template:
-        title: "HA - Power BI Service Restored"
+        title: "Power BI - Service Restored Notification"
         message: |
-          The Power BI Service is {% if states("binary_sensor.power_bi_emea_status") == "off" and states("binary_sensor.power_bi_emea_status") == "off" and states("binary_sensor.power_bi_emea_status") == "off" %}FULLY{% else %}PARTIALLY{% endif %} restored:
-          
-          EMEA Service Status: {{ state_attr("binary_sensor.power_bi_emea_status","emeaservicestatus").title()}}
+          The EMEA Service Status is: {{ state_attr("binary_sensor.power_bi_emea_status","emeaservicestatus").title()}}
 
-          Service Outage/Degradation: {{ state_attr("binary_sensor.power_bi_service_status","serviceoutagestatus").title()}}
+          The Power BI Service Outage/Degradation Status is: {{ state_attr("binary_sensor.power_bi_service_status","serviceoutagestatus").title()}}
           Details: "{{ state_attr("binary_sensor.power_bi_service_status","serviceoutagetext")}}"
 
-          Awareness: {{ state_attr("binary_sensor.power_bi_awareness_status","awarenessstatus").title()}}
+          The Power BI Awareness Status is: {{ state_attr("binary_sensor.power_bi_awareness_status","awarenessstatus").title()}}
           Details: "{{ state_attr("binary_sensor.power_bi_awareness_status","awarenesstext")}}"
 
           https://powerbi.microsoft.com/en-us/support/
+        data:
+          html: >
+            {% set good = '<img src="https://lolorpi.com/html_test/good.png">' %}
+            {% set info = '<img src="https://lolorpi.com/html_test/info.png">' %}
+            {% set degraded = '<img src="https://lolorpi.com/html_test/degraded.png">' %}
+            {% set outage = '<img src="https://lolorpi.com/html_test/outage.png">' %}
+
+
+            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+              <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Power BI Service Status Update</title>
+                <style type="text/css">
+                .outter-table {
+                  width: 75%;
+                  border-collapse: collapse;
+                  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                }
+                .inner-table {
+                  font-size: 1em;
+                  font-family: sans-serif;
+                }
+                .inner-table th {
+                  text-align: left;
+                  font-family: Segoe UI;
+                }
+                </style>
+              </head>
+              <body>
+              <div style="background-color: #F2C811; color: black; text-align: center; font-family: Segoe UI">
+                <h1><br>Power BI Service Status Update<br>&nbsp;</h1>
+              </div>
+              <center>
+              <table class="outter-table">
+              <tr>
+              <td rowspan=2 valign="top" width=30%>
+                <table class="inner-table" width=100%>
+                  <th colspan=2 valign="top">Service Status</th>
+                  <tr><td>&nbsp;</td></tr>
+                  <tr>
+                    <td width=30px  valign="top">
+            {% if state_attr("sensor.power_bi_emea_status","emeaservicestatus") == "good" %}{{good}}
+            {% elif state_attr("sensor.power_bi_emea_status","emeaservicestatus") == "information" %}{{info}}
+            {% elif state_attr("sensor.power_bi_emea_status","emeaservicestatus") == "degraded" %}{{degraded}}
+            {% else %}{{outage}}
+            {% endif %}
+
+                    </td>
+                    <td>Europe</td></tr>
+                    <tr><td></td><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                  <tr>
+                    <td valign="top"> {{good}}
+                    </td>
+                    <td>Good</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">{{info}}
+                    </td>
+                    <td>Information</td>
+                  </tr>
+                  <tr>
+                    <td width=30px  valign="top">{{degraded}}
+                    </td>
+                    <td>Degraded</td>
+                  </tr>
+                  <tr>
+                    <td width=30px  valign="top">{{outage}}
+                    </td>
+                    <td>Outage</td>
+                  </tr>
+                  </td></tr>
+                </table>
+              </td>
+              <td>
+                <table class="inner-table"  width=100%>
+                  <th colspan=2 valign="top">Service Outage/Degradation</th>
+                  <tr><td width=30px>&nbsp;</td><td>&nbsp;</td></tr>
+                  <tr>
+                    <td valign="top">
+            {% if state_attr("sensor.power_bi_emea_status","serviceoutagestatus") == "good" %}{{good}}
+            {% elif state_attr("sensor.power_bi_emea_status","serviceoutagestatus") == "information" %}{{info}}
+            {% elif state_attr("sensor.power_bi_emea_status","serviceoutagestatus") == "degraded" %}{{degraded}}
+            {% else %}{{outage}}
+            {% endif %}
+                    </td>
+                    <td>{{state_attr("sensor.power_bi_emea_status","serviceoutagetext")}}<br>&nbsp;</td></tr>
+                    <tr><td colspan=2><hr></td></tr>
+                </table>
+              </td>
+              </tr>
+              <tr>
+              <td>
+                <table class="inner-table"  width=100%>
+                  <th colspan=2 valign="top">Awareness</th>
+                  <tr><td width=30px>&nbsp;</td></tr>
+                  <tr><td valign="top">
+            {% if state_attr("sensor.power_bi_emea_status","awarenessstatus") == "good" %}{{good}}
+            {% elif state_attr("sensor.power_bi_emea_status","awarenessstatus") == "information" %}{{info}}
+            {% elif state_attr("sensor.power_bi_emea_status","awarenessstatus") == "degraded" %}{{degraded}}
+            {% else %}{{outage}}
+            {% endif %}
+                    </td>
+                    <td>{{state_attr("sensor.power_bi_emea_status","awarenesstext")}}</td></tr>
+                </table>
+              </td>
+              </tr>
+              </table>
+              <br><a href="https://powerbi.microsoft.com/en-us/support/">https://powerbi.microsoft.com/en-us/support/</a>
+              </body>
+            </html>

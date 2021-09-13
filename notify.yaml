@@ -25,3 +25,14 @@
   services:
     - service: mobile_app_lolo_s_iphone
     - service: mobile_app_div_iphone
+
+- name: lolowork
+  platform: smtp
+  server: smtp.gmail.com
+  port: 587
+  sender: !secret email_from
+  starttls: true
+  username: !secret email_from
+  password: !secret email_password
+  recipient: !secret email_to_lolo_work
+  encryption: starttls
