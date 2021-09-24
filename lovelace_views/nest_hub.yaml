@@ -1,5 +1,5 @@
 title: Nest Hub
-background: center / cover no-repeat url("http://192.168.0.23:8082") 
+background: center / cover no-repeat url("http://192.168.9.23:8082") 
 icon: mdi:monitor-dashboard
 path: nest_hub
 view_path: nest_hub

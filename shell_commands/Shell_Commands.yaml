@@ -23,7 +23,7 @@ start_radiostream_sensors: /config/shell_scripts/start_radiostream_sensors.sh $1
 
 fire7_reload_url: /config/shell_scripts/fire7_reload_url.sh
 #restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa pi@192.168.0.21 docker restart mm
-restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa pi@192.168.0.21 sudo reboot
+restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa pi@192.168.9.21 sudo reboot
 
 reboot_doorbell: !secret doorbell_reboot_url
 set_doorbell_daylight: /config/shell_scripts/Doorbell_ISAPI_Sharpness.sh

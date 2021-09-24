@@ -1,5 +1,5 @@
 - platform: edimax
-  host: 192.168.0.51
+  host: 192.168.9.51
   username: admin
   password: !secret Edimax1_Password
   name: Edimax1

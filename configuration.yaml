@@ -258,6 +258,21 @@ person:
 recorder:
   db_url: !secret db_url
 
+remote_homeassistant:
+  instances:
+  - host: 192.168.9.23
+    port: 8123
+    access_token: !secret ha2_long_lived_token
+    include:
+      entities:
+      - light.lolo_bedside_light
+      - light.aqara_gateway_light
+      - sensor.aqara_illumination
+      - switch.xiaomi_garage_socket
+      - switch.xiaomi_dual_usb_socket
+      - switch.xiaomi_dual_usb_socket_usb
+
+
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1XETWB5-if00-port0
   devices:
@@ -385,12 +400,12 @@ weather:
 
 webhook:
 
-xiaomi_aqara:
-  discovery_retry: 10
-  gateways:
-    - mac: !secret xiaomi_aqara_mac
-      key: !secret xiaomi_aqara_password
-      host: 192.168.0.5
+# xiaomi_aqara:
+#   discovery_retry: 10
+#   gateways:
+#     - mac: !secret xiaomi_aqara_mac
+#       key: !secret xiaomi_aqara_password
+#       host: 192.168.9.5
 
 zeroconf:
 
@@ -402,6 +417,6 @@ panel_iframe:
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
 
-# zwave:
-#   usb_path: /dev/ttyACM0
-#   network_key: !secret zwave_network_key
+zwave:
+  usb_path: /dev/ttyACM0
+  network_key: !secret zwave_network_key

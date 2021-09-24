@@ -1,26 +1,26 @@
 - platform: mjpeg
-  mjpeg_url: http://192.168.0.23:8082
+  mjpeg_url: http://192.168.9.23:8082
   name: 'Front'
 - platform: mjpeg
-  mjpeg_url: http://192.168.0.23:8081
+  mjpeg_url: http://192.168.9.23:8081
   name: 'Side'
 - platform: mjpeg
-  mjpeg_url: http://192.168.0.23:8083
+  mjpeg_url: http://192.168.9.23:8083
   name: 'Back'
 - platform: mjpeg
-  mjpeg_url: http://192.168.0.23:8085
+  mjpeg_url: http://192.168.9.23:8085
   name: 'Living Room'
 - platform: mjpeg
-  mjpeg_url: http://192.168.0.23:8084
+  mjpeg_url: http://192.168.9.23:8084
   name: 'Kitchen'
 - platform: mjpeg
-  mjpeg_url: http://192.168.0.23:8086
+  mjpeg_url: http://192.168.9.23:8086
   name: 'Garage'
 - platform: mjpeg
-  mjpeg_url: http://192.168.0.23:8087
+  mjpeg_url: http://192.168.9.23:8087
   name: 'Conservatory'
 - platform: mjpeg
-  mjpeg_url: http://192.168.0.23:8089
+  mjpeg_url: http://192.168.9.23:8089
   name: 'Fire7'
 
 - platform: generic

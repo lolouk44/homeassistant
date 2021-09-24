@@ -102,13 +102,13 @@
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
   timeout: 30
 
-- platform: rest
-  resource: http://192.168.0.24:8126/container/zwavejs
-  name: zwavejs
-  body_on: '{"state": "start"}'
-  body_off: '{"state": "stop"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-  timeout: 30
+# - platform: rest
+#   resource: http://192.168.0.24:8126/container/zwavejs
+#   name: zwavejs
+#   body_on: '{"state": "start"}'
+#   body_off: '{"state": "stop"}'
+#   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+#   timeout: 30
 
 - platform: rest
   resource: http://192.168.0.24:8126/container/syncthing
@@ -135,7 +135,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.23:8126/container/ha
+  resource: http://192.168.9.23:8126/container/ha
   name: CCTV2 HA
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -143,7 +143,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.23:8126/container/motion
+  resource: http://192.168.9.23:8126/container/motion
   name: CCTV2 Motion
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'

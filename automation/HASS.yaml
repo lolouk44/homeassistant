@@ -104,10 +104,10 @@
   - service: automation.trigger
     entity_id: automation.lights_all_lights_off
   - service: shell_command.refresh_bin_collection
-  - service: zwave_js.refresh_value
-    data:
-      entity_id: sensor.yale_conexis_l1_battery_level
-      refresh_all_values: true
+  # - service: zwave_js.refresh_value
+  #   data:
+  #     entity_id: sensor.yale_conexis_l1_battery_level
+  #     refresh_all_values: true
 
 - alias: HASS - SSL expiry notification
   id: hass_ssl_expiry_notification

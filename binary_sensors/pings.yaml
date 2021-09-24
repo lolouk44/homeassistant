@@ -7,49 +7,49 @@
   name: MAIN
 
 - platform: ping
-  host: 192.168.0.40
+  host: 192.168.9.40
   name: TV Cabinet LED Strip
 
 - platform: ping
-  host: 192.168.0.41
+  host: 192.168.9.41
   name: StairCase LED Strip
 
 - platform: ping
-  host: 192.168.0.53
+  host: 192.168.9.53
   name: Conservatory LED Strip
 
 - platform: ping
-  host: 192.168.0.17
+  host: 192.168.9.17
   name: Kello
 
 - platform: ping
-  host: 192.168.0.21
+  host: 192.168.9.21
   name: RPi Kitchen
 
 - platform: ping
-  host: 192.168.0.30
+  host: 192.168.9.30
   name: Verint CCTV
 
 - platform: ping
-  host: 192.168.0.31
+  host: 192.168.9.31
   name: Hikvision CCTV
 
 - platform: ping
-  host: 192.168.0.32
+  host: 192.168.9.32
   name: Dafang Living Room
 
 - platform: ping
-  host: 192.168.0.33
+  host: 192.168.9.33
   name: Dafang Kitchen
 
 - platform: ping
-  host: 192.168.0.36
+  host: 192.168.9.36
   name: Dafang Conservatory
 
 - platform: ping
-  host: 192.168.0.37
+  host: 192.168.9.38
   name: Doorbell
 
 - platform: ping
-  host: 192.168.0.4
+  host: 192.168.9.4
   name: Pi-Zero

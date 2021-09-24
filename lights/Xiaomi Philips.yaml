@@ -2,3 +2,12 @@
 #   name: Lolo Bedside Light
 #   host: 192.168.0.54
 #   token: !secret xiaomi_token_lolo_bedside_light
+
+
+
+# - platform: rest
+#   resource: http://192.168.9.23:8123/api/states/light.lolo_bedside_light
+#   name: Lolo Bedside Light
+#   value_template: '{{ value_json.state }}'
+#   headers:
+#     Authorization: !secret ha2_long_lived_token

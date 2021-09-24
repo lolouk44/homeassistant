@@ -30,7 +30,7 @@
   action:
     - service: vacuum.start
       data:
-        entity_id: vacuum.mi_robot_vacuum
+        entity_id: vacuum.roborock_vacuum
 
 
 
@@ -39,11 +39,11 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: vacuum.mi_robot_vacuum
+      entity_id: vacuum.roborock_vacuum
       to: 'cleaning'
       from: 'docked'
     - platform: state
-      entity_id: vacuum.mi_robot_vacuum
+      entity_id: vacuum.roborock_vacuum
       to: 'cleaning'
       from: 'idle'
   action:
@@ -67,7 +67,7 @@
   action:
     - service: vacuum.start
       data:
-        entity_id: vacuum.mi_robot_vacuum
+        entity_id: vacuum.roborock_vacuum
 
 
 
@@ -104,10 +104,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: vacuum.mi_robot_vacuum
+      entity_id: vacuum.roborock_vacuum
       to: 'returning to dock'
     - platform: state
-      entity_id: vacuum.mi_robot_vacuum
+      entity_id: vacuum.roborock_vacuum
       to: 'returning'
   action:
     - service: notify.gmaillolo
@@ -115,7 +115,7 @@
         title: "HA - Vacuum Finished"
         message: |
           Mi Robot finished Vacuuming...
-          Cleaned {{ state_attr("vacuum.mi_robot_vacuum","cleaned_area") }} m² in {{ state_attr("vacuum.mi_robot_vacuum","cleaning_time") }} min.
+          Cleaned {{ state_attr("vacuum.roborock_vacuum","cleaned_area") }} m² in {{ state_attr("vacuum.roborock_vacuum","cleaning_time") }} min.
         data:
           images:
             - /config/www/navmap.png
@@ -124,7 +124,7 @@
         title: "HA - Vacuum Finished"
         message: |
           Mi Robot finished Vacuuming...
-          Cleaned {{ state_attr("vacuum.mi_robot_vacuum","cleaned_area") }} m² in {{ state_attr("vacuum.mi_robot_vacuum","cleaning_time") }} min.
+          Cleaned {{ state_attr("vacuum.roborock_vacuum","cleaned_area") }} m² in {{ state_attr("vacuum.roborock_vacuum","cleaning_time") }} min.
         data:
           images:
             - /config/www/navmap.png
@@ -155,6 +155,6 @@
   action:
     - service: vacuum.start
       data:
-        entity_id: vacuum.mi_robot_vacuum
+        entity_id: vacuum.roborock_vacuum
     - service: input_boolean.turn_off
       entity_id: input_boolean.scheduled_vacuuming
