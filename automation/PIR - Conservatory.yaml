@@ -26,6 +26,9 @@
       entity_id: binary_sensor.dark
       state: 'on'
   action:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.lights_conservatory_lights_dimmed_off_pir,automation.lights_conservatory_lights_off_pir
   - service: light.turn_on
     data:
       entity_id: light.conservatory
@@ -35,6 +38,9 @@
     data:
       entity_id: light.conservatory
       brightness: 255
+  - service: automation.turn_on
+    data:
+      entity_id: automation.lights_conservatory_lights_dimmed_off_pir,automation.lights_conservatory_lights_off_pir
 
 
 
@@ -133,8 +139,8 @@
       entity_id: binary_sensor.dark
       state: 'on'
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'off'
+      entity_id: input_select.lights_mode
+      state: 'Normal'
   action:
   - service: light.turn_on
     data:

@@ -43,6 +43,9 @@
       entity_id: binary_sensor.dark
       state: 'on'
   action:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.lights_living_room_main_light_dimmed_off_pir,automation.lights_living_room_main_light_off_pir
   - service: light.turn_on
     data:
       entity_id: light.living_room_main
@@ -50,6 +53,9 @@
   - service: switch.turn_on
     data:
       entity_id: switch.lwrf_socket_3
+  - service: automation.turn_on
+    data:
+      entity_id: automation.lights_living_room_main_light_dimmed_off_pir,automation.lights_living_room_main_light_off_pir
 
 
 - alias: Lights - Living Room Main Light Dimmed Off PIR

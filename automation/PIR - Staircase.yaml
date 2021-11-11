@@ -35,6 +35,9 @@
       entity_id: binary_sensor.dark
       state: 'on'
   action:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.lights_staircase_light_off_by_pir
   - service: light.turn_on
     data:
       entity_id: light.staircase
@@ -44,9 +47,12 @@
       entity_id: light.staircase_led_strip
       brightness: 255
       rgb_color: [0,128,255]
+  - service: automation.turn_on
+    data:
+      entity_id: automation.lights_staircase_light_off_by_pir
   - condition: state
-    entity_id: input_boolean.xmas
-    state: 'on'
+    entity_id: input_select.lights_mode
+    state: 'Xmas'
   - service: light.turn_on
     data:
       entity_id: light.staircase_led_strip
