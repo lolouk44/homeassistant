@@ -176,6 +176,11 @@
   state_topic: "zigbee2mqtt/pooja_door"
   <<: *lastseen
 
+- platform: mqtt
+  name: "Zigbee Round Socket Last Seen"
+  state_topic: "zigbee2mqtt/zigbee_round_socket"
+  <<: *lastseen
+
 - platform: template
   sensors:
     lost_zigbee_devices:
