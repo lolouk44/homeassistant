@@ -1,27 +1,66 @@
-- platform: mjpeg
-  mjpeg_url: http://192.168.9.23:8082
-  name: 'Front'
-- platform: mjpeg
-  mjpeg_url: http://192.168.9.23:8081
-  name: 'Side'
-- platform: mjpeg
-  mjpeg_url: http://192.168.9.23:8083
-  name: 'Back'
-- platform: mjpeg
-  mjpeg_url: http://192.168.9.23:8085
-  name: 'Living Room'
-- platform: mjpeg
-  mjpeg_url: http://192.168.9.23:8084
-  name: 'Kitchen'
-- platform: mjpeg
-  mjpeg_url: http://192.168.9.23:8086
-  name: 'Garage'
-- platform: mjpeg
-  mjpeg_url: http://192.168.9.23:8087
-  name: 'Conservatory'
+# - platform: mjpeg
+#   mjpeg_url: http://192.168.9.23:8082
+#   name: 'Front'
+# - platform: mjpeg
+#   mjpeg_url: http://192.168.9.23:8081
+#   name: 'Side'
+# - platform: mjpeg
+#   mjpeg_url: http://192.168.9.23:8083
+#   name: 'Back'
+# - platform: mjpeg
+#   mjpeg_url: http://192.168.9.23:8085
+#   name: 'Living Room'
+# - platform: mjpeg
+#   mjpeg_url: http://192.168.9.23:8084
+#   name: 'Kitchen'
+# - platform: mjpeg
+#   mjpeg_url: http://192.168.9.23:8086
+#   name: 'Garage'
+# - platform: mjpeg
+#   mjpeg_url: http://192.168.9.23:8087
+#   name: 'Conservatory'
 - platform: mjpeg
   mjpeg_url: http://192.168.9.23:8089
   name: 'Fire7'
+
+# Frigate Last Person
+
+# - platform: mqtt
+#   topic: frigate/garage/person/snapshot
+#   name: 'Garage Last Person'
+
+# frigate cams
+# - platform: generic
+#   still_image_url: http://192.168.9.23:5000/api/back/latest.jpg
+#   stream_source: rtmp://192.168.9.23:1935/live/back
+#   name: 'Back'
+# - platform: generic
+#   still_image_url: http://192.168.9.23:5000/api/conservatory/latest.jpg
+#   stream_source: rtmp://192.168.9.23:1935/live/conservatory
+#   name: 'Conservatory'
+# - platform: generic
+#   still_image_url: http://192.168.9.23:5000/api/front/latest.jpg
+#   stream_source: rtmp://192.168.9.23:1935/live/front
+#   name: 'Front'
+# - platform: generic
+#   still_image_url: http://192.168.9.23:5000/api/garage/latest.jpg
+#   stream_source: rtmp://192.168.9.23:1935/live/garage
+#   name: 'Garage'
+# - platform: generic
+#   still_image_url: http://192.168.9.23:5000/api/kitchen/latest.jpg
+#   stream_source: rtmp://192.168.9.23:1935/live/kitchen
+#   name: 'Kitchen'
+# - platform: generic
+#   still_image_url: http://192.168.9.23:5000/api/living_room/latest.jpg
+#   stream_source: rtmp://192.168.9.23:1935/live/living_room
+#   name: 'Living Room'
+# - platform: generic
+#   still_image_url: http://192.168.9.23:5000/api/side/latest.jpg
+#   stream_source: rtmp://192.168.9.23:1935/live/side
+#   name: 'Side'
+
+
+
 
 - platform: generic
   still_image_url: !secret xiaomi_vacuum_map

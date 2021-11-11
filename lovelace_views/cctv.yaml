@@ -6,172 +6,141 @@ badges:
 cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
+  # Front Camera Card
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-entity
-      title: Front
-      entity: camera.front
-      camera_image: camera.front
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Front
-      show_header_toggle: false
+    - type: picture-glance
       entities:
         - entity: binary_sensor.front_cctv_motion
-          secondary_info: last-changed
         - entity: binary_sensor.front_cctv_line_crossing
-          secondary_info: last-changed
+          icon: mdi:account-off
+        - entity: binary_sensor.front_person_motion
+          icon: mdi:face-recognition
         - entity: binary_sensor.front_cctv_disk_full
-          secondary_info: last-changed
         - entity: binary_sensor.front_cctv_disk_error
-          secondary_info: last-changed
+          icon: mdi:harddisk-remove
+        - entity: switch.front_detect
+        - entity: switch.front_recordings
+        - entity: switch.front_snapshots
+      camera_image: camera.front
+
+  # Living Room Camera Card
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-entity
-      title: Living Room
-      entity: camera.living_room
+    - type: picture-glance
+      entities:
+        - entity: binary_sensor.pir_living_room_front
+        - entity: binary_sensor.pir_living_room_back
+        - entity: binary_sensor.living_room_person_motion
+          icon: mdi:face-recognition
+        - entity: switch.living_room_detect
+        - entity: switch.living_room_recordings
+        - entity: switch.living_room_snapshots
       camera_image: camera.living_room
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Dafang Living Room
-      show_header_toggle: false
-      entities:
-        - switch.dafang_living_room_status
-        - switch.dafang_living_room_rtsp
-        - switch.dafang_living_room_blue_led
-        - switch.dafang_living_room_yellow_led
-        - switch.dafang_living_room_left_right
+
+  # Kitchen Camera Card
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-entity
-      title: Kitchen
-      entity: camera.kitchen
+    - type: picture-glance
+      entities:
+        - entity: binary_sensor.pir_kitchen
+        - entity: binary_sensor.kitchen_person_motion
+          icon: mdi:face-recognition
+        - entity: switch.kitchen_detect
+        - entity: switch.kitchen_recordings
+        - entity: switch.kitchen_snapshots
       camera_image: camera.kitchen
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Dafang Kitchen
-      show_header_toggle: false
-      entities:
-        - switch.dafang_kitchen_status
-        - switch.dafang_kitchen_rtsp
-        - switch.dafang_kitchen_blue_led
-        - switch.dafang_kitchen_yellow_led
-        - switch.dafang_kitchen_left_right
+
+  # Side Camera Card
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-entity
-      title: Side
-      entity: camera.side
-      camera_image: camera.side
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Side
-      show_header_toggle: false
+    - type: picture-glance
       entities:
         - entity: binary_sensor.side_cctv_motion
-          secondary_info: last-changed
         - entity: binary_sensor.side_cctv_line_crossing
-          secondary_info: last-changed
+          icon: mdi:account-off
+        - entity: binary_sensor.side_person_motion
+          icon: mdi:face-recognition
         - entity: binary_sensor.side_cctv_disk_full
-          secondary_info: last-changed
         - entity: binary_sensor.side_cctv_disk_error
-          secondary_info: last-changed
+          icon: mdi:harddisk-remove
+        - entity: switch.side_detect
+        - entity: switch.side_recordings
+        - entity: switch.side_snapshots
+      camera_image: camera.side
+
+  # Conservatory Camera Card
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-entity
-      title: Conservatory
-      entity: camera.conservatory
-      camera_image: camera.conservatory
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Conservatory
-      show_header_toggle: false
+    - type: picture-glance
       entities:
-        - switch.cctv_conservatory_status
+        - entity: binary_sensor.pir_conservatory
+        - entity: binary_sensor.conservatory_person_motion
+          icon: mdi:face-recognition
+        - entity: switch.conservatory_detect
+        - entity: switch.conservatory_recordings
+        - entity: switch.conservatory_snapshots
+      camera_image: camera.conservatory
+
+  # Garage Camera Card
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-entity
-      title: Garage
-      entity: camera.garage
-      camera_image: camera.garage
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Garage
-      show_header_toggle: false
+    - type: picture-glance
       entities:
         - entity: binary_sensor.pir_garage
-          secondary_info: last-changed
-        - entity: switch.cctv_garage_status
+        - entity: binary_sensor.garage_person_motion
+          icon: mdi:face-recognition
+        - entity: switch.garage_detect
+        - entity: switch.garage_recordings
+        - entity: switch.garage_snapshots
+      camera_image: camera.garage
+
+  # Doorbell Camera Card
   - type: custom:stack-in-card
     cards:
-    - type: picture-entity
-      title: Doorbell
-      entity: camera.doorbell_last_event
+    - type: picture-glance
+      entities:
+        - entity: binary_sensor.doorbell_person_detected
+          icon: mdi:face-recognition
       camera_image: camera.doorbell_last_event
-      show_name: false
-      show_state: false
     - type: entities
       title: Doorbell
       show_header_toggle: false
       entities:
-        - entity: binary_sensor.doorbell_person_detected
-          secondary_info: last-changed
-          icon: mdi:face-recognition
         - entity: binary_sensor.doorbell_doorbell_pressed
           secondary_info: last-changed
           icon: mdi:bell-circle-outline
+
+  # Hallway Camera Card
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-entity
-      title: Hallway
-      entity: camera.fire7
-      camera_image: camera.fire7
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Hallway
-      show_header_toggle: false
+    - type: picture-glance
       entities:
         - entity: binary_sensor.fire7_motion
-          secondary_info: last-changed
+      camera_image: camera.fire7
+
+  # Back Camera Card
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: picture-entity
-      entity: camera.back
-      camera_image: camera.back
-      show_name: false
-      show_state: false
-    - type: entities
-      state_color: true
-      title: Back
-      show_header_toggle: false
+    - type: picture-glance
       entities:
         - entity: binary_sensor.back_cctv_motion
-          secondary_info: last-changed
         - entity: binary_sensor.back_cctv_line_crossing
-          secondary_info: last-changed
+          icon: mdi:account-off
+        - entity: binary_sensor.back_person_motion
+          icon: mdi:face-recognition
         - entity: binary_sensor.back_cctv_disk_full
-          secondary_info: last-changed
         - entity: binary_sensor.back_cctv_disk_error
-          secondary_info: last-changed     
+          icon: mdi:harddisk-remove
+        - entity: switch.back_detect
+        - entity: switch.back_recordings
+        - entity: switch.back_snapshots
+      camera_image: camera.back

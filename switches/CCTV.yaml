@@ -1,27 +1,25 @@
-- platform: template
-  switches:
-    dafang_living_room_status:
-      friendly_name: Dafang Living Room motion Recording
-      value_template: "{{ is_state('sensor.dafang_living_room_status_scrape', 'ACTIVE') }}"
-      turn_on:
-        service: shell_command.dafang_living_room_active
-      turn_off:
-        service: shell_command.dafang_living_room_pause
-      icon_template: "mdi:run-fast"
+# - platform: template
+#   switches:
+#     dafang_living_room_status:
+#       friendly_name: Dafang Living Room motion Recording
+#       value_template: "{{ is_state('sensor.dafang_living_room_status_scrape', 'ACTIVE') }}"
+#       turn_on:
+#         service: shell_command.dafang_living_room_active
+#       turn_off:
+#         service: shell_command.dafang_living_room_pause
+#       icon_template: "mdi:run-fast"
 
 - platform: mqtt
   name: "DaFang Living Room RTSP"
-  state_topic: "LivingRoom/DaFang/status"
-  value_template: "{% if value_json[\"RTSP-Server\"] == 'running' %}h264_noseg_start{% else %}rtsp_stop{% endif %}"
-  command_topic: "LivingRoom/DaFang/set"
-  payload_on: "h264_noseg_start"
-  payload_off: "rtsp_stop"
+  state_topic: "LivingRoom/DaFang/rtsp_h264_server"
+  command_topic: "LivingRoom/DaFang/rtsp_h264_server/set"
+  payload_on: "ON"
+  payload_off: "OFF"
   optimistic: false
 
 - platform: mqtt
   name: "Dafang Living Room Blue LED"
   state_topic: "LivingRoom/DaFang/leds/blue"
-  # value_template: "{% if value_json.LEDs.Blue == 'on' %}blue_led_on{% else %}blue_led_off{% endif %}"
   command_topic: "LivingRoom/DaFang/leds/blue/set"
   payload_on: "ON"
   payload_off: "OFF"
@@ -30,7 +28,6 @@
 - platform: mqtt
   name: "Dafang Living Room Yellow LED"
   state_topic: "LivingRoom/DaFang/leds/yellow"
-  # value_template: "{% if value_json.LEDs.Yellow == 'on' %}yellow_led_on{% else %}yellow_led_off{% endif %}"
   command_topic: "LivingRoom/DaFang/leds/yellow/set"
   payload_on: "ON"
   payload_off: "OFF"
@@ -51,16 +48,16 @@
   optimistic: false
 
 
-- platform: template
-  switches:
-    dafang_kitchen_status:
-      friendly_name: Dafang Kitchen motion Recording
-      value_template: "{{ is_state('sensor.dafang_kitchen_status_scrape', 'ACTIVE') }}"
-      turn_on:
-        service: shell_command.dafang_kitchen_active
-      turn_off:
-        service: shell_command.dafang_kitchen_pause
-      icon_template: "mdi:run-fast"
+# - platform: template
+#   switches:
+#     dafang_kitchen_status:
+#       friendly_name: Dafang Kitchen motion Recording
+#       value_template: "{{ is_state('sensor.dafang_kitchen_status_scrape', 'ACTIVE') }}"
+#       turn_on:
+#         service: shell_command.dafang_kitchen_active
+#       turn_off:
+#         service: shell_command.dafang_kitchen_pause
+#       icon_template: "mdi:run-fast"
 
 - platform: mqtt
   name: "DaFang Kitchen RTSP"
@@ -105,31 +102,31 @@
 
 
 
-- platform: template
-  switches:
-    cctv_garage_status:
-      friendly_name: CCTV Garage motion Recording
-      value_template: "{{ is_state('sensor.cctv_garage_status_scrape', 'ACTIVE') }}"
-      turn_on:
-        service: shell_command.cctv_garage_active
-      turn_off:
-        service: shell_command.cctv_garage_pause
-      icon_template: "mdi:run-fast"
+# - platform: template
+#   switches:
+#     cctv_garage_status:
+#       friendly_name: CCTV Garage motion Recording
+#       value_template: "{{ is_state('sensor.cctv_garage_status_scrape', 'ACTIVE') }}"
+#       turn_on:
+#         service: shell_command.cctv_garage_active
+#       turn_off:
+#         service: shell_command.cctv_garage_pause
+#       icon_template: "mdi:run-fast"
 
-    cctv_conservatory_status:
-      friendly_name: CCTV Conservatory motion Recording
-      value_template: "{{ is_state('sensor.dafang_conservatory_status_scrape', 'ACTIVE') }}"
-      turn_on:
-        service: shell_command.cctv_conservatory_active
-      turn_off:
-        service: shell_command.cctv_conservatory_pause
-      icon_template: "mdi:run-fast"
+#     cctv_conservatory_status:
+#       friendly_name: CCTV Conservatory motion Recording
+#       value_template: "{{ is_state('sensor.dafang_conservatory_status_scrape', 'ACTIVE') }}"
+#       turn_on:
+#         service: shell_command.cctv_conservatory_active
+#       turn_off:
+#         service: shell_command.cctv_conservatory_pause
+#       icon_template: "mdi:run-fast"
 
-    cctv_staircase_status:
-      friendly_name: CCTV Staircase motion Recording
-      value_template: "{{ is_state('sensor.cctv_staircase_status_scrape', 'ACTIVE') }}"
-      turn_on:
-        service: shell_command.cctv_staircase_active
-      turn_off:
-        service: shell_command.cctv_staircase_pause
-      icon_template: "mdi:run-fast"
+#     cctv_staircase_status:
+#       friendly_name: CCTV Staircase motion Recording
+#       value_template: "{{ is_state('sensor.cctv_staircase_status_scrape', 'ACTIVE') }}"
+#       turn_on:
+#         service: shell_command.cctv_staircase_active
+#       turn_off:
+#         service: shell_command.cctv_staircase_pause
+#       icon_template: "mdi:run-fast"

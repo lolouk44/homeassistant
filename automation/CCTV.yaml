@@ -97,12 +97,70 @@
       entity_id: input_boolean.guests
       state: 'off'
   action:
-  - service: switch.turn_on
-    entity_id:
-      - switch.dafang_living_room_status
-      - switch.dafang_kitchen_status
-      - switch.cctv_conservatory_status
-      - switch.cctv_staircase_status
+    - service: switch.turn_on
+      data:
+        entity_id: switch.conservatory_detect,switch.conservatory_recordings,switch.conservatory_snapshots
+    - service: switch.turn_on
+      data:
+        entity_id: switch.kitchen_detect,switch.kitchen_recordings,switch.kitchen_snapshots
+    - service: switch.turn_on
+      data:
+        entity_id: switch.living_room_detect,switch.living_room_recordings,switch.living_room_snapshots
+
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/conservatory/detect/state
+    #     payload: "ON"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/conservatory/recordings/state
+    #     payload: "ON"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/conservatory/snapshots/state
+    #     payload: "ON"
+    #     retain: true
+  
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/kitchen/detect/state
+    #     payload: "ON"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/kitchen/recordings/state
+    #     payload: "ON"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/kitchen/snapshots/state
+    #     payload: "ON"
+    #     retain: true
+    
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/living_room/detect/state
+    #     payload: "ON"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/living_room/recordings/state
+    #     payload: "ON"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/living_room/snapshots/state
+    #     payload: "ON"
+    #     retain: true
+
+    # - service: switch.turn_on
+    #   entity_id:
+    #     - switch.dafang_living_room_status
+    #     - switch.dafang_kitchen_status
+    #     - switch.cctv_conservatory_status
+    #     - switch.cctv_staircase_status
 
 - alias: CCTV - Deactivate motion we reach home
   id: cctv_deactivate_motion_we_reach_home
@@ -134,105 +192,163 @@
         entity_id: input_boolean.guests
         state: 'on'
   action:
-  - service: switch.turn_off
-    entity_id:
-      - switch.dafang_living_room_status
-      - switch.dafang_kitchen_status
-      - switch.cctv_conservatory_status
-      - switch.cctv_staircase_status
+    - service: switch.turn_off
+      data:
+        entity_id: switch.conservatory_detect,switch.conservatory_recordings,switch.conservatory_snapshots
+    - service: switch.turn_off
+      data:
+        entity_id: switch.kitchen_detect,switch.kitchen_recordings,switch.kitchen_snapshots
+    - service: switch.turn_off
+      data:
+        entity_id: switch.living_room_detect,switch.living_room_recordings,switch.living_room_snapshots
+
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/conservatory/detect/state
+    #     payload: "OFF"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/conservatory/recordings/state
+    #     payload: "OFF"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/conservatory/snapshots/state
+    #     payload: "OFF"
+    #     retain: true
+  
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/kitchen/detect/state
+    #     payload: "OFF"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/kitchen/recordings/state
+    #     payload: "OFF"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/kitchen/snapshots/state
+    #     payload: "OFF"
+    #     retain: true
+    
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/living_room/detect/state
+    #     payload: "OFF"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/living_room/recordings/state
+    #     payload: "OFF"
+    #     retain: true
+    # - service: mqtt.publish
+    #   data:
+    #     topic: frigate/living_room/snapshots/state
+    #     payload: "OFF"
+    #     retain: true
+
+    # - service: switch.turn_off
+    #   entity_id:
+    #     - switch.dafang_living_room_status
+    #     - switch.dafang_kitchen_status
+    #     - switch.cctv_conservatory_status
+    #     - switch.cctv_staircase_status
 
 
-- alias: CCTV - Set Dafang Blue LED On
-  id: cctv_set_dafang_blue_led_on
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: switch.dafang_living_room_status
-      to: 'on'
-    - platform: state
-      entity_id: switch.dafang_kitchen_status
-      to: 'on'
-  action:
-  - service: switch.turn_on
-    data_template:
-      entity_id: '{{ trigger.entity_id | replace("status","blue_led") }}'
+# - alias: CCTV - Set Dafang Blue LED On
+#   id: cctv_set_dafang_blue_led_on
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: switch.dafang_living_room_status
+#       to: 'on'
+#     - platform: state
+#       entity_id: switch.dafang_kitchen_status
+#       to: 'on'
+#   action:
+#   - service: switch.turn_on
+#     data_template:
+#       entity_id: '{{ trigger.entity_id | replace("status","blue_led") }}'
 
-- alias: CCTV - Set Dafang Yellow LED On
-  id: cctv_set_dafang_yellow_led_on
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: switch.dafang_living_room_status
-      to: 'off'
-    - platform: state
-      entity_id: switch.dafang_kitchen_status
-      to: 'off'
-  action:
-  - service: switch.turn_on
-    data_template:
-      entity_id: '{{ trigger.entity_id | replace("status","yellow_led") }}'
-
-
-- alias: CCTV - Kitchen CCTV Motion Connection Lost
-  id: cctv_kitchen_cctv_motion_connection_lost
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: sensor.dafang_kitchen_connection_scrape
-      to: '	Lost connection'
-      for:
-        minutes: 3
-  action:
-  - service: notify.gmaillolo
-    data_template:
-      title: "HA - CCTV Error"
-      message: Kitchen CCTV Motion Connection Lost!
+# - alias: CCTV - Set Dafang Yellow LED On
+#   id: cctv_set_dafang_yellow_led_on
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: switch.dafang_living_room_status
+#       to: 'off'
+#     - platform: state
+#       entity_id: switch.dafang_kitchen_status
+#       to: 'off'
+#   action:
+#   - service: switch.turn_on
+#     data_template:
+#       entity_id: '{{ trigger.entity_id | replace("status","yellow_led") }}'
 
 
-- alias: CCTV - Living Room CCTV Motion Connection Lost
-  id: cctv_living_room_cctv_motion_connection_lost
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: sensor.dafang_living_room_connection_scrape
-      to: '	Lost connection'
-      for:
-        minutes: 3
-  action:
-  - service: notify.gmaillolo
-    data_template:
-      title: "HA - CCTV Error"
-      message: Living Room CCTV Motion Connection Lost!
+# - alias: CCTV - Kitchen CCTV Motion Connection Lost
+#   id: cctv_kitchen_cctv_motion_connection_lost
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.dafang_kitchen_connection_scrape
+#       to: 'Lost connection'
+#       for:
+#         minutes: 3
+#   action:
+#   - service: notify.gmaillolo
+#     data_template:
+#       title: "HA - CCTV Error"
+#       message: Kitchen CCTV Motion Connection Lost!
 
 
-- alias: CCTV - Garage CCTV Motion Connection Lost
-  id: cctv_garage_cctv_motion_connection_lost
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: sensor.cctv_garage_connection_scrape
-      to: '	Lost connection'
-      for:
-        minutes: 3
-  action:
-  - service: notify.gmaillolo
-    data_template:
-      title: "HA - CCTV Error"
-      message: Garage CCTV Motion Connection Lost!
+# - alias: CCTV - Living Room CCTV Motion Connection Lost
+#   id: cctv_living_room_cctv_motion_connection_lost
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.dafang_living_room_connection_scrape
+#       to: 'Lost connection'
+#       for:
+#         minutes: 3
+#   action:
+#   - service: notify.gmaillolo
+#     data_template:
+#       title: "HA - CCTV Error"
+#       message: Living Room CCTV Motion Connection Lost!
 
 
-- alias: CCTV - CCTV Conservatory Connection Lost
-  id: cctv_cctv_conservatory_connection_lost
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: sensor.cctv_conservatory_connection_scrape
-      to: '	Lost connection'
-      for:
-        minutes: 3
-  action:
-  - service: notify.gmaillolo
-    data_template:
-      title: "HA - CCTV Error"
-      message: Conservatory CCTV Motion Connection Lost!
+# - alias: CCTV - Garage CCTV Motion Connection Lost
+#   id: cctv_garage_cctv_motion_connection_lost
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.cctv_garage_connection_scrape
+#       to: 'Lost connection'
+#       for:
+#         minutes: 3
+#   action:
+#   - service: notify.gmaillolo
+#     data_template:
+#       title: "HA - CCTV Error"
+#       message: Garage CCTV Motion Connection Lost!
+
+
+# - alias: CCTV - CCTV Conservatory Connection Lost
+#   id: cctv_cctv_conservatory_connection_lost
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.cctv_conservatory_connection_scrape
+#       to: 'Lost connection'
+#       for:
+#         minutes: 3
+#   action:
+#   - service: notify.gmaillolo
+#     data_template:
+#       title: "HA - CCTV Error"
+#       message: Conservatory CCTV Motion Connection Lost!
 

@@ -1,0 +1,47 @@
+- alias: Frigate - Person Detected
+  id: frigate_person_detected
+  trigger:
+    platform: mqtt
+    topic: frigate/events
+  condition:
+    - condition: template
+      value_template: "{{ trigger.payload_json['after']['label'] == 'person' }}"
+    - condition: template 
+      value_template: "{{ 'alert_zone' in trigger.payload_json['after']['entered_zones'] }}"
+    - condition: template 
+      value_template: "{{ trigger.payload_json['type'] == 'end'}}"
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - {{trigger.payload_json['after']['label']}} detected on the {{ trigger.payload_json['after']['camera']}} CCTV!"
+        message: |
+          {{trigger.payload_json['after']['label']}} detected on the {{ trigger.payload_json['after']['camera']}} CCTV!
+        data:
+          html: >
+            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+              <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="prefetch" href="{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg" />
+                <title>Person Detected on CCTV</title>
+                <style type="text/css">
+                img {
+                  max-width: 100%;
+                  height: auto;
+                }
+                td{
+                  background: url({{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg);
+                  width: 175;
+                  height: 175;
+                }
+                </style>
+              </head>
+              <body>
+                <div style="background-color: #252423; color: white; text-align: center; font-family: Segoe UI">
+                  <h1>Person Detected on CCTV !&nbsp;</h1>
+                </div>
+                <center><a href="{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/snapshot.jpg"><img src="{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg" width="175" height="175" border="1"></a></center>
+                </body>
+            </html>

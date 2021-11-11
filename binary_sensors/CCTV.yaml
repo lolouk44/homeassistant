@@ -1,40 +1,40 @@
-- platform: template
-  sensors:
-    dafang_living_room_status:
-      value_template: >
-        {{ states("input_boolean.pir_living_room_back") == 'ACTIVE'}}
-      friendly_name: Dafang Living Room motion Status
-      device_class: power
+# - platform: template
+#   sensors:
+#     dafang_living_room_status:
+#       value_template: >
+#         {{ states("input_boolean.pir_living_room_back") == 'ACTIVE'}}
+#       friendly_name: Dafang Living Room motion Status
+#       device_class: power
 
-    dafang_living_room_connection_status:
-      value_template: >
-        {{ states("sensor.dafang_living_room_connection_scrape") == 'OK'}}
-      friendly_name: Dafang Living Room Video Feed Status
-      device_class: connectivity
+#     dafang_living_room_connection_status:
+#       value_template: >
+#         {{ states("sensor.dafang_living_room_connection_scrape") == 'OK'}}
+#       friendly_name: Dafang Living Room Video Feed Status
+#       device_class: connectivity
 
-    dafang_kitchen_connection_status:
-      value_template: >
-        {{ states("sensor.dafang_kitchen_connection_scrape") == 'OK'}}
-      friendly_name: Dafang Kitchen Video Feed Status
-      device_class: connectivity
+#     dafang_kitchen_connection_status:
+#       value_template: >
+#         {{ states("sensor.dafang_kitchen_connection_scrape") == 'OK'}}
+#       friendly_name: Dafang Kitchen Video Feed Status
+#       device_class: connectivity
 
-    dafang_conservatory_connection_status:
-      value_template: >
-        {{ states("sensor.dafang_conservatory_connection_scrape") == 'OK'}}
-      friendly_name: Dafang Conservatory Video Feed Status
-      device_class: connectivity
+#     dafang_conservatory_connection_status:
+#       value_template: >
+#         {{ states("sensor.dafang_conservatory_connection_scrape") == 'OK'}}
+#       friendly_name: Dafang Conservatory Video Feed Status
+#       device_class: connectivity
 
-    garage_cctv_connection_status:
-      value_template: >
-        {{ states("sensor.cctv_garage_connection_scrape") == 'OK'}}
-      friendly_name: Garage CCTV Video Feed Status
-      device_class: connectivity
+#     garage_cctv_connection_status:
+#       value_template: >
+#         {{ states("sensor.cctv_garage_connection_scrape") == 'OK'}}
+#       friendly_name: Garage CCTV Video Feed Status
+#       device_class: connectivity
 
-    doorbell_cctv_connection_status:
-      value_template: >
-        {{ states("sensor.cctv_doorbell_connection_scrape") == 'OK'}}
-      friendly_name: Doorbell CCTV Video Feed Status
-      device_class: connectivity
+#     doorbell_cctv_connection_status:
+#       value_template: >
+#         {{ states("sensor.cctv_doorbell_connection_scrape") == 'OK'}}
+#       friendly_name: Doorbell CCTV Video Feed Status
+#       device_class: connectivity
 
 
 - platform: hikvision
@@ -61,9 +61,9 @@
   username: !secret hikvision_username
   password: !secret hikvision_password
 
-- platform: mqtt
-  name: "Garage Motion"
-  state_topic: "Sensors/CCTV2/Garage/Motion"
-  payload_on: "ON"
-  payload_off: "OFF"
-  device_class: motion
+# - platform: mqtt
+#   name: "Garage Motion"
+#   state_topic: "Sensors/CCTV2/Garage/Motion"
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   device_class: motion
