@@ -1,3 +1,12 @@
+lights_mode:
+  name: 'Lights Mode'
+  options:
+    - Normal
+    - Diwali
+    - Halloween
+    - Xmas
+  icon: mdi:home-lightbulb-outline
+  
 anova_recipe:
   name: 'Anova Recipe'
   options:
@@ -57,4 +66,21 @@ wled_effects:
     - Rainbow
     - Rainbow Runner
     - Sinelon Rainbow
+  icon: mdi:palette
+
+wled_effects_halloween:
+  name: 'WLED Effects Halloween'
+  options:
+    - Fade
+    - Halloween
+    - Dancing Shadows
+    - Chase
+    - Gradient
+    - Loading
+    - Meteor
+    - Running
+    - Saw
+    - Scan
+    - Scan Dual
+    - Sinelon
   icon: mdi:palette

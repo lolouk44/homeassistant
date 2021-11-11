@@ -71,8 +71,8 @@ cards:
         icon: mdi:weather-rainy
   - type: conditional
     conditions:
-      - entity: input_boolean.xmas
-        state: "on"
+      - entity: input_select.lights_mode
+        state: 'Xmas'
     card:
       type: entities
       title: Xmas Lights

@@ -17,13 +17,15 @@ cards:
         secondary_info: last-changed
       - entity: input_boolean.holidays
         secondary_info: last-changed
-      - entity: input_boolean.xmas
-        secondary_info: last-changed
+      # - entity: input_boolean.xmas
+        # secondary_info: last-changed
       - entity: input_boolean.guests
         secondary_info: last-changed
       - entity: input_boolean.silent
         secondary_info: last-changed
       - entity: input_boolean.theme_dark
+        secondary_info: last-changed
+      - entity: input_select.lights_mode
         secondary_info: last-changed
   - type: entities
     title: RPi Sensors
@@ -205,6 +207,8 @@ cards:
         - entity_id: sensor.home_disk_usage
         - entity_id: sensor.home_to_work
         - entity_id: sensor.horseshoe_close_eta
+        - entity_id: sensor.house_power_consumption
+        - entity_id: sensor.house_total_energy
         - entity_id: sensor.internet_of_things_podcast
         - entity_id: sensor.internet_of_things_podcast_track
         - entity_id: sensor.kerui_alarm_rssi_numeric
@@ -283,6 +287,8 @@ cards:
         - entity_id: sensor.stream_track
         - entity_id: sensor.testuser1_weight
         - entity_id: sensor.time
+        - entity_id: sensor.total_energy
+        - entity_id: sensor.house_total_energy_cost
         - entity_id: sensor.upstairs_humidity_status
         - entity_id: sensor.upstairs_rssi_numeric
         - entity_id: sensor.uptime
@@ -305,3 +311,5 @@ cards:
         - entity_id: sensor.*rssi*
         - entity_id: sensor.*last_seen*        
         - entity_id: sensor.*current*cost*
+        - entity_id: sensor.*fps*
+        - entity_id: sensor.*coral*

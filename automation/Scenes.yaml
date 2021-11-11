@@ -144,8 +144,8 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: input_boolean.xmas
-      to: 'on'
+      entity_id: input_select.lights_mode
+      to: 'Xmas'
   action:
     - service: scene.turn_on
       entity_id: scene.xmas
@@ -162,8 +162,8 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: input_boolean.xmas
-      to: 'off'
+      entity_id: input_select.lights_mode
+      to: 'Normal'
   action:
     - condition: state
       entity_id: input_boolean.silent

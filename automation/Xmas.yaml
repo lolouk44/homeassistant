@@ -9,8 +9,10 @@
         - binary_sensor.pir_living_room_front
         - binary_sensor.pir_living_room_back
         - binary_sensor.pir_staircase
-        - input_boolean.xmas
       to: 'on'
+    - platform: state
+      entity_id: input_select.lights_mode
+      to: 'Xmas'
     - platform: state
       entity_id: sun.sun
       to: 'below_horizon'
@@ -66,8 +68,8 @@
         minutes: 2
   condition:
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
+      entity_id: input_select.lights_mode
+      state: 'Xmas'
     - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
@@ -107,8 +109,8 @@
         entity_id: media_player.panasonic_viera_tv
         state: 'on'
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
+      entity_id: input_select.lights_mode
+      state: 'Xmas'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
@@ -142,8 +144,8 @@
         entity_id: media_player.panasonic_viera_tv
         state: 'on'
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
+      entity_id: input_select.lights_mode
+      state: 'Xmas'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
@@ -177,8 +179,8 @@
         entity_id: media_player.panasonic_viera_tv
         state: 'on'
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
+      entity_id: input_select.lights_mode
+      state: 'Xmas'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
@@ -216,8 +218,8 @@
       entity_id: light.wled_conservatory
       state: 'on'
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
+      entity_id: input_select.lights_mode
+      state: 'Xmas'
   action:
   - service: light.turn_on
     data:
@@ -239,8 +241,8 @@
     - condition: time
       after: '15:00'
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
+      entity_id: input_select.lights_mode
+      state: 'Xmas'
   action:
   - service: light.turn_on
     data:
@@ -254,3 +256,34 @@
       brightness: 255
       effect: None
       rgb_color: [0,0,255]
+
+- alias: Halloween - Change Garage WLED Effect
+  id: halloween_change_garage_wled_effect
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: time
+      after: '15:00'
+    - condition: state
+      entity_id: input_select.lights_mode
+      state: 'Halloween'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.wled_garage
+      brightness: 128
+      effect: '{{states.input_select.wled_effects_halloween.attributes.options[range(0, 12) | random]}}'
+      rgb_color: [255, 128, 0]
+  - delay: 00:00:01
+  - service: light.turn_on
+    data:
+      entity_id: light.house_number
+      brightness: 255
+      effect: None
+      rgb_color: [255, 128, 0]
