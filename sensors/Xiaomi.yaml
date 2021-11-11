@@ -5,7 +5,8 @@
         {{ state_attr("vacuum.roborock_vacuum","battery_level") }}
       friendly_name: Battery Level
       unit_of_measurement: '%'
-      icon_template: '{{ state_attr("vacuum.roborock_vacuum","battery_icon") }}'
+      # icon_template: '{{ state_attr("vacuum.roborock_vacuum","battery_icon") }}'
+      device_class: battery
 
 
     xiaomi_cleaned_area:

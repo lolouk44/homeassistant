@@ -119,7 +119,7 @@ http:
   trusted_proxies:
     - 127.0.0.1
     - ::1
-    - 172.19.0.0/24
+    - 172.16.0.0/12
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
@@ -203,6 +203,9 @@ lovelace:
     # Bar Card https://github.com/custom-cards/bar-card
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
+    # Frigate Card https://github.com/dermotduffy/frigate-hass-card
+    - url: /hacsfiles/frigate-hass-card/frigate-hass-card.js
+      type: module
     # Fonts
     - type: css
       url: 'https://fonts.googleapis.com/css?family=Orbitron'
@@ -267,6 +270,7 @@ remote_homeassistant:
       entities:
       - light.lolo_bedside_light
       - light.aqara_gateway_light
+      - media_player.panasonic_viera_tv
       - sensor.aqara_illumination
       - switch.xiaomi_garage_socket
       - switch.xiaomi_dual_usb_socket
@@ -417,6 +421,6 @@ panel_iframe:
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
 
-zwave:
-  usb_path: /dev/ttyACM0
-  network_key: !secret zwave_network_key
+# zwave:
+#   usb_path: /dev/ttyACM0
+#   network_key: !secret zwave_network_key

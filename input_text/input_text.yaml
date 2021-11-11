@@ -1,0 +1,6 @@
+custom_station:
+  name: Radio URL
+  icon: mdi:link-variant
+
+base_url:
+  initial: !secret base_url

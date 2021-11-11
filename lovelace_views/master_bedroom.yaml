@@ -13,7 +13,7 @@ cards:
     - entity: light.lolo_bedside_light
       secondary_info: last-changed
       icon: mdi:lamp
-    - entity: media_player.master_bedroom_display
+    - entity: media_player.bedroom_nest_hub
       type: "custom:mini-media-player"
       power_color: true
       group: true

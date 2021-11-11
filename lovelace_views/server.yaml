@@ -23,13 +23,8 @@ cards:
           exclude:
             - entity_id: media_player.as_aftmm_cast
             - entity_id: media_player.mibox3
-            - entity_id: light.red_light
+            - entity_id: media_player.mi_box3_adtv
             - entity_id: "*astra_car*"
-            - entity_id: "*google*alarms"
-            - entity_id: "*google*timers"
-            - entity_id: "*nest*timers"
-            - entity_id: "*office*alarms"
-            - entity_id: "*office*timers"
         sort:
           method: 'name'
   - type: entities
