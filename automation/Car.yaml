@@ -165,7 +165,9 @@
       entity_id: sensor.astra_car_battery_voltage
   condition:
     - condition: template
-      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") != "unknown" and states("sensor.astra_car_battery_voltage") | float < 11.9}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 60)}}'
+    - condition: template
+      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") != "unknown" and states("sensor.astra_car_battery_voltage") | float < 11.7}}'
   action:
     - service: notify.gmaillolo
       data_template:
