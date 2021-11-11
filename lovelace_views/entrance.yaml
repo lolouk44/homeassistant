@@ -36,18 +36,12 @@ cards:
         icon: mdi:door-closed-lock
       - entity: sensor.yale_conexis_l1_battery_level
         secondary_info: last-changed
-      - entity: zwave.conexis_l1_node_status
+      - entity: sensor.conexis_l1_node_status
         secondary_info: last-changed
-      - entity: zwave.tz68_socket_node_status
-        secondary_info: last-changed
-      # - entity: sensor.conexis_l1_node_status
-      #   secondary_info: last-changed
-      # - entity: sensor.tz68_socket_node_status
-      #   secondary_info: last-changed
   - type: conditional
     conditions:
-      - entity: input_boolean.xmas
-        state: "off"
+      - entity: input_select.lights_mode
+        state: 'Normal'
         show_empty: false
     card:
       type: entities
@@ -86,8 +80,8 @@ cards:
 
   - type: conditional
     conditions:
-      - entity: input_boolean.xmas
-        state: "on"
+      - entity: input_select.lights_mode
+        state: 'Xmas'
         show_empty: false
     card:
       type: entities

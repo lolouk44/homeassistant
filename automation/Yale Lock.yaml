@@ -158,16 +158,16 @@
     - condition: state
       entity_id: binary_sensor.main_door
       state: 'off'
-    # - service: zwave_js.refresh_value
-    #   data:
-    #     entity_id: lock.yale_conexis_l1_lock
-    #     refresh_all_values: true
-    # - wait_template: "{{ is_state('sensor.conexis_l1_node_status', 'alive') }}"
-    #   timeout: '00:00:30'
-    #   continue_on_timeout: true
-    - service: zwave.refresh_node
+    - service: zwave_js.refresh_value
       data:
-        node_id: 5
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
+    - wait_template: "{{ is_state('sensor.conexis_l1_node_status', 'alive') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
+    # - service: zwave.refresh_node
+    #   data:
+    #     node_id: 5
     - wait_template: "{{ is_state('zwave.conexis_l1_node_status', 'ready') }}"
       timeout: '00:00:30'
       continue_on_timeout: true
@@ -216,16 +216,16 @@
       for:
         minutes: 1
   action:
-    # - service: zwave_js.refresh_value
-    #   data:
-    #     entity_id: lock.yale_conexis_l1_lock
-    #     refresh_all_values: true
-    # - wait_template: "{{ is_state('sensor.conexis_l1_node_status', 'alive') }}"
-    #   timeout: '00:00:30'
-    #   continue_on_timeout: true
-    - service: zwave.refresh_node
+    - service: zwave_js.refresh_value
       data:
-        node_id: 5
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
+    - wait_template: "{{ is_state('sensor.conexis_l1_node_status', 'alive') }}"
+      timeout: '00:00:30'
+      continue_on_timeout: true
+    # - service: zwave.refresh_node
+    #   data:
+    #     node_id: 5
     - wait_template: "{{ is_state('zwave.conexis_l1_node_status', 'ready') }}"
       timeout: '00:00:30'
       continue_on_timeout: true
@@ -329,28 +329,28 @@
   initial_state: true
   trigger:
     - platform: state
-      # entity_id: sensor.conexis_l1_node_status
-      # to: 'dead'
-      entity_id: zwave.conexis_l1_node_status
+      entity_id: sensor.conexis_l1_node_status
       to: 'dead'
+      # entity_id: zwave.conexis_l1_node_status
+      # to: 'dead'
       for:
         minutes: 1
   condition:
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 30)}}'
   action:
-    # - service: zwave_js.refresh_value
-    #   data:
-    #     entity_id: lock.yale_conexis_l1_lock
-    #     refresh_all_values: true
-    - service: zwave.test_node
+    - service: zwave_js.refresh_value
       data:
-        node_id: 5
+        entity_id: lock.yale_conexis_l1_lock
+        refresh_all_values: true
+    # - service: zwave.test_node
+    #   data:
+    #     node_id: 5
     - delay: '00:02:00'
-    # - condition: template
-    #   value_template: '{{ states("lock.yale_conexis_l1_lock") != "unavailable" }}' 
     - condition: template
-      value_template: '{{ states("zwave.conexis_l1_node_status") == "dead" }}' 
+      value_template: '{{ states("lock.yale_conexis_l1_lock") != "unavailable" }}' 
+    # - condition: template
+    #   value_template: '{{ states("zwave.conexis_l1_node_status") == "dead" }}' 
     - service: notify.gmaillolo
       data_template:
         title: 'HA - Yale Lock Dead'

@@ -1,18 +1,18 @@
 - platform: onkyo
-  host: 192.168.0.26
+  host: 192.168.9.26
   name: Onkyo TX-NR656
   sources:
+    video2: 'Sky'
     video6: 'Main PC'
     bluray: 'Blu-Ray'
-    video2: 'Sky'
     cd:  'ChromeCast1'
     network: 'ChromeCast'
     tv: 'TV'
     strm-box: 'ChromeCast2'
-- platform: panasonic_viera
-  name: Panasonic Viera TV
-  host: 192.168.0.27
-  mac: D8:AF:F1:47:7A:16
+# - platform: panasonic_viera
+#   name: Panasonic Viera TV
+#   host: 192.168.9.27
+#   mac: D8:AF:F1:47:7A:16
 - platform: mpd
   host: 192.168.9.21
   port: 6600
@@ -31,47 +31,3 @@
           'media_session_state': 2
       - 'idle'
   get_sources: false
-    
-# - platform: universal
-#   name: Kello
-#   state_template: >
-#     {% if is_state('media_player.kodi', 'idle') and is_state('input_boolean.kodi_tv_state', 'off') %}
-#     off
-#     {% else %}
-#     {{ states('media_player.kodi') }}
-#     {% endif %}
-#   commands:
-#     turn_on:
-#       service: mqtt.publish
-#       data:
-#         topic: "Kello/PlayStatus"
-#         payload_template: 'ON'
-#         retain: False
-#     turn_off:
-#       service: mqtt.publish
-#       data:
-#         topic: "Kello/PlayStatus"
-#         payload_template: 'OFF'
-#         retain: false
-#     volume_set:
-#       service: mqtt.publish
-#       data:
-#         topic: "Kello/Volume"
-#         payload_template: '{{ volume_level | int(value,16) }}'
-#         retain: false
-#     media_play:
-#       service: mqtt.publish
-#       data:
-#         topic: "Kello/PlayStatus"
-#         payload_template: 'ON'
-#         retain: False
-#     media_stop:
-#       service: mqtt.publish
-#       data:
-#         topic: "Kello/PlayStatus"
-#         payload_template: 'OFF'
-#         retain: false
-  # attributes:
-  #   is_volume_muted: ENTITY_ID|ATTRIBUTE
-  #   state: ENTITY_ID|ATTRIBUTE
-  # device_class: tv
