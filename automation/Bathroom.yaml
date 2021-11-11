@@ -43,6 +43,7 @@
 - alias: Bathroom - Toggle Fan From Aqara Button
   id: bathroom_toggle_fan_from_aqara_button
   initial_state: true
+  mode: restart
   trigger:
     - platform: mqtt
       topic: 'zigbee2mqtt/aqara_toggle_bathroom'
