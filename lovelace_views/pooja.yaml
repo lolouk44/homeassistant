@@ -39,6 +39,9 @@ cards:
     entities:
       - entity: light.pooja_frame
         secondary_info: last-changed
+      - entity: light.pooja_led_strip
+        secondary_info: last-changed
+        icon: mdi:led-strip-variant
 
   - type: custom:stack-in-card
     mode: vertical
