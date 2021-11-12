@@ -1,14 +1,14 @@
-- platform: currentcost
-  serial_port: /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0
-  devices:
-    - 0
-    - 2
-    - 9
-- platform: integration
-  source: sensor.current_cost
-  name: Total Energy
-  unit_prefix: k
-  round: 2
+# - platform: currentcost
+  # serial_port: /dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0
+  # devices:
+    # - 0
+    # - 2
+    # - 9
+# - platform: integration
+  # source: sensor.current_cost
+  # name: Total Energy
+  # unit_prefix: k
+  # round: 2
 # - platform: template
 #   sensors:
 #     currentcost_temperature:

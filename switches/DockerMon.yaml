@@ -31,7 +31,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/ha_dockermon
+  resource: http://192.168.9.23:8126/container/ha_dockermon
   name: ha_dockermon
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -39,7 +39,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/eufy-bridge
+  resource: http://192.168.9.23:8126/container/eufy-bridge
   name: eufy_bridge
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -63,7 +63,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/mysql
+  resource: http://192.168.9.23:8126/container/mysql
   name: mysql
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -71,7 +71,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/swag
+  resource: http://192.168.9.23:8126/container/swag
   name: letsencrypt
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -79,7 +79,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/portainer
+  resource: http://192.168.9.23:8126/container/portainer
   name: portainer
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -87,7 +87,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/watchtower
+  resource: http://192.168.9.23:8126/container/watchtower
   name: watchtower
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -111,7 +111,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/syncthing
+  resource: http://192.168.9.23:8126/container/syncthing
   name: syncthing
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -119,7 +119,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/vscode
+  resource: http://192.168.9.23:8126/container/vscode
   name: VS Code
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
@@ -129,14 +129,6 @@
 - platform: rest
   resource: http://192.168.9.23:8126/container/wordpress
   name: wordpress
-  body_on: '{"state": "start"}'
-  body_off: '{"state": "stop"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-  timeout: 30
-
-- platform: rest
-  resource: http://192.168.9.23:8126/container/ha
-  name: CCTV2 HA
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

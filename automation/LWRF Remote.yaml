@@ -25,7 +25,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis
-      media_content_id: 'http://192.168.0.24:8123/local/sounds/RemoteOn.mp3'
+      media_content_id: 'http://192.168.9.23:8123/local/sounds/RemoteOn.mp3'
       media_content_type: 'audio/mp3'
 
 
@@ -55,7 +55,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis
-      media_content_id: 'http://192.168.0.24:8123/local/sounds/RemoteOff.mp3'
+      media_content_id: 'http://192.168.9.23:8123/local/sounds/RemoteOff.mp3'
       media_content_type: 'audio/mp3'
 
 
@@ -80,7 +80,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis
-      media_content_id: 'http://192.168.0.24:8123/local/sounds/RemoteOn.mp3'
+      media_content_id: 'http://192.168.9.23:8123/local/sounds/RemoteOn.mp3'
       media_content_type: 'music'
   - service: shell_command.viera_audio_home_cinema
 
@@ -107,7 +107,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.living_room_google_minis
-      media_content_id: 'http://192.168.0.24:8123/local/sounds/RemoteOn.mp3'
+      media_content_id: 'http://192.168.9.23:8123/local/sounds/RemoteOn.mp3'
       media_content_type: 'audio/mp3'
 
 

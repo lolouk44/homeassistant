@@ -32,12 +32,12 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.google_home_minis, media_player.master_bedroom_display
-      media_content_id: 'http://192.168.0.24:8123/local/sounds/Doorbell_Tubular_2.mp3'
+      media_content_id: 'http://192.168.9.23:8123/local/sounds/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
   - service: media_player.play_media
     data:
       entity_id: media_player.master_bedroom_nest_hub
-      media_content_id: 'http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg'
+      media_content_id: 'http://192.168.9.23:8123/local/CCTV_Snapshots/Doorbell.jpg'
       media_content_type: 'image/jpg'
   - service: media_player.turn_on
     data:
@@ -48,7 +48,7 @@
   - service: media_player.play_media
     data:
       entity_id: media_player.panasonic_viera_tv
-      media_content_id: 'http://192.168.0.24:8123/local/CCTV_Snapshots/Doorbell.jpg'
+      media_content_id: 'http://192.168.9.23:8123/local/CCTV_Snapshots/Doorbell.jpg'
       media_content_type: url
   - service: media_player.volume_mute
     data_template:

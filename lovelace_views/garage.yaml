@@ -57,4 +57,4 @@ cards:
     show_state: false
     tap_action:
       action: url
-      url_path: http://192.168.0.24/html_test/Freezer.php
+      url_path: http://192.168.9.23/html_test/Freezer.php

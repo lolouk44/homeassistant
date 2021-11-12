@@ -106,18 +106,18 @@ cctv_dafang_kitchen_lost:
   notifiers:
     - mobile_app_lolo_s_iphone
 
-currentcost_lost:
-  name: CurrentCost Lost
-  entity_id: input_boolean.alert_lost_currentcost_power_at_300
-  can_acknowledge: true
-  skip_first: true
-  repeat:
-    - 5
-    - 15
-    - 30
-    - 60
-  notifiers:
-    - mobile_app_lolo_s_iphone
+# currentcost_lost:
+  # name: CurrentCost Lost
+  # entity_id: input_boolean.alert_lost_currentcost_power_at_300
+  # can_acknowledge: true
+  # skip_first: true
+  # repeat:
+    # - 5
+    # - 15
+    # - 30
+    # - 60
+  # notifiers:
+    # - mobile_app_lolo_s_iphone
 
 dehumidifier_full:
   name: Dehumidifier Full
@@ -180,30 +180,30 @@ house_number_led_strip_lost:
     - mobile_app_lolo_s_iphone
 
 
-staircase_led_strip_lost:
-  name: StairCase LED Strip Lost
-  entity_id: binary_sensor.StairCase_LED_Strip
-  state: 'off'
-  can_acknowledge: true
-  skip_first: true
-  repeat:
-    - 5
-    - 60
-  notifiers:
-    - mobile_app_lolo_s_iphone
+# staircase_led_strip_lost:
+  # name: StairCase LED Strip Lost
+  # entity_id: binary_sensor.staircase_led_strip
+  # state: 'off'
+  # can_acknowledge: true
+  # skip_first: true
+  # repeat:
+    # - 5
+    # - 60
+  # notifiers:
+    # - mobile_app_lolo_s_iphone
 
 
-tv_cabinet_led_strip_lost:
-  name: TV Cabinet LED Strip Lost
-  entity_id: binary_sensor.TV_Cabinet_LED_Strip
-  state: 'off'
-  can_acknowledge: true
-  skip_first: true
-  repeat:
-    - 5
-    - 60
-  notifiers:
-    - mobile_app_lolo_s_iphone
+# tv_cabinet_led_strip_lost:
+  # name: TV Cabinet LED Strip Lost
+  # entity_id: binary_sensor.tv_cabinet_led_strip
+  # state: 'off'
+  # can_acknowledge: true
+  # skip_first: true
+  # repeat:
+    # - 5
+    # - 60
+  # notifiers:
+    # - mobile_app_lolo_s_iphone
 
 
 ram_too_high:

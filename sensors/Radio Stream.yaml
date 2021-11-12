@@ -153,7 +153,7 @@
         {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} http://player.streamguys.com/fbc/sgplayer/include/assets/img/RF2.png
         {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} https://www.holyscripturesandisrael.com/images/radio/radio-icon.png
         {% endif %}
-        {%else%}http://192.168.0.24:8123/local/Select_Radio.png
+        {%else%}http://192.168.9.23:8123/local/Select_Radio.png
         {%endif%}
       friendly_name: Album Art
       icon_template: 'mdi:account'

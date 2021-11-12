@@ -41,9 +41,9 @@
       entity_id: media_player.google_home_minis
       media_content_id: >
         {% if trigger.to_state.state == "on" %}
-          http://192.168.0.24:8123/local/sounds/RemoteOn.mp3
+          http://192.168.9.23:8123/local/sounds/RemoteOn.mp3
         {% elif trigger.to_state.state == "off" %}
-          http://192.168.0.24:8123/local/sounds/RemoteOff.mp3
+          http://192.168.9.23:8123/local/sounds/RemoteOff.mp3
         {% endif %}
       media_content_type: 'audio/mp3'
 

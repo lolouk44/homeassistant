@@ -65,7 +65,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/Alarm-CountDown.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Alarm-CountDown.mp3'
         media_content_type: 'audio/mp3'
 
 
@@ -90,7 +90,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/Alarm-Intrusion.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Alarm-Intrusion.mp3'
         media_content_type: 'audio/mp3'
     - service: switch.turn_off
       data:
@@ -303,7 +303,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/Alarm-CountDown.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Alarm-CountDown.mp3'
     # - wait_template: "{{ is_state('binary_sensor.main_door', 'off') }}"
     #   timeout: '00:00:30'
     #   continue_on_timeout: true
@@ -312,7 +312,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/1sec.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/1sec.mp3'
         media_content_type: 'audio/mp3'
     - service: script.turn_on
       data:
@@ -338,7 +338,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/Alarm-CountDown.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Alarm-CountDown.mp3'
         media_content_type: 'audio/mp3'
     - wait_template: "{{ is_state('binary_sensor.main_door', 'on') }}"
       timeout: '00:00:30'
@@ -351,7 +351,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/1sec.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/1sec.mp3'
         media_content_type: 'audio/mp3'
     - service: script.turn_on
       data:
@@ -381,7 +381,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/Alarm-CountDown.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Alarm-CountDown.mp3'
         media_content_type: 'audio/mp3'
     - service: script.turn_on
       data:
@@ -405,7 +405,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/Armed_Disarmed.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Armed_Disarmed.mp3'
         media_content_type: 'audio/mp3'
     - service: media_player.volume_set
       data_template:
@@ -443,7 +443,7 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.0.24:8123/local/sounds/Armed_Disarmed.mp3'
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Armed_Disarmed.mp3'
         media_content_type: 'audio/mp3'
     - service: light.turn_on
       data:
