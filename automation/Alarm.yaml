@@ -485,15 +485,17 @@
       data_template:
         title: "HA - Fire Alert"
         message: >
-          FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.first_floor_smoke_detector' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
+          FIRE ALARM! Smoke detected on the {{ state_attr(trigger.event.data.entity_id, 'friendly_name') }}
         data:
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
             - /config/www/CCTV_Snapshots/Kitchen.jpg
+            - /config/www/CCTV_Snapshots/Conservatory.jpg
+            - /config/www/CCTV_Snapshots/Fire7.jpg
     - service: notify.gmaildiv
       data_template:
         message: >
-          FIRE ALARM! Smoke detected on the {% if trigger.entity_id == 'binary_sensor.first_floor_smoke_detector' %}Ground Floor Smoke Detector{% else %}First Floor Smoke Detector{% endif %}
+          FIRE ALARM! Smoke detected on the {{ state_attr(trigger.event.data.entity_id, 'friendly_name') }}
         data:
           images:
             - /config/www/CCTV_Snapshots/LivingRoom.jpg
@@ -503,7 +505,7 @@
     - service: notify.mobile_app_lolo_s_iphone
       data_template:
         message: >
-          FIRE ALARM!({% if trigger.entity_id == 'binary_sensor.ground_floor_smoke_detector' %}Gnd Floor Smoke Detector{% else %}1st Floor Smoke Detector{% endif %})
+          FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
         data:
           push:
             badge: '{{states("counter.iosbadgecount")}}'
