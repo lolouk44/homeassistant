@@ -166,10 +166,6 @@ sensor.aloe_vera_conductivity:
   # icon: mdi:battery-charging
 sensor.battery:
   friendly_name: "Lolo's iPhone Battery"
-sensor.currentcost_power:
-  icon: mdi:flash-circle
-sensor.currentcost_temperature:
-  icon: mdi:thermometer
 sensor.dark_sky_overnight_low_temperature_0d:
   friendly_name: 'Tº Min'
 sensor.dark_sky_daytime_high_temperature_0d:
@@ -255,7 +251,7 @@ switch.dehumidifier:
   icon: mdi:power-plug
 switch.edimax1:
   icon: mdi:power-plug
-switch.eufy_bridge:
+switch.eufy_security:
   icon: mdi:docker
 switch.grafana:
   icon: mdi:docker
@@ -263,7 +259,7 @@ switch.ha_dockermon:
   icon: mdi:docker
 switch.influxdb:
   icon: mdi:docker
-switch.letsencrypt:
+switch.swag:
   icon: mdi:docker
 switch.Kitchen_TV:
   icon: mdi:television

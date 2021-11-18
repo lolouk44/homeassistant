@@ -10,11 +10,6 @@
         {{ (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )}}
       friendly_name: Upstairs Temp Sensor Lost
 
-    alert_currentcost_lost:
-      value_template: >-
-        {%- if (as_timestamp(now()) - (as_timestamp(states.sensor.currentcost_power.last_updated) | int)) < 300 -%}off{%- else -%}on{% endif %}
-      friendly_name: CurrentCost Lost
-
     alert_ram_too_high:
       value_template: >-
         {{ states("sensor.ram_usage") | default(0) | int > 90 }}

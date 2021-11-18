@@ -48,9 +48,6 @@
       entity_id: alert.cctv_garage_lost
       to: 'on'
     - platform: state
-      entity_id: alert.currentcost_lost
-      to: 'on'
-    - platform: state
       entity_id: alert.dehumidifier_full
       to: 'on'
     - platform: state

@@ -1,7 +1,6 @@
 graph_temperature:
   name: Temperature
   entities:
-    - sensor.currentcost_temperature
     - sensor.loft_temperature
     - sensor.upstairs_temperature
     - sensor.hallway_thermostat_temperature
@@ -15,12 +14,4 @@ graph_humidity:
     - sensor.hallway_thermostat_humidity
     - sensor.loft_humidity
   hours_to_show: 240
-  refresh: 0
-
-graph_power:
-  name: Power Consumption
-  entities:
-    - sensor.currentcost_power
-    - sensor.dehumidifier_power
-  hours_to_show: 48
   refresh: 0

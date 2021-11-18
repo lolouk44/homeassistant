@@ -153,7 +153,6 @@ logger:
   default: error
   logs:
     # homeassistant.components.rfxtrx: debug
-    # custom_components.currentcost: debug
     homeassistant.components.xiaomi_miio: critical
     xiaomi_gateway: critical
     pychromecast.socket_client: critical

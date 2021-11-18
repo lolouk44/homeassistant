@@ -440,14 +440,6 @@ cards:
       detail: 2
 
 
-
-  # - type: statistics-graph
-  #   title: 'CurrentCost Consumption'
-  #   days_to_show: 7
-  #   entities:
-  #     - entity: sensor.currentcost_power
-  #       name: Total
-
   - type: statistics-graph
     title: 'Power Consumption'
     days_to_show: 7

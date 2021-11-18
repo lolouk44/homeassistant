@@ -72,39 +72,6 @@
 
 
 
-- alias: Alert - CurrentCost Lost On
-  id: alert_-_currentcost_lost_on
-  initial_state: true
-  trigger:
-    - platform: time_pattern
-      minutes: '/1'
-      seconds: 0
-  condition:
-    - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.currentcost_power.last_updated | default(0)) | int > 300 )}}'
-    - condition: state
-      entity_id: alert.currentcost_lost
-      state: 'idle'
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.alert_lost_currentcost_power_at_300
-
-- alias: Alert - CurrentCost Lost Off
-  id: alert_-_currentcost_lost_off
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: sensor.currentcost_power
-  condition:
-    - condition: template
-      value_template: '{{states("alert.currentcost_lost") != "idle"}}'
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.alert_lost_currentcost_power_at_300
-
-
-
-
 - alias: Alert - RAM Lost On
   id: alert_-_ram_lost_on
   initial_state: true
@@ -175,8 +142,8 @@
 
 
 
-- alias: Alert - Pi Kitchen Lost On
-  id: alert_-_pi_kitchen_lost_on
+- alias: Alert - RPi Kitchen Lost On
+  id: alert_-_rpi_kitchen_lost_on
   initial_state: true
   trigger:
     - platform: time_pattern
@@ -192,8 +159,8 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_lost_rpi_kitchen_at_300
 
-- alias: Alert - Pi Kitchen Lost Off
-  id: alert_-_pi_kitchen_lost_off
+- alias: Alert - RPi Kitchen Lost Off
+  id: alert_-_rpi_kitchen_lost_off
   initial_state: true
   trigger:
     - platform: state
@@ -204,4 +171,37 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.alert_lost_rpi_kitchen_at_300
+
+
+
+
+- alias: Alert - RPi Lost On
+  id: alert_-_rpi_lost_on
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.rpi_heartbeat.last_updated | default(0)) | int > 300 )}}'
+    - condition: state
+      entity_id: alert.rpi_lost
+      state: 'idle'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alert_lost_rpi_at_300
+
+- alias: Alert - RPi Lost Off
+  id: alert_-_rpi_lost_off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.rpi_heartbeat
+  condition:
+    - condition: template
+      value_template: '{{states("alert.rpi_lost") != "idle"}}'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alert_lost_rpi_at_300
 

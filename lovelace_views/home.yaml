@@ -156,8 +156,6 @@ cards:
         - entity_id: sensor.conservatory_rssi_numeric
         - entity_id: sensor.cpu_usage
         - entity_id: sensor.current_date
-        - entity_id: sensor.current_cost
-        - entity_id: sensor.currentcost_power
         - entity_id: sensor.dark_sky_daily_max_precip_intensity_0d
         - entity_id: sensor.dark_sky_daily_summary
         - entity_id: sensor.dark_sky_daytime_high_temperature_0d

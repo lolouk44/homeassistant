@@ -4,8 +4,7 @@ include:
   entities:
     - sensor.dark_sky_temperature
     - sensor.dark_sky_humidity
-    - sensor.currentcost_power
-    - sensor.currentcost_temperature
+    - sensor.living_room_temperature
     - sensor.dehumidifier_power
     - sensor.edimax1_watts
     - sensor.hallway_thermostat_humidity

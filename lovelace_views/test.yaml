@@ -20,8 +20,6 @@ cards:
       - entity: binary_sensor.dark
         secondary_info: last-changed
         icon: mdi:weather-night
-      - entity: sensor.currentcost_temperature
-        secondary_info: last-changed
       - entity: binary_sensor.living_room_right_small_window
         secondary_info: last-changed
       - entity: binary_sensor.living_room_right_big_window
