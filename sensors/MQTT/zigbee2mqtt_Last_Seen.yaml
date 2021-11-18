@@ -67,8 +67,8 @@
   <<: *lastseen
 
 - platform: mqtt
-  name: "Garage Freezer Temperature Last Seen"
-  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  name: "Living Room Temperature Last Seen"
+  state_topic: "zigbee2mqtt/living_room_hygro"
   <<: *lastseen
 
 - platform: mqtt
