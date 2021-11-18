@@ -1,15 +1,20 @@
-- trigger:
+- sensor:
+    - name: "Yale Notification Status"
+      state: "{{ trigger.event.data.event_label }}"
+  trigger:
     - platform: event
       event_type: zwave_js_notification
   sensor:
     - name: "Yale Notification Status"
       state: "{{ trigger.event.data.event_label }}"
-- trigger:
+
+
+- sensor:
+    - name: "Porch Door Lock Status"
+      state: "{{ trigger.to_state.state | title}}"
+  trigger:
   - platform: state
     entity_id:
     - sensor.yale_notification_status
     - sensor.yale_alarmtype_status
     - lock.yale_conexis_l1_lock
-  sensor:
-    - name: "Porch Door Lock Status"
-      state: "{{ trigger.to_state.state | title}}"
