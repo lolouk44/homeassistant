@@ -17,20 +17,7 @@ cards:
         secondary_info: last-changed
       - entity: sensor.garage_temperature
         secondary_info: last-changed
-  - type: entities
-    title: Freezer
-    show_header_toggle: false
-    state_color: true
-    entities:
       - entity: binary_sensor.garage_freezer_door
-        secondary_info: last-changed
-      - entity: sensor.garage_freezer_door_battery
-        secondary_info: last-changed
-      - entity: sensor.garage_freezer_temperature
-        secondary_info: last-changed
-      - entity: sensor.garage_freezer_humidity
-        secondary_info: last-changed
-      - entity: sensor.garage_freezer_temperature_battery
         secondary_info: last-changed
   - type: entities
     title: Xiaomi Garage Socket
