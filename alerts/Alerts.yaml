@@ -132,12 +132,14 @@ dehumidifier_full:
 
 rpi_lost:
   name: RPi Lost
-  entity_id: binary_sensor.rpi
+  # entity_id: binary_sensor.rpi
+  entity_id: input_boolean.alert_lost_rpi_at_300
   state: 'off'
   can_acknowledge: true
   skip_first: true
   repeat:
     - 1
+    - 15
     - 30
     - 60
   notifiers:
@@ -149,7 +151,8 @@ rpi_kitchen_lost:
   can_acknowledge: true
   skip_first: true
   repeat:
-    - 10
+    - 1
+    - 15
     - 30
     - 60
   notifiers:
@@ -255,19 +258,6 @@ root_disk_usage_too_high:
 kitchen_freezer_temp_too_high:
   name: Kitchen Freezer Temperature above 0
   entity_id: binary_sensor.alert_kitchen_freezer_temp_too_high
-  can_acknowledge: true
-  skip_first: true
-  repeat:
-    - 5
-    - 10
-    - 30
-    - 240
-  notifiers:
-    - mobile_app_lolo_s_iphone
-
-garage_freezer_temp_too_high:
-  name: Garage Freezer Temperature above 0
-  entity_id: binary_sensor.alert_garage_freezer_temp_too_high
   can_acknowledge: true
   skip_first: true
   repeat:

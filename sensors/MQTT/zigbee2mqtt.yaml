@@ -144,23 +144,23 @@
   <<: *battery
 
 - platform: mqtt
-  name: "Garage Freezer Temperature"
-  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  name: "Living Room Temperature"
+  state_topic: "zigbee2mqtt/living_room_hygro"
   <<: *temperature
 
 - platform: mqtt
-  name: "Garage Freezer Humidity"
-  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  name: "Living Room Humidity"
+  state_topic: "zigbee2mqtt/living_room_hygro"
   <<: *humidity
 
 - platform: mqtt
-  name: "Garage Freezer Temperature Battery"
-  state_topic: "zigbee2mqtt/garage_freezer_hygro"
+  name: "Living Room Temperature Battery"
+  state_topic: "zigbee2mqtt/living_room_hygro"
   <<: *battery
 
 - platform: mqtt
-  name: "Garage Freezer Door Battery"
-  state_topic: "zigbee2mqtt/garage_freezer_door"
+  name: "Living Room Door Battery"
+  state_topic: "zigbee2mqtt/living_room_freezer_door"
   <<: *battery
 
 - platform: mqtt

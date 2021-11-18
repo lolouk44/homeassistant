@@ -36,11 +36,6 @@
         {{ states("sensor.kitchen_freezer_temperature") | default(0) | int > 0 }}
       friendly_name: Kitchen Freezer Temperature Too High
 
-    alert_garage_freezer_temp_too_high:
-      value_template: >-
-        {{ states("sensor.garage_freezer_temperature") | default(0) | int > 0 }}
-      friendly_name: Garage Freezer Temperature Too High
-
     lolo_bedside_cabinet_lost:
       value_template: >-
         {{ states("light.lolo_bedside_light") == "unavailable" }}
