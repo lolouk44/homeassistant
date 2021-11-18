@@ -1,6 +1,6 @@
-- platform: ping
-  host: 192.168.9.22
-  name: RPi
+# - platform: ping
+#   host: 192.168.9.22
+#   name: RPi
 
 - platform: ping
   host: 192.168.0.3
@@ -22,9 +22,9 @@
   host: 192.168.9.17
   name: Kello
 
-- platform: ping
-  host: 192.168.9.21
-  name: RPi Kitchen
+# - platform: ping
+#   host: 192.168.9.21
+#   name: RPi Kitchen
 
 - platform: ping
   host: 192.168.9.30
@@ -52,4 +52,4 @@
 
 - platform: ping
   host: 192.168.9.4
-  name: Pi-Zero
+  name: RPi-Zero
