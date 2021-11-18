@@ -28,6 +28,25 @@
         title: "HA - Docker Update Available"
         message: 'The {{states("sensor.docker_version")}} Docker Image is now available'
 
+- alias: HASS - New Tasmota Available Notification
+  id: hass_new_tasmota_available_notification
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.tasmota_online_version
+  condition:
+    - condition: template
+      value_template: '{{trigger.from_state.state != states("sensor.tasmota_online_version") }}'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != "unknown"}}'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != "unavailable"}}'
+  action:
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Tasmota Update Available"
+        message: 'Tasmota version {{states("sensor.tasmota_online_version")}} is now available'
+
 - alias: HASS - Start Sound
   id: hass_start_sound
   initial_state: true
