@@ -5,8 +5,14 @@
     - platform: state
       entity_id:
         - binary_sensor.doorbell_doorbell_pressed
+        - binary_sensor.doorbell_ringing_sensor
       to: 'on'
   action:
+  - service: mqtt.publish
+    data:
+      topic: "Sensors/Doorbell"
+      payload_template: 'ON'
+      retain: false
   - service: scene.create
     data_template:
       scene_id: pre_doorbell_state
@@ -27,7 +33,8 @@
       volume_level: 1
   - service: camera.snapshot
     data:
-      entity_id: camera.doorbell_last_event
+      # entity_id: camera.doorbell_last_event
+      entity_id: camera.doorbell
       filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
   - service: media_player.play_media
     data:

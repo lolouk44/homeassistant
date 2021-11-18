@@ -68,7 +68,7 @@
   content_type: image/png
 
 - platform: generic
-  still_image_url: '{{ state_attr("binary_sensor.doorbell_doorbell_pressed", "thumbnail")}}'
+  still_image_url: http://192.168.9.23:8123/local/CCTV_Snapshots/Doorbell.jpg
   name: Doorbell Last Ring
   content_type: image/png
 

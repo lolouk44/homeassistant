@@ -176,8 +176,8 @@ cards:
           name: ddclient
         - entity: switch.dropbox
           name: DropBox
-        - entity: switch.eufy_bridge
-          name: eufy-Bridge
+        - entity: switch.eufy_security
+          name: eufy-Security
         - entity: switch.ha_dockermon
           name: Dockermon
         - entity: switch.grafana
@@ -192,7 +192,7 @@ cards:
           name: MySQL
         - entity: switch.portainer
           name: Portainer
-        - entity: switch.letsencrypt
+        - entity: switch.swag
           name: Swag
         - entity: switch.cctv2_motion
           name: CCTV2 Motion

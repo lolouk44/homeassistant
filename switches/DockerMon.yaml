@@ -39,8 +39,8 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.9.23:8126/container/eufy-bridge
-  name: eufy_bridge
+  resource: http://192.168.9.23:8126/container/eufy-security
+  name: eufy-security
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
@@ -72,7 +72,7 @@
 
 - platform: rest
   resource: http://192.168.9.23:8126/container/swag
-  name: letsencrypt
+  name: swag
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

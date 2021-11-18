@@ -106,14 +106,14 @@ cards:
     cards:
     - type: picture-glance
       entities:
-        - entity: binary_sensor.doorbell_person_detected
+        - entity: binary_sensor.doorbell_person_detector_sensor
           icon: mdi:face-recognition
-      camera_image: camera.doorbell_last_event
+      camera_image: camera.doorbell
     - type: entities
       title: Doorbell
       show_header_toggle: false
       entities:
-        - entity: binary_sensor.doorbell_doorbell_pressed
+        - entity: binary_sensor.doorbell_ringing_sensor
           secondary_info: last-changed
           icon: mdi:bell-circle-outline
 

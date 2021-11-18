@@ -56,27 +56,44 @@ cards:
           secondary_info: last-changed
           icon: mdi:numeric-4-box-multiple-outline
 
+
   - type: custom:stack-in-card
-    mode: vertical
     cards:
+    - type: picture-glance
+      entities:
+        - entity: binary_sensor.doorbell_person_detector_sensor
+          icon: mdi:face-recognition
+      camera_image: camera.doorbell_last_ring
     - type: entities
       title: Doorbell
-      state_color: true
       show_header_toggle: false
       entities:
-        - entity: binary_sensor.doorbell_person_detected
-          secondary_info: last-changed
-          icon: mdi:face-recognition
-        - entity: binary_sensor.doorbell_doorbell_pressed
+        - entity: binary_sensor.doorbell_ringing_sensor
           secondary_info: last-changed
           icon: mdi:bell-circle-outline
-    - type: picture-entity
-      title: Doorbell
-      entity: camera.doorbell_last_ring
-      camera_image: camera.doorbell_last_ring
-      show_name: false
-      show_state: false
 
+
+
+  # - type: conditional
+  #   conditions:
+  #     - entity: binary_sensor.doorbell_streaming_sensor
+  #       state: 'False'
+  #   card:
+  #     type: picture-entity
+  #     entity: camera.doorbell
+  #     tap_action:
+  #       action: call-service
+  #       service: camera.turn_on
+  #       service_data: {}
+  #       target:
+  #         entity_id: camera.doorbell
+  # - type: conditional
+  #   conditions:
+  #     - entity: binary_sensor.doorbell_streaming_sensor
+  #       state: 'True'
+  #   card:
+  #     type: custom:webrtc-camera
+  #     entity: camera.doorbell
 
   - type: conditional
     conditions:
