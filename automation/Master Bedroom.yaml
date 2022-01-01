@@ -3,8 +3,8 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      minutes: '/10'
-      seconds: 0
+      # minutes: '/10'
+      seconds: '/30'
   condition:
     - condition: template
       value_template: '{{now().hour >= 19 and now().hour < 24 }}'

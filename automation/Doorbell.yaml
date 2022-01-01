@@ -4,9 +4,9 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.doorbell_doorbell_pressed
+        # - binary_sensor.doorbell_doorbell_pressed
         - binary_sensor.doorbell_ringing_sensor
-      to: 'on'
+      to: "True"
   action:
   - service: mqtt.publish
     data:
