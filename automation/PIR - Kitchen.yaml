@@ -122,26 +122,27 @@
         entity_id: light.kitchen_window
         state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: group.kitchen_lights
-      brightness: 255
-  - delay: 00:00:04
-  - service: light.turn_off
-    data:
-      entity_id: group.kitchen_lights
-  - condition: state
-    entity_id: binary_sensor.pir_conservatory
-    state: 'off'
-  # - condition: state
-    # entity_id: binary_sensor.pir_living_room_front
-    # state: 'off'
-  # - condition: state
-    # entity_id: binary_sensor.pir_living_room_back
-    # state: 'off'
-  - service: switch.turn_off
-    data:
-      entity_id: switch.kitchen_tv
+    - service: light.turn_on
+      data:
+        entity_id: group.kitchen_lights
+        brightness: 255
+    - delay: 00:00:04
+    - service: light.turn_off
+      data:
+        entity_id: group.kitchen_lights
+    - condition: state
+      entity_id: binary_sensor.pir_conservatory
+      state: 'off'
+    - service: switch.turn_off
+      data:
+        entity_id: switch.kitchen_tv
+    - wait_template: "{{ states('binary_sensor.pir_kitchen') != 'on' }}"
+      timeout: '00:00:05'
+      continue_on_timeout: false
+    - service: light.turn_on
+      data:
+        entity_id: group.kitchen_lights
+        brightness: 255
 
 
 
@@ -191,10 +192,19 @@
     - condition: template
       value_template: '{{ states("binary_sensor.pir_kitchen") == "off" and states("binary_sensor.pir_conservatory") == "off"}}'
   action:
-  - service: switch.turn_off
-    data:
-      entity_id: switch.kitchen_tv
-  - service: shell_command.restart_magic_mirror
-  - service: switch.turn_off
-    data:
-      entity_id: switch.zigbee_round_socket
+    - service: switch.turn_off
+      data:
+        entity_id: switch.kitchen_tv
+    - service: shell_command.restart_magic_mirror
+    - service: switch.turn_off
+      data:
+        entity_id: switch.zigbee_round_socket
+    - wait_template: "{{ states('binary_sensor.pir_kitchen') != 'on' }}"
+      timeout: '00:00:05'
+      continue_on_timeout: false
+    - service: switch.turn_on
+      data:
+        entity_id: switch.zigbee_round_socket
+    - service: switch.turn_on
+      data:
+        entity_id: switch.kitchen_tv

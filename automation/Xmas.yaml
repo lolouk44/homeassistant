@@ -21,8 +21,8 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: input_boolean.xmas
-      state: 'on'
+      entity_id: input_select.lights_mode
+      state: 'Xmas'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
@@ -249,13 +249,6 @@
       entity_id: light.wled_garage
       brightness: 128
       effect: '{{states.input_select.wled_effects.attributes.options[range(0, 14) | random]}}'
-  - delay: 00:00:01
-  - service: light.turn_on
-    data:
-      entity_id: light.house_number
-      brightness: 255
-      effect: None
-      rgb_color: [0,0,255]
 
 - alias: Halloween - Change Garage WLED Effect
   id: halloween_change_garage_wled_effect
@@ -281,6 +274,9 @@
       effect: '{{states.input_select.wled_effects_halloween.attributes.options[range(0, 12) | random]}}'
       rgb_color: [255, 128, 0]
   - delay: 00:00:01
+  - condition: state
+    entity_id: light.house_number
+    state: 'off'
   - service: light.turn_on
     data:
       entity_id: light.house_number

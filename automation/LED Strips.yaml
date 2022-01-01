@@ -180,6 +180,16 @@
       brightness: 255
       rgb_color: [0,128,255]
       transition: 1
+  - condition: state
+    entity_id: input_select.lights_mode
+    state: 'Xmas'
+  - service: light.turn_on
+    data:
+      entity_id: light.staircase_led_strip
+      brightness: 255
+      rgb_color: [0,128,255]
+      transition: 1
+      effect: colorfade_fast
 
 
 - alias: LED Strip - Staircase LED Strip Off by PIR
@@ -219,6 +229,9 @@
     - platform: state
       entity_id: light.porch_om_xmas_led_strip
       from: 'unavailable'
+    - platform: state
+      entity_id: input_select.lights_mode
+      to: 'Xmas'
   condition:
     - condition: state
       entity_id: sun.sun
@@ -232,12 +245,6 @@
       brightness: 255
       effect: None
       rgb_color: [0,0,255]
-  # - service: light.turn_on
-  #   data:
-  #     entity_id: light.wled_garage
-  #     brightness: 10
-  #     effect: None
-  #     rgb_color: [0,0,255]
   - condition: state
     entity_id: input_select.lights_mode
     state: 'Xmas'
@@ -246,6 +253,12 @@
       entity_id: light.porch_om_xmas_led_strip
       brightness: 50
       effect: rainbow
+  - service: light.turn_on
+    data:
+      entity_id: light.house_number
+      brightness: 255
+      effect: Rainbow
+      rgb_color: [0,0,255]
 
 - alias: LED Strip - House Number Off
   id: led_strip_house_number_off

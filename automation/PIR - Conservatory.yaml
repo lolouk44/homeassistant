@@ -99,6 +99,11 @@
       entity_id: light.conservatory
       state: 'on'
   action:
+  - service: light.turn_on
+    data:
+      entity_id: light.conservatory
+      brightness: 255
+  - delay: 00:00:02
   - service: light.turn_off
     data:
       entity_id: light.conservatory
