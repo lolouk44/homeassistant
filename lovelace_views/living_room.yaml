@@ -47,7 +47,7 @@ cards:
           icon: mdi:floor-lamp
         - entity: switch.lwrf_socket_3
           secondary_info: last-changed
-          icon: mdi:hinduism
+          icon: mdi:om
     - type: picture-glance
       title: Living Room
       entities:
@@ -73,7 +73,7 @@ cards:
         power_color: true
         show_source: true
         group: true
-      - entity: media_player.fire_stick_4k
+      - entity: media_player.fire_stick_4k_max
         power_color: true
         group: true
         type: "custom:mini-media-player"

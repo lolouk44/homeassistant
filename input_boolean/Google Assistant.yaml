@@ -41,7 +41,7 @@ scheduled_vacuuming:
 multimedia:
   name: Multimedia
   initial: off
-  icon: mdi:library-music
+  icon: mdi:music-box-multiple
 
 set_tv_audio_to_home_cinema:
   name: Set TV Audio To Home Cinema

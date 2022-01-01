@@ -20,6 +20,8 @@
   condition:
     - condition: template
       value_template: '{{ trigger.to_state.state != trigger.from_state.state and trigger.from_state.state != "unknown"}} '
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states("sensor.uptime")) | int > 30)}}'
   action:
   - service: google.add_event
     data:
@@ -40,6 +42,8 @@
   condition:
     - condition: template
       value_template: '{{ trigger.to_state.state != trigger.from_state.state and trigger.from_state.state != "unknown"}} '
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states("sensor.uptime")) | int > 30)}}'
   action:
   - service: google.add_event
     data:

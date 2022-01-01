@@ -52,4 +52,4 @@ cards:
           secondary_info: last-changed
         - entity: switch.lwrf_socket_3
           secondary_info: last-changed
-          icon: mdi:hinduism
+          icon: mdi:om

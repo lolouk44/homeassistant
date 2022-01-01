@@ -139,7 +139,7 @@ light.wled_house_number:
 light.kiaan_lamp:
   icon: mdi:lamp
 light.porch_om_xmas_led_strip:
-  icon: mdi:hinduism
+  icon: mdi:om
 light.Staircase_LED_Strip:
   icon: mdi:led-strip-variant
 light.TV_Cabinet_LED_Strip:

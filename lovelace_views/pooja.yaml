@@ -1,6 +1,6 @@
 title: Pooja Room
 #background: url("/local/stairs.png") fixed
-icon: mdi:hinduism
+icon: mdi:om
 badges:
   !include /config/lovelace_views/badges.yaml
 cards:
@@ -27,8 +27,6 @@ cards:
     show_header_toggle: false
     entities:
       - entity: switch.dehumidifier
-        secondary_info: last-changed
-      - entity: sensor.dehumidifier_power
         secondary_info: last-changed
       - entity: input_boolean.dehumidifier_tank_full
         secondary_info: last-changed
