@@ -53,3 +53,21 @@
   - service: switch.toggle
     data:
       entity_id: switch.bathroom_fan
+
+- alias: Bathroom - Set R% Target
+  id: bathroom_set_humidity_target
+  initial_state: true
+  mode: restart
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: switch.bathroom_fan
+      state: 'off'
+  action:
+  - service: input_number.set_value
+    data:
+      entity_id: input_number.bathroom_humidity_target
+      value: '{{ (( states("sensor.pooja_humidity") | int + states("sensor.master_bedroom_humidity") | int ) /2 * 1.25 ) | int}}'
