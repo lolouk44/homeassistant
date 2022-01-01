@@ -57,7 +57,7 @@
     data:
       entity_id: light.staircase_led_strip
       brightness: 255
-      effect: rainbow
+      effect: colorfade_fast
 
 
 - alias: Lights - Staircase Light Off by PIR

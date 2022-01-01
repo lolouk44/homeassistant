@@ -25,7 +25,7 @@ homeassistant:
 
 
 config:
-default_config:
+#default_config:
 
 
 #Config Split
@@ -121,6 +121,7 @@ http:
     - 127.0.0.1
     - ::1
     - 172.16.0.0/12
+    - 172.19.0.0/24
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
@@ -176,9 +177,6 @@ lovelace:
       type: module
       #Mini media player https://github.com/kalkih/mini-media-player
     - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
-      type: module
-      #Zigbee Network Map https://github.com/azuwis/zigbee2mqtt-networkmap
-    - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
       type: module
       # Animated Weather Card https://github.com/bramkragten/weather-card
     - url: /hacsfiles/weather-card/weather-card.js
@@ -412,6 +410,7 @@ webhook:
       # host: 192.168.9.5
 
 zeroconf:
+  default_interface: true
 
 zigbee2mqtt_networkmap:
   #topic: your topic (optional, default zigbee2mqtt)

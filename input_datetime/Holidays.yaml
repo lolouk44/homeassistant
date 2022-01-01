@@ -13,9 +13,9 @@ xmas_start:
   name: Xmas Start
   has_date: true
   has_time: false
-  initial: '2020-12-01'
+  initial: '2021-12-01'
 xmas_end:
   name: Xmas End
   has_date: true
   has_time: false
-  initial: '2021-01-01'
+  initial: '2022-01-01'

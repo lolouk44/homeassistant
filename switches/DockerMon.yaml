@@ -47,7 +47,7 @@
   timeout: 30
 
 - platform: rest
-  resource: http://192.168.0.24:8126/container/miscale
+  resource: http://192.168.9.23:8126/container/miscale
   name: miscale
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'

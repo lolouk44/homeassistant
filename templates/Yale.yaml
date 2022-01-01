@@ -4,9 +4,6 @@
   trigger:
     - platform: event
       event_type: zwave_js_notification
-  sensor:
-    - name: "Yale Notification Status"
-      state: "{{ trigger.event.data.event_label }}"
 
 
 - sensor:

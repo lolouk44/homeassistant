@@ -15,7 +15,7 @@
 
 - alias: 'Zigbee - Network Map Update'  
   id: zigbee_network_map_update
-  initial_state: true
+  initial_state: false
   trigger:
     platform: time_pattern
     minutes: '/10'

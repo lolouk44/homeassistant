@@ -110,3 +110,9 @@ apple_watch_packages_progress:
     {% else %}
       {{ (states.sensor.mail_amazon_packages_delivered.state | float) / (states.sensor.mail_amazon_packages.state | float) }}
     {% endif %}
+
+
+
+
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 30)}}'
