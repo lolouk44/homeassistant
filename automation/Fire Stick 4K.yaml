@@ -1,14 +1,14 @@
 - alias: Fire Stick 4K - Turn Movies on when Netflix or Prime is Playing
-  id: fire_stick_4k_turn_movies_on_when_netflix_or_prime_is_playing
+  id: fire_stick_4k_max_turn_movies_on_when_netflix_or_prime_is_playing
   initial_state: true
   trigger:
     - platform: state
-      entity_id: media_player.fire_stick_4k
+      entity_id: media_player.fire_stick_4k_max
       to: 'playing'
       for:
         seconds: 5
     - platform: state
-      entity_id: media_player.fire_stick_4k
+      entity_id: media_player.fire_stick_4k_max
   condition:
     - condition: state
       entity_id: input_boolean.normal
@@ -16,9 +16,9 @@
     - condition: template
       value_template: >-
         {{
-        state_attr("media_player.fire_stick_4k","app_name") == "Netflix"
-        or state_attr("media_player.fire_stick_4k","app_name") ==  "com.disney.disneyplus"
-        or state_attr("media_player.fire_stick_4k","app_name") == "Amazon Video"
+        state_attr("media_player.fire_stick_4k_max","source") == "Netflix"
+        or state_attr("media_player.fire_stick_4k_max","source") ==  "Disney+"
+        or state_attr("media_player.fire_stick_4k_max","source") == "Prime Video (Fire TV)"
         }}
     - condition: state
       entity_id: binary_sensor.dark
@@ -28,11 +28,11 @@
       entity_id: input_boolean.movies
 
 - alias: Fire Stick 4K - Dim Lights On when Paused
-  id: fire_stick_4k_dim_lights_on_when_paused
+  id: fire_stick_4k_max_dim_lights_on_when_paused
   initial_state: true
   trigger:
     - platform: state
-      entity_id: media_player.fire_stick_4k
+      entity_id: media_player.fire_stick_4k_max
       to: 'paused'
   condition:
     - condition: state
@@ -45,11 +45,11 @@
       brightness: 11
 
 - alias: Fire Stick 4K - Turn Lights Off when Unpaused
-  id: fire_stick_4k_turn_lights_off_when_unpaused
+  id: fire_stick_4k_max_turn_lights_off_when_unpaused
   initial_state: true
   trigger:
     - platform: state
-      entity_id: media_player.fire_stick_4k
+      entity_id: media_player.fire_stick_4k_max
       to: 'playing'
   condition:
     - condition: state
