@@ -44,6 +44,30 @@
       brightness: 255
       rgb_color: [255,255,191]
 
+- alias: Pooja - Toggle Turn Pooja LED Strips From Aqara Button
+  id: pooja_toggle_turn_pooja_led_strips_from_aqara_button
+  initial_state: true
+  mode: restart
+  trigger:
+    - platform: mqtt
+      topic: 'zigbee2mqtt/aqara_toggle_pooja'
+  action:
+  - condition: template
+    value_template: '{{ trigger.payload_json.click == "double" }}'
+  - service: light.toggle
+    data:
+      entity_id: light.pooja_led_strip
+  - delay:
+      milliseconds: 500
+  - wait_template: "{{ (as_timestamp(now()) - as_timestamp(states.light.pooja_led_strip.last_updated)) | int < 5 and is_state('light.pooja_led_strip', 'on') }}"
+    timeout: '00:00:05'
+    continue_on_timeout: false
+  - service: light.turn_on
+    data:
+      entity_id: light.pooja_led_strip
+      brightness: 255
+      rgb_color: [255,255,191]
+
 
 - alias: Pooja - Office Nest Hub UnMute
   id: pooja_office_nest_hub_unmute
