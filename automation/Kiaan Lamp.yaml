@@ -174,3 +174,62 @@
 
 
 
+- alias: Kiaan Lamp - Toggle
+  id: kiaan_lamp_toggle
+  initial_state: true
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: sensor.kiaan_lamp_sensor
+      from: 'unknown'
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 5)}}'
+  action:
+    - wait_template: '{{ states("sensor.kiaan_lamp_sensor") == "unknown" }}'
+      timeout: 
+        milliseconds: 400
+      continue_on_timeout: false
+    - service: light.turn_on
+      data:
+        entity_id: light.kiaan_lamp
+        brightness: >
+          {% set light_status = states('light.kiaan_lamp') %}
+          {% if light_status == "on" %}
+            0
+          {% else %}
+            255
+          {% endif %}
+
+
+
+- alias: Kiaan Lamp - Set Brightness
+  id: kiaan_lamp_set_brightness
+  initial_state: true
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: sensor.kiaan_lamp_sensor
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: "on"
+    - condition: template
+      value_template: '{{ trigger.from_state.state != "unknown" }}'
+    - condition: template
+      value_template: '{{ trigger.to_state.state != "unknown" }}'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kiaan_lamp_toggle", "last_triggered")) | int > 1)}}'
+  action:
+    - delay:
+        milliseconds: 500
+    - service: light.turn_on
+      data:
+        entity_id: light.kiaan_lamp
+        brightness: '{{(states("sensor.kiaan_lamp_sensor") | int * 2.55) | round}}'
+
