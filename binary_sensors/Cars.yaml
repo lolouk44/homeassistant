@@ -1,19 +1,19 @@
 - platform: template
   sensors:
     bmw_220d_doordriverdront:
-      value_template: '{{ state_attr("binary_sensor.220d_lids","doorDriverFront") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      value_template: '{{ state_attr("binary_sensor.220d_lids","driverFront") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
       friendly_name: Door Driver Front
       device_class: door
     bmw_220d_doordriverrear:
-      value_template: '{{ state_attr("binary_sensor.220d_lids","doorDriverRear") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      value_template: '{{ state_attr("binary_sensor.220d_lids","driverRear") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
       friendly_name: Door Driver Rear
       device_class: door
     bmw_220d_doorpassengerfront:
-      value_template: '{{ state_attr("binary_sensor.220d_lids","doorPassengerFront") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      value_template: '{{ state_attr("binary_sensor.220d_lids","passengerFront") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
       friendly_name: Door Passenger Front
       device_class: door
     bmw_220d_doorpassengerrear:
-      value_template: '{{ state_attr("binary_sensor.220d_lids","doorPassengerRear") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      value_template: '{{ state_attr("binary_sensor.220d_lids","passengerRear") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
       friendly_name: Door Passenger Rear
       device_class: door
     bmw_220d_hood:
@@ -25,19 +25,19 @@
       friendly_name: Trunk
       device_class: opening
     bmw_220d_windowdriverdront:
-      value_template: '{{ state_attr("binary_sensor.220d_windows","windowDriverFront") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
+      value_template: '{{ state_attr("binary_sensor.220d_windows","driverFront") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
       friendly_name: Window Driver Front
       device_class: window
     bmw_220d_windowdriverrear:
-      value_template: '{{ state_attr("binary_sensor.220d_windows","windowDriverRear") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
+      value_template: '{{ state_attr("binary_sensor.220d_windows","driverRear") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
       friendly_name: Window Driver Rear
       device_class: window
     bmw_220d_windowpassengerfront:
-      value_template: '{{ state_attr("binary_sensor.220d_windows","windowPassengerFront") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
+      value_template: '{{ state_attr("binary_sensor.220d_windows","passengerFront") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
       friendly_name: Window Passenger Front
       device_class: window
     bmw_220d_windowpassengerrear:
-      value_template: '{{ state_attr("binary_sensor.220d_windows","windowPassengerRear") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
+      value_template: '{{ state_attr("binary_sensor.220d_windows","passengerRear") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
       friendly_name: Window Passenger Rear
       device_class: window
 
