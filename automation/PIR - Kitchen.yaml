@@ -136,7 +136,7 @@
     - service: switch.turn_off
       data:
         entity_id: switch.kitchen_tv
-    - wait_template: "{{ states('binary_sensor.pir_kitchen') != 'on' }}"
+    - wait_template: "{{ states('binary_sensor.pir_kitchen') == 'on' }}"
       timeout: '00:00:05'
       continue_on_timeout: false
     - service: light.turn_on
@@ -199,7 +199,7 @@
     - service: switch.turn_off
       data:
         entity_id: switch.zigbee_round_socket
-    - wait_template: "{{ states('binary_sensor.pir_kitchen') != 'on' }}"
+    - wait_template: "{{ states('binary_sensor.pir_kitchen') == 'on' }}"
       timeout: '00:00:05'
       continue_on_timeout: false
     - service: switch.turn_on
