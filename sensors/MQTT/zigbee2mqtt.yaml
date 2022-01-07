@@ -159,8 +159,8 @@
   <<: *battery
 
 - platform: mqtt
-  name: "Living Room Door Battery"
-  state_topic: "zigbee2mqtt/living_room_freezer_door"
+  name: "Garage Freezer Door Battery"
+  state_topic: "zigbee2mqtt/garage_freezer_door"
   <<: *battery
 
 - platform: mqtt
