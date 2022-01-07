@@ -24,16 +24,10 @@ start_radiostream_sensors: /config/shell_scripts/start_radiostream_sensors.sh $1
 fire7_reload_url: /config/shell_scripts/fire7_reload_url.sh
 
 restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa -X pi@192.168.9.21 'sudo reboot'
-#restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/shell_scripts/id_rsa -X pi@192.168.9.21 'export DISPLAY=:"0.0" && xdotool key "ctrl+F5"'
-#ssh -X pi@192.168.9.21 'DISPLAY=:"0.0"C && xdotool key F5'
-
-reboot_doorbell: !secret doorbell_reboot_url
-set_doorbell_daylight: /config/shell_scripts/Doorbell_ISAPI_Sharpness.sh
 
 refresh_bin_collection: python3 /config/shell_scripts/HA_Scrape_Crawley_Bins.py
 refresh_power_bi: python3 /config/shell_scripts/Power_BI_Status_Scrape.py
 
 
-catt_install: pip3 install catt && pip3 install python-libxdo
-# && pip3 install --upgrade zeroconf
-catt_cast_ha_to_bedroom: catt -d "Bedroom Nest Hub" cast_site http://192.168.9.23:8123/lovelace-nesthub/nesthub?kiosk
+catt_install: pip3 install catt
+catt_cast_ha_to_bedroom: catt -d "192.168.9.14" cast_site http://192.168.9.23:8123/lovelace-nesthub/nesthub?kiosk
