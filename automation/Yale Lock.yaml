@@ -87,19 +87,6 @@
       entity_id: alarm_control_panel.alarm
       data:
         code: !secret alarm_code
-    # - condition: state
-    #   entity_id: sensor.conexis_l1_node_status
-    #   state: 'dead'
-    # - service: zwave_js.refresh_value
-    #   data:
-    #     entity_id: lock.yale_conexis_l1_lock
-    #     refresh_all_values: true
-    # - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
-    #   timeout: '00:00:30'
-    #   continue_on_timeout: true
-    # - service: lock.unlock
-    #   data:
-    #     entity_id: lock.yale_conexis_l1_lock
 
 - alias: Yale - Unlock Lock from iOS Notification
   id: yale_unlock_lock_from_ios_notification
@@ -126,19 +113,6 @@
     - service: lock.unlock
       data:
         entity_id: lock.yale_conexis_l1_lock
-    # - condition: state
-    #   entity_id: sensor.conexis_l1_node_status
-    #   state: 'dead'
-    # - service: zwave_js.refresh_value
-    #   data:
-    #     entity_id: lock.yale_conexis_l1_lock
-    #     refresh_all_values: true
-    # - wait_template: "{{ is_state('lock.yale_conexis_l1_lock', 'alive') }}"
-    #   timeout: '00:00:30'
-    #   continue_on_timeout: true
-    # - service: lock.unlock
-    #   data:
-    #     entity_id: lock.yale_conexis_l1_lock
 
 
 - alias: Yale - Door Left Unlocked
@@ -165,9 +139,6 @@
     - wait_template: "{{ is_state('sensor.conexis_l1_node_status', 'alive') }}"
       timeout: '00:00:30'
       continue_on_timeout: true
-    # - service: zwave.refresh_node
-    #   data:
-    #     node_id: 5
     - wait_template: "{{ is_state('zwave.conexis_l1_node_status', 'ready') }}"
       timeout: '00:00:30'
       continue_on_timeout: true
@@ -188,22 +159,6 @@
             category: 'alert'
           action_data:
             entity_id: '{{trigger.entity_id}}'
-    # - service: notify.mobile_app_div_iphone
-    #   data_template:
-    #     message: 'Porch Door Left Unlocked'
-    #     data:
-    #       push:
-    #         badge: '{{states("counter.iosbadgecount")}}'
-    #         category: 'alert'
-    #       action_data:
-    #         entity_id: '{{trigger.entity_id}}'
-    # - condition: state
-    #   entity_id: input_boolean.silent
-    #   state: 'off'
-    # - service: tts.google_say
-    #   entity_id: media_player.google_home_minis
-    #   data_template:
-    #     message: 'Please note: the porch door has been left unlocked'
 
 
 - alias: Yale - Lock Jammed
@@ -223,9 +178,6 @@
     - wait_template: "{{ is_state('sensor.conexis_l1_node_status', 'alive') }}"
       timeout: '00:00:30'
       continue_on_timeout: true
-    # - service: zwave.refresh_node
-    #   data:
-    #     node_id: 5
     - wait_template: "{{ is_state('zwave.conexis_l1_node_status', 'ready') }}"
       timeout: '00:00:30'
       continue_on_timeout: true
@@ -330,9 +282,6 @@
   trigger:
     - platform: state
       entity_id: sensor.conexis_l1_node_status
-      to: 'dead'
-      # entity_id: zwave.conexis_l1_node_status
-      # to: 'dead'
       for:
         minutes: 1
   condition:
@@ -342,15 +291,9 @@
     - service: zwave_js.refresh_value
       data:
         entity_id: lock.yale_conexis_l1_lock
-        refresh_all_values: true
-    # - service: zwave.test_node
-    #   data:
-    #     node_id: 5
     - delay: '00:02:00'
     - condition: template
       value_template: '{{ states("lock.yale_conexis_l1_lock") != "unavailable" }}' 
-    # - condition: template
-    #   value_template: '{{ states("zwave.conexis_l1_node_status") == "dead" }}' 
     - service: notify.gmaillolo
       data_template:
         title: 'HA - Yale Lock Dead'
