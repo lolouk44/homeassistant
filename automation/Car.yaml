@@ -64,28 +64,35 @@
     - condition: template
       value_template: '{{ states("device_tracker.laurent") != "driving"}}'
     - service: notify.mobile_app_lolo_s_iphone
-      data_template:
-        title: "HA - BMW"
-        message: 'BMW 220d Not Locked !'
+      # data_template:
+      #   title: "HA - BMW"
+      #   message: 'BMW 220d Not Locked !'
+      #   data:
+      #     push:
+      #       badge: '{{states("counter.iosbadgecount")}}'
+      #       category: "bmwalert"
+      #     action_data:
+      #       entity_id: lock.220d_lock
+      data:
+        message: "BMW 220d Not Locked !"
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: "bmwalert"
-          action_data:
-            entity_id: lock.220d_lock
+          actions:
+            - action: "LOCK_BMW"
+              title: "Lock BMW"
+              destructive: yes
 
 - alias: BMW - iOS Notification Lock Car
   id: bmw_ios_notification_lock_car
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: LOCK_BMW
-    - platform: event
       event_type: ios.action_fired
       event_data:
         actionName: LOCK_BMW
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: LOCK_BMW
   action:
     - service: lock.lock
       data:
@@ -97,9 +104,9 @@
   trigger:
     # iOS 2.0 App Support
     - platform: event
-      event_type: ios.notification_action_fired
+      event_type: ios.action_fired
       event_data:
-        actionName: BMW_VENTILATE
+        action: BMW_VENTILATE
   action:
     - service: bmw_connected_drive.activate_air_conditioning
       data:

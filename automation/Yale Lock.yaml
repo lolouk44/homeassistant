@@ -19,14 +19,21 @@
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
     - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
-      data_template:
-        message: 'Unlock Porch ?'
+      # data_template:
+      #   message: 'Unlock Porch ?'
+      #   data:
+      #     push:
+      #       badge: '{{states("counter.iosbadgecount")}}'
+      #       category: 'unlockyale'
+      #     action_data:
+      #       entity_id: lock.yale_conexis_l1_lock
+      data:
+        message: "Unlock Porch ?"
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: 'unlockyale'
-          action_data:
-            entity_id: lock.yale_conexis_l1_lock
+          actions:
+            - action: "UNLOCK_YALE"
+              title: "Unlock Yale"
+              destructive: yes
 
 - alias: Yale - Unlock when reaching home from iOS Notification (W Alarm)
   id: yale_unlock_when_reaching_home_from_ios_notification_w_alarm
@@ -49,27 +56,34 @@
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
     - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
-      data_template:
-        message: 'Unlock Porch & Disarm Alarm ?'
+      # data_template:
+      #   message: 'Unlock Porch & Disarm Alarm ?'
+      #   data:
+      #     push:
+      #       badge: '{{states("counter.iosbadgecount")}}'
+      #       category: 'unlockyaledisarmalarm'
+      #     action_data:
+      #       entity_id: alarm_control_panel.alarm
+      data:
+        message: "Unlock Porch & Disarm Alarm ?"
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: 'unlockyaledisarmalarm'
-          action_data:
-            entity_id: alarm_control_panel.alarm
+          actions:
+            - action: "UNLOCK_YALE_DISARM_ALARM"
+              title: "Disarm Alarm & Unlock Yale"
+              destructive: yes
 
 - alias: Yale - Unlock & Disarm Alarm from iOS Notification
   id: yale_unlock_disarm_alarm_from_ios_notification
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: UNLOCK_YALE_DISARM_ALARM
-    - platform: event
       event_type: ios.action_fired
       event_data:
         actionName: UNLOCK_YALE_DISARM_ALARM
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: UNLOCK_YALE_DISARM_ALARM
   condition:
     - condition: or
       conditions:
@@ -93,13 +107,13 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: UNLOCK_YALE
-    - platform: event
       event_type: ios.action_fired
       event_data:
         actionName: UNLOCK_YALE
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: UNLOCK_YALE
   condition:
     - condition: or
       conditions:
@@ -309,3 +323,21 @@
 #       data_template:
 #         title: 'HA - Yale Event'
 #         message: 'Event:  {{ trigger.event.data}}'
+
+# - alias: Yale - Test New iOS Notifications
+#   id: yale_test_new_ios_notification
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: device_tracker.laurent
+#       to: "home"
+#   action:
+#     - service: notify.mobile_app_lolo_s_iphone
+#       data:
+#         message: "Alarm Triggered !"
+#         data:
+#           image: '{{states("input_text.base_url")}}/local/Alarm_Icon.png'
+#           actions:
+#             - action: "SILENCE_ALARM"
+#               title: "Silence Alarm"
+#               destructive: yes

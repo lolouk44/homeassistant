@@ -181,53 +181,69 @@
             - /config/www/CCTV_Snapshots/Garage.jpg
             - /config/www/CCTV_Snapshots/Doorbell.jpg
     - service: notify.mobile_app_lolo_s_iphone
-      data_template:
-        title: "Alarm Triggered !"
-        message: >
-          ALARM! The alarm has been triggered !(
-          ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
-          {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
-          {%- endfor -%}
-          {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
-          {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
-          {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
-          {%- endfor %})
+      # data_template:
+      #   title: "Alarm Triggered !"
+      #   message: >
+      #     ALARM! The alarm has been triggered !(
+      #     ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
+      #     {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+      #     {%- endfor -%}
+      #     {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
+      #     {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
+      #     {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
+      #     {%- endfor %})
+      #   data:
+      #     push:
+      #       badge: '{{states("counter.iosbadgecount")}}'
+      #       category: "alarm"
+      #       sound:
+      #         name: default
+      #         critical: 1
+      #         volume: 1.0
+      #     attachment:
+      #       url: !secret url_cctv_living_room
+      #     action_data:
+      #       entity_id: '{{trigger.entity_id}}'
+      data:
+        message: "Alarm Triggered !"
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: "alarm"
-            sound:
-              name: default
-              critical: 1
-              volume: 1.0
-          attachment:
-            url: !secret url_cctv_living_room
-          action_data:
-            entity_id: '{{trigger.entity_id}}'
+          image: '{{states("input_text.base_url")}}/local/Alarm_Icon.png'
+          # actions:
+          #   - action: "SILENCE_ALARM"
+          #     title: "Silence Alarm"
+          #     destructive: yes
     - service: notify.mobile_app_div_iphone
-      data_template:
-        title: "Alarm Triggered !"
-        message: >
-          ALARM! The alarm has been triggered !(
-          ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
-          {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
-          {%- endfor -%}
-          {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
-          {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
-          {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
-          {%- endfor %})
+      # data_template:
+      #   title: "Alarm Triggered !"
+      #   message: >
+      #     ALARM! The alarm has been triggered !(
+      #     ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
+      #     {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
+      #     {%- endfor -%}
+      #     {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
+      #     {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
+      #     {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
+      #     {%- endfor %})
+      #   data:
+      #     push:
+      #       badge: '{{states("counter.iosbadgecount")}}'
+      #       category: "alarm"
+      #       sound:
+      #         name: default
+      #         critical: 1
+      #         volume: 1.0
+      #     attachment:
+      #       url: !secret url_cctv_living_room
+      #     action_data:
+      #       entity_id: '{{trigger.entity_id}}'
+      data:
+        message: "Alarm Triggered !"
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: "alarm"
-            sound:
-              name: default
-              critical: 1
-              volume: 1.0
-          attachment:
-            url: !secret url_cctv_living_room
-          action_data:
-            entity_id: '{{trigger.entity_id}}'
+          image: '{{states("input_text.base_url")}}/local/Alarm_Icon.png'
+          # actions:
+          #   - action: "SILENCE_ALARM"
+          #     title: "Silence Alarm"
+          #     destructive: yes
     - service: script.turn_on
       data:
         entity_id: script.alarm_flash_ligthts
@@ -506,12 +522,24 @@
       data_template:
         message: >
           FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
+        # data:
+        #   push:
+        #     badge: '{{states("counter.iosbadgecount")}}'
+        #     category: "alarm"
+        #   action_data:
+        #     entity_id: '{{trigger.entity_id}}'
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: "alarm"
-          action_data:
-            entity_id: '{{trigger.entity_id}}'
+          image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
+          # actions:
+          #   - action: "SILENCE_ALARM"
+          #     title: "Silence Alarm"
+          #     destructive: yes
+    - service: notify.mobile_app_div_iphone
+      data_template:
+        message: >
+          FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
+        data:
+          image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
 
 
 
@@ -664,36 +692,50 @@
     - condition: template
       value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home"}}'
     - service: notify.mobile_app_lolo_s_iphone
-      data_template:
-        message: 'The alarm has not been armed !'
+      # data_template:
+      #   message: 'The alarm has not been armed !'
+        # data:
+        #   push:
+        #     badge: '{{states("counter.iosbadgecount")}}'
+        #     category: "armalarm"
+        #   action_data:
+        #     entity_id: alarm_control_panel.alarm
+      data:
+        message: "The alarm has not been armed !"
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: "armalarm"
-          action_data:
-            entity_id: alarm_control_panel.alarm
+          actions:
+            - action: "ARM_ALARM"
+              title: "Arm Alarm"
+              destructive: yes
     - service: notify.mobile_app_div_iphone
-      data_template:
-        message: 'The alarm has not been armed !'
+      # data_template:
+      #   message: 'The alarm has not been armed !'
+      #   data:
+      #     push:
+      #       badge: '{{states("counter.iosbadgecount")}}'
+      #       category: "armalarm"
+      #     action_data:
+      #       entity_id: alarm_control_panel.alarm
+      data:
+        message: "The alarm has not been armed !"
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: "armalarm"
-          action_data:
-            entity_id: alarm_control_panel.alarm
+          actions:
+            - action: "ARM_ALARM"
+              title: "Arm Alarm"
+              destructive: yes
 
 - alias: Alarm - Arm Alarm from iOS Notification
   id: alarm_-_arm_alarm_from_ios_notification
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: ARM_ALARM
-    - platform: event
       event_type: ios.action_fired
       event_data:
         actionName: ARM_ALARM
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: ARM_ALARM
   action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.alarm
@@ -705,13 +747,13 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: DISARM_ALARM
-    - platform: event
       event_type: ios.action_fired
       event_data:
         actionName: DISARM_ALARM
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: DISARM_ALARM
   action:
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.alarm
@@ -737,11 +779,19 @@
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
     - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
-      data_template:
-        message: 'Disarm alarm ?'
+      # data_template:
+      #   message: 'Disarm alarm ?'
+      #   data:
+      #     push:
+      #       badge: '{{states("counter.iosbadgecount")}}'
+      #       category: "disarmalarm"
+      #     action_data:
+      #       entity_id: alarm_control_panel.alarm
+      data:
+        message: "Disarm alarm ?"
         data:
-          push:
-            badge: '{{states("counter.iosbadgecount")}}'
-            category: "disarmalarm"
-          action_data:
-            entity_id: alarm_control_panel.alarm
+          image: '{{states("input_text.base_url")}}/local/Alarm_Icon.png'
+          actions:
+            - action: "DISARM_ALARM"
+              title: "Disarm Alarm"
+              destructive: yes

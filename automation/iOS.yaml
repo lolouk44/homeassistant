@@ -45,7 +45,7 @@
     - platform: event
       event_type: ios.notification_action_fired
       event_data:
-        actionName: DISABLE_ALERT
+        action: DISABLE_ALERT
   action:
     - service: alert.turn_off
       data_template:
