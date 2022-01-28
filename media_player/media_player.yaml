@@ -30,6 +30,14 @@
       - 'paused':
           'media_session_state': 2
       - 'idle'
+    'uk.co.bbc.iplayer':
+      - 'playing':
+          'wake_lock_size': 4
+      - 'paused':
+          'wake_lock_size': 3
+      - 'paused':
+          'wake_lock_size': 2
+      - 'idle'
   get_sources: false
 - platform: androidtv
   host: 192.168.9.28
@@ -40,5 +48,13 @@
           'media_session_state': 3
       - 'paused':
           'media_session_state': 2
+      - 'idle'
+    'uk.co.bbc.iplayer':
+      - 'playing':
+          'wake_lock_size': 4
+      - 'paused':
+          'wake_lock_size': 3
+      - 'paused':
+          'wake_lock_size': 2
       - 'idle'
   get_sources: false
