@@ -28,14 +28,14 @@ play_chromecast_radio:
           {% endif %}
         media_content_id: >
           {% if is_state("input_select.chromecast_radio_station", "RTL2") %} http://icecast.rtl2.fr/rtl2-1-44-128
-          {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3
-          {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3
+          {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} https://stream-ar.planetradio.co.uk/absoluteradiohigh.aac?direct=true&carrier=unknown&aw_0_1st.bauer_loggedin=false&aw_0_1st.bauer_preroll=1&aw_0_1st.bauer_carrier=unknown&aw_0_req.gdpr=true&aw_0_1st.playerid=BMUK_GoogleHome
+          {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} https://stream-ar.planetradio.co.uk/absoluteclassicrockhigh.aac?direct=true&carrier=unknown&aw_0_1st.bauer_loggedin=false&aw_0_1st.bauer_preroll=1&aw_0_1st.bauer_carrier=unknown&aw_0_req.gdpr=true&aw_0_1st.playerid=BMUK_GoogleHome
           {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} http://broadcast.infomaniak.ch/hitwest-high.mp3
           {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} {{states("sensor.ha_podcast")}}
           {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} {{states("sensor.internet_of_things_podcast")}}
           {% elif is_state("input_select.chromecast_radio_station", "Chill") %} http://media-the.musicradio.com/ChillMP3
           {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} http://peridot.streamguys.com:7150/RFTwo?play
-          {% elif is_state("input_select.chromecast_radio_station", "Scala") %}  https://stream-mz.planetradio.co.uk/scalahigh.aac
+          {% elif is_state("input_select.chromecast_radio_station", "Scala") %}  https://stream-mz.planetradio.co.uk/scalahigh.aac?direct=true&carrier=unknown&aw_0_1st.bauer_loggedin=false&aw_0_1st.bauer_preroll=1&aw_0_1st.bauer_carrier=unknown&aw_0_req.gdpr=true&aw_0_1st.playerid=BMUK_GoogleHome
           {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} https://stream.fijivillage.com/navtarang
           {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} {{states("input_text.custom_station")}}
           {% endif %}
@@ -60,3 +60,5 @@ stop_chromecast_radio:
 # Christmas Radio: http://144.217.180.30:8016/stream
 # Sounds of Christmas: http://198.27.66.225:8360/1
 # ChristmasHits.FM: http://46.105.118.14:24000
+# Scala Radio: https://stream-mz.planetradio.co.uk/scalahigh.aac?direct=true&carrier=unknown&aw_0_1st.bauer_loggedin=false&aw_0_1st.bauer_preroll=1&aw_0_1st.bauer_carrier=unknown&aw_0_req.gdpr=true&aw_0_1st.playerid=BMUK_GoogleHome
+# Absolute Radio: https://stream-ar.planetradio.co.uk/absoluteradiohigh.aac?direct=true&carrier=unknown&aw_0_1st.bauer_loggedin=false&aw_0_1st.bauer_preroll=1&aw_0_1st.bauer_carrier=unknown&aw_0_req.gdpr=true&aw_0_1st.playerid=BMUK_GoogleHome
