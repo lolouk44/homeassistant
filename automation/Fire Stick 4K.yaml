@@ -19,6 +19,7 @@
         state_attr("media_player.fire_stick_4k_max","source") == "Netflix"
         or state_attr("media_player.fire_stick_4k_max","source") ==  "Disney+"
         or state_attr("media_player.fire_stick_4k_max","source") == "Prime Video (Fire TV)"
+        or state_attr("media_player.fire_stick_4k_max","source") == "uk.co.bbc.iplayer"
         }}
     - condition: state
       entity_id: binary_sensor.dark
