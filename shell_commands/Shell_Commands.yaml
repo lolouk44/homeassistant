@@ -31,3 +31,4 @@ refresh_power_bi: python3 /config/shell_scripts/Power_BI_Status_Scrape.py
 
 catt_install: pip3 install catt
 catt_cast_ha_to_bedroom: catt -d "192.168.9.14" cast_site http://192.168.9.23:8123/lovelace-nesthub/nesthub?kiosk
+catt_cast_ha_to_office: catt -d "192.168.9.16" cast_site http://192.168.9.23:8123/lovelace-nesthub/nesthub?kiosk

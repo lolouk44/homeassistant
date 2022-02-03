@@ -11,8 +11,13 @@
     - condition: template
       value_template: '{{ states("person.laurent") == "home"}}'
     - condition: template
-      value_template: '{{ states("media_player.master_bedroom_nest_hub") != "playing"}}'
+      value_template: '{{ states("media_player.master_bedroom_nest_hub") != "playing" or state_attr("media_player.master_bedroom_nest_hub", "app_name") == "DashCast"}}'
   action:
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.master_bedroom_nest_hub
+    - wait_template: '{{ states("media_player.master_bedroom_nest_hub") == "off"}}'
+      timeout: '00:00:15'
     - service: media_player.volume_set
       data:
         entity_id: media_player.master_bedroom_nest_hub
