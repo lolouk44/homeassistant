@@ -31,14 +31,14 @@
   action:
     - service: nest.set_away_mode
       data:
-        away_mode: home
+        away_mode: 'home'
     - service: climate.set_temperature
       data_template:
         entity_id: climate.hallway
         temperature: >-
           {% if states("sensor.season") == "summer" or states("sensor.season") == "spring" %}18
           {% elif now().hour |int < 22 and now().hour |int > 5 %}20
-          {% else  %} 18
+          {% else  %}18
           {% endif %}
         hvac_mode: 'heat'
 
@@ -84,11 +84,11 @@
   action:
     - service: nest.set_away_mode
       data:
-        away_mode: home
+        away_mode: 'away'
     - service: climate.set_temperature
       data_template:
         entity_id: climate.hallway
-        temperature: '15'
+        temperature: 15
         hvac_mode: 'heat'
 
 
