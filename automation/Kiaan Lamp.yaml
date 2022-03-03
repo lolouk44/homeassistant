@@ -7,9 +7,8 @@
       minutes: 00
       seconds: 0
   condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: "on"
+    - condition: template
+      value_template: '{{ is_state("input_boolean.normal", "on") or is_state("input_boolean.movies", "on")}}'
     - condition: state
       entity_id: light.kiaan_lamp
       state: "off"
@@ -45,9 +44,8 @@
         - wed
         - thu
         - fri
-    - condition: state
-      entity_id: input_boolean.normal
-      state: "on"
+    - condition: template
+      value_template: '{{ is_state("input_boolean.normal", "on") or is_state("input_boolean.movies", "on")}}'
     - condition: state
       entity_id: light.kiaan_lamp
       state: "on"
@@ -74,9 +72,8 @@
       weekday:
         - sat
         - sun
-    - condition: state
-      entity_id: input_boolean.normal
-      state: "on"
+    - condition: template
+      value_template: '{{ is_state("input_boolean.normal", "on") or is_state("input_boolean.movies", "on")}}'
     - condition: state
       entity_id: light.kiaan_lamp
       state: "on"
@@ -99,9 +96,8 @@
       minutes: 00
       seconds: 0
   condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: "on"
+    - condition: template
+      value_template: '{{ is_state("input_boolean.normal", "on") or is_state("input_boolean.movies", "on")}}'
     - condition: state
       entity_id: light.kiaan_lamp
       state: "on"
@@ -131,9 +127,8 @@
         - wed
         - thu
         - fri
-    - condition: state
-      entity_id: input_boolean.normal
-      state: "on"
+    - condition: template
+      value_template: '{{ is_state("input_boolean.normal", "on") or is_state("input_boolean.movies", "on")}}'
   action:
   - service: light.turn_on
     data:
@@ -159,9 +154,8 @@
       weekday:
         - sat
         - sun
-    - condition: state
-      entity_id: input_boolean.normal
-      state: "on"
+    - condition: template
+      value_template: '{{ is_state("input_boolean.normal", "on") or is_state("input_boolean.movies", "on")}}'
   action:
   - service: light.turn_on
     data:
@@ -183,9 +177,8 @@
       entity_id: sensor.kiaan_lamp_sensor
       from: 'unknown'
   condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: "on"
+    - condition: template
+      value_template: '{{ is_state("input_boolean.normal", "on") or is_state("input_boolean.movies", "on")}}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 5)}}'
   action:
@@ -214,9 +207,8 @@
     - platform: state
       entity_id: sensor.kiaan_lamp_sensor
   condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: "on"
+    - condition: template
+      value_template: '{{ is_state("input_boolean.normal", "on") or is_state("input_boolean.movies", "on")}}'
     - condition: template
       value_template: '{{ trigger.from_state.state != "unknown" }}'
     - condition: template
