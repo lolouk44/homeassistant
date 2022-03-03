@@ -191,6 +191,8 @@
   condition:
     - condition: template
       value_template: '{{ states("binary_sensor.pir_kitchen") == "off" and states("binary_sensor.pir_conservatory") == "off"}}'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 300)}}'      
   action:
     - service: switch.turn_off
       data:
