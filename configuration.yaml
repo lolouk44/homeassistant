@@ -414,7 +414,7 @@ webhook:
 zeroconf:
   default_interface: true
 
-zigbee2mqtt_networkmap:
+# zigbee2mqtt_networkmap:
   #topic: your topic (optional, default zigbee2mqtt)
 panel_iframe:
   networkmap:
