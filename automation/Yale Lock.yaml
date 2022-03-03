@@ -296,18 +296,19 @@
   trigger:
     - platform: state
       entity_id: sensor.conexis_l1_node_status
+      to: 'unavailable'
       for:
-        minutes: 1
-  condition:
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 30)}}'
+        minutes: 2
+  # condition:
+  #   - condition: template
+  #     value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 30)}}'
   action:
     - service: zwave_js.refresh_value
       data:
         entity_id: lock.yale_conexis_l1_lock
     - delay: '00:02:00'
     - condition: template
-      value_template: '{{ states("lock.yale_conexis_l1_lock") != "unavailable" }}' 
+      value_template: '{{ states("lock.yale_conexis_l1_lock") == "unavailable" }}' 
     - service: notify.gmaillolo
       data_template:
         title: 'HA - Yale Lock Dead'
