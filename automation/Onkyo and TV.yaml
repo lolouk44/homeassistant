@@ -44,4 +44,20 @@
     - condition: template
       value_template: '{{ (as_timestamp(states("sensor.uptime")) - (as_timestamp(states("sensor.uptime")))) > 120 }}'
   action:
-    - service: shell_command.viera_audio_home_cinema
+#    - service: shell_command.viera_audio_home_cinema
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
+        command: menu
+        delay_secs: 2
+        command: down
+        delay_secs: 1
+        command: right
+        delay_secs: 1
+        command: enter
+        delay_secs: 1
+        command: down
+        delay_secs: 1
+        command: enter
+        delay_secs: 5
+        command: cancel
