@@ -22,9 +22,10 @@ cards:
               state: "unavailable" 
           exclude:
             - entity_id: media_player.as_aftmm_cast
-            - entity_id: media_player.mibox3
-            - entity_id: media_player.mi_box3_adtv
+            # - entity_id: media_player.mibox3
+            # - entity_id: media_player.mi_box3_adtv
             - entity_id: "*astra_car*"
+            - entity_id: "button.wled_*"
         sort:
           method: 'name'
   - type: entities

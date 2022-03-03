@@ -9,17 +9,6 @@
     network: 'ChromeCast'
     tv: 'TV'
     strm-box: 'ChromeCast2'
-# - platform: panasonic_viera
-#   name: Panasonic Viera TV
-#   host: 192.168.9.27
-#   mac: D8:AF:F1:47:7A:16
-# - platform: mpd
-#   host: 192.168.9.21
-#   port: 6600
-#   name: MPD RPi Kitchen
-# - platform: androidtv
-#   host: 192.168.9.28
-#   name: Mi Box3 ADTV
 - platform: androidtv
   host: 192.168.9.29
   name: Fire Stick 4K
