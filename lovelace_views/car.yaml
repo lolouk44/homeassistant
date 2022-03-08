@@ -189,8 +189,8 @@ cards:
       min: 0
       severity:
         green: 12
-        yellow: 12.65
-        red: 15
+        yellow: 20
+        red: 21
       theme: reverse_gauge_th
 
   - type: map
