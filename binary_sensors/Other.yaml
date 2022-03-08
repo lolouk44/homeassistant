@@ -1,5 +1,5 @@
 - platform: workday
-  country: UK
+  country: GB
 
 - platform: template
   sensors:
