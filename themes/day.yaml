@@ -18,6 +18,7 @@ day:
   paper-listbox-background-color: var(--primary-background-color)
   ha-card-border-radius: 10px
   ha-card-background: var(--primary-background-color)
+  ha-select: var(--primary-background-color)
   label-badge-red: rgba(3, 169, 244, 0.8)  # from Apple systemOrange dark mode
   state-icon-active-color: rgba(3, 169, 244, 1)
   paper-card-background-color: var(--ha-card-background)
@@ -29,3 +30,9 @@ day:
   # card-header-footer-background: rgba(255, 255, 255, 0.8)
   # ha-card-header-footer-background-color: rgba(255, 255, 255, 0.8)
   # ha-card-header-footer-background: rgba(255, 255, 255, 0.8)
+  
+  # Input
+  input-fill-color: none
+  mdc-select-fill-color: none
+
+  

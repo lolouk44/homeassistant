@@ -80,3 +80,10 @@ dark:
   mini-media-player-base-color: white
   mini-media-player-icon-color: white
   # mini-media-player-artwork-opacity: 0.7  # causing some bug
+  
+  # Input
+  input-fill-color: none
+  mdc-select-fill-color: none
+  input-label-ink-color: var(--primary-text-color)
+  input-ink-color: var(--primary-text-color)
+  input-dropdown-icon-color: var(--primary-text-color)
