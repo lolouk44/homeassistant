@@ -83,12 +83,10 @@
 - platform: generic
   name: YrForecastCrawley
   still_image_url: https://www.yr.no/en/content/2-6621541/meteogram.svg
-  # still_image_url: https://www.yr.no/place/United_Kingdom/England/Maidenbower/meteogram.svg
   content_type: 'image/svg+xml'
 - platform: generic
   name: YrForecastWeybridge
   still_image_url: https://www.yr.no/en/content/2-2634204/meteogram.svg
-  # still_image_url: https://www.yr.no/place/United_Kingdom/England/Weybridge/meteogram.svg
   content_type: 'image/svg+xml'
 - platform: generic
   name: chromecast_radio_pic
