@@ -7,6 +7,17 @@ cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
+    title: Staircase Sensors
+    state_color: true
+    show_header_toggle: false
+    entities:
+    - entity: binary_sensor.pir_staircase
+      secondary_info: last-changed
+    - entity: binary_sensor.fire7_motion
+      secondary_info: last-changed
+    - entity: binary_sensor.first_floor_smoke_detector
+      secondary_info: last-changed
+  - type: entities
     title: Staircase Lights
     show_header_toggle: true
     entities:
@@ -14,12 +25,3 @@ cards:
         secondary_info: last-changed
       - entity: light.staircase_led_strip
         secondary_info: last-changed
-  - type: entities
-    title: Staircase Sensors
-    state_color: true
-    show_header_toggle: false
-    entities:
-    - entity: binary_sensor.fire7_motion
-      secondary_info: last-changed
-    - entity: binary_sensor.first_floor_smoke_detector
-      secondary_info: last-changed
