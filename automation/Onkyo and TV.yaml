@@ -49,15 +49,51 @@
       data:
         device: e68fe01e180baaacb55c539a7906e118
         command: menu
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         delay_secs: 2
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         command: down
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         delay_secs: 1
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         command: right
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         delay_secs: 1
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         command: enter
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         delay_secs: 1
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         command: down
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         delay_secs: 1
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         command: enter
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         delay_secs: 5
+    - service: remote.send_command
+      data:
+        device: e68fe01e180baaacb55c539a7906e118
         command: cancel
