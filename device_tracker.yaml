@@ -10,6 +10,11 @@
 - platform: tile
   username: !secret tile_user
   password: !secret tile_password
+
+- platform: icloud3
+  username: !secret icloud3_username
+  password: !secret icloud3_password
+  #exclude_sensors: batstat,lzonn,lzont,name
   
   
 # - platform: life360

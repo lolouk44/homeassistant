@@ -211,22 +211,9 @@ lovelace:
       url: 'https://fonts.googleapis.com/css?family=Orbitron'
     - type: css
       url: 'https://fonts.googleapis.com/css?family=Kaushan%20Script'
-
-  # dashboards:
-    # lovelace-alarm-panel: # Needs to contain a hyphen (-)
-      # mode: yaml
-      # filename: lovelace-alarm.yaml
-      # title: Alarm Panel
-      # icon: mdi:shield-check
-      # show_in_sidebar: true
-      # require_admin: false
-    # lovelace-home: # Needs to contain a hyphen (-)
-      # mode: yaml
-      # filename: lovelace-home.yaml
-      # title: Home
-      # icon: mdi:home
-      # show_in_sidebar: true
-      # require_admin: true
+    # iCloud3
+    - url: /hacsfiles/icloud3/icloud3-event-log-card.js
+      type: module
 
 
 map:
@@ -249,32 +236,23 @@ person:
     id: laurent
     user_id: !secret ha_lolo_user_id
     device_trackers:
-      - device_tracker.laurent
-      - device_tracker.lolo_s_iphone_2
+      - device_tracker.laurent #Life360
+      - device_tracker.lolo_iphone #icloud3
+      - device_tracker.lolo_iphone_2
   - name: Div
     id: divashni
     user_id: !secret ha_div_user_id
     device_trackers:
-      - device_tracker.divashni
-      - device_tracker.div_iphone_2
+      - device_tracker.div_iphone #icloud3
+      - device_tracker.divashni #Life360
 
 recorder:
   db_url: !secret db_url
-
-# remote_homeassistant:
-  # instances:
-  # - host: 192.168.9.23
-    # port: 8123
-    # access_token: !secret ha2_long_lived_token
-    # include:
-      # entities:
-      # - light.lolo_bedside_light
-      # - light.aqara_gateway_light
-      # - media_player.panasonic_viera_tv
-      # - sensor.aqara_illumination
-      # - switch.xiaomi_garage_socket
-      # - switch.xiaomi_dual_usb_socket
-      # - switch.xiaomi_dual_usb_socket_usb
+  exclude:
+    entities:
+      - sensor.icloud3_event_log
+      - sensor.lolo_iphone_info
+      - sensor.div_iphone_info
 
 
 rfxtrx:
@@ -386,12 +364,6 @@ tts:
 updater:
   include_used_components: True
 
-# vacuum:
-# - platform: xiaomi_miio
-#   name: 'Mi Robot Vacuum'
-#   host: 192.168.0.18
-#   token: !secret xiaomi_token_vacuum
-
 var:
   printer_pages_at_month_start:
     friendly_name: 'HP Printer Pages at month start'
@@ -404,18 +376,9 @@ weather:
 
 webhook:
 
-# xiaomi_aqara:
-  # discovery_retry: 10
-  # gateways:
-    # - mac: !secret xiaomi_aqara_mac
-      # key: !secret xiaomi_aqara_password
-      # host: 192.168.9.5
-
 zeroconf:
   default_interface: true
 
-# zigbee2mqtt_networkmap:
-  #topic: your topic (optional, default zigbee2mqtt)
 panel_iframe:
   networkmap:
     title: 'Zigbee Map'

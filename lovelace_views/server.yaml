@@ -454,3 +454,18 @@ cards:
             - entity_id: "*sensor.power_bi.*"
         sort:
           method: 'name'
+  - type: custom:icloud3-event-log-card
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: iCloud3
+          open: false
+        filter:
+          include:
+            - entity_id: sensor.icloud3_event_log
+        sort:
+          method: 'name'
