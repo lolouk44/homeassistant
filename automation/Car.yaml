@@ -63,7 +63,7 @@
       continue_on_timeout: true
     - condition: template
       value_template: '{{ states("device_tracker.laurent") != "driving"}}'
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       # data_template:
       #   title: "HA - BMW"
       #   message: 'BMW 220d Not Locked !'

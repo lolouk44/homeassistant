@@ -28,7 +28,7 @@
   action:
     - service: counter.increment
       entity_id: counter.iosbadgecount
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       data_template:
         message: '{{ trigger.entity_id | replace("alert.","") | replace("_"," ") |capitalize }}'
         data:
@@ -55,7 +55,7 @@
     - condition: state
       entity_id: counter.iosbadgecount
       state: '0'
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       data:
         message: clear_badge
 
@@ -91,6 +91,6 @@
     - condition: state
       entity_id: counter.iosbadgecount
       state: '0'
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       data:
         message: clear_badge

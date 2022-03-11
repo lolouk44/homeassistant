@@ -243,21 +243,21 @@ cards:
         - entity_id: sensor.living_room_main_rssi_numeric
         - entity_id: sensor.living_room_wall_rssi_numeric
         - entity_id: sensor.livingroom_blinds_rssi_numeric
-        - entity_id: sensor.lolo_s_iphone_activity
-        - entity_id: sensor.lolo_s_iphone_average_active_pace
-        - entity_id: sensor.lolo_s_iphone_battery_level
-        - entity_id: sensor.lolo_s_iphone_battery_state
-        - entity_id: sensor.lolo_s_iphone_bssid
-        - entity_id: sensor.lolo_s_iphone_distance
-        - entity_id: sensor.lolo_s_iphone_floors_ascended
-        - entity_id: sensor.lolo_s_iphone_floors_descended
-        - entity_id: sensor.lolo_s_iphone_geocoded_location
-        - entity_id: sensor.lolo_s_iphone_last_update_trigger
-        - entity_id: sensor.lolo_s_iphone_sim_1
-        - entity_id: sensor.lolo_s_iphone_sim_2
-        - entity_id: sensor.lolo_s_iphone_ssid
-        - entity_id: sensor.lolo_s_iphone_steps
-        - entity_id: sensor.lolo_s_iphone_storage
+        - entity_id: sensor.lolo_iphone_activity
+        - entity_id: sensor.lolo_iphone_average_active_pace
+        - entity_id: sensor.lolo_iphone_battery_level
+        - entity_id: sensor.lolo_iphone_battery_state
+        - entity_id: sensor.lolo_iphone_bssid
+        - entity_id: sensor.lolo_iphone_distance
+        - entity_id: sensor.lolo_iphone_floors_ascended
+        - entity_id: sensor.lolo_iphone_floors_descended
+        - entity_id: sensor.lolo_iphone_geocoded_location
+        - entity_id: sensor.lolo_iphone_last_update_trigger
+        - entity_id: sensor.lolo_iphone_sim_1
+        - entity_id: sensor.lolo_iphone_sim_2
+        - entity_id: sensor.lolo_iphone_ssid
+        - entity_id: sensor.lolo_iphone_steps
+        - entity_id: sensor.lolo_iphone_storage
         - entity_id: sensor.lolo_to_home
         - entity_id: sensor.lolo_weight_2
         - entity_id: sensor.lwrf_remote_1_rssi_numeric

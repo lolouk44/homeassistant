@@ -180,7 +180,7 @@
             - /config/www/CCTV_Snapshots/Back.jpg
             - /config/www/CCTV_Snapshots/Garage.jpg
             - /config/www/CCTV_Snapshots/Doorbell.jpg
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       # data_template:
       #   title: "Alarm Triggered !"
       #   message: >
@@ -293,7 +293,7 @@
           {%- endfor -%}
           {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
           The alarm is still being armed !
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       data_template:
         message: |
           The {% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
@@ -518,7 +518,7 @@
             - /config/www/CCTV_Snapshots/Kitchen.jpg
             - /config/www/CCTV_Snapshots/Conservatory.jpg
             - /config/www/CCTV_Snapshots/Fire7.jpg
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       data_template:
         message: >
           FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
@@ -691,7 +691,7 @@
         minutes: 2
     - condition: template
       value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home"}}'
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       # data_template:
       #   message: 'The alarm has not been armed !'
         # data:
@@ -778,7 +778,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
-    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
+    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       # data_template:
       #   message: 'Disarm alarm ?'
       #   data:

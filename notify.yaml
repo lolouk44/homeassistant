@@ -23,7 +23,7 @@
 - platform: group
   name: divandlolo
   services:
-    - service: mobile_app_lolo_s_iphone
+    - service: mobile_app_lolo_iphone
     - service: mobile_app_div_iphone
 
 - name: lolowork

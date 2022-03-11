@@ -9,7 +9,7 @@
       entity_id: device_tracker.divashni
       to: "home"
     - platform: template
-      value_template: '{{ states("sensor.lolo_s_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
+      value_template: '{{ states("sensor.lolo_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
     - platform: template
       value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
@@ -18,7 +18,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
-    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
+    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       # data_template:
       #   message: 'Unlock Porch ?'
       #   data:
@@ -46,7 +46,7 @@
       entity_id: device_tracker.divashni
       to: "home"
     - platform: template
-      value_template: '{{ states("sensor.lolo_s_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
+      value_template: '{{ states("sensor.lolo_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
     - platform: template
       value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
@@ -55,7 +55,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
-    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_s_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
+    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       # data_template:
       #   message: 'Unlock Porch & Disarm Alarm ?'
       #   data:
@@ -164,7 +164,7 @@
     - condition: state
       entity_id: binary_sensor.main_door
       state: 'off'
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       data_template:
         message: 'Porch Door Left Unlocked'
         data:
@@ -198,7 +198,7 @@
     - wait_template: '{{ states("sensor.porch_door_lock_status") != "Jammed" and states("lock.yale_conexis_l1_lock") != "unavailable"}}'
       timeout: '00:00:30'
       continue_on_timeout: true
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       data_template:
         message: 'Porch Door Lock Jammed'
         data:
@@ -237,7 +237,7 @@
       entity_id: binary_sensor.yale_conexis_l1_low_battery_level
       to: 'on'
   action:
-    - service: notify.mobile_app_lolo_s_iphone
+    - service: notify.mobile_app_lolo_iphone
       data_template:
         message: 'Yale Lock Battery Low !'
         data:
@@ -333,7 +333,7 @@
 #       entity_id: device_tracker.laurent
 #       to: "home"
 #   action:
-#     - service: notify.mobile_app_lolo_s_iphone
+#     - service: notify.mobile_app_lolo_iphone
 #       data:
 #         message: "Alarm Triggered !"
 #         data:
