@@ -25,14 +25,14 @@
   id: tv_set_tv_to_home_cinema_when_vol_tv_changes
   initial_state: true
   trigger:
-  - platform: numeric_state
-    entity_id: media_player.panasonic_viera_tv
-    value_template: '{{ state_attr("media_player.panasonic_viera_tv", "volume_level") | float * 100 }}'
-    above: 1
+  - platform: template
+    value_template: '{{ state_attr("media_player.panasonic_viera_tv", "volume_level") | float * 100 > 1 }}'
   condition:
     - condition: state
       entity_id: input_boolean.normal
-      state: 'on'
+      state: 'on' 
+    # - condition: template
+    #   value_template: '{{ state_attr("media_player.panasonic_viera_tv", "volume_level") | float * 100 > 1}}'
     - condition: state
       entity_id: media_player.onkyo_tx_nr656
       state: 'on'
@@ -40,60 +40,41 @@
       entity_id: media_player.panasonic_viera_tv
       state: 'on'
     - condition: template
-      value_template: '{{ (as_timestamp(states.media_player.panasonic_viera_tv.last_changed) | int) - (as_timestamp(state_attr("automation.tv_set_tv_to_home_cinema_when_vol_tv_changes", "last_triggered")) | int )  > 0 }}'
+      value_template: '{{ (as_timestamp(states.media_player.panasonic_viera_tv.last_changed) | int) - (as_timestamp(this.last_triggered)) | int  > 0 }}'
     - condition: template
-      value_template: '{{ (as_timestamp(states("sensor.uptime")) - (as_timestamp(states("sensor.uptime")))) > 120 }}'
+      value_template: '{{ (as_timestamp(states("sensor.uptime")) - (as_timestamp(states.media_player.panasonic_viera_tv.last_changed) | int)) > 120 }}'
   action:
-#    - service: shell_command.viera_audio_home_cinema
     - service: remote.send_command
       data:
-        device: e68fe01e180baaacb55c539a7906e118
+        entity_id: remote.panasonic_viera_tv
         command: menu
+    - delay: 00:00:02
     - service: remote.send_command
       data:
-        device: e68fe01e180baaacb55c539a7906e118
-        delay_secs: 2
-    - service: remote.send_command
-      data:
-        device: e68fe01e180baaacb55c539a7906e118
+        entity_id: remote.panasonic_viera_tv
         command: down
+    - delay: 00:00:01
     - service: remote.send_command
       data:
-        device: e68fe01e180baaacb55c539a7906e118
-        delay_secs: 1
-    - service: remote.send_command
-      data:
-        device: e68fe01e180baaacb55c539a7906e118
+        entity_id: remote.panasonic_viera_tv
         command: right
+    - delay: 00:00:01
     - service: remote.send_command
       data:
-        device: e68fe01e180baaacb55c539a7906e118
-        delay_secs: 1
-    - service: remote.send_command
-      data:
-        device: e68fe01e180baaacb55c539a7906e118
+        entity_id: remote.panasonic_viera_tv
         command: enter
+    - delay: 00:00:01
     - service: remote.send_command
       data:
-        device: e68fe01e180baaacb55c539a7906e118
-        delay_secs: 1
-    - service: remote.send_command
-      data:
-        device: e68fe01e180baaacb55c539a7906e118
+        entity_id: remote.panasonic_viera_tv
         command: down
+    - delay: 00:00:01
     - service: remote.send_command
       data:
-        device: e68fe01e180baaacb55c539a7906e118
-        delay_secs: 1
-    - service: remote.send_command
-      data:
-        device: e68fe01e180baaacb55c539a7906e118
+        entity_id: remote.panasonic_viera_tv
         command: enter
+    - delay: 00:00:05
     - service: remote.send_command
       data:
-        device: e68fe01e180baaacb55c539a7906e118
-        delay_secs: 5
-    - service: remote.send_command
-      data:
-        device: e68fe01e180baaacb55c539a7906e118
+        entity_id: remote.panasonic_viera_tv
         command: cancel
