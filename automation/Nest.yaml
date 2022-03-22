@@ -18,9 +18,9 @@
       entity_id: group.door_and_window_sensors
       to: 'off'
     - platform: template
-      value_template: '{{ states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
+      value_template: '{{ states("person.laurent") != "home" and distance(states.person.laurent) < 0.5 }}'
     - platform: template
-      value_template: '{{ states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
+      value_template: '{{ states("person.div") != "home" and distance(states.person.div) < 0.5 }}'
   condition:
     - condition: state
       entity_id: group.door_and_window_sensors

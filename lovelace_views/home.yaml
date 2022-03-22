@@ -109,8 +109,8 @@ cards:
       include:
         - domain: binary_sensor
         - domain: sensor
-        - entity_id: device_tracker.lolo
-        - entity_id: device_tracker.divashni
+        - entity_id: device_tracker.lolo_iphone
+        - entity_id: device_tracker.div_iphone
         - entity_id: device_tracker.venkat
       exclude:
         - entity_id: sensor.220d_mileage

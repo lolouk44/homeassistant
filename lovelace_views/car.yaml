@@ -195,7 +195,7 @@ cards:
 
   - type: map
     entities:
-      - device_tracker.laurent
-      - device_tracker.divashni
+      - person.laurent
+      - person.div
       - device_tracker.220d
     hours_to_show: 24

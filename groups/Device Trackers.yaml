@@ -1,5 +1,5 @@
 device_trackers:
   name: Device Trackers
   entities:
-  - device_tracker.lolo
-  - device_tracker.div
+  - device_tracker.lolo_iphone
+  - device_tracker.div_iphone

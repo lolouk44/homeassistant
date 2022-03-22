@@ -2,31 +2,23 @@
   id: yale_unlock_when_reaching_home_from_ios_notification_w_o_alarm
   initial_state: true
   trigger:
-    - platform: state
-      entity_id: device_tracker.laurent
-      to: "home"
-    - platform: state
-      entity_id: device_tracker.divashni
-      to: "home"
+    # - platform: state
+    #   entity_id: person.laurent
+    #   to: "home"
+    # - platform: state
+    #   entity_id: person.div
+    #   to: "home"
     - platform: template
-      value_template: '{{ states("sensor.lolo_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
+      value_template: '{{ distance(states("person.laurent")) | float < 0.05}}'
     - platform: template
-      value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
+      value_template: '{{ distance(states("person.div")) | float < 0.05}}'
   condition:
     - condition: template
       value_template: '{{ states("alarm_control_panel.alarm") == "disarmed" }}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | default(0)) | int > 60}}'
   action:
-    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
-      # data_template:
-      #   message: 'Unlock Porch ?'
-      #   data:
-      #     push:
-      #       badge: '{{states("counter.iosbadgecount")}}'
-      #       category: 'unlockyale'
-      #     action_data:
-      #       entity_id: lock.yale_conexis_l1_lock
+    - service: '{% if trigger.entity_id == "person.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data:
         message: "Unlock Porch ?"
         data:
@@ -40,22 +32,18 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: device_tracker.laurent
+      entity_id: person.laurent
       to: "home"
     - platform: state
-      entity_id: device_tracker.divashni
+      entity_id: person.div
       to: "home"
-    - platform: template
-      value_template: '{{ states("sensor.lolo_iphone_connection_type") == "Wi-Fi" and states("device_tracker.laurent") != "home" and distance(states.device_tracker.laurent) < 0.5 }}'
-    - platform: template
-      value_template: '{{ states("sensor.div_iphone_connection_type") == "Wi-Fi" and states("device_tracker.divashni") != "home" and distance(states.device_tracker.divashni) < 0.5 }}'
   condition:
     - condition: template
       value_template: '{{ states("alarm_control_panel.alarm") != "disarmed" }}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | default(0)) | int > 60}}'
   action:
-    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
+    - service: '{% if trigger.entity_id == "person.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       # data_template:
       #   message: 'Unlock Porch & Disarm Alarm ?'
       #   data:

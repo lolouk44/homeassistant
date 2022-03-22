@@ -765,10 +765,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: device_tracker.laurent
+      entity_id: person.laurent
       to: "home"
     - platform: state
-      entity_id: device_tracker.divashni
+      entity_id: person.div
       to: "home"
   condition:
     - condition: template
@@ -778,7 +778,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
   action:
-    - service: '{% if trigger.entity_id == "device_tracker.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
+    - service: '{% if trigger.entity_id == "person.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       # data_template:
       #   message: 'Disarm alarm ?'
       #   data:
