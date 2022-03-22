@@ -74,3 +74,26 @@
   value_template: '{{ value_json.pull_count | int }}'
   unit_of_measurement: 'Pulls'
   scan_interval: 1800
+
+- platform: apcupsd
+  resources:
+    - apc
+    - date
+    - hostname
+    - version
+    - upsname
+    - cable
+    - driver
+    - upsmode
+    - starttime
+    - model
+    - status
+    - linev
+    - loadpct
+    - bcharge
+    - timeleft
+    - mbattchg
+    - mintimel
+    - maxtime
+    - maxlinev
+    - minlinev

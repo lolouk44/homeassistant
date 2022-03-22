@@ -454,6 +454,24 @@ cards:
             - entity_id: "*sensor.power_bi.*"
         sort:
           method: 'name'
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: APC UPS
+          open: false
+        filter:
+          include:
+            - entity_id: "sensor.ups_*"
+              # options:
+              #   type: "custom:secondaryinfo-entity-row"
+              #   secondary_info: "Error: [[ this.entity_id.attributes.errors ]] "
+        sort:
+            method: 'name'
   - type: custom:icloud3-event-log-card
     show_header_toggle: false
     entities:

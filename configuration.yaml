@@ -55,12 +55,14 @@ switch: !include_dir_merge_list switches
 template: !include_dir_merge_list templates
 zone: !include zones.yaml
 
-
 alarm_control_panel:
   - platform: manual
     name: Alarm
     code: !secret alarm_code
     arming_time: 30
+
+apcupsd:
+  host: 192.168.9.23
 
 bmw_connected_drive:
   220d:
@@ -236,7 +238,7 @@ person:
     id: laurent
     user_id: !secret ha_lolo_user_id
     device_trackers:
-      - device_tracker.laurent #Life360
+      # - device_tracker.laurent #Life360
       - device_tracker.lolo_iphone #icloud3
       - device_tracker.lolo_iphone_2
   - name: Div
@@ -244,7 +246,7 @@ person:
     user_id: !secret ha_div_user_id
     device_trackers:
       - device_tracker.div_iphone #icloud3
-      - device_tracker.divashni #Life360
+      # - device_tracker.divashni #Life360
 
 recorder:
   db_url: !secret db_url
