@@ -5,9 +5,6 @@
     - platform: state
       entity_id: lock.220d_lock
       to: 'locked'
-  # condition:
-    # - condition: template
-      # value_template: '{{ states("device_tracker.220d") != "not_home"}}'
   action:
     - service: bmw_connected_drive.update_state
     - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
@@ -62,17 +59,8 @@
       timeout: '00:06:00'
       continue_on_timeout: true
     - condition: template
-      value_template: '{{ states("device_tracker.laurent") != "driving"}}'
+      value_template: '{{state_attr("device_tracker.lolo_iphone","travel_distance") |int < 10}}'
     - service: notify.mobile_app_lolo_iphone
-      # data_template:
-      #   title: "HA - BMW"
-      #   message: 'BMW 220d Not Locked !'
-      #   data:
-      #     push:
-      #       badge: '{{states("counter.iosbadgecount")}}'
-      #       category: "bmwalert"
-      #     action_data:
-      #       entity_id: lock.220d_lock
       data:
         message: "BMW 220d Not Locked !"
         data:
@@ -122,10 +110,10 @@
       hours: "16"
       minutes: 0
       seconds: 0
-    - platform: time_pattern
-      hours: "17"
-      minutes: 25
-      seconds: 0
+    # - platform: time_pattern
+    #   hours: "17"
+    #   minutes: 25
+    #   seconds: 0
   condition:
     - condition: state
       entity_id: 'input_boolean.holidays'
@@ -137,8 +125,8 @@
       value_template: '{{states("sensor.dark_sky_temperature") | int >= 20}}'
     - condition: or
       conditions:
-      - condition: template
-        value_template: '{{now().hour == 17 and now().minute == 25 and states("device_tracker.220d") == "home" and states("person.laurent") == "home" and states("person.div") != "home" and (as_timestamp(now()) | timestamp_custom("%a") == "Fri" or as_timestamp(now()) | timestamp_custom("%a") == "Mon")}}'
+      # - condition: template
+      #   value_template: '{{now().hour == 17 and now().minute == 25 and states("device_tracker.220d") == "home" and states("person.laurent") == "home" and states("person.div") != "home" and (as_timestamp(now()) | timestamp_custom("%a") == "Fri" or as_timestamp(now()) | timestamp_custom("%a") == "Mon")}}'
       - condition: template
         value_template: '{{now().hour == 16 and now().minute == 0 and states("device_tracker.220d") == "verint" and (as_timestamp(now()) | timestamp_custom("%a") == "Tue" or as_timestamp(now()) | timestamp_custom("%a") == "Wed" or as_timestamp(now()) | timestamp_custom("%a") == "Thu")}}'
   action:

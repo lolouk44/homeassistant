@@ -7,6 +7,10 @@
   condition:
     - condition: template
       value_template: '{{states("sensor.online_version") != states("sensor.current_version") }}'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != "unavailable"}}'
+    - condition: template
+      value_template: '{{ trigger.to_state.state != "unavailable"}}'
   action:
     - service: notify.gmaillolo
       data_template:
@@ -22,6 +26,10 @@
   condition:
     - condition: template
       value_template: '{{states("sensor.docker_version") != states("sensor.current_version") }}'
+    - condition: template
+      value_template: '{{ trigger.from_state.state != "unavailable"}}'
+    - condition: template
+      value_template: '{{ trigger.to_state.state != "unavailable"}}'
   action:
     - service: notify.gmaillolo
       data_template:
@@ -40,7 +48,11 @@
     - condition: template
       value_template: '{{ trigger.from_state.state != "unknown"}}'
     - condition: template
+      value_template: '{{ trigger.to_state.state != "unknown"}}'
+    - condition: template
       value_template: '{{ trigger.from_state.state != "unavailable"}}'
+    - condition: template
+      value_template: '{{ trigger.to_state.state != "unavailable"}}'
   action:
     - service: notify.gmaillolo
       data_template:
