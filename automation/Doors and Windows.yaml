@@ -99,9 +99,9 @@
           {%- endfor %}
     - service: media_player.volume_up
       data:
-        entity_id: media_player.master_bedroom_display
+        entity_id: media_player.bedroom_nest_hub
     - service: tts.google_say
-      entity_id: media_player.master_bedroom_display
+      entity_id: media_player.bedroom_nest_hub
       data_template:
         message: >
           The following doors/windows are not closed: 
@@ -158,9 +158,9 @@
         message: "The Conservatory Door Has Been Left Unlocked"
     - service: media_player.volume_up
       data:
-        entity_id: media_player.master_bedroom_display
+        entity_id: media_player.bedroom_nest_hub
     - service: tts.google_say
-      entity_id: media_player.master_bedroom_display
+      entity_id: media_player.bedroom_nest_hub
       data_template:
         message: "Please Note: The Conservatory Door Has Been Left Unlocked"
 

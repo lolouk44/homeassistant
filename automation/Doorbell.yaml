@@ -38,7 +38,7 @@
       filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
   - service: media_player.play_media
     data:
-      entity_id: media_player.google_home_minis, media_player.master_bedroom_display
+      entity_id: media_player.google_home_minis, media_player.bedroom_nest_hub
       media_content_id: 'http://192.168.9.23:8123/local/sounds/Doorbell_Tubular_2.mp3'
       media_content_type: 'audio/mp3'
   - service: media_player.play_media
@@ -66,3 +66,24 @@
   - service: scene.turn_on
     data:
       entity_id: scene.pre_doorbell_state
+
+
+
+
+#   - service: rest_command.fire_tab_load_url
+#     data:
+#       url: >-
+#         http://<doorcam_ip>/cgi-bin/mjpg/video.cgi?camera=1&subtype=1&resolution=640x480
+#   - service: switch.turn_off
+#     target:
+#       entity_id: switch.amazon_fire_hd8_screensaver
+#     data: {}
+#   - delay:
+#       hours: 0
+#       minutes: 0
+#       seconds: 30
+#       milliseconds: 0
+#   - service: rest_command.fire_tab_close_tab
+#     data:
+#       tab_number: 1
+# mode: single

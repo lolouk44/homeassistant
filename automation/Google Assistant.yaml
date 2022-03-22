@@ -9,7 +9,7 @@
   action:
   # - service: media_player.volume_set
     # data:
-      # entity_id: media_player.master_bedroom_display
+      # entity_id: media_player.bedroom_nest_hub
       # volume_level: 0.50
   - service: media_player.volume_set
     data:
@@ -36,7 +36,7 @@
   action:
   # - service: media_player.volume_set
     # data:
-      # entity_id: media_player.master_bedroom_display
+      # entity_id: media_player.bedroom_nest_hub
       # volume_level: 0.75
   - service: media_player.volume_set
     data:
