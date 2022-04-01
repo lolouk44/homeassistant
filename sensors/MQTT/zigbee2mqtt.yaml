@@ -67,13 +67,6 @@
   state_topic: "zigbee2mqtt/pooja_room_big_window"
   <<: *battery
 
-# - platform: mqtt
-#   name: "Xiaomi Garage Socket Watts"
-#   state_topic: "zigbee2mqtt/xiaomi_garage_socket"
-#   value_template: "{{ value_json['power'] }}"
-#   unit_of_measurement: "W"
-#   device_class: power
-
 - platform: mqtt
   name: "Pooja Temperature"
   state_topic: "zigbee2mqtt/pooja_hygro"
@@ -262,13 +255,3 @@
   name: "Pooja Door Battery"
   state_topic: "zigbee2mqtt/pooja_door"
   <<: *battery
-
-  
-- platform: mqtt
-  name: Zigbee2mqtt Networkmap
-  # if you change base_topic of Zigbee2mqtt, change state_topic accordingly
-  state_topic: zigbee2mqtt/bridge/networkmap/raw
-  value_template: >-
-    {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
-  # again, if you change base_topic of Zigbee2mqtt, change json_attributes_topic accordingly
-  json_attributes_topic: zigbee2mqtt/bridge/networkmap/raw
