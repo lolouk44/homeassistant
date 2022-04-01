@@ -8,8 +8,8 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 
 ## Devices
 
-- HP ProLiant N54L MicroServer (Main server with Home-Assistant)
-- Desktop Computer with 2nd instance of Home-Assistant running [motion](https://github.com/Motion-Project/motion) for CCTV and [TensorFlow](https://www.home-assistant.io/integrations/tensorflow/) video processing
+- HP ProLiant N54L MicroServer (NAS)
+- Desktop Computer running Home-Assistant, [motion](https://github.com/Motion-Project/motion) for CCTV and [frigate](https://github.com/blakeblackshear/frigate) video processing via a Google Coral
 - Raspberry Pi Model B (for motion sensors, photoresistor sensor)
 - Raspberry Pi 3 Model B (Smart Calendar / CCTV Display with [MagicMirror](https://github.com/MichMich/MagicMirror))
 
@@ -28,6 +28,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - [eufy Doorbell 2K (Wired)](https://uk.eufylife.com/products/t8200) with [eufy-ha-mqtt-bridge](https://github.com/matijse/eufy-ha-mqtt-bridge)
 - eWelink ZigBee Smart Socket 
 - Google ChromeCast Audios
+- Google Coral M.2 Accelerator B+M key
 - Google Home Minis
 - Google Nest Hubs
 - Hikvision DS-2CD2142FWD-I and DS-2CD2355FWD-I Cameras
@@ -51,8 +52,9 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Samsung WW90T684DLH/S1 Washing Machine 
 - Sky+HD Box
 - Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
+- [SonoOff S26](https://sonoff.tech/product/smart-plug/s26/) Zigbee Smart Sockets
 - Tile Mate, Slim trackers
-- TKB Home TZ68 Zwave Socket
+- ~~TKB Home TZ68 Zwave Socket~~
 - Verint S5003FD Camera
 - Wemos D1 Mini Pros running [WLED](https://github.com/Aircoookie/WLED) or [ESP Home](https://esphome.io/)
 - Xiaomi Aqara V3 Gateway (now only used as sensor / light, all zigbee devices connected via [zigbee2mqtt](https://www.zigbee2mqtt.io/))
