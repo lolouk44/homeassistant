@@ -53,19 +53,6 @@ cards:
       # - entity: input_boolean.kello_play_stop
       - entity: input_boolean.kello_mute_alarms
   - type: entities
-    title: Xiaomi Dual USB Socket
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - entity: switch.xiaomi_dual_usb_socket
-        secondary_info: last-changed
-        icon: mdi:power-plug
-      - entity: switch.xiaomi_dual_usb_socket_usb
-        secondary_info: last-changed
-        icon: mdi:usb
-      - entity: sensor.xiaomi_dual_usb_socket_watts
-        secondary_info: last-changed
-  - type: entities
     title: Mi Box
     icon: 'mdi:google-chrome'
     show_header_toggle: false

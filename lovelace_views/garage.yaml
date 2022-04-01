@@ -20,10 +20,18 @@ cards:
       - entity: binary_sensor.garage_freezer_door
         secondary_info: last-changed
   - type: entities
-    title: Xiaomi Garage Socket
+    title: Xiaomi Sockets
     state_color: true
     show_header_toggle: false
     entities:
+      - entity: switch.xiaomi_dual_usb_socket
+        secondary_info: last-changed
+        icon: mdi:power-plug
+      - entity: switch.xiaomi_dual_usb_socket_usb
+        secondary_info: last-changed
+        icon: mdi:usb
+      - entity: sensor.xiaomi_dual_usb_socket_watts
+        secondary_info: last-changed
       - entity: switch.xiaomi_garage_socket
         secondary_info: last-changed
         icon: mdi:power-plug
