@@ -33,14 +33,16 @@
       data:
         away_mode: 'home'
     - service: climate.set_temperature
-      data_template:
-        entity_id: climate.hallway
+      data:
+        # entity_id: climate.hallway
         temperature: >-
-          {% if states("sensor.season") == "summer" or states("sensor.season") == "spring" %}18
+          {% if 4 < now().strftime('%m') | int < 10 %}18
           {% elif now().hour |int < 22 and now().hour |int > 5 %}20
-          {% else  %}18
+          {% else  %} 18
           {% endif %}
         hvac_mode: 'heat'
+      target:
+        entity_id: climate.hallway
 
 
 - alias: Nest Set Away Mode
@@ -86,10 +88,15 @@
       data:
         away_mode: 'away'
     - service: climate.set_temperature
-      data_template:
-        entity_id: climate.hallway
+      data:
         temperature: 15
         hvac_mode: 'heat'
+      target:
+        entity_id: climate.hallway
+      # data_template:
+      #   entity_id: climate.hallway
+      #   temperature: 15
+      #   hvac_mode: 'heat'
 
 
 - alias: Nest Set ETA
@@ -127,10 +134,15 @@
       data:
         away_mode: home
     - service: climate.set_temperature
-      data_template:
-        entity_id: climate.hallway
-        temperature: '15'
+      data:
+        temperature: 15
         hvac_mode: 'heat'
+      target:
+        entity_id: climate.hallway
+      # data_template:
+      #   entity_id: climate.hallway
+      #   temperature: '15'
+      #   hvac_mode: 'heat'
 
 
 - alias: Nest - Remove Away Mode from iOS Notification
@@ -147,10 +159,12 @@
         away_mode: home
     - service: climate.set_temperature
       data_template:
-        entity_id: climate.hallway
+        # entity_id: climate.hallway
         temperature: >-
-          {% if states("sensor.season") == "summer" or states("sensor.season") == "spring" %}18
+          {% if 4 < now().strftime('%m') | int < 10 %}18
           {% elif now().hour |int < 22 and now().hour |int > 5 %}20
           {% else  %} 18
           {% endif %}
         hvac_mode: 'heat'
+      target:
+        entity_id: climate.hallway
