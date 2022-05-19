@@ -42,9 +42,9 @@ cards:
         icon: mdi:car-light-dimmed
         tap_action:
           action: call-service
-          service: bmw_connected_drive.light_flash
+          service: button.press
           service_data:
-            vin: !secret bmw_connected_drive_vin
+            entity_id: button.220d_flash_lights
         style:
           top: 5%
           right: 3%
@@ -53,9 +53,9 @@ cards:
         icon: mdi:bullhorn
         tap_action:
           action: call-service
-          service: bmw_connected_drive.sound_horn
+          service: button.press
           service_data:
-            vin: !secret bmw_connected_drive_vin
+            entity_id: button.220d_sound_horn
         style:
           top: 12%
           right: 3%
@@ -64,9 +64,9 @@ cards:
         icon: mdi:fan
         tap_action:
           action: call-service
-          service: bmw_connected_drive.activate_air_conditioning
+          service: button.press
           service_data:
-            vin: !secret bmw_connected_drive_vin
+            entity_id: button.220d_activate_air_conditioning
         style:
           top: 19%
           right: 3%
@@ -75,7 +75,9 @@ cards:
         icon: mdi:sync
         tap_action:
           action: call-service
-          service: bmw_connected_drive.update_state
+          service: button.press
+          service_data:
+            entity_id: button.220d_refresh_from_cloud
         style:
           top: 26%
           right: 3%

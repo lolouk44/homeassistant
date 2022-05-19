@@ -6,7 +6,9 @@
       entity_id: lock.220d_lock
       to: 'locked'
   action:
-    - service: bmw_connected_drive.update_state
+    - service: button.press
+      target:
+        entity_id: button.220d_refresh_from_cloud
     - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
       timeout: '00:06:00'
       continue_on_timeout: true
@@ -54,7 +56,9 @@
       entity_id: lock.220d_lock
       to: 'unlocked'
   action:
-    - service: bmw_connected_drive.update_state
+    - service: button.press
+      target:
+        entity_id: button.220d_refresh_from_cloud
     - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
       timeout: '00:06:00'
       continue_on_timeout: true
@@ -96,9 +100,9 @@
       event_data:
         action: BMW_VENTILATE
   action:
-    - service: bmw_connected_drive.activate_air_conditioning
-      data:
-        vin: !secret bmw_connected_drive_vin
+    - service: button.press
+      target:
+        entity_id: button.220d_activate_air_conditioning
 
 
 
@@ -130,9 +134,9 @@
       - condition: template
         value_template: '{{now().hour == 16 and now().minute == 0 and states("device_tracker.220d") == "verint" and (as_timestamp(now()) | timestamp_custom("%a") == "Tue" or as_timestamp(now()) | timestamp_custom("%a") == "Wed" or as_timestamp(now()) | timestamp_custom("%a") == "Thu")}}'
   action:
-    - service: bmw_connected_drive.activate_air_conditioning
-      data:
-        vin: !secret bmw_connected_drive_vin
+    - service: button.press
+      target:
+        entity_id: button.220d_activate_air_conditioning
 
 
 
