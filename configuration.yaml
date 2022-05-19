@@ -64,12 +64,6 @@ alarm_control_panel:
 apcupsd:
   host: 192.168.9.23
 
-bmw_connected_drive:
-  220d:
-    username: !secret bmw_connected_drive_username
-    password: !secret bmw_connected_drive_password
-    region: "rest_of_world"
-
 climate:
   - platform: mqtt
     name: Anova
@@ -363,8 +357,8 @@ tts:
     service_name: google_say
     language: 'en-uk'
 
-updater:
-  include_used_components: True
+# updater:
+#   include_used_components: True
 
 var:
   printer_pages_at_month_start:
