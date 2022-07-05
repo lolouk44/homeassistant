@@ -4,19 +4,19 @@
   trigger:
     - platform: state
       entity_id: person.laurent
-      to: "home"
+      to: 'home'
     - platform: state
       entity_id: person.div
-      to: "home"
+      to: 'home'
     - platform: template
-      value_template: '{{ distance(states("person.laurent")) | float < 0.05}}'
+      value_template: '{{ distance(states.person.laurent) | float < 0.05}}'
     - platform: template
-      value_template: '{{ distance(states("person.div")) | float < 0.05}}'
+      value_template: '{{ distance(states.person.div) | float < 0.05}}'
   condition:
     - condition: template
       value_template: '{{ states("alarm_control_panel.alarm") == "disarmed" }}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | int > 60)}}'
   action:
     - service: '{% if trigger.entity_id == "person.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data:
@@ -33,15 +33,15 @@
   trigger:
     - platform: state
       entity_id: person.laurent
-      to: "home"
+      to: 'home'
     - platform: state
       entity_id: person.div
-      to: "home"
+      to: 'home'
   condition:
     - condition: template
       value_template: '{{ states("alarm_control_panel.alarm") != "disarmed" }}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | int > 60)}}'
   action:
     - service: '{% if trigger.entity_id == "person.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       data:
@@ -281,7 +281,7 @@
         minutes: 2
   # condition:
   #   - condition: template
-  #     value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 30)}}'
+  #     value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | int > 30)}}'
   action:
     - service: zwave_js.refresh_value
       data:

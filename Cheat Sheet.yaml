@@ -115,4 +115,4 @@ apple_watch_packages_progress:
 
 
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 30)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | int > 30)}}'
