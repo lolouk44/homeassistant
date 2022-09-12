@@ -55,6 +55,9 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - [SonoOff S26](https://sonoff.tech/product/smart-plug/s26/) Zigbee Smart Sockets
 - Tile Mate, Slim trackers
 - ~~TKB Home TZ68 Zwave Socket~~
+- Ubiquiti UniFi Dream Machine All-in-One Router
+- Ubiquiti UniFi Flex Mini 5-Port PoE Switch
+- Ubiquiti Unifi UAP-AC-LITE WLAN Acces Point
 - Verint S5003FD Camera
 - Wemos D1 Mini Pros running [WLED](https://github.com/Aircoookie/WLED) or [ESP Home](https://esphome.io/)
 - Xiaomi Aqara V3 Gateway (now only used as sensor / light, all zigbee devices connected via [zigbee2mqtt](https://www.zigbee2mqtt.io/))
@@ -68,7 +71,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Mijia Enhanced Version Dual USB WiFi Smart Socket
 - Xiaomi Mijia Zigbee Smart Socket
 - Xiaomi Philips Zhirui Candle Light
-- Xiaomi Router R3P Pro
+- ~~Xiaomi Router R3P Pro~~
 - Xiaomi XiaoFang Camera with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 - Yale Conexis L1 Smart Lock
 
