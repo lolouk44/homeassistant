@@ -204,6 +204,10 @@ cards:
           icon: mdi:docker
         - entity: switch.watchtower
           name: WatchTower
+          icon: mdi:docker
+        - entity: switch.watchtower_n54l
+          name: WatchTower N54L
+          icon: mdi:docker
         - entity: switch.wordpress
           name: Wordpress
         - entity: switch.zigbee2mqtt

@@ -1,5 +1,4 @@
-- platform: mqtt
-  name: "Power BI EMEA Status"
+- name: "Power BI EMEA Status"
   state_topic: "Sensors/powerbistatus"
   value_template: "{{ value_json['emeaservicestatus'] }}"
   json_attributes_topic: "Sensors/powerbistatus"

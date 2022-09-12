@@ -1,0 +1,83 @@
+- name: "RTL2_Pic"
+  state_topic: "RadioStream/RTL2/pic_url"
+  value_template: "{{ value }}"
+
+- name: "RTL2_Artist"
+  state_topic: "RadioStream/RTL2/artist"
+  value_template: "{{ value }}"
+
+- name: "RTL2_Track"
+  state_topic: "RadioStream/RTL2/track"
+  value_template: "{{ value }}"
+
+- name: "Chill_Pic"
+  state_topic: "RadioStream/Chill/pic_url"
+  value_template: "{{ value }}"
+
+- name: "Chill_Artist"
+  state_topic: "RadioStream/Chill/artist"
+  value_template: "{{ value }}"
+
+- name: "Chill_Track"
+  state_topic: "RadioStream/Chill/track"
+  value_template: "{{ value }}"
+
+- name: "Absolute_Radio_Pic"
+  state_topic: "RadioStream/Absolute_Radio/pic_url"
+  value_template: "{{ value }}"
+
+- name: "Absolute_Radio_Artist"
+  state_topic: "RadioStream/Absolute_Radio/artist"
+  value_template: "{{ value }}"
+
+- name: "Absolute_Radio_Track"
+  state_topic: "RadioStream/Absolute_Radio/track"
+  value_template: "{{ value }}"
+
+- name: "Absolute_Radio_CR_Pic"
+  state_topic: "RadioStream/Absolute_Radio_CR/pic_url"
+  value_template: "{{ value }}"
+
+- name: "Absolute_Radio_CR_Artist"
+  state_topic: "RadioStream/Absolute_Radio_CR/artist"
+  value_template: "{{ value }}"
+
+- name: "Scala_Pic"
+  state_topic: "RadioStream/Scala/pic_url"
+  value_template: "{{ value }}"
+
+- name: "Scala_Artist"
+  state_topic: "RadioStream/Scala/artist"
+  value_template: "{{ value }}"
+
+- name: "Scala_Track"
+  state_topic: "RadioStream/Scala/track"
+  value_template: "{{ value }}"
+
+- name: "Radio_Fiji_Two_Artist"
+  state_topic: "RadioStream/Radio_Fiji_Two/artist"
+  value_template: "{{ value }}"
+
+- name: "Radio_Fiji_Two_Track"
+  state_topic: "RadioStream/Radio_Fiji_Two/track"
+  value_template: "{{ value }}"
+
+- name: "ha_podcast"
+  state_topic: "RadioStream/Hass Podcast/mp3_url"
+  value_template: "{{ value }}"
+
+- name: "ha_podcast_track"
+  state_topic: "RadioStream/Hass Podcast/track"
+  value_template: "{{ value }}"
+
+- name: "Absolute_Radio_CR_Track"
+  state_topic: "RadioStream/Absolute_Radio_CR/track"
+  value_template: "{{ value }}"
+
+- name: "internet_of_things_podcast"
+  state_topic: "RadioStream/IoT Podcast/mp3_url"
+  value_template: "{{ value }}"
+
+- name: "internet_of_things_podcast_track"
+  state_topic: "RadioStream/IoT Podcast/track"
+  value_template: "{{ value }}"

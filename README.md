@@ -51,8 +51,8 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - ~~Samsung Galaxy Tab 5 running (tasker){https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_GB} and HikConnect to capture doorbell button press~~
 - Samsung WW90T684DLH/S1 Washing Machine 
 - Sky+HD Box
-- Sonoff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
-- [SonoOff S26](https://sonoff.tech/product/smart-plug/s26/) Zigbee Smart Sockets
+- SonOff Basic with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware
+- [SonOff S26](https://sonoff.tech/product/smart-plug/s26/) Zigbee Smart Sockets
 - Tile Mate, Slim trackers
 - ~~TKB Home TZ68 Zwave Socket~~
 - Ubiquiti UniFi Dream Machine All-in-One Router

@@ -60,10 +60,3 @@
   ssl: False
   username: !secret hikvision_username
   password: !secret hikvision_password
-
-# - platform: mqtt
-#   name: "Garage Motion"
-#   state_topic: "Sensors/CCTV2/Garage/Motion"
-#   payload_on: "ON"
-#   payload_off: "OFF"
-#   device_class: motion

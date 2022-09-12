@@ -1,0 +1,132 @@
+- binary_sensor:
+    - name: "BMW 220d Door Driver Front"
+      state: '{{ state_attr("binary_sensor.220d_lids","rightFront") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      device_class: door
+    - name: "BMW 220d Door Driver Rear"
+      state: '{{ state_attr("binary_sensor.220d_lids","rightRear") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      device_class: door
+    - name: "BMW 220d Door Passenger Front"
+      state: '{{ state_attr("binary_sensor.220d_lids","leftFront") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      device_class: door
+    - name: "BMW 220d Door Passenger Rear"
+      state: '{{ state_attr("binary_sensor.220d_lids","leftRear") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      device_class: door
+    - name: "BMW 220d Hood"
+      state: '{{ state_attr("binary_sensor.220d_lids","hood") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      device_class: opening
+    - name: "BMW 220d Trunk"
+      state: '{{ state_attr("binary_sensor.220d_lids","trunk") != "CLOSED" and states("binary_sensor.220d_lids") != "unavailable"}}'
+      device_class: opening
+    - name: "BMW 220d Window Driver Front"
+      state: '{{ state_attr("binary_sensor.220d_windows","rightFront") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
+      device_class: window
+    - name: "BMW 220d Window Driver Rear"
+      state: '{{ state_attr("binary_sensor.220d_windows","rightRear") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
+      device_class: window
+    - name: "BMW 220d Window Passenger Front"
+      state: '{{ state_attr("binary_sensor.220d_windows","leftFront") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
+      device_class: window
+    - name: "BMW 220d Window Passenger Rear"
+      state: '{{ state_attr("binary_sensor.220d_windows","leftRear") != "CLOSED" and states("binary_sensor.220d_windows") != "unavailable"}}'
+      device_class: window
+
+    - name: "Lost ZigBee devices"
+      state: '{{ states("sensor.lost_zigbee_devices_count") | int  > 0 }}'
+      icon: 'mdi:zigbee'
+
+    - name: radio_is_streaming
+      state: >
+        {% set myval = namespace(found=0) %}
+        {%- for state in states.media_player -%}
+        {%- if state.entity_id in ["media_player.conservatory", "media_player.house", "media_player.kitchen", "media_player.onkyo", "media_player.master_bedroom_nest_hub", "media_player.office_nest_hub", "media_player.onkyo_tx_nr656_2"] -%}
+        {% if state_attr(state.entity_id, "media_content_id") != None %}
+        {% if state_attr(state.entity_id, "media_content_id").split("?")[0] in ["http://icecast.rtl2.fr/rtl2-1-44-128", "https://stream-ar.planetradio.co.uk/absoluteradiohigh.aac", "https://stream-ar.planetradio.co.uk/absoluteclassicrockhigh.aac", "http://broadcast.infomaniak.ch/hitwest-high.mp3", states("sensor.ha_podcast"), states("sensor.internet_of_things_podcast"), "http://media-the.musicradio.com/ChillMP3", "http://peridot.streamguys.com:7150/RFTwo", "https://stream.fijivillage.com/navtarang", "https://stream-mz.planetradio.co.uk/scalahigh.aac", "http://tx.planetradio.co.uk/http_live_bauer.php", states("input_text.custom_station")] -%}{% set myval.found = myval.found + 1%}{%- endif -%} {% endif %}
+        {%- endif -%}  
+        {%- endfor %}
+        {{ myval.found > 0 }}
+
+- sensor:
+    - name: "BMW 220d Mileage"
+      state: '{{((states("sensor.220d_mileage")|float)/1.609)|round}}'
+      unit_of_measurement: 'mi'
+      icon: 'mdi:ruler'
+    - name: "BMW 220d Remaining Fuel"
+      state: '{{((states("sensor.220d_remaining_range_fuel")|float)/1.609)|round}}'
+      unit_of_measurement: 'mi'
+      icon: 'mdi:gas-station'
+    - name: "BMW 220d MPG"
+      state: '{{(((states("sensor.220d_remaining_range_fuel")|float)/1.609)/(states("sensor.220d_remaining_fuel")|float)*4.546)|round(1)}}'
+      unit_of_measurement: 'mpg'
+      icon: 'mdi:ray-start-arrow'
+
+    - name: "Lost ZigBee devices"
+      state: >-
+        {% for state in states.sensor %}
+        {%- if "last_seen" in state.entity_id %} {% if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 86400 %}{{state.entity_id | replace ("binary_","") | replace ("sensor.","") | replace ("_last_seen","")  | replace ("_"," ") | title}}{% endif %} {% endif -%}
+        {% endfor %}
+      icon: 'mdi:zigbee'
+
+    - name: "Lost ZigBee devices Ticker"
+      state: >-
+        {%- for state in states.sensor %}
+        {%- if "last_seen" in state.entity_id %} {%- if (as_timestamp(now()) - as_timestamp(state.state) |int ) > 86400 %}1{% endif -%} {% endif -%}
+        {%- endfor %}
+      icon: 'mdi:zigbee'
+
+    - name: "Lost ZigBee devices Count"
+      state: '{{ states("sensor.lost_zigbee_devices_ticker") | length }}'
+      icon: 'mdi:zigbee'
+
+    - name: "Stream Artist"
+      state: >
+        {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states("sensor.rtl2_artist")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states("sensor.absolute_radio_artist")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states("sensor.absolute_radio_CR_artist")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} Phil & Rohan
+        {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} Stacey & Kevin
+        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} {{states("sensor.chill_artist")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} {{states("sensor.radio_fiji_two_artist")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Scala") %} {{states("sensor.scala_artist")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
+        {% endif %}
+      icon: 'mdi:account'
+
+    - name: "Stream Track"
+      state: >
+        {% if is_state("input_select.chromecast_radio_station", "RTL2") %} {{states("sensor.rtl2_track")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states("sensor.absolute_radio_track")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states("sensor.absolute_radio_CR_track")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Hit West") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} {{states("sensor.ha_podcast_track")}}
+        {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} {{states("sensor.internet_of_things_podcast_track")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} {{states("sensor.chill_track")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} N/A
+        {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} {{states("sensor.radio_fiji_two_track")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Scala") %} {{states("sensor.scala_track")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} N/A
+        {% endif %}
+      icon: 'mdi:account'
+
+    - name : "Stream Album Art"
+      state: >
+        {% if is_state("binary_sensor.radio_is_streaming","on")%}
+        {% if is_state("input_select.chromecast_radio_station", "Hit West") %} https://upload.wikimedia.org/wikipedia/fr/b/bd/HitWestLogo.jpg
+        {% elif is_state("input_select.chromecast_radio_station", "RTL2") %} {{states("sensor.rtl2_pic") | replace("https://images.rtl.fr", "http://images.rtl.fr")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states("sensor.absolute_radio_pic")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Scala") %} {{states("sensor.scala_pic")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states("sensor.absolute_radio_CR_pic")}}
+        {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} https://secureimg.stitcher.com/feedimageswide/480x270_176113.jpg
+        {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} https://is1-ssl.mzstatic.com/image/thumb/Music62/v4/b3/d6/64/b3d664ab-0560-f24d-2379-d01142267f94/source/1200x630bb.jpg
+        {% elif is_state("input_select.chromecast_radio_station", "Chill") %} {{states("sensor.chill_pic")}}
+        {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} https://static-media.streema.com/media/cache/61/a2/61a237fb6851e34614c55420b3e11a62.jpg
+        {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} http://player.streamguys.com/fbc/sgplayer/include/assets/img/RF2.png
+        {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} https://www.holyscripturesandisrael.com/images/radio/radio-icon.png
+        {% endif %}
+        {%else%}http://192.168.9.23:8123/local/Select_Radio.png
+        {%endif%}
+      icon: 'mdi:account'
+
+    - name: "Fire7 Password"
+      state: !secret fire7password

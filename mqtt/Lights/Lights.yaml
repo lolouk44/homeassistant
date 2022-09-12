@@ -1,0 +1,94 @@
+- name: Staircase LED Strip
+  schema: json
+  state_topic: "led_strip/staircase"
+  command_topic: "led_strip/staircase/set"
+  brightness: true
+  rgb: true
+  effect: true
+  effect_list: [colorfade_slow, colorfade_fast, flash]
+  optimistic: false
+  qos: 1
+
+- name: TV Cabinet LED Strip
+  schema: json
+  state_topic: "led_strip/tvcabinet"
+  command_topic: "led_strip/tvcabinet/set"
+  brightness: true
+  rgb: true
+  effect: true
+  effect_list: [colorfade_slow, colorfade_fast, flash]
+  optimistic: false
+  qos: 1
+
+- name: Bauble 1
+  schema: json
+  state_topic: "WeMosBauble/Bauble1"
+  command_topic: "WeMosBauble/Bauble1/set"
+  brightness: false
+  rgb: false
+  effect: true
+  effect_list: [sparkle, rainbow, uniglow]
+  optimistic: false
+  qos: 1
+
+- name: Bauble 2
+  schema: json
+  state_topic: "WeMosBauble/Bauble2"
+  command_topic: "WeMosBauble/Bauble2/set"
+  brightness: false
+  rgb: false
+  effect: true
+  effect_list: [sparkle, rainbow, uniglow]
+  optimistic: false
+  qos: 1
+
+- name: Bauble 3
+  schema: json
+  state_topic: "WeMosBauble/Bauble3"
+  command_topic: "WeMosBauble/Bauble3/set"
+  brightness: false
+  rgb: false
+  effect: true
+  effect_list: [sparkle, rainbow, uniglow]
+  optimistic: false
+  qos: 1
+
+- name: "Porch Om Xmas LED Strip"
+  schema: json
+  state_topic: "Porch/Snowman"
+  command_topic: "Porch/Snowman/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane
+    - confetti
+    - cyclon rainbow
+    - dots
+    - fire
+    - glitter
+    - juggle
+    - lightning
+    - noise
+    - police all
+    - police one
+    - rainbow
+    - rainbow with glitter
+    - ripple
+    - sinelon
+    - solid
+    - twinkle
+  brightness: true
+  rgb: true
+  optimistic: false
+  qos: 1
+
+- name: "Red Light"
+  state_topic: "stat/sonoff_basic_1/POWER"
+  command_topic: "cmnd/sonoff_basic_1/POWER"
+  availability_topic: "tele/sonoff_basic_1/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false

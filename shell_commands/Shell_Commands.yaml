@@ -1,18 +1,3 @@
-dafang_living_room_active: /config/shell_scripts/dafang_living_room_active.sh
-dafang_living_room_pause: /config/shell_scripts/dafang_living_room_pause.sh
-
-dafang_kitchen_active: /config/shell_scripts/dafang_kitchen_active.sh
-dafang_kitchen_pause: /config/shell_scripts/dafang_kitchen_pause.sh
-
-cctv_garage_active: /config/shell_scripts/cctv_garage_active.sh
-cctv_garage_pause: /config/shell_scripts/cctv_garage_pause.sh
-
-cctv_conservatory_active: /config/shell_scripts/cctv_conservatory_active.sh
-cctv_conservatory_pause: /config/shell_scripts/cctv_conservatory_pause.sh
-
-cctv_staircase_active: /config/shell_scripts/cctv_staircase_active.sh
-cctv_staircase_pause: /config/shell_scripts/cctv_staircase_pause.sh
-
 reboot_dafang_kitchen: /config/shell_scripts/reboot_dafang_kitchen.sh
 reboot_dafang_livingroom: /config/shell_scripts/reboot_dafang_livingroom.sh
 reboot_dafang_conservatory: /config/shell_scripts/reboot_dafang_conservatory.sh
@@ -28,7 +13,8 @@ restart_magic_mirror: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecki
 refresh_bin_collection: python3 /config/shell_scripts/HA_Scrape_Crawley_Bins.py
 refresh_power_bi: python3 /config/shell_scripts/Power_BI_Status_Scrape.py
 
+delete_frigate_ffmpegfiles: find /config/ffmpeg*.log -maxdepth 1 -type f -mtime +1 -exec rm '{}' -f \;
 
 catt_install: pip3 install catt
 catt_cast_ha_to_bedroom: catt -d "192.168.9.14" cast_site http://192.168.9.23:8123/lovelace-nesthub/nesthub?kiosk
-catt_cast_ha_to_office: catt -d "192.168.9.16" cast_site http://192.168.9.23:8123/lovelace-nesthub/nesthub?kiosk
+catt_cast_ha_to_office: catt -d "192.168.9.16" cast_site http://192.168.9.16:8123/lovelace-nesthub/nesthub?kiosk

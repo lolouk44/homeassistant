@@ -1,4 +1,3 @@
 dehumidifier_tank_full:
   name: Tank Full
-  initial: off
   icon: mdi:cup-water

@@ -19,9 +19,9 @@
 # - platform: mjpeg
 #   mjpeg_url: http://192.168.9.23:8087
 #   name: 'Conservatory'
-- platform: mjpeg
-  mjpeg_url: http://192.168.9.23:8089
-  name: 'Fire7'
+# - platform: mjpeg
+#   mjpeg_url: http://192.168.9.23:8089
+#   name: 'Fire7'
 
 # Frigate Last Person
 

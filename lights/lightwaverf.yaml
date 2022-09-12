@@ -1,0 +1,18 @@
+- platform: rfxtrx
+#automatic_add: True
+  signal_repetitions: 2
+  devices:
+    0a14000801010102000070:
+      name: Kitchen Door
+    0a14000b01010101010070:
+      name: Kitchen Window
+    0a14000b01010104010070:
+      name: Conservatory
+    0a14000d01010302000070:
+      name: Staircase
+    0a14001101010301000070:
+      name: Hallway
+    0a14001701010202000070:
+      name: Living Room Main
+    0a14001b01010201000070:
+      name: Living Room Wall

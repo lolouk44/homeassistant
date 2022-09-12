@@ -1,6 +1,6 @@
   - device_tracker.lolo_iphone
   - device_tracker.div_iphone
-  - device_tracker.venkat
+  #- device_tracker.venkat
   - sensor.dark_sky_temperature
   - sensor.dark_sky_humidity
   - sensor.precipitation

@@ -1,9 +1,7 @@
-- platform: mqtt
-  name: "RPi Kitchen Heartbeat"
+- name: "RPi Kitchen Heartbeat"
   state_topic: "RPi_Kitchen/Heartbeat"
   icon: mdi:heart-pulse
 
-- platform: mqtt
-  name: "RPi Heartbeat"
+- name: "RPi Heartbeat"
   state_topic: "RPi/Heartbeat"
   icon: mdi:heart-pulse

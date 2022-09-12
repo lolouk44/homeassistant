@@ -71,3 +71,8 @@ cards:
             name: Track
             secondary_info: last-changed
             icon: mdi:music-circle
+  - entity: media_player.office_nest_hub
+    type: "custom:mini-media-player"
+    power_color: true
+    group: true
+    artwork: cover

@@ -1,0 +1,17 @@
+- name: Anova
+  modes:
+    - "off"
+    - heat
+  qos: 1
+  initial: 19
+  current_temperature_topic: anova/status
+  current_temperature_template: "{{ value_json.current_temp }}"
+  temperature_state_topic: anova/status
+  temperature_state_template: "{{ value_json.target_temp }}"
+  mode_state_topic: anova/status
+  mode_state_template: "{{ value_json.state }}"
+  mode_command_topic: anova/command/run
+  temperature_command_topic: anova/command/temp
+  min_temp: 20
+  max_temp: 99
+  temp_step: 0.5

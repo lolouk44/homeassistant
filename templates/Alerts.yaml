@@ -1,0 +1,28 @@
+- binary_sensor:
+    - name: "Alert Outside Temp Sensor Lost"
+      state: >-
+        {{ (as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated ) | int > 3600 )}}
+
+    - name: "Alert Upstairs Temp Sensor Lost"
+      state: >-
+        {{ (as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated ) | int > 14400 )}}
+
+    - name: "Alert RAM Too High"
+      state: >-
+        {{ states("sensor.ram_usage")  | int > 90 }}
+
+    - name: "Alert Home Disk Usage Too High"
+      state: >-
+        {{ states("sensor.home_disk_usage")  | int > 90 }}
+
+    - name: "Alert Root Disk Usage Too High"
+      state: >-
+        {{ states("sensor.root_disk_usage")  | int > 90 }}
+
+    - name: "Alert Kitchen Freezer Temperature Too High"
+      state: >-
+        {{ states("sensor.kitchen_freezer_temperature")  | int > 0 }}
+
+    - name: "Lolo Bedside Cabinet Lost"
+      state: >-
+        {{ states("light.lolo_bedside_light") == "unavailable" }}

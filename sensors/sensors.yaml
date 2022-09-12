@@ -66,5 +66,3 @@
     pages_left:
       value_template: "{{ states('var.printer_pages_at_month_start')|int - states('sensor.hp_printer_printer')|int + 50}}"
       unit_of_measurement: Pages
-    bedroom_nest_hub_next_alarm:
-      value_template: '{{ as_timestamp(states("sensor.bedroom_nest_hub_alarms")) | timestamp_custom("%d %b %y %H:%M") }}'

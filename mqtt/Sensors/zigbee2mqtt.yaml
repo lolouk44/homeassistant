@@ -1,257 +1,208 @@
-- platform: mqtt
-  name: "Kitchen Fridge Temperature"
+- name: "Kitchen Fridge Temperature"
   state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
   <<: &temperature
     value_template: "{{ value_json['temperature'] }}"
     unit_of_measurement: °C
     device_class: temperature
 
-- platform: mqtt
-  name: "Kitchen Fridge Humidity"
+- name: "Kitchen Fridge Humidity"
   state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
   <<: &humidity
     value_template: "{{ value_json['humidity'] | float (1) }}"
     unit_of_measurement: "%"
     device_class: humidity
 
-- platform: mqtt
-  name: "Kitchen Fridge Temperature Battery"
+- name: "Kitchen Fridge Temperature Battery"
   state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
   <<: &battery
     value_template: "{{ value_json['battery'] }}"
     unit_of_measurement: "%"
     device_class: battery
 
-- platform: mqtt
-  name: "Kitchen Freezer Temperature"
+- name: "Kitchen Freezer Temperature"
   state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
   <<: *temperature
 
-- platform: mqtt
-  name: "Kitchen Freezer Humidity"
+- name: "Kitchen Freezer Humidity"
   state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
   <<: *humidity
 
-- platform: mqtt
-  name: "Kitchen Freezer Temperature Battery"
+- name: "Kitchen Freezer Temperature Battery"
   state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
   <<: *battery
 
-- platform: mqtt
-  name: "Master Bedroom Right Big Window Battery"
+- name: "Master Bedroom Right Big Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Master Bedroom Right Small Window Battery"
+- name: "Master Bedroom Right Small Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Master Bedroom Left Small Window Battery"
+- name: "Master Bedroom Left Small Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Conservatory Skylight Left Battery"
+- name: "Conservatory Skylight Left Battery"
   state_topic: "zigbee2mqtt/conservatory_skylight_left"
   <<: *battery
 
-- platform: mqtt
-  name: "Pooja Room Small Window Battery"
+- name: "Pooja Room Small Window Battery"
   state_topic: "zigbee2mqtt/pooja_room_small_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Pooja Room Big Window Battery"
+- name: "Pooja Room Big Window Battery"
   state_topic: "zigbee2mqtt/pooja_room_big_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Pooja Temperature"
+- name: "Pooja Temperature"
   state_topic: "zigbee2mqtt/pooja_hygro"
   <<: *temperature
 
-- platform: mqtt
-  name: "Pooja Humidity"
+- name: "Pooja Humidity"
   state_topic: "zigbee2mqtt/pooja_hygro"
   <<: *humidity
 
-- platform: mqtt
-  name: "Pooja Temperature Battery"
+- name: "Pooja Temperature Battery"
   state_topic: "zigbee2mqtt/pooja_hygro"
   <<: *battery
 
-- platform: mqtt
-  name: "Master Bedroom Temperature"
+- name: "Master Bedroom Temperature"
   state_topic: "zigbee2mqtt/master_bedroom_hygro"
   <<: *temperature
   state_class: measurement
 
-- platform: mqtt
-  name: "Master Bedroom Humidity"
+- name: "Master Bedroom Humidity"
   state_topic: "zigbee2mqtt/master_bedroom_hygro"
   <<: *humidity
 
-- platform: mqtt
-  name: "Master Bedroom Pressure"
+- name: "Master Bedroom Pressure"
   state_topic: "zigbee2mqtt/master_bedroom_hygro"
   value_template: "{{ value_json['pressure'] | float (1) }}"
   unit_of_measurement: "hPa"
   state_class: "measurement"
   device_class: pressure
 
-- platform: mqtt
-  name: "Master Bedroom Temperature Battery"
+- name: "Master Bedroom Temperature Battery"
   state_topic: "zigbee2mqtt/master_bedroom_hygro"
   <<: *battery
 
-- platform: mqtt
-  name: "Bathroom Temperature"
+- name: "Bathroom Temperature"
   state_topic: "zigbee2mqtt/bathroom_hygro"
   <<: *temperature
 
-- platform: mqtt
-  name: "Bathroom Humidity"
+- name: "Bathroom Humidity"
   state_topic: "zigbee2mqtt/bathroom_hygro"
   <<: *humidity
 
-- platform: mqtt
-  name: "Bathroom Temperature Battery"
+- name: "Bathroom Temperature Battery"
   state_topic: "zigbee2mqtt/bathroom_hygro"
   <<: *battery
 
-- platform: mqtt
-  name: "Loft Temperature"
+- name: "Loft Temperature"
   state_topic: "zigbee2mqtt/loft_hygro"
   <<: *temperature
 
-- platform: mqtt
-  name: "Loft Humidity"
+- name: "Loft Humidity"
   state_topic: "zigbee2mqtt/loft_hygro"
   <<: *humidity
 
-- platform: mqtt
-  name: "Loft Temperature Battery"
+- name: "Loft Temperature Battery"
   state_topic: "zigbee2mqtt/loft_hygro"
   <<: *battery
 
-- platform: mqtt
-  name: "Living Room Temperature"
+- name: "Living Room Temperature"
   state_topic: "zigbee2mqtt/living_room_hygro"
   <<: *temperature
 
-- platform: mqtt
-  name: "Living Room Humidity"
+- name: "Living Room Humidity"
   state_topic: "zigbee2mqtt/living_room_hygro"
   <<: *humidity
 
-- platform: mqtt
-  name: "Living Room Temperature Battery"
+- name: "Living Room Temperature Battery"
   state_topic: "zigbee2mqtt/living_room_hygro"
   <<: *battery
 
-- platform: mqtt
-  name: "Garage Freezer Door Battery"
+- name: "Garage Freezer Door Battery"
   state_topic: "zigbee2mqtt/garage_freezer_door"
   <<: *battery
 
-- platform: mqtt
-  name: "Kiaan Big Window Battery"
+- name: "Kiaan Big Window Battery"
   state_topic: "zigbee2mqtt/kiaan_big_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Conservatory Door Lock Battery"
+- name: "Conservatory Door Lock Battery"
   state_topic: "zigbee2mqtt/conservatory_door_lock"
   <<: *battery
 
-- platform: mqtt
-  name: "Aqara Toggle Pooja Battery"
+- name: "Aqara Toggle Pooja Battery"
   state_topic: "zigbee2mqtt/aqara_toggle_pooja"
   <<: *battery
 
-- platform: mqtt
-  name: "Aqara Toggle Bathroom Battery"
+- name: "Aqara Toggle Bathroom Battery"
   state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
   <<: *battery
 
-- platform: mqtt
-  name: "Master Bedroom Left Big Window Battery"
+- name: "Master Bedroom Left Big Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Conservatory Single Door Battery"
+- name: "Conservatory Single Door Battery"
   state_topic: "zigbee2mqtt/conservatory_single_door"
   <<: *battery
 
-- platform: mqtt
-  name: "Conservatory Double Door Battery"
+- name: "Conservatory Double Door Battery"
   state_topic: "zigbee2mqtt/conservatory_double_door"
   <<: *battery
 
-- platform: mqtt
-  name: "Kitchen Window Battery"
+- name: "Kitchen Window Battery"
   state_topic: "zigbee2mqtt/kitchen_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Kiaan Small Window Battery"
+- name: "Kiaan Small Window Battery"
   state_topic: "zigbee2mqtt/kiaan_small_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Blue Room Big Window Battery"
+- name: "Blue Room Big Window Battery"
   state_topic: "zigbee2mqtt/blue_room_big_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Blue Room Small Window Battery"
+- name: "Blue Room Small Window Battery"
   state_topic: "zigbee2mqtt/blue_room_small_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Bathroom Window Battery"
+- name: "Bathroom Window Battery"
   state_topic: "zigbee2mqtt/bathroom_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Cloakroom Window Battery"
+- name: "Cloakroom Window Battery"
   state_topic: "zigbee2mqtt/cloakroom_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Living Room Right Small Window Battery"
+- name: "Living Room Right Small Window Battery"
   state_topic: "zigbee2mqtt/living_room_right_small_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Living Room Right Big Window Battery"
+- name: "Living Room Right Big Window Battery"
   state_topic: "zigbee2mqtt/living_room_right_big_window"
   <<: *battery
 
-- platform: mqtt
-  name: "Main Door Battery"
+- name: "Main Door Battery"
   state_topic: "zigbee2mqtt/main_door"
   <<: *battery
 
-- platform: mqtt
-  name: "Conservatory Skylight Right Battery"
+- name: "Conservatory Skylight Right Battery"
   state_topic: "zigbee2mqtt/conservatory_skylight_right"
   <<: *battery
 
-- platform: mqtt
-  name: "Ground Floor Smoke Detector Battery"
+- name: "Ground Floor Smoke Detector Battery"
   state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
   <<: *battery
 
-- platform: mqtt
-  name: "First Floor Smoke Detector Battery"
+- name: "First Floor Smoke Detector Battery"
   state_topic: "zigbee2mqtt/first_floor_smoke_detector"
   <<: *battery
 
-- platform: mqtt
-  name: "Pooja Door Battery"
+- name: "Pooja Door Battery"
   state_topic: "zigbee2mqtt/pooja_door"
   <<: *battery

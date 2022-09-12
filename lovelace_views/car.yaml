@@ -84,22 +84,22 @@ cards:
           color: rgb(68, 115, 158)
 
       - type: state-icon
-        entity: binary_sensor.bmw_220d_doordriverdront
+        entity: binary_sensor.bmw_220d_door_driver_front
         style:
           top: 50%
           right: 13%
       - type: state-icon
-        entity: binary_sensor.bmw_220d_doorpassengerfront
+        entity: binary_sensor.bmw_220d_door_passenger_front
         style:
           top: 50%
           left: 17%
       - type: state-icon
-        entity: binary_sensor.bmw_220d_doordriverrear
+        entity: binary_sensor.bmw_220d_door_driver_rear
         style:
           top: 70%
           right: 14%
       - type: state-icon
-        entity: binary_sensor.bmw_220d_doorpassengerrear
+        entity: binary_sensor.bmw_220d_door_passenger_rear
         style:
           top: 70%
           left: 17%
@@ -115,22 +115,22 @@ cards:
           left: 46%
 
       - type: state-icon
-        entity: binary_sensor.bmw_220d_windowdriverdront
+        entity: binary_sensor.bmw_220d_window_driver_front
         style:
           top: 45%
           right: 13%
       - type: state-icon
-        entity: binary_sensor.bmw_220d_windowpassengerfront
+        entity: binary_sensor.bmw_220d_window_passenger_front
         style:
           top: 45%
           left: 17%
       - type: state-icon
-        entity: binary_sensor.bmw_220d_windowdriverrear
+        entity: binary_sensor.bmw_220d_window_driver_rear
         style:
           top: 65%
           right: 14%
       - type: state-icon
-        entity: binary_sensor.bmw_220d_windowpassengerrear
+        entity: binary_sensor.bmw_220d_window_passenger_rear
         style:
           top: 65%
           left: 17%

@@ -1,0 +1,44 @@
+- platform: rfxtrx
+  automatic_add: false
+  signal_repetitions: 2
+  devices:
+    0A14001E01010404000070:
+      name: Dehumidifier
+    0A14002201010402000070:
+      name: Kitchen TV
+    0A14002301010403000070:
+      name: LWRF Socket 3
+    0B1101020000000102000070:
+      name: LWRF Socket Xmas
+    0a1400bef4ff6201010070:
+      name: LWRF Remote 1
+      fire_event: true
+    0a1400c0f4ff6202010070:
+      name: LWRF Remote 2
+      fire_event: true
+    0a1400c1f4ff6203010070:
+      name: LWRF Remote 3
+      fire_event: true
+
+    09130007a68a42012970:
+      name: Kerui Remote Unlock
+      fire_event: true
+    09130008a68a44012b70:
+      name: Kerui Remote Lock
+      fire_event: true
+
+    09130006131408015e70:
+      # name: Kerui Panic
+      name: Kerui Alarm
+      fire_event: true
+    09130008131402016070:
+      # name: Kerui Arm Home
+      name: Kerui Disarm
+      fire_event: true
+
+    # 09130009a68a48012b70:
+      # name: Kerui Remote Panic
+      # fire_event: true
+    # 0913000aa68a41012970:
+      # name: Kerui Remote Arm Home
+      # fire_event: true

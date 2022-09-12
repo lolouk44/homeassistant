@@ -1,65 +1,65 @@
-- platform: mqtt
-  state_topic: "Sensors/ZFSDisk"
-  name: "ZFS Disk Usage"
-  unit_of_measurement: '%'
-  icon: mdi:harddisk
+# - platform: mqtt
+  # state_topic: "Sensors/ZFSDisk"
+  # name: "ZFS Disk Usage"
+  # unit_of_measurement: '%'
+  # icon: mdi:harddisk
 
-- platform: mqtt
-  state_topic: "Sensors/HomeDisk"
-  name: "Home Disk Usage"
-  unit_of_measurement: '%'
-  icon: mdi:harddisk
+# - platform: mqtt
+  # state_topic: "Sensors/HomeDisk"
+  # name: "Home Disk Usage"
+  # unit_of_measurement: '%'
+  # icon: mdi:harddisk
 
-- platform: mqtt
-  state_topic: "Sensors/RootDisk"
-  name: "Root Disk Usage"
-  unit_of_measurement: '%'
-  icon: mdi:harddisk
+# - platform: mqtt
+  # state_topic: "Sensors/RootDisk"
+  # name: "Root Disk Usage"
+  # unit_of_measurement: '%'
+  # icon: mdi:harddisk
 
-- platform: mqtt
-  state_topic: "Sensors/RAM"
-  name: "RAM Usage"
-  unit_of_measurement: '%'
-  icon: mdi:memory
-  force_update: true
+# - platform: mqtt
+  # state_topic: "Sensors/RAM"
+  # name: "RAM Usage"
+  # unit_of_measurement: '%'
+  # icon: mdi:memory
+  # force_update: true
 
-- platform: mqtt
-  state_topic: "Sensors/SDATemp"
-  name: "ZFS1 Disk Temp"
-  unit_of_measurement: '°C'
-  force_update: true
+# - platform: mqtt
+  # state_topic: "Sensors/SDATemp"
+  # name: "ZFS1 Disk Temp"
+  # unit_of_measurement: '°C'
+  # force_update: true
 
-- platform: mqtt
-  state_topic: "Sensors/SDBTemp"
-  name: "ZFS2 Disk Temp"
-  unit_of_measurement: '°C'
-  force_update: true
+# - platform: mqtt
+  # state_topic: "Sensors/SDBTemp"
+  # name: "ZFS2 Disk Temp"
+  # unit_of_measurement: '°C'
+  # force_update: true
 
-- platform: mqtt
-  state_topic: "Sensors/SDCTemp"
-  name: "SDA Disk Temp"
-  unit_of_measurement: '°C'
-  force_update: true
+# - platform: mqtt
+  # state_topic: "Sensors/SDCTemp"
+  # name: "SDA Disk Temp"
+  # unit_of_measurement: '°C'
+  # force_update: true
 
-- platform: mqtt
-  state_topic: "Sensors/SSLDays"
-  name: "SSL Cert Expiry"
-  unit_of_measurement: 'days'
-  icon: mdi:certificate
+# - platform: mqtt
+  # state_topic: "Sensors/SSLDays"
+  # name: "SSL Cert Expiry"
+  # unit_of_measurement: 'days'
+  # icon: mdi:certificate
 
-- platform: mqtt
-  state_topic: 'Sensors/HASQL'
-  name: 'Hass DB Size Formatted'
-  value_template: '{{ value[:-1] | float }}'
-  unit_of_measurement: 'Gb'
-  icon: mdi:database
+# - platform: mqtt
+  # state_topic: 'Sensors/HASQL'
+  # name: 'Hass DB Size Formatted'
+  # value_template: '{{ value[:-1] | float }}'
+  # unit_of_measurement: 'Gb'
+  # icon: mdi:database
 
-- platform: mqtt
-  state_topic: 'Sensors/CPU'
-  name: 'CPU Usage'
-  icon: mdi:chip
-  unit_of_measurement: '%'
-  force_update: true
+# - platform: mqtt
+  # state_topic: 'Sensors/CPU'
+  # name: 'CPU Usage'
+  # icon: mdi:chip
+  # unit_of_measurement: '%'
+  # force_update: true
 
 - platform: rest
   name: docker_hub_pulls

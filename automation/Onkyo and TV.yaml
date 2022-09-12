@@ -40,9 +40,9 @@
       entity_id: media_player.panasonic_viera_tv
       state: 'on'
     - condition: template
-      value_template: '{{ (as_timestamp(states.media_player.panasonic_viera_tv.last_changed) | int) - (as_timestamp(this.last_triggered)) | int  > 0 }}'
+      value_template: '{{ (as_timestamp(states.media_player.panasonic_viera_tv.last_changed) | int) - (as_timestamp(this.attributes.last_triggered)) | int  > 0 }}'
     - condition: template
-      value_template: '{{ (as_timestamp(states("sensor.uptime")) - (as_timestamp(states.media_player.panasonic_viera_tv.last_changed) | int)) > 120 }}'
+      value_template: '{{ (as_timestamp(states.media_player.panasonic_viera_tv.last_changed) | int) - as_timestamp(states("sensor.uptime")) > 200 }}'
   action:
     - service: remote.send_command
       data:

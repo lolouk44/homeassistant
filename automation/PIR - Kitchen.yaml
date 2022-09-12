@@ -15,6 +15,9 @@
       to: 'on'
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
   condition:
     - condition: state
       entity_id: binary_sensor.pir_kitchen
@@ -109,7 +112,7 @@
         entity_id: input_boolean.movies
         state: 'on'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_kitchen_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_kitchen_lights_dimmed_off_pir", "last_triggered") ) | int > 90 )}}'
     - condition: state
       entity_id: binary_sensor.pir_kitchen
       state: 'off'
@@ -192,7 +195,7 @@
     - condition: template
       value_template: '{{ states("binary_sensor.pir_kitchen") == "off" and states("binary_sensor.pir_conservatory") == "off"}}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.last_triggered) | int > 300)}}'      
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | int > 300)}}'      
   action:
     - service: switch.turn_off
       data:
@@ -210,3 +213,15 @@
     - service: switch.turn_on
       data:
         entity_id: switch.kitchen_tv
+
+- alias: Kitchen - Restart MM on TV
+  id: kitchen_restart_mm_on_tv
+  initial_state: true
+  mode: restart
+  trigger:
+    - platform: mqtt
+      topic: 'zigbee2mqtt/aqara_toggle_kitchen_tv'
+  action:
+    - condition: template
+      value_template: '{{ trigger.payload_json.click == "single" }}'
+    - service: shell_command.restart_magic_mirror

@@ -1,0 +1,10 @@
+- unit_of_measurement: "V"
+  icon: "mdi:flash"
+  name: "Astra Car Battery Voltage"
+  state_topic: "astra_car_battery/sensor/astra_car_battery_voltage/state"
+  device_class: voltage
+  
+- unit_of_measurement: "dB"
+  icon: "mdi:wifi"
+  name: "Astra Car Battery WiFi Signal"
+  state_topic: "astra_car_battery/sensor/astra_car_battery_wifi_signal/state"

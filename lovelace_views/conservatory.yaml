@@ -19,13 +19,13 @@ cards:
       - entity: binary_sensor.dark
         secondary_info: last-changed
         icon: mdi:weather-night
-      - entity: binary_sensor.conservatory_skylight_left
-        secondary_info: last-changed
-      - entity: binary_sensor.conservatory_skylight_right
-        secondary_info: last-changed
       - entity: binary_sensor.conservatory_single_door
         secondary_info: last-changed
       - entity: binary_sensor.conservatory_double_door
+        secondary_info: last-changed
+      - entity: binary_sensor.conservatory_skylight_left
+        secondary_info: last-changed
+      - entity: binary_sensor.conservatory_skylight_right
         secondary_info: last-changed
   - type: custom:stack-in-card
     mode: vertical

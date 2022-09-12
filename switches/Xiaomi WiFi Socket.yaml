@@ -1,4 +1,0 @@
-# - platform: xiaomi_miio
-  # name: Xiaomi Dual USB Socket
-  # host: 192.168.0.55
-  # token: !secret xiaomi_token_dual_usb_socket

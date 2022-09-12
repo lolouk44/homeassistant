@@ -1,3 +1,4 @@
+#Scala Radio: http://tx.planetradio.co.uk/http_live_bauer.php?i=scala.aac&awparams=loggedin:false&amsparams=playerid:BMUK_tunein
 play_chromecast_radio:
   alias: Cast Selected Radio on Chromecast Speakers
   sequence:

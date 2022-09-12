@@ -64,25 +64,25 @@ alarm_control_panel:
 apcupsd:
   host: 192.168.9.23
 
-climate:
-  - platform: mqtt
-    name: Anova
-    modes:
-      - "off"
-      - heat
-    qos: 1
-    initial: 19
-    current_temperature_topic: anova/status
-    current_temperature_template: "{{ value_json.current_temp }}"
-    temperature_state_topic: anova/status
-    temperature_state_template: "{{ value_json.target_temp }}"
-    mode_state_topic: anova/status
-    mode_state_template: "{{ value_json.state }}"
-    mode_command_topic: anova/command/run
-    temperature_command_topic: anova/command/temp
-    min_temp: 20
-    max_temp: 99
-    temp_step: 0.5
+# climate:
+#   - platform: mqtt
+#     name: Anova
+#     modes:
+#       - "off"
+#       - heat
+#     qos: 1
+#     initial: 19
+#     current_temperature_topic: anova/status
+#     current_temperature_template: "{{ value_json.current_temp }}"
+#     temperature_state_topic: anova/status
+#     temperature_state_template: "{{ value_json.target_temp }}"
+#     mode_state_topic: anova/status
+#     mode_state_template: "{{ value_json.state }}"
+#     mode_command_topic: anova/command/run
+#     temperature_command_topic: anova/command/temp
+#     min_temp: 20
+#     max_temp: 99
+#     temp_step: 0.5
 
 counter:
   iosbadgecount:
@@ -101,9 +101,9 @@ ffmpeg:
 frontend:
   themes: !include_dir_merge_named themes
 
-google:
-  client_id: !secret GCal_ID
-  client_secret: !secret GCal_Secret
+# google:
+  # client_id: !secret GCal_ID
+  # client_secret: !secret GCal_Secret
 
 hacs:
   token: !secret hacs_token
@@ -123,25 +123,10 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
+homeassistant_alerts:
+
 ifttt:
   key: !secret ifttt_key
-
-
-life360:
-  accounts:
-    - username: !secret life360_username
-      password: !secret life360_password
-  driving_speed: 18
-  interval_seconds: 10
-  max_gps_accuracy: 200
-  max_update_wait:
-    minutes: 45
-  show_as_state:
-    - driving
-    - moving
-  warning_threshold: 2
-  error_threshold: 3
-  prefix: ''
 
 
 logbook:
@@ -217,11 +202,12 @@ map:
 media_source:
 
 mqtt:
-  client_id: home-assistant-1
-  broker: !secret mqtt_broker
-  port: 1883
-  username: !secret mqtt_user
-  password: !secret mqtt_password
+  binary_sensor: !include_dir_merge_list mqtt/Binary_sensors
+  climate: !include_dir_merge_list mqtt/Climate
+  light: !include_dir_merge_list mqtt/Lights
+  sensor: !include_dir_merge_list mqtt/Sensors
+  switch:  !include_dir_merge_list mqtt/Switches
+
 
 nest:
   client_id: !secret nest_client_id

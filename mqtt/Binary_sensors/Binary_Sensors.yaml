@@ -1,215 +1,276 @@
-- platform: template
-  sensors:
-    lost_zigbee_devices:
-      value_template: '{{ states("sensor.lost_zigbee_devices_count") | int  > 0 }}'
-      friendly_name: Lost ZigBee devices
-      icon_template: 'mdi:zigbee'
-
-- platform: mqtt
-  name: "Conservatory Skylight Right"
+#############################################################################
+## zigbee2mqtt
+#############################################################################
+- name: "Conservatory Skylight Right"
   state_topic: "zigbee2mqtt/conservatory_skylight_right"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Conservatory Skylight Left"
+- name: "Conservatory Skylight Left"
   state_topic: "zigbee2mqtt/conservatory_skylight_left"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Master Bedroom Right Big Window"
+- name: "Master Bedroom Right Big Window"
   state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Master Bedroom Right Small Window"
+- name: "Master Bedroom Right Small Window"
   state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Master Bedroom Left Big Window"
+- name: "Master Bedroom Left Big Window"
   state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Master Bedroom Left Small Window"
+- name: "Master Bedroom Left Small Window"
   state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Pooja Room Big Window"
+- name: "Pooja Room Big Window"
   state_topic: "zigbee2mqtt/pooja_room_big_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Pooja Room Small Window"
+- name: "Pooja Room Small Window"
   state_topic: "zigbee2mqtt/pooja_room_small_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Kiaan Big Window"
+- name: "Kiaan Big Window"
   state_topic: "zigbee2mqtt/kiaan_big_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Kiaan Small Window"
+- name: "Kiaan Small Window"
   state_topic: "zigbee2mqtt/kiaan_small_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Conservatory Door Lock"
+- name: "Conservatory Door Lock"
   state_topic: "zigbee2mqtt/conservatory_door_lock"
   value_template: "{{ value_json['contact'] == true }}"
   payload_off: false
   payload_on: true
   device_class: safety
 
-- platform: mqtt
-  name: "Conservatory Single Door"
+- name: "Conservatory Single Door"
   state_topic: "zigbee2mqtt/conservatory_single_door"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: door
 
-- platform: mqtt
-  name: "Conservatory Double Door"
+- name: "Conservatory Double Door"
   state_topic: "zigbee2mqtt/conservatory_double_door"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: door
 
-- platform: mqtt
-  name: "Main Door"
+- name: "Main Door"
   state_topic: "zigbee2mqtt/main_door"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: door
 
-- platform: mqtt
-  name: "Kitchen Window"
+- name: "Kitchen Window"
   state_topic: "zigbee2mqtt/kitchen_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Blue Room Big Window"
+- name: "Blue Room Big Window"
   state_topic: "zigbee2mqtt/blue_room_big_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Blue Room Small Window"
+- name: "Blue Room Small Window"
   state_topic: "zigbee2mqtt/blue_room_small_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Bathroom Window"
+- name: "Bathroom Window"
   state_topic: "zigbee2mqtt/bathroom_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Cloakroom Window"
+- name: "Cloakroom Window"
   state_topic: "zigbee2mqtt/cloakroom_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Living Room Right Small Window"
+- name: "Living Room Right Small Window"
   state_topic: "zigbee2mqtt/living_room_right_small_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Living Room Right Big Window"
+- name: "Living Room Right Big Window"
   state_topic: "zigbee2mqtt/living_room_right_big_window"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: window
 
-- platform: mqtt
-  name: "Ground Floor Smoke Detector"
+- name: "Ground Floor Smoke Detector"
   state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
   value_template: "{{ value_json['smoke'] == true }}"
   payload_on: true
   payload_off: false
   device_class: smoke
 
-- platform: mqtt
-  name: "First Floor Smoke Detector"
+- name: "First Floor Smoke Detector"
   state_topic: "zigbee2mqtt/first_floor_smoke_detector"
   value_template: "{{ value_json['smoke'] == true }}"
   payload_on: true
   payload_off: false
   device_class: smoke
 
-- platform: mqtt
-  name: "Garage Back Door"
+- name: "Garage Back Door"
   state_topic: "zigbee2mqtt/garage_back_door"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: door
 
-- platform: mqtt
-  name: "Garage Freezer Door"
+- name: "Garage Freezer Door"
   state_topic: "zigbee2mqtt/garage_freezer_door"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: door
 
-- platform: mqtt
-  name: "Pooja Door"
+- name: "Pooja Door"
   state_topic: "zigbee2mqtt/pooja_door"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
   device_class: door
+
+#############################################################################
+## Astra
+#############################################################################
+- name: "Astra Car Battery network status"
+  state_topic: "astra_car_battery/status"
+  payload_on: "online"
+  payload_off: "offline"
+  device_class: "connectivity"
+
+#############################################################################
+## Fire 7
+#############################################################################
+- state_topic: "fully/deviceInfo/a4bd3a9e-50590f1a"
+  name: "Fire7 Motion"
+  value_template: "{{ value_json['screenBrightness'] }}"
+  payload_on: '255'
+  payload_off: '0'
+  device_class: motion
+
+#############################################################################
+## Power BI
+#############################################################################
+- name: "Power BI EMEA Status"
+  state_topic: "Sensors/powerbistatus"
+  value_template: "{{value_json['emeaservicestatus'] != 'good' }}"
+  json_attributes_topic: "Sensors/powerbistatus"
+  icon: mdi:web
+  payload_on: true
+  payload_off: false
+  
+- name: "Power BI Service Status"
+  state_topic: "Sensors/powerbistatus"
+  value_template: "{{ value_json['serviceoutagestatus'] != 'good' }}"
+  json_attributes_topic: "Sensors/powerbistatus"
+  icon: mdi:web
+  payload_on: true
+  payload_off: false
+  
+- name: "Power BI Awareness Status"
+  state_topic: "Sensors/powerbistatus"
+  value_template: "{{ value_json['awarenessstatus'] != 'good' }}"
+  json_attributes_topic: "Sensors/powerbistatus"
+  icon: mdi:web
+  payload_on: true
+  payload_off: false
+
+#############################################################################
+## RPi Sensors
+#############################################################################
+- name: "PIR Living Room Back"
+  state_topic: "RPi/PIRLivingRoomBack"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: motion
+
+- name: "PIR Living Room Front"
+  state_topic: "RPi/PIRLivingRoomFront"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: motion
+
+- name: "PIR Kitchen"
+  state_topic: "RPi/PIRKitchen"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: motion
+
+- name: "PIR Conservatory"
+  state_topic: "RPi/PIRConservatory"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: motion
+
+- name: "PIR Staircase"
+  state_topic: "RPi/PIRStaircase"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: motion
+
+- name: "PhotoResistor"
+  state_topic: "RPi/PhotoResistor"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: light
+
+- name: "Door Lock"
+  state_topic: "RPi/DoorLock"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: safety
 

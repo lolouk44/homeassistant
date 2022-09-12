@@ -10,6 +10,9 @@
       to: 'on'
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
   condition:
     - condition: or
       conditions:
@@ -91,7 +94,7 @@
         entity_id: input_boolean.movies
         state: 'on'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_conservatory_lights_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) | int > 90 }}'
     - condition: state
       entity_id: binary_sensor.pir_conservatory
       state: 'off'

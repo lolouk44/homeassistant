@@ -1,0 +1,141 @@
+- name: "Kitchen Fridge Temperature Last Seen"
+  state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
+  <<: &lastseen
+    value_template: "{{ value_json['last_seen'] }}"
+    device_class: timestamp
+
+- name: "Kitchen Freezer Temperature Last Seen"
+  state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
+  <<: *lastseen
+
+- name: "Master Bedroom Right Big Window Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
+  <<: *lastseen
+
+- name: "Master Bedroom Right Small Window Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
+  <<: *lastseen
+
+- name: "Master Bedroom Left Small Window Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
+  <<: *lastseen
+
+- name: "Conservatory Skylight Left Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_skylight_left"
+  <<: *lastseen
+
+- name: "Pooja Room Small Window Last Seen"
+  state_topic: "zigbee2mqtt/pooja_room_small_window"
+  <<: *lastseen
+
+- name: "Pooja Room Big Window Last Seen"
+  state_topic: "zigbee2mqtt/pooja_room_big_window"
+  <<: *lastseen
+
+- name: "Pooja Temperature Last Seen"
+  state_topic: "zigbee2mqtt/pooja_hygro"
+  <<: *lastseen
+
+- name: "Master Bedroom Temperature Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_hygro"
+  <<: *lastseen
+
+- name: "Bathroom Temperature Last Seen"
+  state_topic: "zigbee2mqtt/bathroom_hygro"
+  <<: *lastseen
+
+- name: "Loft Temperature Last Seen"
+  state_topic: "zigbee2mqtt/loft_hygro"
+  <<: *lastseen
+
+- name: "Living Room Temperature Last Seen"
+  state_topic: "zigbee2mqtt/living_room_hygro"
+  <<: *lastseen
+
+- name: "Kiaan Big Window Last Seen"
+  state_topic: "zigbee2mqtt/kiaan_big_window"
+  <<: *lastseen
+
+- name: "Conservatory Door Lock Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_door_lock"
+  <<: *lastseen
+
+- name: "Aqara Toggle Pooja Last Seen"
+  state_topic: "zigbee2mqtt/aqara_toggle_pooja"
+  <<: *lastseen
+
+- name: "Aqara Toggle Bathroom Last Seen"
+  state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
+  <<: *lastseen
+
+- name: "Master Bedroom Left Big Window Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
+  <<: *lastseen
+
+- name: "Conservatory Single Door Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_single_door"
+  <<: *lastseen
+
+- name: "Conservatory Double Door Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_double_door"
+  <<: *lastseen
+
+- name: "Kitchen Window Last Seen"
+  state_topic: "zigbee2mqtt/kitchen_window"
+  <<: *lastseen
+
+- name: "Kiaan Small Window Last Seen"
+  state_topic: "zigbee2mqtt/kiaan_small_window"
+  <<: *lastseen
+
+- name: "Blue Room Big Window Last Seen"
+  state_topic: "zigbee2mqtt/blue_room_big_window"
+  <<: *lastseen
+
+- name: "Blue Room Small Window Last Seen"
+  state_topic: "zigbee2mqtt/blue_room_small_window"
+  <<: *lastseen
+
+- name: "Bathroom Window Last Seen"
+  state_topic: "zigbee2mqtt/bathroom_window"
+  <<: *lastseen
+
+- name: "Cloakroom Window Last Seen"
+  state_topic: "zigbee2mqtt/cloakroom_window"
+  <<: *lastseen
+
+- name: "Living Room Right Small Window Last Seen"
+  state_topic: "zigbee2mqtt/living_room_right_small_window"
+  <<: *lastseen
+
+- name: "Living Room Right Big Window Last Seen"
+  state_topic: "zigbee2mqtt/living_room_right_big_window"
+  <<: *lastseen
+
+- name: "Main Door Last Seen"
+  state_topic: "zigbee2mqtt/main_door"
+  <<: *lastseen
+
+- name: "Conservatory Skylight Right Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_skylight_right"
+  <<: *lastseen
+
+- name: "Ground Floor Smoke Detector Last Seen"
+  state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
+  <<: *lastseen
+
+- name: "First Floor Smoke Detector Last Seen"
+  state_topic: "zigbee2mqtt/first_floor_smoke_detector"
+  <<: *lastseen
+
+- name: "Garage Freezer Door Last Seen"
+  state_topic: "zigbee2mqtt/garage_freezer_door"
+  <<: *lastseen
+
+- name: "Pooja Door Last Seen"
+  state_topic: "zigbee2mqtt/pooja_door"
+  <<: *lastseen
+
+- name: "Zigbee Round Socket Last Seen"
+  state_topic: "zigbee2mqtt/zigbee_round_socket"
+  <<: *lastseen

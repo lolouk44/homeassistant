@@ -69,3 +69,7 @@
       entity_id: media_player.google_home_minis
       data:
         message: "Please note: It's about to rain and the conservatory skylights are open"
+    - service: notify.gmaillolo
+      data_template:
+        title: "HA - Rain Alert"
+        message: "Please note: It's about to rain and the conservatory skylights are open"

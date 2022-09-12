@@ -50,26 +50,32 @@ cards:
       type: "custom:mini-media-player"
       power_color: true
       group: true
+      artwork: cover
     - entity: media_player.conservatory
       type: "custom:mini-media-player"
       power_color: true
       group: true
+      artwork: cover
     - entity: media_player.kitchen
       type: "custom:mini-media-player"
       power_color: true
       group: true
+      artwork: cover
     - entity: media_player.living_room
       type: "custom:mini-media-player"
       power_color: true
       group: true
+      artwork: cover
     - entity: media_player.bedroom_nest_hub
       type: "custom:mini-media-player"
       power_color: true
       group: true
+      artwork: cover
     - entity: media_player.office_nest_hub
       type: "custom:mini-media-player"
       power_color: true
       group: true
+      artwork: cover
   - type: entities
     title: Video
     icon: 'mdi:television-classic'

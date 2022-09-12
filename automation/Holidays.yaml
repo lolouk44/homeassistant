@@ -21,6 +21,9 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.holidays
+    - service: switch.turn_off
+      data:
+        entity_id: switch.watchtower, switch.watchtower_n54l
 
 - alias: Holiday - End
   id: holiday_end
@@ -49,6 +52,9 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.normal
+    - service: switch.turn_on
+      data:
+        entity_id: switch.watchtower, switch.watchtower_n54l
 
 
 

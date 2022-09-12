@@ -13,6 +13,9 @@
       to: 'off'
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
   condition:
     - condition: or
       conditions:

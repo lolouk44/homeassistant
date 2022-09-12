@@ -13,6 +13,9 @@
       to: 'on'
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
   condition:
     - condition: or
       conditions:
@@ -22,7 +25,7 @@
       - condition: template
         value_template: '{{ state_attr("light.living_room_main","brightness") | int < 250 }}'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_on_pir","last_triggered") | default(0)) | int > 10 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) | int > 10 }}'
     - condition: and
       conditions:
         - condition: state
@@ -107,8 +110,8 @@
     - platform: homeassistant
       event: start
   condition:
-    - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_dimmed_off_pir", "last_triggered") | default(0)) | int > 120 )}}'
+    # - condition: template
+    #   value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_dimmed_off_pir", "last_triggered") ) | int > 90 )}}'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
@@ -129,16 +132,16 @@
     data:
       entity_id: light.living_room_main
       brightness: 255
-  - delay: 00:00:02
-  - service: light.turn_off
-    data:
-      entity_id: light.living_room_main
+  - delay: 00:00:04
   - service: light.turn_off
     data:
       entity_id: light.living_room_main
   - service: switch.turn_off
     data:
       entity_id: switch.lwrf_socket_3
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_main
 
 
 
@@ -157,7 +160,7 @@
       to: 'on'
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_dimmed", "last_triggered") | default(0)) | int > 10 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) | int > 10 }}'
     - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'on'
@@ -184,8 +187,6 @@
       entity_id: media_player.panasonic_viera_tv
       to: 'off'
   condition:
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("media_player.panasonic_viera_tv","last_updated") | default(0)) | int > 5)}}'
     - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'off'

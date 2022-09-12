@@ -3,28 +3,51 @@
   initial_state: true
   trigger:
     - platform: time_pattern
-      # minutes: '/10'
-      seconds: '/30'
+      minutes: '/10'
+      #seconds: '/30'
+    - platform: template
+      value_template: '{{ state_attr("media_player.bedroom_nest_hub", "app_name") != "DashCast"}}'
   condition:
     - condition: template
       value_template: '{{now().hour >= 19 and now().hour < 24 }}'
     - condition: template
       value_template: '{{ states("person.laurent") == "home"}}'
     - condition: template
-      value_template: '{{ states("media_player.master_bedroom_nest_hub") != "playing" or state_attr("media_player.master_bedroom_nest_hub", "app_name") == "DashCast"}}'
+      value_template: '{{ states("media_player.bedroom_nest_hub") != "playing"}}'
+    - condition: template
+      value_template: '{{ state_attr("media_player.bedroom_nest_hub", "app_name") != "DashCast"}}'
   action:
     - service: media_player.turn_off
       data:
-        entity_id: media_player.master_bedroom_nest_hub
-    - wait_template: '{{ states("media_player.master_bedroom_nest_hub") == "off"}}'
-      timeout: '00:00:15'
+        entity_id: media_player.bedroom_nest_hub
+    - wait_template: '{{ states("media_player.bedroom_nest_hub") == "off"}}'
+      timeout: '00:00:05'
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.bedroom_nest_hub
+    - wait_template: '{{ states("media_player.bedroom_nest_hub") == "off"}}'
+      timeout: '00:00:05'
     - service: media_player.volume_set
       data:
-        entity_id: media_player.master_bedroom_nest_hub
+        entity_id: media_player.bedroom_nest_hub
         volume_level: 0
     - service: script.turn_on
       data:
         entity_id: script.nest_hub_start_cast
+
+- alias: Nest Hub - Stop Cast
+  id: nest_hub_stop_cast
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    hours: "0"
+    minutes: 0
+    seconds: 5
+  action:
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.bedroom_nest_hub
+
 
 
 - alias: Lights - Lolo Bedside Cabinet - off from Unavailable
