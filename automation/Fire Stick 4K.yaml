@@ -13,6 +13,9 @@
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'on'
     - condition: template
       value_template: >-
         {{
