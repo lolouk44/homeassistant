@@ -70,7 +70,7 @@
   - service: light.turn_on
     data:
       entity_id: light.conservatory
-      brightness: 11
+      brightness: 25
 
 
 - alias: Lights - Conservatory Lights Off PIR
