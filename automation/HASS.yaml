@@ -109,6 +109,20 @@
 #   - service: switch.turn_off
 #     entity_id: switch.cctv_staircase_status
 
+- alias: HASS - Nighlty Restart ESP Workbench
+  id: hass_nightly_restart_esp_workbench
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    hours: "0"
+    minutes: 0
+    seconds: 0
+  action:
+  - service: button.press
+    data: {}
+    target:
+      entity_id: button.restart_esp_workbench
+
 - alias: HASS - Nightly Restart
   id: hass_nightly_restart
   initial_state: true
