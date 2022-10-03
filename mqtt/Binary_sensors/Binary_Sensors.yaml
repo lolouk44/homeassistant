@@ -215,7 +215,7 @@
   
 - name: "Power BI Service Status"
   state_topic: "Sensors/powerbistatus"
-  value_template: "{{ value_json['serviceoutagestatus'] != 'good' }}"
+  value_template: "{{ value_json['serviceoutagestatus'] != 'good' and value_json['serviceoutagetext'] != 'Scrape Unavailable'}}"
   json_attributes_topic: "Sensors/powerbistatus"
   icon: mdi:web
   payload_on: true
@@ -223,7 +223,7 @@
   
 - name: "Power BI Awareness Status"
   state_topic: "Sensors/powerbistatus"
-  value_template: "{{ value_json['awarenessstatus'] != 'good' }}"
+  value_template: "{{ value_json['awarenessstatus'] != 'good'  and value_json['awarenesstext'] != 'Scrape Unavailable'}}"
   json_attributes_topic: "Sensors/powerbistatus"
   icon: mdi:web
   payload_on: true
