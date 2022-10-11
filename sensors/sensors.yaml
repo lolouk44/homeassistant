@@ -32,7 +32,7 @@
       friendly_name: Precipitation
       unit_of_measurement: "mm"
 
-- platform: uptime
+# - platform: uptime
 
 - platform: time_date
   display_options:
