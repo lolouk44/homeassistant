@@ -287,21 +287,3 @@
   - service: light.turn_off
     data:
       entity_id: light.porch_om_xmas_led_strip
-
-- alias: LED Strip - Turn Pooja Frame Off after 3h
-  id: led_strip_turn_pooja_frame_off_after_3h
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: light.pooja_frame
-      to: 'on'
-      for:
-        hours: 3
-  condition:
-    - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Normal'
-  action:
-  - service: light.turn_off
-    data:
-      entity_id: light.pooja_frame

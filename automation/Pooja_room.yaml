@@ -1,12 +1,12 @@
-- alias: Pooja - Turn Pooja Frame Off after 3h
-  id: pooja_turn_pooja_frame_off_after_3h
+- alias: Pooja - Turn Pooja Lights Off after 2h
+  id: pooja_turn_pooja_lights_off_after_2h
   initial_state: true
   trigger:
     - platform: state
       entity_id: light.pooja_frame
       to: 'on'
       for:
-        hours: 3
+        hours: 2
   condition:
     - condition: state
       entity_id: input_select.lights_mode
