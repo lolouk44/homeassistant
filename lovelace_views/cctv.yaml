@@ -15,7 +15,7 @@ cards:
         - entity: binary_sensor.front_cctv_motion
         - entity: binary_sensor.front_cctv_line_crossing
           icon: mdi:account-off
-        - entity: binary_sensor.front_person_motion
+        - entity: binary_sensor.front_person_occupancy
           icon: mdi:face-recognition
         - entity: binary_sensor.front_cctv_disk_full
         - entity: binary_sensor.front_cctv_disk_error
@@ -33,7 +33,7 @@ cards:
       entities:
         - entity: binary_sensor.pir_living_room_front
         - entity: binary_sensor.pir_living_room_back
-        - entity: binary_sensor.living_room_person_motion
+        - entity: binary_sensor.living_room_person_occupancy
           icon: mdi:face-recognition
         - entity: switch.living_room_detect
         - entity: switch.living_room_recordings
@@ -47,7 +47,7 @@ cards:
     - type: picture-glance
       entities:
         - entity: binary_sensor.pir_kitchen
-        - entity: binary_sensor.kitchen_person_motion
+        - entity: binary_sensor.kitchen_person_occupancy
           icon: mdi:face-recognition
         - entity: switch.kitchen_detect
         - entity: switch.kitchen_recordings
@@ -63,7 +63,7 @@ cards:
         - entity: binary_sensor.side_cctv_motion
         - entity: binary_sensor.side_cctv_line_crossing
           icon: mdi:account-off
-        - entity: binary_sensor.side_person_motion
+        - entity: binary_sensor.side_person_occupancy
           icon: mdi:face-recognition
         - entity: binary_sensor.side_cctv_disk_full
         - entity: binary_sensor.side_cctv_disk_error
@@ -80,7 +80,7 @@ cards:
     - type: picture-glance
       entities:
         - entity: binary_sensor.pir_conservatory
-        - entity: binary_sensor.conservatory_person_motion
+        - entity: binary_sensor.conservatory_person_occupancy
           icon: mdi:face-recognition
         - entity: switch.conservatory_detect
         - entity: switch.conservatory_recordings
@@ -94,7 +94,7 @@ cards:
     - type: picture-glance
       entities:
         - entity: binary_sensor.pir_garage
-        - entity: binary_sensor.garage_person_motion
+        - entity: binary_sensor.garage_person_occupancy
           icon: mdi:face-recognition
         - entity: switch.garage_detect
         - entity: switch.garage_recordings
@@ -135,7 +135,7 @@ cards:
         - entity: binary_sensor.back_cctv_motion
         - entity: binary_sensor.back_cctv_line_crossing
           icon: mdi:account-off
-        - entity: binary_sensor.back_person_motion
+        - entity: binary_sensor.back_person_occupancy
           icon: mdi:face-recognition
         - entity: binary_sensor.back_cctv_disk_full
         - entity: binary_sensor.back_cctv_disk_error
