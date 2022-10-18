@@ -156,6 +156,9 @@
       data_template:
         title: "HA - Conservatory Door Left Unlocked At Night"
         message: "The Conservatory Door Has Been Left Unlocked"
+    - service: automation.turn_off
+      data:
+        entity_id: automation.nest_hub_start_cast
     - service: media_player.volume_up
       data:
         entity_id: media_player.bedroom_nest_hub
@@ -163,6 +166,19 @@
       entity_id: media_player.bedroom_nest_hub
       data_template:
         message: "Please Note: The Conservatory Door Has Been Left Unlocked"
+    - wait_template: '{{ states("media_player.bedroom_nest_hub") != "playing"}}'
+      timeout: '00:00:15'
+    - service: automation.turn_off
+      data:
+        entity_id: automation.nest_hub_start_cast
+    - service: script.turn_on
+      data:
+        entity_id: script.nest_hub_start_cast
+    - wait_template: '{{ state_attr("media_player.bedroom_nest_hub", "app_name") == "DashCast"}}'
+      timeout: '00:00:15'
+    - service: automation.turn_on
+      data:
+        entity_id: automation.nest_hub_start_cast
 
 
 
