@@ -43,6 +43,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Kerui J008 Strobe Sirens in Yale Dummy Box
 - Kerui RC531 Remote Control
 - LightWaveRF Light Switches & Sockets
+- Linkind ZL1000400-CCT-UK-2-V1A02 Zigbee E14 LED bulb
 - Nest V3 Thermostat
 - Onkyo TX-NR656 AV Amplifier
 - Panasonic TX58DX700 TV
@@ -70,7 +71,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Mijia Honeywell Fire Alarm Detector
 - Xiaomi Mijia Enhanced Version Dual USB WiFi Smart Socket
 - Xiaomi Mijia Zigbee Smart Socket
-- Xiaomi Philips Zhirui Candle Light
+- ~~Xiaomi Philips Zhirui Candle Light~~
 - ~~Xiaomi Router R3P Pro~~
 - Xiaomi XiaoFang Camera with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 - Yale Conexis L1 Smart Lock

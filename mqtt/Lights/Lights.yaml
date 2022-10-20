@@ -92,3 +92,15 @@
   payload_available: "Online"
   payload_not_available: "Offline"
   retain: false
+
+- name: "Lolo Bedside Light"
+  schema: json
+  state_topic: "zigbee2mqtt/lolo_bedside_light"
+  command_topic: "zigbee2mqtt/lolo_bedside_light/set"
+  brightness: true
+  color_mode: true
+  supported_color_modes: [color_temp]
+  effect: true
+  effect_list: [blink, breathe, okay, channel_change, finish_effect, stop_effect]
+  qos: 0
+  optimistic: false
