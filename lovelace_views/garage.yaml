@@ -39,6 +39,9 @@ cards:
         secondary_info: last-changed
       - entity: input_boolean.xiaomi_switch_charging
         secondary_info: last-changed
+      - entity: switch.sonoff_s26_6a
+        secondary_info: last-changed
+        icon: mdi:power-plug
   - type: entities
     title: Garage WLED
     state_color: true
