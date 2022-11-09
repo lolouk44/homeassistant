@@ -55,22 +55,23 @@ cards:
         - entity: light.house_number
           secondary_info: last-changed
           icon: mdi:numeric-4-box-multiple-outline
-
-
-  - type: custom:stack-in-card
-    cards:
-    - type: picture-glance
+  - type: conditional
+    conditions:
+      - entity: input_select.lights_mode
+        state: 'Halloween'
+        show_empty: false
+    card:
+      type: entities
+      title: Entrance Lights
+      state_color: true
       entities:
-        - entity: binary_sensor.doorbell_person_detector_sensor
-          icon: mdi:face-recognition
-      camera_image: camera.doorbell_last_ring
-    - type: entities
-      title: Doorbell
-      show_header_toggle: false
-      entities:
-        - entity: binary_sensor.doorbell_ringing_sensor
+        - entity: light.hallway
           secondary_info: last-changed
-          icon: mdi:bell-circle-outline
+        - entity: light.aqara_gateway_light
+          secondary_info: last-changed
+        - entity: light.house_number
+          secondary_info: last-changed
+          icon: mdi:numeric-4-box-multiple-outline
 
 
 
@@ -116,6 +117,66 @@ cards:
           secondary_info: last-changed
           icon: mdi:snowman
           name: Snowman LED Strip
+
+  - type: conditional
+    conditions:
+      - entity: input_select.lights_mode
+        state: 'Diwali'
+        show_empty: false
+    card:
+      type: entities
+      state_color: true
+      title: Entrance Lights
+      entities:
+        - entity: light.hallway
+          secondary_info: last-changed
+        - entity: light.aqara_gateway_light
+          secondary_info: last-changed
+        - entity: light.house_number
+          secondary_info: last-changed
+          icon: mdi:numeric-4-box-multiple-outline
+        - entity: light.porch_om_xmas_led_strip
+          secondary_info: last-changed
+          icon: mdi:om
+          name: Snowman LED Strip
+
+  - type: conditional
+    conditions:
+      - entity: input_select.lights_mode
+        state: 'Xmas'
+        show_empty: false
+    card:
+      type: entities
+      state_color: true
+      title: Entrance Lights
+      entities:
+        - entity: light.hallway
+          secondary_info: last-changed
+        - entity: light.aqara_gateway_light
+          secondary_info: last-changed
+        - entity: light.house_number
+          secondary_info: last-changed
+          icon: mdi:numeric-4-box-multiple-outline
+        - entity: light.porch_om_xmas_led_strip
+          secondary_info: last-changed
+          icon: mdi:snowman
+          name: Snowman LED Strip
+
+
+  - type: custom:stack-in-card
+    cards:
+    - type: picture-glance
+      entities:
+        - entity: binary_sensor.doorbell_person_detector_sensor
+          icon: mdi:face-recognition
+      camera_image: camera.doorbell_last_ring
+    - type: entities
+      title: Doorbell
+      show_header_toggle: false
+      entities:
+        - entity: binary_sensor.doorbell_ringing_sensor
+          secondary_info: last-changed
+          icon: mdi:bell-circle-outline
 
   - type: custom:stack-in-card
     mode: vertical

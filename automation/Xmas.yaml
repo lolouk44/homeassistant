@@ -14,15 +14,17 @@
       entity_id: input_select.lights_mode
       to: 'Xmas'
     - platform: state
+      entity_id: input_select.lights_mode
+      to: 'Diwali'
+    - platform: state
       entity_id: sun.sun
       to: 'below_horizon'
     - platform: state
       entity_id: binary_sensor.photoresistor
       to: 'off'
   condition:
-    - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Xmas'
+    - condition: template
+      value_template: '{{ states("input_select.lights_mode") in ["Diwali", "Xmas"] }}'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
@@ -67,9 +69,6 @@
       for:
         minutes: 2
   condition:
-    - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Xmas'
     - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
@@ -217,9 +216,8 @@
     - condition: state
       entity_id: light.wled_conservatory
       state: 'on'
-    - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Xmas'
+    - condition: template
+      value_template: '{{ states("input_select.lights_mode") in ["Diwali", "Xmas"] }}'
   action:
   - service: light.turn_on
     data:
@@ -240,9 +238,8 @@
       state: 'below_horizon'
     - condition: time
       after: '15:00'
-    - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Xmas'
+    - condition: template
+      value_template: '{{ states("input_select.lights_mode") in ["Diwali", "Xmas"] }}'
   action:
   - service: light.turn_on
     data:

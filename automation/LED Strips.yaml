@@ -10,9 +10,6 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Normal'
-    - condition: state
       entity_id: input_boolean.normal
       state: 'on'
   action:
@@ -24,14 +21,14 @@
   - service: switch.turn_on
     data:
       entity_id: switch.lwrf_socket_3
-  - service: light.turn_on
-    data:
-      entity_id: light.tv_cabinet_led_strip
-      brightness: 255
-      rgb_color: [0,255,0]
-  - service: switch.turn_on
-    data:
-      entity_id: switch.lwrf_socket_3
+  # - service: light.turn_on
+    # data:
+      # entity_id: light.tv_cabinet_led_strip
+      # brightness: 255
+      # rgb_color: [0,255,0]
+  # - service: switch.turn_on
+    # data:
+      # entity_id: switch.lwrf_socket_3
 
 
 
@@ -116,9 +113,6 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Normal'
-    - condition: state
       entity_id: media_player.panasonic_viera_tv
       state: 'off'
     - condition: state
@@ -137,10 +131,10 @@
   - service: switch.turn_off
     data:
       entity_id: switch.lwrf_socket_3
-  - delay: 00:00:01
-  - service: switch.turn_off
-    data:
-      entity_id: switch.lwrf_socket_3
+  # - delay: 00:00:01
+  # - service: switch.turn_off
+    # data:
+      # entity_id: switch.lwrf_socket_3
 
 
 
@@ -165,8 +159,8 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: input_boolean.normal
-        state: 'on'
+        entity_id: input_select.lights_mode
+        state: 'Normal'
       - condition: state
         entity_id: input_boolean.movies
         state: 'on'
@@ -180,9 +174,8 @@
       brightness: 255
       rgb_color: [0,128,255]
       transition: 1
-  - condition: state
-    entity_id: input_select.lights_mode
-    state: 'Xmas'
+  - condition: template
+    value_template: '{{ states("input_select.lights_mode") in ["Diwali", "Xmas"] }}'
   - service: light.turn_on
     data:
       entity_id: light.staircase_led_strip
@@ -239,26 +232,34 @@
     - condition: time
       after: '15:00'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.house_number
-      brightness: 255
-      effect: None
-      rgb_color: [0,0,255]
-  - condition: state
-    entity_id: input_select.lights_mode
-    state: 'Xmas'
-  - service: light.turn_on
-    data:
-      entity_id: light.porch_om_xmas_led_strip
-      brightness: 50
-      effect: rainbow
-  - service: light.turn_on
-    data:
-      entity_id: light.house_number
-      brightness: 255
-      effect: Rainbow
-      rgb_color: [0,0,255]
+    - service: light.turn_on
+      data:
+        entity_id: light.house_number
+        brightness: 255
+        effect: None
+        rgb_color: [0,0,255]
+    - condition: template
+      value_template: >
+        {%- set pirs = [
+              states.binary_sensor.pir_conservatory,
+              states.binary_sensor.pir_kitchen,
+              states.binary_sensor.pir_living_room_front,
+              states.binary_sensor.pir_living_room_back,
+              states.binary_sensor.pir_staircase] -%}
+        {%- set pirs_on = pirs | selectattr('state','eq','on') | list -%}
+        {{ ((pirs_on | length) | int ) > 1}}
+    - condition: template
+      value_template: '{{ states("input_select.lights_mode") in ["Diwali", "Xmas"] }}'
+    - service: light.turn_on
+      data:
+        entity_id: light.porch_om_xmas_led_strip
+        brightness: 50
+        effect: rainbow
+    - service: light.turn_on
+      data:
+        entity_id: light.house_number
+        brightness: 255
+        effect: Rainbow
 
 - alias: LED Strip - House Number Off
   id: led_strip_house_number_off
