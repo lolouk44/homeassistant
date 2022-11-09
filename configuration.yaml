@@ -64,6 +64,8 @@ alarm_control_panel:
 apcupsd:
   host: 192.168.9.23
 
+# bluetooth:
+
 # climate:
 #   - platform: mqtt
 #     name: Anova
@@ -345,6 +347,9 @@ tts:
 
 # updater:
 #   include_used_components: True
+twilio:
+  account_sid: !secret twillio_account_sid
+  auth_token: !secret twillio_auth_token
 
 var:
   printer_pages_at_month_start:
