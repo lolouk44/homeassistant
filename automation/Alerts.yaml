@@ -7,9 +7,9 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated) | int > 3600 )}}'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_humidity.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_humidity.last_updated) | int > 3600 )}}'
     - condition: state
       entity_id: alert.upstairs_temp_sensor_lost
       state: 'idle'
@@ -44,9 +44,9 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.loft_temperature.last_updated) | int > 3600 )}}'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.loft_humidity.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.loft_humidity.last_updated) | int > 3600 )}}'
     - condition: state
       entity_id: alert.outside_temp_sensor_lost
       state: 'idle'
@@ -81,7 +81,7 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.ram_usage.last_updated | default(0)) | int > 300 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.ram_usage.last_updated) | int > 300 )}}'
     - condition: state
       entity_id: alert.ram_lost_on
       state: 'idle'
@@ -114,7 +114,7 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.fire7_battery.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.fire7_battery.last_updated) | int > 3600 )}}'
     - condition: state
       entity_id: alert.fire7_lost
       state: 'idle'
@@ -122,7 +122,7 @@
     - service: shell_command.fire7_reload_url
     - delay: "00:01:00"
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.fire7_battery.last_updated | default(0)) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.fire7_battery.last_updated) | int > 3600 )}}'
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_lost_fire7_at_300
 
@@ -151,7 +151,7 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.rpi_kitchen_heartbeat.last_updated | default(0)) | int > 300 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.rpi_kitchen_heartbeat.last_updated) | int > 300 )}}'
     - condition: state
       entity_id: alert.rpi_kitchen_lost
       state: 'idle'
@@ -184,7 +184,7 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.rpi_heartbeat.last_updated | default(0)) | int > 300 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.rpi_heartbeat.last_updated) | int > 300 )}}'
     - condition: state
       entity_id: alert.rpi_lost
       state: 'idle'

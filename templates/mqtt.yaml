@@ -31,7 +31,7 @@
       device_class: window
 
     - name: "Lost ZigBee devices"
-      state: '{{ states("sensor.lost_zigbee_devices_count") | int  > 0 }}'
+      state: '{{ states("sensor.lost_zigbee_devices_count") | int(0)  > 0 }}'
       icon: 'mdi:zigbee'
 
     - name: radio_is_streaming
@@ -127,6 +127,3 @@
         {%else%}http://192.168.9.23:8123/local/Select_Radio.png
         {%endif%}
       icon: 'mdi:account'
-
-    - name: "Fire7 Password"
-      state: !secret fire7password

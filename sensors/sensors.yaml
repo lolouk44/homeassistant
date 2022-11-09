@@ -64,5 +64,5 @@
 - platform: template
   sensors:
     pages_left:
-      value_template: "{{ states('var.printer_pages_at_month_start')|int - states('sensor.hp_printer_printer')|int + 50}}"
+      value_template: "{{ states('var.printer_pages_at_month_start')|int(0) - states('sensor.hp_printer_printer')|int(0) + 50}}"
       unit_of_measurement: Pages

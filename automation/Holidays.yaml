@@ -10,9 +10,9 @@
       from: "home"
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.holiday_start", "timestamp") | default(0)) | int > 0)}}'
+      value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.holiday_start", "timestamp")) | int > 0)}}'
     - condition: template
-      value_template: '{{ ((state_attr("input_datetime.holiday_end", "timestamp") | default(0)) | int) - as_timestamp(now()) > 0 }}'
+      value_template: '{{ ((state_attr("input_datetime.holiday_end", "timestamp")) | int) - as_timestamp(now()) > 0 }}'
     - condition: template
       value_template: '{{ states("person.laurent") != "home"}}'
     - condition: template
@@ -38,16 +38,16 @@
       entity_id: person.div
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.holiday_end", "timestamp") | default(0)) | int > 0)}}'
+      value_template: '{{ (as_timestamp(now()) -(state_attr("input_datetime.holiday_end", "timestamp")) | int > 0)}}'
     - condition: state
       entity_id: 'input_boolean.holidays'
       state: "on"
     - condition: or
       conditions:
       - condition: template
-        value_template: '{{ distance(states.person.laurent) | int  < 3}}'
+        value_template: '{{ distance(states.person.laurent) | int(4)  < 3}}'
       - condition: template
-        value_template: '{{ distance(states.person.div) | int  < 3}}'
+        value_template: '{{ distance(states.person.div) | int(4)  < 3}}'
   action:
     - service: input_boolean.turn_on
       data:

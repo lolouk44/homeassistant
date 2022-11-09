@@ -9,9 +9,9 @@
       entity_id: person.div
       to: 'home'
     - platform: template
-      value_template: '{{ distance(states.person.laurent) | float < 0.05}}'
+      value_template: '{{ distance(states.person.laurent) | float(1) < 0.05}}'
     - platform: template
-      value_template: '{{ distance(states.person.div) | float < 0.05}}'
+      value_template: '{{ distance(states.person.div) | float(1) < 0.05}}'
   condition:
     - condition: template
       value_template: '{{ states("alarm_control_panel.alarm") == "disarmed" }}'

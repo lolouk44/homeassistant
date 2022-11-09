@@ -6,7 +6,7 @@
       entity_id: sensor.edimax1_watts
   condition:
     - condition: template
-      value_template: '{{ states("sensor.edimax1_watts") | float  <= 0.1 }}'
+      value_template: '{{ states("sensor.edimax1_watts") | float(0)  <= 0.1 }}'
     - condition: template
       value_template: '{{states("sensor.uptime") | float > 0.03}}'
     - condition: state
@@ -15,7 +15,7 @@
   action:
     - delay: '0:10:00'
     - condition: template
-      value_template: '{{ states("sensor.edimax1_watts") | float  <= 0.1 }}'
+      value_template: '{{ states("sensor.edimax1_watts") | float(0)  <= 0.1 }}'
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.edimax_charging
@@ -83,22 +83,22 @@
       entity_id: sensor.xiaomi_garage_socket_watts
   condition:
     - condition: template
-      value_template: '{{ states("sensor.xiaomi_garage_socket_watts") | float  <= 0.1 }}'
+      value_template: '{{ states("sensor.xiaomi_garage_socket_watts") | float(0)  <= 0.1 }}'
     - condition: template
       value_template: '{{states("sensor.uptime") | float > 0.03}}'
     - condition: state
       entity_id: input_boolean.xiaomi_switch_charging
       state: 'on'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.input_boolean.xiaomi_switch_charging.last_changed | default(0)) | int  > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.input_boolean.xiaomi_switch_charging.last_changed) | int  > 60)}}'
   action:
     - delay: '0:10:00'
     - condition: template
-      value_template: '{{ states("sensor.xiaomi_garage_socket_watts") | float  <= 0.1 }}'
+      value_template: '{{ states("sensor.xiaomi_garage_socket_watts") | float(0)  <= 0.1 }}'
     - service: notify.gmaillolo
       data_template:
         title: "HA - Xiaomi Battery Charged"
-        message: 'The battery on the Xiaomi switch is charged. Charging time: {{ (as_timestamp(now()) - as_timestamp(states.input_boolean.xiaomi_switch_charging.last_changed | default(0)) | int ) | timestamp_custom("%Hh %Mm", true)}}.'
+        message: 'The battery on the Xiaomi switch is charged. Charging time: {{ (as_timestamp(now()) - as_timestamp(states.input_boolean.xiaomi_switch_charging.last_changed) | int ) | timestamp_custom("%Hh %Mm", true)}}.'
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.xiaomi_switch_charging
@@ -139,7 +139,7 @@
       entity_id: input_boolean.xiaomi_switch_charging
       state: 'off'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.socket_xiaomi_automatic_battery_charging.attributes.last_triggered | default(0)) | int  > 300)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.socket_xiaomi_automatic_battery_charging.attributes.last_triggered) | int  > 300)}}'
   action:
     - service: input_boolean.turn_on
       data:
@@ -161,9 +161,9 @@
         - wed
         - thu
     - condition: template
-      value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].precipitation|float|round ) < 1}}"
+      value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].precipitation|float(0)|round ) < 1}}"
     - condition: template
-      value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].templow | float > 4 ) }}"
+      value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].templow | float(0) > 4 ) }}"
   action:
     - service: input_boolean.turn_on
       data:

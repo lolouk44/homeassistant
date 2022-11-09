@@ -11,7 +11,7 @@
   action:
     service: notify.gmaildiv
     data_template:
-      message: 'Lolo left work. Estimated arrival time: {%if states("device_tracker.220d") == "verint" %} {{(as_timestamp(now()) + (states("sensor.lolo_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}}  (by car) {% else %} {{(as_timestamp(now()) + 40 * 60) | timestamp_custom("%H:%M")}} (by bike){% endif %}'
+      message: 'Lolo left work. Estimated arrival time: {%if states("device_tracker.220d") == "verint" %} {{(as_timestamp(now()) + (states("sensor.lolo_to_home") | int)*60) | timestamp_custom("%H:%M")}}  (by car) {% else %} {{(as_timestamp(now()) + 40 * 60) | timestamp_custom("%H:%M")}} (by bike){% endif %}'
 
 
 
@@ -45,7 +45,7 @@
     - service: notify.gmaillolo
       data_template:
         title: "HA - Location Update"
-        message: 'Div left work. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}})'
+        message: 'Div left work. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | int)*60) | timestamp_custom("%H:%M")}})'
 
 
 - alias: Presence - Tell Lolo Div left yoga
@@ -65,7 +65,7 @@
     - service: notify.gmaillolo
       data_template:
         title: "HA - Location Update"
-        message: 'Div left yoga. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | default(0) | int)*60) | timestamp_custom("%H:%M")}})'
+        message: 'Div left yoga. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | int)*60) | timestamp_custom("%H:%M")}})'
 
 - alias: Presence - Switch everything off when we leave home
   id: presence_switch_everything_off_when_we_leave_home
@@ -127,7 +127,7 @@
     - condition: template
       value_template: '{{ states("sensor.lolo_to_home") |int(0) >= 65 }}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.presence_tell_lolo_of_a_long_drive_home", "last_triggered") | default(0)) | int > 3600)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.presence_tell_lolo_of_a_long_drive_home", "last_triggered")) | int > 3600)}}'
     - condition: template
       value_template: '{{ states("person.laurent") == "Verint"}}'
   action:

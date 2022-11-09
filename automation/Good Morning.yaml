@@ -17,7 +17,7 @@
       state: 'on'
     - condition: template
       # Only run if more than 6 hours (21,600 sec) since it last ran 
-      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.play_good_morning", "last_triggered") | default(0)) | int > 21600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.play_good_morning", "last_triggered")) | int > 21600 )}}'
   action:
     - condition: state
       entity_id: input_boolean.silent
@@ -44,6 +44,6 @@
           at {{(states('sensor.dark_sky_wind_speed_0')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0')|int*3.6)|round}} km/h.
           Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|round}} millimeters.
           {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states('sensor.home_to_work')}} minutes.{% endif %}
-          {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.start_vacuuming", "last_triggered") | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
+          {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.start_vacuuming", "last_triggered")) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
           {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays__events", "all_day") != True %} Your next appointment is: {{state_attr("calendar.birthdays_events", "message")}} at {{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[0]}} {%if (state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1] != '00'%}{{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
           {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") == True %} Today is : {{state_attr("calendar.birthdays__events", "message")|replace("/","and")}}{%endif%}

@@ -7,9 +7,9 @@
       to: 'off'
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_open_when_not_dark", "last_triggered") | default(0)) | int > 300)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_open_when_not_dark", "last_triggered")) | int > 300)}}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.lights_all_lights_off_sunrise", "last_triggered") | default(0)) | int > 300)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.lights_all_lights_off_sunrise", "last_triggered")) | int > 300)}}'
     - condition: template
       value_template: '{{ states("cover.kitchen_blinds") != "open" and states("cover.livingroom_blinds") != "open" }}'
     - condition: or
@@ -49,7 +49,7 @@
         seconds: 30
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_open_when_not_dark", "last_triggered") | default(0)) | int > 5)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_open_when_not_dark", "last_triggered")) | int > 5)}}'
     - condition: or
       conditions:
       - condition: state
@@ -112,7 +112,7 @@
       entity_id: cover.livingroom_blinds
       state: 'open'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_close_living_room_if_too_hot_outside", "last_triggered") | default(0)) | int > 7200)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_close_living_room_if_too_hot_outside", "last_triggered")) | int > 7200)}}'
     - condition: template
       value_template: "{{states('weather.dark_sky') == 'sunny' or states('weather.dark_sky') == 'partlycloudy'}}"
     - condition: template

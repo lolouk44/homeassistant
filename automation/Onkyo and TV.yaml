@@ -10,9 +10,9 @@
       entity_id: input_boolean.normal
       state: 'on'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.doorbell_doorbell_notification", "last_triggered") | default(0)) | int > 30)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.doorbell_doorbell_notification", "last_triggered")) | int > 30)}}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.hass_start_sound", "last_triggered") | default(0)) | int > 30)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.hass_start_sound", "last_triggered")) | int > 30)}}'
   action:
   - service: media_player.turn_on
     entity_id: media_player.onkyo_tx_nr656
@@ -26,13 +26,11 @@
   initial_state: true
   trigger:
   - platform: template
-    value_template: '{{ state_attr("media_player.panasonic_viera_tv", "volume_level") | float * 100 > 1 }}'
+    value_template: '{{ state_attr("media_player.panasonic_viera_tv", "volume_level") | float(0) * 100 > 1 }}'
   condition:
     - condition: state
       entity_id: input_boolean.normal
       state: 'on' 
-    # - condition: template
-    #   value_template: '{{ state_attr("media_player.panasonic_viera_tv", "volume_level") | float * 100 > 1}}'
     - condition: state
       entity_id: media_player.onkyo_tx_nr656
       state: 'on'

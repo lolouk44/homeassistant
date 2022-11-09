@@ -18,12 +18,12 @@
       entity_id: media_player.panasonic_viera_tv
       state: 'unavailable'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("media_player.panasonic_viera_tv","last_updated") | default(0)) | int > 120)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("media_player.panasonic_viera_tv","last_updated")) | int > 120)}}'
     - condition: state
       entity_id: group.pirs
       state: 'off'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("group.pirs","last_updated") | default(0)) | int > 120)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("group.pirs","last_updated")) | int > 120)}}'
     - condition: state
       entity_id: input_boolean.normal
       state: "on"
@@ -63,7 +63,7 @@
       to: 'Status: Error'
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_error_stop", "last_triggered") | default(0)) | int > 1800)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_error_stop", "last_triggered")) | int > 1800)}}'
   action:
     - service: vacuum.start
       data:
@@ -80,7 +80,7 @@
       to: 'Status: Error'
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_error_continue", "last_triggered") | default(0)) | int < 1800)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_error_continue", "last_triggered")) | int < 1800)}}'
   action:
     - delay:
         seconds: 59

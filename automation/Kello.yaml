@@ -136,7 +136,7 @@
         action: build_greeting
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_build_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_build_weather_greeting_ifttt", "last_triggered")) | int > 30)}}'
   action:
   - service: tts.google_say
     data_template:
@@ -158,9 +158,9 @@
         {% set winddir = ['North', 'North East','East','South East','South','South West','West','North West']%}
         {{ winddir[winbearing]}}
         at {{(states('sensor.dark_sky_wind_speed_0d')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0d')|int*3.6)|round}} km/h.
-        Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|float|round}} millimeters.
+        Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|float(0)|round}} millimeters.
         {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states('sensor.home_to_work')}} minutes.{% endif %}
-        {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_start_vacuuming", "last_triggered") | default(0)) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
+        {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_start_vacuuming", "last_triggered")) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") != True %} Your next appointment is: {{state_attr("calendar.birthdays_events", "message")}} at {{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[0]}} {%if (state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1] != '00'%}{{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
         {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") == True %} Today is : {{state_attr("calendar.birthdays_events", "message")|replace("/","and")}}{%endif%}
   - delay: 00:00:05
@@ -180,7 +180,7 @@
         action: play_greeting
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_play_weather_greeting_ifttt", "last_triggered") | default(0)) | int > 30)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_play_weather_greeting_ifttt", "last_triggered")) | int > 30)}}'
   action:
   - service: mqtt.publish
     data:

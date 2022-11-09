@@ -65,5 +65,5 @@
 
     xiaomi_last_clean:
       value_template: >
-        Last Clean: {{ as_timestamp(state_attr("vacuum.roborock_vacuum","clean_stop"))|timestamp_custom('%d %h %y, %H:%M',true)}}
+        Last Clean: {{ state_attr("vacuum.roborock_vacuum","clean_stop") | as_timestamp(0) | timestamp_custom('%d %h %y, %H:%M',True)}}
       friendly_name: Last Clean

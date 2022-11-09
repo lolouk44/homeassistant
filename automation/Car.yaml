@@ -9,7 +9,7 @@
     - service: button.press
       target:
         entity_id: button.220d_refresh_from_cloud
-    - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
+    - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated) | int > 300 )}}'
       timeout: '00:06:00'
       continue_on_timeout: true
     - condition: template
@@ -59,7 +59,7 @@
     - service: button.press
       target:
         entity_id: button.220d_refresh_from_cloud
-    - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated | default(0)) | int > 300 )}}'
+    - wait_template: '{{(as_timestamp(now()) - as_timestamp(states.device_tracker["220d"].last_updated) | int > 300 )}}'
       timeout: '00:06:00'
       continue_on_timeout: true
     - condition: template
@@ -149,7 +149,7 @@
     - platform: homeassistant
       event: start
   action:
-    - wait_template: '{{ states("sensor.astra_car_battery_voltage") | float >= 14 }}'
+    - wait_template: '{{ states("sensor.astra_car_battery_voltage") | float(0) >= 14 }}'
       timeout: '00:00:30'
       continue_on_timeout: true
     - service: '{% if states("binary_sensor.astra_car_battery_network_status") == "on" %}switch.turn_off{% else %}switch.turn_on{% endif %}'
@@ -166,7 +166,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | int > 60)}}'
     - condition: template
-      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") != "unknown" and states("sensor.astra_car_battery_voltage") | float < 11.7}}'
+      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") != "unknown" and states("sensor.astra_car_battery_voltage") | float(0) < 11.7}}'
   action:
     - service: notify.gmaillolo
       data_template:
