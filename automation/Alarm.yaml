@@ -77,63 +77,82 @@
       entity_id: alarm_control_panel.alarm
       to: 'triggered'
   action:
-    - service: xiaomi_aqara.play_ringtone
-      data:
-        gw_mac: 7811dcdae94a
-        ringtone_id: 2
-        ringtone_vol: 100
-    # play alert, 0.9 on onkyo, 1 on conservatory, google minis
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.google_home_minis
-        volume_level: 0.9
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.google_home_minis
-        media_content_id: 'http://192.168.9.23:8123/local/sounds/Alarm-Intrusion.mp3'
-        media_content_type: 'audio/mp3'
-    - service: switch.turn_off
-      data:
-        entity_id: switch.kerui_alarm
-    - service: switch.turn_off
-      data:
-        entity_id: switch.kerui_alarm
-    - service: camera.snapshot
-      data:
-        entity_id: camera.fire7
-        filename: '/config/www/CCTV_Snapshots/Fire7.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.front
-        filename: '/config/www/CCTV_Snapshots/Front.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.side
-        filename: '/config/www/CCTV_Snapshots/Side.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.back
-        filename: '/config/www/CCTV_Snapshots/Back.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.kitchen
-        filename: '/config/www/CCTV_Snapshots/Kitchen.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.living_room
-        filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.conservatory
-        filename: '/config/www/CCTV_Snapshots/Conservatory.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.garage
-        filename: '/config/www/CCTV_Snapshots/Garage.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.doorbell
-        filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
+    - parallel:
+      - service: xiaomi_aqara.play_ringtone
+        data:
+          gw_mac: 7811dcdae94a
+          ringtone_id: 2
+          ringtone_vol: 100
+      # play alert, 0.9 on onkyo, 1 on conservatory, google minis
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.google_home_minis
+          volume_level: 0.9
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.google_home_minis
+          media_content_id: 'http://192.168.9.23:8123/local/sounds/Alarm-Intrusion.mp3'
+          media_content_type: 'audio/mp3'
+      - service: switch.turn_off
+        data:
+          entity_id: switch.kerui_alarm
+      - service: switch.turn_off
+        data:
+          entity_id: switch.kerui_alarm
+      - service: camera.snapshot
+        data:
+          entity_id: camera.fire7
+          filename: '/config/www/CCTV_Snapshots/Fire7.jpg'
+      - service: camera.snapshot
+        data:
+          entity_id: camera.front
+          filename: '/config/www/CCTV_Snapshots/Front.jpg'
+      - service: camera.snapshot
+        data:
+          entity_id: camera.side
+          filename: '/config/www/CCTV_Snapshots/Side.jpg'
+      - service: camera.snapshot
+        data:
+          entity_id: camera.back
+          filename: '/config/www/CCTV_Snapshots/Back.jpg'
+      - service: camera.snapshot
+        data:
+          entity_id: camera.kitchen
+          filename: '/config/www/CCTV_Snapshots/Kitchen.jpg'
+      - service: camera.snapshot
+        data:
+          entity_id: camera.living_room
+          filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
+      - service: camera.snapshot
+        data:
+          entity_id: camera.conservatory
+          filename: '/config/www/CCTV_Snapshots/Conservatory.jpg'
+      - service: camera.snapshot
+        data:
+          entity_id: camera.garage
+          filename: '/config/www/CCTV_Snapshots/Garage.jpg'
+      - service: camera.snapshot
+        data:
+          entity_id: camera.doorbell
+          filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
+      - service: script.turn_on
+        data:
+          entity_id: script.alarm_flash_ligthts
+    - parallel:
+      - service: notify.twillio_lolo
+        data_template:
+          target: '{{states("sensor.twillio_lolo_number")}}'
+          title: "HA - Alarm Triggered !"
+          message: >
+            ALARM! ALARM! ALARM! The alarm has been triggered ! Please check your email for CCTV Pictures.
+            The alarm has been triggered ! Please check your email for CCTV Pictures.
+      - service: notify.twillio_lolo
+        data_template:
+          target: '{{states("sensor.twillio_div_number")}}'
+          title: "HA - Alarm Triggered !"
+          message: >
+            ALARM! ALARM! ALARM! The alarm has been triggered ! Please check your email for CCTV Pictures.
+            The alarm has been triggered ! Please check your email for CCTV Pictures.
     - service: notify.gmaillolo
       data_template:
         title: "HA - Alarm Triggered !"
@@ -181,72 +200,15 @@
             - /config/www/CCTV_Snapshots/Garage.jpg
             - /config/www/CCTV_Snapshots/Doorbell.jpg
     - service: notify.mobile_app_lolo_iphone
-      # data_template:
-      #   title: "Alarm Triggered !"
-      #   message: >
-      #     ALARM! The alarm has been triggered !(
-      #     ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
-      #     {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
-      #     {%- endfor -%}
-      #     {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
-      #     {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
-      #     {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
-      #     {%- endfor %})
-      #   data:
-      #     push:
-      #       badge: '{{states("counter.iosbadgecount")}}'
-      #       category: "alarm"
-      #       sound:
-      #         name: default
-      #         critical: 1
-      #         volume: 1.0
-      #     attachment:
-      #       url: !secret url_cctv_living_room
-      #     action_data:
-      #       entity_id: '{{trigger.entity_id}}'
       data:
         message: "Alarm Triggered !"
         data:
           image: '{{states("input_text.base_url")}}/local/Alarm_Icon.png'
-          # actions:
-          #   - action: "SILENCE_ALARM"
-          #     title: "Silence Alarm"
-          #     destructive: yes
     - service: notify.mobile_app_div_iphone
-      # data_template:
-      #   title: "Alarm Triggered !"
-      #   message: >
-      #     ALARM! The alarm has been triggered !(
-      #     ({% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
-      #     {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
-      #     {%- endfor -%}
-      #     {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
-      #     {% for mypirs in state_attr("group.pirs","entity_id")|list  -%}
-      #     {% if is_state(mypirs ,"on") %}{{state_attr(mypirs , "friendly_name")}}, {% endif %}
-      #     {%- endfor %})
-      #   data:
-      #     push:
-      #       badge: '{{states("counter.iosbadgecount")}}'
-      #       category: "alarm"
-      #       sound:
-      #         name: default
-      #         critical: 1
-      #         volume: 1.0
-      #     attachment:
-      #       url: !secret url_cctv_living_room
-      #     action_data:
-      #       entity_id: '{{trigger.entity_id}}'
       data:
         message: "Alarm Triggered !"
         data:
           image: '{{states("input_text.base_url")}}/local/Alarm_Icon.png'
-          # actions:
-          #   - action: "SILENCE_ALARM"
-          #     title: "Silence Alarm"
-          #     destructive: yes
-    - service: script.turn_on
-      data:
-        entity_id: script.alarm_flash_ligthts
     - wait_template: '{{ states("alarm_control_panel.alarm").split("_")[0] != "triggered"}}'
       timeout: '00:15:00'
     - service: media_player.media_stop
@@ -481,65 +443,71 @@
         - binary_sensor.first_floor_smoke_detector
       to: 'on'
   action:
-    - service: camera.snapshot
-      data:
-        entity_id: camera.fire7
-        filename: '/config/www/CCTV_Snapshots/Fire7.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.kitchen
-        filename: '/config/www/CCTV_Snapshots/Kitchen.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.living_room
-        filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
-    - service: camera.snapshot
-      data:
-        entity_id: camera.living_room
-        filename: '/config/www/CCTV_Snapshots/Conservatory.jpg'
-    - service: notify.gmaillolo
-      data_template:
-        title: "HA - Fire Alert"
-        message: >
-          FIRE ALARM! Smoke detected on the {{ state_attr(trigger.event.data.entity_id, 'friendly_name') }}
+    - parallel:
+      - service: camera.snapshot
         data:
-          images:
-            - /config/www/CCTV_Snapshots/LivingRoom.jpg
-            - /config/www/CCTV_Snapshots/Kitchen.jpg
-            - /config/www/CCTV_Snapshots/Conservatory.jpg
-            - /config/www/CCTV_Snapshots/Fire7.jpg
-    - service: notify.gmaildiv
-      data_template:
-        message: >
-          FIRE ALARM! Smoke detected on the {{ state_attr(trigger.event.data.entity_id, 'friendly_name') }}
+          entity_id: camera.fire7
+          filename: '/config/www/CCTV_Snapshots/Fire7.jpg'
+      - service: camera.snapshot
         data:
-          images:
-            - /config/www/CCTV_Snapshots/LivingRoom.jpg
-            - /config/www/CCTV_Snapshots/Kitchen.jpg
-            - /config/www/CCTV_Snapshots/Conservatory.jpg
-            - /config/www/CCTV_Snapshots/Fire7.jpg
-    - service: notify.mobile_app_lolo_iphone
-      data_template:
-        message: >
-          FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
-        # data:
-        #   push:
-        #     badge: '{{states("counter.iosbadgecount")}}'
-        #     category: "alarm"
-        #   action_data:
-        #     entity_id: '{{trigger.entity_id}}'
+          entity_id: camera.kitchen
+          filename: '/config/www/CCTV_Snapshots/Kitchen.jpg'
+      - service: camera.snapshot
         data:
-          image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
-          # actions:
-          #   - action: "SILENCE_ALARM"
-          #     title: "Silence Alarm"
-          #     destructive: yes
-    - service: notify.mobile_app_div_iphone
-      data_template:
-        message: >
-          FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
+          entity_id: camera.living_room
+          filename: '/config/www/CCTV_Snapshots/LivingRoom.jpg'
+      - service: camera.snapshot
         data:
-          image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
+          entity_id: camera.living_room
+          filename: '/config/www/CCTV_Snapshots/Conservatory.jpg'
+    - parallel:
+      - service: notify.twillio_lolo
+        data:
+          target: '{{states("sensor.twillio_lolo_number")}}'
+          title: "HA - Fire Alarm !"
+          message: >
+            ALARM! ALARM! ALARM! The fire alarm has been triggered ! Please check your email for CCTV Pictures.
+              The fire alarm has been triggered ! Please check your email for CCTV Pictures.
+      - service: notify.twillio_lolo
+        data:
+          target: '{{states("sensor.twillio_div_number")}}'
+          title: "HA - Fire Alarm !"
+          message: >
+            ALARM! ALARM! ALARM! The fire alarm has been triggered ! Please check your email for CCTV Pictures.
+              The fire alarm has been triggered ! Please check your email for CCTV Pictures.
+      - service: notify.gmaillolo
+        data:
+          title: "HA - Fire Alert"
+          message: >
+            FIRE ALARM! Smoke detected on the {{ state_attr(trigger.event.data.entity_id, 'friendly_name') }}
+          data:
+            images:
+              - /config/www/CCTV_Snapshots/LivingRoom.jpg
+              - /config/www/CCTV_Snapshots/Kitchen.jpg
+              - /config/www/CCTV_Snapshots/Conservatory.jpg
+              - /config/www/CCTV_Snapshots/Fire7.jpg
+      - service: notify.gmaildiv
+        data_template:
+          message: >
+            FIRE ALARM! Smoke detected on the {{ state_attr(trigger.event.data.entity_id, 'friendly_name') }}
+          data:
+            images:
+              - /config/www/CCTV_Snapshots/LivingRoom.jpg
+              - /config/www/CCTV_Snapshots/Kitchen.jpg
+              - /config/www/CCTV_Snapshots/Conservatory.jpg
+              - /config/www/CCTV_Snapshots/Fire7.jpg
+      - service: notify.mobile_app_lolo_iphone
+        data_template:
+          message: >
+            FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
+          data:
+            image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
+      - service: notify.mobile_app_div_iphone
+        data_template:
+          message: >
+            FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
+          data:
+            image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
 
 
 
@@ -776,7 +744,7 @@
     - condition: template
       value_template: '{{states("lock.yale_conexis_l1_lock") == "unlocked"}}'
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered") | default(0)) | int > 60)}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered")) | int > 60)}}'
   action:
     - service: '{% if trigger.entity_id == "person.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
       # data_template:

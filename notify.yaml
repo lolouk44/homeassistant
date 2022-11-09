@@ -36,3 +36,7 @@
   password: !secret email_password
   recipient: !secret email_to_lolo_work
   encryption: starttls
+
+- name: twillio_lolo
+  platform: twilio_call
+  from_number: !secret twillio_lolo_phone_number
