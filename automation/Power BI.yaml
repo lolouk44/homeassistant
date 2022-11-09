@@ -15,7 +15,15 @@
   initial_state: true
   trigger:
     - platform: state
+      entity_id: binary_sensor.power_bi_amer_status
+      from: 'off'
+      to: 'on'
+    - platform: state
       entity_id: binary_sensor.power_bi_emea_status
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.power_bi_apac_status
       from: 'off'
       to: 'on'
     - platform: state
@@ -82,6 +90,25 @@
                 <table class="inner-table" width=100%>
                   <th colspan=2 valign="top">Service Status</th>
                   <tr><td>&nbsp;</td></tr>
+                  <tr>
+                    <td width=30px  valign="top">
+            {% if state_attr("sensor.power_bi_emea_status","americaservicestatus") == "good" %}{{good}}
+            {% elif state_attr("sensor.power_bi_emea_status","americaservicestatus") == "information" %}{{info}}
+            {% elif state_attr("sensor.power_bi_emea_status","americaservicestatus") == "degraded" %}{{degraded}}
+            {% else %}{{outage}}
+            {% endif %}
+
+                    </td>
+                    <td>America</td></tr>
+                    <td width=30px  valign="top">
+            {% if state_attr("sensor.power_bi_emea_status","apacservicestatus") == "good" %}{{good}}
+            {% elif state_attr("sensor.power_bi_emea_status","apacservicestatus") == "information" %}{{info}}
+            {% elif state_attr("sensor.power_bi_emea_status","apacservicestatus") == "degraded" %}{{degraded}}
+            {% else %}{{outage}}
+            {% endif %}
+
+                    </td>
+                    <td>Asia/Pacific</td></tr>
                   <tr>
                     <td width=30px  valign="top">
             {% if state_attr("sensor.power_bi_emea_status","emeaservicestatus") == "good" %}{{good}}
