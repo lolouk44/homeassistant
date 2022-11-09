@@ -4,6 +4,7 @@
 - name: "Conservatory Skylight Right"
   state_topic: "zigbee2mqtt/conservatory_skylight_right"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/conservatory_skylight_right/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -11,6 +12,7 @@
 - name: "Conservatory Skylight Left"
   state_topic: "zigbee2mqtt/conservatory_skylight_left"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/conservatory_skylight_left/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -18,6 +20,7 @@
 - name: "Master Bedroom Right Big Window"
   state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/master_bedroom_right_big_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -25,6 +28,7 @@
 - name: "Master Bedroom Right Small Window"
   state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/master_bedroom_right_small_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -32,6 +36,7 @@
 - name: "Master Bedroom Left Big Window"
   state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/master_bedroom_left_big_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -39,6 +44,7 @@
 - name: "Master Bedroom Left Small Window"
   state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/master_bedroom_left_small_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -46,6 +52,7 @@
 - name: "Pooja Room Big Window"
   state_topic: "zigbee2mqtt/pooja_room_big_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/pooja_room_big_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -53,6 +60,7 @@
 - name: "Pooja Room Small Window"
   state_topic: "zigbee2mqtt/pooja_room_small_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/pooja_room_small_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -60,6 +68,7 @@
 - name: "Kiaan Big Window"
   state_topic: "zigbee2mqtt/kiaan_big_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/kiaan_big_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -67,6 +76,7 @@
 - name: "Kiaan Small Window"
   state_topic: "zigbee2mqtt/kiaan_small_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/kiaan_small_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -74,6 +84,7 @@
 - name: "Conservatory Door Lock"
   state_topic: "zigbee2mqtt/conservatory_door_lock"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/conservatory_door_lock/availability"
   payload_off: false
   payload_on: true
   device_class: safety
@@ -81,6 +92,7 @@
 - name: "Conservatory Single Door"
   state_topic: "zigbee2mqtt/conservatory_single_door"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/conservatory_single_door/availability"
   payload_on: false
   payload_off: true
   device_class: door
@@ -88,6 +100,7 @@
 - name: "Conservatory Double Door"
   state_topic: "zigbee2mqtt/conservatory_double_door"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/conservatory_double_door/availability"
   payload_on: false
   payload_off: true
   device_class: door
@@ -95,6 +108,7 @@
 - name: "Main Door"
   state_topic: "zigbee2mqtt/main_door"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/main_door/availability"
   payload_on: false
   payload_off: true
   device_class: door
@@ -102,6 +116,7 @@
 - name: "Kitchen Window"
   state_topic: "zigbee2mqtt/kitchen_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/kitchen_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -109,6 +124,7 @@
 - name: "Blue Room Big Window"
   state_topic: "zigbee2mqtt/blue_room_big_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/blue_room_big_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -116,6 +132,7 @@
 - name: "Blue Room Small Window"
   state_topic: "zigbee2mqtt/blue_room_small_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/blue_room_small_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -123,6 +140,7 @@
 - name: "Bathroom Window"
   state_topic: "zigbee2mqtt/bathroom_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/bathroom_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -130,12 +148,14 @@
 - name: "Cloakroom Window"
   state_topic: "zigbee2mqtt/cloakroom_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/cloakroom_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
 
 - name: "Living Room Right Small Window"
   state_topic: "zigbee2mqtt/living_room_right_small_window"
+  availability_topic: "zigbee2mqtt/living_room_right_small_window/availability"
   value_template: "{{ value_json['contact'] == true }}"
   payload_on: false
   payload_off: true
@@ -144,6 +164,7 @@
 - name: "Living Room Right Big Window"
   state_topic: "zigbee2mqtt/living_room_right_big_window"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/living_room_right_big_window/availability"
   payload_on: false
   payload_off: true
   device_class: window
@@ -151,6 +172,7 @@
 - name: "Ground Floor Smoke Detector"
   state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
   value_template: "{{ value_json['smoke'] == true }}"
+  availability_topic: "zigbee2mqtt/ground_floor_smoke_detector/availability"
   payload_on: true
   payload_off: false
   device_class: smoke
@@ -158,6 +180,7 @@
 - name: "First Floor Smoke Detector"
   state_topic: "zigbee2mqtt/first_floor_smoke_detector"
   value_template: "{{ value_json['smoke'] == true }}"
+  availability_topic: "zigbee2mqtt/first_floor_smoke_detector/availability"
   payload_on: true
   payload_off: false
   device_class: smoke
@@ -165,6 +188,7 @@
 - name: "Garage Back Door"
   state_topic: "zigbee2mqtt/garage_back_door"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/garage_back_door/availability"
   payload_on: false
   payload_off: true
   device_class: door
@@ -172,6 +196,7 @@
 - name: "Garage Freezer Door"
   state_topic: "zigbee2mqtt/garage_freezer_door"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/garage_freezer_door/availability"
   payload_on: false
   payload_off: true
   device_class: door
@@ -179,6 +204,7 @@
 - name: "Pooja Door"
   state_topic: "zigbee2mqtt/pooja_door"
   value_template: "{{ value_json['contact'] == true }}"
+  availability_topic: "zigbee2mqtt/pooja_door/availability"
   payload_on: false
   payload_off: true
   device_class: door
@@ -205,9 +231,25 @@
 #############################################################################
 ## Power BI
 #############################################################################
+- name: "Power BI AMER Status"
+  state_topic: "Sensors/powerbistatus"
+  value_template: "{{value_json['americaservicestatus'] != 'good' }}"
+  json_attributes_topic: "Sensors/powerbistatus"
+  icon: mdi:web
+  payload_on: true
+  payload_off: false
+  
 - name: "Power BI EMEA Status"
   state_topic: "Sensors/powerbistatus"
   value_template: "{{value_json['emeaservicestatus'] != 'good' }}"
+  json_attributes_topic: "Sensors/powerbistatus"
+  icon: mdi:web
+  payload_on: true
+  payload_off: false
+
+- name: "Power BI APAC Status"
+  state_topic: "Sensors/powerbistatus"
+  value_template: "{{value_json['apacservicestatus'] != 'good' }}"
   json_attributes_topic: "Sensors/powerbistatus"
   icon: mdi:web
   payload_on: true

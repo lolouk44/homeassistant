@@ -97,6 +97,7 @@
   schema: json
   state_topic: "zigbee2mqtt/lolo_bedside_light"
   command_topic: "zigbee2mqtt/lolo_bedside_light/set"
+  availability_topic: "zigbee2mqtt/lolo_bedside_light/availability"
   brightness: true
   color_mode: true
   supported_color_modes: [color_temp]

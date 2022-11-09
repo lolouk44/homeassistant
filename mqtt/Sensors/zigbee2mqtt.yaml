@@ -1,5 +1,6 @@
 - name: "Kitchen Fridge Temperature"
   state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
+  availability_topic: "zigbee2mqtt/kitchen_fridge_hygro/availability"
   <<: &temperature
     value_template: "{{ value_json['temperature'] }}"
     unit_of_measurement: °C
@@ -7,6 +8,7 @@
 
 - name: "Kitchen Fridge Humidity"
   state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
+  availability_topic: "zigbee2mqtt/kitchen_fridge_hygro/availability"
   <<: &humidity
     value_template: "{{ value_json['humidity'] | float (1) }}"
     unit_of_measurement: "%"
@@ -14,6 +16,7 @@
 
 - name: "Kitchen Fridge Temperature Battery"
   state_topic: "zigbee2mqtt/kitchen_fridge_hygro"
+  availability_topic: "zigbee2mqtt/kitchen_fridge_hygro/availability"
   <<: &battery
     value_template: "{{ value_json['battery'] }}"
     unit_of_measurement: "%"
@@ -21,63 +24,78 @@
 
 - name: "Kitchen Freezer Temperature"
   state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
+  availability_topic: "zigbee2mqtt/kitchen_freezer_hygro/availability"
   <<: *temperature
 
 - name: "Kitchen Freezer Humidity"
   state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
+  availability_topic: "zigbee2mqtt/kitchen_freezer_hygro/availability"
   <<: *humidity
 
 - name: "Kitchen Freezer Temperature Battery"
   state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
+  availability_topic: "zigbee2mqtt/kitchen_freezer_hygro/availability"
   <<: *battery
 
 - name: "Master Bedroom Right Big Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_right_big_window"
+  availability_topic: "zigbee2mqtt/master_bedroom_right_big_window/availability"
   <<: *battery
 
 - name: "Master Bedroom Right Small Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_right_small_window"
+  availability_topic: "zigbee2mqtt/master_bedroom_right_small_window/availability"
   <<: *battery
 
 - name: "Master Bedroom Left Small Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_left_small_window"
+  availability_topic: "zigbee2mqtt/master_bedroom_left_small_window/availability"
   <<: *battery
 
 - name: "Conservatory Skylight Left Battery"
   state_topic: "zigbee2mqtt/conservatory_skylight_left"
+  availability_topic: "zigbee2mqtt/conservatory_skylight_left/availability"
   <<: *battery
 
 - name: "Pooja Room Small Window Battery"
   state_topic: "zigbee2mqtt/pooja_room_small_window"
+  availability_topic: "zigbee2mqtt/pooja_room_small_window/availability"
   <<: *battery
 
 - name: "Pooja Room Big Window Battery"
   state_topic: "zigbee2mqtt/pooja_room_big_window"
+  availability_topic: "zigbee2mqtt/pooja_room_big_window/availability"
   <<: *battery
 
 - name: "Pooja Temperature"
   state_topic: "zigbee2mqtt/pooja_hygro"
+  availability_topic: "zigbee2mqtt/pooja_hygro/availability"
   <<: *temperature
 
 - name: "Pooja Humidity"
   state_topic: "zigbee2mqtt/pooja_hygro"
+  availability_topic: "zigbee2mqtt/pooja_hygro/availability"
   <<: *humidity
 
 - name: "Pooja Temperature Battery"
   state_topic: "zigbee2mqtt/pooja_hygro"
+  availability_topic: "zigbee2mqtt/pooja_hygro/availability"
   <<: *battery
 
 - name: "Master Bedroom Temperature"
   state_topic: "zigbee2mqtt/master_bedroom_hygro"
+  availability_topic: "zigbee2mqtt/master_bedroom_hygro/availability"
   <<: *temperature
   state_class: measurement
 
 - name: "Master Bedroom Humidity"
   state_topic: "zigbee2mqtt/master_bedroom_hygro"
+  availability_topic: "zigbee2mqtt/master_bedroom_hygro/availability"
   <<: *humidity
 
 - name: "Master Bedroom Pressure"
   state_topic: "zigbee2mqtt/master_bedroom_hygro"
+  availability_topic: "zigbee2mqtt/master_bedroom_hygro/availability"
   value_template: "{{ value_json['pressure'] | float (1) }}"
   unit_of_measurement: "hPa"
   state_class: "measurement"
@@ -85,124 +103,155 @@
 
 - name: "Master Bedroom Temperature Battery"
   state_topic: "zigbee2mqtt/master_bedroom_hygro"
+  availability_topic: "zigbee2mqtt/master_bedroom_hygro/availability"
   <<: *battery
 
 - name: "Bathroom Temperature"
   state_topic: "zigbee2mqtt/bathroom_hygro"
+  availability_topic: "zigbee2mqtt/bathroom_hygro/availability"
   <<: *temperature
 
 - name: "Bathroom Humidity"
   state_topic: "zigbee2mqtt/bathroom_hygro"
+  availability_topic: "zigbee2mqtt/bathroom_hygro/availability"
   <<: *humidity
 
 - name: "Bathroom Temperature Battery"
   state_topic: "zigbee2mqtt/bathroom_hygro"
+  availability_topic: "zigbee2mqtt/bathroom_hygro/availability"
   <<: *battery
 
 - name: "Loft Temperature"
   state_topic: "zigbee2mqtt/loft_hygro"
+  availability_topic: "zigbee2mqtt/loft_hygro/availability"
   <<: *temperature
 
 - name: "Loft Humidity"
   state_topic: "zigbee2mqtt/loft_hygro"
+  availability_topic: "zigbee2mqtt/loft_hygro/availability"
   <<: *humidity
 
 - name: "Loft Temperature Battery"
   state_topic: "zigbee2mqtt/loft_hygro"
+  availability_topic: "zigbee2mqtt/loft_hygro/availability"
   <<: *battery
 
 - name: "Living Room Temperature"
   state_topic: "zigbee2mqtt/living_room_hygro"
+  availability_topic: "zigbee2mqtt/living_room_hygro/availability"
   <<: *temperature
 
 - name: "Living Room Humidity"
   state_topic: "zigbee2mqtt/living_room_hygro"
+  availability_topic: "zigbee2mqtt/living_room_hygro/availability"
   <<: *humidity
 
 - name: "Living Room Temperature Battery"
   state_topic: "zigbee2mqtt/living_room_hygro"
+  availability_topic: "zigbee2mqtt/living_room_hygro/availability"
   <<: *battery
 
 - name: "Garage Freezer Door Battery"
   state_topic: "zigbee2mqtt/garage_freezer_door"
+  availability_topic: "zigbee2mqtt/garage_freezer_door/availability"
   <<: *battery
 
 - name: "Kiaan Big Window Battery"
   state_topic: "zigbee2mqtt/kiaan_big_window"
+  availability_topic: "zigbee2mqtt/kiaan_big_window/availability"
   <<: *battery
 
 - name: "Conservatory Door Lock Battery"
   state_topic: "zigbee2mqtt/conservatory_door_lock"
+  availability_topic: "zigbee2mqtt/conservatory_door_lock/availability"
   <<: *battery
 
 - name: "Aqara Toggle Pooja Battery"
   state_topic: "zigbee2mqtt/aqara_toggle_pooja"
+  availability_topic: "zigbee2mqtt/aqara_toggle_pooja/availability"
   <<: *battery
 
 - name: "Aqara Toggle Bathroom Battery"
   state_topic: "zigbee2mqtt/aqara_toggle_bathroom"
+  availability_topic: "zigbee2mqtt/aqara_toggle_bathroom/availability"
   <<: *battery
 
 - name: "Master Bedroom Left Big Window Battery"
   state_topic: "zigbee2mqtt/master_bedroom_left_big_window"
+  availability_topic: "zigbee2mqtt/master_bedroom_left_big_window/availability"
   <<: *battery
 
 - name: "Conservatory Single Door Battery"
   state_topic: "zigbee2mqtt/conservatory_single_door"
+  availability_topic: "zigbee2mqtt/conservatory_single_door/availability"
   <<: *battery
 
 - name: "Conservatory Double Door Battery"
   state_topic: "zigbee2mqtt/conservatory_double_door"
+  availability_topic: "zigbee2mqtt/conservatory_double_door/availability"
   <<: *battery
 
 - name: "Kitchen Window Battery"
   state_topic: "zigbee2mqtt/kitchen_window"
+  availability_topic: "zigbee2mqtt/kitchen_window/availability"
   <<: *battery
 
 - name: "Kiaan Small Window Battery"
   state_topic: "zigbee2mqtt/kiaan_small_window"
+  availability_topic: "zigbee2mqtt/kiaan_small_window/availability"
   <<: *battery
 
 - name: "Blue Room Big Window Battery"
   state_topic: "zigbee2mqtt/blue_room_big_window"
+  availability_topic: "zigbee2mqtt/blue_room_big_window/availability"
   <<: *battery
 
 - name: "Blue Room Small Window Battery"
   state_topic: "zigbee2mqtt/blue_room_small_window"
+  availability_topic: "zigbee2mqtt/blue_room_small_window/availability"
   <<: *battery
 
 - name: "Bathroom Window Battery"
   state_topic: "zigbee2mqtt/bathroom_window"
+  availability_topic: "zigbee2mqtt/bathroom_window/availability"
   <<: *battery
 
 - name: "Cloakroom Window Battery"
   state_topic: "zigbee2mqtt/cloakroom_window"
+  availability_topic: "zigbee2mqtt/cloakroom_window/availability"
   <<: *battery
 
 - name: "Living Room Right Small Window Battery"
   state_topic: "zigbee2mqtt/living_room_right_small_window"
+  availability_topic: "zigbee2mqtt/living_room_right_small_window/availability"
   <<: *battery
 
 - name: "Living Room Right Big Window Battery"
   state_topic: "zigbee2mqtt/living_room_right_big_window"
+  availability_topic: "zigbee2mqtt/living_room_right_big_window/availability"
   <<: *battery
 
 - name: "Main Door Battery"
   state_topic: "zigbee2mqtt/main_door"
+  availability_topic: "zigbee2mqtt/main_door/availability"
   <<: *battery
 
 - name: "Conservatory Skylight Right Battery"
   state_topic: "zigbee2mqtt/conservatory_skylight_right"
+  availability_topic: "zigbee2mqtt/conservatory_skylight_right/availability"
   <<: *battery
 
 - name: "Ground Floor Smoke Detector Battery"
   state_topic: "zigbee2mqtt/ground_floor_smoke_detector"
+  availability_topic: "zigbee2mqtt/ground_floor_smoke_detector/availability"
   <<: *battery
 
 - name: "First Floor Smoke Detector Battery"
   state_topic: "zigbee2mqtt/first_floor_smoke_detector"
+  availability_topic: "zigbee2mqtt/first_floor_smoke_detector/availability"
   <<: *battery
 
 - name: "Pooja Door Battery"
   state_topic: "zigbee2mqtt/pooja_door"
+  availability_topic: "zigbee2mqtt/pooja_door/availability"
   <<: *battery
