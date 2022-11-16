@@ -204,11 +204,15 @@
         message: "Alarm Triggered !"
         data:
           image: '{{states("input_text.base_url")}}/local/Alarm_Icon.png'
+          push:
+            interruption-level: critical
     - service: notify.mobile_app_div_iphone
       data:
         message: "Alarm Triggered !"
         data:
           image: '{{states("input_text.base_url")}}/local/Alarm_Icon.png'
+          push:
+            interruption-level: critical
     - wait_template: '{{ states("alarm_control_panel.alarm").split("_")[0] != "triggered"}}'
       timeout: '00:15:00'
     - service: media_player.media_stop
@@ -502,12 +506,16 @@
             FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
           data:
             image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
+            push:
+              interruption-level: critical
       - service: notify.mobile_app_div_iphone
         data:
           message: >
             FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
           data:
             image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
+            push:
+              interruption-level: critical
 
 
 
