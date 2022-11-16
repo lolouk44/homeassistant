@@ -139,7 +139,7 @@
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_build_weather_greeting_ifttt", "last_triggered")) | int > 30)}}'
   action:
   - service: tts.google_say
-    data_template:
+    data:
       entity_id: media_player.mpd_rpi_kitchen
       message: |
         Good morning. Today is 

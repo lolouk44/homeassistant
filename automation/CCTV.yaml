@@ -7,7 +7,7 @@
     to: 'on'
   action:
   - service: notify.gmaillolo
-    data_template:
+    data:
       title: "HA - CCTV Error"
       message: Disk Error Detected on Front CCTV.
 
@@ -20,7 +20,7 @@
     to: 'on'
   action:
   - service: notify.gmaillolo
-    data_template:
+    data:
       title: "HA - CCTV Error"
       message: SD Card on Front CCTV is full.
 
@@ -34,7 +34,7 @@
     to: 'on'
   action:
   - service: notify.gmaillolo
-    data_template:
+    data:
       title: "HA - CCTV Error"
       message: Disk Error Detected on Back CCTV.
 
@@ -47,7 +47,7 @@
     to: 'on'
   action:
   - service: notify.gmaillolo
-    data_template:
+    data:
       title: "HA - CCTV Error"
       message: SD Card on Back CCTV is full.
 
@@ -61,7 +61,7 @@
     to: 'on'
   action:
   - service: notify.gmaillolo
-    data_template:
+    data:
       title: "HA - CCTV Error"
       message: Disk Error Detected on Side CCTV.
 
@@ -74,7 +74,7 @@
     to: 'on'
   action:
   - service: notify.gmaillolo
-    data_template:
+    data:
       title: "HA - CCTV Error"
       message: SD Card on Side CCTV is full.
 
@@ -270,7 +270,7 @@
 #       to: 'on'
 #   action:
 #   - service: switch.turn_on
-#     data_template:
+#     data:
 #       entity_id: '{{ trigger.entity_id | replace("status","blue_led") }}'
 
 # - alias: CCTV - Set Dafang Yellow LED On
@@ -285,7 +285,7 @@
 #       to: 'off'
 #   action:
 #   - service: switch.turn_on
-#     data_template:
+#     data:
 #       entity_id: '{{ trigger.entity_id | replace("status","yellow_led") }}'
 
 
@@ -300,7 +300,7 @@
 #         minutes: 3
 #   action:
 #   - service: notify.gmaillolo
-#     data_template:
+#     data:
 #       title: "HA - CCTV Error"
 #       message: Kitchen CCTV Motion Connection Lost!
 
@@ -316,7 +316,7 @@
 #         minutes: 3
 #   action:
 #   - service: notify.gmaillolo
-#     data_template:
+#     data:
 #       title: "HA - CCTV Error"
 #       message: Living Room CCTV Motion Connection Lost!
 
@@ -332,7 +332,7 @@
 #         minutes: 3
 #   action:
 #   - service: notify.gmaillolo
-#     data_template:
+#     data:
 #       title: "HA - CCTV Error"
 #       message: Garage CCTV Motion Connection Lost!
 
@@ -348,7 +348,7 @@
 #         minutes: 3
 #   action:
 #   - service: notify.gmaillolo
-#     data_template:
+#     data:
 #       title: "HA - CCTV Error"
 #       message: Conservatory CCTV Motion Connection Lost!
 

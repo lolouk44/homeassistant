@@ -10,7 +10,7 @@
     after: '15:30:00'
   action:
     service: notify.gmaildiv
-    data_template:
+    data:
       message: 'Lolo left work. Estimated arrival time: {%if states("device_tracker.220d") == "verint" %} {{(as_timestamp(now()) + (states("sensor.lolo_to_home") | int)*60) | timestamp_custom("%H:%M")}}  (by car) {% else %} {{(as_timestamp(now()) + 40 * 60) | timestamp_custom("%H:%M")}} (by bike){% endif %}'
 
 
@@ -27,7 +27,7 @@
     before: '10:00:00'
   action:
     service: notify.gmaildiv
-    data_template:
+    data:
       message: 'Lolo reached work.'
 
 
@@ -43,7 +43,7 @@
     after: '16:00:00'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Location Update"
         message: 'Div left work. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | int)*60) | timestamp_custom("%H:%M")}})'
 
@@ -63,7 +63,7 @@
     after: '19:00:00'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Location Update"
         message: 'Div left yoga. ETA: {{states("sensor.div_to_home")}} min ({{(as_timestamp(now()) + (states("sensor.div_to_home") | int)*60) | timestamp_custom("%H:%M")}})'
 
@@ -135,7 +135,7 @@
       entity_id: input_boolean.silent
       state: "off"
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Long Drive Home"
         message: 'There is a long drive home ({{states("sensor.lolo_to_home") |int(0)}} min)...'
 
@@ -150,7 +150,7 @@
         entity_id: person.laurent
   action:
     service: mqtt.publish
-    data_template:
+    data:
       topic: 'location/lolo'
       payload_template: '{{ trigger.to_state.state }}'
       retain: true
@@ -163,7 +163,7 @@
         entity_id: person.div
   action:
     service: mqtt.publish
-    data_template:
+    data:
       topic: 'location/div'
       payload_template: '{{ trigger.to_state.state }}'
       retain: true

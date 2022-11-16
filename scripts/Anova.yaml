@@ -2,7 +2,7 @@ anova_cook_recipe:
   alias: Anova - Cook Recipe
   sequence:
     - service: climate.set_temperature
-      data_template:
+      data:
         entity_id: climate.anova
         temperature: >-
           {% if is_state("input_select.anova_recipe", "Egg - Soft Boiled (00:45)") %} 63.3

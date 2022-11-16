@@ -29,7 +29,7 @@
     - service: counter.increment
       entity_id: counter.iosbadgecount
     - service: notify.mobile_app_lolo_iphone
-      data_template:
+      data:
         message: '{{ trigger.entity_id | replace("alert.","") | replace("_"," ") |capitalize }}'
         data:
           push:
@@ -48,7 +48,7 @@
         action: DISABLE_ALERT
   action:
     - service: alert.turn_off
-      data_template:
+      data:
         entity_id: '{{ trigger.event.data["action_data"]["entity_id"] }}'
     - service: counter.decrement
       entity_id: counter.iosbadgecount

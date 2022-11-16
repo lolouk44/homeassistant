@@ -145,7 +145,7 @@
       entity_id: binary_sensor.main_door
       state: 'off'
     - service: notify.mobile_app_lolo_iphone
-      data_template:
+      data:
         message: 'Porch Door Left Unlocked'
         data:
           push:
@@ -179,7 +179,7 @@
       timeout: '00:00:30'
       continue_on_timeout: true
     - service: notify.mobile_app_lolo_iphone
-      data_template:
+      data:
         message: 'Porch Door Lock Jammed'
         data:
           push:
@@ -188,7 +188,7 @@
           action_data:
             entity_id: '{{trigger.entity_id}}'
     - service: notify.mobile_app_div_iphone
-      data_template:
+      data:
         message: 'Porch Door Lock Jammed'
         data:
           push:
@@ -197,7 +197,7 @@
           action_data:
             entity_id: '{{trigger.entity_id}}'
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Porch Door Lock Jammed"
         message: >
           Please note: the porch door lock is jammed
@@ -206,7 +206,7 @@
       state: 'off'
     - service: tts.google_say
       entity_id: media_player.google_home_minis
-      data_template:
+      data:
         message: 'Please note: the porch door lock is jammed'
 
 - alias: Yale - Battery below 10%
@@ -218,7 +218,7 @@
       to: 'on'
   action:
     - service: notify.mobile_app_lolo_iphone
-      data_template:
+      data:
         message: 'Yale Lock Battery Low !'
         data:
           push:
@@ -227,7 +227,7 @@
           action_data:
             entity_id: '{{trigger.entity_id}}'
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: 'HA - Yale Lock Battery Low'
         message: 'The Battery on the Yale Lock is low ({{ states("sensor.yale_conexis_l1_battery_level") | int}}%)'
 
@@ -290,7 +290,7 @@
     - condition: template
       value_template: '{{ states("lock.yale_conexis_l1_lock") == "unavailable" }}' 
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: 'HA - Yale Lock Dead'
         message: 'Yale Lock Dead since {{ as_timestamp(states.lock.yale_conexis_l1_lock.last_updated) | timestamp_custom("%H:%M")}}'
 
@@ -301,7 +301,7 @@
 #     event_type: zwave_js_notification
 #   action:
 #     - service: notify.gmaillolo
-#       data_template:
+#       data:
 #         title: 'HA - Yale Event'
 #         message: 'Event:  {{ trigger.event.data}}'
 

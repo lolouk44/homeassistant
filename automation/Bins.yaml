@@ -73,7 +73,7 @@
         }}
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Bins"
         message: |
           Remember to put {%- if ((as_timestamp(states("sensor.black_bin")) - as_timestamp(now())) < 2217000000 and (as_timestamp(states("sensor.black_bin")) - as_timestamp(now())) > 0) %} the black bin {% endif -%}

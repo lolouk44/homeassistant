@@ -57,7 +57,7 @@
       data:
         entity_id: input_boolean.dehumidifier_tank_full
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Dehumidifier Full"
         message: |
           Dehumidifier Tank is full.

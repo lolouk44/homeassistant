@@ -206,7 +206,7 @@
     entity_id: input_boolean.theme_dark
   action:
     - service: frontend.set_theme
-      data_template:
+      data:
         name: >
           {% if states("input_boolean.theme_dark") == "on" %}dark{% else %}day{% endif %}
 

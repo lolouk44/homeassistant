@@ -6,7 +6,7 @@
     entity_id: input_number.volume_radio
   action:
     service: media_player.volume_set
-    data_template:
+    data:
       entity_id: >
         {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
         {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
@@ -34,7 +34,7 @@
       entity_id: '{{trigger.entity_id}}'
       is_volume_muted: false
   - service: input_select.select_option
-    data_template:
+    data:
       entity_id: input_select.chromecast_radio_speakers
       option: >
         {% if is_state(trigger.entity_id, "media_player.conservatory") %} Conservatory
@@ -45,7 +45,7 @@
         {% elif is_state(trigger.entity_id, "media_player.house") %} House
         {% endif %}
   - service: input_select.select_option
-    data_template:
+    data:
       entity_id: input_select.chromecast_radio_station
       option: >
         {% if (is_state_attr(trigger.entity_id, 'media_content_id', 'http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3') or is_state_attr("media_player.house", 'media_content_id', 'http://icy-e-bab-04-cr.sharp-stream.com/absoluteradio.mp3')) %} Absolute Radio

@@ -48,7 +48,7 @@
       from: 'idle'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Vacuum Started"
         message: 'Mi Robot Started Vacuuming...'
 
@@ -111,7 +111,7 @@
       to: 'returning'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Vacuum Finished"
         message: |
           Mi Robot finished Vacuuming...
@@ -120,7 +120,7 @@
           images:
             - /config/www/navmap.png
     - service: notify.gmaildiv
-      data_template:
+      data:
         title: "HA - Vacuum Finished"
         message: |
           Mi Robot finished Vacuuming...

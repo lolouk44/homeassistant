@@ -8,5 +8,5 @@
   action:
   - service: input_datetime.set_datetime
     entity_id: input_datetime.anova_timer
-    data_template:
+    data:
       time: '{{states("input_select.anova_recipe").split("(")[1].split(")")[0]}}:00'

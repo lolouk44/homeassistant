@@ -70,6 +70,6 @@
       data:
         message: "Please note: It's about to rain and the conservatory skylights are open"
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Rain Alert"
         message: "Please note: It's about to rain and the conservatory skylights are open"

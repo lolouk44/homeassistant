@@ -14,7 +14,7 @@
       value_template: "{{ trigger.payload_json['type'] == 'end'}}"
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - {{trigger.payload_json['after']['label']}} detected on the {{ trigger.payload_json['after']['camera']}} CCTV!"
         message: |
           {{trigger.payload_json['after']['label']}} detected on the {{ trigger.payload_json['after']['camera']}} CCTV!
@@ -70,7 +70,7 @@
       state: "off"
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - {{trigger.payload_json['after']['label']}} detected on the {{ trigger.payload_json['after']['camera']}} CCTV!"
         message: |
           {{trigger.payload_json['after']['label']}} detected on the {{ trigger.payload_json['after']['camera']}} CCTV!

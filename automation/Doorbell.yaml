@@ -17,7 +17,7 @@
     target:
       entity_id: camera.doorbell
   - service: scene.create
-    data_template:
+    data:
       scene_id: pre_doorbell_state
       snapshot_entities:
         - light.living_room_main
@@ -37,7 +37,7 @@
   - condition: template
     value_template: '{{states("input_boolean.holidays") == "off"}}'
   - service: media_player.volume_set
-    data_template:
+    data:
       entity_id: media_player.google_home_minis
       volume_level: 1
   - service: media_player.play_media
@@ -66,7 +66,7 @@
       media_content_id: 'http://192.168.9.23:5000/api/doorbell?h=720&fps=1'
       media_content_type: url
   - service: media_player.volume_mute
-    data_template:
+    data:
       entity_id: media_player.conservatory, media_player.house, media_player.living_room, media_player.kitchen, media_player.onkyo_tx_nr656, media_player.onkyo_tx_nr656_2
       is_volume_muted: true
   - wait_template: '{{ states("binary_sensor.main_door")== "on" }}'

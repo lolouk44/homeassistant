@@ -13,7 +13,7 @@
       value_template: '{{ trigger.to_state.state != "unavailable"}}'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Update Available"
         message: 'There is an update to Home-Assistant: {{states("sensor.online_version")}} (https://www.home-assistant.io/latest-release-notes/)'
 
@@ -32,7 +32,7 @@
       value_template: '{{ trigger.to_state.state != "unavailable"}}'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Docker Update Available"
         message: 'The {{states("sensor.docker_version")}} Docker Image is now available'
 
@@ -55,7 +55,7 @@
       value_template: '{{ trigger.to_state.state != "unavailable"}}'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Tasmota Update Available"
         message: 'Tasmota version {{states("sensor.arendst_tasmota_latest_release")}} is now available'
 
@@ -207,7 +207,7 @@
       value_template: '{{ state_attr("persistent_notification.http_login", "message").split ("from ") [1][:7] != "192.168"}}'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Login Alert"
         message: >
           Login Attempt Failed: 
@@ -227,7 +227,7 @@
       value_template: '{{trigger.from_state.state != "unavailable" and trigger.from_state.state != "unknown" and trigger.from_state.state != trigger.to_state.state}}'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - HassPodcast Update"
         message: >
           There is a new hass podcast: {{ states("sensor.ha_podcast_track")}}
@@ -244,7 +244,7 @@
       value_template: "{{ (states(trigger.entity_id) | float(0)) != 0}}"
   action:
     service: persistent_notification.create
-    data_template:
+    data:
       title: Updates pending in HACS
       message: >-
         {% for repo in state_attr(trigger.entity_id, 'repositories') %}
@@ -271,7 +271,7 @@
           input_boolean.turn_on
         {% endif %}
     - service: frontend.set_theme
-      data_template:
+      data:
         name: >
           {% if states("sun.sun") == "above_horizon" %}
             day

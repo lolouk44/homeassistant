@@ -37,7 +37,7 @@
       state: "off"
   action:
   - service: media_player.play_media
-    data_template:
+    data:
       entity_id: media_player.google_home_minis
       media_content_id: >
         {% if trigger.to_state.state == "on" %}
@@ -79,7 +79,7 @@
       state: "off"
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Windows Left Open"
         message: >
           The following doors/windows are not closed: 
@@ -102,7 +102,7 @@
         entity_id: media_player.bedroom_nest_hub
     - service: tts.google_say
       entity_id: media_player.bedroom_nest_hub
-      data_template:
+      data:
         message: >
           The following doors/windows are not closed: 
           {% set doors = [
@@ -153,7 +153,7 @@
       state: "off"
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Conservatory Door Left Unlocked At Night"
         message: "The Conservatory Door Has Been Left Unlocked"
     - service: automation.turn_off
@@ -164,7 +164,7 @@
         entity_id: media_player.bedroom_nest_hub
     - service: tts.google_say
       entity_id: media_player.bedroom_nest_hub
-      data_template:
+      data:
         message: "Please Note: The Conservatory Door Has Been Left Unlocked"
     - wait_template: '{{ states("media_player.bedroom_nest_hub") != "playing"}}'
       timeout: '00:00:15'

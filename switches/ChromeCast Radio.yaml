@@ -11,7 +11,7 @@
         {% endif %}
       turn_on:
         service: media_player.volume_mute
-        data_template:
+        data:
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
@@ -21,7 +21,7 @@
           is_volume_muted: true
       turn_off:
         service: media_player.volume_mute
-        data_template:
+        data:
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
@@ -35,7 +35,7 @@
       value_template: 'on'
       turn_on:
         service: media_player.volume_up
-        data_template:
+        data:
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
@@ -44,7 +44,7 @@
             {% endif %}
       turn_off:
         service: media_player.volume_up
-        data_template:
+        data:
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
@@ -57,7 +57,7 @@
       value_template: 'on'
       turn_on:
         service: media_player.volume_down
-        data_template:
+        data:
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
@@ -66,7 +66,7 @@
             {% endif %}
       turn_off:
         service: media_player.volume_down
-        data_template:
+        data:
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen

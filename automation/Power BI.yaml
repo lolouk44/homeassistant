@@ -36,7 +36,7 @@
       to: 'on'
   action:
     - service: notify.lolowork
-      data_template:
+      data:
         title: "Power BI - Service Outage Notification"
         message: |
           The EMEA Service Status is: {{ state_attr("binary_sensor.power_bi_emea_status","emeaservicestatus").title()}}
@@ -203,7 +203,7 @@
       to: 'off'
   action:
     - service: notify.lolowork
-      data_template:
+      data:
         title: "Power BI - Service Restored Notification"
         message: |
           The EMEA Service Status is: {{ state_attr("binary_sensor.power_bi_emea_status","emeaservicestatus").title()}}

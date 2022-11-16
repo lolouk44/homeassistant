@@ -11,7 +11,7 @@
       value_template: '{{ (trigger.to_state.state | int(0) ) > 0 }}'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Track17 Updates"
         message: |
           {{ trigger.to_state.state }} {{ trigger.entity_id | replace("sensor.seventeentrack","") | replace("_"," ") | title }}:

@@ -59,7 +59,7 @@
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.alarm
     - service: media_player.volume_set
-      data_template:
+      data:
         entity_id: media_player.google_home_minis
         volume_level: '1' 
     - service: media_player.play_media
@@ -85,7 +85,7 @@
           ringtone_vol: 100
       # play alert, 0.9 on onkyo, 1 on conservatory, google minis
       - service: media_player.volume_set
-        data_template:
+        data:
           entity_id: media_player.google_home_minis
           volume_level: 0.9
       - service: media_player.play_media
@@ -140,21 +140,21 @@
           entity_id: script.alarm_flash_ligthts
     - parallel:
       - service: notify.twillio_lolo
-        data_template:
+        data:
           target: '{{states("sensor.twillio_lolo_number")}}'
           title: "HA - Alarm Triggered !"
           message: >
             ALARM! ALARM! ALARM! The alarm has been triggered ! Please check your email for CCTV Pictures.
             The alarm has been triggered ! Please check your email for CCTV Pictures.
       - service: notify.twillio_lolo
-        data_template:
+        data:
           target: '{{states("sensor.twillio_div_number")}}'
           title: "HA - Alarm Triggered !"
           message: >
             ALARM! ALARM! ALARM! The alarm has been triggered ! Please check your email for CCTV Pictures.
             The alarm has been triggered ! Please check your email for CCTV Pictures.
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Alarm Triggered !"
         message: >
           ALARM! The alarm has been triggered !(
@@ -177,7 +177,7 @@
             - /config/www/CCTV_Snapshots/Garage.jpg
             - /config/www/CCTV_Snapshots/Doorbell.jpg
     - service: notify.gmaildiv
-      data_template:
+      data:
         title: "Alarm Triggered !"
         message: >
           ALARM! The alarm has been triggered !(
@@ -246,7 +246,7 @@
       state: 'on'
   action:
     - service: tts.google_say
-      data_template:
+      data:
         entity_id: media_player.google_home_minis
         message: |
           Please note, the following doors or windows are not closed:
@@ -256,7 +256,7 @@
           {% if is_state('binary_sensor.main_door','on') %}Main Door,{% endif%}
           The alarm is still being armed !
     - service: notify.mobile_app_lolo_iphone
-      data_template:
+      data:
         message: |
           The {% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
@@ -265,7 +265,7 @@
           are not closed.
           The alarm is still being armed !
     - service: notify.mobile_app_div_iphone
-      data_template:
+      data:
         message: |
           The {% for windoor in state_attr("group.door_and_window_sensors","entity_id")|list  -%}
           {% if is_state(windoor,"on") %}{{state_attr(windoor, "friendly_name")}}, {% endif %}
@@ -310,7 +310,7 @@
       data:
         entity_id: switch.kerui_disarm
     - service: media_player.volume_set
-      data_template:
+      data:
         entity_id: media_player.google_home_minis
         volume_level: 1
     - service: media_player.play_media
@@ -353,7 +353,7 @@
       data:
         entity_id: switch.kerui_disarm
     - service: media_player.volume_set
-      data_template:
+      data:
         entity_id: media_player.google_home_minis
         volume_level: '1' 
     - service: media_player.play_media
@@ -386,14 +386,14 @@
         media_content_id: 'http://192.168.9.23:8123/local/sounds/Armed_Disarmed.mp3'
         media_content_type: 'audio/mp3'
     - service: media_player.volume_set
-      data_template:
+      data:
         entity_id: media_player.onkyo_tx_nr656_zone_2
         volume_level: 0.6
     - service: light.turn_off
       data:
         entity_id: light.aqara_gateway_light
     - service: media_player.volume_set
-      data_template:
+      data:
         entity_id: media_player.google_home_minis
         volume_level: '{% if as_timestamp(now()) | timestamp_custom("%-H") | float >= 7 and as_timestamp(now()) | timestamp_custom("%-H") | float < 20 %} 0.75 {% else %} 0.5 {% endif %}'
     - service: media_player.turn_off
@@ -401,7 +401,7 @@
     - service: media_player.turn_off
       entity_id: media_player.onkyo_tx_nr656
     - service: media_player.volume_set
-      data_template:
+      data:
         entity_id: media_player.google_home_minis
         volume_level: 0.5
 
@@ -487,7 +487,7 @@
               - /config/www/CCTV_Snapshots/Conservatory.jpg
               - /config/www/CCTV_Snapshots/Fire7.jpg
       - service: notify.gmaildiv
-        data_template:
+        data:
           message: >
             FIRE ALARM! Smoke detected on the {{ state_attr(trigger.event.data.entity_id, 'friendly_name') }}
           data:
@@ -497,13 +497,13 @@
               - /config/www/CCTV_Snapshots/Conservatory.jpg
               - /config/www/CCTV_Snapshots/Fire7.jpg
       - service: notify.mobile_app_lolo_iphone
-        data_template:
+        data:
           message: >
             FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
           data:
             image: '{{states("input_text.base_url")}}/local/Fire_Icon.png'
       - service: notify.mobile_app_div_iphone
-        data_template:
+        data:
           message: >
             FIRE ALARM!({{ state_attr(trigger.event.data.entity_id, 'friendly_name') }})
           data:
@@ -660,7 +660,7 @@
     - condition: template
       value_template: '{{ states("person.laurent") != "home" and states("person.div") != "home"}}'
     - service: notify.mobile_app_lolo_iphone
-      # data_template:
+      # data:
       #   message: 'The alarm has not been armed !'
         # data:
         #   push:
@@ -676,7 +676,7 @@
               title: "Arm Alarm"
               destructive: yes
     - service: notify.mobile_app_div_iphone
-      # data_template:
+      # data:
       #   message: 'The alarm has not been armed !'
       #   data:
       #     push:
@@ -747,7 +747,7 @@
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.alarm_disarm_alarm_when_reaching_home_from_ios_notification", "last_triggered")) | int > 60)}}'
   action:
     - service: '{% if trigger.entity_id == "person.laurent" %}notify.mobile_app_lolo_iphone{% else %}notify.mobile_app_div_iphone{% endif %}'
-      # data_template:
+      # data:
       #   message: 'Disarm alarm ?'
       #   data:
       #     push:

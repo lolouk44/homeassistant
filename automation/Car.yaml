@@ -28,7 +28,7 @@
         {%- set doors_on = doors | selectattr('state','eq','on') | list -%}
         {{ ((doors_on | length) | int ) >= 1}}
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - BMW"
         message: >
           The following BMW doors/windows are not closed: 
@@ -169,7 +169,7 @@
       value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") != "unknown" and states("sensor.astra_car_battery_voltage") | float(0) < 11.7}}'
   action:
     - service: notify.gmaillolo
-      data_template:
+      data:
         title: "HA - Astra"
         message: >
           The Astra car battery is low! ({{states("sensor.astra_car_battery_voltage")}} V)
