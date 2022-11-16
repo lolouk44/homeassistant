@@ -86,6 +86,8 @@
   - service: media_player.turn_off
     entity_id: media_player.kitchen
   - service: media_player.turn_off
+    entity_id: media_player.office_nest_hub
+  - service: media_player.turn_off
     entity_id: media_player.onkyo_tx_nr656
   - service: media_player.turn_off
     entity_id: media_player.conservatory
