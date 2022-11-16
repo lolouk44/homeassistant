@@ -47,6 +47,11 @@
                 <center><a href="{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/snapshot.jpg"><img src="{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg" width="175" height="175" border="1"></a></center>
                 </body>
             </html>
+    - service: notify.mobile_app_lolo_iphone
+      data:
+        message: "HA - {{trigger.payload_json['after']['label']}} detected on the {{ trigger.payload_json['after']['camera']}} CCTV!"
+        data:
+          image: "{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg"
 
 - alias: Frigate - Person Detected Back & Side Only
   id: frigate_person_detected_back_and_side_Only
@@ -103,3 +108,8 @@
                 <center><a href="{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/snapshot.jpg"><img src="{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg" width="175" height="175" border="1"></a></center>
                 </body>
             </html>
+    - service: notify.mobile_app_lolo_iphone
+      data:
+        message: "HA - {{trigger.payload_json['after']['label']}} detected on the {{ trigger.payload_json['after']['camera']}} CCTV!"
+        data:
+          image: "{{states('input_text.base_url')}}/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg"
