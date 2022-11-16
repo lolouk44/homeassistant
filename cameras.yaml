@@ -85,8 +85,8 @@
   still_image_url: https://www.yr.no/en/content/2-6621541/meteogram.svg
   content_type: 'image/svg+xml'
 - platform: generic
-  name: YrForecastWeybridge
-  still_image_url: https://www.yr.no/en/content/2-2634204/meteogram.svg
+  name: YrForecasWoking
+  still_image_url: https://www.yr.no/en/content/2-2633709/meteogram.svg
   content_type: 'image/svg+xml'
 - platform: generic
   name: chromecast_radio_pic

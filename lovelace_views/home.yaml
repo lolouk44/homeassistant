@@ -75,15 +75,15 @@ cards:
   - type: vertical-stack
     cards:
     - type: picture-entity
-      title: YrForecastCrawley
+      title: Crawley Woking Yr Weather Forecast
       entity: camera.yrforecastcrawley
       camera_image: camera.yrforecastcrawley
       show_name: false
       show_state: false
     - type: picture-entity
-      title: YrForecastWeybridge
-      entity: camera.yrforecastweybridge
-      camera_image: camera.yrforecastweybridge
+      title: Woking Yr Weather Forecast
+      entity: camera.yrforecaswoking
+      camera_image: camera.yrforecaswoking
       show_name: false
       show_state: false
   - type: entities
