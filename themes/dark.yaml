@@ -55,6 +55,7 @@ dark:
   # Cards
   # card-background-color: var(--secondary-background-color)  # Unused entities table background
   paper-listbox-background-color: var(--primary-background-color)
+  ha-card-border-width: '0px' #remove borders
   ha-card-border-radius: 10px
   ha-card-background: rgba(10, 10, 10, 0.6)
   card-background-color: var(--ha-card-background)
