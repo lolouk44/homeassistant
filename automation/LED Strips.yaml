@@ -239,16 +239,6 @@
         effect: None
         rgb_color: [0,0,255]
     - condition: template
-      value_template: >
-        {%- set pirs = [
-              states.binary_sensor.pir_conservatory,
-              states.binary_sensor.pir_kitchen,
-              states.binary_sensor.pir_living_room_front,
-              states.binary_sensor.pir_living_room_back,
-              states.binary_sensor.pir_staircase] -%}
-        {%- set pirs_on = pirs | selectattr('state','eq','on') | list -%}
-        {{ ((pirs_on | length) | int ) > 1}}
-    - condition: template
       value_template: '{{ states("input_select.lights_mode") in ["Diwali", "Xmas"] }}'
     - service: light.turn_on
       data:

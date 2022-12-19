@@ -96,6 +96,9 @@
   id: xmas_turn_baubles_on_1
   initial_state: true
   trigger:
+    - platform: state
+      entity_id: sensor.bauble_random_effect
+      to: '1'
     - platform: template
       value_template: '{{states("sensor.bauble_random_effect") | int == 1 }}'
   condition:
@@ -131,6 +134,9 @@
   id: xmas_turn_baubles_on_2
   initial_state: true
   trigger:
+    - platform: state
+      entity_id: sensor.bauble_random_effect
+      to: '2'
     - platform: template
       value_template: '{{states("sensor.bauble_random_effect") | int == 2 }}'
   condition:
@@ -166,6 +172,9 @@
   id: xmas_turn_baubles_on_3
   initial_state: true
   trigger:
+    - platform: state
+      entity_id: sensor.bauble_random_effect
+      to: '3'
     - platform: template
       value_template: '{{states("sensor.bauble_random_effect") | int == 3 }}'
   condition:
