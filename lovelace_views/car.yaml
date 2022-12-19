@@ -6,38 +6,307 @@ badges:
 cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
+
+
+
+
   - type: picture-elements
     state_color: true
-    image: /local/BMW_220d_GT_Top_View.png
     elements:
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_hood
+            state: 'on'
+        elements:
+          - type: image
+            entity: binary_sensor.bmw_220d_hood
+            image: /local/BMW_220d/top.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_hood
+            image: /local/BMW_220d/hood.png
+            style:
+              top: 18%
+              left: 50%
+              width: 38%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_door_driver_front
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/right.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            image: /local/BMW_220d/front-right-door.png
+            style:
+              top: 43%
+              left: 75%
+              width: 25%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_door_passenger_front
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/left.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_door_passenger_front
+            image: /local/BMW_220d/front-left-door.png
+            style:
+              top: 43%
+              left: 25%
+              width: 25%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_door_passenger_rear
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/left.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_door_passenger_rear
+            image: /local/BMW_220d/rear-left-door.png
+            style:
+              top: 60%
+              left: 25%
+              width: 25%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_door_driver_rear
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/right.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_door_driver_rear
+            image: /local/BMW_220d/rear-right-door.png
+            style:
+              top: 60%
+              left: 75%
+              width: 25%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_window_driver_front
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/right.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_window_driver_front
+            image: /local/BMW_220d/driver_front_window.png
+            style:
+              top: 45%
+              left: 63%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_window_passenger_front
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/left.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_window_passenger_front
+            image: /local/BMW_220d/passenger_front_window.png
+            style:
+              top: 45%
+              left: 37%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_window_driver_rear
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/right.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_window_driver_rear
+            image: /local/BMW_220d/driver_rear_window.png
+            style:
+              top: 62%
+              left: 63%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_window_passenger_rear
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/left.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_window_passenger_rear
+            image: /local/BMW_220d/passenger_rear_window.png
+            style:
+              top: 62%
+              left: 37%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.bmw_220d_trunk
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/BMW_220d/bottom.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.bmw_220d_trunk
+            image: /local/BMW_220d/trunk.png
+            style:
+              top: 85%
+              left: 50%
+              width: 38%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: lock.cx_9_lock
+            state: unlocked
+          - entity: binary_sensor.bmw_220d_door_driver_front
+            state: 'off'
+          - entity: binary_sensor.bmw_220d_door_passenger_front
+            state: 'off'
+          - entity: binary_sensor.bmw_220d_door_driver_rear
+            state: 'off'
+          - entity: binary_sensor.bmw_220d_door_passenger_rear
+            state: 'off'
+          - entity: binary_sensor.bmw_220d_hood
+            state: 'off'
+          - entity: binary_sensor.bmw_220d_trunk
+            state: 'off'
+        elements:
+          - type: image
+            image: /local/BMW_220d/all.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            image: /local/BMW_220d/lock.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
       - type: state-icon
-        entity: binary_sensor.220d_door_lock_state
         icon: mdi:car-key
+        entity: lock.220d_lock
         style:
-          top: 5%
-          left: 7%
-      - type: icon
-        icon: mdi:lock
-        tap_action:
-          action: call-service
-          service: lock.lock
-          service_data:
-            entity_id: lock.220d_lock
+          top: 18%
+          left: 25%
+      - type: state-label
+        entity: lock.220d_lock
         style:
-          top: 12%
-          left: 7%
-          color: Tomato
-      - type: icon
-        icon: mdi:lock-open
-        tap_action:
-          action: call-service
-          service: lock.unlock
-          service_data:
-            entity_id: lock.220d_lock
+          top: 23.5%
+          left: 25%
+      - type: state-icon
+        entity: device_tracker.220d
         style:
-          top: 19%
-          left: 7%
-          color: Tomato
+          top: 18%
+          left: 77%
+      - type: state-label
+        entity: device_tracker.220d
+        style:
+          top: 23.5%
+          left: 77%
+      - type: state-icon
+        entity: sensor.bmw_220d_mileage
+        style:
+          top: 75%
+          left: 77%
+      - type: state-label
+        entity: sensor.bmw_220d_mileage
+        style:
+          top: 81%
+          left: 77%
+      - type: state-icon
+        entity: sensor.bmw_220d_remaining_fuel
+        style:
+          top: 75%
+          left: 25%
+      - type: state-label
+        entity: sensor.bmw_220d_remaining_fuel
+        style:
+          top: 81%
+          left: 25%
       - type: icon
         icon: mdi:car-light-dimmed
         tap_action:
@@ -46,9 +315,10 @@ cards:
           service_data:
             entity_id: button.220d_flash_lights
         style:
-          top: 5%
-          right: 3%
-          color: rgb(68, 115, 158)
+          top: 40%
+          left: 10%
+          #color: rgb(68, 115, 158)
+          color: var(--primary-color)
       - type: icon
         icon: mdi:bullhorn
         tap_action:
@@ -57,9 +327,10 @@ cards:
           service_data:
             entity_id: button.220d_sound_horn
         style:
-          top: 12%
-          right: 3%
-          color: rgb(68, 115, 158)
+          top: 60%
+          left: 10%
+          #color: rgb(68, 115, 158)
+          color: var(--primary-color)
       - type: icon
         icon: mdi:fan
         tap_action:
@@ -68,9 +339,10 @@ cards:
           service_data:
             entity_id: button.220d_activate_air_conditioning
         style:
-          top: 19%
-          right: 3%
-          color: rgb(68, 115, 158)
+          top: 60%
+          right: 5%
+          #color: rgb(68, 115, 158)
+          color: var(--primary-color)
       - type: icon
         icon: mdi:sync
         tap_action:
@@ -79,61 +351,12 @@ cards:
           service_data:
             entity_id: button.220d_refresh_from_cloud
         style:
-          top: 26%
-          right: 3%
-          color: rgb(68, 115, 158)
+          top: 40%
+          right: 5%
+          #color: rgb(68, 115, 158)
+          color: var(--primary-color)
+    image: /local/BMW_220d/BMW220d.png
 
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_door_driver_front
-        style:
-          top: 50%
-          right: 13%
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_door_passenger_front
-        style:
-          top: 50%
-          left: 17%
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_door_driver_rear
-        style:
-          top: 70%
-          right: 14%
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_door_passenger_rear
-        style:
-          top: 70%
-          left: 17%
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_hood
-        style:
-          top: 3%
-          left: 50%
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_trunk
-        style:
-          bottom: -2%
-          left: 46%
-
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_window_driver_front
-        style:
-          top: 45%
-          right: 13%
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_window_passenger_front
-        style:
-          top: 45%
-          left: 17%
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_window_driver_rear
-        style:
-          top: 65%
-          right: 14%
-      - type: state-icon
-        entity: binary_sensor.bmw_220d_window_passenger_rear
-        style:
-          top: 65%
-          left: 17%
 
     
   - type: entities
@@ -201,3 +424,133 @@ cards:
       - person.div
       - device_tracker.220d
     hours_to_show: 24
+
+    
+  # - type: picture-elements
+  #   state_color: true
+  #   image: /local/BMW_220d_GT_Top_View.png
+  #   elements:
+  #     - type: state-icon
+  #       entity: binary_sensor.220d_door_lock_state
+  #       icon: mdi:car-key
+  #       style:
+  #         top: 5%
+  #         left: 7%
+  #     - type: icon
+  #       icon: mdi:lock
+  #       tap_action:
+  #         action: call-service
+  #         service: lock.lock
+  #         service_data:
+  #           entity_id: lock.220d_lock
+  #       style:
+  #         top: 12%
+  #         left: 7%
+  #         color: Tomato
+  #     - type: icon
+  #       icon: mdi:lock-open
+  #       tap_action:
+  #         action: call-service
+  #         service: lock.unlock
+  #         service_data:
+  #           entity_id: lock.220d_lock
+  #       style:
+  #         top: 19%
+  #         left: 7%
+  #         color: Tomato
+  #     - type: icon
+  #       icon: mdi:car-light-dimmed
+  #       tap_action:
+  #         action: call-service
+  #         service: button.press
+  #         service_data:
+  #           entity_id: button.220d_flash_lights
+  #       style:
+  #         top: 5%
+  #         right: 3%
+  #         color: rgb(68, 115, 158)
+  #     - type: icon
+  #       icon: mdi:bullhorn
+  #       tap_action:
+  #         action: call-service
+  #         service: button.press
+  #         service_data:
+  #           entity_id: button.220d_sound_horn
+  #       style:
+  #         top: 12%
+  #         right: 3%
+  #         color: rgb(68, 115, 158)
+  #     - type: icon
+  #       icon: mdi:fan
+  #       tap_action:
+  #         action: call-service
+  #         service: button.press
+  #         service_data:
+  #           entity_id: button.220d_activate_air_conditioning
+  #       style:
+  #         top: 19%
+  #         right: 3%
+  #         color: rgb(68, 115, 158)
+  #     - type: icon
+  #       icon: mdi:sync
+  #       tap_action:
+  #         action: call-service
+  #         service: button.press
+  #         service_data:
+  #           entity_id: button.220d_refresh_from_cloud
+  #       style:
+  #         top: 26%
+  #         right: 3%
+  #         color: rgb(68, 115, 158)
+
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_door_driver_front
+  #       style:
+  #         top: 50%
+  #         right: 13%
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_door_passenger_front
+  #       style:
+  #         top: 50%
+  #         left: 17%
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_door_driver_rear
+  #       style:
+  #         top: 70%
+  #         right: 14%
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_door_passenger_rear
+  #       style:
+  #         top: 70%
+  #         left: 17%
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_hood
+  #       style:
+  #         top: 3%
+  #         left: 50%
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_trunk
+  #       style:
+  #         bottom: -2%
+  #         left: 46%
+
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_window_driver_front
+  #       style:
+  #         top: 45%
+  #         right: 13%
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_window_passenger_front
+  #       style:
+  #         top: 45%
+  #         left: 17%
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_window_driver_rear
+  #       style:
+  #         top: 65%
+  #         right: 14%
+  #     - type: state-icon
+  #       entity: binary_sensor.bmw_220d_window_passenger_rear
+  #       style:
+  #         top: 65%
+  #         left: 17%
