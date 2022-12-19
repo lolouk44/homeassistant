@@ -25,31 +25,213 @@ cards:
       - entity: binary_sensor.living_room_right_big_window
         secondary_info: last-changed
 
-
-  - type:  custom:stack-in-card
-    mode: vertical
-    cards:
-    - type: picture-glance
-      title: Living Room
-      entities:
-        - binary_sensor.pir_living_room_front
-        - binary_sensor.pir_living_room_back
-        - binary_sensor.photoresistor
-        - light.living_room_main
-        - light.living_room_wall
-        - light.tv_cabinet_led_strip
-      camera_image: camera.living_room
-    - type: entities
-      title: Living Room Lights
-      state_color: true
-      show_header_toggle: false
-      entities:
-        - entity: light.living_room_main
-          secondary_info: last-changed
-        - entity: light.living_room_wall
-          secondary_info: last-changed
-        - entity: light.tv_cabinet_led_strip
-          secondary_info: last-changed
-        - entity: switch.lwrf_socket_3
-          secondary_info: last-changed
-          icon: mdi:om
+  - type: picture-elements
+    elements:
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.cx_9_hood
+            state: 'on'
+        elements:
+          - type: image
+            entity: binary_sensor.cx_9_hood
+            image: /local/img/cx9-top.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.cx_9_hood
+            image: /local/img/cx9-hood.svg
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.cx_9_driver_door
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/img/cx9-left.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            image: /local/img/cx9-driver-door.svg
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.cx_9_passenger_door
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/img/cx9-right.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.cx_9_passenger_door
+            image: /local/img/cx9-passenger-door.svg
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.cx_9_rear_left_door
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/img/cx9-left.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.cx_9_rear_left_door
+            image: /local/img/cx9-rear-left-door.svg
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.cx_9_rear_right_door
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/img/cx9-right.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.cx_9_rear_right_door
+            image: /local/img/cx9-rear-right-door.svg
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.cx_9_trunk
+            state: 'on'
+        elements:
+          - type: image
+            image: /local/img/cx9-bottom.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            entity: binary_sensor.cx_9_trunk
+            image: /local/img/cx9-trunk.svg
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: conditional
+        conditions:
+          - entity: lock.cx_9_lock
+            state: unlocked
+          - entity: binary_sensor.cx_9_driver_door
+            state: 'off'
+          - entity: binary_sensor.cx_9_passenger_door
+            state: 'off'
+          - entity: binary_sensor.cx_9_rear_left_door
+            state: 'off'
+          - entity: binary_sensor.cx_9_rear_right_door
+            state: 'off'
+          - entity: binary_sensor.cx_9_hood
+            state: 'off'
+          - entity: binary_sensor.cx_9_trunk
+            state: 'off'
+        elements:
+          - type: image
+            image: /local/img/cx9-all.png
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+          - type: image
+            image: /local/img/cx9-lock.svg
+            style:
+              top: 50%
+              left: 50%
+              width: 100%
+            filter: saturate(1)
+            tap_action: none
+      - type: state-icon
+        entity: lock.cx_9_lock
+        state_color: false
+        style:
+          top: 18%
+          left: 25%
+      - type: state-label
+        entity: lock.cx_9_lock
+        style:
+          top: 23.5%
+          left: 25%
+      - type: state-icon
+        entity: device_tracker.cx_9_device_tracker
+        state_color: false
+        style:
+          top: 18%
+          left: 77%
+      - type: state-label
+        entity: device_tracker.cx_9_device_tracker
+        style:
+          top: 23.5%
+          left: 77%
+      - type: state-icon
+        entity: sensor.cx_9_odometer
+        style:
+          top: 75%
+          left: 77%
+      - type: state-label
+        entity: sensor.cx_9_odometer
+        style:
+          top: 81%
+          left: 77%
+      - type: state-icon
+        entity: sensor.cx_9_fuel_remaining_percentage
+        style:
+          top: 75%
+          left: 25%
+      - type: state-label
+        entity: sensor.cx_9_fuel_remaining_percentage
+        style:
+          top: 81%
+          left: 25%
+    image: /local/img/cx9.svg

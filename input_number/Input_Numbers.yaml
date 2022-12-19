@@ -18,6 +18,6 @@ bathroom_humidity_target:
   name: Bathroom Humidity Target
   icon: mdi:water-percent
   #initial: 40
-  min: 50
+  min: 0
   max: 100
   step: 1

@@ -19,6 +19,7 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
   currency: GBP
+  country: GB
   customize: !include_dir_merge_named customizations
   internal_url: http://192.168.9.23:8123
   external_url : !secret base_url
