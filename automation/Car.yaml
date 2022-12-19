@@ -166,7 +166,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | int > 60)}}'
     - condition: template
-      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") != "unknown" and states("sensor.astra_car_battery_voltage") | float(0) < 11.7}}'
+      value_template: '{{states("sensor.astra_car_battery_voltage") != "unavailable" and states("sensor.astra_car_battery_voltage") != "unknown" and states("sensor.astra_car_battery_voltage") | float(0) <= 11.85}}'
   action:
     - service: notify.gmaillolo
       data:
