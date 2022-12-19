@@ -22,10 +22,10 @@ cards:
               state: "unavailable" 
           exclude:
             - entity_id: media_player.as_aftmm_cast
-            # - entity_id: media_player.mibox3
-            # - entity_id: media_player.mi_box3_adtv
             - entity_id: "*astra_car*"
             - entity_id: "button.wled_*"
+            - entity_id: "media_player.*cast*"
+            
         sort:
           method: 'name'
   - type: entities
@@ -177,8 +177,8 @@ cards:
           name: ddclient
         - entity: switch.dropbox
           name: DropBox
-        - entity: switch.eufy_security
-          name: eufy-Security
+        - entity: switch.eufy
+          name: eufy
         - entity: switch.ha_dockermon
           name: Dockermon
         - entity: switch.grafana

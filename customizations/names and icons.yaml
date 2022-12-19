@@ -251,7 +251,7 @@ switch.dehumidifier:
   icon: mdi:power-plug
 switch.edimax1:
   icon: mdi:power-plug
-switch.eufy_security:
+switch.eufy:
   icon: mdi:docker
 switch.grafana:
   icon: mdi:docker
