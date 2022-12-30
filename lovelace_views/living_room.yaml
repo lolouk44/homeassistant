@@ -17,7 +17,7 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.photoresistor
         secondary_info: last-changed
-      - entity: binary_sensor.dark
+      - entity: input_boolean.dark
         secondary_info: last-changed
         icon: mdi:weather-night
       - entity: sensor.living_room_temperature

@@ -46,9 +46,13 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.photoresistor
         secondary_info: last-changed
-      - entity: binary_sensor.dark
+      - entity: input_boolean.dark
         secondary_info: last-changed
         icon: mdi:weather-night
+      - entity: sensor.illuminance_front
+        secondary_info: last-changed
+      - entity: sensor.illuminance_back
+        secondary_info: last-changed
   - type: custom:weather-card
     entity: weather.dark_sky
   - type: entities

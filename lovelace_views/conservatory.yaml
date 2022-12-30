@@ -16,7 +16,7 @@ cards:
       - entity: binary_sensor.conservatory_door_lock
         secondary_info: last-changed
         icon: mdi:door-closed-lock
-      - entity: binary_sensor.dark
+      - entity: input_boolean.dark
         secondary_info: last-changed
         icon: mdi:weather-night
       - entity: binary_sensor.conservatory_single_door

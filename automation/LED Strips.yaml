@@ -147,7 +147,7 @@
       entity_id: binary_sensor.pir_staircase
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.dark
+      entity_id: input_boolean.dark
       to: 'on'
   condition:
     - condition: state
@@ -159,13 +159,13 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: input_select.lights_mode
-        state: 'Normal'
+        entity_id: input_boolean.normal
+        state: 'on'
       - condition: state
         entity_id: input_boolean.movies
         state: 'on'
     - condition: state
-      entity_id: binary_sensor.dark
+      entity_id: input_boolean.dark
       state: 'on'
   action:
   - service: light.turn_on
@@ -191,6 +191,9 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_staircase
+      to: 'off'
+    - platform: state
+      entity_id: input_boolean.dark
       to: 'off'
   condition:
     - condition: state

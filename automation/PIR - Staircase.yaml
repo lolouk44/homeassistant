@@ -9,8 +9,8 @@
       entity_id: sun.sun
       to: 'below_horizon'
     - platform: state
-      entity_id: binary_sensor.photoresistor
-      to: 'off'
+      entity_id: input_boolean.dark
+      to: 'on'
     - platform: homeassistant
       event: start
     - platform: state
@@ -35,7 +35,7 @@
       after: '06:00'
       before: '23:00'
     - condition: state
-      entity_id: binary_sensor.dark
+      entity_id: input_boolean.dark
       state: 'on'
   action:
   - service: automation.turn_off
@@ -71,6 +71,9 @@
       to: 'off'
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: input_boolean.dark
+      to: 'off'
   condition:
     - condition: state
       entity_id: binary_sensor.pir_staircase

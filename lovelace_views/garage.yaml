@@ -19,6 +19,10 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.garage_freezer_door
         secondary_info: last-changed
+      - entity: sensor.illuminance_front
+        secondary_info: last-changed
+      - entity: sensor.illuminance_back
+        secondary_info: last-changed
   - type: entities
     title: Xiaomi Sockets
     state_color: true

@@ -11,7 +11,7 @@
       entity_id: binary_sensor.pir_kitchen
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.dark
+      entity_id: input_boolean.dark
       to: 'on'
     - platform: homeassistant
       event: start
@@ -38,7 +38,7 @@
         entity_id: input_boolean.movies
         state: 'on'
     - condition: state
-      entity_id: binary_sensor.dark
+      entity_id: input_boolean.dark
       state: 'on'
   action:
   - service: automation.turn_off
@@ -102,6 +102,9 @@
         minutes: 2
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: input_boolean.dark
+      to: 'off'
   condition:
     - condition: or
       conditions:

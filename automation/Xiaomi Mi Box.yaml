@@ -12,7 +12,7 @@
     - condition: template
       value_template: '{{state_attr("media_player.kodi","media_title").split(" ")[0] != "Pups"}}'
     - condition: state
-      entity_id: binary_sensor.dark
+      entity_id: input_boolean.dark
       state: 'on'
   action:
     - service: input_boolean.turn_on
@@ -34,7 +34,7 @@
     - condition: template
       value_template: '{{state_attr("media_player.mi_box3_adtv","app_name") == "com.amazon.amazonvideo.livingroom" or state_attr("media_player.mi_box3_adtv","app_name") == "Netflix" or state_attr("media_player.mi_box3_adtv","app_name") ==  "com.disney.disneyplus" }}'
     - condition: state
-      entity_id: binary_sensor.dark
+      entity_id: input_boolean.dark
       state: 'on'
   action:
     - service: input_boolean.turn_on

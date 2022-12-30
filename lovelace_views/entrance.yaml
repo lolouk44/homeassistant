@@ -15,7 +15,7 @@ cards:
         secondary_info: last-changed
       - entity: sensor.aqara_illumination
         secondary_info: last-changed
-      - entity: binary_sensor.dark
+      - entity: input_boolean.dark
         secondary_info: last-changed
         icon: mdi:weather-night
       - entity: binary_sensor.door_lock
@@ -29,6 +29,7 @@ cards:
   - type: entities
     title: Yale Lock
     show_header_toggle: false
+    state_color: true
     entities:
       - entity: lock.yale_conexis_l1_lock
         type: "custom:secondaryinfo-entity-row"
@@ -99,7 +100,7 @@ cards:
   - type: conditional
     conditions:
       - entity: input_select.lights_mode
-        state: 'Xmas'
+        state: 'Normal'
         show_empty: false
     card:
       type: entities
@@ -113,10 +114,7 @@ cards:
         - entity: light.house_number
           secondary_info: last-changed
           icon: mdi:numeric-4-box-multiple-outline
-        - entity: light.porch_om_xmas_led_strip
-          secondary_info: last-changed
-          icon: mdi:snowman
-          name: Snowman LED Strip
+
 
   - type: conditional
     conditions:
@@ -138,7 +136,7 @@ cards:
         - entity: light.porch_om_xmas_led_strip
           secondary_info: last-changed
           icon: mdi:om
-          name: Snowman LED Strip
+          name: Om LED Strip
 
   - type: conditional
     conditions:
@@ -166,11 +164,13 @@ cards:
   - type: custom:stack-in-card
     cards:
     - type: picture-glance
+      state_color: true
       entities:
         - entity: binary_sensor.doorbell_person_detector_sensor
           icon: mdi:face-recognition
       camera_image: camera.doorbell_last_ring
     - type: entities
+      state_color: true
       title: Doorbell
       show_header_toggle: false
       entities:

@@ -1,10 +1,2 @@
 - platform: workday
   country: GB
-
-- platform: template
-  sensors:
-    dark:
-      value_template: >
-        {{states('binary_sensor.photoresistor') == 'off' or states('light.living_room_main') == 'on' or states('light.conservatory') == 'on' or states('group.kitchen_lights') == 'on' or (states('sensor.aqara_illumination') | int < 200 and states('sensor.aqara_illumination') not in ("unavailable", "unknown"))  or states('light.hallway') == 'on'}}
-        
-      friendly_name: Dark

@@ -58,27 +58,15 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sun.sun
-      to: 'above_horizon'
-      for:
-        hours: 1
-    - platform: state
-      entity_id: sun.sun
-      to: 'above_horizon'
-      for:
-        hours: 2
-    - platform: state
-      entity_id: sun.sun
-      to: 'above_horizon'
-      for:
-        hours: 3
+      entity_id: input_boolean.dark
+      to: 'off'
   action:
-  - service: cover.open_cover
-    data:
-      entity_id:
-        - cover.kitchen_blinds
-        - cover.livingroom_blinds
-  - delay: 00:00:01
+  # - service: cover.open_cover
+  #   data:
+  #     entity_id:
+  #       - cover.kitchen_blinds
+  #       - cover.livingroom_blinds
+  # - delay: 00:00:01
   - service: light.turn_off
     data:
       entity_id: group.interior_lights
