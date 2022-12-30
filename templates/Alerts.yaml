@@ -17,7 +17,15 @@
 
     - name: "Alert Root Disk Usage Too High"
       state: >-
-        {{ states("sensor.root_disk_usage")  | int > 90 }}
+        {{ states("sensor.cctv2_root_disk_usage")  | int > 90 }}
+
+    - name: "Alert CCTV2 Root Disk Usage Too High"
+      state: >-
+        {{ states("sensor.cctv2_root_disk_usage")  | int > 75 }}
+
+    - name: "Alert CCTV2 NAS Disk Usage Too High"
+      state: >-
+        {{ states("sensor.cctv2_nas_disk_usage")  | int > 90 }}
 
     - name: "Alert Kitchen Freezer Temperature Too High"
       state: >-

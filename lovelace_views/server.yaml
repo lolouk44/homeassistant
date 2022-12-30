@@ -104,8 +104,8 @@ cards:
           include:
             - entity_id: sensor.house_power_consumption
             - entity_id: sensor.house_total_energy
-            - entity_id: sensor.cctv2_cpu_usage
-            - entity_id: sensor.cctv2_ram_usage
+            - entity_id: sensor.cpu_usage
+            - entity_id: sensor.ram_usage
             - entity_id: sensor.ssl_cert_expiry
             - entity_id: sensor.docker_hub_pulls
             - entity_id: sensor.docker_hub_pulls_add_on
@@ -124,6 +124,7 @@ cards:
             - entity_id: sensor.cctv2_cpu_usage
             - entity_id: sensor.cctv2_ram_usage
             - entity_id: sensor.cctv2_root_disk_usage
+            - entity_id: sensor.cctv2_nas_disk_usage
             - entity_id: sensor.cctv2_disk_temp
   - type: entities
     show_header_toggle: false

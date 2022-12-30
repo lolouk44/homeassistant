@@ -3,6 +3,11 @@
   unit_of_measurement: '%'
   icon: mdi:harddisk
 
+- state_topic: "Sensors/CCTV2/NASDisk"
+  name: "CCTV2 NAS Disk Usage"
+  unit_of_measurement: '%'
+  icon: mdi:harddisk
+
 - state_topic: "Sensors/CCTV2/RAM"
   name: "CCTV2 RAM Usage"
   unit_of_measurement: '%'
@@ -18,4 +23,12 @@
   name: 'CCTV2 CPU Usage'
   icon: mdi:chip
   unit_of_measurement: '%'
+  force_update: true
+
+- state_topic: 'RPi-Zero/bh1750back'
+  name: 'Illuminance Back'
+  value_template: "{{ value_json['illuminance'] }}"
+  device_class: illuminance
+  unit_of_measurement: 'lx'
+  state_class: measurement
   force_update: true

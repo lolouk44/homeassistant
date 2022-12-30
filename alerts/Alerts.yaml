@@ -242,6 +242,28 @@ root_disk_usage_too_high:
   notifiers:
     - mobile_app_lolo_iphone
 
+cctv2_root_disk_usage_too_high:
+  name: CCTV2 Root Disk Usage > 75%
+  entity_id: binary_sensor.cctv2_root_disk_usage_too_high
+  can_acknowledge: true
+  repeat:
+    - 5
+    - 30
+    - 60
+  notifiers:
+    - mobile_app_lolo_iphone
+
+cctv2_nas_disk_usage_too_high:
+  name: CCTV2 NAS Disk Usage > 90%
+  entity_id: binary_sensor.cctv2_nas_disk_usage_too_high
+  can_acknowledge: true
+  repeat:
+    - 5
+    - 30
+    - 60
+  notifiers:
+    - mobile_app_lolo_iphone
+
 kitchen_freezer_temp_too_high:
   name: Kitchen Freezer Temperature above 0
   entity_id: binary_sensor.alert_kitchen_freezer_temp_too_high
