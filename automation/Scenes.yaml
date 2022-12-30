@@ -13,9 +13,8 @@
       entity_id: input_boolean.normal
     - service: input_boolean.turn_off
       entity_id: input_boolean.movies
-    - service: climate.set_away_mode
+    - service: nest.set_away_mode
       data:
-        entity_id: climate.hallway
         away_mode: 'away'
     - condition: state
       entity_id: input_boolean.silent
@@ -209,4 +208,3 @@
       data:
         name: >
           {% if states("input_boolean.theme_dark") == "on" %}dark{% else %}day{% endif %}
-
