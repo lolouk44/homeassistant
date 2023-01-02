@@ -197,9 +197,6 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Normal'
-    - condition: state
       entity_id: light.staircase_led_strip
       state: 'on'
   action:

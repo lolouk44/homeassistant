@@ -8,9 +8,8 @@
       for:
         hours: 2
   condition:
-    - condition: state
-      entity_id: input_select.lights_mode
-      state: 'Normal'
+    - condition: template
+      value_template: '{{ states("input_select.lights_mode") != "Diwali" }}'
   action:
   - service: light.turn_off
     data:
@@ -24,26 +23,26 @@
     - platform: mqtt
       topic: 'zigbee2mqtt/aqara_toggle_pooja'
   action:
-  - condition: template
-    value_template: '{{ trigger.payload_json.click == "single" }}'
-  - service: light.toggle
-    data:
-      entity_id: light.pooja_frame, light.pooja_led_strip
-  - delay:
-      milliseconds: 500
-  - wait_template: "{{ (as_timestamp(now()) - as_timestamp(states.light.pooja_frame.last_updated)) | int < 5 and is_state('light.pooja_frame', 'on') }}"
-    timeout: '00:00:05'
-    continue_on_timeout: false
-  - service: light.turn_on
-    data:
-      entity_id: light.pooja_frame
-      brightness: 255
-      rgb_color: [0,0,255]
-  - service: light.turn_on
-    data:
-      entity_id: light.pooja_led_strip
-      brightness: 255
-      rgb_color: [255,255,191]
+    - condition: template
+      value_template: '{{ trigger.payload_json.click == "single" }}'
+    - service: light.toggle
+      data:
+        entity_id: light.pooja_frame, light.pooja_led_strip
+    - delay:
+        milliseconds: 500
+    - wait_template: "{{ (as_timestamp(now()) - as_timestamp(states.light.pooja_frame.last_updated)) | int < 5 and is_state('light.pooja_frame', 'on') }}"
+      timeout: '00:00:05'
+      continue_on_timeout: false
+    - service: light.turn_on
+      data:
+        entity_id: light.pooja_frame
+        brightness: 255
+        rgb_color: [0,0,255]
+    - service: light.turn_on
+      data:
+        entity_id: light.pooja_led_strip
+        brightness: 255
+        rgb_color: [255,255,191]
 
 - alias: Pooja - Toggle Turn Pooja LED Strips From Aqara Button
   id: pooja_toggle_turn_pooja_led_strips_from_aqara_button
@@ -53,21 +52,21 @@
     - platform: mqtt
       topic: 'zigbee2mqtt/aqara_toggle_pooja'
   action:
-  - condition: template
-    value_template: '{{ trigger.payload_json.click == "double" }}'
-  - service: light.toggle
-    data:
-      entity_id: light.pooja_led_strip
-  - delay:
-      milliseconds: 500
-  - wait_template: "{{ (as_timestamp(now()) - as_timestamp(states.light.pooja_led_strip.last_updated)) | int < 5 and is_state('light.pooja_led_strip', 'on') }}"
-    timeout: '00:00:05'
-    continue_on_timeout: false
-  - service: light.turn_on
-    data:
-      entity_id: light.pooja_led_strip
-      brightness: 255
-      rgb_color: [255,255,191]
+    - condition: template
+      value_template: '{{ trigger.payload_json.click == "double" }}'
+    - service: light.toggle
+      data:
+        entity_id: light.pooja_led_strip
+    - delay:
+        milliseconds: 500
+    - wait_template: "{{ (as_timestamp(now()) - as_timestamp(states.light.pooja_led_strip.last_updated)) | int < 5 and is_state('light.pooja_led_strip', 'on') }}"
+      timeout: '00:00:05'
+      continue_on_timeout: false
+    - service: light.turn_on
+      data:
+        entity_id: light.pooja_led_strip
+        brightness: 255
+        rgb_color: [255,255,191]
 
 
 - alias: Pooja - Office Nest Hub UnMute
@@ -83,10 +82,10 @@
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_on", "last_triggered") ) | int > 1 )}}'
   action:
-  - service: media_player.volume_mute
-    data:
-      entity_id: media_player.office_nest_hub #conservatory, media_player.house, media_player.kitchen, media_player.living_room, media_player.onkyo_tx_nr656
-      is_volume_muted: false
+    - service: media_player.volume_mute
+      data:
+        entity_id: media_player.office_nest_hub #conservatory, media_player.house, media_player.kitchen, media_player.living_room, media_player.onkyo_tx_nr656
+        is_volume_muted: false
 
 - alias: Pooja - Office Nest Hub Mute
   id: pooja_office_nest_hub_mute
@@ -101,7 +100,7 @@
     - condition: template
       value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lwrf_remote_3_off", "last_triggered") ) | int > 1 )}}'
   action:
-  - service: media_player.volume_mute
-    data:
-      entity_id: media_player.office_nest_hub #conservatory, media_player.house, media_player.kitchen, media_player.living_room, media_player.onkyo_tx_nr656
-      is_volume_muted: true
+    - service: media_player.volume_mute
+      data:
+        entity_id: media_player.office_nest_hub #conservatory, media_player.house, media_player.kitchen, media_player.living_room, media_player.onkyo_tx_nr656
+        is_volume_muted: true

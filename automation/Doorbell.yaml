@@ -8,20 +8,21 @@
       to: "True"
   action:
   - parallel:
-    - service: mqtt.publish
-      data:
-        topic: "Sensors/Doorbell"
-        payload_template: 'ON'
-        retain: false
+    - service: eufy_security.start_p2p_livestream
+      data: {}
+      target:
+        entity_id: camera.doorbell
     - service: media_player.play_media
       data:
         entity_id: media_player.google_home_minis, media_player.bedroom_nest_hub
         media_content_id: 'http://192.168.9.23:8123/local/sounds/Doorbell_Tubular_2.mp3'
         media_content_type: 'audio/mp3'
-    - service: eufy_security.start_p2p_livestream
-      data: {}
-      target:
-        entity_id: camera.doorbell
+  - parallel:
+    - service: mqtt.publish
+      data:
+        topic: "Sensors/Doorbell"
+        payload_template: 'ON'
+        retain: false
     - service: scene.create
       data:
         scene_id: pre_doorbell_state
@@ -42,20 +43,6 @@
       filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
   - condition: template
     value_template: '{{states("input_boolean.holidays") == "off"}}'
-  # - service: media_player.volume_set
-  #   data:
-  #     entity_id: media_player.google_home_minis
-  #     volume_level: 1
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.google_home_minis, media_player.bedroom_nest_hub
-      media_content_id: 'http://192.168.9.23:8123/local/sounds/Doorbell_Tubular_2.mp3'
-      media_content_type: 'audio/mp3'
-  # - service: media_player.play_media
-  #   data:
-  #     entity_id: media_player.master_bedroom_nest_hub
-  #     media_content_id: 'http://192.168.9.23:5000/api/doorbell?h=720&fps=1'
-  #     media_content_type: 'image/jpg'
   - service: media_player.turn_on
     data:
       entity_id: media_player.panasonic_viera_tv
