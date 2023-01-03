@@ -113,8 +113,6 @@
       entity_id: input_boolean.dark
       to: 'off'
   condition:
-    # - condition: template
-    #   value_template: '{{(as_timestamp(now()) - as_timestamp(state_attr("automation.lights_living_room_main_light_dimmed_off_pir", "last_triggered") ) | int > 90 )}}'
     - condition: state
       entity_id: input_boolean.normal
       state: 'on'
