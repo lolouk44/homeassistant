@@ -1,12 +1,44 @@
-  - device_tracker.lolo_iphone
-  - device_tracker.div_iphone
-  #- device_tracker.venkat
-  - sensor.dark_sky_temperature
-  - sensor.dark_sky_humidity
-  - sensor.precipitation
+  # - device_tracker.lolo_iphone
+  # - device_tracker.div_iphone
+  # #- device_tracker.venkat
+  # - sensor.dark_sky_temperature
+  # - sensor.dark_sky_humidity
+  # - sensor.precipitation
 
-  - sensor.dark_sky_overnight_low_temperature_0d
-  - sensor.dark_sky_daytime_high_temperature_0d
-  - sensor.home_to_work
-  - sensor.lolo_to_home
-  - sensor.sunset_time
+  # - sensor.dark_sky_overnight_low_temperature_0d
+  # - sensor.dark_sky_daytime_high_temperature_0d
+  # - sensor.home_to_work
+  # - sensor.lolo_to_home
+  # - sensor.sunset_time
+
+
+  - type: state-label
+    entity: device_tracker.lolo_iphone
+  - type: state-label
+    entity: device_tracker.div_iphone
+  # - type: state-label
+  #   entity: device_tracker.venkat
+  - type: state-label
+    entity: sensor.tomorrow_io_temperature
+    name: Temperature
+  - type: state-label
+    entity: sensor.tomorrow_io_humidity
+    name: Humidity
+  - type: state-label
+    entity: sensor.precipitation
+  - type: state-label
+    entity: sensor.tomorrow_io_wind_speed
+    name: Wind Speed
+
+  - type: state-label
+    entity: sensor.tomorrow_io_to_min
+    name: Tº Min
+  - type: state-label
+    entity: sensor.tomorrow_io_to_max
+    name: Tº Max
+  - type: state-label
+    entity: sensor.home_to_work
+  - type: state-label
+    entity: sensor.lolo_to_home
+  - type: state-label
+    entity: sensor.sunset_time

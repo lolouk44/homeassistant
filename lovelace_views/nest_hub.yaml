@@ -115,7 +115,7 @@ cards:
               top: 33%
               z-index: 2
             type: state-label
-          - entity: sensor.dark_sky_temperature
+          - entity: sensor.tomorrow_io_temperature
             style:
               color: '#03A9F4'
               font-size: 300%

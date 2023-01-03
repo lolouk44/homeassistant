@@ -54,7 +54,7 @@ cards:
       - entity: sensor.illuminance_back
         secondary_info: last-changed
   - type: custom:weather-card
-    entity: weather.dark_sky
+    entity: weather.tomorrow_io_home_daily
   - type: entities
     title: Dates
     show_header_toggle: false
@@ -117,182 +117,62 @@ cards:
         - entity_id: device_tracker.div_iphone
         - entity_id: device_tracker.venkat
       exclude:
-        - entity_id: sensor.220d_mileage
-        - entity_id: sensor.220d_remaining_fuel
-        - entity_id: sensor.220d_remaining_range_fuel
-        - entity_id: sensor.220d_remaining_range_total
-        - entity_id: sensor.absolute_radio_artist
-        - entity_id: sensor.absolute_radio_cr_artist
-        - entity_id: sensor.absolute_radio_cr_pic
-        - entity_id: sensor.absolute_radio_cr_track
-        - entity_id: sensor.absolute_radio_pic
-        - entity_id: sensor.absolute_radio_track
+        - entity_id: sensor.220d_*
+        - entity_id: sensor.absolute_radio*
+        - entity_id: sensor.chill_*
+        - entity_id: sensor.battery_*
+        - entity_id: sensor.idkrgzd*
+        - entity_id: sensor.xsbf3i3*
+        - entity_id: sensor.*rssi*
+        - entity_id: sensor.*last_seen*
+        - entity_id: sensor.*current*cost*
+        - entity_id: sensor.*fps*
+        - entity_id: sensor.*coral*
+        - entity_id: sensor.dark_sky_*
+        - entity_id: sensor.tomorrow_io_*
+        - entity_id: weather.tomorrow_io_*
         - entity_id: sensor.bathroom_fan_switch_toggle
-        - entity_id: sensor.battery_158d0001e642ae
-        - entity_id: sensor.battery_158d000205ac9c
-        - entity_id: sensor.battery_158d00022d2c49
-        - entity_id: sensor.battery_158d00022d2d3d
-        - entity_id: sensor.battery_158d000232dcd3
-        - entity_id: sensor.battery_158d000232ddf8
-        - entity_id: sensor.battery_158d0002434385
-        - entity_id: sensor.battery_158d0002435612
-        - entity_id: sensor.battery_158d0002ecf11c
-        - entity_id: sensor.battery_158d0002f92482
-        - entity_id: sensor.battery_158d0002f92557
-        - entity_id: sensor.battery_158d00030993a9
-        - entity_id: sensor.battery_158d000312f91a
-        - entity_id: sensor.battery_158d000312f9b1
-        - entity_id: sensor.battery_158d000313c69f
-        - entity_id: sensor.battery_158d000321d956
-        - entity_id: sensor.battery_158d0003498f6a
-        - entity_id: sensor.battery_158d0003498fcc
         - entity_id: sensor.bauble_random_effect
-        - entity_id: sensor.bmw_220d_mileage
-        - entity_id: sensor.bmw_220d_mpg
-        - entity_id: sensor.bmw_220d_remaining_fuel
         - entity_id: sensor.cctv2_cpu_usage
         - entity_id: sensor.cctv2_disk_temp
         - entity_id: sensor.cctv2_ram_usage
         - entity_id: sensor.cctv2_root_disk_usage
-        - entity_id: sensor.chill_artist
-        - entity_id: sensor.chill_pic
-        - entity_id: sensor.chill_track
-        - entity_id: sensor.conservatory_rssi_numeric
         - entity_id: sensor.cpu_usage
         - entity_id: sensor.current_date
-        - entity_id: sensor.dark_sky_daily_max_precip_intensity_0d
-        - entity_id: sensor.dark_sky_daily_summary
-        - entity_id: sensor.dark_sky_daytime_high_temperature_0d
-        - entity_id: sensor.dark_sky_hourly_summary
-        - entity_id: sensor.dark_sky_humidity
-        - entity_id: sensor.dark_sky_humidity_0d
-        - entity_id: sensor.dark_sky_icon
-        - entity_id: sensor.dark_sky_icon_0d
-        - entity_id: sensor.dark_sky_minutely_summary
-        - entity_id: sensor.dark_sky_overnight_low_temperature_0d
-        - entity_id: sensor.dark_sky_summary
-        - entity_id: sensor.dark_sky_summary_0d
-        - entity_id: sensor.dark_sky_temperature
-        - entity_id: sensor.dark_sky_wind_gust
-        - entity_id: sensor.dark_sky_wind_gust_0d
-        - entity_id: sensor.dark_sky_wind_speed
-        - entity_id: sensor.dark_sky_wind_speed_0d
-        - entity_id: sensor.dehumidifier_rssi_numeric
         - entity_id: sensor.dehumidifier_power
-        - entity_id: sensor.div_iphone_activity
-        - entity_id: sensor.div_iphone_average_active_pace
-        - entity_id: sensor.div_iphone_battery_level
-        - entity_id: sensor.div_iphone_battery_level_2
-        - entity_id: sensor.div_iphone_battery_state
-        - entity_id: sensor.div_iphone_battery_state_2
-        - entity_id: sensor.div_iphone_bssid
-        - entity_id: sensor.div_iphone_distance
-        - entity_id: sensor.div_iphone_floors_ascended
-        - entity_id: sensor.div_iphone_floors_descended
-        - entity_id: sensor.div_iphone_geocoded_location
-        - entity_id: sensor.div_iphone_last_update_trigger
-        - entity_id: sensor.div_iphone_sim_1
-        - entity_id: sensor.div_iphone_sim_2
-        - entity_id: sensor.div_iphone_ssid
-        - entity_id: sensor.div_iphone_steps
-        - entity_id: sensor.div_iphone_storage
+        - entity_id: sensor.div_iphone_*
         - entity_id: sensor.div_to_home
-        - entity_id: sensor.div_weight_2
         - entity_id: sensor.fire7_password
-        - entity_id: sensor.garage_back_door_rssi_numeric
         - entity_id: sensor.garage_freezer_pressure
-        - entity_id: sensor.ha_podcast
-        - entity_id: sensor.ha_podcast_track
+        - entity_id: sensor.ha_podcast*
         - entity_id: sensor.hacs
-        - entity_id: sensor.hallway_rssi_numeric
         - entity_id: sensor.hass_db_size_formatted
         - entity_id: sensor.home_disk_usage
         - entity_id: sensor.home_to_work
         - entity_id: sensor.horseshoe_close_eta
         - entity_id: sensor.house_power_consumption
         - entity_id: sensor.house_total_energy
-        - entity_id: sensor.internet_of_things_podcast
-        - entity_id: sensor.internet_of_things_podcast_track
-        - entity_id: sensor.kerui_alarm_rssi_numeric
-        - entity_id: sensor.kerui_disarm_rssi_numeric
-        - entity_id: sensor.kerui_remote_lock_rssi_numeric
-        - entity_id: sensor.kerui_remote_unlock_rssi_numeric
-        - entity_id: sensor.kiaan_weight_2
-        - entity_id: sensor.kitchen_blinds_rssi_numeric
-        - entity_id: sensor.kitchen_door_rssi_numeric
+        - entity_id: sensor.internet_of_things_podcast*
         - entity_id: sensor.kitchen_freezer_pressure
-        - entity_id: sensor.kitchen_tv_rssi_numeric
-        - entity_id: sensor.kitchen_window_rssi_numeric
-        - entity_id: sensor.laurent_mahe_iphone_7_battery_level
-        - entity_id: sensor.laurent_mahe_iphone_7_battery_level_2
-        - entity_id: sensor.laurent_mahe_iphone_7_battery_state
-        - entity_id: sensor.laurent_mahe_iphone_7_battery_state_2
-        - entity_id: sensor.laurent_mahe_iphone_7_bssid
-        - entity_id: sensor.laurent_mahe_iphone_7_geocoded_location
-        - entity_id: sensor.laurent_mahe_iphone_7_last_update_trigger
-        - entity_id: sensor.laurent_mahe_iphone_7_sim_1
-        - entity_id: sensor.laurent_mahe_iphone_7_ssid
-        - entity_id: sensor.laurent_mahe_iphone_7_storage
-        - entity_id: sensor.laurent_s_ipad_activity
-        - entity_id: sensor.laurent_s_ipad_battery_level
-        - entity_id: sensor.laurent_s_ipad_battery_level_2
-        - entity_id: sensor.laurent_s_ipad_battery_state
-        - entity_id: sensor.laurent_s_ipad_battery_state_2
-        - entity_id: sensor.laurent_s_ipad_bssid
-        - entity_id: sensor.laurent_s_ipad_connection_type
-        - entity_id: sensor.laurent_s_ipad_geocoded_location
-        - entity_id: sensor.laurent_s_ipad_last_update_trigger
-        - entity_id: sensor.laurent_s_ipad_ssid
-        - entity_id: sensor.laurent_s_ipad_storage
-        - entity_id: sensor.living_room_main_rssi_numeric
-        - entity_id: sensor.living_room_wall_rssi_numeric
-        - entity_id: sensor.livingroom_blinds_rssi_numeric
-        - entity_id: sensor.lolo_iphone_activity
-        - entity_id: sensor.lolo_iphone_average_active_pace
-        - entity_id: sensor.lolo_iphone_battery_level
-        - entity_id: sensor.lolo_iphone_battery_state
-        - entity_id: sensor.lolo_iphone_bssid
-        - entity_id: sensor.lolo_iphone_distance
-        - entity_id: sensor.lolo_iphone_floors_ascended
-        - entity_id: sensor.lolo_iphone_floors_descended
-        - entity_id: sensor.lolo_iphone_geocoded_location
-        - entity_id: sensor.lolo_iphone_last_update_trigger
-        - entity_id: sensor.lolo_iphone_sim_1
-        - entity_id: sensor.lolo_iphone_sim_2
-        - entity_id: sensor.lolo_iphone_ssid
-        - entity_id: sensor.lolo_iphone_steps
-        - entity_id: sensor.lolo_iphone_storage
+        - entity_id: sensor.laurent_mahe_iphone_7_*
+        - entity_id: sensor.laurent_s_ipad_*
+        - entity_id: sensor.lolo_iphone_*
         - entity_id: sensor.lolo_to_home
-        - entity_id: sensor.lolo_weight_2
-        - entity_id: sensor.lwrf_remote_1_rssi_numeric
-        - entity_id: sensor.lwrf_remote_2_rssi_numeric
-        - entity_id: sensor.lwrf_remote_3_rssi_numeric
-        - entity_id: sensor.lwrf_socket_3_rssi_numeric
-        - entity_id: sensor.lwrf_socket_xmas_rssi_numeric
         - entity_id: sensor.master_bedroom_pressure
-        - entity_id: sensor.radio_fiji_two_artist
-        - entity_id: sensor.radio_fiji_two_track
         - entity_id: sensor.ram_usage
         - entity_id: sensor.root_disk_usage
         - entity_id: sensor.rpi_kitchen_heartbeat
-        - entity_id: sensor.rtl2_artist
-        - entity_id: sensor.rtl2_pic
-        - entity_id: sensor.rtl2_track
-        - entity_id: sensor.scala_artist
-        - entity_id: sensor.scala_pic
-        - entity_id: sensor.scala_track
+        - entity_id: sensor.radio_fiji_two_*
+        - entity_id: sensor.rtl2_*
+        - entity_id: sensor.scala_*
         - entity_id: sensor.sda_disk_temp
-        - entity_id: sensor.seventeentrack_package_3347804979087081
-        - entity_id: sensor.seventeentrack_package_rv423008581cn
-        - entity_id: sensor.staircase_rssi_numeric
+        - entity_id: sensor.seventeentrack_package*
         - entity_id: sensor.stream_artist
         - entity_id: sensor.stream_track
-        - entity_id: sensor.testuser1_weight
         - entity_id: sensor.time
         - entity_id: sensor.total_energy
         - entity_id: sensor.house_total_energy_cost
         - entity_id: sensor.upstairs_humidity_status
-        - entity_id: sensor.upstairs_rssi_numeric
         - entity_id: sensor.uptime
         - entity_id: sensor.week_day
         - entity_id: sensor.wled_conservatory_estimated_current
@@ -308,10 +188,3 @@ cards:
         - entity_id: sensor.zfs1_disk_temp
         - entity_id: sensor.zfs2_disk_temp
         - entity_id: sensor.zfs_disk_usage
-        - entity_id: sensor.idkrgzd*        
-        - entity_id: sensor.xsbf3i3* 
-        - entity_id: sensor.*rssi*
-        - entity_id: sensor.*last_seen*        
-        - entity_id: sensor.*current*cost*
-        - entity_id: sensor.*fps*
-        - entity_id: sensor.*coral*

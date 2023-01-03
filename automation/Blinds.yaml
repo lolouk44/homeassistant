@@ -19,7 +19,7 @@
         entity_id: input_boolean.holidays
         state: 'on'
     - condition: template
-      value_template: "{{states('sensor.dark_sky_temperature') | int < 20}}"
+      value_template: '{{state_attr("weather.tomorrow_io_home_nowcast","temperature") | int(20) < 20}}'
   action:
   - service: cover.open_cover
     data:
@@ -87,8 +87,9 @@
       entity_id: input_boolean.movies
       to: 'off'
   condition:
-    - condition: template
-      value_template: "states('sensor.aqara_illumination') | int < 200"
+    - condition: state
+      entity_id: input_boolean.dark
+      state: 'off'
   action:
   - service: cover.open_cover
     data:
@@ -110,9 +111,9 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_close_living_room_if_too_hot_outside", "last_triggered")) | int > 7200)}}'
     - condition: template
-      value_template: "{{states('weather.dark_sky') == 'sunny' or states('weather.dark_sky') == 'partlycloudy'}}"
+      value_template: '{{states("weather.tomorrow_io_home_nowcast") in ["partlycloudy","sunny"]}}'
     - condition: template
-      value_template: "{{states('sensor.dark_sky_temperature') | int > 20}}"
+      value_template: '{{state_attr("weather.tomorrow_io_home_nowcast","temperature") | int(0) > 20}}'
     - condition: template
       value_template: "{{not (state_attr('sun.sun', 'rising'))}}"
     - condition: template

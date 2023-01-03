@@ -1,0 +1,25 @@
+- sensor:
+    - name: "Tomorrow.io Temperature"
+      state: '{{ state_attr("weather.tomorrow_io_home_nowcast", "temperature") }}'
+      device_class: temperature
+      unit_of_measurement: "°C"
+    - name: "Tomorrow.io Tº Min"
+      state: '{{ state_attr("weather.tomorrow_io_home_daily", "forecast")[0]["templow"] }}'
+      device_class: temperature
+      unit_of_measurement: "°C"
+    - name: "Tomorrow.io Tº Max"
+      state: '{{ state_attr("weather.tomorrow_io_home_daily", "forecast")[0]["temperature"] }}'
+      device_class: temperature
+      unit_of_measurement: "°C"
+    - name: "Tomorrow.io Humidity"
+      state: '{{ state_attr("weather.tomorrow_io_home_nowcast", "humidity") }}'
+      device_class: humidity
+      unit_of_measurement: "%"
+    - name: "Precipitation"
+      state: '{{ state_attr("weather.tomorrow_io_home_nowcast", "forecast")[0]["precipitation"] }}'
+      device_class: precipitation
+      unit_of_measurement: "mm"
+    - name: "Tomorrow.io Wind Speed"
+      state: '{{ state_attr("weather.tomorrow_io_home_nowcast", "wind_speed") }}'
+      device_class: wind_speed
+      unit_of_measurement: "km/h"

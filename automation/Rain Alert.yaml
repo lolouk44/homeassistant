@@ -11,6 +11,14 @@
     - platform: state
       entity_id: sensor.dark_sky_summary
       to: 'Rain'
+    - platform: state
+      entity_id: weather.tomorrow_io_home_nowcast
+      to: 'rainy'
+    - platform: state
+      entity_id: weather.tomorrow_io_home_hourly
+      to: 'rainy'
+    - platform: template
+      value_template: '{{ state_attr("weather.tomorrow_io_home_nowcast","forecast")[1]["condition"] == "rainy" }}'
   condition:
     - condition: state
       entity_id: input_boolean.clothes_drying_outside
@@ -55,6 +63,14 @@
     - platform: state
       entity_id: sensor.dark_sky_summary
       to: 'rain'
+    - platform: state
+      entity_id: weather.tomorrow_io_home_nowcast
+      to: 'rainy'
+    - platform: state
+      entity_id: weather.tomorrow_io_home_hourly
+      to: 'rainy'
+    - platform: template
+      value_template: '{{ state_attr("weather.tomorrow_io_home_nowcast","forecast")[1]["condition"] == "rainy" }}'
   condition:
     - condition: or
       conditions:
