@@ -9,7 +9,7 @@
         minutes: 5
     - platform: numeric_state
       entity_id: sensor.illuminance_front
-      below: 35
+      below: 45
       for:
         minutes: 5
     - platform: homeassistant
@@ -21,29 +21,38 @@
     - condition: template
       value_template: '{{ states("sensor.illuminance_back") | int(0) < 4 }}'
     - condition: template
-      value_template: '{{ states("sensor.illuminance_front") | int(0) < 35 }}'
-    - condition: or
-      conditions:
-      #- condition: template
-        #value_template: '{{now().hour <= 5}}'
-      #- condition: template
-        #value_template: '{{now().hour >= 16}}'
-      - condition: state
-        entity_id: light.living_room_main
-        state: 'on'
-      - condition: state
-        entity_id: group.kitchen_lights
-        state: 'on'
-      - condition: state
-        entity_id: light.hallway
-        state: 'on'
-      - condition: state
-        entity_id: light.conservatory
-        state: 'on'
+      value_template: '{{ states("sensor.illuminance_front") | int(0) < 45 }}'
   action:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.dark
+
+
+- alias: Dark - Dark On From Lights
+  id: dark_dark_on_from_lights
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: light.living_room_main
+      to: 'on'
+    - platform: state
+      entity_id: group.kitchen_lights
+      to: 'on'
+    - platform: state
+      entity_id: light.hallway
+      to: 'on'
+    - platform: state
+      entity_id: light.conservatory
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.dark
+      state: 'off'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.dark
+
 
 - alias: Dark - Dark Off
   id: dark_dark_off
@@ -69,10 +78,6 @@
       value_template: '{{ states("sensor.illuminance_back") | int(0) >= 3 }}'
     - condition: template
       value_template: '{{ states("sensor.illuminance_front") | int(0) >= 35 }}'
-    #- condition: template
-      #value_template: '{{now().hour > 5}}'
-    #- condition: template
-      #value_template: '{{now().hour < 16}}'
   action:
     - service: input_boolean.turn_off
       data:
