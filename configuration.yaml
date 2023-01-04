@@ -198,7 +198,9 @@ lovelace:
     # iCloud3
     - url: /hacsfiles/icloud3/icloud3-event-log-card.js
       type: module
-
+    # Card-Mod 3
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
 
 map:
 
