@@ -26,9 +26,25 @@
     name: Humidity
   - type: state-label
     entity: sensor.precipitation
+    style: >
+      @keyframes blinker { 50% { opacity: 0; } }
+      :host {
+      color: {% if states("sensor.precipitation") | int > 5 %} red  {% endif %};
+      --label-badge-red: {% if states("sensor.precipitation") | int > 5 %} red {% else %} var(--primary-color) {%endif %};
+      --label-badge-text-color: {% states("sensor.precipitation") | int > 5 %} red  {%endif %};
+      animation: {% if states("sensor.precipitation") | int > 5 %} blinker 2s linear infinite {%endif %};
+      }
   - type: state-label
     entity: sensor.tomorrow_io_wind_speed
     name: Wind Speed
+    style: >
+      @keyframes blinker { 50% { opacity: 0; } }
+      :host {
+      color: {% if state_attr("weather.tomorrow_io_home_nowcast", "wind_speed") | int > 50 %} red  {% endif %};
+      --label-badge-red: {% if state_attr("weather.tomorrow_io_home_nowcast", "wind_speed") | int > 50 %} red {% else %} var(--primary-color) {%endif %};
+      --label-badge-text-color: {% if state_attr("weather.tomorrow_io_home_nowcast", "wind_speed") | int > 50 %} red  {%endif %};
+      animation: {% if state_attr("weather.tomorrow_io_home_nowcast", "wind_speed") | int > 50 %} blinker 2s linear infinite {%endif %};
+      }
 
   - type: state-label
     entity: sensor.tomorrow_io_to_min

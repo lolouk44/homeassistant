@@ -20,6 +20,6 @@
       device_class: precipitation
       unit_of_measurement: "mm"
     - name: "Tomorrow.io Wind Speed"
-      state: '{{ state_attr("weather.tomorrow_io_home_nowcast", "wind_speed") }}'
+      state: '{{ state_attr("weather.tomorrow_io_home_nowcast", "wind_speed") | int }}'
       device_class: wind_speed
       unit_of_measurement: "km/h"
