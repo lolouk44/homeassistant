@@ -1,0 +1,5 @@
+- binary_sensor:
+    - name: "Doorbell P2P Streaming"
+      state: >-
+        {{ states("sensor.doorbell_stream_status") != "StreamStatus.IDLE"}}
+      icon: 'mdi:video-wireless'

@@ -39,6 +39,7 @@ cards:
         secondary_info: last-changed
       - entity: sensor.conexis_l1_node_status
         secondary_info: last-changed
+
   - type: conditional
     conditions:
       - entity: input_select.lights_mode
@@ -73,48 +74,6 @@ cards:
         - entity: light.house_number
           secondary_info: last-changed
           icon: mdi:numeric-4-box-multiple-outline
-
-
-
-  # - type: conditional
-  #   conditions:
-  #     - entity: binary_sensor.doorbell_streaming_sensor
-  #       state: 'False'
-  #   card:
-  #     type: picture-entity
-  #     entity: camera.doorbell
-  #     tap_action:
-  #       action: call-service
-  #       service: camera.turn_on
-  #       service_data: {}
-  #       target:
-  #         entity_id: camera.doorbell
-  # - type: conditional
-  #   conditions:
-  #     - entity: binary_sensor.doorbell_streaming_sensor
-  #       state: 'True'
-  #   card:
-  #     type: custom:webrtc-camera
-  #     entity: camera.doorbell
-
-  - type: conditional
-    conditions:
-      - entity: input_select.lights_mode
-        state: 'Normal'
-        show_empty: false
-    card:
-      type: entities
-      state_color: true
-      title: Entrance Lights
-      entities:
-        - entity: light.hallway
-          secondary_info: last-changed
-        - entity: light.aqara_gateway_light
-          secondary_info: last-changed
-        - entity: light.house_number
-          secondary_info: last-changed
-          icon: mdi:numeric-4-box-multiple-outline
-
 
   - type: conditional
     conditions:
@@ -166,7 +125,9 @@ cards:
     - type: picture-glance
       state_color: true
       entities:
-        - entity: binary_sensor.doorbell_person_detector_sensor
+        - entity: binary_sensor.doorbell_ringing
+        - entity: binary_sensor.doorbell_p2p_streaming
+        - entity: binary_sensor.doorbell_person_detected
           icon: mdi:face-recognition
       camera_image: camera.doorbell_last_ring
     - type: entities
@@ -174,9 +135,16 @@ cards:
       title: Doorbell
       show_header_toggle: false
       entities:
-        - entity: binary_sensor.doorbell_ringing_sensor
+        - entity: button.doorbell_start_p2p_stream
           secondary_info: last-changed
-          icon: mdi:bell-circle-outline
+        - entity: button.doorbell_stop_p2p_stream
+          secondary_info: last-changed
+          icon: mdi:card-outline
+        - entity: binary_sensor.doorbell_ringing
+          secondary_info: last-changed
+        - entity: binary_sensor.doorbell_p2p_streaming
+          name: Streaming
+          secondary_info: last-changed
 
   - type: custom:stack-in-card
     mode: vertical
@@ -209,3 +177,28 @@ cards:
         secondary_info: last-changed
       - entity: switch.fire7_charger
         secondary_info: last-changed
+
+
+
+
+
+  # - type: conditional
+  #   conditions:
+  #     - entity: binary_sensor.doorbell_streaming_sensor
+  #       state: 'False'
+  #   card:
+  #     type: picture-entity
+  #     entity: camera.doorbell
+  #     tap_action:
+  #       action: call-service
+  #       service: camera.turn_on
+  #       service_data: {}
+  #       target:
+  #         entity_id: camera.doorbell
+  # - type: conditional
+  #   conditions:
+  #     - entity: binary_sensor.doorbell_streaming_sensor
+  #       state: 'True'
+  #   card:
+  #     type: custom:webrtc-camera
+  #     entity: camera.doorbell

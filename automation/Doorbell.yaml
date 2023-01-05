@@ -4,77 +4,76 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.doorbell_ringing_sensor
-      to: "True"
+        - binary_sensor.doorbell_ringing
+      to: "on"
   action:
-  - parallel:
-    - service: eufy_security.start_p2p_livestream
-      data: {}
-      target:
+    - parallel:
+      - service: button.press
+        target:
+          entity_id: button.doorbell_start_p2p_stream
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.google_home_minis, media_player.bedroom_nest_hub
+          media_content_id: 'http://192.168.9.23:8123/local/sounds/Doorbell_Tubular_2.mp3'
+          media_content_type: 'audio/mp3'
+    - parallel:
+        - service: mqtt.publish
+          data:
+            topic: "Sensors/Doorbell"
+            payload_template: 'ON'
+            retain: false
+        - service: scene.create
+          data:
+            scene_id: pre_doorbell_state
+            snapshot_entities:
+              - light.living_room_main
+              - media_player.google_home_minis
+              - media_player.panasonic_viera_tv
+              - media_player.onkyo_tx_nr656
+              - media_player.onkyo_tx_nr656_2
+              - media_player.house
+              - media_player.living_room
+              - media_player.conservatory
+              - media_player.kitchen
+              - media_player.master_bedroom_nest_hub
+    - service: camera.snapshot
+      data:
         entity_id: camera.doorbell
+        filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
+    - condition: template
+      value_template: '{{states("input_boolean.holidays") == "off"}}'
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.panasonic_viera_tv
+    - wait_template: '{{ states("media_player.panasonic_viera_tv")== "on" }}'
+      timeout: '00:00:05'
     - service: media_player.play_media
+      target:
+        entity_id: media_player.panasonic_viera_tv
       data:
-        entity_id: media_player.google_home_minis, media_player.bedroom_nest_hub
-        media_content_id: 'http://192.168.9.23:8123/local/sounds/Doorbell_Tubular_2.mp3'
-        media_content_type: 'audio/mp3'
-  - parallel:
-    - service: mqtt.publish
+        media_content_id: 'http://192.168.9.23:5000/api/doorbell?h=720&fps=1'
+        media_content_type: url
+    - service: media_player.volume_mute
       data:
-        topic: "Sensors/Doorbell"
-        payload_template: 'ON'
-        retain: false
-    - service: scene.create
+        entity_id: media_player.conservatory, media_player.house, media_player.living_room, media_player.kitchen, media_player.onkyo_tx_nr656, media_player.onkyo_tx_nr656_2
+        is_volume_muted: true
+    - wait_template: '{{ states("binary_sensor.main_door")== "on" }}'
+      timeout: '00:01:00'
+    - delay: 00:00:05
+    - wait_template: '{{ states("binary_sensor.main_door")== "off" }}'
+      timeout: '00:05:00'
+    - delay: 00:00:05
+    - service: remote.send_command
       data:
-        scene_id: pre_doorbell_state
-        snapshot_entities:
-          - light.living_room_main
-          - media_player.google_home_minis
-          - media_player.panasonic_viera_tv
-          - media_player.onkyo_tx_nr656
-          - media_player.onkyo_tx_nr656_2
-          - media_player.house
-          - media_player.living_room
-          - media_player.conservatory
-          - media_player.kitchen
-          - media_player.master_bedroom_nest_hub
-  - service: camera.snapshot
-    data:
-      entity_id: camera.doorbell
-      filename: '/config/www/CCTV_Snapshots/Doorbell.jpg'
-  - condition: template
-    value_template: '{{states("input_boolean.holidays") == "off"}}'
-  - service: media_player.turn_on
-    data:
-      entity_id: media_player.panasonic_viera_tv
-  - wait_template: '{{ states("media_player.panasonic_viera_tv")== "on" }}'
-    timeout: '00:00:05'
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.panasonic_viera_tv
-    data:
-      media_content_id: 'http://192.168.9.23:5000/api/doorbell?h=720&fps=1'
-      media_content_type: url
-  - service: media_player.volume_mute
-    data:
-      entity_id: media_player.conservatory, media_player.house, media_player.living_room, media_player.kitchen, media_player.onkyo_tx_nr656, media_player.onkyo_tx_nr656_2
-      is_volume_muted: true
-  - wait_template: '{{ states("binary_sensor.main_door")== "on" }}'
-    timeout: '00:01:00'
-  - delay: 00:00:05
-  - wait_template: '{{ states("binary_sensor.main_door")== "off" }}'
-    timeout: '00:05:00'
-  - delay: 00:00:05
-  - service: remote.send_command
-    data:
-      entity_id: remote.panasonic_viera_tv
-      command: "NRC_HDMI2-ONOFF"
-  - service: scene.turn_on
-    data:
-      entity_id: scene.pre_doorbell_state
-  - service: eufy_security.stop_p2p_livestream
-    data: {}
-    target:
-      entity_id: camera.doorbell
+        entity_id: remote.panasonic_viera_tv
+        command: "NRC_HDMI2-ONOFF"
+    - service: scene.turn_on
+      data:
+        entity_id: scene.pre_doorbell_state
+    - delay: 00:01:00
+    - service: button.press
+      target:
+        entity_id: button.doorbell_stop_p2p_stream
 
 
 # - alias: Doorbell - Start P2P Streaming
@@ -121,10 +120,9 @@
     - condition: template 
       value_template: "{{ trigger.payload_json['type'] == 'end'}}"
   action:
-    - service: eufy_security.start_p2p_livestream
-      data: {}
+    - service: button.press
       target:
-        entity_id: camera.doorbell
+        entity_id: button.doorbell_start_p2p_stream
 
 - alias: Doorbell - Stop P2P Streaming
   id: doorbell_stop_p2p_streaming
@@ -132,42 +130,23 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.doorbell_motion_sensor
-      to: "False"
+        - binary_sensor.doorbell_motion_detected
+      to: "off"
       for:
         minutes: 2
     - platform: state
       entity_id:
-        - binary_sensor.doorbell_streaming_sensor
-      to: "True"
+        - binary_sensor.doorbell_p2p_streaming
+      to: "off"
       for:
         minutes: 2
   action:
-  - service: automation.turn_off
-    data:
-      entity_id: automation.doorbell_person_detected_front_start_p2p_streaming
-  - service: eufy_security.stop_p2p_livestream
-    data: {}
-    target:
-      entity_id: camera.doorbell
-  - service: automation.turn_on
-    data:
-      entity_id: automation.doorbell_person_detected_front_start_p2p_streaming
-
-#   - service: rest_command.fire_tab_load_url
-#     data:
-#       url: >-
-#         http://<doorcam_ip>/cgi-bin/mjpg/video.cgi?camera=1&subtype=1&resolution=640x480
-#   - service: switch.turn_off
-#     target:
-#       entity_id: switch.amazon_fire_hd8_screensaver
-#     data: {}
-#   - delay:
-#       hours: 0
-#       minutes: 0
-#       seconds: 30
-#       milliseconds: 0
-#   - service: rest_command.fire_tab_close_tab
-#     data:
-#       tab_number: 1
-# mode: single
+    - service: automation.turn_off
+      data:
+        entity_id: automation.doorbell_person_detected_front_start_p2p_streaming
+    - service: button.press
+      target:
+        entity_id: button.doorbell_stop_p2p_stream
+    - service: automation.turn_on
+      data:
+        entity_id: automation.doorbell_person_detected_front_start_p2p_streaming

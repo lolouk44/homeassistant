@@ -106,16 +106,17 @@ cards:
     cards:
     - type: picture-glance
       entities:
-        - entity: binary_sensor.doorbell_person_detector_sensor
+        - entity: binary_sensor.doorbell_ringing
+        - entity: binary_sensor.doorbell_p2p_streaming
+        - entity: binary_sensor.doorbell_person_detected
           icon: mdi:face-recognition
       camera_image: camera.doorbell
     - type: entities
       title: Doorbell
       show_header_toggle: false
       entities:
-        - entity: binary_sensor.doorbell_ringing_sensor
+        - entity: binary_sensor.doorbell_ringing
           secondary_info: last-changed
-          icon: mdi:bell-circle-outline
 
   # Hallway Camera Card
   - type: custom:stack-in-card
