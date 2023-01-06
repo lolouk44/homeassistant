@@ -62,8 +62,6 @@ alarm_control_panel:
     code: !secret alarm_code
     arming_time: 30
 
-apcupsd:
-  host: 192.168.9.23
 
 # bluetooth:
 
