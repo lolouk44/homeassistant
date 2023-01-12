@@ -108,17 +108,29 @@
 - alias: Doorbell - Person Detected Front Start P2P Streaming
   id: doorbell_person_detected_front_start_p2p_streaming
   trigger:
-    platform: mqtt
-    topic: frigate/events
+    - platform: mqtt
+      topic: frigate/events
+    - platform: state
+      entity_id: binary_sensor.doorbell_person_detected
+      to: "on"
   condition:
-    - condition: template
-      value_template: "{{ trigger.payload_json['after']['label'] == 'person' }}"
-    - condition: template 
-      value_template: "{{ 'alert_zone' in trigger.payload_json['after']['entered_zones'] }}"
-    - condition: template 
-      value_template: "{{ trigger.payload_json['after']['camera'] == 'front' }}"
-    - condition: template 
-      value_template: "{{ trigger.payload_json['type'] == 'end'}}"
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: >
+          {{ trigger.payload_json['after']['label'] == 'person'
+          and 'alert_zone' in trigger.payload_json['after']['entered_zones']
+          and trigger.payload_json['after']['camera'] == 'front'
+          and trigger.payload_json['type'] == 'end'}}
+      - condition: state
+        entity_id: binary_sensor.doorbell_person_detected
+        state: 'on'
+    # - condition: template 
+    #   value_template: "{{ 'alert_zone' in trigger.payload_json['after']['entered_zones'] }}"
+    # - condition: template 
+    #   value_template: "{{ trigger.payload_json['after']['camera'] == 'front' }}"
+    # - condition: template 
+    #   value_template: "{{ trigger.payload_json['type'] == 'end'}}"
   action:
     - service: button.press
       target:
