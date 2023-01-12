@@ -40,3 +40,12 @@
 - name: twillio_lolo
   platform: twilio_call
   from_number: !secret twillio_lolo_phone_number
+
+- name: whatsapp_neighbourhood_watch
+  platform: rest
+  resource: !secret whin_neighbourhood_watch_group_id
+  method: POST
+  verify_ssl: true
+  headers: 
+    X-RapidAPI-Key: !secret whin_api_key
+  message_param_name: text
