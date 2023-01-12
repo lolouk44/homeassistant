@@ -44,6 +44,7 @@ cards:
     state_color: true
     show_header_toggle: false
     entities:
+      - switch.sonoff_s26_79
       - entity: binary_sensor.kello
       - entity: media_player.kello
         type: "custom:mini-media-player"
@@ -55,26 +56,10 @@ cards:
       # - entity: input_boolean.kello_play_stop
       - entity: input_boolean.kello_mute_alarms
   - type: entities
-    title: Mi Box
-    icon: 'mdi:google-chrome'
-    show_header_toggle: false
-    entities:
-    - entity: media_player.mi_box3_adtv
-      type: "custom:mini-media-player"
-      power_color: true
-      group: true
-      artwork: cover
-    - entity: media_player.mibox3
-      type: "custom:mini-media-player"
-      power_color: true
-      group: true
-      artwork: cover
-  - type: entities
     title: Edimax
     state_color: true
     show_header_toggle: false
     entities:
-      - switch.sonoff_s26_79
       - entity: input_select.edimax_mode
       - entity: switch.edimax1
         secondary_info: last-changed
