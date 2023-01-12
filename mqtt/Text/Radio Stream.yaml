@@ -1,0 +1,24 @@
+- name: "RTL2_Pic"
+  state_topic: "RadioStream/RTL2"
+  command_topic: "RadioStream/RTL2"
+  value_template: "{{ value_json['pic_url'] }}"
+
+- name: "Chill_Pic"
+  state_topic: "RadioStream/Chill"
+  command_topic: "RadioStream/Chill"
+  value_template: "{{ value_json['pic_url'] }}"
+
+- name: "Absolute_Radio_Pic"
+  state_topic: "RadioStream/Absolute_Radio"
+  command_topic: "RadioStream/Absolute_Radio"
+  value_template: "{{ value_json['pic_url'] }}"
+
+- name: "Absolute_Radio_CR_Pic"
+  state_topic: "RadioStream/Absolute_Radio_CR"
+  command_topic: "RadioStream/Absolute_Radio_CR"
+  value_template: "{{ value_json['pic_url'] }}"
+
+- name: "Scala_Pic"
+  state_topic: "RadioStream/Scala"
+  command_topic: "RadioStream/Scala"
+  value_template: "{{ value_json['pic_url'] }}"

@@ -90,7 +90,8 @@
   content_type: 'image/svg+xml'
 - platform: generic
   name: chromecast_radio_pic
-  still_image_url: '{{states("sensor.stream_album_art")}}'
+  still_image_url: '{{states("input_text.stream_album_art")}}'
+  
     
   
   

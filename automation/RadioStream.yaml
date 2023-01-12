@@ -1,0 +1,188 @@
+- alias: RadioStream - Play RTL2 Radio
+  id: radiostream_play_rtl2_radio
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.rtl2_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: RTL2
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: Office Nest Hub
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.rtl2_radio
+
+
+- alias: RadioStream - Play Scala Radio
+  id: radiostream_play_scala_radio
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.scala_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: Scala
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: Office Nest Hub
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.scala_radio
+
+
+
+- alias: RadioStream - Play Chill Radio
+  id: radiostream_play_chill_radio
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.chill_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: Chill
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: House
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.chill_radio
+
+
+- alias: RadioStream - Play Absolute Radio
+  id: radiostream_play_absolute_radio
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.absolute_radio_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: Absolute Radio
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: House
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.absolute_radio_radio
+
+
+- alias: RadioStream - Play Absolute CR Radio
+  id: radiostream_play_absolute_cr_radio
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.absolute_radio_cr_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: Absolute Radio Classic Rock
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: House
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.absolute_radio_cr_radio
+
+
+- alias: RadioStream - Play Radio Fiji Two Radio
+  id: radiostream_play_radio_fiji_two_radio
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.radio_fiji_two_radio
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: Radio Fiji Two
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: House
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.radio_fiji_two_radio
+
+
+- alias: RadioStream - Play Radio Navtarang
+  id: radiostream_play_radio_navtarang
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: input_boolean.radio_navtarang
+      to: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_station
+        option: Navtarang
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.chromecast_radio_speakers
+        option: House
+    - service: script.turn_on
+      entity_id: script.play_chromecast_radio
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.radio_navtarang
+
+- alias: RadioStream - Update Album Art
+  id: radiostream_update_album_art
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id:
+        - text.absolute_radio_cr_pic
+        - text.absolute_radio_pic
+        - text.chill_pic
+        - text.rtl2_pic
+        - text.scala_pic
+        - input_select.chromecast_radio_station
+        - binary_sensor.radio_is_streaming
+  action:
+    - service: input_text.set_value
+      data:
+        value: >
+          {% if is_state("binary_sensor.radio_is_streaming","on")%}
+          {% if is_state("input_select.chromecast_radio_station", "Hit West") %} https://upload.wikimedia.org/wikipedia/fr/b/bd/HitWestLogo.jpg
+          {% elif is_state("input_select.chromecast_radio_station", "RTL2") %} {{states("text.rtl2_pic") | replace("https://images.rtl.fr", "http://images.rtl.fr")}}
+          {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio") %} {{states("text.absolute_radio_pic")}}
+          {% elif is_state("input_select.chromecast_radio_station", "Scala") %} {{states("text.scala_pic")}}
+          {% elif is_state("input_select.chromecast_radio_station", "Absolute Radio Classic Rock") %} {{states("text.absolute_radio_cr_pic")}}
+          {% elif is_state("input_select.chromecast_radio_station", "HA Podcast") %} https://secureimg.stitcher.com/feedimageswide/480x270_176113.jpg
+          {% elif is_state("input_select.chromecast_radio_station", "IoT Podcast") %} https://is1-ssl.mzstatic.com/image/thumb/Music62/v4/b3/d6/64/b3d664ab-0560-f24d-2379-d01142267f94/source/1200x630bb.jpg
+          {% elif is_state("input_select.chromecast_radio_station", "Chill") %} {{states("text.chill_pic")}}
+          {% elif is_state("input_select.chromecast_radio_station", "Navtarang") %} https://static-media.streema.com/media/cache/61/a2/61a237fb6851e34614c55420b3e11a62.jpg
+          {% elif is_state("input_select.chromecast_radio_station", "Radio Fiji Two") %} http://player.streamguys.com/fbc/sgplayer/include/assets/img/RF2.png
+          {% elif is_state("input_select.chromecast_radio_station", "Custom Station") %} https://www.holyscripturesandisrael.com/images/radio/radio-icon.png
+          {% endif %}
+          {%else%}http://192.168.9.23:8123/local/Select_Radio.png
+          {%endif%}        
+      target:
+        entity_id: input_text.stream_album_art

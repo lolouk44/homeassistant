@@ -4,3 +4,6 @@ custom_station:
 
 base_url:
   initial: !secret base_url
+
+stream_album_art:
+  icon: 'mdi:account'
