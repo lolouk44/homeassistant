@@ -75,7 +75,7 @@
       entity_id: input_boolean.dark
       state: 'on'
     - condition: template
-      value_template: '{{ states("sensor.illuminance_back") | int(0) >= 4 }}'
+      value_template: '{{ states("sensor.illuminance_back") | int(0) >= 3 }}'
     - condition: template
       value_template: '{{ states("sensor.illuminance_front") | int(0) >= 45 }}'
   action:
