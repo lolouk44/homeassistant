@@ -77,7 +77,7 @@
     - condition: template
       value_template: '{{ states("sensor.illuminance_back") | int(0) >= 3 }}'
     - condition: template
-      value_template: '{{ states("sensor.illuminance_front") | int(0) >= 45 }}'
+      value_template: '{{ states("sensor.illuminance_front") | int(0) >= 35 }}'
   action:
     - service: input_boolean.turn_off
       data:
