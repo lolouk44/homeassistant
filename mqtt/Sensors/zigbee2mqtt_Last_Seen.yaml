@@ -139,3 +139,15 @@
 - name: "Zigbee Round Socket Last Seen"
   state_topic: "zigbee2mqtt/zigbee_round_socket"
   <<: *lastseen
+
+- name: "Sonoff S26 6a Last Seen"
+  state_topic: "zigbee2mqtt/sonoff_s26_6a"
+  <<: *lastseen
+
+- name: "Sonoff S26 79 Last Seen"
+  state_topic: "zigbee2mqtt/sonoff_s26_79"
+  <<: *lastseen
+
+- name: "Living Room Presence Last Seen"
+  state_topic: "zigbee2mqtt/living_room_presence"
+  <<: *lastseen

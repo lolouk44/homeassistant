@@ -46,52 +46,19 @@
       entity_id: input_boolean.dark
       state: 'on'
   action:
-  - service: automation.turn_off
-    data:
-      entity_id: automation.lights_living_room_main_light_dimmed_off_pir,automation.lights_living_room_main_light_off_pir
-  - service: light.turn_on
-    data:
-      entity_id: light.living_room_main
-      brightness: 255
-  - service: switch.turn_on
-    data:
-      entity_id: switch.lwrf_socket_3
-  - service: automation.turn_on
-    data:
-      entity_id: automation.lights_living_room_main_light_dimmed_off_pir,automation.lights_living_room_main_light_off_pir
-
-
-- alias: Lights - Living Room Main Light Dimmed Off PIR
-  id: lights_living_room_main_light_dimmed_off_pir
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.pir_living_room_front
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.pir_living_room_back
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: input_boolean.normal
-      state: 'on'
-    - condition: state
-      entity_id: media_player.panasonic_viera_tv
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.pir_living_room_front
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.pir_living_room_back
-      state: 'off'
-    - condition: state
-      entity_id: light.living_room_main
-      state: 'on'
-  action:
-  - service: light.turn_on
-    data:
-      entity_id: light.living_room_main
-      brightness: 11
+    - service: automation.turn_off
+      data:
+        entity_id: automation.lights_living_room_main_light_dimmed_off_pir,automation.lights_living_room_main_light_off_pir
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_main
+        brightness: 255
+    - service: switch.turn_on
+      data:
+        entity_id: switch.lwrf_socket_3
+    - service: automation.turn_on
+      data:
+        entity_id: automation.lights_living_room_main_light_dimmed_off_pir,automation.lights_living_room_main_light_off_pir
 
 
 
@@ -99,18 +66,13 @@
   id: lights_living_room_main_light_off_pir
   initial_state: true
   trigger:
-    - platform: state
-      entity_id: binary_sensor.pir_living_room_front
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.pir_living_room_back
-      to: 'off'
-      for:
-        minutes: 2
     - platform: homeassistant
       event: start
     - platform: state
       entity_id: input_boolean.dark
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.living_room_presence
       to: 'off'
   condition:
     - condition: state
@@ -126,23 +88,26 @@
       entity_id: binary_sensor.pir_living_room_back
       state: 'off'
     - condition: state
+      entity_id: binary_sensor.living_room_presence
+      state: 'off'
+    - condition: state
       entity_id: light.living_room_main
       state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.living_room_main
-      brightness: 255
-  - delay: 00:00:04
-  - service: light.turn_off
-    data:
-      entity_id: light.living_room_main
-  - service: switch.turn_off
-    data:
-      entity_id: switch.lwrf_socket_3
-  - service: light.turn_off
-    data:
-      entity_id: light.living_room_main
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_main
+        brightness: 255
+    - delay: 00:00:04
+    - service: light.turn_off
+      data:
+        entity_id: light.living_room_main
+    - service: switch.turn_off
+      data:
+        entity_id: switch.lwrf_socket_3
+    - service: light.turn_off
+      data:
+        entity_id: light.living_room_main
 
 
 
@@ -172,10 +137,13 @@
       entity_id: input_boolean.dark
       state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.living_room_main
-      brightness: 11
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_main
+        brightness: 11
+    - service: switch.turn_off
+      data:
+        entity_id: switch.lwrf_socket_3
 
 
 
@@ -202,12 +170,18 @@
       - condition: state
         entity_id: binary_sensor.pir_living_room_back
         state: 'on'
+      - condition: state
+        entity_id: binary_sensor.living_room_presence
+        state: 'on'
     - condition: state
       entity_id: input_boolean.dark
       state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.living_room_main
-      brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_main
+        brightness: 255
+    - service: switch.turn_on
+      data:
+        entity_id: switch.lwrf_socket_3
 

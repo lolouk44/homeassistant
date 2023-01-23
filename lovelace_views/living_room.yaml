@@ -15,6 +15,10 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.pir_living_room_back
         secondary_info: last-changed
+      - entity: binary_sensor.living_room_presence
+        secondary_info: last-changed
+      - entity: sensor.living_room_illumination
+        secondary_info: last-changed
       - entity: binary_sensor.photoresistor
         secondary_info: last-changed
       - entity: input_boolean.dark
@@ -101,165 +105,165 @@ cards:
       - entity: cover.livingroom_blinds
         secondary_info: last-changed
         icon: mdi:blinds
-  - type: picture-elements
-    image: /local/blank2.png
-    elements:
-      - type: image
-        entity: camera.vacuum_map
-        image: /local/Xiaomi_Vacuum.png
-        style:
-          top: 50%
-          left: 50%
-          width: 100%
-          height: 100%
-      - type: image
-        entity: camera.vacuum_map
-        camera_image: camera.vacuum_map
-        style:
-          top: 50%
-          left: 50%
-          width: 100%
-          height: 100%
-      # - type: icon
-        # icon: mdi:robot-vacuum
-      - type: state-icon
-        entity: vacuum.roborock_vacuum
-        style:
-          top: 95%
-          left: 10%
-          "--paper-item-icon-color": rgb(50, 50, 50)
-      - type: state-icon
-        entity: sensor.xiaomi_battery_level
-        service: vacuum.start_pause
-        style:
-          top: 95%
-          left: 20%
-          "--paper-item-icon-color": rgb(50, 50, 50)
-      - type: state-label
-        entity: sensor.xiaomi_status
-        style:
-          top: 5%
-          left: 1%
-          color: rgb(255, 255, 255)
-          transform: translate(0%,-50%)
-          pointer-events: none
-          text-shadow: 1px 1px black
-          font-family: Trebuchet MS
-          font-size: 90%
-          font-weight: bold
-          border-left-style: solid
-          border-color: Tomato
-          background-color: rgb(54, 65, 78)
-          opacity: 0.8
-      - type: state-label
-        entity: sensor.xiaomi_cleaning_time
-        style:
-          top: 15%
-          left: 1%
-          color: rgb(255, 255, 255)
-          transform: translate(0%,-50%)
-          pointer-events: none
-          text-shadow: 1px 1px black
-          font-family: Trebuchet MS
-          font-size: 90%
-          font-weight: bold
-          border-left-style: solid
-          border-color: GreenYellow
-          background-color: rgb(54, 65, 78)
-          opacity: 0.8
-      - type: state-label
-        entity: sensor.xiaomi_cleaned_area
-        style:
-          top: 22%
-          left: 1%
-          color: rgb(255, 255, 255)
-          transform: translate(0%,-50%)
-          pointer-events: none
-          text-shadow: 1px 1px black
-          font-family: Trebuchet MS
-          font-size: 90%
-          font-weight: bold
-          border-left-style: solid
-          border-color: GreenYellow
-          background-color: rgb(54, 65, 78)
-          opacity: 0.8
-      - type: state-label
-        entity: sensor.xiaomi_main_brush_left
-        style:
-          top: 32%
-          left: 1%
-          color: rgb(255, 255, 255)
-          transform: translate(0%,-50%)
-          pointer-events: none
-          text-shadow: 1px 1px black
-          font-family: Trebuchet MS
-          font-size: 90%
-          font-weight: bold
-          border-left-style: solid
-          border-color: DeepSkyBlue
-          background-color: rgb(54, 65, 78)
-          opacity: 0.8
-      - type: state-label
-        entity: sensor.xiaomi_side_brush_left
-        style:
-          top: 39%
-          left: 1%
-          color: rgb(255, 255, 255)
-          transform: translate(0%,-50%)
-          pointer-events: none
-          text-shadow: 1px 1px black
-          font-family: Trebuchet MS
-          font-size: 90%
-          font-weight: bold
-          border-left-style: solid
-          border-color: DeepSkyBlue
-          background-color: rgb(54, 65, 78)
-          opacity: 0.8
-      - type: state-label
-        entity: sensor.xiaomi_filter_left
-        style:
-          top: 46%
-          left: 1%
-          color: rgb(255, 255, 255)
-          transform: translate(0%,-50%)
-          pointer-events: none
-          text-shadow: 1px 1px black
-          font-family: Trebuchet MS
-          font-size: 90%
-          font-weight: bold
-          border-left-style: solid
-          border-color: DeepSkyBlue
-          background-color: rgb(54, 65, 78)
-          opacity: 0.8
-      - type: state-label
-        entity: sensor.xiaomi_sensor_dirty_left
-        style:
-          top: 53%
-          left: 1%
-          color: rgb(255, 255, 255)
-          transform: translate(0%,-50%)
-          pointer-events: none
-          text-shadow: 1px 1px black
-          font-family: Trebuchet MS
-          font-size: 90%
-          font-weight: bold
-          border-left-style: solid
-          border-color: DeepSkyBlue
-          background-color: rgb(54, 65, 78)
-          opacity: 0.8
-      - type: state-label
-        entity: sensor.xiaomi_last_clean
-        style:
-          top: 95%
-          right: 1%
-          color: rgb(255, 255, 255)
-          transform: translate(0%,-50%)
-          pointer-events: none
-          text-shadow: 1px 1px black
-          font-family: Trebuchet MS
-          font-size: 90%
-          font-weight: bold
-          border-left-style: solid
-          border-color: DeepSkyBlue
-          background-color: rgb(54, 65, 78)
-          opacity: 0.8
+  # - type: picture-elements
+  #   image: /local/blank2.png
+  #   elements:
+  #     - type: image
+  #       entity: camera.vacuum_map
+  #       image: /local/Xiaomi_Vacuum.png
+  #       style:
+  #         top: 50%
+  #         left: 50%
+  #         width: 100%
+  #         height: 100%
+  #     - type: image
+  #       entity: camera.vacuum_map
+  #       camera_image: camera.vacuum_map
+  #       style:
+  #         top: 50%
+  #         left: 50%
+  #         width: 100%
+  #         height: 100%
+  #     # - type: icon
+  #       # icon: mdi:robot-vacuum
+  #     - type: state-icon
+  #       entity: vacuum.roborock_vacuum
+  #       style:
+  #         top: 95%
+  #         left: 10%
+  #         "--paper-item-icon-color": rgb(50, 50, 50)
+  #     - type: state-icon
+  #       entity: sensor.xiaomi_battery_level
+  #       service: vacuum.start_pause
+  #       style:
+  #         top: 95%
+  #         left: 20%
+  #         "--paper-item-icon-color": rgb(50, 50, 50)
+  #     - type: state-label
+  #       entity: sensor.xiaomi_status
+  #       style:
+  #         top: 5%
+  #         left: 1%
+  #         color: rgb(255, 255, 255)
+  #         transform: translate(0%,-50%)
+  #         pointer-events: none
+  #         text-shadow: 1px 1px black
+  #         font-family: Trebuchet MS
+  #         font-size: 90%
+  #         font-weight: bold
+  #         border-left-style: solid
+  #         border-color: Tomato
+  #         background-color: rgb(54, 65, 78)
+  #         opacity: 0.8
+  #     - type: state-label
+  #       entity: sensor.xiaomi_cleaning_time
+  #       style:
+  #         top: 15%
+  #         left: 1%
+  #         color: rgb(255, 255, 255)
+  #         transform: translate(0%,-50%)
+  #         pointer-events: none
+  #         text-shadow: 1px 1px black
+  #         font-family: Trebuchet MS
+  #         font-size: 90%
+  #         font-weight: bold
+  #         border-left-style: solid
+  #         border-color: GreenYellow
+  #         background-color: rgb(54, 65, 78)
+  #         opacity: 0.8
+  #     - type: state-label
+  #       entity: sensor.xiaomi_cleaned_area
+  #       style:
+  #         top: 22%
+  #         left: 1%
+  #         color: rgb(255, 255, 255)
+  #         transform: translate(0%,-50%)
+  #         pointer-events: none
+  #         text-shadow: 1px 1px black
+  #         font-family: Trebuchet MS
+  #         font-size: 90%
+  #         font-weight: bold
+  #         border-left-style: solid
+  #         border-color: GreenYellow
+  #         background-color: rgb(54, 65, 78)
+  #         opacity: 0.8
+  #     - type: state-label
+  #       entity: sensor.xiaomi_main_brush_left
+  #       style:
+  #         top: 32%
+  #         left: 1%
+  #         color: rgb(255, 255, 255)
+  #         transform: translate(0%,-50%)
+  #         pointer-events: none
+  #         text-shadow: 1px 1px black
+  #         font-family: Trebuchet MS
+  #         font-size: 90%
+  #         font-weight: bold
+  #         border-left-style: solid
+  #         border-color: DeepSkyBlue
+  #         background-color: rgb(54, 65, 78)
+  #         opacity: 0.8
+  #     - type: state-label
+  #       entity: sensor.xiaomi_side_brush_left
+  #       style:
+  #         top: 39%
+  #         left: 1%
+  #         color: rgb(255, 255, 255)
+  #         transform: translate(0%,-50%)
+  #         pointer-events: none
+  #         text-shadow: 1px 1px black
+  #         font-family: Trebuchet MS
+  #         font-size: 90%
+  #         font-weight: bold
+  #         border-left-style: solid
+  #         border-color: DeepSkyBlue
+  #         background-color: rgb(54, 65, 78)
+  #         opacity: 0.8
+  #     - type: state-label
+  #       entity: sensor.xiaomi_filter_left
+  #       style:
+  #         top: 46%
+  #         left: 1%
+  #         color: rgb(255, 255, 255)
+  #         transform: translate(0%,-50%)
+  #         pointer-events: none
+  #         text-shadow: 1px 1px black
+  #         font-family: Trebuchet MS
+  #         font-size: 90%
+  #         font-weight: bold
+  #         border-left-style: solid
+  #         border-color: DeepSkyBlue
+  #         background-color: rgb(54, 65, 78)
+  #         opacity: 0.8
+  #     - type: state-label
+  #       entity: sensor.xiaomi_sensor_dirty_left
+  #       style:
+  #         top: 53%
+  #         left: 1%
+  #         color: rgb(255, 255, 255)
+  #         transform: translate(0%,-50%)
+  #         pointer-events: none
+  #         text-shadow: 1px 1px black
+  #         font-family: Trebuchet MS
+  #         font-size: 90%
+  #         font-weight: bold
+  #         border-left-style: solid
+  #         border-color: DeepSkyBlue
+  #         background-color: rgb(54, 65, 78)
+  #         opacity: 0.8
+  #     - type: state-label
+  #       entity: sensor.xiaomi_last_clean
+  #       style:
+  #         top: 95%
+  #         right: 1%
+  #         color: rgb(255, 255, 255)
+  #         transform: translate(0%,-50%)
+  #         pointer-events: none
+  #         text-shadow: 1px 1px black
+  #         font-family: Trebuchet MS
+  #         font-size: 90%
+  #         font-weight: bold
+  #         border-left-style: solid
+  #         border-color: DeepSkyBlue
+  #         background-color: rgb(54, 65, 78)
+  #         opacity: 0.8

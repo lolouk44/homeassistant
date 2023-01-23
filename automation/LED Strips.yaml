@@ -106,10 +106,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room_front
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.pir_living_room_back
+      entity_id: binary_sensor.living_room_presence
       to: 'off'
   condition:
     - condition: state

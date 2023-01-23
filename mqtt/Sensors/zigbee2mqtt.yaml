@@ -255,3 +255,12 @@
   state_topic: "zigbee2mqtt/pooja_door"
   availability_topic: "zigbee2mqtt/pooja_door/availability"
   <<: *battery
+
+- name: "Living Room Illumination"
+  state_topic: "zigbee2mqtt/living_room_presence"
+  availability_topic: "zigbee2mqtt/living_room_presence/availability"
+  value_template: "{{ value_json['illuminance_lux'] }}"
+  device_class: illuminance
+  unit_of_measurement: 'lx'
+  state_class: measurement
+  force_update: true

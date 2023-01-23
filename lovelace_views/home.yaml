@@ -28,7 +28,7 @@ cards:
       - entity: input_select.lights_mode
         secondary_info: last-changed
   - type: entities
-    title: RPi Sensors
+    title: Sensors
     state_color: true
     show_header_toggle: false
     entities:
@@ -44,11 +44,15 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.pir_living_room_back
         secondary_info: last-changed
+      - entity: binary_sensor.living_room_presence
+        secondary_info: last-changed
       - entity: binary_sensor.photoresistor
         secondary_info: last-changed
       - entity: input_boolean.dark
         secondary_info: last-changed
         icon: mdi:weather-night
+      - entity: sensor.living_room_illumination
+        secondary_info: last-changed
       - entity: sensor.illuminance_front
         secondary_info: last-changed
       - entity: sensor.illuminance_back

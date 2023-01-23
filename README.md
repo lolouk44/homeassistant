@@ -56,6 +56,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - [SonOff S26](https://sonoff.tech/product/smart-plug/s26/) Zigbee Smart Sockets
 - Tile Mate, Slim trackers
 - ~~TKB Home TZ68 Zwave Socket~~
+- Tuya ZY-M100 Zigbee Human Presence Sensor
 - Ubiquiti UniFi Dream Machine All-in-One Router
 - Ubiquiti UniFi Flex Mini 5-Port PoE Switch
 - Ubiquiti Unifi UAP-AC-LITE WLAN Acces Point
