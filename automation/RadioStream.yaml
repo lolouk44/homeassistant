@@ -186,3 +186,33 @@
           {%endif%}        
       target:
         entity_id: input_text.stream_album_art
+
+
+- alias: RadioStream - Set Radio from Media Player
+  id: radiostream_set_radio_from_media_player
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: media_player.radio_navtarang
+      to: 'playing'
+      from: 'off'
+  action:
+    - service: input_select.select_option
+      data:
+        option: >
+          {%- for playing_devices in ( states.media_player | selectattr('state','eq','playing') | selectattr('entity_id', 'in',['media_player.office_nest_hub','media_player.bedroom_nest_hub','media_player.house','media_player.conservatory','media_player.kitchen','media_player.living_room']) | list ) %}
+          {%- if loop.first %}
+          {%- if 'absoluteradio' in playing_devices.attributes.media_content_id %} Absolute Radio {% endif -%}
+          {%- if 'absoluteclassicrock' in playing_devices.attributes.media_content_id %} Absolute Radio Classic Rock {% endif -%}
+          {%- if 'ChillMP3' in playing_devices.attributes.media_content_id %} Chill {% endif -%}
+          {%- if 'hitwest' in playing_devices.attributes.media_content_id %} Hit West {% endif -%}
+          {%- if 'navtarang' in playing_devices.attributes.media_content_id %} Navtarang {% endif -%}
+          {%- if 'RFTwo' in playing_devices.attributes.media_content_id %} Radio Fiji Two {% endif -%}
+          {%- if 'rtl2' in playing_devices.attributes.media_content_id %} RTL2 {% endif -%}
+          {%- if 'scalahigh' in playing_devices.attributes.media_content_id %} Scala {% endif -%}
+          {%- if 'hasspodcast' in playing_devices.attributes.media_content_id %} HA Podcast {% endif -%}
+          {%- if 'iotpodcast' in playing_devices.attributes.media_content_id %} IoT Podcast {% endif -%}
+          {% endif -%}
+          {% endfor -%}
+      target:
+        entity_id: input_select.chromecast_radio_station
