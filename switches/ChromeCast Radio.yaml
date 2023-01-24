@@ -5,8 +5,10 @@
       value_template: >
         {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} {% if state_attr("media_player.conservatory","is_volume_muted") %}on{% else %}off{% endif %}
         {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} {% if state_attr("media_player.kitchen","is_volume_muted") %}on{% else %}off{% endif %}
-        {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} {% if state_attr("media_player.onkyo_tx_nr656","is_volume_muted") %}on{% else %}off{% endif %}
+        {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} {% if state_attr("media_player.living_room","is_volume_muted") %}on{% else %}off{% endif %}
         {% elif is_state("input_select.chromecast_radio_speakers", "House") %} {% if state_attr("media_player.house","is_volume_muted") %}on{% else %}off{% endif %}
+        {% elif is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} {% if state_attr("media_player.bedroom_nest_hub","is_volume_muted") %}on{% else %}off{% endif %}
+        {% elif is_state("input_select.chromecast_radio_speakers", "Office Nest Hub") %} {% if state_attr("media_player.office_nest_hub","is_volume_muted") %}on{% else %}off{% endif %}
         {% else %}off
         {% endif %}
       turn_on:
@@ -15,8 +17,10 @@
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-            {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656
+            {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room
             {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
+            {% elif is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
+            {% elif is_state("input_select.chromecast_radio_speakers", "Office Nest Hub") %} media_player.office_nest_hub
             {% endif %}
           is_volume_muted: true
       turn_off:
@@ -25,8 +29,10 @@
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-            {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656
+            {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room
             {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
+            {% elif is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
+            {% elif is_state("input_select.chromecast_radio_speakers", "Office Nest Hub") %} media_player.office_nest_hub
             {% endif %}
           is_volume_muted: false
 
@@ -39,8 +45,10 @@
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-            {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656
+            {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room
             {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
+            {% elif is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
+            {% elif is_state("input_select.chromecast_radio_speakers", "Office Nest Hub") %} media_player.office_nest_hub
             {% endif %}
       turn_off:
         service: media_player.volume_up
@@ -48,8 +56,10 @@
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-            {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656
+            {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room
             {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
+            {% elif is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
+            {% elif is_state("input_select.chromecast_radio_speakers", "Office Nest Hub") %} media_player.office_nest_hub
             {% endif %}
 
     chromecast_radio_vol_down:
@@ -61,8 +71,10 @@
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-            {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656
+            {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room
             {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
+            {% elif is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
+            {% elif is_state("input_select.chromecast_radio_speakers", "Office Nest Hub") %} media_player.office_nest_hub
             {% endif %}
       turn_off:
         service: media_player.volume_down
@@ -70,8 +82,10 @@
           entity_id: >
             {% if is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
             {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
-            {% elif is_state("input_select.chromecast_radio_speakers", "Onkyo") %} media_player.onkyo_tx_nr656
+            {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room
             {% elif is_state("input_select.chromecast_radio_speakers", "House") %} media_player.house
+            {% elif is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
+            {% elif is_state("input_select.chromecast_radio_speakers", "Office Nest Hub") %} media_player.office_nest_hub
             {% endif %}
 
     chromecast_radio_play:

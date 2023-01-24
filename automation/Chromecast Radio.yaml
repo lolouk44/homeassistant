@@ -40,7 +40,7 @@
         {% if is_state(trigger.entity_id, "media_player.conservatory") %} Conservatory
         {% elif is_state(trigger.entity_id, "media_player.kitchen") %} Kitchen
         {% elif is_state(trigger.entity_id, "media_player.living_room") %} Living Room
-        {% elif is_state(trigger.entity_id, "media_player.master_bedroom_nest_hub") %} Master Bedroom Nest Hub
+        {% elif is_state(trigger.entity_id, "media_player.master_bedroom_nest_hub") %} Bedroom Nest Hub
         {% elif is_state(trigger.entity_id, "media_player.office_nest_hub") %} Office Nest Hub
         {% elif is_state(trigger.entity_id, "media_player.house") %} House
         {% endif %}

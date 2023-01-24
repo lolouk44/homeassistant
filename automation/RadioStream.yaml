@@ -216,3 +216,13 @@
           {% endfor -%}
       target:
         entity_id: input_select.chromecast_radio_station
+    - service: input_select.select_option
+      data:
+        option: >
+          {%- for playing_devices in ( states.media_player | selectattr('state','eq','playing') | selectattr('entity_id', 'in',['media_player.office_nest_hub','media_player.bedroom_nest_hub','media_player.house','media_player.conservatory','media_player.kitchen','media_player.living_room']) | list ) %}
+          {%- if loop.first %}
+          {{playing_devices.attributes.friendly_name}}
+          {% endif -%}
+          {% endfor -%}
+      target:
+        entity_id: input_select.chromecast_radio_speakers
