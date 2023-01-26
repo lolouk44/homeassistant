@@ -1,6 +1,6 @@
 - alias: PBI - Status Refresh
   id: pbi_status_refresh
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: time_pattern
       minutes: '/2'
@@ -12,7 +12,7 @@
 
 - alias: PBI - Service Outage
   id: pbi_service_outage
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id: binary_sensor.power_bi_amer_status
@@ -187,7 +187,7 @@
 
 - alias: PBI - Service Restored
   id: pbi_service_restored
-  initial_state: true
+  initial_state: false
   trigger:
     - platform: state
       entity_id: binary_sensor.power_bi_emea_status
