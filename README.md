@@ -69,7 +69,7 @@ My [Home Assistant](https://home-assistant.io/) Configuration Files
 - Xiaomi Aqara Sensors (Hygro, window/door)
 - Xiaomi DaFang Cameras with [Dafang Hacks](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks)
 - Xiaomi Mi Bluetooth V4.0 Body Composition Smart Scale with [my own code](https://github.com/lolouk44/xiaomi_mi_scale), also available as an [hass.io add-on](https://github.com/lolouk44/hassio-addons)
-- ~~~Xiaomi Mi Box 3~~~
+- ~~Xiaomi Mi Box 3~~
 - ~~Xiaomi Mi Flora Plant Sensor~~
 - Xiaomi Mi Robot Vacuum V1
 - Xiaomi Mijia Honeywell Fire Alarm Detector
