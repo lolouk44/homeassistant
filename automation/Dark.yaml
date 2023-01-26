@@ -33,17 +33,11 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: light.living_room_main
-      to: 'on'
-    - platform: state
-      entity_id: group.kitchen_lights
-      to: 'on'
-    - platform: state
-      entity_id: light.hallway
-      to: 'on'
-    - platform: state
-      entity_id: light.conservatory
-      to: 'on'
+      entity_id:
+        - light.living_room_main
+        - light.conservatory
+        - light.hallway
+        - group.kitchen_lights
   condition:
     - condition: state
       entity_id: input_boolean.dark

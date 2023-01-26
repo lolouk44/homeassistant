@@ -80,7 +80,7 @@
   action:
     - service: notify.gmaillolo
       data:
-        title: "HA - Windows Left Open"
+        title: "HA - Doors/Windows Left Open"
         message: >
           The following doors/windows are not closed: 
           {% set doors = [
@@ -91,8 +91,7 @@
           states.binary_sensor.living_room_right_big_window,
           states.binary_sensor.living_room_right_small_window,
           states.binary_sensor.cloakroom_window,
-          states.binary_sensor.kitchen_window,
-          states.binary_sensor.main_door] -%}
+          states.binary_sensor.kitchen_window] -%}
           {%- set doors_on = doors | selectattr('state','eq','on') | list -%}
           {% for door_names in doors_on -%}
           {{(door_names | string).split("friendly_name=")[1].split(" @")[0]}}, 
@@ -113,8 +112,7 @@
           states.binary_sensor.living_room_right_big_window,
           states.binary_sensor.living_room_right_small_window,
           states.binary_sensor.cloakroom_window,
-          states.binary_sensor.kitchen_window,
-          states.binary_sensor.main_door] -%}
+          states.binary_sensor.kitchen_window] -%}
           {%- set doors_on = doors | selectattr('state','eq','on') | list -%}
           {% for door_names in doors_on -%}
           {{(door_names | string).split("friendly_name=")[1].split(" @")[0]}}, 
