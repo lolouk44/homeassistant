@@ -61,6 +61,35 @@
         entity_id: automation.lights_living_room_main_light_dimmed_off_pir,automation.lights_living_room_main_light_off_pir
 
 
+- alias: Lights - Living Room Main Light Dimmed Off PIR
+  id: lights_living_room_main_light_dimmed_off_pir
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_room_presence
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.normal
+      state: 'on'
+    - condition: state
+      entity_id: media_player.panasonic_viera_tv
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_front
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_living_room_back
+      state: 'off'
+    - condition: state
+      entity_id: light.living_room_main
+      state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room_main
+      brightness: 11
+
 
 - alias: Lights - Living Room Main Light Off PIR
   id: lights_living_room_main_light_off_pir
@@ -74,6 +103,8 @@
     - platform: state
       entity_id: binary_sensor.living_room_presence
       to: 'off'
+      for:
+        seconds: 30
   condition:
     - condition: state
       entity_id: input_boolean.normal
