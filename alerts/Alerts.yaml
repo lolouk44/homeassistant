@@ -345,6 +345,24 @@ zigbee_devices_lost:
     # - gmaillolo
 
 
+entities_lost:
+  name: Entities Lost
+  entity_id: binary_sensor.lost_entities
+  title: 'HA - Lost Entities'
+  message: 'The following entities appear to be lost: {{ states("sensor.lost_entities_list") }}'
+  state: 'on'
+  can_acknowledge: true
+  skip_first: true
+  repeat:
+    - 5
+    - 30
+    - 60
+    - 120
+  notifiers:
+    - mobile_app_lolo_iphone
+    - gmaillolo
+
+
 lolo_bedside_cabinet_lost:
   name: Zigbee Devices Lost
   entity_id: binary_sensor.lolo_bedside_cabinet_lost
