@@ -22,6 +22,8 @@
       value_template: '{{ states("sensor.illuminance_back") | int(0) < 3.5 }}'
     - condition: template
       value_template: '{{ states("sensor.illuminance_front") | int(0) < 40 }}'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.dark_dark_off.attributes.last_triggered)) | int > 3600}}'
   action:
     - service: input_boolean.turn_on
       data:
@@ -42,6 +44,8 @@
     - condition: state
       entity_id: input_boolean.dark
       state: 'off'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.input_boolean.dark.last_changed)) | int > 30}}'
   action:
     - service: input_boolean.turn_on
       data:
@@ -72,6 +76,8 @@
       value_template: '{{ states("sensor.illuminance_back") | int(0) >= 3 }}'
     - condition: template
       value_template: '{{ states("sensor.illuminance_front") | int(0) >= 35 }}'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.dark_dark_on.attributes.last_triggered)) | int > 3600}}'
   action:
     - service: input_boolean.turn_off
       data:
