@@ -153,6 +153,14 @@
   payload_off: true
   device_class: window
 
+- name: "Kitchen Presence"
+  state_topic: "zigbee2mqtt/kitchen_presence"
+  availability_topic: "zigbee2mqtt/kitchen_presence/availability"
+  value_template: "{{ value_json['presence'] == true }}"
+  payload_on: true
+  payload_off: false
+  device_class: motion
+
 - name: "Living Room Presence"
   state_topic: "zigbee2mqtt/living_room_presence"
   availability_topic: "zigbee2mqtt/living_room_presence/availability"

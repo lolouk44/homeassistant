@@ -44,6 +44,8 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.pir_living_room_back
         secondary_info: last-changed
+      - entity: binary_sensor.kitchen_presence
+        secondary_info: last-changed
       - entity: binary_sensor.living_room_presence
         secondary_info: last-changed
       - entity: binary_sensor.photoresistor
@@ -51,6 +53,8 @@ cards:
       - entity: input_boolean.dark
         secondary_info: last-changed
         icon: mdi:weather-night
+      - entity: sensor.kitchen_illumination
+        secondary_info: last-changed
       - entity: sensor.living_room_illumination
         secondary_info: last-changed
       - entity: sensor.illuminance_front

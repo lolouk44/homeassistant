@@ -259,8 +259,14 @@
 - name: "Living Room Illumination"
   state_topic: "zigbee2mqtt/living_room_presence"
   availability_topic: "zigbee2mqtt/living_room_presence/availability"
-  value_template: "{{ value_json['illuminance_lux'] }}"
-  device_class: illuminance
-  unit_of_measurement: 'lx'
-  state_class: measurement
-  force_update: true
+  <<: &illumination
+    value_template: "{{ value_json['illuminance_lux'] }}"
+    device_class: illuminance
+    unit_of_measurement: 'lx'
+    state_class: measurement
+    force_update: true
+
+- name: "Kitchen Illumination"
+  state_topic: "zigbee2mqtt/kitchen_presence"
+  availability_topic: "zigbee2mqtt/kitchen_presence/availability"
+  <<: *illumination

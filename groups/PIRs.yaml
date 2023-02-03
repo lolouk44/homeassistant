@@ -6,6 +6,7 @@ pirs:
     - binary_sensor.pir_living_room_front
     - binary_sensor.pir_living_room_back
     - binary_sensor.living_room_presence
+    - binary_sensor.kitchen_presence
     - binary_sensor.pir_staircase
 pir_living_room:
   name: PIR Living Room
