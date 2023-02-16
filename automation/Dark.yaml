@@ -2,14 +2,14 @@
   id: dark_dark_on
   initial_state: true
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.illuminance_back
-      below: 4
-      for:
-        minutes: 5
+    # - platform: numeric_state
+    #   entity_id: sensor.illuminance_back
+    #   below: 4
+    #   for:
+    #     minutes: 5
     - platform: numeric_state
       entity_id: sensor.illuminance_front
-      below: 45
+      below: 40
       for:
         minutes: 5
     - platform: homeassistant
@@ -18,14 +18,46 @@
     - condition: state
       entity_id: input_boolean.dark
       state: 'off'
-    - condition: template
-      value_template: '{{ states("sensor.illuminance_back") | int(0) < 3.5 }}'
+    # - condition: template
+    #   value_template: '{{ states("sensor.illuminance_back") | int(0) < 4 }}'
     - condition: template
       value_template: '{{ states("sensor.illuminance_front") | int(0) < 40 }}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.dark_dark_off.attributes.last_triggered)) | int > 3600}}'
   action:
     - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.dark
+
+
+- alias: Dark - Dark Off
+  id: dark_dark_off
+  initial_state: true
+  trigger:
+    # - platform: numeric_state
+    #   entity_id: sensor.illuminance_back
+    #   above: 4
+    #   for:
+    #     minutes: 5
+    - platform: numeric_state
+      entity_id: sensor.illuminance_front
+      above: 40
+      for:
+        minutes: 5
+    - platform: homeassistant
+      event: start
+  condition:
+    - condition: state
+      entity_id: input_boolean.dark
+      state: 'on'
+    # - condition: template
+    #   value_template: '{{ states("sensor.illuminance_back") | int(0) >= 4 }}'
+    - condition: template
+      value_template: '{{ states("sensor.illuminance_front") | int(0) >= 40 }}'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.dark_dark_on.attributes.last_triggered)) | int > 3600}}'
+  action:
+    - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.dark
 
@@ -48,37 +80,5 @@
       value_template: '{{ (as_timestamp(now()) - as_timestamp(states.input_boolean.dark.last_changed)) | int > 30}}'
   action:
     - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.dark
-
-
-- alias: Dark - Dark Off
-  id: dark_dark_off
-  initial_state: true
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.illuminance_back
-      above: 3
-      for:
-        minutes: 5
-    - platform: numeric_state
-      entity_id: sensor.illuminance_front
-      above: 35
-      for:
-        minutes: 5
-    - platform: homeassistant
-      event: start
-  condition:
-    - condition: state
-      entity_id: input_boolean.dark
-      state: 'on'
-    - condition: template
-      value_template: '{{ states("sensor.illuminance_back") | int(0) >= 3 }}'
-    - condition: template
-      value_template: '{{ states("sensor.illuminance_front") | int(0) >= 35 }}'
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.dark_dark_on.attributes.last_triggered)) | int > 3600}}'
-  action:
-    - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.dark
