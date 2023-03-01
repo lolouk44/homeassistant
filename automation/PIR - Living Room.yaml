@@ -11,6 +11,9 @@
     - platform: state
       entity_id: input_boolean.dark
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.living_room_presence
+      to: 'on'
     - platform: homeassistant
       event: start
     - platform: state
@@ -59,6 +62,14 @@
     - service: automation.turn_on
       data:
         entity_id: automation.lights_living_room_main_light_dimmed_off_pir,automation.lights_living_room_main_light_off_pir
+    - delay:
+        seconds: 15
+    - condition: state
+      entity_id: binary_sensor.living_room_presence
+      state: 'off'
+    - service: automation.trigger
+      data:
+        entity_id: automation.lights_living_room_main_light_off_pir
 
 
 - alias: Lights - Living Room Main Light Dimmed Off PIR
@@ -97,9 +108,6 @@
   trigger:
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_boolean.dark
-      to: 'off'
     - platform: state
       entity_id: binary_sensor.living_room_presence
       to: 'off'
@@ -172,9 +180,6 @@
       data:
         entity_id: light.living_room_main
         brightness: 11
-    - service: switch.turn_off
-      data:
-        entity_id: switch.lwrf_socket_3
 
 
 

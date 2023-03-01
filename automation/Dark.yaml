@@ -72,6 +72,8 @@
         - light.conservatory
         - light.hallway
         - group.kitchen_lights
+      to:
+        "on"
   condition:
     - condition: state
       entity_id: input_boolean.dark
