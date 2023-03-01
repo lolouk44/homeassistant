@@ -1,0 +1,172 @@
+# Master Bedroom TRV
+- name: "Master Bedroom TRV Battery"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  availability_topic: "zigbee2mqtt/master_bedroom_trv/availability"
+  <<: &battery
+    value_template: "{{ value_json['battery'] }}"
+    unit_of_measurement: "%"
+    device_class: battery
+
+- name: "Master Bedroom TRV Last Seen"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  <<: &lastseen
+    value_template: "{{ value_json['last_seen'] }}"
+    device_class: timestamp
+
+- name: "Master Bedroom TRV Target Temperature"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  <<: &targettemperature
+    value_template: "{{ value_json['occupied_heating_setpoint'] }}"
+    unit_of_measurement: °C
+    device_class: temperature
+
+- name: "Master Bedroom TRV Temperature"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  <<: &temperature
+    value_template: "{{ value_json['local_temperature'] }}"
+    unit_of_measurement: °C
+    device_class: temperature
+
+# Bathroom TRV
+- name: "Bathroom TRV Battery"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  availability_topic: "zigbee2mqtt/bathroom_trv/availability"
+  <<: *battery
+
+- name: "Bathroom TRV Last Seen"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  <<: *lastseen
+
+- name: "Bathroom TRV Target Temperature"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  <<: *targettemperature
+
+- name: "Bathroom TRV Temperature"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  <<: *temperature
+
+# Blue Room TRV
+- name: "Blue Room TRV Battery"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  availability_topic: "zigbee2mqtt/blue_room_trv/availability"
+  <<: *battery
+
+- name: "Blue Room TRV Last Seen"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  <<: *lastseen
+
+- name: "Blue Room TRV Target Temperature"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  <<: *targettemperature
+
+- name: "Blue Room TRV Temperature"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  <<: *temperature
+
+# Convervatory TRV
+- name: "Conservatory TRV Battery"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  availability_topic: "zigbee2mqtt/conservatory_trv/availability"
+  <<: *battery
+
+- name: "Conservatory TRV Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  <<: *lastseen
+
+- name: "Conservatory TRV Target Temperature"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  <<: *targettemperature
+
+- name: "Conservatory TRV Temperature"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  <<: *temperature
+
+# Kiaan TRV
+- name: "Kiaan TRV Battery"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  availability_topic: "zigbee2mqtt/kiaan_trv/availability"
+  <<: *battery
+
+- name: "Kiaan TRV Last Seen"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  <<: *lastseen
+
+- name: "Kiaan TRV Target Temperature"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  <<: *targettemperature
+
+- name: "Kiaan TRV Temperature"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  <<: *temperature
+
+# Kitchen TRV
+- name: "Kitchen TRV Battery"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  availability_topic: "zigbee2mqtt/kitchen_trv/availability"
+  <<: *battery
+
+- name: "Kitchen TRV Last Seen"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  <<: *lastseen
+
+- name: "Kitchen TRV Target Temperature"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  <<: *targettemperature
+
+- name: "Kitchen TRV Temperature"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  <<: *temperature
+
+# Living Room Big TRV
+- name: "Living Room Big TRV Battery"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  availability_topic: "zigbee2mqtt/living_room_big_trv/availability"
+  <<: *battery
+
+- name: "Living Room Big TRV Last Seen"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  <<: *lastseen
+
+- name: "Living Room Big TRV Target Temperature"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  <<: *targettemperature
+
+- name: "Living Room Big TRV Temperature"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  <<: *temperature
+
+# Living Room Small TRV
+- name: "Living Room Small TRV Battery"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  availability_topic: "zigbee2mqtt/living_room_small_trv/availability"
+  <<: *battery
+
+- name: "Living Room Small TRV Last Seen"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  <<: *lastseen
+
+- name: "Living Room Small TRV Target Temperature"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  <<: *targettemperature
+
+- name: "Living Room Small TRV Temperature"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  <<: *temperature
+
+# Pooja Room TRV
+- name: "Pooja Room TRV Battery"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  availability_topic: "zigbee2mqtt/pooja_room_trv/availability"
+  <<: *battery
+
+- name: "Pooja Room TRV Last Seen"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  <<: *lastseen
+
+- name: "Pooja Room TRV Temperature"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  <<: *temperature
+
+- name: "Pooja Room TRV Target Temperature"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  <<: *targettemperature

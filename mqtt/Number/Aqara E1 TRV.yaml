@@ -1,0 +1,50 @@
+- name: "Master Bedroom TRV Target Temperature"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  command_topic: "zigbee2mqtt/master_bedroom_trv/set"
+  <<: &targettemperature
+    value_template: "{{ value_json['occupied_heating_setpoint'] }}"
+    command_template: '{"occupied_heating_setpoint": {{value}}}'
+    device_class: temperature
+    min: 15
+    max: 25
+    step: 0.5
+
+- name: "Bathroom TRV Target Temperature"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  command_topic: "zigbee2mqtt/bathroom_trv/set"
+  <<: *targettemperature
+
+- name: "Blue Room TRV Target Temperature"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  command_topic: "zigbee2mqtt/blue_room_trv/set"
+  <<: *targettemperature
+
+- name: "Conservatory TRV Target Temperature"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  command_topic: "zigbee2mqtt/conservatory_trv/set"
+  <<: *targettemperature
+
+- name: "Kiaan TRV Target Temperature"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  command_topic: "zigbee2mqtt/kiaan_trv/set"
+  <<: *targettemperature
+
+- name: "Kitchen TRV Target Temperature"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  command_topic: "zigbee2mqtt/kitchen_trv/set"
+  <<: *targettemperature
+
+- name: "Living Room Big TRV Target Temperature"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  command_topic: "zigbee2mqtt/living_room_big_trv/set"
+  <<: *targettemperature
+
+- name: "Living Room Small TRV Target Temperature"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  command_topic: "zigbee2mqtt/living_room_small_trv/set"
+  <<: *targettemperature
+
+- name: "Pooja Room TRV Target Temperature"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  command_topic: "zigbee2mqtt/pooja_room_trv/set"
+  <<: *targettemperature

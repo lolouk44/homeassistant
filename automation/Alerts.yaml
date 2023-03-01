@@ -7,9 +7,9 @@
       seconds: 0
   condition:
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_temperature.last_updated) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.kiaan_room_temperature.last_updated) | int > 3600 )}}'
     - condition: template
-      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.upstairs_humidity.last_updated) | int > 3600 )}}'
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.sensor.kiaan_room_humidity.last_updated) | int > 3600 )}}'
     - condition: state
       entity_id: alert.upstairs_temp_sensor_lost
       state: 'idle'
@@ -22,9 +22,9 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.upstairs_temperature
+      entity_id: sensor.kiaan_room_temperature
     - platform: state
-      entity_id: sensor.upstairs_humidity
+      entity_id: sensor.kiaan_room_humidity
   condition:
     - condition: template
       value_template: '{{states("alert.upstairs_temp_sensor_lost") != "idle"}}'

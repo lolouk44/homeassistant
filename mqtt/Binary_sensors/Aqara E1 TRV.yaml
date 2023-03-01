@@ -1,0 +1,71 @@
+- name: "Master Bedroom TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  <<: &valvealarm
+    value_template: "{{ value_json['valve_alarm'] }}"
+    payload_on: true
+    payload_off: false
+    device_class: problem
+- name: "Master Bedroom TRV Connectivity"
+  state_topic: "zigbee2mqtt/master_bedroom_trv/availability"
+  <<: &connectivity
+    value_template: '{{ value_json.state }}'
+    payload_on: "online"
+    payload_off: "offline"
+    device_class: connectivity
+    icon: 'mdi:access-point'
+
+- name: "Bathroom TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  <<: *valvealarm
+- name: "Bathroom TRV Connectivity"
+  state_topic: "zigbee2mqtt/bathroom_trv/availability"
+  <<: *connectivity
+
+- name: "Blue Room TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  <<: *valvealarm
+- name: "Blue Room TRV Connectivity"
+  state_topic: "zigbee2mqtt/blue_room_trv/availability"
+  <<: *connectivity
+
+- name: "Conservatory TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  <<: *valvealarm
+- name: "Conservatory TRV Connectivity"
+  state_topic: "zigbee2mqtt/conservatory_trv/availability"
+  <<: *connectivity
+
+- name: "Kiaan TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  <<: *valvealarm
+- name: "Kiaan TRV Connectivity"
+  state_topic: "zigbee2mqtt/kiaan_trv/availability"
+  <<: *connectivity
+
+- name: "Kitchen TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  <<: *valvealarm
+- name: "Kitchen TRV Connectivity"
+  state_topic: "zigbee2mqtt/kitchen_trv/availability"
+  <<: *connectivity
+
+- name: "Living Room Big TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  <<: *valvealarm
+- name: "Living Room Big TRV Connectivity"
+  state_topic: "zigbee2mqtt/living_room_big_trv/availability"
+  <<: *connectivity
+
+- name: "Living Room Small TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  <<: *valvealarm
+- name: "Living Room Small TRV Connectivity"
+  state_topic: "zigbee2mqtt/living_room_small_trv/availability"
+  <<: *connectivity
+
+- name: "Pooja Room TRV Valve Alarm"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  <<: *valvealarm
+- name: "Pooja Room TRV Connectivity"
+  state_topic: "zigbee2mqtt/pooja_room_trv/availability"
+  <<: *connectivity

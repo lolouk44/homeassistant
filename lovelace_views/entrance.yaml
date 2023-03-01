@@ -22,6 +22,7 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.cloakroom_window
         secondary_info: last-changed
+        icon: mdi:window-closed-variant
       - entity: binary_sensor.main_door
         secondary_info: last-changed
       - entity: binary_sensor.ground_floor_smoke_detector

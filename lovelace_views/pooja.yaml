@@ -15,32 +15,14 @@ cards:
       secondary_info: last-changed
     - entity: binary_sensor.pooja_room_small_window
       secondary_info: last-changed
+      icon: mdi:window-closed-variant
     - entity: binary_sensor.pooja_room_big_window
       secondary_info: last-changed
+      icon: mdi:window-closed-variant
     - entity: sensor.pooja_temperature
       secondary_info: last-changed
     - entity: sensor.pooja_humidity
       secondary_info: last-changed
-  - type: entities
-    title: Dehumidifier
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - entity: switch.dehumidifier
-        secondary_info: last-changed
-      - entity: input_boolean.dehumidifier_tank_full
-        secondary_info: last-changed
-  - type: entities
-    title: Pooja Box
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - entity: light.pooja_frame
-        secondary_info: last-changed
-      - entity: light.pooja_led_strip
-        secondary_info: last-changed
-        icon: mdi:led-strip-variant
-
   - type: custom:stack-in-card
     mode: vertical
     cards:
@@ -76,3 +58,160 @@ cards:
     power_color: true
     group: true
     artwork: cover
+
+###########################################################
+# Pooja Room TRV
+###########################################################
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: markdown
+      content: >
+        Pooja Room
+    - type: picture-elements
+      state_color: true
+      elements:
+        - type: state-icon
+          entity: sensor.pooja_room_trv_battery
+          style:
+            top: 30%
+            left: 39%
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.pooja_room_trv_valve_alarm
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: binary_sensor.pooja_room_trv_valve_alarm
+              style:
+                top: 30%
+                left: 46%
+              tap_action:
+                action: call-service
+                service: switch.turn_off
+                data:
+                  entity_id: switch.pooja_room_trv_valve_detection
+        - type: state-icon
+          entity: lock.pooja_room_trv_child_lock
+          style:
+            top: 30%
+            left: 54%
+          tap_action:
+            action: toggle
+        - type: state-icon
+          entity: binary_sensor.pooja_room_trv_connectivity
+          style:
+            top: 30%
+            left: 61%
+
+        - type: state-label
+          entity: sensor.pooja_room_trv_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 500%
+            top: 47%
+            left: 50%
+        - type: state-label
+          entity: number.pooja_room_trv_target_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 200%
+            top: 63%
+            left: 50%
+
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.pooja_room_big_window
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: binary_sensor.pooja_room_big_window
+              style:
+                top: 75%
+                left: 39%
+              icon: mdi:window-closed-variant
+        - type: conditional
+          conditions:
+            - entity: select.pooja_room_trv_mode
+              state: 'off'
+          elements:
+            - type: icon
+              icon: mdi:power
+              entity: select.pooja_room_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: gray
+        - type: conditional
+          conditions:
+            - entity: select.pooja_room_trv_mode
+              state: 'heat'
+          elements:
+            - type: icon
+              icon: mdi:fire
+              entity: select.pooja_room_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: rgb(255,87,34)
+
+        - type: conditional
+          conditions:
+            - entity: select.pooja_room_trv_preset
+              state: 'auto'
+          elements:
+            - type: icon
+              icon: mdi:thermostat-auto
+              entity: select.pooja_room_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(76,175,80)
+        - type: conditional
+          conditions:
+            - entity: select.pooja_room_trv_preset
+              state: 'away'
+          elements:
+            - type: icon
+              icon: mdi:snowflake
+              entity: select.pooja_room_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: var(--primary-color)
+        - type: conditional
+          conditions:
+            - entity: select.pooja_room_trv_preset
+              state: 'manual'
+          elements:
+            - type: icon
+              icon: mdi:hand-back-right
+              entity: select.pooja_room_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(255,87,34)
+      image: /local/Aqara_E1_TRV.png
+  - type: entities
+    title: Dehumidifier
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: switch.dehumidifier
+        secondary_info: last-changed
+      - entity: input_boolean.dehumidifier_tank_full
+        secondary_info: last-changed
+  - type: entities
+    title: Pooja Box
+    state_color: true
+    show_header_toggle: true
+    entities:
+      - entity: light.pooja_frame
+        secondary_info: last-changed
+      - entity: light.pooja_led_strip
+        secondary_info: last-changed
+        icon: mdi:led-strip-variant

@@ -11,63 +11,156 @@ cards:
     title: Kiaan's Bedroom Sensors
     show_header_toggle: false
     entities:
-      - entity: sensor.upstairs_temperature
+      - entity: sensor.kiaan_room_temperature
         secondary_info: last-changed
-      - entity: sensor.upstairs_humidity
+      - entity: sensor.kiaan_room_humidity
         secondary_info: last-changed
       - entity: binary_sensor.kiaan_big_window
         secondary_info: last-changed
+        icon: mdi:window-closed-variant
       - entity: binary_sensor.kiaan_small_window
         secondary_info: last-changed
+        icon: mdi:window-closed-variant
   - type: entities
     title: Kiaan's Bedroom Lights
     show_header_toggle: false
     entities:
       - entity: light.kiaan_lamp
         secondary_info: last-changed
-  - type: 'custom:canvas-gauge-card'
-    entity: sensor.upstairs_temperature
-    font_size: 1em
-    gauge:
-      animatedValue: true
-      borders: true
-      colorBorderOuter: '#333'
-      colorBorderOuterEnd: '#111'
-      colorBorderMiddle: '#222'
-      colorBorderMiddleEnd: '#111'
-      colorBorderInner: '#111'
-      colorBorderInnerEnd: '#333'
-      colorNumbers: '#ccc'
-      colorPlate: ''
-      colorTitle: '#f5f5f5'
-      colorUnits: '#f5f5f5'
-      height: 240
-      highlights:
-        - color: 'rgba(74, 123, 180, .75)'
-          from: 10
-          to: 20
-        - color: 'rgba(4, 205, 24, .75)'
-          from: 20
-          to: 25
-        - color: 'rgba(239, 93, 13, .75)'
-          from: 25
-          to: 35
-      majorTicks:
-        - '10'
-        - '15'
-        - '20'
-        - '25'
-        - '30'
-        - '35'
-      maxValue: 35
-      minValue: 10
-      minorTicks: 5
-      startAngle: 45
-      strokeTicks: true
-      ticksAngle: 270
-      title: Temperature
-      units: '(ºC)'
-      type: radial-gauge
-      valueBox: true
-      valueDec: 0
-      width: 230
+
+###########################################################
+# Kiaan TRV
+###########################################################
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: markdown
+      content: >
+        Kiaan
+    - type: picture-elements
+      state_color: true
+      elements:
+        - type: state-icon
+          entity: sensor.kiaan_trv_battery
+          style:
+            top: 30%
+            left: 39%
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.kiaan_trv_valve_alarm
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: binary_sensor.kiaan_trv_valve_alarm
+              style:
+                top: 30%
+                left: 46%
+              tap_action:
+                action: call-service
+                service: switch.turn_off
+                data:
+                  entity_id: switch.kiaan_trv_valve_detection
+        - type: state-icon
+          entity: lock.kiaan_trv_child_lock
+          style:
+            top: 30%
+            left: 54%
+          tap_action:
+            action: toggle
+        - type: state-icon
+          entity: binary_sensor.kiaan_trv_connectivity
+          style:
+            top: 30%
+            left: 61%
+
+        - type: state-label
+          entity: sensor.kiaan_trv_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 500%
+            top: 47%
+            left: 50%
+        - type: state-label
+          entity: number.kiaan_trv_target_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 200%
+            top: 63%
+            left: 50%
+
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.pooja_room_big_window
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: binary_sensor.pooja_room_big_window
+              style:
+                top: 75%
+                left: 39%
+        - type: conditional
+          conditions:
+            - entity: select.kiaan_trv_mode
+              state: 'off'
+          elements:
+            - type: icon
+              icon: mdi:power
+              entity: select.kiaan_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: gray
+        - type: conditional
+          conditions:
+            - entity: select.kiaan_trv_mode
+              state: 'heat'
+          elements:
+            - type: icon
+              icon: mdi:fire
+              entity: select.kiaan_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: rgb(255,87,34)
+
+        - type: conditional
+          conditions:
+            - entity: select.kiaan_trv_preset
+              state: 'auto'
+          elements:
+            - type: icon
+              icon: mdi:thermostat-auto
+              entity: select.kiaan_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(76,175,80)
+        - type: conditional
+          conditions:
+            - entity: select.kiaan_trv_preset
+              state: 'away'
+          elements:
+            - type: icon
+              icon: mdi:snowflake
+              entity: select.kiaan_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: var(--primary-color)
+        - type: conditional
+          conditions:
+            - entity: select.kiaan_trv_preset
+              state: 'manual'
+          elements:
+            - type: icon
+              icon: mdi:hand-back-right
+              entity: select.kiaan_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(255,87,34)
+      image: /local/Aqara_E1_TRV.png

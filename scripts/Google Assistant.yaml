@@ -18,3 +18,21 @@ nest_hub_start_cast:
     #     dashboard_path: lovelace-nesthub
     #     view_path: nesthub
     #     entity_id: media_player.master_bedroom_nest_hub
+
+nest_thermostat_temp_up:
+  alias: 'Nest Thermostat - Increase Temperature'
+  sequence:
+    - service: climate.set_temperature
+      data:
+        temperature: '{{state_attr("climate.hallway","current_temperature") | float + 0.5}}'
+      target:
+        entity_id: climate.hallway
+
+nest_thermostat_temp_down:
+  alias: 'Nest Thermostat - Decrease Temperature'
+  sequence:
+    - service: climate.set_temperature
+      data:
+        temperature: '{{state_attr("climate.hallway","current_temperature") | float - 0.5}}'
+      target:
+        entity_id: climate.hallway

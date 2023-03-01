@@ -30,15 +30,17 @@ cards:
         secondary_info: last-changed
       - entity: binary_sensor.living_room_right_small_window
         secondary_info: last-changed
+        icon: mdi:window-closed-variant
       - entity: binary_sensor.living_room_right_big_window
         secondary_info: last-changed
+        icon: mdi:window-closed-variant
   - type: custom:stack-in-card
     mode: vertical
     cards:
     - type: entities
       title: Living Room Lights
       state_color: true
-      show_header_toggle: false
+      show_header_toggle: true
       entities:
         - entity: light.living_room_main
           secondary_info: last-changed
@@ -105,6 +107,283 @@ cards:
       - entity: cover.livingroom_blinds
         secondary_info: last-changed
         icon: mdi:blinds
+
+
+
+###########################################################
+# Living Room Big TRV
+###########################################################
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: markdown
+      content: >
+        Living Room Big TRV
+    - type: picture-elements
+      state_color: true
+      elements:
+        - type: state-icon
+          entity: sensor.living_room_big_trv_battery
+          style:
+            top: 30%
+            left: 39%
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.living_room_big_trv_valve_alarm
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: binary_sensor.living_room_big_trv_valve_alarm
+              style:
+                top: 30%
+                left: 46%
+              tap_action:
+                action: call-service
+                service: switch.turn_off
+                data:
+                  entity_id: switch.living_room_big_trv_valve_detection
+        - type: state-icon
+          entity: lock.living_room_big_trv_child_lock
+          style:
+            top: 30%
+            left: 54%
+          tap_action:
+            action: toggle
+        - type: state-icon
+          entity: binary_sensor.living_room_big_trv_connectivity
+          style:
+            top: 30%
+            left: 61%
+
+        - type: state-label
+          entity: sensor.living_room_big_trv_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 5em
+            top: 47%
+            left: 50%
+        - type: state-label
+          entity: number.living_room_big_trv_target_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 2em
+            top: 63%
+            left: 50%
+
+        - type: conditional
+          conditions:
+            - entity: group.living_room_windows 
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: group.living_room_windows 
+              style:
+                top: 75%
+                left: 39%
+        - type: conditional
+          conditions:
+            - entity: select.living_room_big_trv_mode
+              state: 'off'
+          elements:
+            - type: icon
+              icon: mdi:power
+              entity: select.living_room_big_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: gray
+        - type: conditional
+          conditions:
+            - entity: select.living_room_big_trv_mode
+              state: 'heat'
+          elements:
+            - type: icon
+              icon: mdi:fire
+              entity: select.living_room_big_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: rgb(255,87,34)
+
+        - type: conditional
+          conditions:
+            - entity: select.living_room_big_trv_preset
+              state: 'auto'
+          elements:
+            - type: icon
+              icon: mdi:thermostat-auto
+              entity: select.living_room_big_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(76,175,80)
+        - type: conditional
+          conditions:
+            - entity: select.living_room_big_trv_preset
+              state: 'away'
+          elements:
+            - type: icon
+              icon: mdi:snowflake
+              entity: select.living_room_big_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: var(--primary-color)
+        - type: conditional
+          conditions:
+            - entity: select.living_room_big_trv_preset
+              state: 'manual'
+          elements:
+            - type: icon
+              icon: mdi:hand-back-right
+              entity: select.living_room_big_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(255,87,34)
+      image: /local/Aqara_E1_TRV.png
+
+###########################################################
+# Living Room Small TRV
+###########################################################
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: markdown
+      content: >
+        Living Room Small TRV
+    - type: picture-elements
+      state_color: true
+      elements:
+        - type: state-icon
+          entity: sensor.living_room_small_trv_battery
+          style:
+            top: 30%
+            left: 39%
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.living_room_small_trv_valve_alarm
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: binary_sensor.living_room_small_trv_valve_alarm
+              style:
+                top: 30%
+                left: 46%
+              tap_action:
+                action: call-service
+                service: switch.turn_off
+                data:
+                  entity_id: switch.living_room_small_trv_valve_detection
+        - type: state-icon
+          entity: lock.living_room_small_trv_child_lock
+          style:
+            top: 30%
+            left: 54%
+          tap_action:
+            action: toggle
+        - type: state-icon
+          entity: binary_sensor.living_room_small_trv_connectivity
+          style:
+            top: 30%
+            left: 61%
+
+        - type: state-label
+          entity: sensor.living_room_small_trv_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 5em
+            top: 47%
+            left: 50%
+        - type: state-label
+          entity: number.living_room_small_trv_target_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 2em
+            top: 63%
+            left: 50%
+
+        - type: conditional
+          conditions:
+            - entity: group.living_room_windows 
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: group.living_room_windows 
+              style:
+                top: 75%
+                left: 39%
+        - type: conditional
+          conditions:
+            - entity: select.living_room_small_trv_mode
+              state: 'off'
+          elements:
+            - type: icon
+              icon: mdi:power
+              entity: select.living_room_small_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: gray
+        - type: conditional
+          conditions:
+            - entity: select.living_room_small_trv_mode
+              state: 'heat'
+          elements:
+            - type: icon
+              icon: mdi:fire
+              entity: select.living_room_small_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: rgb(255,87,34)
+
+        - type: conditional
+          conditions:
+            - entity: select.living_room_small_trv_preset
+              state: 'auto'
+          elements:
+            - type: icon
+              icon: mdi:thermostat-auto
+              entity: select.living_room_small_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(76,175,80)
+        - type: conditional
+          conditions:
+            - entity: select.living_room_small_trv_preset
+              state: 'away'
+          elements:
+            - type: icon
+              icon: mdi:snowflake
+              entity: select.living_room_small_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: var(--primary-color)
+        - type: conditional
+          conditions:
+            - entity: select.living_room_small_trv_preset
+              state: 'manual'
+          elements:
+            - type: icon
+              icon: mdi:hand-back-right
+              entity: select.living_room_small_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(255,87,34)
+      image: /local/Aqara_E1_TRV.png
+
   # - type: picture-elements
   #   image: /local/blank2.png
   #   elements:

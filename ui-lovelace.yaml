@@ -53,6 +53,7 @@ views:
   - !include /config/lovelace_views/master_bedroom.yaml
   - !include /config/lovelace_views/kiaan_bedroom.yaml
   - !include /config/lovelace_views/cctv.yaml
+  - !include /config/lovelace_views/temperature.yaml
   - !include /config/lovelace_views/automations.yaml
   - !include /config/lovelace_views/server.yaml
   - !include /config/lovelace_views/server_stats.yaml

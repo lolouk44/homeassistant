@@ -2,6 +2,6 @@
   sensors:
     hallway_heating:
       value_template: >
-        {{ states.sensor.hallway_thermostat_hvac_state.state == 'heating'}}
+        {{ state_attr("climate.hallway", "hvac_action") == 'heating'}}
       friendly_name: Hallway Heating
       device_class: heat

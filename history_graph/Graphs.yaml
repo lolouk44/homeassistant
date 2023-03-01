@@ -2,7 +2,7 @@ graph_temperature:
   name: Temperature
   entities:
     - sensor.loft_temperature
-    - sensor.upstairs_temperature
+    - sensor.kiaan_room_temperature
     - sensor.hallway_thermostat_temperature
   hours_to_show: 240
   refresh: 0
@@ -10,7 +10,7 @@ graph_temperature:
 graph_humidity:
   name: Humidity
   entities:
-    - sensor.upstairs_humidity
+    - sensor.kiaan_room_humidity
     - sensor.hallway_thermostat_humidity
     - sensor.loft_humidity
   hours_to_show: 240

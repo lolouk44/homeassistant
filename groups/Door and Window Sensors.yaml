@@ -34,3 +34,49 @@ downstairs_door_and_window_sensors:
     - binary_sensor.cloakroom_window
     - binary_sensor.kitchen_window
     - binary_sensor.main_door
+
+master_bedroom_windows:
+  name: Master Bedroom Windows
+  entities:
+    - binary_sensor.master_bedroom_right_big_window
+    - binary_sensor.master_bedroom_left_big_window
+    - binary_sensor.master_bedroom_right_small_window
+    - binary_sensor.master_bedroom_left_small_window
+  icon: mdi:window-closed-variant
+
+blue_room_windows:
+  name: Blue Room Windows
+  entities:
+    - binary_sensor.blue_room_big_window
+    - binary_sensor.blue_room_small_window
+  icon: mdi:window-closed-variant
+
+conservatory_windows:
+  name: Conservatory Door & Windows
+  entities:
+    - binary_sensor.conservatory_skylight_left
+    - binary_sensor.conservatory_skylight_right
+    - binary_sensor.conservatory_single_door
+    - binary_sensor.conservatory_double_door
+  icon: mdi:door-open
+
+kiaan_room_windows:
+  name: Kiaan Room Windows
+  entities:
+    - binary_sensor.kiaan_big_window
+    - binary_sensor.kiaan_small_window
+  icon: mdi:window-closed-variant
+
+living_room_windows:
+  name: Living Room Windows
+  entities:
+    - binary_sensor.living_room_right_big_window
+    - binary_sensor.living_room_right_small_window
+  icon: mdi:window-closed-variant
+
+pooja_room_windows:
+  name: Pooja Room Windows
+  entities:
+    - binary_sensor.pooja_room_small_window
+    - binary_sensor.pooja_room_big_window
+  icon: mdi:window-closed-variant

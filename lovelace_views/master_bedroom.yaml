@@ -13,6 +13,8 @@ cards:
     - entity: light.lolo_bedside_light
       secondary_info: last-changed
       icon: mdi:lamp
+    - entity: switch.master_bedroom_tuya_socket
+      secondary_info: last-changed
     - entity: media_player.bedroom_nest_hub
       type: "custom:mini-media-player"
       power_color: true
@@ -33,40 +35,153 @@ cards:
       secondary_info: last-changed
     - entity: binary_sensor.master_bedroom_left_small_window
       secondary_info: last-changed
+      icon: mdi:window-closed-variant
     - entity: binary_sensor.master_bedroom_left_big_window
       secondary_info: last-changed
+      icon: mdi:window-closed-variant
     - entity: binary_sensor.master_bedroom_right_small_window
       secondary_info: last-changed
+      icon: mdi:window-closed-variant
     - entity: binary_sensor.master_bedroom_right_big_window
       secondary_info: last-changed
-  - type: entities
-    title: Kello
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - switch.sonoff_s26_79
-      - entity: binary_sensor.kello
-      - entity: media_player.kello
-        type: "custom:mini-media-player"
-        power_color: true
-        group: true
-        artwork: cover
-      - entity: input_select.kello_radio_station
-      # - entity: input_number.volume_kello
-      # - entity: input_boolean.kello_play_stop
-      - entity: input_boolean.kello_mute_alarms
-  - type: entities
-    title: Edimax
-    state_color: true
-    show_header_toggle: false
-    entities:
-      - entity: input_select.edimax_mode
-      - entity: switch.edimax1
-        secondary_info: last-changed
-      - entity: sensor.edimax1_watts
-        secondary_info: last-changed
-      - entity: input_boolean.edimax_charging
-      - entity: input_select.edimax_timer
+      icon: mdi:window-closed-variant
+
+###########################################################
+# Master Bedroom TRV
+###########################################################
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: markdown
+      content: >
+        Master Bedroom
+    - type: picture-elements
+      state_color: true
+      elements:
+        - type: state-icon
+          entity: sensor.master_bedroom_trv_battery
+          style:
+            top: 30%
+            left: 39%
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.master_bedroom_trv_valve_alarm
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: binary_sensor.master_bedroom_trv_valve_alarm
+              style:
+                top: 30%
+                left: 46%
+              tap_action:
+                action: call-service
+                service: switch.turn_off
+                data:
+                  entity_id: switch.master_bedroom_trv_valve_detection
+        - type: state-icon
+          entity: lock.master_bedroom_trv_child_lock
+          style:
+            top: 30%
+            left: 54%
+          tap_action:
+            action: toggle
+        - type: state-icon
+          entity: binary_sensor.master_bedroom_trv_connectivity
+          style:
+            top: 30%
+            left: 61%
+
+        - type: state-label
+          entity: sensor.master_bedroom_trv_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 500%
+            top: 47%
+            left: 50%
+        - type: state-label
+          entity: number.master_bedroom_trv_target_temperature
+          style:
+            color: '#FFFFFF'
+            filter: opacity(100%)
+            font-family: ZCOOL QingKe HuangYou
+            font-size: 200%
+            top: 63%
+            left: 50%
+
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.pooja_room_big_window
+              state: 'on'
+          elements:
+            - type: state-icon
+              entity: binary_sensor.pooja_room_big_window
+              style:
+                top: 75%
+                left: 39%
+        - type: conditional
+          conditions:
+            - entity: select.master_bedroom_trv_mode
+              state: 'off'
+          elements:
+            - type: icon
+              icon: mdi:power
+              entity: select.master_bedroom_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: gray
+        - type: conditional
+          conditions:
+            - entity: select.master_bedroom_trv_mode
+              state: 'heat'
+          elements:
+            - type: icon
+              icon: mdi:fire
+              entity: select.master_bedroom_trv_mode
+              style:
+                top: 75%
+                left: 46%
+                color: rgb(255,87,34)
+
+        - type: conditional
+          conditions:
+            - entity: select.master_bedroom_trv_preset
+              state: 'auto'
+          elements:
+            - type: icon
+              icon: mdi:thermostat-auto
+              entity: select.master_bedroom_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(76,175,80)
+        - type: conditional
+          conditions:
+            - entity: select.master_bedroom_trv_preset
+              state: 'away'
+          elements:
+            - type: icon
+              icon: mdi:snowflake
+              entity: select.master_bedroom_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: var(--primary-color)
+        - type: conditional
+          conditions:
+            - entity: select.master_bedroom_trv_preset
+              state: 'manual'
+          elements:
+            - type: icon
+              icon: mdi:hand-back-right
+              entity: select.master_bedroom_trv_preset
+              style:
+                top: 75%
+                left: 54%
+                color: rgb(255,87,34)
+      image: /local/Aqara_E1_TRV.png
   - type: custom:stack-in-card
     mode: vertical
     cards:
@@ -97,3 +212,31 @@ cards:
             name: Track
             secondary_info: last-changed
             icon: mdi:music-circle
+  - type: entities
+    title: Kello
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - switch.sonoff_s26_79
+      - entity: binary_sensor.kello
+      - entity: media_player.kello
+        type: "custom:mini-media-player"
+        power_color: true
+        group: true
+        artwork: cover
+      - entity: input_select.kello_radio_station
+      # - entity: input_number.volume_kello
+      # - entity: input_boolean.kello_play_stop
+      - entity: input_boolean.kello_mute_alarms
+  - type: entities
+    title: Edimax
+    state_color: true
+    show_header_toggle: false
+    entities:
+      - entity: input_select.edimax_mode
+      - entity: switch.edimax1
+        secondary_info: last-changed
+      - entity: sensor.edimax1_watts
+        secondary_info: last-changed
+      - entity: input_boolean.edimax_charging
+      - entity: input_select.edimax_timer

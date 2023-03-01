@@ -1,7 +1,7 @@
 alert_lost_outside_temperature_at_3600:
   initial: off
 
-alert_lost_upstairs_temperature_at_3600:
+alert_lost_kiaan_room_temperature_at_3600:
   initial: off
 
 alert_lost_ram_usage_at_300:

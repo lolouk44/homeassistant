@@ -1,0 +1,50 @@
+- name: "Master Bedroom TRV Child Lock"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  command_topic: "zigbee2mqtt/master_bedroom_trv/set"
+  <<: &lock
+    command_template: '{ "child_lock": "{{ value }}" }'
+    payload_lock: "LOCK"
+    payload_unlock: "UNLOCK"
+    state_locked: "LOCK"
+    state_unlocked: "UNLOCK"
+    value_template: "{{ value_json['child_lock'] }}"
+
+- name: "Bathroom TRV Child Lock"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  command_topic: "zigbee2mqtt/bathroom_trv/set"
+  <<: *lock
+
+- name: "Blue Room TRV Child Lock"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  command_topic: "zigbee2mqtt/blue_room_trv/set"
+  <<: *lock
+
+- name: "Conservatory TRV Child Lock"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  command_topic: "zigbee2mqtt/conservatory_trv/set"
+  <<: *lock
+
+- name: "Kiaan TRV Child Lock"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  command_topic: "zigbee2mqtt/kiaan_trv/set"
+  <<: *lock
+
+- name: "Kitchen TRV Child Lock"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  command_topic: "zigbee2mqtt/kitchen_trv/set"
+  <<: *lock
+
+- name: "Living Room Big TRV Child Lock"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  command_topic: "zigbee2mqtt/living_room_big_trv/set"
+  <<: *lock
+
+- name: "Living Room Small TRV Child Lock"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  command_topic: "zigbee2mqtt/living_room_small_trv/set"
+  <<: *lock
+
+- name: "Pooja Room TRV Child Lock"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  command_topic: "zigbee2mqtt/pooja_room_trv/set"
+  <<: *lock

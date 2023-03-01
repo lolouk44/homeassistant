@@ -187,7 +187,7 @@ sensor.hallway_thermostat_humidity:
   icon: mdi:water-percent
 sensor.hallway_thermostat_temperature:
   friendly_name: Hallway Temperature
-sensor.upstairs_humidity:
+sensor.kiaan_room_humidity:
   icon: mdi:water-percent
 sensor.xiaomi_last_clean:
   icon: mdi:calendar

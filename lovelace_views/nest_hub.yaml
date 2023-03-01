@@ -1,155 +1,200 @@
-title: Nest Hub
-background: center / cover no-repeat url("http://192.168.9.23:8082") 
-icon: mdi:monitor-dashboard
-path: nest_hub
-view_path: nest_hub
-
-# badges:
-  # !include /config/lovelace_views/badges.yaml
-cards:
-  # - !include /config/lovelace_views/persistent_notifications.yaml
-  # # - !include /config/lovelace_views/alert_card.yaml
-  # - type: picture-elements
-  #   elements:
-  #     - entity: sensor.time
-  #       style:
-  #         color: '#03A9F4'
-  #         filter: opacity(100%)
-  #         font-family: Kaushan Script
-  #         font-size: 1000%
-  #         left: 50%
-  #         pointer-events: none
-  #         text-shadow: 5px 5px 10px grey;
-  #         top: 56%
-  #         z-index: 0
-  #       type: state-label
-  #     - entity: sensor.week_day
-  #       style:
-  #         filter: opacity(50%)
-  #         font-family: Kaushan Script
-  #         font-size: 500%
-  #         left: 43%
-  #         pointer-events: none
-  #         text-shadow: 0px 0px 80px black
-  #         top: 20%
-  #         z-index: 1
-  #       type: state-label
-  #     - entity: sensor.current_date
-  #       style:
-  #         filter: opacity(100%)
-  #         font-family: Orbitron
-  #         font-size: 280%
-  #         left: 50%
-  #         pointer-events: none
-  #         top: 33%
-  #         z-index: 2
-  #       type: state-label
-  #   image: /local/blank.png
-  #   type: picture-elements
-  # - type: entities
-  #   entities:
-  #     - entity: sensor.master_bedroom_temperature
-  #       secondary_info: last-changed
-  #     - entity: sensor.master_bedroom_humidity
-  #       secondary_info: last-changed
-  #   show_header_toggle: false
-  #   state_color: true
-  # - type: light
-  #   entity: light.lolo_bedside_light
-  #   icon: 'mdi:lamp'
-  # - type: gauge
-  #   entity: sensor.master_bedroom_temperature
-  #   name: Temperature
-  #   min: 0
-  #   max: 30
-  #   severity:
-  #     green: 18
-  #     yellow: 21
-  #     red: 23
-  # - type: entity
-  #   entity: switch.edimax1
-  # - type: gauge
-  #   entity: sensor.master_bedroom_humidity
-  #   name: Humidity
-  #   min: 0
-  #   max: 100
-  #   severity:
-  #     green: 40
-  #     yellow: 60
-  #     red: 70
-
-  - type: grid
-    columns: 2
+views:
+  - background: center / cover no-repeat url("http://192.168.9.23:5000/api/front")
+    panel: true
+    badges: []
     cards:
-      - elements:
-          - entity: sensor.time
-            style:
-              color: '#03A9F4'
-              filter: opacity(100%)
-              font-family: Kaushan Script
-              font-size: 1000%
-              left: 50%
-              pointer-events: none
-              text-shadow: 5px 5px 10px grey;
-              top: 56%
-              z-index: 0
-            type: state-label
-          - entity: sensor.week_day
-            style:
-              filter: opacity(50%)
-              font-family: Kaushan Script
-              font-size: 500%
-              left: 43%
-              pointer-events: none
-              text-shadow: 0px 0px 80px black
-              top: 20%
-              z-index: 1
-            type: state-label
-          - entity: sensor.current_date
-            style:
-              filter: opacity(100%)
-              font-family: Orbitron
-              font-size: 270%
-              left: 50%
-              pointer-events: none
-              top: 33%
-              z-index: 2
-            type: state-label
-          - entity: sensor.tomorrow_io_temperature
-            style:
-              color: '#03A9F4'
-              font-size: 300%
-              filter: opacity(100%)
-              right: 0%
-              pointer-events: none
-              text-shadow: 5px 5px 10px grey;
-              bottom: 0%
-              z-index: 0
-            type: state-label
-        image: /local/blank.png
-        type: picture-elements
-      - type: vertical-stack
+      - type: grid
+        columns: 2
         cards:
-          - type: light
-            entity: light.lolo_bedside_light
-            icon: mdi:lamp
-          - type: gauge
-            entity: sensor.master_bedroom_temperature
-            min: 0
-            max: 30
-            severity:
-              green: 18
-              yellow: 21
-              red: 23
-            name: Temperature
-            theme: gauge_th
-          - type: gauge
-            max: 100
-            entity: sensor.master_bedroom_humidity
-            name: Humidity
-            min: 0
-            severity:
-              green: 40
-              yellow: 60
-              red: 70
-            theme: gauge_th
+          - elements:
+              - entity: sensor.time
+                style:
+                  color: '#03A9F4'
+                  filter: opacity(100%)
+                  font-family: Kaushan Script
+                  font-size: 1000%
+                  left: 50%
+                  pointer-events: none
+                  text-shadow: 5px 5px 10px grey;
+                  top: 56%
+                  z-index: 0
+                type: state-label
+              - entity: sensor.week_day
+                style:
+                  filter: opacity(50%)
+                  font-family: Kaushan Script
+                  font-size: 500%
+                  left: 43%
+                  pointer-events: none
+                  text-shadow: 0px 0px 80px black
+                  top: 20%
+                  z-index: 1
+                type: state-label
+              - entity: sensor.current_date
+                style:
+                  filter: opacity(100%)
+                  font-family: Orbitron
+                  font-size: 270%
+                  left: 50%
+                  pointer-events: none
+                  top: 33%
+                  z-index: 2
+                type: state-label
+              - entity: sensor.pirateweather_temperature
+                style:
+                  color: '#03A9F4'
+                  font-size: 300%
+                  filter: opacity(100%)
+                  right: 0%
+                  pointer-events: none
+                  text-shadow: 5px 5px 10px grey;
+                  bottom: 0%
+                  z-index: 0
+                type: state-label
+            image: /local/blank.png
+            type: picture-elements
+          - type: vertical-stack
+            cards:
+              - type: custom:stack-in-card
+                mode: vertical
+                cards:
+                  - type: markdown
+                    content: |
+                      Master Bedroom
+                  - type: picture-elements
+                    state_color: true
+                    elements:
+                      - type: state-icon
+                        entity: sensor.master_bedroom_trv_battery
+                        style:
+                          top: 30%
+                          left: 39%
+                      - type: conditional
+                        conditions:
+                          - entity: binary_sensor.master_bedroom_trv_valve_alarm
+                            state: 'on'
+                        elements:
+                          - type: state-icon
+                            entity: binary_sensor.master_bedroom_trv_valve_alarm
+                            style:
+                              top: 30%
+                              left: 46%
+                            tap_action:
+                              action: call-service
+                              service: switch.turn_off
+                              data:
+                                entity_id: switch.master_bedroom_trv_valve_detection
+                      - type: state-icon
+                        entity: lock.master_bedroom_trv_child_lock
+                        style:
+                          top: 30%
+                          left: 54%
+                        tap_action:
+                          action: toggle
+                      - type: state-icon
+                        entity: binary_sensor.master_bedroom_trv_connectivity
+                        style:
+                          top: 30%
+                          left: 61%
+                      - type: state-label
+                        entity: sensor.master_bedroom_trv_temperature
+                        style:
+                          color: '#FFFFFF'
+                          filter: opacity(100%)
+                          font-family: ZCOOL QingKe HuangYou
+                          font-size: 500%
+                          top: 47%
+                          left: 50%
+                      - type: state-label
+                        entity: number.master_bedroom_trv_target_temperature
+                        style:
+                          color: '#FFFFFF'
+                          filter: opacity(100%)
+                          font-family: ZCOOL QingKe HuangYou
+                          font-size: 200%
+                          top: 63%
+                          left: 50%
+                      - type: conditional
+                        conditions:
+                          - entity: binary_sensor.pooja_room_big_window
+                            state: 'on'
+                        elements:
+                          - type: state-icon
+                            entity: binary_sensor.pooja_room_big_window
+                            style:
+                              top: 75%
+                              left: 39%
+                      - type: conditional
+                        conditions:
+                          - entity: select.master_bedroom_trv_mode
+                            state: 'off'
+                        elements:
+                          - type: icon
+                            icon: mdi:power
+                            entity: select.master_bedroom_trv_mode
+                            style:
+                              top: 75%
+                              left: 46%
+                              color: gray
+                      - type: conditional
+                        conditions:
+                          - entity: select.master_bedroom_trv_mode
+                            state: heat
+                        elements:
+                          - type: icon
+                            icon: mdi:fire
+                            entity: select.master_bedroom_trv_mode
+                            style:
+                              top: 75%
+                              left: 46%
+                              color: rgb(255,87,34)
+                      - type: conditional
+                        conditions:
+                          - entity: select.master_bedroom_trv_preset
+                            state: auto
+                        elements:
+                          - type: icon
+                            icon: mdi:thermostat-auto
+                            entity: select.master_bedroom_trv_preset
+                            style:
+                              top: 75%
+                              left: 54%
+                              color: rgb(76,175,80)
+                      - type: conditional
+                        conditions:
+                          - entity: select.master_bedroom_trv_preset
+                            state: away
+                        elements:
+                          - type: icon
+                            icon: mdi:snowflake
+                            entity: select.master_bedroom_trv_preset
+                            style:
+                              top: 75%
+                              left: 54%
+                              color: var(--primary-color)
+                      - type: conditional
+                        conditions:
+                          - entity: select.master_bedroom_trv_preset
+                            state: manual
+                        elements:
+                          - type: icon
+                            icon: mdi:hand-back-right
+                            entity: select.master_bedroom_trv_preset
+                            style:
+                              top: 75%
+                              left: 54%
+                              color: rgb(255,87,34)
+                    image: /local/Aqara_E1_TRV.png
+              - type: gauge
+                max: 100
+                entity: sensor.master_bedroom_humidity
+                name: Humidity
+                min: 0
+                severity:
+                  green: 40
+                  yellow: 60
+                  red: 70
+                theme: gauge_th
+    icon: mdi:monitor-dashboard
+    theme: nesthub
+    title: nesthub

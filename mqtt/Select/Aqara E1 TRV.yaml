@@ -1,0 +1,92 @@
+- name: "Master Bedroom TRV Mode"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  command_topic: "zigbee2mqtt/master_bedroom_trv/set"
+  <<: &mode
+    options:
+      - "off"
+      - "heat"
+    value_template: "{{ value_json['system_mode'] }}"
+    command_template: '{"system_mode": "{{value}}"}'
+
+- name: "Master Bedroom TRV Preset"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  command_topic: "zigbee2mqtt/master_bedroom_trv/set"
+  <<: &preset
+    options:
+      - "auto"
+      - "away"
+      - "manual"
+    value_template: "{{ value_json['preset'] }}"
+    command_template: '{"preset": "{{value}}"}'
+
+- name: "Bathroom TRV Mode"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  command_topic: "zigbee2mqtt/bathroom_trv/set"
+  <<: *mode
+- name: "Bathroom TRV Preset"
+  state_topic: "zigbee2mqtt/bathroom_trv"
+  command_topic: "zigbee2mqtt/bathroom_trv/set"
+  <<: *preset
+
+- name: "Blue Room TRV Mode"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  command_topic: "zigbee2mqtt/blue_room_trv/set"
+  <<: *mode
+- name: "Blue Room TRV Preset"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  command_topic: "zigbee2mqtt/blue_room_trv/set"
+  <<: *preset
+
+- name: "Conservatory TRV Mode"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  command_topic: "zigbee2mqtt/conservatory_trv/set"
+  <<: *mode
+- name: "Conservatory TRV Preset"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  command_topic: "zigbee2mqtt/conservatory_trv/set"
+  <<: *preset
+
+- name: "Kiaan TRV Mode"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  command_topic: "zigbee2mqtt/kiaan_trv/set"
+  <<: *mode
+- name: "Kiaan TRV Preset"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  command_topic: "zigbee2mqtt/kiaan_trv/set"
+  <<: *preset
+
+- name: "Kitchen TRV Mode"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  command_topic: "zigbee2mqtt/kitchen_trv/set"
+  <<: *mode
+- name: "Kitchen TRV Preset"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  command_topic: "zigbee2mqtt/kitchen_trv/set"
+  <<: *preset
+
+- name: "Living Room Big TRV Mode"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  command_topic: "zigbee2mqtt/living_room_big_trv/set"
+  <<: *mode
+- name: "Living Room Big TRV Preset"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  command_topic: "zigbee2mqtt/living_room_big_trv/set"
+  <<: *preset
+
+- name: "Living Room Small TRV Mode"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  command_topic: "zigbee2mqtt/living_room_small_trv/set"
+  <<: *mode
+- name: "Living Room Small TRV Preset"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  command_topic: "zigbee2mqtt/living_room_small_trv/set"
+  <<: *preset
+
+- name: "Pooja Room TRV Mode"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  command_topic: "zigbee2mqtt/pooja_room_trv/set"
+  <<: *mode
+- name: "Pooja Room TRV Preset"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  command_topic: "zigbee2mqtt/pooja_room_trv/set"
+  <<: *preset

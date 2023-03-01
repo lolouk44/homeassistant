@@ -1,0 +1,50 @@
+- name: "Master Bedroom TRV Valve Detection"
+  state_topic: "zigbee2mqtt/master_bedroom_trv"
+  command_topic: "zigbee2mqtt/master_bedroom_trv/set"
+  <<: &valvedetection
+    payload_on: '{"valve_detection": "ON"}'
+    payload_off: '{"valve_detection": "OFF"}'
+    value_template: "{{ value_json['valve_detection'] }}"
+    state_on: "ON"
+    state_off: "OFF"
+
+- name: "Bathroom TRV Valve Detection"
+  state_topic: "zigbee2mqtt/pooja_bathroom_trvroom_trv"
+  command_topic: "zigbee2mqtt/bathroom_trv/set"
+  <<: *valvedetection
+
+- name: "Blue Room TRV Valve Detection"
+  state_topic: "zigbee2mqtt/blue_room_trv"
+  command_topic: "zigbee2mqtt/blue_room_trv/set"
+  <<: *valvedetection
+
+- name: "Conservatory TRV Valve Detection"
+  state_topic: "zigbee2mqtt/conservatory_trv"
+  command_topic: "zigbee2mqtt/conservatory_trv/set"
+  <<: *valvedetection
+
+- name: "Kiaan TRV Valve Detection"
+  state_topic: "zigbee2mqtt/kiaan_trv"
+  command_topic: "zigbee2mqtt/kiaan_trv/set"
+  <<: *valvedetection
+
+- name: "Kitchen TRV Valve Detection"
+  state_topic: "zigbee2mqtt/kitchen_trv"
+  command_topic: "zigbee2mqtt/kitchen_trv/set"
+  <<: *valvedetection
+
+- name: "Living Room Big TRV Valve Detection"
+  state_topic: "zigbee2mqtt/living_room_big_trv"
+  command_topic: "zigbee2mqtt/living_room_big_trv/set"
+  <<: *valvedetection
+  <<: *valvedetection
+
+- name: "Living Room Small TRV Valve Detection"
+  state_topic: "zigbee2mqtt/living_room_small_trv"
+  command_topic: "zigbee2mqtt/living_room_small_trv/set"
+  <<: *valvedetection
+
+- name: "Pooja Room TRV Valve Detection"
+  state_topic: "zigbee2mqtt/pooja_room_trv"
+  command_topic: "zigbee2mqtt/pooja_room_trv/set"
+  <<: *valvedetection

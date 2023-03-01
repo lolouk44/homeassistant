@@ -1,0 +1,49 @@
+trv_alarms:
+  name: All TRVs Alarm
+  entities:
+    - binary_sensor.bathroom_trv_valve_alarm
+    - binary_sensor.blue_room_trv_valve_alarm
+    - binary_sensor.conservatory_trv_valve_alarm
+    - binary_sensor.kiaan_trv_valve_alarm
+    - binary_sensor.kitchen_trv_valve_alarm
+    - binary_sensor.living_room_big_trv_valve_alarm
+    - binary_sensor.living_room_small_trv_valve_alarm
+    - binary_sensor.master_bedroom_trv_valve_alarm
+    - binary_sensor.pooja_room_trv_valve_alarm
+
+trv_target_temps:
+  name: All TRVs Target Temperature
+  entities:
+    - number.bathroom_trv_target_temperature
+    - number.blue_room_trv_target_temperature
+    - number.conservatory_trv_target_temperature
+    - number.kiaan_trv_target_temperature
+    - number.kitchen_trv_target_temperature
+    - number.living_room_big_trv_target_temperature
+    - number.living_room_small_trv_target_temperature
+    - number.master_bedroom_trv_target_temperature
+    - number.pooja_room_trv_target_temperature
+
+trv_mode:
+  name: All TRVs Mode
+  entities:
+  - select.bathroom_trv_mode
+  - select.conservatory_trv_mode
+  - select.kiaan_trv_mode
+  - select.kitchen_trv_mode
+  - select.living_room_big_trv_mode
+  - select.living_room_small_trv_mode
+  - select.master_bedroom_trv_mode
+  - select.pooja_room_trv_mode
+
+trv_preset:
+  name: All TRVs Preset
+  entities:
+  - select.bathroom_trv_preset
+  - select.conservatory_trv_preset
+  - select.kiaan_trv_preset
+  - select.kitchen_trv_preset
+  - select.living_room_big_trv_preset
+  - select.living_room_small_trv_preset
+  - select.master_bedroom_trv_preset
+  - select.pooja_room_trv_preset

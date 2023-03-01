@@ -11,8 +11,8 @@ include:
     - sensor.hallway_thermostat_temperature
     - sensor.loft_humidity
     - sensor.loft_temperature
-    - sensor.upstairs_humidity
-    - sensor.upstairs_temperature
+    - sensor.kiaan_room_humidity
+    - sensor.kiaan_room_temperature
     - sensor.cpu_usage
     - sensor.ram_usage
     - sensor.zfs1_disk_temp
