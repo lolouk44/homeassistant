@@ -17,4 +17,4 @@ delete_frigate_ffmpegfiles: find /config/ffmpeg*.log -maxdepth 1 -type f -mtime 
 
 catt_install: pip3 install catt
 catt_cast_ha_to_bedroom: catt -d "192.168.9.14" cast_site http://192.168.9.23:8123/lovelace-nesthub/nesthub?kiosk
-catt_cast_ha_to_office: catt -d "192.168.9.16" cast_site http://192.168.9.16:8123/lovelace-nesthub/nesthub?kiosk
+catt_cast_ha_to_office: catt -d "192.168.9.16" cast_site http://192.168.9.23:8123/lovelace-nesthub/nesthub?kiosk
