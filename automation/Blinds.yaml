@@ -17,7 +17,7 @@
         entity_id: input_boolean.holidays
         state: 'on'
     - condition: template
-      value_template: '{{state_attr("weather.tomorrow_io_home_nowcast","temperature") | int(20) < 20}}'
+      value_template: '{{state_attr("weather.pirateweather","temperature") | int(19) < 20}}'
   action:
   - service: cover.open_cover
     data:
@@ -100,9 +100,9 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.blinds_close_living_room_if_too_hot_outside", "last_triggered")) | int > 7200)}}'
     - condition: template
-      value_template: '{{states("weather.tomorrow_io_home_nowcast") in ["partlycloudy","sunny"]}}'
+      value_template: '{{states("weather.pirateweather") in ["partlycloudy","sunny"]}}'
     - condition: template
-      value_template: '{{state_attr("weather.tomorrow_io_home_nowcast","temperature") | int(0) > 20}}'
+      value_template: '{{state_attr("weather.pirateweather","temperature") | int(0) > 20}}'
     - condition: template
       value_template: "{{not (state_attr('sun.sun', 'rising'))}}"
     - condition: template
