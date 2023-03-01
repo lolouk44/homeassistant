@@ -62,7 +62,7 @@ cards:
       - entity: sensor.illuminance_back
         secondary_info: last-changed
   - type: custom:weather-card
-    entity: weather.tomorrow_io_home_daily
+    entity: weather.pirateweather
   - type: entities
     title: Dates
     show_header_toggle: false
@@ -137,8 +137,6 @@ cards:
         - entity_id: sensor.*fps*
         - entity_id: sensor.*coral*
         - entity_id: sensor.dark_sky_*
-        - entity_id: sensor.tomorrow_io_*
-        - entity_id: weather.tomorrow_io_*
         - entity_id: sensor.bathroom_fan_switch_toggle
         - entity_id: sensor.bauble_random_effect
         - entity_id: sensor.cctv2_cpu_usage
@@ -167,6 +165,7 @@ cards:
         - entity_id: sensor.lolo_iphone_*
         - entity_id: sensor.lolo_to_home
         - entity_id: sensor.master_bedroom_pressure
+        - entity_id: sensor.pirate*
         - entity_id: sensor.ram_usage
         - entity_id: sensor.root_disk_usage
         - entity_id: sensor.rpi_kitchen_heartbeat
@@ -180,7 +179,7 @@ cards:
         - entity_id: sensor.time
         - entity_id: sensor.total_energy
         - entity_id: sensor.house_total_energy_cost
-        - entity_id: sensor.upstairs_humidity_status
+        - entity_id: sensor.kiaan_room_humidity_status
         - entity_id: sensor.uptime
         - entity_id: sensor.week_day
         - entity_id: sensor.wled_conservatory_estimated_current
@@ -196,3 +195,4 @@ cards:
         - entity_id: sensor.zfs1_disk_temp
         - entity_id: sensor.zfs2_disk_temp
         - entity_id: sensor.zfs_disk_usage
+        - entity_id: weather.pirateweather

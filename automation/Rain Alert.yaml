@@ -3,22 +3,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.dark_sky_icon
+      entity_id: weather.pirateweather
       to: 'rain'
-    - platform: state
-      entity_id: weather.dark_sky
-      to: 'rain'
-    - platform: state
-      entity_id: sensor.dark_sky_summary
-      to: 'Rain'
-    - platform: state
-      entity_id: weather.tomorrow_io_home_nowcast
-      to: 'rainy'
-    - platform: state
-      entity_id: weather.tomorrow_io_home_hourly
-      to: 'rainy'
     - platform: template
-      value_template: '{{ state_attr("weather.tomorrow_io_home_nowcast","forecast")[1]["condition"] == "rainy" }}'
+      value_template: '{{ state_attr("weather.pirateweather","forecast")[1]["condition"] == "rainy" }}'
   condition:
     - condition: state
       entity_id: input_boolean.clothes_drying_outside
@@ -55,22 +43,16 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.dark_sky_icon
+      entity_id: sensor.pirateweather_icon
       to: 'rain'
     - platform: state
-      entity_id: weather.dark_sky
-      to: 'rain'
+      entity_id: sensor.pirateweather_summary
+      to: 'Rain'
     - platform: state
-      entity_id: sensor.dark_sky_summary
-      to: 'rain'
-    - platform: state
-      entity_id: weather.tomorrow_io_home_nowcast
-      to: 'rainy'
-    - platform: state
-      entity_id: weather.tomorrow_io_home_hourly
+      entity_id: weather.pirateweather
       to: 'rainy'
     - platform: template
-      value_template: '{{ state_attr("weather.tomorrow_io_home_nowcast","forecast")[1]["condition"] == "rainy" }}'
+      value_template: '{{ state_attr("weather.pirateweather","forecast")[1]["condition"] == "rainy" }}'
   condition:
     - condition: or
       conditions:

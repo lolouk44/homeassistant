@@ -126,7 +126,7 @@
       entity_id: binary_sensor.workday_sensor
       state: "on"
     - condition: template
-      value_template: '{{state_attr("weather.tomorrow_io_home_nowcast","temperature") | int(0) >= 20}}'
+      value_template: '{{state_attr("weather.pirateweather","temperature") | int(0) >= 20}}'
     - condition: or
       conditions:
       # - condition: template
