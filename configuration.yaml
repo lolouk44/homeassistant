@@ -62,29 +62,6 @@ alarm_control_panel:
     code: !secret alarm_code
     arming_time: 30
 
-
-# bluetooth:
-
-# climate:
-#   - platform: mqtt
-#     name: Anova
-#     modes:
-#       - "off"
-#       - heat
-#     qos: 1
-#     initial: 19
-#     current_temperature_topic: anova/status
-#     current_temperature_template: "{{ value_json.current_temp }}"
-#     temperature_state_topic: anova/status
-#     temperature_state_template: "{{ value_json.target_temp }}"
-#     mode_state_topic: anova/status
-#     mode_state_template: "{{ value_json.state }}"
-#     mode_command_topic: anova/command/run
-#     temperature_command_topic: anova/command/temp
-#     min_temp: 20
-#     max_temp: 99
-#     temp_step: 0.5
-
 counter:
   iosbadgecount:
     initial: 0
@@ -101,10 +78,8 @@ ffmpeg:
 
 frontend:
   themes: !include_dir_merge_named themes
-
-# google:
-  # client_id: !secret GCal_ID
-  # client_secret: !secret GCal_Secret
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
 
 hacs:
   token: !secret hacs_token
@@ -193,12 +168,14 @@ lovelace:
       url: 'https://fonts.googleapis.com/css?family=Orbitron'
     - type: css
       url: 'https://fonts.googleapis.com/css?family=Kaushan%20Script'
+    - type: css
+      url: 'https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou'
     # iCloud3
     - url: /hacsfiles/icloud3/icloud3-event-log-card.js
       type: module
     # Card-Mod 3
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
-      type: module
+      type: module 
 
 map:
 
@@ -208,6 +185,9 @@ mqtt:
   binary_sensor: !include_dir_merge_list mqtt/Binary_sensors
   climate: !include_dir_merge_list mqtt/Climate
   light: !include_dir_merge_list mqtt/Lights
+  lock: !include_dir_merge_list mqtt/Locks
+  number: !include_dir_merge_list mqtt/Number
+  select: !include_dir_merge_list mqtt/Select
   sensor: !include_dir_merge_list mqtt/Sensors
   switch:  !include_dir_merge_list mqtt/Switches
   text:  !include_dir_merge_list mqtt/Text
@@ -335,7 +315,7 @@ shopping_list:
 
 ssdp:
 
-stream:
+#stream:
 
 sun:
 
@@ -358,10 +338,10 @@ var:
     friendly_name: 'HP Printer Pages at month start'
     initial_value: 50
 
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    mode: daily
+# weather:
+#   - platform: darksky
+#     api_key: !secret darksky_api_key
+#     mode: daily
 
 webhook:
 
