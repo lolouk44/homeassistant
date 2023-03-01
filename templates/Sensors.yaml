@@ -1,0 +1,7 @@
+- sensor:
+    - name: "UPS Consumption"
+      state: '{{ states("sensor.ups_load") | int(0) / 100 * 520 }}'
+      icon: 'mdi:flash'
+      unit_of_measurement: 'W'
+      device_class: power
+      state_class: measurement
