@@ -9,7 +9,7 @@ play_chromecast_radio:
     - service: media_player.volume_set
       data:
         entity_id: >
-          {% if is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.master_bedroom_nest_hub
+          {% if is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
           {% elif is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
           {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room
@@ -20,7 +20,7 @@ play_chromecast_radio:
     - service: media_player.play_media
       data:
         entity_id: >
-          {% if is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.master_bedroom_nest_hub
+          {% if is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
           {% elif is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
           {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room
@@ -63,7 +63,7 @@ stop_chromecast_radio:
     - service: media_player.turn_off
       data:
         entity_id: >
-          {% if is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.master_bedroom_nest_hub
+          {% if is_state("input_select.chromecast_radio_speakers", "Bedroom Nest Hub") %} media_player.bedroom_nest_hub
           {% elif is_state("input_select.chromecast_radio_speakers", "Conservatory") %} media_player.conservatory
           {% elif is_state("input_select.chromecast_radio_speakers", "Kitchen") %} media_player.kitchen
           {% elif is_state("input_select.chromecast_radio_speakers", "Living Room") %} media_player.living_room

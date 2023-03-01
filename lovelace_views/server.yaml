@@ -41,9 +41,9 @@ cards:
         filter:
           include:
             - entity_id: "sensor.*battery2"
-              state: "< 10%"
+              state: "< 20%"
             - entity_id: "sensor.*battery"
-              state: "< 10%"
+              state: "< 20%"
   - type: entities
     show_header_toggle: false
     entities:

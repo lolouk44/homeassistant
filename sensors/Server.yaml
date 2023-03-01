@@ -64,14 +64,14 @@
 - platform: rest
   name: docker_hub_pulls
   resource: https://hub.docker.com/v2/repositories/lolouk44/xiaomi-mi-scale/
-  value_template: '{{ value_json.pull_count | int }}'
+  value_template: '{{ value_json.pull_count | int(0) }}'
   unit_of_measurement: 'Pulls'
   scan_interval: 1800
 
 - platform: rest
   name: docker_hub_pulls_add_on
   resource: https://hub.docker.com/v2/repositories/lolouk44/xiaomi-mi-scale-ha-add-on/
-  value_template: '{{ value_json.pull_count | int }}'
+  value_template: '{{ value_json.pull_count | int(0) }}'
   unit_of_measurement: 'Pulls'
   scan_interval: 1800
 

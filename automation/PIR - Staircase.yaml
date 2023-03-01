@@ -71,9 +71,6 @@
       to: 'off'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_boolean.dark
-      to: 'off'
   condition:
     - condition: state
       entity_id: binary_sensor.pir_staircase
