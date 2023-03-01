@@ -147,25 +147,197 @@ cards:
           name: Streaming
           secondary_info: last-changed
 
+###########################################################
+# Nest Thermostat
+###########################################################
+
   - type: custom:stack-in-card
     mode: vertical
     cards:
-    - type: entities
-      title: Nest Thermostat
-      state_color: true
-      show_header_toggle: false
-      entities:
-        # - entity: climate.hallway
-          # secondary_info: last-changed
-        # - entity: sensor.hallway_thermostat_humidity
-          # secondary_info: last-changed
-        # - entity: binary_sensor.hallway_heating
-          # secondary_info: last-changed
-        - entity: binary_sensor.hallway_thermostat_has_leaf
-          secondary_info: last-changed
-    - type: thermostat
-      entity: climate.hallway
-      name: " "
+    - type: markdown
+      content: >
+        Nest Thermostat
+    - type: conditional
+      conditions:
+        - entity: binary_sensor.hallway_heating
+          state: "on"
+      card:
+        type: picture-elements
+        state_color: true
+        elements:
+          - type: state-label
+            entity: climate.hallway
+            attribute: current_temperature
+            suffix: "°C"
+            style:
+              color: '#FFFFFF'
+              filter: opacity(100%)
+              font-family: ZCOOL QingKe HuangYou
+              font-size: 4.5em
+              top: 47%
+              left: 50%
+          - type: state-label
+            entity: climate.hallway
+            attribute: temperature
+            style:
+              color: '#FFFFFF'
+              filter: opacity(100%)
+              font-family: ZCOOL QingKe HuangYou
+              font-size: 2em
+              top: 63%
+              left: 50%
+
+          - type: conditional
+            conditions:
+              - entity: climate.hallway 
+                attribute: hvac_action
+                state: 'heat'
+            elements:
+              - type: icon
+                icon: mdi:fire
+                entity: climate.hallway
+                style:
+                  top: 75%
+                  left: 46%
+                  color: rgb(255,87,34)
+
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.hallway_thermostat_has_leaf
+                state: 'off'
+            elements:
+              - type: icon
+                icon: mdi:leaf
+                style:
+                  top: 75%
+                  left: 54%
+                  color: gray
+
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.hallway_thermostat_has_leaf
+                state: 'on'
+            elements:
+              - type: icon
+                icon: mdi:leaf
+                style:
+                  top: 75%
+                  left: 54%
+                  color: rgb(76,175,80)
+          - type: icon
+            icon: mdi:thermometer-chevron-down
+            entity: script.nest_thermostat_temp_down 
+            style:
+              top: 50%
+              left: 30%
+              color: '#FFFFFF'
+            tap_action:
+              action: call-service
+              service: script.nest_thermostat_temp_down
+              # data:
+              #   entity_id: script.nest_thermostat_temp_down
+          - type: icon
+            icon: mdi:thermometer-chevron-up
+            entity: script.nest_thermostat_temp_up 
+            style:
+              top: 50%
+              left: 71%
+              color: '#FFFFFF'
+            tap_action:
+              action: call-service
+              service: script.nest_thermostat_temp_up
+        image: /local/Nest-On.png
+
+    - type: conditional
+      conditions:
+        - entity: binary_sensor.hallway_heating
+          state: "off"
+      card:
+        type: picture-elements
+        state_color: true
+        elements:
+          - type: state-label
+            entity: climate.hallway
+            attribute: current_temperature
+            suffix: "°C"
+            style:
+              color: '#FFFFFF'
+              filter: opacity(100%)
+              font-family: ZCOOL QingKe HuangYou
+              font-size: 4.5em
+              top: 47%
+              left: 50%
+          - type: state-label
+            entity: climate.hallway
+            attribute: temperature
+            style:
+              color: '#FFFFFF'
+              filter: opacity(100%)
+              font-family: ZCOOL QingKe HuangYou
+              font-size: 2em
+              top: 63%
+              left: 50%
+
+          - type: conditional
+            conditions:
+              - entity: climate.hallway 
+                attribute: hvac_action
+                state: 'heat'
+            elements:
+              - type: icon
+                icon: mdi:fire
+                entity: climate.hallway
+                style:
+                  top: 75%
+                  left: 46%
+                  color: rgb(255,87,34)
+
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.hallway_thermostat_has_leaf
+                state: 'off'
+            elements:
+              - type: icon
+                icon: mdi:leaf
+                style:
+                  top: 75%
+                  left: 54%
+                  color: gray
+
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.hallway_thermostat_has_leaf
+                state: 'on'
+            elements:
+              - type: icon
+                icon: mdi:leaf
+                style:
+                  top: 75%
+                  left: 54%
+                  color: rgb(76,175,80)
+          - type: icon
+            icon: mdi:thermometer-chevron-down
+            entity: script.nest_thermostat_temp_down 
+            style:
+              top: 50%
+              left: 30%
+              color: '#FFFFFF'
+            tap_action:
+              action: call-service
+              service: script.nest_thermostat_temp_down
+              # data:
+              #   entity_id: script.nest_thermostat_temp_down
+          - type: icon
+            icon: mdi:thermometer-chevron-up
+            entity: script.nest_thermostat_temp_up 
+            style:
+              top: 50%
+              left: 71%
+              color: '#FFFFFF'
+            tap_action:
+              action: call-service
+              service: script.nest_thermostat_temp_up
+        image: /local/Nest-Off.png
 
   - type: entities
     title: Fire 7
