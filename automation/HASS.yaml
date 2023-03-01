@@ -66,12 +66,16 @@
     - platform: homeassistant
       event: start
   action:
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.google_home_minis
-      media_content_id: 'http://192.168.9.23:8123/local/sounds/Click.mp3'
-      media_content_type: 'audio/mp4'
-  - service: shell_command.fire7_reload_url
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_minis
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Click.mp3'
+        media_content_type: 'audio/mp4'
+    - service: shell_command.fire7_reload_url
+    - service: notify.gmaillolo
+      data:
+        title: "HA - restarted"
+        message: "HA has Restarted"
 
 - alias: HASS - Start RadioStream Scrape
   id: hass_start_radiostream_scrape
@@ -278,3 +282,15 @@
           {% else %}
             dark
           {% endif %}
+
+
+- alias: Backup Log on Shutdown
+  description: Backup Log on Shutdown
+  trigger:
+    - event: shutdown
+      platform: homeassistant
+  condition: []
+  action:
+    - data: {}
+      service: shell_command.backup_log
+  mode: single

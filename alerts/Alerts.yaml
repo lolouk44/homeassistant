@@ -349,7 +349,11 @@ entities_lost:
   name: Entities Lost
   entity_id: binary_sensor.lost_entities
   title: 'HA - Lost Entities'
-  message: 'The following entities appear to be lost: {{ states("sensor.lost_entities_list") }}'
+  message: >-
+      The following entities appear to be lost:
+      {%- for state in states | selectattr('state','eq','unavailable')  | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast'])%}
+      - {% if (as_timestamp(now()) - as_timestamp(state.last_changed)) > 300 %}{{state.domain|title}}: {{state.attributes.friendly_name}} ({{state.entity_id}}){% endif %}
+      {%- endfor -%}
   state: 'on'
   can_acknowledge: true
   skip_first: true
