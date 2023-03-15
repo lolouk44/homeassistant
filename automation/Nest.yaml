@@ -114,6 +114,9 @@
       data:
         eta: '{{ ((states("sensor.lolo_to_home") | int) * 60) | timestamp_custom("%H:%M:00", true)}}'
         trip_id: Lolo Going Home
+    - service: nest.set_away_mode
+      data:
+        away_mode: 'home'
 
 
 - alias: Nest - Set Away Mode from iOS Notification
