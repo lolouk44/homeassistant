@@ -282,15 +282,3 @@
           {% else %}
             dark
           {% endif %}
-
-
-- alias: Backup Log on Shutdown
-  description: Backup Log on Shutdown
-  trigger:
-    - event: shutdown
-      platform: homeassistant
-  condition: []
-  action:
-    - data: {}
-      service: shell_command.backup_log
-  mode: single
