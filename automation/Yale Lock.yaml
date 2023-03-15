@@ -153,6 +153,13 @@
             category: 'alert'
           action_data:
             entity_id: '{{trigger.entity_id}}'
+    - condition: state
+      entity_id: input_boolean.silent
+      state: 'off'
+    - service: tts.google_say
+      entity_id: media_player.google_home_minis
+      data:
+        message: 'Please note: the porch door is left unlocked'
 
 
 - alias: Yale - Lock Jammed
