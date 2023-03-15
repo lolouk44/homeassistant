@@ -19,6 +19,10 @@ cards:
       - entity: input_boolean.dark
         secondary_info: last-changed
         icon: mdi:weather-night
+      - entity: sensor.conservatory_temperature
+        secondary_info: last-changed
+      - entity: sensor.conservatory_humidity
+        secondary_info: last-changed
       - entity: binary_sensor.conservatory_single_door
         secondary_info: last-changed
       - entity: binary_sensor.conservatory_double_door

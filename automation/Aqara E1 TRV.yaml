@@ -5,7 +5,10 @@
     - platform: state
       entity_id:
         - sensor.bathroom_temperature
+        - sensor.blue_room_temperature
+        - sensor.conservatory_temperature
         - sensor.kiaan_room_temperature
+        - sensor.kitchen_temperature
         - sensor.living_room_temperature
         - sensor.master_bedroom_temperature
         - sensor.pooja_temperature
@@ -17,7 +20,10 @@
       data:
         topic: >-
           {% if trigger.entity_id == "sensor.bathroom_temperature" %}zigbee2mqtt/bathroom_trv/set/sensor_temp
+          {% elif trigger.entity_id == "sensor.blue_room_temperature" %}zigbee2mqtt/blue_room_trv/set/sensor_temp
+          {% elif trigger.entity_id == "sensor.conservatory_temperature" %}zigbee2mqtt/conservatory_trv/set/sensor_temp
           {% elif trigger.entity_id == "sensor.kiaan_room_temperature" %}zigbee2mqtt/kiaan_trv/set/sensor_temp
+          {% elif trigger.entity_id == "sensor.kitchen_temperature" %}zigbee2mqtt/kitchen_trv/set/sensor_temp
           {% elif trigger.entity_id == "sensor.living_room_temperature" %}zigbee2mqtt/living_room_big_trv/set/sensor_temp
           {% elif trigger.entity_id == "sensor.master_bedroom_temperature" %}zigbee2mqtt/master_bedroom_trv/set/sensor_temp
           {% elif trigger.entity_id == "sensor.pooja_temperature" %}zigbee2mqtt/pooja_room_trv/set/sensor_temp
@@ -38,7 +44,10 @@
     - platform: state
       entity_id:
         - sensor.bathroom_temperature
+        - sensor.blue_room_temperature
+        - sensor.conservatory_temperature
         - sensor.kiaan_room_temperature
+        - sensor.kitchen_temperature
         - sensor.living_room_temperature
         - sensor.master_bedroom_temperature
         - sensor.pooja_temperature
@@ -58,9 +67,12 @@
       data:
         topic: >-
           {% if trigger.entity_id == "sensor.bathroom_temperature" %}zigbee2mqtt/bathroom_trv/set
+          {% elif trigger.entity_id == "sensor.blue_room_temperature" %}zigbee2mqtt/blue_room_trv/set
+          {% elif trigger.entity_id == "sensor.conservatory_temperature" %}zigbee2mqtt/conservatory_trv/set
+          {% elif trigger.entity_id == "sensor.kiaan_room_temperature" %}zigbee2mqtt/kiaan_trv/set
+          {% elif trigger.entity_id == "sensor.kitchen_temperature" %}zigbee2mqtt/kitchen_trv/set
           {% elif trigger.entity_id == "sensor.living_room_temperature" %}zigbee2mqtt/living_room_big_trv/set
           {% elif trigger.entity_id == "sensor.living_room_temperature" %}zigbee2mqtt/living_room_small_trv/set
-          {% elif trigger.entity_id == "sensor.kiaan_room_temperature" %}zigbee2mqtt/kiaan_trv/set
           {% elif trigger.entity_id == "sensor.master_bedroom_temperature" %}zigbee2mqtt/master_bedroom_trv/set
           {% elif trigger.entity_id == "sensor.pooja_temperature" %}zigbee2mqtt/pooja_room_trv/set
           {% endif %}
@@ -90,7 +102,7 @@
   action:
     - service: switch.turn_off
       data:
-        entity_id: '{{(trigger.entity_id).replace("alarm","detection")}}'
+        entity_id: '{{(trigger.entity_id).replace("alarm","detection").replace("binary_sensor","switch")}}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) | int < 30}}'
     - service: notify.gmaillolo

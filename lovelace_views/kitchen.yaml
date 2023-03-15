@@ -20,6 +20,10 @@ cards:
       - entity: input_boolean.dark
         secondary_info: last-changed
         icon: mdi:weather-night
+      - entity: sensor.kitchen_temperature
+        secondary_info: last-changed
+      - entity: sensor.kitchen_humidity
+        secondary_info: last-changed
       - entity: binary_sensor.kitchen_window
         secondary_info: last-changed
         icon: mdi:window-closed-variant

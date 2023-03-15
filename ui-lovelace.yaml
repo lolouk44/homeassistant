@@ -48,10 +48,11 @@ views:
   - !include /config/lovelace_views/entrance.yaml
   - !include /config/lovelace_views/conservatory.yaml
   - !include /config/lovelace_views/staircase.yaml
-  - !include /config/lovelace_views/pooja.yaml
   - !include /config/lovelace_views/bathroom.yaml
   - !include /config/lovelace_views/master_bedroom.yaml
   - !include /config/lovelace_views/kiaan_bedroom.yaml
+  - !include /config/lovelace_views/pooja.yaml
+  - !include /config/lovelace_views/blue_room.yaml
   - !include /config/lovelace_views/cctv.yaml
   - !include /config/lovelace_views/temperature.yaml
   - !include /config/lovelace_views/automations.yaml

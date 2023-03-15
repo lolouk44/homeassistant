@@ -11,17 +11,17 @@ cards:
     state_color: true
     show_header_toggle: false
     entities:
-    - entity: binary_sensor.pooja_door
-      secondary_info: last-changed
-    - entity: binary_sensor.pooja_room_small_window
-      secondary_info: last-changed
-      icon: mdi:window-closed-variant
-    - entity: binary_sensor.pooja_room_big_window
-      secondary_info: last-changed
-      icon: mdi:window-closed-variant
     - entity: sensor.pooja_temperature
       secondary_info: last-changed
     - entity: sensor.pooja_humidity
+      secondary_info: last-changed
+    - entity: binary_sensor.pooja_room_big_window
+      secondary_info: last-changed
+      icon: mdi:window-closed-variant
+    - entity: binary_sensor.pooja_room_small_window
+      secondary_info: last-changed
+      icon: mdi:window-closed-variant
+    - entity: binary_sensor.pooja_door
       secondary_info: last-changed
   - type: custom:stack-in-card
     mode: vertical

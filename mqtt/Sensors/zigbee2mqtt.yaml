@@ -22,6 +22,16 @@
     unit_of_measurement: "%"
     device_class: battery
 
+- name: "Living Room Illumination"
+  state_topic: "zigbee2mqtt/living_room_presence"
+  availability_topic: "zigbee2mqtt/living_room_presence/availability"
+  <<: &illumination
+    value_template: "{{ value_json['illuminance_lux'] }}"
+    device_class: illuminance
+    unit_of_measurement: 'lx'
+    state_class: measurement
+    force_update: true
+
 - name: "Kitchen Freezer Temperature"
   state_topic: "zigbee2mqtt/kitchen_freezer_hygro"
   availability_topic: "zigbee2mqtt/kitchen_freezer_hygro/availability"
@@ -256,17 +266,46 @@
   availability_topic: "zigbee2mqtt/pooja_door/availability"
   <<: *battery
 
-- name: "Living Room Illumination"
-  state_topic: "zigbee2mqtt/living_room_presence"
-  availability_topic: "zigbee2mqtt/living_room_presence/availability"
-  <<: &illumination
-    value_template: "{{ value_json['illuminance_lux'] }}"
-    device_class: illuminance
-    unit_of_measurement: 'lx'
-    state_class: measurement
-    force_update: true
-
 - name: "Kitchen Illumination"
   state_topic: "zigbee2mqtt/kitchen_presence"
   availability_topic: "zigbee2mqtt/kitchen_presence/availability"
   <<: *illumination
+
+- name: "Blue Room Temperature"
+  state_topic: "zigbee2mqtt/blue_room_hygro"
+  availability_topic: "zigbee2mqtt/blue_room_hygro/availability"
+  <<: *temperature
+
+- name: "Blue Room Humidity"
+  state_topic: "zigbee2mqtt/blue_room_hygro"
+  <<: *humidity
+
+- name: "Blue Room Temperature Battery"
+  state_topic: "zigbee2mqtt/blue_room_hygro"
+  <<: *battery
+
+- name: "Conservatory Temperature"
+  state_topic: "zigbee2mqtt/conservatory_hygro"
+  availability_topic: "zigbee2mqtt/conservatory_hygro/availability"
+  <<: *temperature
+
+- name: "Conservatory Humidity"
+  state_topic: "zigbee2mqtt/conservatory_hygro"
+  <<: *humidity
+
+- name: "Conservatory Temperature Battery"
+  state_topic: "zigbee2mqtt/conservatory_hygro"
+  <<: *battery
+
+- name: "Kitchen Temperature"
+  state_topic: "zigbee2mqtt/kitchen_hygro"
+  availability_topic: "zigbee2mqtt/kitchen_hygro/availability"
+  <<: *temperature
+
+- name: "Kitchen Humidity"
+  state_topic: "zigbee2mqtt/kitchen_hygro"
+  <<: *humidity
+
+- name: "Kitchen Temperature Battery"
+  state_topic: "zigbee2mqtt/kitchen_hygro"
+  <<: *battery

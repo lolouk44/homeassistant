@@ -28,6 +28,7 @@ trv_mode:
   name: All TRVs Mode
   entities:
   - select.bathroom_trv_mode
+  - select.blue_room_trv_mode
   - select.conservatory_trv_mode
   - select.kiaan_trv_mode
   - select.kitchen_trv_mode
@@ -40,6 +41,7 @@ trv_preset:
   name: All TRVs Preset
   entities:
   - select.bathroom_trv_preset
+  - select.blue_room_trv_preset
   - select.conservatory_trv_preset
   - select.kiaan_trv_preset
   - select.kitchen_trv_preset

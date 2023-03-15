@@ -9,7 +9,7 @@
     state_off: "OFF"
 
 - name: "Bathroom TRV Valve Detection"
-  state_topic: "zigbee2mqtt/pooja_bathroom_trvroom_trv"
+  state_topic: "zigbee2mqtt/bathroom_trv"
   command_topic: "zigbee2mqtt/bathroom_trv/set"
   <<: *valvedetection
 
