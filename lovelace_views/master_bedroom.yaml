@@ -7,22 +7,6 @@ cards:
   - !include /config/lovelace_views/persistent_notifications.yaml
   - !include /config/lovelace_views/alert_card.yaml
   - type: entities
-    title: Lolo Bedside
-    show_header_toggle: false
-    entities:
-    - entity: light.lolo_bedside_light
-      secondary_info: last-changed
-      icon: mdi:lamp
-    - entity: switch.master_bedroom_tuya_socket
-      secondary_info: last-changed
-    - entity: media_player.bedroom_nest_hub
-      type: "custom:mini-media-player"
-      power_color: true
-      group: true
-      artwork: cover
-    - entity: script.nest_hub_start_cast
-      secondary_info: last_triggered
-  - type: entities
     title: Main Bedroom Sensors
     state_color: true
     show_header_toggle: false
@@ -45,6 +29,23 @@ cards:
     - entity: binary_sensor.master_bedroom_right_big_window
       secondary_info: last-changed
       icon: mdi:window-closed-variant
+
+  - type: entities
+    title: Lolo Bedside
+    show_header_toggle: false
+    entities:
+    - entity: light.lolo_bedside_light
+      secondary_info: last-changed
+      icon: mdi:lamp
+    - entity: switch.master_bedroom_tuya_socket
+      secondary_info: last-changed
+    - entity: media_player.bedroom_nest_hub
+      type: "custom:mini-media-player"
+      power_color: true
+      group: true
+      artwork: cover
+    - entity: script.nest_hub_start_cast
+      secondary_info: last_triggered
 
 ###########################################################
 # Master Bedroom TRV
