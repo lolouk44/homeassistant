@@ -82,6 +82,7 @@
     - service: mqtt.publish
       data:
         topic: 'zigbee2mqtt/living_room_small_trv/set'
+        payload_template: '{"sensor": "external"}'
 
 - alias: TRV - Valve Alarm Detected
   id: trv_valve_alarm_detected
@@ -100,11 +101,14 @@
         - binary_sensor.pooja_room_trv_valve_alarm
       to: "on"
   action:
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.trv_restore_valve_detections","last_triggered"))) | int(0) < 30 and (as_timestamp(now()) - as_timestamp(state_attr("automation.trv_restore_valve_detections","last_triggered"))) | int(0) >= 1}}'
     - service: switch.turn_off
       data:
         entity_id: '{{(trigger.entity_id).replace("alarm","detection").replace("binary_sensor","switch")}}'
+    - delay: 00:00:05
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) | int < 30}}'
+      value_template: '{{ states(trigger.entity_id) == "on" }}'
     - service: notify.gmaillolo
       data:
         title: "HA - TRV Alarm Triggered !"
@@ -156,13 +160,13 @@
           - group.trv_target_temps
     - service: select.select_option
       data:
-        option: heat
+        option: 'heat'
       target:
         entity_id:
           - group.trv_mode
     - service: select.select_option
       data:
-        option: auto
+        option: 'auto'
       target:
         entity_id:
           - group.trv_preset
