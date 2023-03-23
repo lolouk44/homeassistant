@@ -96,10 +96,22 @@
         entity_id: light.kitchen_window
         state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: group.kitchen_lights
-      brightness: 11
+    - service: light.turn_on
+      data:
+        entity_id: group.kitchen_lights
+        brightness: 11
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.pir_kitchen
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.kitchen_presence
+        state: 'on'
+    - service: light.turn_on
+      data:
+        entity_id: group.kitchen_lights
+        brightness: 255
 
 
 - alias: Lights - Kitchen Lights Off PIR
@@ -113,6 +125,9 @@
         seconds: 30
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: input_boolean.dark
+      to: 'off'
   condition:
     - condition: or
       conditions:
@@ -141,19 +156,18 @@
       data:
         entity_id: group.kitchen_lights
         brightness: 255
-    - delay: 00:00:04
+    - delay: 00:00:02
     - service: light.turn_off
       data:
         entity_id: group.kitchen_lights
-    - condition: state
-      entity_id: binary_sensor.pir_conservatory
-      state: 'off'
-    - service: switch.turn_off
-      data:
-        entity_id: switch.kitchen_tv
-    - wait_template: "{{ states('binary_sensor.pir_kitchen') == 'on' }}"
-      timeout: '00:00:05'
-      continue_on_timeout: false
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.pir_kitchen
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.kitchen_presence
+        state: 'on'
     - service: light.turn_on
       data:
         entity_id: group.kitchen_lights
@@ -197,7 +211,7 @@
       for:
         minutes: 2
     - platform: state
-      entity_id: binary_sensor.pir_conservatory
+      entity_id: binary_sensor.conservatory_presence
       to: 'off'
       for:
         minutes: 2
@@ -205,7 +219,7 @@
       event: start
   condition:
     - condition: template
-      value_template: '{{ states("binary_sensor.kitchen_presence") == "off" and states("binary_sensor.pir_conservatory") == "off"}}'
+      value_template: '{{ states("binary_sensor.kitchen_presence") == "off" and states("binary_sensor.conservatory_presence") == "off"}}'
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | int > 300)}}'      
   action:
