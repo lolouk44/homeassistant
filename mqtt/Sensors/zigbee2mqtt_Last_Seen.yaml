@@ -148,6 +148,14 @@
   state_topic: "zigbee2mqtt/sonoff_s26_79"
   <<: *lastseen
 
+- name: "Kitchen Presence Last Seen"
+  state_topic: "zigbee2mqtt/kitchen_presence"
+  <<: *lastseen
+
 - name: "Living Room Presence Last Seen"
   state_topic: "zigbee2mqtt/living_room_presence"
+  <<: *lastseen
+
+- name: "Conservatory Presence Last Seen"
+  state_topic: "zigbee2mqtt/conservatory_presence"
   <<: *lastseen

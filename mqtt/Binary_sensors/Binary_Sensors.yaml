@@ -153,10 +153,20 @@
   payload_off: true
   device_class: window
 
+- name: "Conservatory Presence"
+  state_topic: "zigbee2mqtt/conservatory_presence"
+  availability_topic: "zigbee2mqtt/conservatory_presence/availability"
+  value_template: "{{ value_json['presence'] == true }}"
+  json_attributes_topic: "zigbee2mqtt/conservatory_presence"
+  payload_on: true
+  payload_off: false
+  device_class: motion
+
 - name: "Kitchen Presence"
   state_topic: "zigbee2mqtt/kitchen_presence"
   availability_topic: "zigbee2mqtt/kitchen_presence/availability"
   value_template: "{{ value_json['presence'] == true }}"
+  json_attributes_topic: "zigbee2mqtt/kitchen_presence"
   payload_on: true
   payload_off: false
   device_class: motion
@@ -165,6 +175,7 @@
   state_topic: "zigbee2mqtt/living_room_presence"
   availability_topic: "zigbee2mqtt/living_room_presence/availability"
   value_template: "{{ value_json['presence'] == true }}"
+  json_attributes_topic: "zigbee2mqtt/living_room_presence"
   payload_on: true
   payload_off: false
   device_class: motion

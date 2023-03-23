@@ -6,6 +6,9 @@
       entity_id: binary_sensor.pir_conservatory
       to: 'on'
     - platform: state
+      entity_id: binary_sensor.conservatory_presence
+      to: 'on'
+    - platform: state
       entity_id: input_boolean.dark
       to: 'on'
     - platform: homeassistant
@@ -22,28 +25,42 @@
       - condition: state
         entity_id: input_boolean.movies
         state: 'on'
-    - condition: state
-      entity_id: binary_sensor.pir_conservatory
-      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.pir_conservatory
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.conservatory_presence
+        state: 'on'
     - condition: state
       entity_id: input_boolean.dark
       state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: light.conservatory
+        state: 'off'
+      - condition: template
+        value_template: '{{ state_attr("light.conservatory","brightness") | int < 250 }}'
   action:
-  - service: automation.turn_off
-    data:
-      entity_id: automation.lights_conservatory_lights_dimmed_off_pir,automation.lights_conservatory_lights_off_pir
-  - service: light.turn_on
-    data:
-      entity_id: light.conservatory
-      brightness: 255
-  - delay: 00:00:02
-  - service: light.turn_on
-    data:
-      entity_id: light.conservatory
-      brightness: 255
-  - service: automation.turn_on
-    data:
-      entity_id: automation.lights_conservatory_lights_dimmed_off_pir,automation.lights_conservatory_lights_off_pir
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory
+        brightness: 255
+    - delay: 00:00:02
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory
+        brightness: 255
+    - delay:
+        seconds: 15
+    - condition: state
+      entity_id: binary_sensor.conservatory_presence
+      state: 'off'
+    - service: automation.trigger
+      data:
+        entity_id: automation.lights_conservatory_lights_off_pir
 
 
 
@@ -52,7 +69,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_conservatory
+      entity_id: binary_sensor.conservatory_presence
       to: 'off'
   condition:
     - condition: or
@@ -67,10 +84,22 @@
       entity_id: light.conservatory
       state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.conservatory
-      brightness: 60
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory
+        brightness: 60
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.pir_conservatory
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.conservatory_presence
+        state: 'on'
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory
+        brightness: 255
 
 
 - alias: Lights - Conservatory Lights Off PIR
@@ -78,10 +107,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_conservatory
+      entity_id: binary_sensor.conservatory_presence
       to: 'off'
       for:
-        minutes: 2
+        seconds: 30
     - platform: homeassistant
       event: start
     - platform: state
@@ -102,17 +131,37 @@
       entity_id: binary_sensor.pir_conservatory
       state: 'off'
     - condition: state
+      entity_id: binary_sensor.conservatory_presence
+      state: 'off'
+    - condition: state
       entity_id: light.conservatory
       state: 'on'
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.conservatory
-      brightness: 255
-  - delay: 00:00:02
-  - service: light.turn_off
-    data:
-      entity_id: light.conservatory
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory
+        brightness: 255
+    - delay: 00:00:02
+    - service: light.turn_off
+      data:
+        entity_id: light.conservatory
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.pir_conservatory
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.conservatory_presence
+        state: 'on'
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory
+        brightness: 255
+    - delay: 00:00:02
+    - service: light.turn_on
+      data:
+        entity_id: light.conservatory
+        brightness: 255
 
 
 - alias: Lights - Conservatory LED Lights On PIR
