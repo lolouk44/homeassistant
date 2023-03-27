@@ -11,9 +11,6 @@
     - platform: state
       entity_id: input_boolean.dark
       to: 'on'
-    - platform: state
-      entity_id: binary_sensor.living_room_presence
-      to: 'on'
     - platform: homeassistant
       event: start
     - platform: state

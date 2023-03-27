@@ -6,9 +6,6 @@
       entity_id: binary_sensor.pir_conservatory
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.conservatory_presence
-      to: 'on'
-    - platform: state
       entity_id: input_boolean.dark
       to: 'on'
     - platform: homeassistant
