@@ -183,6 +183,23 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.guests
+    - service: number.set_value
+      data:
+        value: '{{ state_attr("climate.hallway","temperature") +1}}'
+      target:
+        entity_id: number.blue_room_trv_target_temperature
+    - service: select.select_option
+      data:
+        option: 'heat'
+      target:
+        entity_id:
+          - select.blue_room_trv_mode
+    - service: select.select_option
+      data:
+        option: 'auto'
+      target:
+        entity_id:
+          - select.blue_room_trv_preset
 
 
 - alias: Scene - Guests Mode Off
@@ -195,6 +212,18 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.guests
+    - service: select.select_option
+      data:
+        option: 'off'
+      target:
+        entity_id:
+          - select.blue_room_trv_mode
+    - service: select.select_option
+      data:
+        option: 'away'
+      target:
+        entity_id:
+          - select.blue_room_trv_preset
 
 
 - alias: Scene - Theme
