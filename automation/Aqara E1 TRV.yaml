@@ -100,15 +100,17 @@
         - binary_sensor.master_bedroom_trv_valve_alarm
         - binary_sensor.pooja_room_trv_valve_alarm
       to: "on"
+      for:
+        seconds: 30
   action:
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.trv_restore_valve_detections","last_triggered"))) | int(0) < 30 and (as_timestamp(now()) - as_timestamp(state_attr("automation.trv_restore_valve_detections","last_triggered"))) | int(0) >= 1}}'
     - service: switch.turn_off
       data:
         entity_id: '{{(trigger.entity_id).replace("alarm","detection").replace("binary_sensor","switch")}}'
-    - delay: 00:00:05
+    - delay: 00:00:10
     - condition: template
       value_template: '{{ states(trigger.entity_id) == "on" }}'
+    - condition: template
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.trv_restore_valve_detections","last_triggered"))) | int(0) < 90 and (as_timestamp(now()) - as_timestamp(state_attr("automation.trv_restore_valve_detections","last_triggered"))) | int(0) >= 1}}'
     - service: notify.gmaillolo
       data:
         title: "HA - TRV Alarm Triggered !"
@@ -138,7 +140,7 @@
       to: "off"
   condition:
     - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) | int > 30}}'
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) | int >= 25}}'
   action:
     - service: switch.turn_on
       data:
@@ -156,20 +158,26 @@
       data:
         value: '{{ state_attr("climate.hallway","temperature") +1}}'
       target:
-        entity_id:
-          - group.trv_target_temps
+        entity_id: |
+          select.pooja_room{% for trv in state_attr("group.trv_preset", "entity_id") | list -%}
+          {% if states(trv) != "away" %}, {{trv.replace("select","number").replace("trv_preset","trv_target_temperature")}}{% endif %}
+          {%- endfor %}
     - service: select.select_option
       data:
         option: 'heat'
       target:
-        entity_id:
-          - group.trv_mode
+        entity_id: |
+          select.pooja_room{% for trv in state_attr("group.trv_preset", "entity_id") | list -%}
+          {% if states(trv) != "away" %}, {{trv.replace("trv_preset","trv_mode")}}{% endif %}
+          {%- endfor %}
     - service: select.select_option
       data:
         option: 'auto'
       target:
-        entity_id:
-          - group.trv_preset
+        entity_id: |
+          select.pooja_room{% for trv in state_attr("group.trv_preset", "entity_id") | list -%}
+          {% if states(trv) != "away" %}, {{trv}}{% endif %}
+          {%- endfor %}
     - condition: state
       entity_id: input_boolean.guests
       state: 'off'
@@ -187,6 +195,94 @@
       target:
         entity_id:
           - select.blue_room_trv_preset
+
+
+- alias: TRV - Set TRV to Away When Window Opens
+  id: trv_set_trv_to_away_when_window_opens
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.bathroom_window
+        - binary_sensor.kitchen_window
+        - group.blue_room_windows
+        - group.conservatory_windows
+        - group.kiaan_room_windows
+        - group.living_room_windows
+        - group.master_bedroom_windows
+        - group.pooja_room_windows
+      to: "on"
+      for:
+        seconds: 30
+  action:
+    - service: select.select_option
+      data:
+        option: 'auto'
+      target:
+        entity_id:
+          - group.trv_preset
+    - service: select.select_option
+      data:
+        option: 'away'
+        entity_id: >-
+          {% if trigger.entity_id == "binary_sensor.bathroom_window" %}select.bathroom_trv_preset
+          {% elif trigger.entity_id == "binary_sensor.kitchen_window" %}select.kitchen_trv_preset
+          {% elif trigger.entity_id == "group.blue_room_windows" %}select.blue_room_trv_preset
+          {% elif trigger.entity_id == "group.conservatory_windows" %}select.conservatory_trv_preset
+          {% elif trigger.entity_id == "group.kiaan_room_windows" %}select.kiaan_trv_preset
+          {% elif trigger.entity_id == "group.living_room_windows" %}group.living_room_trv_preset
+          {% elif trigger.entity_id == "group.master_bedroom_windows" %}select.master_bedroom_trv_preset
+          {% elif trigger.entity_id == "group.pooja_room_windows" %}select.pooja_room_trv_preset
+          {% endif %}
+
+
+- alias: TRV - Set TRV to Auto When Window Opens
+  id: trv_set_trv_to_auto_when_window_opens
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.bathroom_window
+        - binary_sensor.kitchen_window
+        - group.blue_room_windows
+        - group.conservatory_windows
+        - group.kiaan_room_windows
+        - group.living_room_windows
+        - group.master_bedroom_windows
+        - group.pooja_room_windows
+      to: "off"
+  action:
+    - service: number.set_value
+      data:
+        value: '{{ state_attr("climate.hallway","temperature") +1}}'
+      target:
+        entity_id: >-
+          {% if trigger.entity_id == "binary_sensor.bathroom_window" %}number.bathroom_trv_target_temperature
+          {% elif trigger.entity_id == "binary_sensor.kitchen_window" %}number.kitchen_trv_target_temperature
+          {% elif trigger.entity_id == "group.blue_room_windows" %}number.blue_room_trv_target_temperature
+          {% elif trigger.entity_id == "group.conservatory_windows" %}number.conservatory_trv_target_temperature
+          {% elif trigger.entity_id == "group.kiaan_room_windows" %}number.kiaan_trv_target_temperature
+          {% elif trigger.entity_id == "group.living_room_windows" %}group.living_room_trv_target_temperature
+          {% elif trigger.entity_id == "group.master_bedroom_windows" %}number.master_bedroom_trv_target_temperature
+          {% elif trigger.entity_id == "group.pooja_room_windows" %}number.pooja_room_trv_target_temperature
+          {% endif %}
+    - service: select.select_option
+      data:
+        option: 'auto'
+        entity_id: >-
+          {% if trigger.entity_id == "binary_sensor.bathroom_window" %}select.bathroom_trv_preset
+          {% elif trigger.entity_id == "binary_sensor.kitchen_window" %}select.kitchen_trv_preset
+          {% elif trigger.entity_id == "group.blue_room_windows" %}select.blue_room_trv_preset
+          {% elif trigger.entity_id == "group.conservatory_windows" %}select.conservatory_trv_preset
+          {% elif trigger.entity_id == "group.kiaan_room_windows" %}select.kiaan_trv_preset
+          {% elif trigger.entity_id == "group.living_room_windows" %}group.living_room_trv_preset
+          {% elif trigger.entity_id == "group.master_bedroom_windows" %}select.master_bedroom_trv_preset
+          {% elif trigger.entity_id == "group.pooja_room_windows" %}select.pooja_room_trv_preset
+          {% endif %}
+
+
+
+
 
 - alias: TRV - Set TRV Temp Night
   id: trv_set_trv_temp_night

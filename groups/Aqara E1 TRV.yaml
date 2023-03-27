@@ -27,25 +27,43 @@ trv_target_temps:
 trv_mode:
   name: All TRVs Mode
   entities:
-  - select.bathroom_trv_mode
-  - select.blue_room_trv_mode
-  - select.conservatory_trv_mode
-  - select.kiaan_trv_mode
-  - select.kitchen_trv_mode
-  - select.living_room_big_trv_mode
-  - select.living_room_small_trv_mode
-  - select.master_bedroom_trv_mode
-  - select.pooja_room_trv_mode
+    - select.bathroom_trv_mode
+    - select.blue_room_trv_mode
+    - select.conservatory_trv_mode
+    - select.kiaan_trv_mode
+    - select.kitchen_trv_mode
+    - select.living_room_big_trv_mode
+    - select.living_room_small_trv_mode
+    - select.master_bedroom_trv_mode
+    - select.pooja_room_trv_mode
 
 trv_preset:
   name: All TRVs Preset
   entities:
-  - select.bathroom_trv_preset
-  - select.blue_room_trv_preset
-  - select.conservatory_trv_preset
-  - select.kiaan_trv_preset
-  - select.kitchen_trv_preset
-  - select.living_room_big_trv_preset
-  - select.living_room_small_trv_preset
-  - select.master_bedroom_trv_preset
-  - select.pooja_room_trv_preset
+    - select.bathroom_trv_preset
+    - select.blue_room_trv_preset
+    - select.conservatory_trv_preset
+    - select.kiaan_trv_preset
+    - select.kitchen_trv_preset
+    - select.living_room_big_trv_preset
+    - select.living_room_small_trv_preset
+    - select.master_bedroom_trv_preset
+    - select.pooja_room_trv_preset
+
+living_room_trv_target_temps:
+  name: Living Room TRVs Target Temperature
+  entities:
+    - number.living_room_big_trv_target_temperature
+    - number.living_room_small_trv_target_temperature
+
+living_room_trv_mode:
+  name: Living Room TRVs Mode
+  entities:
+    - select.living_room_big_trv_mode
+    - select.living_room_small_trv_mode
+
+living_room_trv_preset:
+  name: Living Room TRVs Preset
+  entities:
+    - select.living_room_big_trv_preset
+    - select.living_room_small_trv_preset
