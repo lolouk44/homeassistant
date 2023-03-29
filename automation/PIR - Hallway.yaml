@@ -1,0 +1,70 @@
+- alias: Lights - Hallway Light On by PIR
+  id: lights_hallway_light_on_by_pir
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_hallway
+      to: 'on'
+    - platform: state
+      entity_id:
+        - binary_sensor.main_door
+      to: 'on'
+    - platform: state
+      entity_id: input_boolean.dark
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_boolean.normal
+      to: 'on'
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.normal
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.movies
+        state: 'on'
+    - condition: state
+      entity_id: light.hallway
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.pir_hallway
+      state: 'on'
+    - condition: time
+      after: '06:00'
+      before: '23:00'
+    - condition: state
+      entity_id: input_boolean.dark
+      state: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.hallway
+      brightness: 255
+
+
+- alias: Lights - Hallway Light Off by PIR
+  id: lights_hallway_light_off_by_pir
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_hallway
+      to: 'off'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_boolean.dark
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.pir_hallway
+      state: 'off'
+    - condition: state
+      entity_id: light.hallway
+      state: 'on'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.hallway

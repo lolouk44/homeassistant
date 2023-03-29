@@ -343,3 +343,9 @@
   payload_off: "OFF"
   device_class: safety
 
+- name: "PIR Hallway"
+  state_topic: "RPi/PIR_Hallway"
+  payload_on: "ON"
+  payload_off: "OFF"
+  device_class: motion
+

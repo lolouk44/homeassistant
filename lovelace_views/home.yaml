@@ -34,15 +34,19 @@ cards:
     entities:
       - entity: binary_sensor.door_lock
         secondary_info: last-changed
-      - entity: binary_sensor.pir_kitchen
-        secondary_info: last-changed
       - entity: binary_sensor.pir_conservatory
         secondary_info: last-changed
-      - entity: binary_sensor.pir_staircase
+      - entity: binary_sensor.pir_hallway
+        secondary_info: last-changed
+      - entity: binary_sensor.pir_kitchen
         secondary_info: last-changed
       - entity: binary_sensor.pir_living_room_front
         secondary_info: last-changed
       - entity: binary_sensor.pir_living_room_back
+        secondary_info: last-changed
+      - entity: binary_sensor.pir_staircase
+        secondary_info: last-changed
+      - entity: binary_sensor.conservatory_presence
         secondary_info: last-changed
       - entity: binary_sensor.kitchen_presence
         secondary_info: last-changed

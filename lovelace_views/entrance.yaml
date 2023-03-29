@@ -11,6 +11,8 @@ cards:
     state_color: true
     show_header_toggle: false
     entities:
+      - entity: binary_sensor.pir_hallway
+        secondary_info: last-changed
       - entity: binary_sensor.fire7_motion
         secondary_info: last-changed
       - entity: sensor.aqara_illumination
