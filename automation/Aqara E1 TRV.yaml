@@ -138,9 +138,6 @@
         - switch.master_bedroom_trv_valve_detection
         - switch.pooja_room_trv_valve_detection
       to: "off"
-  condition:
-    - condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) | int >= 25}}'
   action:
     - service: switch.turn_on
       data:
@@ -178,23 +175,23 @@
           select.pooja_room{% for trv in state_attr("group.trv_preset", "entity_id") | list -%}
           {% if states(trv) != "away" %}, {{trv}}{% endif %}
           {%- endfor %}
-    - condition: state
-      entity_id: input_boolean.guests
-      state: 'off'
-    - condition: template
-      value_template: '{{states("select.blue_room_trv_preset") != "away" }}'
-    - service: select.select_option
-      data:
-        option: 'off'
-      target:
-        entity_id:
-          - select.blue_room_trv_mode
-    - service: select.select_option
-      data:
-        option: 'away'
-      target:
-        entity_id:
-          - select.blue_room_trv_preset
+    # - condition: state
+    #   entity_id: input_boolean.guests
+    #   state: 'off'
+    # - condition: template
+    #   value_template: '{{states("select.blue_room_trv_preset") != "away" }}'
+    # - service: select.select_option
+    #   data:
+    #     option: 'off'
+    #   target:
+    #     entity_id:
+    #       - select.blue_room_trv_mode
+    # - service: select.select_option
+    #   data:
+    #     option: 'away'
+    #   target:
+    #     entity_id:
+    #       - select.blue_room_trv_preset
 
 
 - alias: TRV - Set TRV to Away When Window Opens
@@ -217,12 +214,6 @@
   action:
     - service: select.select_option
       data:
-        option: 'auto'
-      target:
-        entity_id:
-          - group.trv_preset
-    - service: select.select_option
-      data:
         option: 'away'
         entity_id: >-
           {% if trigger.entity_id == "binary_sensor.bathroom_window" %}select.bathroom_trv_preset
@@ -236,8 +227,8 @@
           {% endif %}
 
 
-- alias: TRV - Set TRV to Auto When Window Opens
-  id: trv_set_trv_to_auto_when_window_opens
+- alias: TRV - Set TRV to Auto When Window Closes
+  id: trv_set_trv_to_auto_when_window_closes
   initial_state: true
   trigger:
     - platform: state
