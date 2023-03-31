@@ -5,7 +5,7 @@
     value_template: "{{ value_json['occupied_heating_setpoint'] }}"
     command_template: '{"occupied_heating_setpoint": {{value}}}'
     device_class: temperature
-    min: 15
+    min: 5
     max: 25
     step: 0.5
 

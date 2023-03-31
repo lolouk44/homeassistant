@@ -42,7 +42,7 @@
   - service: light.turn_on
     data:
       entity_id: light.hallway
-      brightness: 255
+      brightness: 128
 
 
 - alias: Lights - Hallway Light Off by PIR
@@ -52,6 +52,8 @@
     - platform: state
       entity_id: binary_sensor.pir_hallway
       to: 'off'
+      for:
+        seconds: 60
     - platform: homeassistant
       event: start
     - platform: state

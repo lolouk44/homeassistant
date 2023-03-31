@@ -101,12 +101,12 @@
         - binary_sensor.pooja_room_trv_valve_alarm
       to: "on"
       for:
-        seconds: 30
+        minutes: 3
   action:
     - service: switch.turn_off
       data:
         entity_id: '{{(trigger.entity_id).replace("alarm","detection").replace("binary_sensor","switch")}}'
-    - delay: 00:00:10
+    - delay: 00:01:00
     - condition: template
       value_template: '{{ states(trigger.entity_id) == "on" }}'
     - condition: template
@@ -139,6 +139,7 @@
         - switch.pooja_room_trv_valve_detection
       to: "off"
   action:
+    - delay: 00:00:30
     - service: switch.turn_on
       data:
         entity_id: '{{trigger.entity_id}}'
@@ -175,23 +176,6 @@
           select.pooja_room{% for trv in state_attr("group.trv_preset", "entity_id") | list -%}
           {% if states(trv) != "away" %}, {{trv}}{% endif %}
           {%- endfor %}
-    # - condition: state
-    #   entity_id: input_boolean.guests
-    #   state: 'off'
-    # - condition: template
-    #   value_template: '{{states("select.blue_room_trv_preset") != "away" }}'
-    # - service: select.select_option
-    #   data:
-    #     option: 'off'
-    #   target:
-    #     entity_id:
-    #       - select.blue_room_trv_mode
-    # - service: select.select_option
-    #   data:
-    #     option: 'away'
-    #   target:
-    #     entity_id:
-    #       - select.blue_room_trv_preset
 
 
 - alias: TRV - Set TRV to Away When Window Opens
