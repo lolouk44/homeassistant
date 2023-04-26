@@ -177,12 +177,13 @@
   id: scene_guests_mode_on
   initial_state: true
   trigger:
-    platform: state
-    entity_id: device_tracker.venkat
-    to: "home"
-  action:
-    - service: input_boolean.turn_on
+    - platform: state
+      entity_id: device_tracker.venkat
+      to: "home"
+    - platform: state
       entity_id: input_boolean.guests
+      to: "on"
+  action:
     - service: number.set_value
       data:
         value: '{{ state_attr("climate.hallway","temperature") +1}}'
@@ -200,18 +201,24 @@
       target:
         entity_id:
           - select.blue_room_trv_preset
+    - condition: state
+      entity_id: input_boolean.guests
+      state: 'off'
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.guests
 
 
 - alias: Scene - Guests Mode Off
   id: scene_guests_mode_off
   initial_state: true
   trigger:
-    platform: state
-    entity_id: device_tracker.venkat
-    from: "home"
-  action:
-    - service: input_boolean.turn_off
+    - platform: state
+      entity_id: device_tracker.venkat
+      from: "home"
+    - platform: state
       entity_id: input_boolean.guests
+      to: "off"
+  action:
     - service: select.select_option
       data:
         option: 'off'
@@ -224,6 +231,11 @@
       target:
         entity_id:
           - select.blue_room_trv_preset
+    - condition: state
+      entity_id: input_boolean.guests
+      state: 'on'
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.guests
 
 
 - alias: Scene - Theme

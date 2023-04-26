@@ -37,8 +37,6 @@ cards:
     - entity: light.lolo_bedside_light
       secondary_info: last-changed
       icon: mdi:lamp
-    - entity: switch.master_bedroom_tuya_socket
-      secondary_info: last-changed
     - entity: media_player.bedroom_nest_hub
       type: "custom:mini-media-player"
       power_color: true

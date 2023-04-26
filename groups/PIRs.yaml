@@ -2,12 +2,14 @@ pirs:
   name: PIR Sensors
   entities:
     - binary_sensor.pir_conservatory
+    - binary_sensor.pir_hallway
     - binary_sensor.pir_kitchen
     - binary_sensor.pir_living_room_front
     - binary_sensor.pir_living_room_back
-    - binary_sensor.living_room_presence
-    - binary_sensor.kitchen_presence
     - binary_sensor.pir_staircase
+    - binary_sensor.conservatory_presence
+    - binary_sensor.kitchen_presence
+    - binary_sensor.living_room_presence
 pir_living_room:
   name: PIR Living Room
   entities:

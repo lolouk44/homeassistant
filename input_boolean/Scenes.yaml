@@ -10,10 +10,6 @@ holidays:
   name: Holidays
   icon: mdi:beach
 
-xmas:
-  name: Xmas
-  icon: mdi:pine-tree
-
 guests:
   name: Guests
   icon: mdi:account-group
