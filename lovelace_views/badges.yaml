@@ -16,8 +16,8 @@
     entity: device_tracker.lolo_iphone
   - type: state-label
     entity: device_tracker.div_iphone
-  # - type: state-label
-  #   entity: device_tracker.venkat
+  - type: state-label
+    entity: device_tracker.venkat
   - type: state-label
     entity: sensor.pirateweather_temperature
     name: Temperature
