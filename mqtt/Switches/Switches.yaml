@@ -1,24 +1,24 @@
-- name: "Bathroom Fan"
-  state_topic: "stat/bathroom_fan/POWER"
-  command_topic: "cmnd/bathroom_fan/POWER"
-  availability_topic: "tele/bathroom_fan/LWT"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  retain: false
+# - name: "Bathroom Fan"
+#   state_topic: "stat/bathroom_fan/POWER"
+#   command_topic: "cmnd/bathroom_fan/POWER"
+#   availability_topic: "tele/bathroom_fan/LWT"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
 
-- name: "Fire7 Charger"
-  state_topic: "stat/Houzetek/POWER"
-  command_topic: "cmnd/Houzetek/POWER"
-  availability_topic: "tele/Houzetek/LWT"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  retain: false
+# - name: "Fire7 Charger"
+#   state_topic: "stat/Houzetek/POWER"
+#   command_topic: "cmnd/Houzetek/POWER"
+#   availability_topic: "tele/Houzetek/LWT"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
 
 - name: Anova Timer
   state_topic: anova/timer
