@@ -17,11 +17,6 @@ entity_config:
     room: 'Living Room'
     expose: true
 
-  input_boolean.xmas:
-    name: "Christmas"
-    room: 'Living Room'
-    expose: true
-
   input_boolean.rtl2_radio:
     name: "RTL 2"
     room: 'Living Room'
@@ -32,8 +27,8 @@ entity_config:
     room: 'Living Room'
     expose: true
 
-  input_boolean.scala_radio:
-    name: "Scala"
+  input_boolean.dark:
+    name: "Dark"
     room: 'Living Room'
     expose: true
 
@@ -53,23 +48,18 @@ entity_config:
     room: 'Living Room'
     expose: true
 
-  input_boolean.absolute_radio_cr_radio:
-    name: "Absolute Radio Classic Rock"
+  input_boolean.multimedia:
+    name: "Multimedia"
     room: 'Living Room'
     expose: true
 
-  input_boolean.absolute_radio_radio:
-    name: "Absolute Radio"
+  input_boolean.set_tv_audio_to_home_cinema:
+    name: "Set TV Audio To Home Cinema"
     room: 'Living Room'
     expose: true
 
-  input_boolean.scheduled_vacuuming:
-    name: "Scheduled vacuuming"
-    room: 'Living Room'
-    expose: true
-
-  light.living_room_main:
-    name: "Living Room Lights"
+  input_select.lights_mode:
+    name: "Lights Mode"
     room: 'Living Room'
     expose: true
 
@@ -78,9 +68,19 @@ entity_config:
     room: 'Conservatory'
     expose: true
 
-  light.wled_conservatory:
-    name: "Conservatory LED Strip"
-    room: 'Conservatory'
+  light.hallway:
+    name: "Hallway Light"
+    room: 'Hallway'
+    expose: true
+
+  group.kitchen_lights:
+    name: "Kitchen Lights"
+    room: 'Kitchen'
+    expose: true
+
+  light.living_room_main:
+    name: "Living Room Lights"
+    room: 'Living Room'
     expose: true
 
   light.staircase:
@@ -93,14 +93,9 @@ entity_config:
     room: 'Staircase'
     expose: true
 
-  light.lolo_bedside_light:
-    name: "Lolo bedside Light"
-    room: 'Master Bedroom'
-    expose: true
-
-  group.kitchen_lights:
-    name: "Kitchen Lights"
-    room: 'Kitchen'
+  light.wled_conservatory:
+    name: "Conservatory LED Strip"
+    room: 'Conservatory'
     expose: true
 
   cover.kitchen_blinds:
@@ -110,21 +105,6 @@ entity_config:
 
   cover.livingroom_blinds:
     name: "Living Room Blinds"
-    room: 'Living Room'
-    expose: true
-
-  input_boolean.multimedia:
-    name: "Multimedia"
-    room: 'Living Room'
-    expose: true
-
-  input_boolean.set_tv_audio_to_home_cinema:
-    name: "Set TV Audio To Home Cinema"
-    room: 'Living Room'
-    expose: true
-
-  vacuum.mi_robot_vacuum:
-    name: "Vacuum"
     room: 'Living Room'
     expose: true
   
