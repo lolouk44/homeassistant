@@ -1,3 +1,19 @@
+- alias: Kello - Reset When Unavailable
+  id: kello_reset_unavailable
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: media_player.kello
+      to: 'unavailable'
+      for:
+        minutes: 1
+  action:
+    - service: switch.turn_off
+      entity_id: switch.sonoff_s26_79
+    - delay: 00:00:15
+    - service: switch.turn_on
+      entity_id: switch.sonoff_s26_79
+
 - alias: Kello - Set Volume
   id: kello_set_volume
   initial_state: true
@@ -5,11 +21,11 @@
     - platform: state
       entity_id: input_number.volume_kello
   action:
-  - service: mqtt.publish
-    data:
-      topic: "Kello/Volume"
-      payload_template: '{{ states("input_number.volume_kello") | int(value,16) }}'
-      retain: false
+    - service: mqtt.publish
+      data:
+        topic: "Kello/Volume"
+        payload_template: '{{ states("input_number.volume_kello") | int(value,16) }}'
+        retain: false
 
 - alias: Kello - Mute Alarms
   id: kello_mute_alarms
@@ -106,25 +122,25 @@
       entity_id: sensor.kello_mqtt
       to: 'play_greeting'
   action:
-  - service: input_boolean.turn_on
-    data:
-      entity_id: input_boolean.kello_play_stop
-  - service: mqtt.publish
-    data:
-      topic: "Kello/PlayStatus"
-      payload_template: 'ON'
-      retain: False
-  - service: mqtt.publish
-    data:
-      topic: "Kello/Volume"
-      payload_template: '{{ states("input_number.volume_kello") | int(value,16) }}'
-      retain: false
-  - service: mqtt.publish
-    data:
-      topic: "Kello/Radio"
-      payload_template: >
-        {{ states("input_select.kello_radio_station").replace(" ","") }}
-      retain: false
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kello_play_stop
+    - service: mqtt.publish
+      data:
+        topic: "Kello/PlayStatus"
+        payload_template: 'ON'
+        retain: False
+    - service: mqtt.publish
+      data:
+        topic: "Kello/Volume"
+        payload_template: '{{ states("input_number.volume_kello") | int(value,16) }}'
+        retain: false
+    - service: mqtt.publish
+      data:
+        topic: "Kello/Radio"
+        payload_template: >
+          {{ states("input_select.kello_radio_station").replace(" ","") }}
+        retain: false
 
 - alias: Kello - Build Weather Greeting IFTTT
   id: kello_build_weather_greeting_ifttt
@@ -138,37 +154,37 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_build_weather_greeting_ifttt", "last_triggered")) | int > 30)}}'
   action:
-  - service: tts.google_say
-    data:
-      entity_id: media_player.mpd_rpi_kitchen
-      message: |
-        Good morning. Today is 
-        {{as_timestamp(now()) | timestamp_custom('%A')}}, {% set day = (as_timestamp(now()) | timestamp_custom('%d')) |int-%}
-        {{day}}{%- if day >= 4 and day <= 20 or day >= 24 and day <= 30 -%}th
-        {%- elif day == 1 or day == 21 or day == 31-%}st
-        {%- elif day == 2 or day == 22 -%}nd
-        {%- elif day == 3 or day == 23 -%}rd
-        {%- endif %} {{as_timestamp(now()) | timestamp_custom('%B')}}
-        It's currently {{states('sensor.dark_sky_summary')}} and {{state_attr('weather.dark_sky','temperature')|round}} degrees.
-        It will be {{states('sensor.dark_sky_hourly_summary')|replace(".", "")}},
-        highs: {{state_attr('weather.dark_sky', 'forecast')[0].temperature|round}},
-        lows: {{state_attr('weather.dark_sky', 'forecast')[0].templow|round}}.
-        Winds:
-        {% set winbearing = (state_attr('weather.dark_sky','forecast')[0].wind_bearing/90)|round +1 %}
-        {% set winddir = ['North', 'North East','East','South East','South','South West','West','North West']%}
-        {{ winddir[winbearing]}}
-        at {{(states('sensor.dark_sky_wind_speed_0d')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0d')|int*3.6)|round}} km/h.
-        Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|float(0)|round}} millimeters.
-        {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states('sensor.home_to_work')}} minutes.{% endif %}
-        {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_start_vacuuming", "last_triggered")) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
-        {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") != True %} Your next appointment is: {{state_attr("calendar.birthdays_events", "message")}} at {{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[0]}} {%if (state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1] != '00'%}{{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
-        {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") == True %} Today is : {{state_attr("calendar.birthdays_events", "message")|replace("/","and")}}{%endif%}
-  - delay: 00:00:05
-  - service: mqtt.publish
-    data:
-      topic: "Kello"
-      payload_template: 'build_greeting'
-      retain: false
+    - service: tts.google_say
+      data:
+        entity_id: media_player.mpd_rpi_kitchen
+        message: |
+          Good morning. Today is 
+          {{as_timestamp(now()) | timestamp_custom('%A')}}, {% set day = (as_timestamp(now()) | timestamp_custom('%d')) |int-%}
+          {{day}}{%- if day >= 4 and day <= 20 or day >= 24 and day <= 30 -%}th
+          {%- elif day == 1 or day == 21 or day == 31-%}st
+          {%- elif day == 2 or day == 22 -%}nd
+          {%- elif day == 3 or day == 23 -%}rd
+          {%- endif %} {{as_timestamp(now()) | timestamp_custom('%B')}}
+          It's currently {{states('sensor.dark_sky_summary')}} and {{state_attr('weather.dark_sky','temperature')|round}} degrees.
+          It will be {{states('sensor.dark_sky_hourly_summary')|replace(".", "")}},
+          highs: {{state_attr('weather.dark_sky', 'forecast')[0].temperature|round}},
+          lows: {{state_attr('weather.dark_sky', 'forecast')[0].templow|round}}.
+          Winds:
+          {% set winbearing = (state_attr('weather.dark_sky','forecast')[0].wind_bearing/90)|round +1 %}
+          {% set winddir = ['North', 'North East','East','South East','South','South West','West','North West']%}
+          {{ winddir[winbearing]}}
+          at {{(states('sensor.dark_sky_wind_speed_0d')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0d')|int*3.6)|round}} km/h.
+          Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|float(0)|round}} millimeters.
+          {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states('sensor.home_to_work')}} minutes.{% endif %}
+          {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_start_vacuuming", "last_triggered")) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
+          {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") != True %} Your next appointment is: {{state_attr("calendar.birthdays_events", "message")}} at {{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[0]}} {%if (state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1] != '00'%}{{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
+          {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays_events", "all_day") == True %} Today is : {{state_attr("calendar.birthdays_events", "message")|replace("/","and")}}{%endif%}
+    - delay: 00:00:05
+    - service: mqtt.publish
+      data:
+        topic: "Kello"
+        payload_template: 'build_greeting'
+        retain: false
 
 - alias: Kello - Play Weather Greeting IFTTT
   id: kello_play_weather_greeting_ifttt
@@ -182,18 +198,18 @@
     - condition: template
       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.kello_play_weather_greeting_ifttt", "last_triggered")) | int > 30)}}'
   action:
-  - service: mqtt.publish
-    data:
-      topic: "Kello/PlayStatus"
-      payload_template: 'ON'
-      retain: False
-  - service: mqtt.publish
-    data:
-      topic: "Kello/Volume"
-      payload_template: '{{ 40 | int(value,16) }}'
-      retain: false
-  - service: mqtt.publish
-    data:
-      topic: "Kello/Radio"
-      payload_template: 'WeatherForecast'
-      retain: false
+    - service: mqtt.publish
+      data:
+        topic: "Kello/PlayStatus"
+        payload_template: 'ON'
+        retain: False
+    - service: mqtt.publish
+      data:
+        topic: "Kello/Volume"
+        payload_template: '{{ 40 | int(value,16) }}'
+        retain: false
+    - service: mqtt.publish
+      data:
+        topic: "Kello/Radio"
+        payload_template: 'WeatherForecast'
+        retain: false
