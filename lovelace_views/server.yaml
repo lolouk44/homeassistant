@@ -25,11 +25,13 @@ cards:
             - entity_id: "*astra_car*"
             - entity_id: "button.wled_*"
             - entity_id: "media_player.*cast*"
+            - entity_id: "media_player.fire*"
             
         sort:
           method: 'name'
   - type: entities
     show_header_toggle: false
+    state_color: true
     entities:
       - type: custom:auto-entities
         card:
@@ -44,8 +46,11 @@ cards:
               state: "< 20%"
             - entity_id: "sensor.*battery"
               state: "< 20%"
+          exclude:
+            - entity_id: "sensor.*iphone*"
   - type: entities
     show_header_toggle: false
+    state_color: true
     entities:
       - type: custom:auto-entities
         card:
@@ -58,6 +63,8 @@ cards:
           include:
             - entity_id: "sensor.*battery2"
             - entity_id: "sensor.*battery"
+          exclude:
+            - entity_id: "sensor.*iphone*"
         sort:
           method: 'state'
           numeric: true
@@ -229,10 +236,10 @@ cards:
           open: false
         filter:
           include:
-           - entity_id: sensor.*temperature*
-           - entity_id: sensor.*humidity*
+            - entity_id: sensor.*temperature*
+            - entity_id: sensor.*humidity*
           exclude:
-           - entity_id: sensor.*battery*
+            - entity_id: sensor.*battery*
         sort:
           method: 'name'
   - type: entities

@@ -50,20 +50,6 @@ cctv_garage_lost:
   notifiers:
     - mobile_app_lolo_iphone
 
-# cctv_doorbell_video_feed_lost:
-#   name: Doorbell Video Feed Lost
-#   state: 'off'
-#   entity_id: binary_sensor.doorbell_cctv_connection_status
-#   can_acknowledge: true
-#   skip_first: true
-#   repeat:
-#     - 5
-#     - 15
-#     - 30
-#     - 60
-#   notifiers:
-#     - mobile_app_lolo_iphone
-
 cctv_staircase_video_feed_lost:
   name: Stairase Video Feed Lost
   state: 'off'
@@ -145,18 +131,6 @@ rpi_kitchen_lost:
   notifiers:
     - mobile_app_lolo_iphone
 
-# kello_lost:
-  # name: Kello Lost
-  # entity_id: binary_sensor.kello
-  # state: 'off'
-  # can_acknowledge: true
-  # skip_first: true
-  # repeat:
-    # - 5
-    # - 60
-  # notifiers:
-    # - mobile_app_lolo_iphone
-
 house_number_led_strip_lost:
   name: House Number LED Strip Lost
   entity_id: light.house_number
@@ -168,32 +142,6 @@ house_number_led_strip_lost:
     - 60
   notifiers:
     - mobile_app_lolo_iphone
-
-
-# staircase_led_strip_lost:
-  # name: StairCase LED Strip Lost
-  # entity_id: binary_sensor.staircase_led_strip
-  # state: 'off'
-  # can_acknowledge: true
-  # skip_first: true
-  # repeat:
-    # - 5
-    # - 60
-  # notifiers:
-    # - mobile_app_lolo_iphone
-
-
-# tv_cabinet_led_strip_lost:
-  # name: TV Cabinet LED Strip Lost
-  # entity_id: binary_sensor.tv_cabinet_led_strip
-  # state: 'off'
-  # can_acknowledge: true
-  # skip_first: true
-  # repeat:
-    # - 5
-    # - 60
-  # notifiers:
-    # - mobile_app_lolo_iphone
 
 
 ram_too_high:
@@ -297,19 +245,6 @@ garage_freezer_door_left_open:
     - mobile_app_lolo_iphone
 
 
-# doorbell_lost:
-#   name: Doorbell Lost
-#   entity_id: binary_sensor.doorbell
-#   state: 'off'
-#   can_acknowledge: true
-#   skip_first: true
-#   repeat:
-#     - 5
-#     - 60
-#   notifiers:
-#     - mobile_app_lolo_iphone
-
-
 bmw_unlocked:
   name: BMW Left Unlocked
   entity_id: lock.220d_lock
@@ -367,10 +302,15 @@ entities_lost:
     - gmaillolo
 
 
-lolo_bedside_cabinet_lost:
-  name: Zigbee Devices Lost
-  entity_id: binary_sensor.lolo_bedside_cabinet_lost
-  message: 'Lolo Bedside Cabinet Lost'
+entities_low_battery:
+  name: Low Battery Entities
+  entity_id: binary_sensor.low_battery_entities
+  title: 'HA - Low Battery Entities'
+  message: >-
+      The following entities appear to be lost:
+      {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown') -%}
+      {%- if states(state.entity_id) | int <= 20 -%}{{state.attributes.friendly_name}} ({{states(state.entity_id)}}%),  {%- endif -%}
+      {%- endfor -%}
   state: 'on'
   can_acknowledge: true
   skip_first: true
@@ -381,6 +321,7 @@ lolo_bedside_cabinet_lost:
     - 120
   notifiers:
     - mobile_app_lolo_iphone
+    - gmaillolo
 
 
 wled_garage_lost:

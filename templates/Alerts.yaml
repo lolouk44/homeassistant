@@ -39,10 +39,14 @@
       state: '{{ states("sensor.lost_entities_count") | int(0)  > 0 }}'
       icon: 'mdi:eye'
 
+    - name: "Low Battery Entities"
+      state: '{{ states("sensor.low_battery_entities_count") | int(0)  > 0 }}'
+      icon: 'mdi:eye'
+
 - sensor:
     - name: "Lost Entities Ticker"
       state: >-
-        {%- for state in states | selectattr('state','eq','unavailable') | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast'])-%}
+        {%- for state in states | selectattr('state','eq','unavailable') | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast','media_player.fire_stick4k'])-%}
         {% if (as_timestamp(now()) - as_timestamp(state.last_changed)) > 300 %}1{% endif %}
         {%- endfor -%}
       icon: 'mdi:eye'
@@ -53,8 +57,27 @@
 
     - name: "Lost Entities List"
       state: >-
-        {%- for state in states | selectattr('state','eq','unavailable')  | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast'])%}
+        {%- for state in states | selectattr('state','eq','unavailable')  | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast','media_player.fire_stick4k'])%}
         - {% if (as_timestamp(now()) - as_timestamp(state.last_changed)) > 300 %}{{state.domain|title}}: {{state.attributes.friendly_name}} ({{state.entity_id}}){% endif %}
+        {%- endfor -%}
+      icon: 'mdi:eye'
+
+
+    - name: "Low Battery Entities Ticker"
+      state: >-
+        {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown') -%}
+        {%- if states(state.entity_id) | int <= 20 -%}1{%- endif -%}
+        {%- endfor -%}
+      icon: 'mdi:eye'
+
+    - name: "Low Battery Entities Count"
+      state: '{{ states("sensor.low_battery_entities_ticker") | length }}'
+      icon: 'mdi:eye'
+
+    - name: "Low Battery Entities List"
+      state: >-
+        {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown') -%}
+        {%- if states(state.entity_id) | int <= 20 -%}{{state.attributes.friendly_name}} ({{states(state.entity_id)}}%),  {%- endif -%}
         {%- endfor -%}
       icon: 'mdi:eye'
     
