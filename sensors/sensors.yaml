@@ -1,21 +1,3 @@
-- platform: darksky
-  api_key: !secret darksky_api_key
-  forecast:
-    - 0
-  monitored_conditions:
-    - summary
-    - icon
-    - minutely_summary
-    - hourly_summary
-    - daily_summary
-    - temperature
-    - humidity
-    - temperature_high
-    - temperature_low
-    - precip_intensity_max
-    - wind_speed
-    - wind_gust
-
 - platform: template
   sensors:
     sunset_time:
