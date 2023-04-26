@@ -82,16 +82,16 @@
   optimistic: false
   qos: 1
 
-- name: "Red Light"
-  state_topic: "stat/sonoff_basic_1/POWER"
-  command_topic: "cmnd/sonoff_basic_1/POWER"
-  availability_topic: "tele/sonoff_basic_1/LWT"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  retain: false
+# - name: "Red Light"
+#   state_topic: "stat/sonoff_basic_1/POWER"
+#   command_topic: "cmnd/sonoff_basic_1/POWER"
+#   availability_topic: "tele/sonoff_basic_1/LWT"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
 
 # - name: "Lolo Bedside Light"
 #   schema: json

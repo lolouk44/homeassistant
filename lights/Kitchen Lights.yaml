@@ -1,5 +1,0 @@
-- platform: group
-  name: Kitchen Lights
-  entities:
-    - light.kitchen_door
-    - light.kitchen_window

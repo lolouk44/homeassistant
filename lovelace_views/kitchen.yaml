@@ -34,7 +34,7 @@ cards:
       title: Kitchen Lights
       show_header_toggle: true
       entities:
-        - entity: light.kitchen_door
+        - entity: light.kitchen_lights
           secondary_info: last-changed
         - entity: light.kitchen_window
           secondary_info: last-changed

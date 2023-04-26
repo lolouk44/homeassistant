@@ -28,10 +28,10 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: group.kitchen_lights
+        entity_id: light.kitchen_lights
         state: 'off'
       - condition: template
-        value_template: '{{ state_attr("light.kitchen_window","brightness") | int < 250 }}'
+        value_template: '{{ state_attr("light.kitchen_lights","brightness") | int < 250 }}'
     - condition: or
       conditions:
       - condition: state
@@ -46,11 +46,11 @@
         entity_id: automation.lights_kitchen_lights_dimmed_off_pir,automation.lights_kitchen_lights_off_pir,automation.lights_kitchen_tv_off_pir
     - service: light.turn_on
       data:
-        entity_id: group.kitchen_lights
+        entity_id: light.kitchen_lights
         brightness: 255
     - service: light.turn_on
       data:
-        entity_id: group.kitchen_lights
+        entity_id: light.kitchen_lights
         brightness: 255
     - service: automation.turn_on
       data:
@@ -81,18 +81,13 @@
       - condition: state
         entity_id: input_boolean.movies
         state: 'on'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: light.kitchen_door
-        state: 'on'
-      - condition: state
-        entity_id: light.kitchen_window
-        state: 'on'
+    - condition: state
+      entity_id: light.kitchen_lights
+      state: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: group.kitchen_lights
+        entity_id: light.kitchen_lights
         brightness: 11
     - condition: or
       conditions:
@@ -104,7 +99,7 @@
         state: 'on'
     - service: light.turn_on
       data:
-        entity_id: group.kitchen_lights
+        entity_id: light.kitchen_lights
         brightness: 255
 
 
@@ -137,23 +132,18 @@
     - condition: state
       entity_id: binary_sensor.pir_kitchen
       state: 'off'
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: light.kitchen_door
-        state: 'on'
-      - condition: state
-        entity_id: light.kitchen_window
-        state: 'on'
+    - condition: state
+      entity_id: light.kitchen_lights
+      state: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: group.kitchen_lights
+        entity_id: light.kitchen_lights
         brightness: 255
     - delay: 00:00:02
     - service: light.turn_off
       data:
-        entity_id: group.kitchen_lights
+        entity_id: light.kitchen_lights
     - condition: or
       conditions:
       - condition: state
@@ -164,7 +154,7 @@
         state: 'on'
     - service: light.turn_on
       data:
-        entity_id: group.kitchen_lights
+        entity_id: light.kitchen_lights
         brightness: 255
 
 

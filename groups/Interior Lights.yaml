@@ -3,7 +3,7 @@ interior_lights:
   entities:
     - light.living_room_main
     - light.living_room_wall
-    - group.kitchen_lights
+    - light.kitchen_lights
     - light.staircase
     - light.conservatory
     - light.wled_conservatory
