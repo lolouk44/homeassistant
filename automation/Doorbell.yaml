@@ -11,31 +11,30 @@
       - service: button.press
         target:
           entity_id: button.doorbell_start_p2p_stream
-      - service: media_player.play_media
+      - service: scene.create
         data:
-          entity_id: media_player.google_home_minis, media_player.bedroom_nest_hub
-          media_content_id: 'http://192.168.9.23:8123/local/sounds/Doorbell_Tubular_2.mp3'
-          media_content_type: 'audio/mp3'
-    - parallel:
-        - service: mqtt.publish
-          data:
-            topic: "Sensors/Doorbell"
-            payload_template: 'ON'
-            retain: false
-        - service: scene.create
-          data:
-            scene_id: pre_doorbell_state
-            snapshot_entities:
-              - light.living_room_main
-              - media_player.google_home_minis
-              - media_player.panasonic_viera_tv
-              - media_player.onkyo_tx_nr656
-              - media_player.onkyo_tx_nr656_2
-              - media_player.house
-              - media_player.living_room
-              - media_player.conservatory
-              - media_player.kitchen
-              - media_player.master_bedroom_nest_hub
+          scene_id: pre_doorbell_state
+          snapshot_entities:
+            - light.living_room_main
+            - media_player.google_home_minis
+            - media_player.panasonic_viera_tv
+            - media_player.onkyo_tx_nr656
+            - media_player.onkyo_tx_nr656_2
+            - media_player.house
+            - media_player.living_room
+            - media_player.conservatory
+            - media_player.kitchen
+            - media_player.master_bedroom_nest_hub
+      - service: mqtt.publish
+        data:
+          topic: "Sensors/Doorbell"
+          payload_template: 'ON'
+          retain: false
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_minis, media_player.bedroom_nest_hub
+        media_content_id: 'http://192.168.9.23:8123/local/sounds/Doorbell_Tubular_2.mp3'
+        media_content_type: 'audio/mp3'
     - service: camera.snapshot
       data:
         entity_id: camera.doorbell
@@ -51,7 +50,7 @@
       target:
         entity_id: media_player.panasonic_viera_tv
       data:
-        media_content_id: 'http://192.168.9.23:5000/api/doorbell?h=720&fps=1'
+        media_content_id: 'http://192.168.9.23:5000/api/doorbell?h=1024'
         media_content_type: url
     - service: media_player.volume_mute
       data:
