@@ -103,6 +103,38 @@
       for:
         minutes: 3
   action:
+    - service: number.set_value
+      data:
+        value: '5'
+      target:
+        entity_id: |
+          {{trigger.entity_id.replace("binary_sensor","number").replace("trv_valve_alarm","trv_target_temperature")}}
+    - delay: 00:00:05
+    - service: number.set_value
+      data:
+        value: '25'
+      target:
+        entity_id: |
+          {{trigger.entity_id.replace("binary_sensor","number").replace("trv_valve_alarm","trv_target_temperature")}}
+    - delay: 00:00:05
+    - service: number.set_value
+      data:
+        value: '{{ state_attr("climate.hallway","temperature") +1}}'
+      target:
+        entity_id: |
+          {{trigger.entity_id.replace("binary_sensor","number").replace("trv_valve_alarm","trv_target_temperature")}}
+    - service: select.select_option
+      data:
+        option: 'heat'
+      target:
+        entity_id: |
+          {{trigger.entity_id.replace("binary_sensor","select").replace("trv_valve_alarm","trv_mode")}}
+    - service: select.select_option
+      data:
+        option: 'auto'
+      target:
+        entity_id: |
+          {{trigger.entity_id.replace("binary_sensor","select").replace("trv_valve_alarm","trv_preset")}}
     - service: switch.turn_off
       data:
         entity_id: '{{(trigger.entity_id).replace("alarm","detection").replace("binary_sensor","switch")}}'
@@ -254,158 +286,3 @@
           {% elif trigger.entity_id == "group.master_bedroom_windows" %}select.master_bedroom_trv_preset
           {% elif trigger.entity_id == "group.pooja_room_windows" %}select.pooja_room_trv_preset
           {% endif %}
-
-
-
-
-
-- alias: TRV - Set TRV Temp Night
-  id: trv_set_trv_temp_night
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: climate.hallway
-  condition:
-    - condition: time
-      after: '19:30'
-      before: '05:00'
-  action:
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature")}}'
-      target:
-        entity_id:
-          - number.bathroom_trv_target_temperature
-          - number.blue_room_trv_target_temperature
-          - number.conservatory_trv_target_temperature
-          - number.kiaan_trv_target_temperature
-          - number.kitchen_trv_target_temperature
-          - number.living_room_big_trv_target_temperature
-          - number.master_bedroom_temperature
-          - number.pooja_room_trv_target_temperature
-    - condition: state
-      entity_id: input_boolean.guests
-      state: 'off'
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature")}}'
-      target:
-        entity_id:
-          - number.blue_room_trv_target_temperature
-
-
-- alias: TRV - Set TRV Temp Morning
-  id: trv_set_trv_temp_morning
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: climate.hallway
-  condition:
-    - condition: time
-      after: '05:00'
-      before: '09:00'
-  action:
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature")}}'
-      target:
-        entity_id:
-          - number.bathroom_trv_target_temperature
-          - number.blue_room_trv_target_temperature
-          - number.conservatory_trv_target_temperature
-          - number.kiaan_trv_target_temperature
-          - number.kitchen_trv_target_temperature
-          - number.living_room_big_trv_target_temperature
-          - number.master_bedroom_trv_target_temperature
-          - number.pooja_room_trv_target_temperature
-
-
-- alias: TRV - Set TRV Temp Weekday
-  id: trv_set_trv_temp_weekday
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: climate.hallway
-  condition:
-    - condition: time
-      after: '09:00'
-      before: '15:00'
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-  action:
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature")}}'
-      target:
-        entity_id:
-          - number.kiaan_trv_target_temperature
-          - number.pooja_room_trv_target_temperature
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature") -2 }}'
-      target:
-        entity_id:
-          - number.bathroom_trv_target_temperature
-          - number.blue_room_trv_target_temperature
-          - number.conservatory_trv_target_temperature
-          - number.kitchen_trv_target_temperature
-          - number.living_room_big_trv_target_temperature
-          - number.master_bedroom_trv_target_temperature
-    - condition: state
-      entity_id: input_boolean.guests
-      state: 'off'
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature")}}'
-      target:
-        entity_id:
-          - number.blue_room_trv_target_temperature
-
-
-- alias: TRV - Set TRV Temp Weekend
-  id: trv_set_trv_temp_weekend
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: climate.hallway
-  condition:
-    - condition: time
-      after: '09:00'
-      before: '19:30'
-    - condition: time
-      weekday:
-        - sat
-        - sun
-  action:
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature")}}'
-      target:
-        entity_id:
-          - number.conservatory_trv_target_temperature
-          - number.kitchen_trv_target_temperature
-          - number.living_room_big_trv_target_temperature
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature") -2 }}'
-      target:
-        entity_id:
-          - number.bathroom_trv_target_temperature
-          - number.blue_room_trv_target_temperature
-          - number.kiaan_trv_target_temperature
-          - number.master_bedroom_trv_target_temperature
-          - number.pooja_room_trv_target_temperature
-    - condition: state
-      entity_id: input_boolean.guests
-      state: 'off'
-    - service: number.set_value
-      data:
-        value: '{{ state_attr("climate.hallway","temperature")}}'
-      target:
-        entity_id:
-          - number.blue_room_trv_target_temperature
