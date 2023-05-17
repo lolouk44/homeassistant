@@ -229,7 +229,7 @@ garage_freezer_door_left_open:
   name: Garage Freezer Door Left Open
   entity_id: binary_sensor.garage_freezer_door
   can_acknowledge: true
-  skip_first: true
+  skip_first: false
   repeat:
     - 5
     - 6
@@ -275,6 +275,8 @@ zigbee_devices_lost:
     - 30
     - 60
     - 120
+    - 240
+    - 480
   notifiers:
     - mobile_app_lolo_iphone
     # - gmaillolo
@@ -286,7 +288,7 @@ entities_lost:
   title: 'HA - Lost Entities'
   message: >-
       The following entities appear to be lost:
-      {%- for state in states | selectattr('state','eq','unavailable')  | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast'])%}
+      {%- for state in states | selectattr('state','eq','unavailable')  | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast', 'media_player.fire_stick4k'])%}
       - {% if (as_timestamp(now()) - as_timestamp(state.last_changed)) > 300 %}{{state.domain|title}}: {{state.attributes.friendly_name}} ({{state.entity_id}}){% endif %}
       {%- endfor -%}
   state: 'on'
@@ -297,6 +299,8 @@ entities_lost:
     - 30
     - 60
     - 120
+    - 240
+    - 480
   notifiers:
     - mobile_app_lolo_iphone
     - gmaillolo
@@ -307,8 +311,8 @@ entities_low_battery:
   entity_id: binary_sensor.low_battery_entities
   title: 'HA - Low Battery Entities'
   message: >-
-      The following entities appear to be lost:
-      {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown') -%}
+      The following entities appear to have low battery:
+      {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown')  | rejectattr ('entity_id', 'in', ['sensor.lolo_iphone_battery_level'])-%}
       {%- if states(state.entity_id) | int <= 20 -%}{{state.attributes.friendly_name}} ({{states(state.entity_id)}}%),  {%- endif -%}
       {%- endfor -%}
   state: 'on'
@@ -319,22 +323,8 @@ entities_low_battery:
     - 30
     - 60
     - 120
+    - 240
+    - 480
   notifiers:
     - mobile_app_lolo_iphone
     - gmaillolo
-
-
-wled_garage_lost:
-  name: WLED Garage Lost
-  entity_id: light.wled_garage
-  message: 'WLED Garage Lost'
-  state: 'unavailable'
-  can_acknowledge: true
-  skip_first: true
-  repeat:
-    - 5
-    - 30
-    - 60
-    - 120
-  notifiers:
-    - mobile_app_lolo_iphone
