@@ -6,16 +6,6 @@
       friendly_name: Sunset
       icon_template: '{% if states("sun.sun") == "above_horizon" %}mdi:white-balance-sunny{% else %}mdi:weather-night{% endif %}'
 
-# - platform: template
-#   sensors:
-#     precipitation:
-#       value_template: >
-#         {{state_attr('weather.dark_sky', 'forecast')[0].precipitation}}
-#       friendly_name: Precipitation
-#       unit_of_measurement: "mm"
-
-# - platform: uptime
-
 - platform: time_date
   display_options:
     - 'time'

@@ -161,9 +161,9 @@
 #         - wed
 #         - thu
 #     - condition: template
-#       value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].precipitation|float(0)|round ) < 1}}"
+#       value_template: "{{({{states('sensor.precipitation')}} < 1}}"
 #     - condition: template
-#       value_template: "{{(state_attr('weather.dark_sky', 'forecast')[0].templow | float(0) > 4 ) }}"
+#       value_template: "{{(state_attr('weather.pirateweather', 'forecast')[0].templow | float(0) > 4 ) }}"
 #   action:
 #     - service: input_boolean.turn_on
 #       data:

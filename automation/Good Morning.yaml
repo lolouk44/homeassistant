@@ -33,16 +33,16 @@
           {%- elif day == 2 or day == 22 -%}nd
           {%- elif day == 3 or day == 23 -%}rd
           {%- endif %} {{as_timestamp(now()) | timestamp_custom('%B')}}
-          It's currently {{states('sensor.dark_sky_summary')}} and {{state_attr('weather.dark_sky','temperature')|round}} degrees.
+          It's currently {{states('sensor.dark_sky_summary')}} and {{state_attr('weather.pirateweather','temperature')|round}} degrees.
           Today will be {{states('sensor.dark_sky_hourly_summary')|replace(".", "")}},
-          highs: {{state_attr('weather.dark_sky', 'forecast')[0].temperature|round}},
-          lows: {{state_attr('weather.dark_sky', 'forecast')[0].templow|round}}.
+          highs: {{state_attr('weather.pirateweather', 'forecast')[0].temperature|round}},
+          lows: {{state_attr('weather.pirateweather', 'forecast')[0].templow|round}}.
           Winds:
-          {% set winbearing = (state_attr('weather.dark_sky','forecast')[0].wind_bearing/45)|round +1 %}
+          {% set winbearing = (state_attr('weather.pirateweather','forecast')[0].wind_bearing/45)|round +1 %}
           {% set winddir = ['North', 'North East','East','South East','South','South West','West','North West']%}
           {{ winddir[winbearing]}}
           at {{(states('sensor.dark_sky_wind_speed_0')|int*3.6)|round}} to {{(states('sensor.dark_sky_wind_gust_0')|int*3.6)|round}} km/h.
-          Precipitation: {{state_attr('weather.dark_sky', 'forecast')[0].precipitation|round}} millimeters.
+          Precipitation: {{states('sensor.precipitation')}} millimeters.
           {% if now().strftime("%a") == 'Tue' or now().strftime("%a") == 'Wed' or now().strftime("%a") == 'Thu' %}Estimated travel time to Waybridge: {{states('sensor.home_to_work')}} minutes.{% endif %}
           {% if (as_timestamp(now()) - as_timestamp(state_attr("automation.start_vacuuming", "last_triggered")) | int <= 36000) %} Remember to empty the vacuum.{% endif %}
           {% if as_timestamp(now()) | timestamp_custom('%Y-%m-%d') == (state_attr("calendar.birthdays_events", "start_time")).split(" ")[0] and state_attr("calendar.birthdays__events", "all_day") != True %} Your next appointment is: {{state_attr("calendar.birthdays_events", "message")}} at {{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[0]}} {%if (state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1] != '00'%}{{(state_attr("calendar.birthdays_events", "start_time")).split(" ")[1].split(":")[1]}} {%endif%} {%endif%}
