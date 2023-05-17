@@ -16,10 +16,10 @@
       device_class: humidity
       unit_of_measurement: "%"
     - name: "Precipitation"
-      state: '{{ state_attr("weather.pirateweather", "forecast")[0]["precipitation"] }}'
+      state: '{{ state_attr("weather.pirateweather", "forecast")[0]["precipitation"] | default(0) }}'
       device_class: precipitation
       unit_of_measurement: "mm"
     - name: "Pirate Weather Wind Speed"
-      state: '{{ state_attr("weather.pirateweather", "wind_speed") | int }}'
+      state: '{{ state_attr("weather.pirateweather", "wind_speed") | int(0) }}'
       device_class: wind_speed
       unit_of_measurement: "km/h"

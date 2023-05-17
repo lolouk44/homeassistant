@@ -46,7 +46,7 @@
 - sensor:
     - name: "Lost Entities Ticker"
       state: >-
-        {%- for state in states | selectattr('state','eq','unavailable') | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast','media_player.fire_stick4k'])-%}
+        {%- for state in states | selectattr('state','eq','unavailable') | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast','media_player.fire_stick4k', 'sensor.hp_officejet_pro_8020_series_black_cartridge' , 'sensor.hp_officejet_pro_8020_series_cyan_cartridge' , 'sensor.hp_officejet_pro_8020_series_magenta_cartridge' , 'sensor.hp_officejet_pro_8020_series_yellow_cartridge' , 'sensor.hp_officejet_pro_8020_series'])-%}
         {% if (as_timestamp(now()) - as_timestamp(state.last_changed)) > 300 %}1{% endif %}
         {%- endfor -%}
       icon: 'mdi:eye'
@@ -57,7 +57,7 @@
 
     - name: "Lost Entities List"
       state: >-
-        {%- for state in states | selectattr('state','eq','unavailable')  | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast','media_player.fire_stick4k'])%}
+        {%- for state in states | selectattr('state','eq','unavailable')  | rejectattr ('entity_id', 'in', ['media_player.as_aftka_cast','media_player.as_aftmm_cast','media_player.fire_stick4k', 'sensor.hp_officejet_pro_8020_series_black_cartridge' , 'sensor.hp_officejet_pro_8020_series_cyan_cartridge' , 'sensor.hp_officejet_pro_8020_series_magenta_cartridge' , 'sensor.hp_officejet_pro_8020_series_yellow_cartridge' , 'sensor.hp_officejet_pro_8020_series'])%}
         - {% if (as_timestamp(now()) - as_timestamp(state.last_changed)) > 300 %}{{state.domain|title}}: {{state.attributes.friendly_name}} ({{state.entity_id}}){% endif %}
         {%- endfor -%}
       icon: 'mdi:eye'
@@ -65,7 +65,7 @@
 
     - name: "Low Battery Entities Ticker"
       state: >-
-        {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown') -%}
+        {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown')  | rejectattr ('entity_id', 'in', ['sensor.lolo_iphone_battery_level']) -%}
         {%- if states(state.entity_id) | int <= 20 -%}1{%- endif -%}
         {%- endfor -%}
       icon: 'mdi:eye'
@@ -76,7 +76,7 @@
 
     - name: "Low Battery Entities List"
       state: >-
-        {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown') -%}
+        {%- for state in states.sensor | selectattr('attributes.device_class','defined') | selectattr('attributes.device_class', 'eq', 'battery')| selectattr('state', 'ne', 'unknown')  | rejectattr ('entity_id', 'in', ['sensor.lolo_iphone_battery_level']) -%}
         {%- if states(state.entity_id) | int <= 20 -%}{{state.attributes.friendly_name}} ({{states(state.entity_id)}}%),  {%- endif -%}
         {%- endfor -%}
       icon: 'mdi:eye'

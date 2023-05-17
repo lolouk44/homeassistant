@@ -216,7 +216,7 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.bathroom_window
+        # - binary_sensor.bathroom_window
         - binary_sensor.kitchen_window
         - group.blue_room_windows
         - group.conservatory_windows

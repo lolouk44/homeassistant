@@ -37,7 +37,6 @@
   state_topic: "zigbee2mqtt/living_room_big_trv"
   command_topic: "zigbee2mqtt/living_room_big_trv/set"
   <<: *valvedetection
-  <<: *valvedetection
 
 - name: "Living Room Small TRV Valve Detection"
   state_topic: "zigbee2mqtt/living_room_small_trv"

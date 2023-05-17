@@ -1,14 +1,14 @@
 - name: "Master Bedroom TRV Valve Alarm"
   state_topic: "zigbee2mqtt/master_bedroom_trv"
   <<: &valvealarm
-    value_template: "{{ value_json['valve_alarm'] }}"
+    # value_template: "{{ value_json['valve_alarm'] }}"
     payload_on: true
     payload_off: false
     device_class: problem
 - name: "Master Bedroom TRV Connectivity"
   state_topic: "zigbee2mqtt/master_bedroom_trv/availability"
   <<: &connectivity
-    value_template: '{{ value_json.state }}'
+    # value_template: "{{ value_json['state'] }}"
     payload_on: "online"
     payload_off: "offline"
     device_class: connectivity
